@@ -1,20 +1,25 @@
-# Migrating from Zowe Vx to Zowe V3
+# Upgrading from Zowe Vx to Zowe V3
 
-Follow the procedure outlined in this article to migrate from Zowe v2 to Zowe v3, or Zowe v1 to Zowe v3. While the migration process is similar to a Zowe v2 minor release upgrade, there are several new and updated configuration parameters to consider. The workspace directory should be re-created only if you are using the app-server component.
-Follow the steps described in this article to ensure a smooth migration.
+Follow the procedure outlined in this article to upgrade from Zowe v2 to Zowe v3, or from Zowe v1 to Zowe v3. While the major version upgrading process is similar to a Zowe v2 minor release upgrade, there are several new and updated configuration parameters to consider. 
+
+:::note
+The workspace directory should be re-created only if you are using the app-server component.
+:::
+
+Follow the steps described in this article to ensure a smooth upgrade to Zowe v3.
 
 
 ## Upgrading to the latest version of Zowe v2 (v2.18)
 
-Before upgrading to Zowe v3.0.0, first upgrade to Zowe v2.18, as the rest of the migration instructions are based upon Zowe v2.18.
+Before upgrading to Zowe v3.0.0, first upgrade to Zowe v2.18, as the rest of the upgrading instructions are based upon Zowe v2.18.
 Please follow the instructions from the version of Zowe you have and newer in order to prepare to upgrade from Zowe v2 to v3.0.0.
 
-### Migrating from Zowe v2.16.0 or Lower
+### Upgrading from Zowe v2.16.0 or Lower
 
 <details>
 <summary>Click here for configuration details.</summary>  
 
-To migrate from Zowe **v2.16.0** or a lower version, perform the following tasks. 
+To upgrade from Zowe **v2.16.0** or a lower version, perform the following tasks. 
 
 1) Ensure the following `zowe.network` section is added to your configuration:
 
@@ -38,66 +43,66 @@ This can be performed with the unix command `zwe init stc`, by running the job Z
 
 </details>
 
-### Migrating from Zowe v2.15.0 or Lower
+### Upgrading from Zowe v2.15.0 or Lower
 
 <details>
 <summary>Click here for configuration details.</summary>  
 
-To migrate from Zowe **v2.15.0** or a lower version, perform the following tasks. 
+To upgrade from Zowe **v2.15.0** or a lower version, perform the following tasks. 
 
-If you are migrating from Zowe **v2.15.0** or a lower version, ensure that Zowe configurations using keyrings do not have the section `zowe.certificate.pem`.
+If you are upgrading from Zowe **v2.15.0** or a lower version, ensure that Zowe configurations using keyrings do not have the section `zowe.certificate.pem`.
 This section is no longer needed and can cause startup error in newer versions of Zowe.
 
 </details>
 
-### Migrating from Zowe v2.10.0 or Lower
+### Upgrading from Zowe v2.10.0 or Lower
 
 <details>
 <summary>Click here for configuration details.</summary>  
 
-To migrate from Zowe **v2.10.0** or a lower version, perform the following tasks. 
+To upgrade from Zowe **v2.10.0** or a lower version, perform the following tasks. 
 
-If you are migrating from Zowe **v2.10.0** or a lower version, consider taking advantage of the new **sysMessages** feature.
+If you are upgrading from Zowe **v2.10.0** or a lower version, consider taking advantage of the new **sysMessages** feature.
 
 The `zowe.sysMessages` is a new array that allows you to select messages that, when found by the launcher, will be duplicated into the system's log.
 
 </details>
 
-### Migrating from Zowe v2.9.0 or Lower
+### Upgrading from Zowe v2.9.0 or Lower
 
 <details>
 <summary>Click here for configuration details.</summary>
 
-To migrate from Zowe **v2.9.0** or a lower version, perform the following tasks. 
+To upgrade from Zowe **v2.9.0** or a lower version, perform the following tasks. 
 
-If you are migrating from Zowe **v2.9.0** or a lower version, it is recommended to delete the `<zowe.workspaceDirectory>/app-server/plugins` directory so that it can be regenerated on the next run of Zowe.
+If you are upgrading from Zowe **v2.9.0** or a lower version, it is recommended to delete the `<zowe.workspaceDirectory>/app-server/plugins` directory so that it can be regenerated on the next run of Zowe.
 In this version and prior there were old and no longer used Application Framework plugins and references to them will complicate logs with harmless errors.
 
 </details>
 
-### Migrating from Zowe v2.3.0 or Lower
+### Upgrading from Zowe v2.3.0 or Lower
 
 <details>
 <summary>Click here for configuration details.</summary>
 
-To migrate from Zowe **v2.3.0** or a lower version, perform the following tasks. 
+To upgrade from Zowe **v2.3.0** or a lower version, perform the following tasks. 
 
-If you are running Zowe **v2.3.0** or a lower version, a **clean install** of Zowe v3 is highly recommended to avoid potential issues during the migration process.
+If you are running Zowe **v2.3.0** or a lower version, a **clean install** of Zowe v3 is highly recommended to avoid potential issues during the upgrade process.
 
 </details>
 
-### Migrating from Zowe v1
+### Upgrading from Zowe v1
 
 <details>
 <summary>Click here for configuration details.</summary>
 
-To migrate from Zowe **v1** perform the following tasks. 
+To upgrade from Zowe **v1** perform the following tasks. 
 
 If you are using v1, you must perform a clean install of Zowe rather than upgrading it as there is not a clear upgrade path from v1 to v2 or v3.
-Any extensions or products built upon Zowe v1 are unlikely to work in v2 or v3 without upgrading them. Refer to any product documentation on actions to take. [More details](../extend/migrate-extensions.md)
+Any extensions or products built upon Zowe v1 are unlikely to work in v2 or v3 without upgrading them. Refer to any product documentation on actions to take. For more information, see [Upgrading from Zowe V1 to Zowe V2](../extend/migrate-extensions.md).
 
-If you are using v1.27 or newer, you can retain your keyring or keystore with Zowe v2 and v3. 
-During v2 or v3 installation, once your Zowe YAML configuration file is created, you can define a section `zowe.certificate` as follows to re-use your certificates.
+If you are using v1.27 or a later version of Zowe v1, you can retain your keyring or keystore with Zowe v2 and v3. 
+During v2 or v3 installation, once your Zowe YAML configuration file is created, you can define the section `zowe.certificate` to re-use your certificates.
 
 ```yaml
 zowe:
@@ -121,14 +126,14 @@ zowe:
 
 ## V3 Prerequisite Changes
 
-Before starting the migration, ensure the following system requirements are met:
+Before starting the upgrade, ensure the following system requirements are met:
 
 - **z/OSMF**  
 Version V2R5 or V3R1 is required. JWT support for z/OSMF is highly recommended. For more information, see [Enabling JSON Web Token support](https://www.ibm.com/docs/en/zos/3.1.0?topic=configurations-enabling-json-web-token-support) in the IBM documentation. If you do not have JWT support in z/OSMF, make sure to set `components.gateway.apiml.security.auth.zosmf.jwtAutoconfiguration` to `ltpa`.
 - **Java**  
 Java 17 is required. The Zowe YAML parameter `java.home` value should be a **Java 17** home location. If an administrator uses `zwe init` to set up Zowe, ensure the `java` for that user is v17 by including it in the `PATH` environment variable.
 - **Node.js**  
-Ensure that the Zowe YAML parameter `node.home` value is **Node.js 18 or 20** home location. Node 16 and earlier versions are no longer supported.
+Ensure that the Zowe YAML parameter `node.home` value is **Node.js 18 or 20** home location. Node 16 and earlier versions are not supported.
 
 
 ## System and Security Changes
@@ -155,7 +160,7 @@ Review the following changes to configuration and updated configuration paramete
 ### New Configuration
 
 **components.zaas**  
-  Previously part of the `components.gateway` component, zaas in Zowe v3 is a separate component responsible for authentication.  
+  Previously part of the `components.gateway` component, `zaas` in Zowe v3 is a separate component responsible for authentication.  
   If you do not explicitly configure this section, zaas will still be enabled by default and will use **port 7558**.
 
 ```yaml
@@ -167,15 +172,14 @@ components:
 ```
 
 ### Updated Configuration Parameters
----
 
 #### Keyrings
 
 If you use keyrings, verify that Zowe YAML references to `safkeyring`. Use two forward slashes (`safkeyring://`). Do not use four forward slashes (`safkeyring:////`).
 
-Zowe v2 accepts an empty value for `zowe.certificate.keystore.password` and `zowe.certificate.truststore.password` when using keyring-based certificates. Zowe v3 requires both to be set to the literal value `password`.
+Zowe v2 accepts an empty value for `zowe.certificate.keystore.password` and `zowe.certificate.truststore.password` when using keyring-based certificates. Zowe v3 requires both of these parameters to be set to the literal value `password`.
 
-For example:
+**Example:**
 
 ```yaml
 zowe:
@@ -193,8 +197,8 @@ zowe:
 
 #### Gateway z/OSMF service configuration
 
-The service ID for gateway zosmf has changed to **ibmzosmf**. <br/>
-Set `jwtAutoconfiguration` to **jwt** (default) or **ltpa**. Note that **auto** is no longer supported.<br/>
+The service ID for `gateway.apiml.security.auth.zosmf` has changed to **ibmzosmf**. <br />
+Set `jwtAutoconfiguration` to `jwt` (default) or `ltpa`. Note that `auto` is no longer supported.<br />
 If you are using zosmf as your auth service, ensure that you update this z/OSMF service configuration. 
 
 ```yaml
@@ -226,11 +230,13 @@ components:
             port: 7601
 ```
 
-If you enable single-service deployment mode (see below), **Infinispan is a required storage option** for the Caching Service — other storage modes are not supported in that mode.
+:::note
+If you enable single-service deployment mode, **Infinispan is the required storage option** for the Caching Service. Other storage modes are not supported in single-service deployment mode.
+:::
 
 #### Single-service deployment mode
 
-From Zowe v3.4.0 onwards, we recommend switching API Mediation Layer to the new single-service (modulith) deployment mode, which runs the Gateway, Discovery Service, API Catalog, and Caching Service in a single JVM process for improved performance and simplified configuration. For details on enabling this mode and its requirements, see [Enabling single-service deployment of API Mediation Layer](../user-guide/api-mediation/api-mediation-modulith.md).
+Starting from Zowe v3.4.0, we recommend using the single-service deployment of API Mediation Layer. API ML single-service deployment mode runs the Gateway, Discovery Service, API Catalog, and Caching Service in a single JVM process, which improves performance and simplifies configuration. For more information about enabling this mode and requirements for single-service deployment, see [Enabling single-service deployment of API Mediation Layer](../user-guide/api-mediation/api-mediation-modulith.md).
 
 #### ZSS Server
 

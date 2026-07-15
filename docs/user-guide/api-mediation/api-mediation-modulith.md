@@ -59,7 +59,7 @@ Update the network permissions to reflect this change. Ensure that both ports ar
 The remaining ports described under the `API Mediation Layer` category in the multi-service deployment section of article [Address Network Requirements](../address-network-requirements.md#component-ports) (defaults 7552, 7555, and 7558) are no longer used in single-service deployment mode. 
 
 :::note
-The Caching Service is enabled in single-service deployment mode, and `infinispan` is a required storage option — other storage modes are not supported in single-service deployment mode. Note that the `infinispan` storage solution requires additional ports. For more information, see [Caching Service Infinispan ports](../address-network-requirements.md#caching-service-infinispan-ports).
+In single-service deployment mode, the Caching Service is enabled by default, and **`infinispan` is the required storage option**. Other storage modes are not supported in single-service deployment mode. Note that the `infinispan` storage solution requires additional ports. For more information, see [Caching Service Infinispan ports](../address-network-requirements.md#caching-service-infinispan-ports).
 :::
 
 ### Update log prefix
