@@ -9,7 +9,6 @@ You can enable the Gateway to terminate CORS requests for itself and also for ro
 ## Gateway-Managed CORS Handling
 When the Gateway handles CORS on behalf of a service, the Gateway strips specific CORS handshake headers from the upstream and downstream communication loop to prevent them from interfering with upstream or downstream components.
 
--------
 ## Header Removal
 
 The Gateway removes the following three headers from the request before forwarding the request upstream:
@@ -46,26 +45,30 @@ Defines which HTTP headers are accepted during a CORS request. By default, all h
 **Default:** `*`
 
 ## Per-Service Custom Metadata CORS Parameters
-When registering a service, you can list the origins as configured by the service, associated with the value **customMetadata.apiml.corsAllowedOrigins** in Custom Metadata.
-You can configure the list of allowed HTTP methods by adding the property `components.gateway.apiml.service.corsAllowedMethods` in `zowe.yaml` and setting the value to a comma-separated list of allowed HTTP methods.
+Service administrators can fine-tune CORS behavior on a per-service basis. During service registration, you can pass specific CORS configuration parameters via [Custom Metadata](../../extend/extend-apiml/onboard-spring-boot-enabler.md#custom-metadata). 
+
+These parameters allow you to override global Gateway defaults for individual services:
+* **apiml.corsAllowedOrigins**  
+Specifies the allowed origins for the service.
+* **apiml.corsAllowedHeaders**  
+Restricts accepted HTTP headers for the service.
+* **apiml.corsAllowCredentials**  
+Configures credential sharing capabilities.
+* **apiml.corsAllowedMethods**  
+Sets the allowed HTTP methods for the service.
 
 ## Enabling CORS Handling
 
 Use the following procedure to globally enable and configure CORS handling within the API Gateway.
-
-
-If CORS is enabled for Gateway routes but not in Custom Metadata, the Gateway does not set any of the previously listed CORS headers. As such, the Gateway rejects any CORS requests with an origin header for the Gateway routes.
-
-Use the following procedure to enable CORS handling.
      
 1. Open the file `zowe.yaml`.
 2. Find or add the property `components.gateway.apiml.service.corsEnabled` and set the value to `true`.
 3. (Optional) Add the global configuration properties to customize default origins, headers, or methods if the default values do not align with your environment:  
     ```yaml
     components:
-    gateway:
+      gateway:
         apiml:
-        service:
+          service:
             corsEnabled: true
             corsDefaultAllowedOrigins: "https://mytrusteddomain.com:7553"
             corsDefaultAllowedHeaders: "Authorization,Content-Type"
