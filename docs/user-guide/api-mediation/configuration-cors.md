@@ -45,7 +45,7 @@ Defines which HTTP headers are accepted during a CORS request. By default, all h
 **Default:** `*`
 
 ## Per-Service Custom Metadata CORS Parameters
-Service administrators can fine-tune CORS behavior on a per-service basis. During service registration, you can pass specific CORS configuration parameters via [Custom Metadata](../../extend/extend-apiml/onboard-spring-boot-enabler.md#custom-metadata). 
+Service administrators can fine-tune CORS behavior on a per-service basis. During service registration, you can pass specific CORS configuration parameters via Custom Metadata. For more information, see [Customizing Matadata (optional)](../../extend/extend-apiml/custom-metadata.md). 
 
 These parameters allow you to override global Gateway defaults for individual services:
 * **apiml.corsAllowedOrigins**  
