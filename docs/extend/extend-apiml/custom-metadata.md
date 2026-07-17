@@ -15,31 +15,28 @@ When this parameter is set to `true`, the Gateway allows encoded characters to b
   :::
 
 * **customMetadata.apiml.connectTimeout**   
-The value in milliseconds that specifies a period in which API ML should establish a single, non-managed connection with this service. If omitted, the default value specified in the API ML Gateway service configuration is used.
-    
+The value in milliseconds that specifies a period in which API ML should establish a single, non-managed connection with this service. If omitted, the default value specified in the API ML Gateway service configuration is used.   
   :::note
   If you use the Spring enabler, use the following parameter name:
   `apiml.service.customMetadata.apiml.connectTimeout` 
   :::
 
 * **customMetadata.apiml.readTimeout**  
-The value in milliseconds that specifies the time of inactivity between two packets in response from this service to API ML. If omitted, the default value specified in the API ML Gateway service configuration is used.
-
+The value in milliseconds that specifies the time of inactivity between two packets in response from this service to API ML. If omitted, the default value specified in the API ML Gateway service configuration is used.  
   :::note
   If you use the Spring enabler, use the following parameter name:  
   `apiml.service.customMetadata.apiml.readTimeout`
   :::
 
 * **customMetadata.apiml.connectionManagerTimeout**  
-HttpClient employs the HTTP connection manager to manage access to HTTP connections. The purpose of an HTTP connection manager is to create new HTTP connections, to manage the life cycle of persistent connections, and to synchronize access to persistent connections. Internally, the HTTP connection manager works with managed connections which serve as proxies for real connections. `connectionManagerTimeout` specifies a period in which managed connections with API ML are to be established. The value is in milliseconds. If omitted, the default value specified in the API ML Gateway service configuration is used.
-
+HttpClient employs the HTTP connection manager to manage access to HTTP connections. The purpose of an HTTP connection manager is to create new HTTP connections, to manage the life cycle of persistent connections, and to synchronize access to persistent connections. Internally, the HTTP connection manager works with managed connections which serve as proxies for real connections. `connectionManagerTimeout` specifies a period in which managed connections with API ML are to be established. The value is in milliseconds. If omitted, the default value specified in the API ML Gateway service configuration is used.  
   :::note
   If you use the Spring enabler, use the following parameter name:  
   `apiml.service.customMetadata.apiml.connectionManagerTimeout`
   :::
+
 * **customMetadata.apiml.okToRetryOnAllOperations**  
-Specifies whether all operations can be retried for this service. The default value is `false`. The `false` value allows retries for only `GET` requests if a response code of `503` is returned. Setting this value to `true` enables retry requests for all methods, which return a `503` response code. Enabling retry can impact server resources resulting from buffering of the request body.
-    
+Specifies whether all operations can be retried for this service. The default value is `false`. The `false` value allows retries for only `GET` requests if a response code of `503` is returned. Setting this value to `true` enables retry requests for all methods, which return a `503` response code. Enabling retry can impact server resources resulting from buffering of the request body.    
   :::note
   If you use the Spring enabler, use the following parameter name:  
   `apiml.service.customMetadata.apiml.okToRetryOnAllOperations`
@@ -49,33 +46,29 @@ Specifies whether all operations can be retried for this service. The default va
 When this parameter is set to `true`, CORS handling by the Gateway is enabled on the service level for all service routes. 
 
   For more information, refer to enabling CORS with Custom Metadata on the Gateway: [Customizing Cross-Origin Resource Sharing (CORS)](../../user-guide/api-mediation/configuration-cors.md).
-Additional information can be found in this article about [Cross-Origin Resource Sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS).
-    
+Additional information can be found in this article about [Cross-Origin Resource Sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS).    
   :::note
   If you use the Spring enabler, use the following parameter name:
   `apiml.service.customMetadata.apiml.corsEnabled`
   :::
 
 * **customMetadata.apiml.gatewayAuthEndpoint**  
-Specifies the Gateway authentication endpoint used by the ZAAS Client configuration. The default value is `/api/v1/gateway/auth`. For more information about ZAAS Client, see [ZAAS Client](zaas-client.md).
-
+Specifies the Gateway authentication endpoint used by the ZAAS Client configuration. The default value is `/api/v1/gateway/auth`. For more information about ZAAS Client, see [ZAAS Client](zaas-client.md).  
   :::note
   If you use the Spring enabler, use the following parameter name:
   `apiml.service.customMetadata.apiml.gatewayAuthEndpoint`
   :::
 
 * **customMetadata.apiml.gatewayPort**  
-Specifies the Gateway port used by the ZAAS Client configuration. The default value is `10010`. For more information about ZAAS Client, see [ZAAS Client](zaas-client.md).
-
+Specifies the Gateway port used by the ZAAS Client configuration. The default value is `10010`. For more information about ZAAS Client, see [ZAAS Client](zaas-client.md).  
   :::note
   If you use the Spring enabler, use the following parameter name:
   `apiml.service.customMetadata.apiml.gatewayPort`
   :::
 
 * **customMetadata.apiml.corsAllowedOrigins**  
-Optionally, service can specify which origins are to be accepted by the Gateway during CORS handling.  
-**Default:** If not set, this parameter value falls back to the Gateway’s `corsDefaultAllowedOrigins` (`https://${hostname}:${port}`). You can optionally provide a comma-separated list of values, which is additive and does not replace the Gateway's default origins.
-    
+(Optional) A service can specify which origins are to be accepted by the Gateway during CORS handling.  
+**Default:** If not set, this parameter value falls back to the Gateway’s `corsDefaultAllowedOrigins` (`https://${hostname}:${port}`). You can optionally provide a comma-separated list of values, which is additive and does not replace the Gateway's default origins.     
   :::note
   If you use the Spring enabler, use the following parameter name:
   `apiml.service.customMetadata.apiml.corsAllowedOrigins`
@@ -84,17 +77,24 @@ Optionally, service can specify which origins are to be accepted by the Gateway 
   For more information, refer to enabling CORS with Custom Metadata on the Gateway: [Customizing Cross-Origin Resource Sharing (CORS)](../../user-guide/api-mediation/configuration-cors.md).
 
 * **customMetadata.apiml.corsAllowedHeaders**  
-Optionally, specify a comma-separated list of HTTP headers that are allowed during a CORS request to this service.  
+(Optional) Specify a comma-separated list of HTTP headers that are allowed during a CORS request to this service.    
   :::note
 If you use the Spring enabler, use the following parameter name:
   `apiml.service.customMetadata.apiml.corsAllowedHeaders`
   :::
 
 * **customMetadata.apiml.corsAllowCredentials**  
-Optionally, configure whether the browser should include credentials (such as cookies, authorization headers, or TLS client certificates) in CORS requests. Note that while the Gateway-level default is hardcoded to `true`, the per-service default for this parameter is `false`.
+(Optional) Configure whether the browser should include credentials (such as cookies, authorization headers, or TLS client certificates) in CORS requests. Note that while the Gateway-level default is hardcoded to `true`, the per-service default for this parameter is `false`.  
   :::note
   If you use the Spring enabler, use the following parameter name:
   `apiml.service.customMetadata.apiml.corsAllowCredentials`
+  :::
+
+* **customMetadata.apiml.corsAllowedMethods**  
+(Optional) Specify a comma-separated list of HTTP methods (e.g., `GET`, `POST`, `PUT`, `DELETE`) that are allowed when accessing the service via CORS.  
+  :::note
+  If you use the Spring enabler, use the following parameter name:
+  `apiml.service.customMetadata.apiml.corsAllowedMethods`
   :::
   
 * **customMetadata.apiml.lb.type**  
