@@ -1781,6 +1781,18 @@ Contact your administrator.
 
   Verify folder with static definition files or try it later.
 
+### ZWEAD707W
+
+  Service '%s' registered with the httpBasicPassTicket authentication scheme but without a configured APPLID. The authentication scheme will be ignored
+
+  **Reason:**
+
+  The service is onboarded with the httpBasicPassTicket authentication scheme but does not provide an APPLID, which is required to generate PassTickets.
+
+  **Action:**
+
+  Configure the 'authentication.applid' parameter of the httpBasicPassTicket authentication scheme in the service metadata.
+
 ## Gateway service messages
 
 ### ZWEAG111E
