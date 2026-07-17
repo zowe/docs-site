@@ -4,6 +4,7 @@ Follow the procedure in this article to upgrade an existing Zowe server componen
 
 :::tip
 After you have updated to the last supported v2 version of Zowe (v2.18.x), we recommend you upgrade to the latest version of Zowe for highest performance and available features. FOr more information, see [Upgrading from Zowe Vx to Zowe V3](../upgrade/zowe-v3-migration.md). 
+:::
 
 To make Zowe server component compatible with Zowe version 2, you must update the following configurations.
 
@@ -113,9 +114,7 @@ Review the following table for a detailed mapping of Zowe v1 and v2 variables.
 It is recommended that you create a dedicated package of extensions for Zowe v2, which is the most straight-forward way to address all of the breaking changes introduced in v2. We understand that this method presents the challenge of maintaining two sets of packages. If you prefer not to maintain two sets of packages, it's still possible to maintain one version of an extension which works for both Zowe v1 and v2. However, the lifecycle code will be complicated and in this case, comprehensive testing should be performed. 
 
 :::caution
-
 The Zowe v2 App Framework desktop is upgraded from Angular version 6 to angular version 12 for support and security -  websites have a "1 version of a library" limitation. This means that plug-ins dependent upon Angular must be coded for either v6 or v12 [not both] thus the single version approach is not applicable.
-
 :::
 
 If the lifecycle scripts are the main concern, the following steps outline requirements and recommendations for the single version approach:
