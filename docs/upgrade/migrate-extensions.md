@@ -1,4 +1,4 @@
-# Upgrading from Zowe V1 to Zowe V2
+# Upgrading  from Zowe V1 to Zowe V2
 
 Follow the procedure in this article to upgrade an existing Zowe server component from version 1 to version 2. 
 
@@ -8,7 +8,7 @@ After you have updated to the last supported v2 version of Zowe (v2.18.x), we re
 
 To make Zowe server component compatible with Zowe version 2, you must update the following configurations.
 
-- [Upgrading from Zowe V1 to Zowe V2](#upgrading-from-zowe-v1-to-zowe-v2)
+- [Upgrading  from Zowe V1 to Zowe V2](#upgrading--from-zowe-v1-to-zowe-v2)
   - [Component manifest](#component-manifest)
   - [Lifecycle scripts](#lifecycle-scripts)
   - [Environment variables](#environment-variables)

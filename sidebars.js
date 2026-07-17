@@ -471,6 +471,7 @@ module.exports = {
   "upgrade": [
     //id of the sidebar
     "upgrade/zowe-v3-migration",
+    "upgrade/migrate-extensions",
   ],    
   "use": [
     "user-guide/zowe-getting-started-tutorial",
