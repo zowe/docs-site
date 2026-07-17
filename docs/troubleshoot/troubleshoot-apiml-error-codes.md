@@ -495,6 +495,34 @@ Contact your administrator.
 
   Remove or fix the referenced metadata parameter.
 
+
+### ZWEAM601W 
+
+  `<key>` `<value>` is not allowed for instance `<instanceID>`
+
+  **Reason:**  
+  
+  The URL provided for the service instance is not included in the allowed domains list configured in API ML. By default, this validation failure blocks the service from successfully onboarding.
+
+  **Action:**  
+  
+  Check `zowe.network.allowedDomains` configuration in `zowe.yaml` to ensure the instance's URL is permitted.
+
+  * **Emergency Override:** If you need to temporarily prevent this error from blocking service onboarding in a development environment, set the environment variable `ZWE_ONLY_WARN_ON_URL_NOT_ALLOWED=true`. This downgrades the behavior to a log warning only and allows the service to register.
+
+### ZWEAM602W 
+
+  Pattern `*` is not recommended in `apiml.corsAllowedOrigins`
+
+  **Reason:**  
+  
+  Using the wildcard (`*`) pattern in the Cross-Origin Resource Sharing (CORS) configuration parameter `apiml.corsAllowedOrigins` allows requests from any domain, which creates a potential security risk by bypassing intended origin restrictions.
+
+  **Action:**  
+  
+  Replace the wildcard pattern with a specific list of trusted domains or use a more restrictive pattern in the `apiml.corsAllowedOrigins` parameter defined as a metadata entry in the onboarding service.
+
+
 ### ZWEAM700E
 
   No response received within the allowed time: `%s`
@@ -1752,6 +1780,18 @@ Contact your administrator.
   **Action:**
 
   Verify folder with static definition files or try it later.
+
+### ZWEAD707W
+
+  Service '%s' registered with the httpBasicPassTicket authentication scheme but without a configured APPLID. The authentication scheme will be ignored
+
+  **Reason:**
+
+  The service is onboarded with the httpBasicPassTicket authentication scheme but does not provide an APPLID, which is required to generate PassTickets.
+
+  **Action:**
+
+  Configure the 'authentication.applid' parameter of the httpBasicPassTicket authentication scheme in the service metadata.
 
 ## Gateway service messages
 

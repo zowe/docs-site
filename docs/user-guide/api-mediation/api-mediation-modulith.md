@@ -59,7 +59,7 @@ Update the network permissions to reflect this change. Ensure that both ports ar
 The remaining ports described under the `API Mediation Layer` category in the multi-service deployment section of article [Address Network Requirements](../address-network-requirements.md#component-ports) (defaults 7552, 7555, and 7558) are no longer used in single-service deployment mode. 
 
 :::note
-The Caching Service is enabled in single-service deployment mode and the default is `infinispan`. Note that the  `infinispan` storage solution requires additional ports. For more information, see [Caching Service Infinispan ports](../address-network-requirements.md#caching-service-infinispan-ports).
+In single-service deployment mode, the Caching Service is enabled by default, and **`infinispan` is the required storage option**. Other storage modes are not supported in single-service deployment mode. Note that the `infinispan` storage solution requires additional ports. For more information, see [Caching Service Infinispan ports](../address-network-requirements.md#caching-service-infinispan-ports).
 :::
 
 ### Update log prefix
@@ -123,7 +123,10 @@ To enable single-service deployment mode for API ML, perform the following chang
     :::note Notes:  
     * If the Caching Service is not configured on your system, follow the steps described in [Using the Caching Service](./api-mediation-caching-service.md) to configure the Caching Service. The Caching Service is enabled by default in the single-service deployment of API Mediation Layer.
 
-    * To enable the debug mode in the single-service deployment mode, find the `components.apiml.debug` parameter and set the value to `true`.
+    * To enable the debug mode in  single-service deployment, configure one of the following parameters:
+        * `components.apiml.logging.level: debug` (recommended)
+        * `components.apiml.debug: true` 
+    
     ```
 
 2. Start the Zowe started task.

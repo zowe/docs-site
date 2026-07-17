@@ -36,5 +36,5 @@ There are multiple options for customizing Zowe API Mediation Layer according to
 * [Customizing the API Catalog UI](./api-mediation/configuration-customizing-the-api-catalog-ui.md)
 * [Customizing Zowe API Mediation Layer logging](./api-mediation/configuration-logging.md)
 * [Configuring initial for API Mediation Layer startup message for SYSLOG](./api-mediation/wto-message-on-startup.md)
-  
+* [Configuring allowed domains for service registration](../user-guide/api-mediation/config-allowed-domains-for-service-reg.md) 
 

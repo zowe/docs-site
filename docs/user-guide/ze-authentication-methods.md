@@ -2,7 +2,7 @@
 
 Zowe Explorer supports multiple methods of authenticating to your z/OS REST services, including basic authentication, tokens for single sign-on, client certificates, and multi-factor authentication. 
 
-If you configure multiple authentication methods for a specific service, set the *order of precedence* with the profile property `authOrder`. To specify an [order of precedence](../user-guide/cli-authentication-methods.md#order-of-precedence) in your client configuration, refer to the Zowe CLI documenation.
+If you configure multiple authentication methods for a specific service, set the *order of precedence* with the profile property `authOrder`. To specify an [order of precedence](../user-guide/cli-authentication-methods.md#order-of-precedence) in your client configuration, refer to the Zowe CLI documentation.
 
 ## Using basic authentication
 
@@ -12,7 +12,7 @@ To use basic authentication with Zowe Explorer, see [Using basic authentication]
 
 Tokens provide more security because they have limited lifespans and can be immediately revoked when needed.
 
-### Using a token to log in with Single Sign-On (SSO)
+### Using a token to log in with single sign-on (SSO)
 
 SSO lets you use a single token to access all your mainframe services through API Mediation Layer. SSO is configured with Zowe API ML, which generates an authentication token to access the mainframe. 
 
@@ -26,7 +26,7 @@ To log into the API ML authentication service with an existing base profile:
 
    If the request is successful, the token is used for authentication until the logout action is taken or the token expires.
 
-For more information, see [Integrating API ML with Zowe CLI](./cli-using-integrating-apiml.md).
+For more information, see [Integrating API ML with Zowe CLI](./cli-using-integrating-apiml.md#accessing-services-through-sso-and-a-service-not-through-api-ml).
 
 :::note
 For services not registered to your API ML instance, please consult the product or extender documentation for SSO support.

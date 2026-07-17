@@ -20,28 +20,43 @@ This Onboarding Overview article addresses the following topics:
 
 Ensure that you meet the following prerequisites before you onboard your service:
 
-- **A running instance of Zowe**
+- **A running instance of Zowe**  
+**Note**: For [static onboarding](onboard-static-definition.md), access to Zowe runtime is required to create the static service definition.
   
-  **Note**: For [static onboarding](onboard-static-definition.md), access to Zowe runtime is required to create the static service definition.
-  
-- **A certificate configuration compatible with Zowe**
-
-   Zowe uses secured communication over TLSv1.2. As such, you must provide a certificate that is trusted by Zowe, as well as the certificate(s) required to trust Zowe services. Ensure that the certificate Subject contains a valid **Common Name (CN)** representing your server's hostname.
+- **A certificate configuration compatible with Zowe**  
+    Zowe uses secured communication over TLSv1.2. As such, you must provide a certificate that is trusted by Zowe, as well as the certificate(s) required to trust Zowe services. Ensure that the certificate Subject contains a valid **Common Name (CN)** representing your server's hostname.
 
    For more information, see [Certificate management in API Mediation Layer](../extend-apiml/certificate-management-in-zowe-apiml.md) and [Zowe API ML TLS requirements](./zowe-api-mediation-layer-security-overview.md#zowe-api-ml-tls-requirements)
   
-- **A REST API-enabled service to onboard**
-
-  If you do not have a specific REST API service, you can use the [sample service](#sample-rest-api-service). 
+- **A REST API-enabled service to onboard**  
+    If you do not have a specific REST API service, you can use the [sample service](#sample-rest-api-service). 
   Your service should be documented in a valid `OpenApi 2.0/3.0` Swagger JSON format.
 
-- **Access to the Zowe artifactory**
-
-  Repository URL: `https://zowe.jfrog.io/zowe/libs-release`
+- **Access to the Zowe artifactory**  
+    Repository URL: `https://zowe.jfrog.io/zowe/libs-release`
    
 - **A build automation system**  
-
     Use either the _Gradle_ or _Maven_ build system to complete the integration.
+
+- **Domain Allowlist Validation**  
+    Ensure that all domains and hostnames referenced in your service's registration profile are permitted by the API ML configuration property `zowe.network.allowedDomains`. 
+
+    If your service utilizes an unauthorized domain in its metadata fields (such as a documentation endpoint or a base connection URL), the registration will be blocked, and a `ZWEAM601W` warning message will be issued in the logs. This validation applies to:
+  * **Base Connection URLs:** Such as `instanceBaseUrls`. 
+  * **Service Metadata Keys:** Such as `apiml.*.swaggerUrl`, `apiml.*.graphqlUrl`, `apiml.*.documentationUrl`, `apiml.*.externalUrl`, and `apiml.corsAllowedOrigins`.
+  * **Standard Eureka Endpoints:** Including Home Page, Health Check, Status Page, and Secure Health Check URLs.
+
+    By default, the Discovery Service automatically trusts:
+  * `zowe.externalDomains` (in both single instance and HA setups)
+  * `haInstances.<id>.hostname` (for HA setups)
+  * The target hostname defined under the top-level `zOSMF` configuration block
+  * The following built-in community and vendor documentation domains:  
+      * `www.ibm.com`
+      * `zowe.github.io`
+      * `www.zowe.org`
+      * `techdocs.broadcom.com`
+
+    Any additional external domains must be explicitly configured in `zowe.network.allowedDomains`. For more information, see [Configuring Allowed Domains for Service Registration](../../user-guide/api-mediation/config-allowed-domains-for-service-reg.md).
 
 ## Service Onboarding Guides
 

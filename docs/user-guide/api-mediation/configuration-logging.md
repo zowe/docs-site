@@ -2,6 +2,9 @@
 
 Zowe API Mediation Layer uses logback for its logging. You can customize the logging of Zowe API Mediation Layer by specifying the customized `logback.xml` file in `zowe.yaml` for each service separately.
 
+:::info Required Roles: system administrator, system programmer
+:::
+
 To change the default logback configuration file, set `components.<component>.logging.config` with a path to your `logback.xml`.
 
 * **component**  
@@ -23,7 +26,10 @@ components:
 
 ## Default logging configuration file
 
-The following `logback.xml` is an example of logging configuration file which is used by default in all API Mediation Layer components:
+The following `logback.xml` is an example of logging configuration file which is used by default in all API Mediation Layer components.
+
+<details>
+<summary>Click here for the full logback.xml example.</summary>
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -82,8 +88,11 @@ The following `logback.xml` is an example of logging configuration file which is
 </configuration>
 ```
 
+</details>
+<br />
+
 :::note
-You can find the current default logging configuration in the [logback-spring.xml](https://github.com/zowe/api-layer/blob/v3.x.x/apiml-utility/src/main/resources/logback-spring.xml) file in the api-layer repository.
+For more information about the current default logging configuration, see the [logback-spring.xml](https://github.com/zowe/api-layer/blob/v3.x.x/apiml-utility/src/main/resources/logback-spring.xml) file in the api-layer repository.
 :::
 
 ## Understanding appenders
@@ -110,6 +119,119 @@ The `<root level="INFO">` element in the default configuration sets the base log
 ```
 
 Setting the root level to `DEBUG` enables verbose logging for all packages, which is useful for troubleshooting but can generate large log volumes.
+
+## Configuring logging level
+
+You can manage the volume of API ML logs written to the spool by configuring their verbosity for both **single-service deployment** or a distributed **microservice deployment**. Adjust the logging level property by configuring the attribute corresponding to your deployment mode within your `zowe.yaml` file. 
+
+### Configuration Examples
+
+**For Single-Service Deployment Mode:**
+Update your `zowe.yaml` file under the global `apiml` component block:
+
+```yaml
+# zowe.yaml
+components:  
+  apiml:    
+    logging:      
+      level: quiet   # Options: quiet | info (default) | debug
+```
+
+**For Microservice Deployment Mode:**
+Configure the property under the specific microservice component block (for example, the API Gateway):
+
+```yaml
+# zowe.yaml
+components:  
+  gateway:    
+    logging:      
+      level: quiet   # Options: quiet | info (default) | debug
+```
+
+:::note
+This property is similarly supported under `components.discovery`, `components.api-catalog`, `components.caching-service`, and `components.zaas`.
+:::
+
+### Log Level Options
+
+Configure the logging verbosity using the following levels:
+* **info** (default)  
+Represents the standard, baseline logging configuration. It preserves current operational behavior, writing all standard `INFO`, `WARN`, and `ERROR` messages to the log.
+* **quiet**  
+Suppresses standard `INFO`-level chatter to drastically minimize spool usage during normal production operations. This setting retains only selected critical informational messages (such as application startup, component status, and the configured authentication provider), alongside all warnings and errors.
+* **debug**  
+Provides full diagnostic output for troubleshooting. 
+
+  :::note Backwards Compatibility  
+  Legacy debug parameters remain fully functional for backwards compatibility and take absolute precedence over new `logging.level` settings. 
+
+  The scope of these legacy overrides depends on your deployment mode:
+  * **Single-Service Deployment:** The legacy parameter `components.apiml.debug: true` takes precedence and forces a resolution to `debug`, overriding `components.apiml.logging.level`.
+  * **Microservice Deployment:** Individual service parameters such as `components.gateway.debug: true` take precedence and force a resolution to `debug` for that specific microservice, overriding settings like `components.gateway.logging.level`.
+  :::
+
+### Log Output Comparisons
+The following examples demonstrate how the different logging levels affect the output and volume in your system logs.
+
+**Log Output — `info` level (default)**  
+This level captures standard application milestones alongside framework warnings. 
+
+<details>
+<summary>Click here to review an example of info log level. </summary>
+<br />
+
+**`info` level**
+
+Notice the inclusion of verbose Tomcat and SpringDoc warning configurations:
+
+```plaintext
+2026-07-01 07:20:20.965 <ZWEAGW1:main:33885081> ZWESVUSR INFO  (o.z.a.z.s.c.CompoundAuthProvider) ZWEAM105I Using authentication provider: saf
+2026-07-01 07:20:27.170 <ZWEAGW1:main:33885081> ZWESVUSR WARN  (o.a.t.u.n.j.JSSEUtil) Tomcat interprets the [ciphers] attribute [...]
+2026-07-01 07:20:27.301 <ZWEAGW1:Thread-3:33885081> ZWESVUSR INFO  (o.z.a.p.s.ServiceStartupEventHandler) ZWEAM000I Discovery Service started in 21.785 seconds
+2026-07-01 07:20:27.319 <ZWEAGW1:main:33885081> ZWESVUSR WARN  (o.s.c.e.SpringDocAppInitializer) SpringDoc /v3/api-docs endpoint is enabled by default. [...]
+2026-07-01 07:20:27.320 <ZWEAGW1:main:33885081> ZWESVUSR INFO  (o.z.a.p.s.ServiceStartupEventHandler) ZWEAM000I Caching Service started in 21.805 seconds
+2026-07-01 07:20:27.337 <ZWEAGW1:main:33885081> ZWESVUSR INFO  (o.z.a.GatewayHealthIndicator) ZWEAM001I API Mediation Layer started
+```
+</details>
+<br />
+
+**Log Output — `quiet` level (without errors)**  
+When running normally under the quiet level, routine framework warnings and standard chatter are filtered out. Only critical startup and readiness milestones remain.
+
+<details>
+<summary>Click here to review an example of quiet log level without errors. </summary>
+<br />
+
+**`quiet` level (without errors)**
+
+```plaintext
+2026-07-01 07:30:09.697 <ZWEAGW1:main:33883157> ZWESVUSR INFO  (o.z.a.z.s.c.CompoundAuthProvider) ZWEAM105I Using authentication provider: saf
+2026-07-01 07:30:15.951 <ZWEAGW1:Thread-3:33883157> ZWESVUSR INFO  (o.z.a.p.s.ServiceStartupEventHandler) ZWEAM000I Discovery Service started in 20.496 seconds
+2026-07-01 07:30:15.981 <ZWEAGW1:main:33883157> ZWESVUSR INFO  (o.z.a.p.s.ServiceStartupEventHandler) ZWEAM000I Caching Service started in 20.527 seconds
+2026-07-01 07:30:15.998 <ZWEAGW1:main:33883157> ZWESVUSR INFO  (o.z.a.p.s.ServiceStartupEventHandler) ZWEAM000I API Catalog Service started in 20.544 seconds
+2026-07-01 07:30:15.998 <ZWEAGW1:main:33883157> ZWESVUSR INFO  (o.z.a.GatewayHealthIndicator) ZWEAM001I API Mediation Layer started
+```
+</details>
+<br />
+
+**Log Output — `quiet` level (with errors)**  
+If an operational issue occurs while using the quiet level, the system dynamically allows relevant `WARN` and `ERROR` diagnostics through alongside the core startup sequence.
+
+<details>
+<summary>Click here to review an example of quiet log level with errors. </summary>
+<br />
+
+**`quiet` level (with errors)**
+
+```plaintext
+2026-07-01 07:34:20.524 <ZWEAGW1:main:33884222> ZWESVUSR INFO  (o.z.a.z.s.c.CompoundAuthProvider) ZWEAM105I Using authentication provider: saf
+2026-07-01 07:34:26.562 <ZWEAGW1:Thread-3:33884222> ZWESVUSR WARN  (o.z.a.d.s.ServiceDefinitionProcessor) ZWEAD702W Unable to process static API definition data: [...]
+2026-07-01 07:34:26.563 <ZWEAGW1:Thread-3:33884222> ZWESVUSR ERROR (o.z.a.d.s.StaticServicesRegistrationService) Loading static definition failed: [...]
+2026-07-01 07:34:26.563 <ZWEAGW1:Thread-3:33884222> ZWESVUSR INFO  (o.z.a.p.s.ServiceStartupEventHandler) ZWEAM000I Discovery Service started in 19.236 seconds
+2026-07-01 07:34:26.660 <ZWEAGW1:main:33884222> ZWESVUSR INFO  (o.z.a.p.s.ServiceStartupEventHandler) ZWEAM000I Caching Service started in 19.333 seconds
+2026-07-01 07:34:43.475 <ZWEAGW1:main:33884222> ZWESVUSR ERROR (o.z.a.c.s.i.ApimlSslKeyExchange) Cannot create server socket: java.net.BindException: EDC8115I Address already in use.
+```
+</details>
 
 ## Customization example
 
@@ -167,3 +289,4 @@ You can optionally set the level to `TRACE`, `WARN`, `ERROR`, or `OFF` depending
 :::tip
 Using per-package log levels is the recommended approach for troubleshooting specific issues in production, as these log levels prevent the large log volumes which may result from setting the root level to `DEBUG`.
 :::
+
