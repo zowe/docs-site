@@ -1,6 +1,6 @@
 # Migrating from Convenience Build to PSWI or SMP/E installation
 
-Review the recom mended procedure to migrate an existing Zowe installation from a convenience build to a PSWI (Portable Software Instance) or SMP/E-based installation. The steps in this article outline the best practices to perform the migration, and include all necessary tasks for reusing or updating configuration, managing runtime datasets, and maintaining service continuity.
+Review the recommended procedure to migrate an existing Zowe installation from a convenience build to a PSWI (Portable Software Instance) or SMP/E-based installation. The steps in this article outline the best practices to perform the migration, and include all necessary tasks for reusing or updating configuration, managing runtime datasets, and maintaining service continuity.
 
 ## Prerequisites before migration
 
@@ -10,7 +10,7 @@ Ensure you meet the following conditions before you start the migration process:
 * Determine if the migrate target is the same version or a newer version (e.g. v3.1).
 * Backup the following elements:
     * The existing zowe.yaml configuration file
-    * Zowe runtime datasets
+    * Zowe runtime data sets
     * STC JCLs and PARMLIB members
 
 ## Installing Zowe via PSWI or SMP/E
@@ -43,7 +43,7 @@ When migrating from the convenience build, you can either use PSWI or SMP/E to m
 If the target PSWI or SMP/E version matches the currently installed convenience build, use the following outline of steps:
 
 1. Reuse the existing zowe.yaml file.
-2. Continue using the current runtime datasets, or for SMP/E, from the target library.
+2. Continue using the current runtime data sets, or for SMP/E, from the target library.
 3. Update ZOWE STC (`ZWESISTC` and `ZWESLSTC`) and YAML to point to the new Zowe libraries from PROCLIB and YAML.
 
 ### Upgrade to a newer version
@@ -53,7 +53,7 @@ To migrate to a newer version of Zowe, for example from v3.0 to v3.1, you can ei
 * **Using PSWI Workflows**  
   You can use z/OSMF workflows provided in the PSWI package to perform the following tasks:
   * Generate a new zowe.yaml configuration file
-  * Allocate new runtime datasets
+  * Allocate new runtime data sets
   * Configure system definitions (e.g. APF, PROCLIB)
 
 For more information, see [Installing Zowe SMP/E build with z/OSMF workflow](../user-guide/install-zowe-smpe-zosmf-workflow.md).
@@ -61,7 +61,7 @@ For more information, see [Installing Zowe SMP/E build with z/OSMF workflow](../
 * **Using SMP/E SAMPLIB**
   
   Use members from ZOWE SAMPLIB to perform the following tasks:
-  * Allocate and define new runtime datasets 
+  * Allocate and define new runtime data sets 
   * Create or customize a new zowe.yaml file
   * Configure system definitions (e.g. APF, PROCLIB)
 
@@ -97,7 +97,7 @@ Follow these steps to validate that you successfully migrated your Zowe installa
 
 :::tip
 Use the following guidelines to maintain rollback readiness in the event of unexpected issues during your Zowe migration:
-* Retain previous runtime datasets
+* Retain previous runtime data sets
 * Keep backup copies of all JCLs and configuration members
 * Be prepared to reassign STEPLIB/PARMLIB back to convenience build settings
 :::
