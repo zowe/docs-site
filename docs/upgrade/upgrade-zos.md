@@ -1,6 +1,6 @@
 # Upgrading
 
-Performing an upgrade of Zowe involves following a subset of the first-time installation steps documented within the [Zowe z/OS components installation checklist](./zos-components-installation-checklist.md), and updating your Zowe YAML. Exceptions are noted within this document.
+Performing an upgrade of Zowe involves following a subset of the first-time installation steps documented within the [Zowe z/OS components installation checklist](../user-guide/zos-components-installation-checklist.md), and updating your Zowe YAML. Exceptions are noted within this document.
 
 :::note
 Zowe cannot be upgraded while it is running. You should [Stop Zowe](../user-guide/start-zowe-zos.md) before proceeding.
