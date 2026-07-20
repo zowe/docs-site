@@ -7,15 +7,17 @@ module.exports = {
   url: "https://docs.zowe.org/",
   baseUrl: "/",
   onBrokenLinks: "warn",
-  onBrokenMarkdownLinks: "warn",
   onDuplicateRoutes: "ignore",
   favicon: "img/zowe-icon.png",
   organizationName: "zowe",
   projectName: "docs-site",
   markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: "warn",
+    },
     mdx1Compat: {
-      comments: true
-    }
+      comments: true,
+    },
   },
   future: {
     // https://docusaurus.io/blog/releases/3.6#docusaurus-faster
