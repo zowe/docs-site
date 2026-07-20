@@ -464,8 +464,8 @@ module.exports = {
     },
   ],
   "upgrade": [
-    "upgrade/zowe-v3-migration",
-    "upgrade/migrate-extensions",
+    "upgrade/upgrade-zowe-v3",
+    "upgrade/upgrade-zowe-v2",
     "upgrade/migrate-from-convenience-build-to-pswi-smpe",
   ],    
   "use": [
