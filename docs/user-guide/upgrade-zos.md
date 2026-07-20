@@ -260,7 +260,7 @@ If you are running Zowe **v2.3.0** or a lower version, a **clean install** of Zo
 To migrate from Zowe **v1** perform the following tasks. 
 
 If you are using v1, you must perform a clean install of Zowe rather than upgrading it as there is not a clear upgrade path from v1 to v2 or v3.
-Any extensions or products built upon Zowe v1 are unlikely to work in v2 or v3 without upgrading them. Refer to any product documentation on actions to take. [More details](../extend/migrate-extensions.md)
+Any extensions or products built upon Zowe v1 are unlikely to work in v2 or v3 without upgrading them. Refer to any product documentation on actions to take. For more information, see [Upgrading from Zowe V1 to Zowe V2](../upgrade/upgrade-zowe-v2.md).
 
 If you are using v1.27 or newer, you can retain your keyring or keystore with Zowe v2 and v3. 
 During v2 or v3 installation, once your Zowe YAML configuration file is created, you can define a section `zowe.certificate` as follows to re-use your certificates.

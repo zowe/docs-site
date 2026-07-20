@@ -3,7 +3,7 @@
 Zowe V2 is now in maintenance state. Patch releases are planned until the Zowe V2 End of Service scheduled for early 2027. For details about the Zowe v2 release stream, see the [Releases section](https://www.zowe.org/vnext) in zowe.org.
 
 :::tip
-For information about how to upgrade Zowe v2 to the latest version of Zowe, see [Upgrading Zowe Vx to Zowe V3](../upgrade/zowe-v3-migration.md).
+For information about how to upgrade Zowe v2 to the latest version of Zowe, see [Upgrading Zowe Vx to Zowe V3](../upgrade/upgrade-zowe-v3.md).
 :::
 
 Review enhancements introduced in previous releases:
