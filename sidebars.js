@@ -453,6 +453,7 @@ module.exports = {
                 "user-guide/ze-ftp-install-ze-ftp-ext",
               ],
             },
+            "getting-started/ze-configuring-zowe-remote-ssh",
             "user-guide/ze-profiles",
             "user-guide/ze-install-configuring-ze",
             "user-guide/ze-install-verify-your-installation",
@@ -635,6 +636,7 @@ module.exports = {
           items: [
             "user-guide/ze-managing-profiles",
             "user-guide/ze-authentication-methods",
+            "user-guide/zowe-remote-ssh",
             "user-guide/ze-usage-tips",
             "user-guide/ze-using-using-environment-variables",
             "user-guide/ze-working-with-data-sets",
