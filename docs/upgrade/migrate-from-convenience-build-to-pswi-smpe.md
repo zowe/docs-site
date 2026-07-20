@@ -7,7 +7,7 @@ Review the recom mended procedure to migrate an existing Zowe installation from 
 Ensure you meet the following conditions before you start the migration process:
 
 * Determine the current installed version of Zowe (e.g. v3.0).
-* Determine if the upgrade target is the same version or a newer version (e.g. v3.1).
+* Determine if the migrate target is the same version or a newer version (e.g. v3.1).
 * Backup the following elements:
     * The existing zowe.yaml configuration file
     * Zowe runtime datasets
@@ -78,9 +78,9 @@ Use the following step outline to switch between Zowe versions (e.g. v3.0 and v3
 3. Restart all affected Zowe STCs. For more information, see [Starting and stopping Zowe](../user-guide/start-zowe-zos.md).
 
  
-## Validating after upgrade
+## Validating after migration
 
-Follow these steps to validate that you successfully upgraded your Zowe installation.
+Follow these steps to validate that you successfully migrated your Zowe installation.
 
 1. Start the following Zowe Started Tasks (STCs):
   * **ZWESISTC**  
@@ -96,7 +96,7 @@ Follow these steps to validate that you successfully upgraded your Zowe installa
    For more information about performing these steps, see [Verifying Zowe installation on z/OS](../user-guide/verify-zowe-runtime-install.md)
 
 :::tip
-Use the following guidelines to maintain rollback readiness in the event of unexpected issues during your Zowe upgrade:
+Use the following guidelines to maintain rollback readiness in the event of unexpected issues during your Zowe migration:
 * Retain previous runtime datasets
 * Keep backup copies of all JCLs and configuration members
 * Be prepared to reassign STEPLIB/PARMLIB back to convenience build settings

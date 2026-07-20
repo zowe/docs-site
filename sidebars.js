@@ -275,7 +275,6 @@ module.exports = {
           ]
         },
         "user-guide/verify-zowe-runtime-install",
-        "user-guide/upgrade-zos",
         "user-guide/backout-zos",
         {
           type: "category",
@@ -463,11 +462,19 @@ module.exports = {
       ],
     },
   ],
-  "upgrade": [
-    "upgrade/upgrade-zowe-v3",
-    "upgrade/upgrade-zowe-v2",
-    "upgrade/migrate-from-convenience-build-to-pswi-smpe",
-  ],    
+ "upgrade": [
+    {
+      type: "category",
+      label: "Upgrade",
+      link: { type: "doc", id: "user-guide/upgrade-zos" },
+      collapsed: false,
+      items: [
+        "upgrade/upgrade-zowe-v3",
+        "upgrade/upgrade-zowe-v2",
+        "upgrade/migrate-from-convenience-build-to-pswi-smpe"
+      ]
+    }
+  ],   
   "use": [
     "user-guide/zowe-getting-started-tutorial",
     {
