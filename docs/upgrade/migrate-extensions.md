@@ -1,4 +1,4 @@
-#  Upgrading from Zowe V1 to Zowe V2
+# Upgrading from Zowe V1 to Zowe V2
 
 Follow the procedure in this article to upgrade an existing Zowe server component from version 1 to version 2. 
 
