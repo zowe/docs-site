@@ -3,8 +3,8 @@
 Performing an upgrade of Zowe involves following a subset of the first-time installation steps documented within the [Zowe z/OS components installation checklist](./zos-components-installation-checklist.md), and updating your Zowe YAML. Exceptions are noted within this document.
 
 :::note
-Zowe cannot be upgraded while it is running. You should [Stop Zowe](./start-zowe-zos.md) before proceeding.
-If you need to revert an upgrade later, you should be familiar with the [Zowe Server-side Backout Procedure](./backout-zos.md)
+Zowe cannot be upgraded while it is running. You should [Stop Zowe](../user-guide/start-zowe-zos.md) before proceeding.
+If you need to revert an upgrade later, you can [Backout to revert to older Zowe version](./backout-zos.md).
 :::
 :::info Required role: system programmer
 :::
@@ -13,7 +13,7 @@ If you need to revert an upgrade later, you should be familiar with the [Zowe Se
 ## Installation and Configuration
 
 You should perform the steps in the "Installing" section, but you only need to complete some of the steps in the "Configuration" sections.
-Unless otherwise noted by an announcement or SMPE HOLD statement, you do not need to update certificates, instance datasets, networking, or security rules during an upgrade. Using [Configuring Zowe via JCL](./configuring-zowe-via-jcl.md) as an example, you can skip the "Create Instance Datasets", "Grant SAF premissions", and "Keyring Tasks" steps. Therefore, the list of JCL configuration steps for upgrades becomes:
+Unless otherwise noted by an announcement or SMPE HOLD statement, you do not need to update certificates, instance datasets, networking, or security rules during an upgrade. Using [Configuring Zowe via JCL](../user-guide/configuring-zowe-via-jcl.md) as an example, you can skip the "Create Instance Datasets", "Grant SAF premissions", and "Keyring Tasks" steps. Therefore, the list of JCL configuration steps for upgrades becomes:
 
 | Task | Description | Sample JCL | zwe command |
 |------|-------------|------------|-------------|
@@ -50,7 +50,7 @@ In addition to the standard upgrade process, additional steps that you must take
 <details>
 <summary>Click here for configuration details.</summary>  
 
-To migrate from Zowe **v2.18.x** or a lower version, perform the following tasks. 
+To upgrade from Zowe **v2.18.x** or a lower version, perform the following tasks. 
 
 #### V3 Prerequisite Changes
 
@@ -180,7 +180,7 @@ components:
 <details>
 <summary>Click here for configuration details.</summary>  
 
-To migrate from Zowe **v2.16.0** or a lower version, perform the following tasks. 
+To upgrade from Zowe **v2.16.0** or a lower version, perform the following tasks. 
 
 1) Ensure the following `zowe.network` section is added to your configuration:
 
@@ -209,7 +209,7 @@ This can be performed with the unix command `zwe init stc`, by running the job Z
 <details>
 <summary>Click here for configuration details.</summary>  
 
-To migrate from Zowe **v2.15.0** or a lower version, perform the following tasks. 
+To upgrade from Zowe **v2.15.0** or a lower version, perform the following tasks. 
 
 If you are migrating from Zowe **v2.15.0** or a lower version, ensure that Zowe configurations using keyrings do not have the section `zowe.certificate.pem`.
 This section is no longer needed and can cause startup error in newer versions of Zowe.
@@ -221,7 +221,7 @@ This section is no longer needed and can cause startup error in newer versions o
 <details>
 <summary>Click here for configuration details.</summary>  
 
-To migrate from Zowe **v2.10.0** or a lower version, perform the following tasks. 
+To upgrade from Zowe **v2.10.0** or a lower version, perform the following tasks. 
 
 If you are migrating from Zowe **v2.10.0** or a lower version, consider taking advantage of the new **sysMessages** feature.
 
@@ -234,7 +234,7 @@ The `zowe.sysMessages` is a new array that allows you to select messages that, w
 <details>
 <summary>Click here for configuration details.</summary>
 
-To migrate from Zowe **v2.9.0** or a lower version, perform the following tasks. 
+To upgrade from Zowe **v2.9.0** or a lower version, perform the following tasks. 
 
 If you are migrating from Zowe **v2.9.0** or a lower version, it is recommended to delete the `<zowe.workspaceDirectory>/app-server/plugins` directory so that it can be regenerated on the next run of Zowe.
 In this version and prior there were old and no longer used Application Framework plugins and references to them will complicate logs with harmless errors.
@@ -246,7 +246,7 @@ In this version and prior there were old and no longer used Application Framewor
 <details>
 <summary>Click here for configuration details.</summary>
 
-To migrate from Zowe **v2.3.0** or a lower version, perform the following tasks. 
+To upgrade from Zowe **v2.3.0** or a lower version, perform the following tasks. 
 
 If you are running Zowe **v2.3.0** or a lower version, a **clean install** of Zowe v3 is highly recommended to avoid potential issues during the migration process.
 
@@ -257,7 +257,7 @@ If you are running Zowe **v2.3.0** or a lower version, a **clean install** of Zo
 <details>
 <summary>Click here for configuration details.</summary>
 
-To migrate from Zowe **v1** perform the following tasks. 
+To upgrade from Zowe **v1** perform the following tasks. 
 
 If you are using v1, you must perform a clean install of Zowe rather than upgrading it as there is not a clear upgrade path from v1 to v2 or v3.
 Any extensions or products built upon Zowe v1 are unlikely to work in v2 or v3 without upgrading them. Refer to any product documentation on actions to take. For more information, see [Upgrading from Zowe V1 to Zowe V2](../upgrade/upgrade-zowe-v2.md).

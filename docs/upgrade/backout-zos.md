@@ -1,7 +1,7 @@
 # Backout to revert to older Zowe version
 
 :::note
-Zowe cannot be reverted while it is running. You should [Stop Zowe](./start-zowe-zos.md) before proceeding.
+Zowe cannot be reverted while it is running. You should [Stop Zowe](../user-guide/start-zowe-zos.md) before proceeding.
 :::
 :::info Required role: system programmer
 :::
