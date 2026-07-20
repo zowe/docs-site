@@ -275,7 +275,6 @@ module.exports = {
           ]
         },
         "user-guide/verify-zowe-runtime-install",
-        "user-guide/backout-zos",
         {
           type: "category",
           label: "Advanced server-side configuration",
@@ -466,12 +465,13 @@ module.exports = {
     {
       type: "category",
       label: "Upgrade",
-      link: { type: "doc", id: "user-guide/upgrade-zos" },
+      link: { type: "doc", id: "upgrade/upgrade-zos" },
       collapsed: false,
       items: [
         "upgrade/upgrade-zowe-v3",
         "upgrade/upgrade-zowe-v2",
         "upgrade/migrate-from-convenience-build-to-pswi-smpe",
+        "upgrade/backout-zos",
       ]
     }
   ],   

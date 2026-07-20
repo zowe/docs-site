@@ -1,4 +1,4 @@
-# Backout Procedure
+# Backout to revert to older Zowe version
 
 :::note
 Zowe cannot be reverted while it is running. You should [Stop Zowe](./start-zowe-zos.md) before proceeding.
