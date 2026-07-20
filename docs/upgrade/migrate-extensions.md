@@ -1,4 +1,4 @@
-# Upgrading from Zowe V1 to Zowe V2
+#  Upgrading from Zowe V1 to Zowe V2
 
 Follow the procedure in this article to upgrade an existing Zowe server component from version 1 to version 2. 
 
@@ -19,7 +19,7 @@ To make Zowe server component compatible with Zowe version 2, you must update th
 In Zowe v2, the component must define a manifest file and package it into the extension's root directory. This manifest file is used by Zowe to understand how this component should be installed, configured, and started. For detailed information of this file, see [Server Component Manifest File Reference](../appendix/server-component-manifest.md).
 
 ## Lifecycle scripts
-
+ 
 In Zowe v2, lifecycle scripts can be located anywhere in your component directory. However, you must explicitly define them in the `commands` section of the component manifest file.
 
 ## Environment variables

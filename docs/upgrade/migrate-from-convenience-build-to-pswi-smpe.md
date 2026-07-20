@@ -1,6 +1,6 @@
 # Migrating from Convenience Build to PSWI or SMP/E installation
 
-Review the recommended procedure to migrate an existing Zowe installation from a convenience build to a PSWI (Portable Software Instance) or SMP/E-based installation. The steps in this article outline the best practices to perform the migration, and include all necessary tasks for reusing or updating configuration, managing runtime datasets, and maintaining service continuity.
+Review the recom mended procedure to migrate an existing Zowe installation from a convenience build to a PSWI (Portable Software Instance) or SMP/E-based installation. The steps in this article outline the best practices to perform the migration, and include all necessary tasks for reusing or updating configuration, managing runtime datasets, and maintaining service continuity.
 
 ## Prerequisites before migration
 

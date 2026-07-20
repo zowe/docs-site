@@ -110,12 +110,6 @@ module.exports = {
       items: [
         "getting-started/zowe_v2_faq",
         "getting-started/zowe-office-hours",
-        {
-          type: "doc",
-          label: "Migrating from Zowe V1 to Zowe V2",
-          className: "ToCitemcolor",
-          id: "extend/migrate-extensions",
-        },
       ],
     },
     "whats-new/zowe-compatibility-statement-v3",
