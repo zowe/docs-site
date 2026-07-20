@@ -6,7 +6,6 @@ module.exports = {
   tagline: "Combining the past and the present to build the future of Mainframe",
   url: "https://docs.zowe.org/",
   baseUrl: "/",
-  onBrokenLinks: "warn",
   onDuplicateRoutes: "ignore",
   favicon: "img/zowe-icon.png",
   organizationName: "zowe",

@@ -12,7 +12,7 @@ Zowe's assisted certificate setup begins with customizing certificate scenario Y
 :::note 
 Reminder: Zowe assisted generation of certificates is an option, but is not required. If you already have certificates and a key ring or keystore/truststore combination you created on your own, you can instead go to [Finalize certificate configuration](./certificates-finalize-configuration.md).
 :::
-
+  
 ## What is a valid certificate in Zowe?
 
 A valid certificate for use in Zowe conforms to one of the following two options: 
