@@ -101,8 +101,6 @@ module.exports = {
         "whats-new/zowe-v3-frequently-asked-questions",
         "whats-new/zowe-v3-office-hours",
         "whats-new/zowe-v3-conformance-criteria",
-        "whats-new/zowe-v3-migration",
-        "whats-new/upgrade-from-convenience-build-to-pswi-smpe",
       ],
     },
     {
@@ -472,9 +470,9 @@ module.exports = {
     },
   ],
   "upgrade": [
-    //id of the sidebar
     "upgrade/zowe-v3-migration",
     "upgrade/migrate-extensions",
+    "upgrade/upgrade-from-convenience-build-to-pswi-smpe",
   ],    
   "use": [
     "user-guide/zowe-getting-started-tutorial",
