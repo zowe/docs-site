@@ -471,7 +471,7 @@ module.exports = {
       items: [
         "upgrade/upgrade-zowe-v3",
         "upgrade/upgrade-zowe-v2",
-        "upgrade/migrate-from-convenience-build-to-pswi-smpe"
+        "upgrade/migrate-from-convenience-build-to-pswi-smpe",
       ]
     }
   ],   
@@ -864,7 +864,7 @@ module.exports = {
         {
           type: "category",
           label: "Troubleshooting Zowe API Mediation Layer",
-          link: { type: "doc", id: "troubleshoot/troubleshoot-apiml", },
+          link: { type: "doc", id: "troubleshoot/troubleshoot-apiml" },
           items: [
             "troubleshoot/troubleshoot-apiml-error-codes",
             "troubleshoot/known-issues-with-apiml",
