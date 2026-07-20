@@ -10,13 +10,15 @@ for detailed knowledge of the REST API calls presented in this section. The Clie
 
 This article contains the following topics:
 
-* [Pre-requisites](#pre-requisites)
-* [API Documentation](#api-documentation)
-    * [Obtain a JWT token (`login`)](#obtain-a-jwt-token-login)
-    * [Validate and get details from the token (`query`)](#validate-and-get-details-from-the-token-query)
-    * [Invalidate a JWT token (`logout`)](#invalidate-a-jwt-token-logout)
-    * [Obtain a PassTicket (`passTicket`)](#obtain-a-passticket-passticket)
-* [Getting Started (Step by Step Instructions)](#getting-started-step-by-step-instructions)
+- [ZAAS Client](#zaas-client)
+  - [Pre-requisites](#pre-requisites)
+  - [API Documentation](#api-documentation)
+    - [Obtain a JWT token (`login`)](#obtain-a-jwt-token-login)
+    - [Validate and get details from the token (`query`)](#validate-and-get-details-from-the-token-query)
+    - [Validate the OIDC token (`validateOidc`)](#validate-the-oidc-token-validateoidc)
+    - [Invalidate a JWT token (`logout`)](#invalidate-a-jwt-token-logout)
+    - [Obtain a PassTicket (`passTicket`)](#obtain-a-passticket-passticket)
+  - [Getting Started (Step by Step Instructions)](#getting-started-step-by-step-instructions)
 ## Pre-requisites
 
 - Java SDK version 1.8.
@@ -25,7 +27,7 @@ This article contains the following topics:
 
 ## API Documentation
 
-The plain java library provides the `ZaasClient` interface with following public methods:
+The plain Java library provides the `ZaasClient` interface with following public methods:
 
 ```java
 public interface ZaasClient {
@@ -128,7 +130,11 @@ This method has an added layer of security, whereby you do not have to provide a
 In return, this method provides a valid pass ticket as a String to the authorized user.
 
 :::tip
-For additional information about PassTickets in API ML see [Enabling single sign on for extending services via PassTicket configuration](../../user-guide/api-mediation/configuration-extender-passtickets.md).
+Depending on whether you are requesting a PassTicket for core Zowe functions or a custom application, see the following resources for ESM setup instructions:
+
+* For core z/OSMF configuration (required for Zowe v3.4+ installations utilizing the default SAF authentication provider), see [Addressing z/OSMF PassTicket and authentication requirements](../../user-guide/api-mediation/configuring-passtickets-for-zosmf-authentication.md)
+
+* For third-party downstream services onboarding to API ML, see [Enabling single sign on for extending services via PassTicket configuration](../../user-guide/api-mediation/configuration-extender-passtickets.md).
 :::
 
 ## Getting Started (Step by Step Instructions)
