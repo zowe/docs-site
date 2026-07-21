@@ -79,7 +79,7 @@ Specifies the Gateway port used by the ZAAS Client configuration. The default va
 * **customMetadata.apiml.corsAllowedHeaders**  
 (Optional) Specify a comma-separated list of HTTP headers that are allowed during a CORS request to this service.    
   :::note
-If you use the Spring enabler, use the following parameter name:
+  If you use the Spring enabler, use the following parameter name:
   `apiml.service.customMetadata.apiml.corsAllowedHeaders`
   :::
 
@@ -129,7 +129,7 @@ When the property `customMetadata.apiml.lb.type` is set to `authentication`, the
   * `customMetadata.apiml.gateway.rateLimiterRefillDuration`  
   Sets the time interval (in minutes) at which new requests (or tokens) are added.
 
-  When no values are provided, global values defined in the Gateway are applied. For more information about the default configuration, see [Customizing gateway rate limiter filer](../../user-guide/api-mediation/customizing-gateway-rate-limiter.md).
+  When no values are provided, global values defined in the Gateway are applied. For more information about the default configuration, see [Customizing gateway rate limiter filter](../../user-guide/api-mediation/customizing-gateway-rate-limiter.md).
 
 
 * **customMetadata.apiml.response.compress**  
@@ -148,7 +148,7 @@ When the `customMetadata.apiml.response.compress` parameter is set to `true`, th
   * `/service/api/v1/compress,/service/api/v1/custom-compress`  
   Compresses the specific two routes
 
-  * `/\*\*/compress/\*\*`  
+  * `/**/compress/**`  
   Compresses all paths that contain `compress` as a specific path
 
 * **customMetadata.apiml.response.headers**  
@@ -163,7 +163,7 @@ When the `customMetadata.apiml.response.compress` parameter is set to `true`, th
   Sets two headers:
 
     1) Header with name `Strict-Transport-Security` and value `max-age=1234; includeSubDomains`.
-    2) Header with name `X-Frame-Options` and value `SAMEORIGIN.
+    2) Header with name `X-Frame-Options` and value `SAMEORIGIN`.
 
 * **customMetadata.apiml.headersToIgnore**  
 (Optional) A service can specify headers that are removed from the request to the southbound service by the Gateway. When this parameter is not set or is empty, no headers are removed. Multiple headers can be removed, delimited by `,`.
