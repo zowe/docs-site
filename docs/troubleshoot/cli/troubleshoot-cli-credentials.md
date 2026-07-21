@@ -24,7 +24,7 @@ Some users choose to secure PEM certificates by placing them in a password prote
 
 :::note
 
-These client certificate files are different from the certificates generated or imported during Zowe server configuration. For more information, see [Using Certificates](https://docs.zowe.org/stable/user-guide/use-certificates/).
+These client certificate files are different from the certificates generated or imported during Zowe server configuration. For more information, see [Working with Certificates](../../user-guide/cli-using-working-certificates.md).
 
 :::
 

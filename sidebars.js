@@ -26,6 +26,7 @@ module.exports = {
       className: "ToCheadercolor",
       collapsed: true,
       items: [  
+        "whats-new/release-notes/v2_18_6",          
         "whats-new/release-notes/v2_18_5",  
         "whats-new/release-notes/v2_18_4",  
         "whats-new/release-notes/v2_18_3",   
@@ -139,6 +140,7 @@ module.exports = {
             "user-guide/install-nodejs-zos",
             "user-guide/address-security-requirements",
             "user-guide/address-authentication-requirements",
+            "user-guide/api-mediation/configuring-passtickets-for-zosmf-authentication",
             "user-guide/configure-uss",
             "user-guide/address-storage-requirements",
             "user-guide/address-network-requirements",
@@ -361,6 +363,7 @@ module.exports = {
                 "user-guide/api-mediation/configuration-customizing-the-api-catalog-ui",
                 "user-guide/api-mediation/configuration-logging",
                 "user-guide/api-mediation/wto-message-on-startup",
+                "user-guide/api-mediation/config-allowed-domains-for-service-reg",
               ]
             },
             "user-guide/configmgr-using",
@@ -933,7 +936,6 @@ module.exports = {
     type: "category",
     label: "Troubleshooting z/OS Services",
     collapsed: false,
-    link: { type: "doc", id: "troubleshoot/troubleshooting" },
     items: [
       "troubleshoot/zOS_services/Unable-to-generate-unique-CeaTso-APPTAG",
           ],
