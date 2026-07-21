@@ -3,16 +3,10 @@
 Follow the procedure in this article to upgrade an existing Zowe server component from version 1 to version 2. 
 
 :::tip
-After you have updated to the last supported v2 version of Zowe (v2.18.x), we recommend you upgrade to the latest version of Zowe for highest performance and available features. FOr more information, see [Upgrading from Zowe Vx to Zowe V3](../upgrade/upgrade-zowe-v3.md). 
+After you have updated to the last supported v2 version of Zowe (v2.18.x), we recommend you upgrade to the latest version of Zowe for highest performance and available features. For more information, see [Upgrading from Zowe Vx to Zowe V3](../upgrade/upgrade-zowe-v3.md). 
 :::
 
-To make Zowe server component compatible with Zowe version 2, you must update the following configurations.
-
-- [Upgrading from Zowe V1 to Zowe V2](#upgrading-from-zowe-v1-to-zowe-v2)
-  - [Component manifest](#component-manifest)
-  - [Lifecycle scripts](#lifecycle-scripts)
-  - [Environment variables](#environment-variables)
-  - [Packaging one component deliverable for both Zowe v1 and v2](#packaging-one-component-deliverable-for-both-zowe-v1-and-v2)
+To make Zowe server component compatible with Zowe version 2, update the following configurations:
 
 ## Component manifest
 
@@ -24,7 +18,7 @@ In Zowe v2, lifecycle scripts can be located anywhere in your component director
 
 ## Environment variables
 
-Zowe v1 and v2 environment variables are not exact match. There are the following differences:
+Zowe v1 and v2 environment variables do no match directly. Note the following differences:
 
 - Some variables in Zowe v1 are removed in v2. 
 - Some are separated into two or more variables. 
@@ -111,10 +105,14 @@ Review the following table for a detailed mapping of Zowe v1 and v2 variables.
 
 ## Packaging one component deliverable for both Zowe v1 and v2
 
-It is recommended that you create a dedicated package of extensions for Zowe v2, which is the most straight-forward way to address all of the breaking changes introduced in v2. We understand that this method presents the challenge of maintaining two sets of packages. If you prefer not to maintain two sets of packages, it's still possible to maintain one version of an extension which works for both Zowe v1 and v2. However, the lifecycle code will be complicated and in this case, comprehensive testing should be performed. 
+Creating a dedicated package for Zowe v2 is recommended as it is the most straightforward way to handle breaking changes. While maintaining a single extension package compatible with both v1 and v2 is possible, it adds complexity to the lifecycle code and requires thorough testing. 
+
+:::note
+While maintaining a single package avoids managing two separate codebases, it increases the complexity of your lifecycle scripts and requires comprehensive cross-version testing.
+:::
 
 :::caution
-The Zowe v2 App Framework desktop is upgraded from Angular version 6 to angular version 12 for support and security -  websites have a "1 version of a library" limitation. This means that plug-ins dependent upon Angular must be coded for either v6 or v12 [not both] thus the single version approach is not applicable.
+The Zowe v2 App Framework desktop is upgraded from Angular version 6 to Angular version 12 for support and security -  websites have a "1 version of a library" limitation. This means that plug-ins dependent upon Angular must be coded for either v6 or v12 [not both] thus the single version approach is not applicable.
 :::
 
 If the lifecycle scripts are the main concern, the following steps outline requirements and recommendations for the single version approach:
