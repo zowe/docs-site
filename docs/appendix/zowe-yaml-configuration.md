@@ -262,7 +262,6 @@ Specifies a list of trusted hostnames and domain patterns that the API Mediation
    **Possible values:**
   * `STRICT`: This is the default value. Zowe validates if the certificate is trusted in Zowe's trust store and if the certificate Command Name and Subject Alternative Name (SAN) is validated. This is recommended for the best security.
   * `NONSTRICT`: Zowe validates if the certificate is trusted in Zowe's trust store. In this mode, Zowe does not validate certificate Common Name and Subject Alternative Name (SAN). This option does not have the highest security level but allows you to try out Zowe when you do not have permission to fix the certificate used by external services like z/OSMF.
-  * `DISABLED`: This value disables certificate validation completely. This is **NOT** recommended for security purpose.
 
 #### Launcher and launch scripts
 
@@ -491,7 +490,7 @@ The default value of `label` is `localhost`. The default value of `caLabel` is `
   This parameter is required and specifies the owner of an existing certificate. This field can have the value of `SITE`.
   * **zowe.setup.certificate.keyring.connect.label**  
   This parameter is required and specifies the label of an existing certificate.
-- If `zowe.verifyCertificates` is not `DISABLED`, and z/OSMF host (`zOSMF.host`) is provided, Zowe attempts to trust the z/OSMF certificate.
+- When `zowe.verifyCertificates` is `STRICT` or `NONSTRICT`, and z/OSMF host (`zOSMF.host`) is provided, Zowe attempts to trust the z/OSMF certificate.
   * **For RACF**  
   If the CA of the z/OSMF is not in the Zowe truststore, you can define it using
 `zowe.setup.certificate.keyring.zOSMF.user` and label `zowe.setup.certificate.keyring.zOSMF.ca`  
