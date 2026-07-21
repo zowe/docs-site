@@ -2,33 +2,40 @@
 
 Performing an upgrade of Zowe involves following a subset of the first-time installation steps documented within the [Zowe z/OS components installation checklist](../user-guide/zos-components-installation-checklist.md), and updating your Zowe YAML. Exceptions are noted within this document.
 
-:::note
-Zowe cannot be upgraded while it is running. You should [Stop Zowe](../user-guide/start-zowe-zos.md) before proceeding.
-If you need to revert an upgrade later, you can [Backout to revert to older Zowe version](./backout-zos.md).
+:::warning
+Zowe cannot be upgraded while Zowe services are active. Stop all running Zowe instances before proceeding with the upgrade process. For detailed instructions, see [Stop Zowe](../user-guide/start-zowe-zos.md).
+If you need to revert an upgrade later, follow the recovery procedure in [Backout to revert to older Zowe version](./backout-zos.md).
 :::
 :::info Required role: system programmer
 :::
 
 
-## Installation and Configuration
+## Installation and configuration tasks
 
-You should perform the steps in the "Installing" section, but you only need to complete some of the steps in the "Configuration" sections.
-Unless otherwise noted by an announcement or SMPE HOLD statement, you do not need to update certificates, instance datasets, networking, or security rules during an upgrade. Using [Configuring Zowe via JCL](../user-guide/configuring-zowe-via-jcl.md) as an example, you can skip the "Create Instance Datasets", "Grant SAF premissions", and "Keyring Tasks" steps. Therefore, the list of JCL configuration steps for upgrades becomes:
+To complete an upgrade, perform all tasks listed in the Installing section of the installation guide. However, you only need to execute selected tasks within the Configuration section.
+Unless explicitly specified by a release announcement or an SMP/E HOLD statement, an upgrade does not require modifications to certificates, instance datasets, network properties, or SAF security rules.
+
+For example, when referencing [Configuring Zowe via JCL](../user-guide/configuring-zowe-via-jcl.md), skip the following steps:
+
+* Create Instance Data sets
+* Grant SAF permissions
+* Keyring Tasks
+
 
 | Task | Description | Sample JCL | zwe command |
 |------|-------------|------------|-------------|
 |APF Authorize privileged content|**Purpose:** Zowe contains one privileged component, ZIS, which enables the security model by which the majority of Zowe is unprivileged and in key 8. The load library for the ZIS component and its extension library must be set APF authorized and run in key 4 to use ZIS and components that depend upon it.<br /><br />**Action:**<br />1) APF authorize the datasets defined at `zowe.setup.dataset.authLoadlib` and `zowe.setup.dataset.authPluginLib`.<br />2) Define PPT entries for the members ZWESIS01 and ZWESAUX as Key 4, NOSWAP in the SCHEDxx member of the system PARMLIB.|[ZWEIAPF](https://github.com/zowe/zowe-install-packaging/tree/v3.x/master/files/SZWESAMP/ZWEIAPF)| `zwe init apfauth` |
 |Copy STC JCL to PROCLIB|**Purpose**: ZWESLSTC is the job for running Zowe's webservers, and ZWESISTC is for running the APF authorized cross-memory server. The ZWESASTC job is started by ZWESISTC on an as-needed basis.<br /><br />**Action**: Copy the members ZWESLSTC, ZWESISTC, and ZWESASTC into your desired PROCLIB. If the job names are customized, also modify the YAML values of them in `zowe.setup.security.stcs`|[ZWEISTC](https://github.com/zowe/zowe-install-packaging/tree/v3.x/master/files/SZWESAMP/ZWEISTC)| `zwe init stc` |
 
-## YAML Changes
+## Reviewing YAML configuration changes
 
 Zowe has default YAML properties that can change from version to version.
-The "default.yaml" file is not meant to be edited, but you can observe changes and apply overrides within your Zowe YAML as desired.
+The `default.yaml` file is not meant to be edited, but you can observe changes and apply overrides within your Zowe YAML as desired.
 
-Zowe also has an example file, "example-zowe.yaml", which is often used to create your Zowe YAML during first-time installations. This file also changes from version to version, but is not used by Zowe, so if you do not take the changes from within it, you may miss out on new features and behaviors.
+Zowe also has an example file, `example-zowe.yaml`, which is often used to create your Zowe YAML during first-time installations. This file also changes from version to version, but is not used by Zowe, so if you do not take the changes from within it, you may miss out on new features and behaviors.
 
-It's recommended to always review these files to check for changes that you may wish to apply to your own Zowe YAML.
-One way to review the changes is to use github's compare tool.
+It is recommended to always review these files to check for changes that you may wish to apply to your own Zowe YAML.
+One way to review the changes is to use the compare tool in GitHub.
 
 Given two versions of Zowe, you can compare the "zowe-install-packaging" repository changes with the following URL:
 
@@ -38,11 +45,11 @@ For comparing between v3.3.0 and v3.4.0, that URL is:
 
 https://github.com/zowe/zowe-install-packaging/compare/v3.3.0...v3.4.0
 
-On that web page, you can search for "example-zowe.yaml" and "defaults.yaml" to see their changes.
+On that web page, you can search for `example-zowe.yaml` and `defaults.yaml` to see their changes.
 
-## Upgrade Exceptions
+## Version-specific upgrade steps
 
-In addition to the standard upgrade process, additional steps that you must take when upgrading from particular versions are listed below.
+In addition to the standard upgrade process, when upgrading from specific older Zowe releases, perform the additional steps detailed in the following sections.
 
 
 ### Migrating from Zowe v2.18.x or Lower
@@ -81,7 +88,7 @@ Ensure that the Zowe YAML parameter `node.home` value is **Node.js 18 or 20** ho
 | cloud-gateway | Removed | 7563 | ZWE1CG | The cloud-gateway has been removed as a standalone component and merged into the gateway |
 
 
-#### Configuration changes
+#### Configuration updates
 
 Review the following changes to configuration and updated configuration parameters.
 
@@ -102,11 +109,11 @@ components:
 ##### Updated Configuration Parameters
 ---
 
-###### Keyrings
+###### Keyring URI format
 
 If you use keyrings, verify that Zowe YAML references to `safkeyring`. Use two forward slashes (`safkeyring://`). Do not use four forward slashes (`safkeyring:////`).
 
-###### Gateway z/OSMF service configuration
+###### API Gateway z/OSMF service configuration
 
 The service ID for gateway zosmf has changed to **ibmzosmf**. <br/>
 Set `jwtAutoconfiguration` to **jwt** (default) or **ltpa**. Note that **auto** is no longer supported.<br/>
@@ -123,10 +130,10 @@ components:
              serviceId: ibmzosmf
 ```
 
-###### Caching Service
+###### Caching Service storage mode
 
-The Caching service now defaults to **Infinispan** mode instead of **VSAM**.
-While **VSAM** is still supported, this storage method is being deprecated and is not recommended.
+The Caching service now defaults to **Infinispan** storage mode instead of the **VSAM** storage mode.
+While **VSAM** is still supported, this storage mode is being deprecated and is not recommended.
 A new parameter for the key exchange port has been added to the default configuration.
 
 ```yaml
@@ -141,11 +148,11 @@ components:
             port: 7601
 ```
 
-###### App Server
+###### App Server plug-in cleanup
 
-Backup and remove the folder `<zowe.workspaceDirectory>/app-server/plugins`. It will be regenerated on next Zowe startup but removing it will clean up outdated references that caused errors.
+Backup and remove the directory `<zowe.workspaceDirectory>/app-server/plugins`. Zowe automatically regenerates this directory on startup. Deleting this directory removes outdated plugin references and prevents startup errors.
 
-###### ZSS Server
+###### ZSS Server 64-bit mode execution
 
 The ZSS server now runs in **64-bit** mode by default.
 
@@ -164,7 +171,7 @@ The following configuration parameters have been deprecated in Zowe v3. Ensure t
 The parameter `zowe.useConfigmgr=false` is no longer supported.
 
 **components.gateway.server.internal**  
-The internal gateway server has been removed due to limited usage.
+The internal gateway server implementation has been removed.
 
 ```yaml
 components:
@@ -174,6 +181,7 @@ components:
 ```
 
 </details>
+<br />
 
 ### Migrating from Zowe v2.16.0 or Lower
 
@@ -203,6 +211,7 @@ This can be performed with the unix command `zwe init stc`, by running the job Z
 3) If you use keyrings, verify that Zowe YAML references to `safkeyring`. Use two forward slashes (`safkeyring://`). Do not use four forward slashes (`safkeyring:////`).
 
 </details>
+<br />
 
 ### Migrating from Zowe v2.15.0 or Lower
 
@@ -215,6 +224,7 @@ If you are migrating from Zowe **v2.15.0** or a lower version, ensure that Zowe 
 This section is no longer needed and can cause startup error in newer versions of Zowe.
 
 </details>
+<br />
 
 ### Migrating from Zowe v2.10.0 or Lower
 
@@ -228,6 +238,7 @@ If you are migrating from Zowe **v2.10.0** or a lower version, consider taking a
 The `zowe.sysMessages` is a new array that allows you to select messages that, when found by the launcher, will be duplicated into the system's log.
 
 </details>
+<br />
 
 ### Migrating from Zowe v2.9.0 or Lower
 
@@ -240,6 +251,7 @@ If you are migrating from Zowe **v2.9.0** or a lower version, it is recommended 
 In this version and prior there were old and no longer used Application Framework plugins and references to them will complicate logs with harmless errors.
 
 </details>
+<br />
 
 ### Migrating from Zowe v2.3.0 or Lower
 
@@ -251,6 +263,7 @@ To upgrade from Zowe **v2.3.0** or a lower version, perform the following tasks.
 If you are running Zowe **v2.3.0** or a lower version, a **clean install** of Zowe v3 is highly recommended to avoid potential issues during the migration process.
 
 </details>
+<br />
 
 ### Migrating from Zowe v1
 
