@@ -10,6 +10,16 @@ Use Zowe Remote SSH in Zowe Explorer to perform z/OS mainframe operations with m
 
 ## Configuration methods
 
+:::info
+
+Starting in Zowe Explorer v3.6, you can import SSH connection information from your `ssh_config` file into your team configuration file to easily connect to previously used SSH hosts. 
+
+Changes made to the `ssh_config` file after importing are not detected by Zowe Explorer, and need to be manually updated in team configuration. 
+
+In future versions, Zowe Explorer will provide the option to have it use the SSH configuration file directly, avoiding the need to update team configuration when changing the `ssh_config` file.
+
+:::
+
 Create an SSH Zowe profile in your Zowe [team configuration](../ppendix/zowe-glossary.md#team-configuration) to connect to z/OS and deploy to the z/OS system.
 
 ### Connecting with an SSH command
