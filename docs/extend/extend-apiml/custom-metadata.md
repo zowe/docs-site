@@ -90,7 +90,7 @@ If you use the Spring enabler, use the following parameter name:
   `apiml.service.customMetadata.apiml.corsAllowCredentials`
   :::
 
-* **customMetadata.apiml.corsAllowedMethods**  
+* **customMetadata.apiml.corsAllowedMethods** 
 (Optional) Specify a comma-separated list of HTTP methods (e.g., `GET`, `POST`, `PUT`, `DELETE`) that are allowed when accessing the service via CORS.  
   :::note
   If you use the Spring enabler, use the following parameter name:
