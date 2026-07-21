@@ -462,11 +462,10 @@ module.exports = {
     },
   ],
  "upgrade": [
-   "upgrade/upgrade-zos",
     {
       type: "category",
       label: "Upgrade",
-      collapsed: false,
+      link: { type: "doc", id: "upgrade/upgrade-zos" },
       items: [
         "upgrade/upgrade-zowe-v3",
         "upgrade/upgrade-zowe-v2",
