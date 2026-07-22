@@ -34,8 +34,7 @@ When CORS handling is enabled, the Gateway automatically intercepts and answers 
 * **`Access-Control-Allow-Headers: origin, x-requested-with`**  
   Can be overridden globally using `components.gateway.apiml.service.corsDefaultAllowedHeaders` in `zowe.yaml`.
 * **`Access-Control-Allow-Credentials: true`**
-* **`Access-Control-Allow-Origin: https://${hostname}:${port}`**  
-  **Default:** `https://${hostname}:${port}`  
+* **`Access-Control-Allow-Origin: https://${hostname}:${port}`**    
 
 When CORS handling is disabled, the Gateway relies strictly on global Gateway defaults for answering preflight requests and ignores any per-service metadata overrides.
 
