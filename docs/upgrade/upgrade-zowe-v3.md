@@ -43,6 +43,7 @@ This can be performed with the unix command `zwe init stc`, by running the job Z
 3) If you use keyrings, verify that Zowe YAML references to `safkeyring`. Use two forward slashes (`safkeyring://`). Do not use four forward slashes (`safkeyring:////`).
 
 </details>
+<br />
 
 ### Upgrading from Zowe v2.15.0 or Lower
 
@@ -55,6 +56,7 @@ If you are upgrading from Zowe **v2.15.0** or a lower version, ensure that Zowe 
 This section is no longer needed and can cause startup error in newer versions of Zowe.
 
 </details>
+<br />
 
 ### Upgrading from Zowe v2.10.0 or Lower
 
@@ -68,6 +70,7 @@ If you are upgrading from Zowe **v2.10.0** or a lower version, consider taking a
 The `zowe.sysMessages` is a new array that allows you to select messages that, when found by the launcher, will be duplicated into the system's log.
 
 </details>
+<br />
 
 ### Upgrading from Zowe v2.9.0 or Lower
 
@@ -80,6 +83,7 @@ If you are upgrading from Zowe **v2.9.0** or a lower version, it is recommended 
 In this version and prior there were old and no longer used Application Framework plugins and references to them will complicate logs with harmless errors.
 
 </details>
+<br />
 
 ### Upgrading from Zowe v2.3.0 or Lower
 
@@ -91,6 +95,7 @@ To upgrade from Zowe **v2.3.0** or a lower version, perform the following tasks.
 If you are running Zowe **v2.3.0** or a lower version, a **clean install** of Zowe v3 is highly recommended to avoid potential issues during the upgrade process.
 
 </details>
+<br />
 
 ### Upgrading from Zowe v1
 
@@ -124,6 +129,7 @@ zowe:
 ```
 
 </details>
+<br />
 
 ## V3 Prerequisite Changes
 
