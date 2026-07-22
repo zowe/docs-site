@@ -67,6 +67,7 @@ All standalone components from the multi-service API ML deployment including the
 :::note Alternative authentication with z/OSMF
 While SAF is the recommended authentication provider, it is possible to use z/OSMF authentication with a JSON Web Token (JWT) or LTPA if you prefer not to use SAF. Note that while LTPA remains supported, it is not generally recommended.
 
+
 <details>
 
 <summary>Click here for details about using z/OSMF as your authentication provider.</summary>
@@ -87,10 +88,12 @@ To use z/OSMF as authentication provider, set `auth.provider` to `zosmf`, and `j
               serviceId: ibmzosmf
 ```
 
-For details about using JWT and the token lifecycle, see [Authenticating with a JWT token](../user-guide/authenticating-with-jwt-token.md).
-:::
+For details about using JWT and the token lifecycle, see [Authenticating with a JSON Web Token (JWT)](../user-guide/authenticating-with-jwt-token.md).
 
 </details>
+
+:::
+
 <br />
 
 ## Refreshing infrastructure and cleanup
