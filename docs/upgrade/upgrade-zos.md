@@ -1,4 +1,5 @@
 # Upgrading
+<!--This topic is being deprecated to make the parent topic more straightforward. See upgrading-zowe.md in the upgrade folder. -->
 
 Performing an upgrade of Zowe involves following a subset of the first-time installation steps documented within the [Zowe z/OS components installation checklist](../user-guide/zos-components-installation-checklist.md), and updating your Zowe YAML. Exceptions are noted within this document.
 
