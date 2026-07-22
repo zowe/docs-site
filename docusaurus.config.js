@@ -68,7 +68,7 @@ module.exports = {
           docId: "user-guide/install-overview",
           position: "left",
         },
-                {
+        {
           type: "doc",
           label: "Upgrade",
           docId: "upgrade/upgrading-zowe",
