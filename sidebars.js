@@ -461,10 +461,10 @@ module.exports = {
     },
   ],
  "upgrade": [
+    "upgrade/upgrading-zowe",
     {
       type: "category",
       label: "Upgrade",
-      link: { type: "doc", id: "upgrade/upgrading-zowe" },
       items: [
         "upgrade/upgrade-zowe-v3",
         "upgrade/upgrade-zowe-v2",
