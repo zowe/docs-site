@@ -19,7 +19,7 @@ Customizing CORS enables the Gateway to handle Cross-Origin Resource Sharing req
 
 For more information, see [Customizing Cross-Origin Resource Sharing (CORS)](./configuration-cors.md)
 
-To onboard applications which expose endpoints that expect encoded slashes, see [Using encoded slashes](./configuration-url-handling.md)
+To onboard applications which expose endpoints that expect encoded slashes or other encoded characters, see [Using strict URL validation](./configuration-url-handling.md)
 
 The Gateway retry policy, customizable through zowe.yaml, optimizes request handling, which can be especially useful in high availability scenarios.
 
