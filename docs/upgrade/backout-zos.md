@@ -1,15 +1,15 @@
-# Backout to revert to older Zowe version
+# Backout to revert to a previous Zowe version
 
-:::note
-Zowe cannot be reverted while it is running. You should [Stop Zowe](../user-guide/start-zowe-zos.md) before proceeding.
-:::
+Follow the best practices outlined in this article if you have performed a [Zowe server-side upgrade](./upgrading-zowe.md) but wish to revert to a previous version of Zowe.
+
 :::info Required role: system programmer
 :::
 
+:::caustion Important:
+Zowe cannot be reverted while running. [Stop Zowe](../user-guide/start-zowe-zos.md) before proceeding with reverting to a previous version.
+:::
 
-If you have performed a [Zowe Server-side Upgrade](./upgrade-zos.md) but you want to revert to an older version, then you can use the steps listed in this document.
+Review the [Server data sets reference](../appendix/server-datasets.md) for the list of all data sets and Unix folders used by Zowe.
+All the data sets and directories must be consistent with a single version of Zowe. To perform a backout, restore all such data sets and files to that version.
 
-The [Server data sets reference](../appendix/server-datasets.md) lists data sets and Unix folders used by Zowe.
-All the data sets and directories must be consistent with a single version of Zowe, so if you perform a backout, you must restore all such data sets and files to that version.
-
-Because some Zowe YAML properties meant for a newer version of Zowe may be unknown to older versions of Zowe in ways that cause schema validation errors, it is best to restore the Zowe YAML to match the version of Zowe you are restoring.
+Some Zowe YAML properties are only applicable to a more recent version of Zowe. As some properties may be unknown to older versions of Zowe, schema validation errors may result when combining properties from different versions. We recommend you restore the Zowe YAML to match the version of Zowe you are restoring.
