@@ -71,7 +71,7 @@ module.exports = {
                 {
           type: "doc",
           label: "Upgrade",
-          docId: "upgrade/upgrade-zos",
+          docId: "upgrade/upgrading-zowe",
           position: "left",
         },
         {
