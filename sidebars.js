@@ -361,7 +361,6 @@ module.exports = {
             "user-guide/mvd-configuration",
           ],
         },
-        "user-guide/api-mediation/upgrade-to-single-service-apiml-deployment",
       ],
     },
     {
@@ -469,6 +468,7 @@ module.exports = {
       items: [
         "upgrade/upgrade-zowe-v3",
         "upgrade/upgrade-zowe-v2",
+        "upgrade/upgrade-to-single-service-apiml-deployment",
         "upgrade/migrate-from-convenience-build-to-pswi-smpe",
         "upgrade/backout-zos",
       ]
