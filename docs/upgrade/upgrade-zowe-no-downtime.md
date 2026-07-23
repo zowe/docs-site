@@ -1,6 +1,6 @@
 # Upgrading Zowe server-side components in HA for zero downtime
 
-Follow the requirements and steps in this article to perform an upgrade of a Zowe server-side components installation in high availability mode to a newer minor version with zero downtime. 
+Follow the requirements and steps in this article to perform an upgrade of a Zowe server-side components installation in high availability (HA) mode to a newer minor version with zero downtime. 
 
 Performing a zero-downtime upgrade ensures that continuous operations are maintained. This upgrade method allows you to seamlessly roll out critical updates without disrupting active users, halting active sessions, or breaking downstream automation that relies on Zowe services.
 
@@ -44,9 +44,11 @@ Upgrading installation to use high availability mode involves two general steps:
 
 Use the following procedure to install a new Zowe instance:
 
-1. Use one of the supported installation methods to perform a separate installation of the new version of Zowe. For more information about supported installation methods, see the [Installation roadmap](../install-zos.md).
+1. Use one of the supported installation methods to perform a separate installation of the new version of Zowe. For more information about supported installation methods, see the [Installation roadmap](../user-guide/install-zos.md).
 
-    **Note:** When performing a separate installation of Zowe, ensure that datasets, STCs definitions, and the USS installation directory are distinct from the original installation.
+    :::note
+    When performing a separate installation of Zowe, ensure that datasets, STCs definitions, and the USS installation directory are distinct from the original installation.
+    :::
 
 2. Replicate the configuration of instance A into instance B.
 
