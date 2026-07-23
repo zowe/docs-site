@@ -54,7 +54,7 @@ To customize how the Gateway handles origins and headers globally, configure the
 
 * **`apiml.service.corsDefaultAllowedOrigins`**  
 Specifies the allowed origins for CORS requests across the Gateway. This parameter does not default to a wildcard (`*`), nor is `*` allowed. Instead, to ensure full security, this parameter defaults strictly to the Gateway's own host and port. This parameter can be customized by adding specific alternative origins. Individual services can also override this value using the `customMetadata.apiml.corsAllowedOrigins` parameter.  
-**Default:** https://${hostname}:${port}
+**Default:** `https://${hostname}:${port}`
 
 * **`apiml.service.corsDefaultAllowedHeaders`**  
 Defines which HTTP headers are accepted during a CORS request. This can be customized as a specific comma-separated list of headers to match your enterprise security requirements.  
