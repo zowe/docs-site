@@ -1,6 +1,6 @@
 # Configuring and deploying Zowe Remote SSH
 
-Use Zowe Remote SSH in Zowe Explorer to perform z/OS mainframe operations with minimal server-side configuration.
+Use Zowe Remote SSH (ZRS) in Zowe Explorer to perform z/OS mainframe operations with minimal server-side configuration.
 
 ## System requirements
 
@@ -57,7 +57,7 @@ Add a custom server path with the VS Code Settings editor:
 
     The `zowex` binary is now set in your VS Code settings and the custom server path is used to deploy ZRS when you connect to that host.
 
-#### Editing the JSON file
+#### Editing the VS Code Configuration JSON file
 
 Add a custom server path using the `Open user preferences (JSON)` command:
 
