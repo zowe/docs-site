@@ -5,7 +5,7 @@ Follow the best practices outlined in this article if you have performed a [Zowe
 :::info Required role: system programmer
 :::
 
-:::caustion Important:
+:::caution Important:
 Zowe cannot be reverted while running. [Stop Zowe](../user-guide/start-zowe-zos.md) before proceeding with reverting to a previous version.
 :::
 
