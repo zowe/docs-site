@@ -464,10 +464,11 @@ module.exports = {
     "upgrade/upgrading-zowe",
     {
       type: "category",
-      label: "Upgrade",
+      collapsed: false,
       items: [
         "upgrade/upgrade-zowe-v3",
         "upgrade/upgrade-zowe-v2",
+        "upgrade/upgrade-zowe-no-downtime",
         "upgrade/upgrade-to-single-service-apiml-deployment",
         "upgrade/migrate-from-convenience-build-to-pswi-smpe",
         "upgrade/backout-zos",

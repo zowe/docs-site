@@ -1,8 +1,13 @@
-# Upgrade Zowe server-side components in high availability
+# Upgrading Zowe server-side components in high availability
 
-As a systems programmer, it is necessary to upgrade Zowe server-side components regularly to ensure that you are using the latest features and  the latest security patches.
+Follow the requirements and steps in this article to perform an upgrade of a Zowe server-side components installation in high availability mode to a newer minor version with zero downtime.
 
-This article describes the requirements and procedure to perform an upgrade of a Zowe server-side components installation in high availability mode to a newer minor version with zero downtime.
+:::info Required role: System programmer
+:::
+
+:::tip
+The best practice is to upgrade Zowe server-side components regularly to ensure that you are using the latest features and  the latest security patches.
+:::
 
 ## Installation assumptions
 
@@ -68,53 +73,48 @@ Use the following procedure to install a new Zowe instance:
 
 You configured your installation for the two instances.
 
-### Switching traffic
+### Switching traffic to the new instance
 
-Switching traffic without incurring downtime involves the following general steps. Details of these steps are described later in this section.
+Switching traffic without incurring downtime requires carefully routing traffic away from the old instance, swapping the instances, and restoring traffic.
 
-1. Disable an application instance (`QUIESCE`) from the DVIPA of the sysplex distributor.
-2. Stop this original instance.
-3. Start the new instance.
-4. Verify service replication.
-5. Resume traffic to the instance.
+:::note
+Only new connections can be re-routed to avoid the instance shutting down. A decision needs to be made on long-lived connections, such as long running requests and Web Socket sessions. These connections cannot be re-routed. As such, these connections are closed when the instance is stopped.
+:::
 
-**Note:** Only new connections can be re-routed to avoid the instance shutting down. A decision needs to be made on long-lived connections, such as long running requests and Web Socket sessions. These connections cannot be re-routed. As such, these connections are closed when the instance is stopped.
+1. Disable the application instance (`QUIESCE`) from the sysplex distributor.
 
-1. Verify access by running the `VARY` command. `CONTROL` access to the `MVS.VARY.TCPIP.SYSPLEX` profile is required.
-For more information, see the article _VARY TCPIP,,SYSPLEX_ in the IBM documentation.
+    :::note Prerequisite:  
+    Verify access to run the `VARY` command. `CONTROL` access to the `MVS.VARY.TCPIP.SYSPLEX` profile is required. For more information, see the article _VARY TCPIP,,SYSPLEX_ in the IBM documentation.
+    :::
 
-2. In the MVS console, run the `VARY TCPIP` MVS command to place instance B in quiescing mode.
-
-    **Example:**
+    In the MVS console, run the `VARY TCPIP MVS` command to place instance B in quiescing mode:
 
     ```mvs
     VARY TCPIP,,SYSPLEX,QUIESCE,PORT=<api gateway port>
     ```
 
-3. Stop instance B.
+2. Stop the original instance.  
+Stop the original instance B. For more information about stopping and starting instances, see [Starting and stopping Zowe](./../start-zowe-zos.md).
 
-4. Start the upgraded instance.
+1. Start the new instance.  
+Start the newly upgraded instance B.
 
-    **Note:** For more information about stopping and starting instances, see [Starting and stopping Zowe](./../start-zowe-zos.md).
+1. Verify service replication.  
+Wait until instance B is up and synchronized with instance A, ensuring services are registered in all Discovery Services. To verify this, check the following accessibility conditions:
 
-5. Wait until instance B is up and synchronized with instance A, wherein services are registered in all Discovery Services. To verify that instance B is up and sychronized with instance A, check the following accessibility conditions:
-
-    - Access to API Gateway through the LPAR URL is possible.
-    - Access to the Discovery Service homepage in both instance A and instance B to compare registered services.
-
-6. Resume connections from Sysplex Distributor to instance B by running the `VARY TCPIP` MVS command in the MVS console.
-
-    **Example:**
-
-    ```mvs
+   * Access to API Gateway through the LPAR URL is successful.
+   * Access the Discovery Service homepage in both instance A and instance B to confirm the registered services match.
+  
+1. Resume traffic to the instance.  
+Resume connections from the Sysplex Distributor to instance B by running the `VARY TCPIP MVS` command in the MVS console:
+    ```
     VARY TCPIP,,SYSPLEX,RESUME,PORT=<api gateway port>
     ```
+Successful completion of these steps enables Zowe to run in high availability mode, whereby traffic is balanced between instances running at different maintenance levels.
 
-Successful completion of these steps enables Zowe to run in high availability mode, whereby traffic is balanced between instances running in different maintainance levels.
-
-### Verifying the new connection
-
+## Verifying the new connection
 Use the following checks to verify Zowe is running correctly with the new configuration:
 
-- Verify that Discovery Services contain all of the registered services from both instances.
-- Check that the API Gateway home page shows the number of instances running simultaneously.
+* Verify that Discovery Services contain all of the registered services from both instances.
+* Check that the API Gateway home page shows the correct number of instances running simultaneously.
+
