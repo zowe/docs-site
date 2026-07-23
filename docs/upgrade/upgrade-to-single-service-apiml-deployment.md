@@ -8,7 +8,7 @@ Enable the single-service deployment of API ML for an existing multi-service API
 Single-service deployment reduces the Zowe footprint by running the Gateway, Discovery Service, API Catalog, Caching Service, and ZAAS within a single address space.
 
 :::note
-For comprehensive information about single-service deployment, performance improvements, and internal service consolidation, see [Enabling single-service deployment of API Mediation Layer](../api-mediation/api-mediation-modulith.md).
+For comprehensive information about single-service deployment, performance improvements, and internal service consolidation, see [Enabling single-service deployment of API Mediation Layer](../user-guide/api-mediation/api-mediation-modulith.md).
 :::
 
 ## System requirements and prerequisites
@@ -63,9 +63,9 @@ Set `components.apiml.enabled` to `true`:
 All standalone components from the multi-service API ML deployment including the Discovery Service, API Catalog, and Caching Service are internal to the Gateway address space in the single-service deployment and are disabled when `components.apiml.enabled` is configured.
 :::
 
-
-:::note Alternative authentication with z/OSMF
+:::info Alternative authentication with z/OSMF
 While SAF is the recommended authentication provider, it is possible to use z/OSMF authentication with a JSON Web Token (JWT) or LTPA if you prefer not to use SAF. Note that while LTPA remains supported, it is not generally recommended.
+:::
 
 <details>
 
@@ -76,22 +76,22 @@ While SAF is the recommended authentication provider, it is possible to use z/OS
 To use z/OSMF as authentication provider, set `auth.provider` to `zosmf`, and `jwtAutoconfiguration` to `jwt`:
   
 ```yaml
-  components:
-    gateway:
-      apiml:
-        security:
-          auth:
-            provider: zosmf
-            zosmf:
-              jwtAutoconfiguration: jwt
-              serviceId: ibmzosmf
+components:
+  gateway:
+    apiml:
+      security:
+        auth:
+          provider: zosmf
+          zosmf:
+            jwtAutoconfiguration: jwt
+            serviceId: ibmzosmf
 ```
 
-For details about using JWT and the token lifecycle, see [Authenticating with a JWT token](../authenticating-with-jwt-token.md).
-  
+For details about using JWT and the token lifecycle, see [Authenticating with a JSON Web Token (JWT)](../user-guide/authenticating-with-jwt-token.md).
+
 </details>
 
-:::
+<br />
 
 ## Refreshing infrastructure and cleanup
 
@@ -111,7 +111,7 @@ If you are using ZIS, start this component first. This server provides the autho
 ```
 /S ZWESISTC 
 ```
-For details about ZIS configuration, see [Configuring the Zowe cross memory server (ZIS)](../configure-xmem-server.md).
+For details about ZIS configuration, see [Configuring the Zowe cross memory server (ZIS)](../user-guide/configure-xmem-server.md)
 :::
 
 Start the main Zowe task. 
@@ -120,3 +120,7 @@ Start the main Zowe task.
 /S ZWESLSTC
 ```
 The launcher now initializes the API Mediation Layer in a single address space instead of multiple address spaces.
+
+## Additional Resources
+
+* **[Enabling single-service deployment of API Mediation Layer](../user-guide/api-mediation/api-mediation-modulith.md)**

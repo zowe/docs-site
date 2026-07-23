@@ -1,16 +1,16 @@
-# Upgrade from Convenience Build to PSWI or SMP/E installation
+# Migrating from Convenience Build to PSWI or SMP/E installation
 
-Review the recommended procedure for upgrading an existing Zowe installation from a convenience build to a PSWI (Portable Software Instance) or SMP/E-based installation. The steps in this article outline the best practices for upgrading, and include all necessary tasks for reusing or updating configuration, managing runtime datasets, and maintaining service continuity.
+Review the recommended procedure to migrate an existing Zowe installation from a convenience build to a PSWI (Portable Software Instance) or SMP/E-based installation. The steps in this article outline the best practices to perform the migration, and include all necessary tasks for reusing or updating configuration, managing runtime datasets, and maintaining service continuity.
 
-## Prerequisites before upgrade
+## Prerequisites before migration
 
-Ensure you meet the following conditions before you start the upgrade process:
+Ensure you meet the following conditions before you start the migration process:
 
 * Determine the current installed version of Zowe (e.g. v3.0).
-* Determine if the upgrade target is the same version or a newer version (e.g. v3.1).
+* Determine if the migrate target is the same version or a newer version (e.g. v3.1).
 * Backup the following elements:
     * The existing zowe.yaml configuration file
-    * Zowe runtime datasets
+    * Zowe runtime data sets
     * STC JCLs and PARMLIB members
 
 ## Installing Zowe via PSWI or SMP/E
@@ -36,14 +36,14 @@ For more information about SMP/E installation, see [Installing Zowe SMP/E overvi
 
 ## Configuring to the same or newer version
 
-When upgrading from the convenience build, you can either use PSWI or SMP/E to upgrade to the same version or to a higher version.
+When migrating from the convenience build, you can either use PSWI or SMP/E to migrate to the same version or to upgrade to a higher version.
 
 ### Upgrade to the same version
 
 If the target PSWI or SMP/E version matches the currently installed convenience build, use the following outline of steps:
 
 1. Reuse the existing zowe.yaml file.
-2. Continue using the current runtime datasets, or for SMP/E, from the target library.
+2. Continue using the current runtime data sets, or for SMP/E, from the target library.
 3. Update ZOWE STC (`ZWESISTC` and `ZWESLSTC`) and YAML to point to the new Zowe libraries from PROCLIB and YAML.
 
 ### Upgrade to a newer version
@@ -53,7 +53,7 @@ To migrate to a newer version of Zowe, for example from v3.0 to v3.1, you can ei
 * **Using PSWI Workflows**  
   You can use z/OSMF workflows provided in the PSWI package to perform the following tasks:
   * Generate a new zowe.yaml configuration file
-  * Allocate new runtime datasets
+  * Allocate new runtime data sets
   * Configure system definitions (e.g. APF, PROCLIB)
 
 For more information, see [Installing Zowe SMP/E build with z/OSMF workflow](../user-guide/install-zowe-smpe-zosmf-workflow.md).
@@ -61,7 +61,7 @@ For more information, see [Installing Zowe SMP/E build with z/OSMF workflow](../
 * **Using SMP/E SAMPLIB**
   
   Use members from ZOWE SAMPLIB to perform the following tasks:
-  * Allocate and define new runtime datasets 
+  * Allocate and define new runtime data sets 
   * Create or customize a new zowe.yaml file
   * Configure system definitions (e.g. APF, PROCLIB)
 
@@ -78,9 +78,9 @@ Use the following step outline to switch between Zowe versions (e.g. v3.0 and v3
 3. Restart all affected Zowe STCs. For more information, see [Starting and stopping Zowe](../user-guide/start-zowe-zos.md).
 
  
-## Validating after upgrade
+## Validating after migration
 
-Follow these steps to validate that you successfully upgraded your Zowe installation.
+Follow these steps to validate that you successfully migrated your Zowe installation.
 
 1. Start the following Zowe Started Tasks (STCs):
   * **ZWESISTC**  
@@ -96,8 +96,8 @@ Follow these steps to validate that you successfully upgraded your Zowe installa
    For more information about performing these steps, see [Verifying Zowe installation on z/OS](../user-guide/verify-zowe-runtime-install.md)
 
 :::tip
-Use the following guidelines to maintain rollback readiness in the event of unexpected issues during your Zowe upgrade:
-* Retain previous runtime datasets
+Use the following guidelines to maintain rollback readiness in the event of unexpected issues during your Zowe migration:
+* Retain previous runtime data sets
 * Keep backup copies of all JCLs and configuration members
 * Be prepared to reassign STEPLIB/PARMLIB back to convenience build settings
 :::

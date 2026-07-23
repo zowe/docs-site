@@ -10,7 +10,7 @@ Use Zowe Remote SSH in Zowe Explorer to perform z/OS mainframe operations with m
 
 ## Configuration methods
 
-Create an SSH Zowe profile in your Zowe [team configuration](../ppendix/zowe-glossary.md#team-configuration) to connect to z/OS and deploy to the z/OS system.
+Create an SSH Zowe profile in your Zowe [team configuration](../appendix/zowe-glossary.md#team-configuration) to connect to z/OS and deploy to the z/OS system.
 
 ### Connecting with an SSH command
 
