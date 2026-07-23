@@ -464,6 +464,7 @@ module.exports = {
     "upgrade/upgrading-zowe",
     {
       type: "category",
+      label: "Upgrading Zowe",
       collapsed: false,
       items: [
         "upgrade/upgrade-zowe-v3",
