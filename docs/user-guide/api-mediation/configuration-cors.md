@@ -37,7 +37,8 @@ When CORS handling is enabled, the Gateway may respond with service-specific COR
 * **CORS Disabled**  
 When CORS handling is disabled, the Gateway strictly uses the global defaults and ignores any service-provided overrides.
 
-### Global Defaults
+### Default CORS Response Headers
+
 Unless overridden globally in `zowe.yaml` or by service-specific metadata (when enabled), the Gateway replies with the following default CORS response headers:  
 
   * **`Access-Control-Allow-Methods: GET,HEAD,POST,PATCH,DELETE,PUT,OPTIONS`**  
@@ -47,29 +48,33 @@ Unless overridden globally in `zowe.yaml` or by service-specific metadata (when 
   * **`Access-Control-Allow-Credentials: true`**
   * **`Access-Control-Allow-Origin: https://${hostname}:${port}`**    
 
-### Global CORS Configuration Parameters  
+### Global zowe.yaml Configuration Properties  
 
 To customize how the Gateway handles origins and headers globally, configure the following properties in your `zowe.yaml` file:
 
-* **apiml.service.corsDefaultAllowedOrigins**  
-Specifies the allowed origins for CORS requests across the Gateway. This parameter does not default to a wildcard (`*`). Instead, to ensure full security, this parameter defaults strictly to the Gateway's own host and port. This parameter can be customized by adding alternative origins or explicitly setting `corsDefaultAllowedOrigins` to `*` if open access is required. Individual services can also override this value using the `customMetadata.apiml.corsAllowedOrigins` parameter.  
-**Default:** `https://${hostname}:${port}`
+* **`apiml.service.corsDefaultAllowedOrigins`**  
+Specifies the allowed origins for CORS requests across the Gateway. This parameter does not default to a wildcard (`*`), nor is `*` allowed. Instead, to ensure full security, this parameter defaults strictly to the Gateway's own host and port. This parameter can be customized by adding specific alternative origins. Individual services can also override this value using the `customMetadata.apiml.corsAllowedOrigins` parameter.  
+**Default:** https://${hostname}:${port}
 
-* **apiml.service.corsDefaultAllowedHeaders**  
-Defines which HTTP headers are accepted during a CORS request. By default, all headers are permitted, but this can be restricted to a specific comma-separated list of headers to match your enterprise security requirements.  
-**Default:** `*`
+* **`apiml.service.corsDefaultAllowedHeaders`**  
+Defines which HTTP headers are accepted during a CORS request. This can be customized as a specific comma-separated list of headers to match your enterprise security requirements.  
+**Default:** `origin, x-requested-with`
+
+* **`apiml.service.corsDefaultAllowedMethods`**  
+Defines the allowed HTTP methods for CORS requests across the Gateway.  
+**Default:** `GET,HEAD,POST,PATCH,DELETE,PUT,OPTIONS`
 
 ## Per-Service Custom Metadata CORS Parameters
 Service administrators can fine-tune CORS behavior on a per-service basis. During service registration, you can pass specific CORS configuration parameters via Custom Metadata. For more information, see [Customizing Metadata (optional)](../../extend/extend-apiml/custom-metadata.md). 
 
 These parameters allow you to override global Gateway defaults for individual services:
-* **apiml.corsAllowedOrigins**  
+* **`apiml.corsAllowedOrigins`**  
 Specifies the allowed origins for the service.
-* **apiml.corsAllowedHeaders**  
+* **`apiml.corsAllowedHeaders`**  
 Restricts accepted HTTP headers for the service.
-* **apiml.corsAllowCredentials**  
+* **`apiml.corsAllowCredentials`**  
 Configures credential sharing capabilities.
-* **apiml.corsAllowedMethods**  
+* **`apiml.corsAllowedMethods`**  
 Sets the allowed HTTP methods for the service.
 
 ## Enabling CORS Handling
