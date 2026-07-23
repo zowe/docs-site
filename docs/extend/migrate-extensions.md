@@ -29,7 +29,7 @@ Review the following table for a detailed mapping of Zowe v1 and v2 variables.
 
 | Zowe v1 Variable |  Zowe v2 YAML Configuration | Zowe v2 Variable | Notes |
 | --- |  --- | --- | --- |
-| `APIML_ALLOW_ENCODED_SLASHES` | `components.gateway.apiml.service.allowEncodedSlashes` | `ZWE_components_gateway_apiml_service_allowEncodedSlashes` | |
+| `APIML_ALLOW_ENCODED_SLASHES` | `components.gateway.apiml.service.allowEncodedSlashes` | `ZWE_components_gateway_apiml_service_allowEncodedSlashes` | Removed in Zowe V3.5. Use `components.gateway.apiml.security.enableStrictUrlValidation` instead (note: inverse meaning — set to `false` to allow encoded slashes). |
 | `APIML_CORS_ENABLED` | `components.gateway.apiml.service.corsEnabled` | `ZWE_components_gateway_apiml_service_corsEnabled` | |
 | `APIML_DEBUG_MODE_ENABLED` | `components.gateway.debug`, etc | `ZWE_components_gateway_debug`, etc | In v2, you can enable debug mode for APIML components separately. The `gateway` placeholder can be `discovery`, `api-catalog`, and so on. |
 | `APIML_ENABLE_SSO` | Removed in v2 | Removed in v2 | |
