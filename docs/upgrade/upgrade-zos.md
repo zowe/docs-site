@@ -3,8 +3,8 @@
 
 Performing an upgrade of Zowe involves following a subset of the first-time installation steps documented within the [Zowe z/OS components installation checklist](../user-guide/zos-components-installation-checklist.md), and updating your Zowe YAML. Exceptions are noted within this document.
 
-:::warning
-Zowe cannot be upgraded while Zowe services are active. Stop all running Zowe instances before proceeding with the upgrade process. For detailed instructions, see [Stop Zowe](../user-guide/start-zowe-zos.md).
+:::tip
+If you are running Zowe in high availability (HA) mode, it is possible to perform a zero-downtime upgrade by routing traffic to a newly upgraded instance before shutting down the old instance. For more information, see [Upgrading Zowe in HA for zero downtime](./upgrade-zowe-no-downtime.md).
 If you need to revert an upgrade later, follow the recovery procedure in [Backout to revert to older Zowe version](./backout-zos.md).
 :::
 :::info Required role: system programmer
