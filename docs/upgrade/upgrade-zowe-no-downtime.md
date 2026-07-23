@@ -98,16 +98,16 @@ Only new connections can be re-routed to avoid the instance shutting down. A dec
 2. Stop the original instance.  
 Stop the original instance B. For more information about stopping and starting instances, see [Starting and stopping Zowe](./../start-zowe-zos.md).
 
-1. Start the new instance.  
+3. Start the new instance.  
 Start the newly upgraded instance B.
 
-1. Verify service replication.  
+4. Verify service replication.  
 Wait until instance B is up and synchronized with instance A, ensuring services are registered in all Discovery Services. To verify this, check the following accessibility conditions:
 
    * Access to API Gateway through the LPAR URL is successful.
    * Access the Discovery Service homepage in both instance A and instance B to confirm the registered services match.
   
-1. Resume traffic to the instance.  
+5. Resume traffic to the instance.  
 Resume connections from the Sysplex Distributor to instance B by running the `VARY TCPIP MVS` command in the MVS console:
     ```
     VARY TCPIP,,SYSPLEX,RESUME,PORT=<api gateway port>
