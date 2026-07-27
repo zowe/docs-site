@@ -2,7 +2,7 @@
 
 Enable the single-service deployment of API ML for an existing multi-service API ML deployment. This procedure is specifically designed for users upgrading from **Zowe v2.18.x** (the latest v2 release) or **Zowe v3.3.x** multi-service deployments to the consolidated single-service deployment model.
 
-:::info Required role: system administrator
+:::info Required roles: system administrator, system programmer
 :::
 
 Single-service deployment reduces the Zowe footprint by running the Gateway, Discovery Service, API Catalog, Caching Service, and ZAAS within a single address space.
@@ -47,7 +47,7 @@ Token issuance is delegated entirely to z/OSMF, wherein the JWT is produced by t
 3. Set `components.gateway.apiml.security.auth.provider: saf` to enable API ML to validate identities using SAF Direct APIs.
 
 **Configuration using z/OSMF:**  
-As token generation is fully delegated to the z/OSMF authentication provider, the Gateway does not require a local private key configuration for JWT signing.
+Because token generation is fully delegated to the z/OSMF authentication provider, the Gateway does not require a local private key configuration for JWT signing.
 
 ## Transitioning to single-service mode
 
