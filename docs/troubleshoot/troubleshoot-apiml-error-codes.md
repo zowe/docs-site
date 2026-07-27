@@ -1831,18 +1831,6 @@ Contact your administrator.
 
   Contact the system administrator and request enablement of encoded characters in the service.
 
-### ZWEAG702E
-
-  Gateway does not allow encoded slashes in request: `%s`.
-
-  **Reason:**
-
-  The request that was issued to the Gateway contains an encoded slash in the URL path. Gateway configuration does not allow this encoding in the URL.
-
-  **Action:**
-
-  Contact the system administrator and request enablement of encoded slashes in the Gateway.
-
 ### ZWEAG717E
 
   The service id provided is invalid: `%s`

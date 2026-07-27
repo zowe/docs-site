@@ -618,6 +618,9 @@ These configurations can be used under the `components.gateway` section:
 - **apiml.gateway.servicesToDisableRetry**  
  Specifies a comma-separated list of service IDs for which automatic retries are disabled. Disabling retry for services where retries are not required helps prevent potential memory issues when handling requests with large payloads to the service. This parameter applies to Zowe version 3.3.0 and later versions. 
 
+- **apiml.security.enableStrictUrlValidation**  
+  Specifies whether the Gateway strictly validates request URLs. When set to `true` (default), the Gateway rejects requests containing encoded slashes, backslashes, semicolons, and similar encoded characters. When set to `false`, validation is relaxed for routed traffic, while Gateway-internal endpoints remain strictly validated. 
+
 - **apiml.security.x509.enabled**  
  Specifies if client certificate authentication functionality through ZSS is enabled. Set this parameter to `true` to enable the client certificate authentication functionality through ZSS.
 
@@ -692,9 +695,6 @@ User authorization is required to use the `IRR.RUSERMAP` resource within the `FA
 
 - **apiml.security.ssl.nonStrictVerifySslCertificatesOfServices**  
  Specifies if API ML is used to verify certificates of services in non-strict mode. Setting the value to `true` enables the `non-strict` mode where API ML validates if the certificate is trusted in the truststore, but ignores the certificate Common Name or Subject Alternate Name (SAN) check. Zowe ignores this configuration when `strict` mode is enabled with `apiml.security.ssl.verifySslCertificatesOfServices`.
-
-- **apiml.service.allowEncodedSlashes**  
- Specifies if the Gateway allows encoded characters to be part of URL requests redirected through the Gateway. Set to `true` to allow encoded characters to be part of URL requests. 
 
 - **apiml.service.corsEnabled**  
  Specifies if CORS are enabled in the API Gateway for Gateway routes `gateway/api/v1/**`. Set to `true` to enable CORS.
