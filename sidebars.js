@@ -461,21 +461,24 @@ module.exports = {
     },
   ],
  "upgrade": [
-    "upgrade/upgrading-zowe",
-    {
-      type: "category",
-      label: "Upgrading Zowe",
-      collapsed: false,
-      items: [
-        "upgrade/upgrade-zowe-v3",
-        "upgrade/upgrade-zowe-v2",
-        "upgrade/upgrade-zowe-no-downtime",
-        "upgrade/upgrade-to-single-service-apiml-deployment",
-        "upgrade/migrate-from-convenience-build-to-pswi-smpe",
-        "upgrade/backout-zos",
-      ]
-    }
-  ],   
+  {
+    type: "category",
+    label: "Upgrading Zowe",
+    collapsed: false,
+    link: {
+      type: "doc",
+      id: "upgrade/upgrading-zowe", // This attaches the doc directly to the category label
+    },
+    items: [
+      "upgrade/upgrade-zowe-v3",
+      "upgrade/upgrade-zowe-v2",
+      "upgrade/upgrade-zowe-no-downtime",
+      "upgrade/upgrade-to-single-service-apiml-deployment",
+      "upgrade/migrate-from-convenience-build-to-pswi-smpe",
+      "upgrade/downgrade-to-a-previous-zowe-version",
+    ]
+  }
+],
   "use": [
     "user-guide/zowe-getting-started-tutorial",
     {
