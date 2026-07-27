@@ -2,7 +2,7 @@
 
 Performing an upgrade of Zowe involves following a subset of the first-time installation steps documented within the [Zowe z/OS components installation checklist](../user-guide/zos-components-installation-checklist.md) and updating your active Zowe YAML configuration file. 
 
-:::info Required Role: System Programmer
+:::info Required roles: system administrator, system programmer
 :::
 
 :::tip Tips
@@ -17,7 +17,7 @@ To complete an upgrade, perform all tasks listed in the **Installing** section. 
 
 Unless otherwise noted by an announcement or SMP/E HOLD statement, you do not need to update certificates, instance data sets, networking, or security rules during an upgrade. Using [Configuring Zowe via JCL](../user-guide/configuring-zowe-via-jcl.md) as an example, you can skip the following configuration steps:
 
-* **Instance Datasets**  
+* **Instance Data sets**  
 You do not need to recreate your existing data sets.
 
 * **Security Rules (SAF)**  

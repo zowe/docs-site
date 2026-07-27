@@ -2,14 +2,17 @@
 
 Review the recommended procedure to migrate an existing Zowe installation from a convenience build to a PSWI (Portable Software Instance) or SMP/E-based installation. The steps in this article outline the best practices to perform the migration, and include all necessary tasks for reusing or updating configuration, managing runtime datasets, and maintaining service continuity.
 
+:::info Required roles: system administrator, system programmer
+:::
+
 ## Prerequisites before migration
 
 Ensure you meet the following conditions before you start the migration process:
 
-* Determine the current installed version of Zowe (e.g. v3.0).
-* Determine if the migrate target is the same version or a newer version (e.g. v3.1).
+* Determine the current installed version of Zowe (for example, v3.0).
+* Determine if the migrate target is the same version or a newer version (for example, v3.1).
 * Backup the following elements:
-    * The existing zowe.yaml configuration file
+    * The existing `zowe.yaml` configuration file
     * Zowe runtime data sets
     * STC JCLs and PARMLIB members
 
@@ -28,7 +31,7 @@ For more information about PSWI installation, see [Installing Zowe from a Portab
 ### SMP/E Installation
 
 1. Acquire the Zowe SMP/E package at [zowe.org](https://www.zowe.org/download)
-2. Execute SMP/E RECEIVE, APPLY, and ACCEPT jobs according to instructions in the documentation shipped with the PTF. For more information, see [Installing Zowe via SMP/E instructions](../user-guide/install-zowe-smpe.md)
+2. Execute SMP/E `RECEIVE`, `APPLY`, and `ACCEPT` jobs according to instructions in the documentation shipped with the PTF. For more information, see [Installing Zowe via SMP/E instructions](../user-guide/install-zowe-smpe.md)
 3. Validate successful deployment of Zowe into target libraries. The following target libraries are created: `SZWEAUTH`, `SZWEEXEC`, `SZWESAMP`.
 4. Utilize Zowe SAMPLIB for post-install configuration. 
 
@@ -42,7 +45,7 @@ When migrating from the convenience build, you can either use PSWI or SMP/E to m
 
 If the target PSWI or SMP/E version matches the currently installed convenience build, use the following outline of steps:
 
-1. Reuse the existing zowe.yaml file.
+1. Reuse the existing `zowe.yaml` file.
 2. Continue using the current runtime data sets, or for SMP/E, from the target library.
 3. Update ZOWE STC (`ZWESISTC` and `ZWESLSTC`) and YAML to point to the new Zowe libraries from PROCLIB and YAML.
 
@@ -52,9 +55,9 @@ To migrate to a newer version of Zowe, for example from v3.0 to v3.1, you can ei
 
 * **Using PSWI Workflows**  
   You can use z/OSMF workflows provided in the PSWI package to perform the following tasks:
-  * Generate a new zowe.yaml configuration file
+  * Generate a new `zowe.yaml` configuration file
   * Allocate new runtime data sets
-  * Configure system definitions (e.g. APF, PROCLIB)
+  * Configure system definitions (for example, APF, PROCLIB)
 
 For more information, see [Installing Zowe SMP/E build with z/OSMF workflow](../user-guide/install-zowe-smpe-zosmf-workflow.md).
 
@@ -62,8 +65,8 @@ For more information, see [Installing Zowe SMP/E build with z/OSMF workflow](../
   
   Use members from ZOWE SAMPLIB to perform the following tasks:
   * Allocate and define new runtime data sets 
-  * Create or customize a new zowe.yaml file
-  * Configure system definitions (e.g. APF, PROCLIB)
+  * Create or customize a new `zowe.yaml` file
+  * Configure system definitions (for example, APF, PROCLIB)
 
 :::tip
 Ensure all new configurations are validated for compatibility and correctness.
@@ -71,7 +74,7 @@ Ensure all new configurations are validated for compatibility and correctness.
 
 ## Switching between Zowe versions
 
-Use the following step outline to switch between Zowe versions (e.g. v3.0 and v3.1):
+Use the following step outline to switch between Zowe versions (for example, v3.0 and v3.1):
 
 1. Update STEPLIB in Zowe Started Task (STC) JCLs to reflect correct target libraries. Ensure that versions or HLQ are updated.
 2. Modify PARMLIB member references accordingly in the PROCLIB STC job. 

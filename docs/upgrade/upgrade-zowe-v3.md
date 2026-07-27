@@ -1,13 +1,17 @@
 # Upgrading from Zowe Vx to Zowe V3
 
-Follow the procedure outlined in this article to upgrade from Zowe v2 to Zowe v3, or from Zowe v1 to Zowe v3. While the major version upgrading process is similar to a Zowe v2 minor release upgrade, there are several new and updated configuration parameters to consider. 
+Follow the procedure outlined in this article to upgrade from Zowe v2 to Zowe v3, or from Zowe v1 to Zowe v3.
+
+:::info Required roles: system administrator, system programmer
+:::
+
+While the major version upgrading process is similar to a Zowe v2 minor release upgrade, there are several new and updated configuration parameters to consider. 
+
+Follow the steps described in this article to ensure a smooth upgrade to Zowe v3.
 
 :::note
 The workspace directory should be re-created only if you are using the app-server component.
 :::
-
-Follow the steps described in this article to ensure a smooth upgrade to Zowe v3.
-
 
 ## Prerequisite to upgrade to Zowe v3
 
@@ -248,7 +252,7 @@ components:
       64bit: true
 ```
 
-### Deprecated Settings
+### Deprecated Settings in Zowe v3
 
 The following configuration parameters have been deprecated in Zowe v3. Ensure that these parameters are removed from your configuration.
 

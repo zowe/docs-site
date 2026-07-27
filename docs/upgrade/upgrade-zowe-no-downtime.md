@@ -2,10 +2,10 @@
 
 Follow the requirements and steps in this article to perform an upgrade of a Zowe server-side components installation in high availability (HA) mode to a newer minor version with zero downtime. 
 
-Performing a zero-downtime upgrade ensures that continuous operations are maintained. This upgrade method allows you to seamlessly roll out critical updates without disrupting active users, halting active sessions, or breaking downstream automation that relies on Zowe services.
-
-:::info Required role: System programmer
+:::info Required roles: system administrator, system programmer
 :::
+
+Performing a zero-downtime upgrade ensures that continuous operations are maintained. This upgrade method allows you to seamlessly roll out critical updates without disrupting active users, halting active sessions, or breaking downstream automation that relies on Zowe services.
 
 :::tip
 The best practice is to upgrade Zowe server-side components regularly to ensure that you are using the latest features and  the latest security patches.
