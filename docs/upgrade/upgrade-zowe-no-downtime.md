@@ -30,7 +30,7 @@ Only one API Catalog instance can be active in an installation with multiple mai
 When upgrading an installation in high availability mode, one or more instances run at different maintainance levels. As such, a few restrictions apply:
 
 - HA settings are the same across both installations.
-- Each instance has its own configuration file (e.g. `zowe.yaml` file), and the HA and security settings are synchronized.
+- Each instance has its own configuration `zowe.yaml` file, and the HA and security settings are synchronized.
 - Onboarded services must also be in high availability mode.
 
 ## Upgrading installation with HA

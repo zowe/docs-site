@@ -83,21 +83,21 @@ Use the following step outline to switch between Zowe versions (e.g. v3.0 and v3
 Follow these steps to validate that you successfully migrated your Zowe installation.
 
 1. Start the following Zowe Started Tasks (STCs):
-  * **ZWESISTC**  
-  The Zowe cross memory server that runs as a started task to enable cross-memory communication between Zowe components on z/OS
-  * **ZWESLSTC**   
+     * **ZWESISTC**  
+    The Zowe cross memory server that runs as a started task to enable cross-memory communication between Zowe components on z/OS
+     * **ZWESLSTC**   
   The Zowe launcher started task that initializes and manages the lifecycle of Zowe's core runtime services on z/OS
 2. Monitor logs for any anomalies or errors.
 3. Validate the following functionalities:
-  * Access to Zowe Desktop
-  * Confirm API services. 
+     * Access to Zowe Desktop
+     * Confirm API services. 
 4. Review system and application logs for configuration or version mismatches.
 
-   For more information about performing these steps, see [Verifying Zowe installation on z/OS](../user-guide/verify-zowe-runtime-install.md)
+   For more information about performing these steps, see [Verifying Zowe installation on z/OS](../user-guide/verify-zowe-runtime-install.md).
 
 :::tip
 Use the following guidelines to maintain rollback readiness in the event of unexpected issues during your Zowe migration:
 * Retain previous runtime data sets
-* Keep backup copies of all JCLs and configuration members
+* Keep back-up copies of all JCLs and configuration members
 * Be prepared to reassign STEPLIB/PARMLIB back to convenience build settings
 :::

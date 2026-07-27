@@ -11,8 +11,8 @@ Follow the steps described in this article to ensure a smooth upgrade to Zowe v3
 
 ## Prerequisite to upgrade to Zowe v3
 
-* **Upgrade to the latest version of Zowe v2 (v2.18)**  
-If you are currently running on an earlier v2 version of Zowe, before upgrading to Zowe v3.x, first upgrade to Zowe v2.18.x. The following upgrade procedure to Zowe v3 applies to Zowe v2.18.
+* **Upgrade to the latest version of Zowe v2 (v2.18.x)**  
+If you are currently running on an earlier v2 version of Zowe, before upgrading to Zowe v3.x, first upgrade to Zowe v2.18.x. The following upgrade procedure to Zowe v3 applies to Zowe v2.18.x.
 Please follow the instructions from the version of Zowe you have and newer in order to prepare to upgrade from Zowe v2 to v3.0.0.
 
 ### Upgrading from Zowe v2.16.x
@@ -22,7 +22,7 @@ Please follow the instructions from the version of Zowe you have and newer in or
 
 To upgrade from Zowe v2.16.x, perform the following tasks. 
 
-1. Ensure the following `zowe.network` section is added to your configuration:
+1. Ensure the following `zowe.network` section is added to your `zowe.yaml` file.
 
 ```yaml
   network:
@@ -39,7 +39,7 @@ To upgrade from Zowe v2.16.x, perform the following tasks.
 ```
 
 2. Update your PROCLIB entries for Zowe, as enhancements and default parameters have changed throughout Zowe v2.
-This can be performed with the unix command `zwe init stc`, by running the job ZWEISTC, or by copying the SZWESAMP members ZWESLSTC, ZWESISTC, and ZWESASTC into your desired PROCLIB.
+This can be performed with the unix command `zwe init stc`, by running the job `ZWEISTC`, or by copying the `SZWESAMP` members `ZWESLSTC`, `ZWESISTC`, and `ZWESASTC` into your desired PROCLIB.
 3. If you use keyrings, verify that Zowe YAML references to `safkeyring`. Use two forward slashes (`safkeyring://`). Do not use four forward slashes (`safkeyring:////`).
 
 </details>
@@ -53,7 +53,7 @@ This can be performed with the unix command `zwe init stc`, by running the job Z
 If your current version is between v2.11.x and v2.15.x, perform the following tasks. 
 
 Ensure that Zowe configurations using keyrings do not have the section `zowe.certificate.pem`.
-This section is no longer needed and can cause startup error in newer versions of Zowe.
+This section is no longer needed and can cause a start-up error in newer versions of Zowe.
 
 </details>
 <br />
@@ -63,11 +63,9 @@ This section is no longer needed and can cause startup error in newer versions o
 <details>
 <summary>Click here for configuration details.</summary>  
 
-To upgrade from Zowe v2.10.x, perform the following tasks. 
-
-Consider taking advantage of the new **sysMessages** feature.
-
-The `zowe.sysMessages` is a new array that allows you to select messages that, when found by the launcher, will be duplicated into the system's log.
+:::tip
+You can now use the new array  `zowe.sysMessages` to select messages that, when found by the launcher, are duplicated into the system's log.
+:::
 
 </details>
 <br />
@@ -77,15 +75,13 @@ The `zowe.sysMessages` is a new array that allows you to select messages that, w
 <details>
 <summary>Click here for configuration details.</summary>
 
-If your current version is between v2.4.x and v2.9.x, perform the following tasks. 
-
 It is recommended to delete the `<zowe.workspaceDirectory>/app-server/plugins` directory so that it can be regenerated on the next run of Zowe.
-In this version and prior there were old and no longer used Application Framework plugins and references to them will complicate logs with harmless errors.
+In this version and prior versions there were old and no longer used Application Framework plug-ins and references to them will complicate logs with harmless errors.
 
 </details>
 <br />
 
-### Upgrading from Zowe v2.3.x or and earlier version
+### Upgrading from Zowe v2.3.x or an earlier version
 
 <details>
 <summary>Click here for configuration details.</summary>
@@ -141,9 +137,9 @@ Ensure that the Zowe YAML parameter `node.home` value is **Node.js 18 or 20** ho
 
 ## System and Security Changes
 
-- Existing SAF settings for Zowe do not need to be changed for v3. Install steps such as `zwe init security`, the job or workflow ZWESECUR, and the jobs ZWEIRAC, ZWEITSS, and ZWEIACF are not required to be re-run.
+- Existing SAF settings for Zowe do not need to be changed for v3. Install steps such as `zwe init security`, the job or workflow `ZWESECUR`, and the jobs `ZWEIRAC`, `ZWEITSS`, and `ZWEIACF` are not required to be re-run.
 
-- Existing keyrings and keystores do not need to be changed for v3. Install steps such as `zwe init certificate`, the job or workflow ZWEKRING, or jobs starting with ZWEIKR* are not required to be re-run.
+- Existing keyrings and keystores do not need to be changed for v3. Install steps such as `zwe init certificate`, the job or workflow `ZWEKRING`, or jobs starting with `ZWEIKR*` are not required to be re-run.
 
 - The following network changes are needed for added or removed servers:
 
