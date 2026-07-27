@@ -55,6 +55,16 @@ To use an SSH command to connect and deploy to the server:
 
  You can now interact with this SSH profile in its Zowe Explorer tree view (Data Sets, USS, or Jobs) to start using ZRS.
 
+:::info
+
+Starting in Zowe Explorer v3.6, you can import SSH connection information from your `ssh_config` file into your team configuration file to easily connect to previously used SSH hosts. 
+
+Changes made to the `ssh_config` file after importing are not detected by Zowe Explorer, and need to be manually updated in team configuration. 
+
+In future versions, Zowe Explorer will provide the option to point to an entry in the SSH configuration file directly, ensuring your team configuration stays in sync with any updates in your `ssh_config` file.
+
+:::
+
 ### Connecting with an existing SSH configuration file
 
 Use an existing SSH configuration file to create a new `ssh` profile in your client-side team configuration. 
