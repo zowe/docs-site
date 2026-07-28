@@ -16,7 +16,7 @@ When you use an `ssh` profile with Zowe Explorer, the ZRS `zowex` binary is auto
 
 Before attempting to deploy the binary, the system checks if `zowex` already exists in the user's `$PATH` and is executable by the user. If a compatible version is found in the `$PATH`, the existing binary is used and no additional storage is used.
 
-If you do not have concerns about redundant use of storage, allow the binary to be deployed to the default location, or [set a different location in your Visual Studio Code configuration](#alternatives-to-adding-zrs-to-your-path).
+If you do not have concerns about redundant use of storage, then allow the binary to be deployed to the default location, or [set a different location in your Visual Studio Code configuration](#alternatives-to-adding-zrs-to-your-path).
 
 To add the `zowex` binary to your `$PATH`:
 
