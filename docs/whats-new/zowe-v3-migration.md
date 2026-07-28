@@ -8,7 +8,7 @@ The workspace directory should be re-created only if you are using the app-serve
 
 Follow the steps described in this article to ensure a smooth upgrade to Zowe v3.
 
-## Upgrading from Zowe v3.5 to the latest Zowe version
+## Upgrading from Zowe v3.5 or a previous version to the latest Zowe version
 
 The API ML Gateway introduces a breaking change by enabling strict URL validation by default. The Gateway now automatically rejects requests that contain any of the following encoded characters in the URL path: 
 * encoded slashes (`%2F`)
