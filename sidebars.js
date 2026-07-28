@@ -470,7 +470,7 @@ module.exports = {
       id: "upgrade/upgrading-zowe", // This attaches the doc directly to the category label
     },
     items: [
-      "upgrade/upgrade-zowe-v3",
+      "upgrade/upgrading-zowe-v3",
       "upgrade/upgrade-zowe-v2",
       "upgrade/upgrade-zowe-no-downtime",
       "upgrade/upgrade-to-single-service-apiml-deployment",
