@@ -98,7 +98,7 @@ Only new connections can be re-routed to avoid the instance shutting down. A dec
     ```
 
 2. Stop the original instance.  
-Stop the original instance B. For more information about stopping and starting instances, see [Starting and stopping Zowe](./../start-zowe-zos.md).
+Stop the original instance B. For more information about stopping and starting instances, see [Starting and stopping Zowe](../user-guide/start-zowe-zos.md).
 
 3. Start the new instance.  
 Start the newly upgraded instance B.

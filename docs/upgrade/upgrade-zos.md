@@ -5,7 +5,7 @@ Performing an upgrade of Zowe involves following a subset of the first-time inst
 
 :::tip
 If you are running Zowe in high availability (HA) mode, it is possible to perform a zero-downtime upgrade by routing traffic to a newly upgraded instance before shutting down the old instance. For more information, see [Upgrading Zowe in HA for zero downtime](./upgrade-zowe-no-downtime.md).
-If you need to revert an upgrade later, follow the recovery procedure in [Downgrading to a previous Zowe version](./downgrad.md).
+If you need to revert an upgrade later, follow the recovery procedure in [Downgrading to a previous Zowe version](./downgrade-to-a-previous-zowe-version.md).
 :::
 :::info Required role: system programmer
 :::
