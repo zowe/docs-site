@@ -10,7 +10,7 @@ Use Zowe Remote SSH (ZRS) in Zowe Explorer to perform z/OS mainframe operations 
 
 ## Adding ZRS to your `$PATH`
 
-ZRS can be used as a shared instance across a team of users or a per-user instance for a solo developer. For large-scale multi-user systems, it is advised to add the ZRS binary to your `$PATH` to prevent storage overuse.
+ZRS can be deployed to a shared location that multiple users access, or to a home directory when used by a single user. For large-scale multi-user systems, it is advised to add the ZRS binary to your `$PATH` to prevent storage overuse.
 
 When you use an `ssh` profile with Zowe Explorer, the ZRS `zowex` binary is automatically deployed to the user's z/OS UNIX filesystem. In cases where the binary is shared across multiple developers, this could result in hundreds of users consuming redundant storage space, creating a potential storage denial of service risk.
 
