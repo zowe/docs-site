@@ -38,23 +38,25 @@ its performance and create large log files that consume a large volume of disk s
 
 1. Open the file `zowe.yaml`.
 
-2. Each API ML component has its own `components.<component>.debug` parameter. Set the value to `true` for **each** component you want to debug. Note that there is no single setting that enables debug mode for all components at once.
+2. Each API ML component has its own `components.<component>.debug` parameter. Note that there is no single setting that enables debug mode for all components at once. For **each** component you want to debug, set the parameter based on your troubleshooting requirements:
+   * For **read-only access** to actuator endpoints, set `debug` to `true`.
+   * For **modify-with-SAF access**, which allows you to dynamically alter configurations (such as changing log levels), set `debug` to `"debug-control"`. Note that proper SAF authorization is required.
 
-   **Example yaml to enable debug for all three core services:** 
+   **Example yaml to enable debug with modify-with-SAF access for all three core services:** 
    ```yaml
    components:
      gateway:
-       debug: true
+       debug: "debug-control"
      discovery:
-       debug: true
+       debug: "debug-control"
      catalog:
-       debug: true
+       debug: "debug-control"
    ```
    By default, debug mode is disabled, and the `components.*.debug` is set to `false`.
    
 3. Restart Zowe&trade;.
 
-   You enabled debug mode for API ML core services (API Catalog, API Gateway and Discovery service).
+   You enabled debug mode for the configured API ML components.
 
 4. (Optional) Reproduce a bug that causes issues and review debug messages. If you are unable to resolve the issue, create an issue [here](https://github.com/zowe/api-layer/issues/).     
 
@@ -149,6 +151,10 @@ http GET https://<gateway-hostname>:7554/application/loggers | grep -i "zowe"
     ```
     POST scheme://hostname:port/application/loggers/{name}
     ```
+    :::caution Important:
+    Sending a `POST` request to dynamically change the log level requires the component's `debug` parameter to be set to `debug-control`. The user making the request must also have `SAF CONTROL` access to modify actuator endpoints.
+    :::
+
     The **POST** request requires a new log level parameter value that is provided in the request body:
     ```
     {
@@ -227,10 +233,27 @@ components:
 For more information, see [Spring Boot Profiles](https://docs.spring.io/spring-boot/reference/features/profiles.html) in the Spring documentation.
 
 :::note 
-
 When `debug: true` is set, you may not see the debug output immediately in the STC job log on z/OS or in the container logs. Check the component's application log file (for example, `$WORKSPACE_DIR/.logs/gateway/`) for the detailed debug messages. On z/OS, the debug output is written to the job log of the started task.
 :::
 
+* **debug-control**  
+This property grants modification capabilities to actuator endpoints. Setting the `debug` property to `debug-control` enables the same verbose internal logging as the debug property, but also enables write operations (such as dynamically changing log levels). Use of this property requires SAF configuration to verify authorization before accepting any changes. For instructions on configuring `SAF CONTROL` access for this property, see [Configuring SAF resource checking](../user-guide/api-mediation/configuration-saf-resource-checking.md).
+
+Set `debug` to `"debug-control"` under the relevant component in `zowe.yaml`:
+
+```yaml
+components:
+  gateway:
+    debug: "debug-control"
+```
+
+To enable debug control on the API ML single-service, set `debug` to `"debug-control"` under `apiml`:
+
+```yaml
+components:
+  apiml:
+    debug: "debug-control"
+```
 
 * **sslDebug**  
 This property enables SSL/TLS debug logging and can assist with determining what is happening at the SSL layer. This property maps directly to the `-Djavax.net.debug` Java system property.

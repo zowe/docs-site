@@ -12,12 +12,13 @@ Client (i.e. web browser) <-> [Gateway (WebSocket Server) - Gateway (WebSocket C
 We recommend that clients implement a ping-like mechanism to maintain the opened WebSocket sessions and not rely on the web browser to perform this action.
 :::
 
-- [Security and Authentication](#security-and-authentication)
-- [Subprotocols](#subprotocols)
-- [High availability](#high-availability)
-- [Idle Timeout](#idle-timeout)
-- [Diagnostics](#diagnostics)
-- [Limitations](#limitations)
+- [Routing with WebSockets](#routing-with-websockets)
+  - [Security and Authentication](#security-and-authentication)
+  - [Subprotocols](#subprotocols)
+  - [High availability](#high-availability)
+  - [Idle Timeout](#idle-timeout)
+  - [Diagnostics](#diagnostics)
+  - [Limitations](#limitations)
 
 ## Security and Authentication
 
@@ -63,7 +64,22 @@ This setting is global for the API ML Gateway.
 
 The list of active routed WebSocket sessions is available at the Actuator endpoint `websockets`. On `localhost`, it is available at https://localhost:10010/application/websockets.
 
-The actuator endpoint is enabled with debugging enabled in the API ML Gateway.
+Access to this actuator endpoint depends on your Gateway debug configuration: 
+
+To enable read-only access, set the `debug` parameter to `true` in your `zowe.yaml` file:
+
+```yaml
+components:
+  gateway:
+    debug: true
+```
+To enable modify-with-SAF access, set the `debug` parameter to `"debug-control"`:
+
+```yaml
+components:
+  gateway:
+    debug: "debug-control"
+```
 
 ## Limitations
 

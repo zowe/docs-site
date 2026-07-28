@@ -59,8 +59,9 @@ When a user accesses a protected endpoint, the API Mediation Layer Gateway inter
 2. The configured authorization provider (`native`, `endpoint`, or `dummy`) performs the SAF authorization check.
 3. The External Security Manager (ESM) such as IBM RACF, CA ACF2, or CA Top Secret evaluates the access.
 4. If the user is authorized, the request proceeds to the target service. If not, the request is denied with a `403 Forbidden` response.
+5. For Gateway actuator endpoints, the system uses this mechanism with debug-control to verify and control actuator modification access.
 
-#### Concrete RACF examples
+#### Concrete SAF configuration examples
 
 The following table shows common RACF resources used by Zowe components:
 
@@ -70,6 +71,7 @@ The following table shows common RACF resources used by Zowe components:
 | `FACILITY` | `IRR.RUSERMAP` | Controls access to RACF user mapping and identity propagation |
 | `FACILITY` | `BPX.SERVER` | Controls access to z/OS UNIX System Services server processes |
 | `FACILITY` | `EZB.INITACCESS` | Controls access to TCP/IP stack initialization |
+| `ZOWE` | `APIML.DEBUG` | Controls actuator modification access with `CONTROL` level |
 
 For example, to allow a user to access an IBM MQ queue named `APP.REQUEST.QUEUE`, a RACF profile would be defined as:
 
@@ -83,6 +85,36 @@ Similarly, to control access to the RACF user mapping facility:
 ```
 RDEFINE FACILITY IRR.RUSERMAP UACC(NONE)
 PERMIT IRR.RUSERMAP CLASS(FACILITY) ID(ZWEADMIN) ACCESS(READ)
+```
+
+### Configuring APIML.DEBUG
+
+To permit modification access to Gateway actuator endpoints, you must configure the `ZOWE.APIML.DEBUG` resource for your respective ESM.
+
+**IBM RACF example**  
+The following example defines and permits the `ZOWE.APIML.DEBUG` resource in IBM RACF:
+
+```
+RDEFINE ZOWE APIML.DEBUG UACC(NONE)
+PERMIT APIML.DEBUG CLASS(ZOWE) ID(ZWEADMIN) ACCESS(CONTROL)
+SETROPTS RACLIST(ZOWE) REFRESH
+```
+
+**ACF2 example**
+
+The following example defines and permits the API ML debug resource in ACF2. The API ML debug resource is split into `RECKEY APIML` and the suffix `DEBUG`:
+
+```
+SET RESOURCE(ZOW)
+RECKEY APIML ADD(DEBUG SERVICE(CONTROL) ROLE(ZWEADMIN) ALLOW)
+F ACF2,REBUILD(ZOW)
+```
+
+**Top Secret example**
+The following example defines and permits the `ZOWE.APIML.DEBUG` resource in TSS:
+
+```
+TSS PERMIT(ZWEADMIN) ZOWE(APIML.DEBUG) ACCESS(CONTROL)
 ```
 
 ### Setting the endpoint provider to perform SAF resouce check
