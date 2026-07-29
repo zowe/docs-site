@@ -1,5 +1,8 @@
 # Configuring and deploying Zowe Remote SSH
 
+:::info Required role: system administrator
+:::
+
 Use Zowe Remote SSH in Zowe Explorer to perform z/OS mainframe operations with minimal server-side configuration.
 
 ## System requirements
