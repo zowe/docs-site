@@ -39,7 +39,7 @@ For more information about SMP/E installation, see [Installing Zowe SMP/E overvi
 
 ## Configuring to the same or newer version
 
-When migrating from the convenience build, you can either use PSWI or SMP/E to migrate to the same version or to upgrade to a higher version.
+When migrating from the convenience build, you can either use PSWI or SMP/E to migrate to the same version or upgrade to a higher version.
 
 ### Upgrade to the same version
 

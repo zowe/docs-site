@@ -20,7 +20,7 @@ Must be upgraded to Java 17 or Java 21. Ensure the `java.home` parameter in your
 * **Node.js**  
 Upgrading to v20 is recommended. Update the `node.home` parameter in your `zowe.yaml` accordingly.
 
-## Authenticating and validating and identity 
+## Authenticating and validating identity 
 API ML supports the following methods for validating user identity. Use one of the following providers for enterprise security on z/OS:
 
 * **SAF (System Authorization Facility) (Recommended)**  
@@ -35,18 +35,18 @@ Zowe v3 utilizes JSON Web Tokens (JWT) as the primary mechanism for Single Sign-
 
 ### Authentication methods
 
-*   **SAF**  
-The Gateway signs the JWT directly using the private key of the server certificate. Note that API ML exclusively uses the server's identity certificate for this purpose.
+* **SAF**  
+  The Gateway signs the JWT directly using the private key of the server certificate. Note that API ML exclusively uses the server's identity certificate for this purpose.
   
-*   **z/OSMF**  
-Token issuance is delegated entirely to z/OSMF, wherein the JWT is produced by the z/OSMF authentication provider rather than the Gateway.
+* **z/OSMF**  
+  Token issuance is delegated entirely to z/OSMF, wherein the JWT is produced by the z/OSMF authentication provider rather than the Gateway.
 
-**Configuration using SAF:**
+**Configuration using SAF:**  
 1. Ensure the Gateway has access to a private key (stored in a PKCS12 keystore or SAF keyring) for signing.
 2. Verify the certificate used for signing is correctly mapped in your configuration under `zowe.certificate.keystore.file`. 
 3. Set `components.gateway.apiml.security.auth.provider: saf` to enable API ML to validate identities using SAF Direct APIs.
 
-**Configuration using z/OSMF:**  
+**Configuration using z/OSMF:**    
 Because token generation is fully delegated to the z/OSMF authentication provider, the Gateway does not require a local private key configuration for JWT signing.
 
 ## Transitioning to single-service mode
@@ -57,7 +57,7 @@ Ensure that all Zowe address spaces are stopped before modifying configuration f
 
 To migrate from the multi-service deployment to the single-service deployment, apply these changes to your `zowe.yaml` file:
 
-Enable single-service deployment.
+Enable single-service deployment.  
 Set `components.apiml.enabled` to `true`:
 
   ```yaml

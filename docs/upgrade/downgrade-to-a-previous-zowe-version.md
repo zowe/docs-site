@@ -1,6 +1,6 @@
 # Downgrading to a previous Zowe version
 
-Follow the best practices outlined in this article if you have performed a [Zowe server-side upgrade](./upgrading-zowe.md) but wish to downgrade to a previous version of Zowe.
+Follow the best practices outlined in this article if you have performed a [Zowe server-side upgrade](./upgrade-zowe.md) but wish to downgrade to a previous version of Zowe.
 
 :::info Required roles: system administrator, system programmer
 :::
