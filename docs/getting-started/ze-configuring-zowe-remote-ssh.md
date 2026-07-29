@@ -36,14 +36,7 @@ To add the `zowex` binary to your `$PATH`:
     The ZRS version is returned when the `$PATH` has been configured successfully.
     
     The `zowex` binary is now set in your `$PATH`. You can now execute the `zowex` command without specifying the full `/user/shared/zrs/zowex` location, which is now stored in the `zowe.zowex.serverInstallPath` key in the VS Code `settings.json` file. 
-
-### Shared instances of ZRS
-
-If you are a systems administrator maintaining a shared instance of ZRS, each user on your team must add `zowex` to their `$PATH` following the steps in [Adding ZRS to your `$PATH`](#adding-zrs-to-your-path). Also ensure that the users have execute permission on the `zowex` binary.
-
-If you do not want the users to be able to update `zowex` with a new version, set the file permissions on the directory so that the user does not have write access to the directory.
-    
-
+ 
 ### Alternatives to adding ZRS to your `$PATH`
 
 It is not required to add ZRS to your `$PATH`. If you do not have concerns about redundant use of storage, allow the binary to be deployed to the default location, or set a different location in your Visual Studio Code configuration.
