@@ -1,9 +1,6 @@
 # Configuring and deploying Zowe Remote SSH
 
-:::info Required roles: system administrator, system programmer, security administrator
-:::
-
-Use Zowe Remote SSH in Zowe Explorer to perform z/OS mainframe operations with minimal server-side configuration.
+Use Zowe Remote SSH (ZRS) in Zowe Explorer to perform z/OS mainframe operations with minimal server-side configuration.
 
 ## System requirements
 
@@ -78,7 +75,7 @@ If you have the `serverPath` property set in your [Zowe client configuration](..
 
 ## Configuration methods
 
-Create an SSH Zowe profile in your Zowe [team configuration](../appendix/zowe-glossary.md#team-configuration) to connect to z/OS and deploy to the z/OS system.
+Create an SSH Zowe profile in your Zowe [client configuration](../appendix/zowe-glossary.md#team-configuration) to connect to z/OS and deploy to the z/OS system.
 
 ### Connecting with an SSH command
 
@@ -133,24 +130,13 @@ In future versions, Zowe Explorer will provide the option to point to an entry i
 
 :::
 
-:::info
-
-Starting in Zowe Explorer v3.6, you can import SSH connection information from your `ssh_config` file into your team configuration file to easily connect to previously used SSH hosts. 
-
-Changes made to the `ssh_config` file after importing are not detected by Zowe Explorer, and need to be manually updated in team configuration. 
-
-In future versions, Zowe Explorer will provide the option to point to an entry in the SSH configuration file directly, ensuring your team configuration stays in sync with any updates in your `ssh_config` file.
-
-:::
-
 ### Connecting with an existing SSH configuration file
 
 Use an existing SSH configuration file to create a new `ssh` profile in your client configuration. 
 
 To create a new SSH profile in your client configuration:
 
-1. In the **Command Palette**, search for **Zowe Explorer: Deploy SSH server on host and connect...**.
-
+1. In the **Command Palette**, search for **Zowe Explorer: Connect to zowex server on host...**.  
     If you have not yet configured a server path, you are prompted for a path to deploy the server. The path is saved in the `zowe.zowex.serverInstallPath` key in the VS Code `settings.json` file.
 2. Select a profile listed **below** the **Migrate From SSH Config** separator in the drop-down.
 3. Answer prompts in the **Quick Pick** to provide any additional credentials required for authentication.
@@ -163,7 +149,7 @@ To create a new SSH profile in your client configuration:
 
 Use an existing SSH profile from a Zowe client configuration file to deploy Zowe Remote SSH:
 
-1. In the **Command Palette**, search for **Zowe Explorer: Deploy SSH server on host and connect...**.
+1. In the **Command Palette**, search for **Zowe Explorer: Connect to zowex server on host...**.
         
     If you have not yet configured a server path, you are prompted for a path to deploy the server. The path is saved in the `zowe.zowex.serverInstallPath` key in the VS Code `settings.json` file.
 2. Select a profile listed **above** the **Migrate From SSH Config** separator in the drop-down.
