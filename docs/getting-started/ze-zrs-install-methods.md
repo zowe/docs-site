@@ -36,7 +36,7 @@ If you are a systems administrator managing a team using ZRS, deploy a shared in
     pax -rzf /u/userid/zowe-server-X.Y.Z.pax.Z
     ```
 
-5. Validate the installation. Run the command `./zowex --version` to check that the `zowex` can be run. 
+5. Validate the installation. Run the command `./zowex --version` to check that `zowex` can be run. 
 
     The ZRS version is returned when `zowex` has been installed successfully.
 
