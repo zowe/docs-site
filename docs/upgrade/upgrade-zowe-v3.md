@@ -20,6 +20,17 @@ The workspace directory should be re-created only if you are using the app-serve
 * **Upgrade to the latest version of Zowe v2 (v2.18.x)**  
 If you are currently running on an earlier v2 version of Zowe, before upgrading to Zowe v3.x, first upgrade to Zowe v2.18.x. The following upgrade procedure to Zowe v3 applies to Zowe v2.18.x.
 Please follow the instructions from the version of Zowe you have and newer in order to prepare to upgrade from Zowe v2 to v3.0.0.
+* **z/OSMF**  
+  Version V2R5 or V3R1 is required. JWT support for z/OSMF is highly recommended. For more information, see [Enabling JSON Web Token support](https://www.ibm.com/docs/en/zos/3.1.0?topic=configurations-enabling-json-web-token-support) in the IBM documentation. If you do not have JWT support in z/OSMF, make sure to set `components.gateway.apiml.security.auth.zosmf.jwtAutoconfiguration` to `ltpa`.
+* **Java**  
+  Java 17 is required. The Zowe YAML parameter `java.home` value should be a **Java 17** home location. If an administrator uses `zwe init` to set up Zowe, ensure the `java` for that user is v17 by including it in the `PATH` environment variable.
+* **Node.js**  
+  Ensure that the Zowe YAML parameter `node.home` value is a **Node.js 18 or 20** home location. Node 16 and earlier versions are not supported.
+
+
+## Preparing Your Current Zowe Instance
+
+To ensure a smooth transition to Zowe v3, you must first resolve any configuration changes required by your current version. Configuration updates are cumulative. If you are running an earlier v2 version of Zowe, you must follow all of the procedures that correspond to your current version, plus each of the later Zowe versions up to and including v2.18.x. Apply the necessary configurations before proceeding with the v3 upgrade. 
 
 ### Upgrading from Zowe v2.16.x
 
@@ -70,7 +81,7 @@ This section is no longer needed and can cause a start-up error in newer version
 <summary>Click here for configuration details.</summary>  
 
 :::tip
-You can now use the new array  `zowe.sysMessages` to select messages that, when found by the launcher, are duplicated into the system's log.
+You now have the option to use the array  `zowe.sysMessages` to select messages that, when found by the launcher, are duplicated into the system's log.
 :::
 
 </details>
@@ -81,7 +92,7 @@ You can now use the new array  `zowe.sysMessages` to select messages that, when 
 <details>
 <summary>Click here for configuration details.</summary>
 
-It is recommended to delete the `<zowe.workspaceDirectory>/app-server/plugins` directory so that it can be regenerated on the next run of Zowe.
+Delete the `<zowe.workspaceDirectory>/app-server/plugins` directory so that it can be regenerated on the next run of Zowe.
 In this version and prior versions there were old and no longer used Application Framework plug-ins and references to them will complicate logs with harmless errors.
 
 </details>
@@ -128,18 +139,6 @@ zowe:
 
 </details>
 <br />
-
-## V3 Prerequisite Changes
-
-Before starting the upgrade, ensure the following system requirements are met:
-
-- **z/OSMF**  
-Version V2R5 or V3R1 is required. JWT support for z/OSMF is highly recommended. For more information, see [Enabling JSON Web Token support](https://www.ibm.com/docs/en/zos/3.1.0?topic=configurations-enabling-json-web-token-support) in the IBM documentation. If you do not have JWT support in z/OSMF, make sure to set `components.gateway.apiml.security.auth.zosmf.jwtAutoconfiguration` to `ltpa`.
-- **Java**  
-Java 17 is required. The Zowe YAML parameter `java.home` value should be a **Java 17** home location. If an administrator uses `zwe init` to set up Zowe, ensure the `java` for that user is v17 by including it in the `PATH` environment variable.
-- **Node.js**  
-Ensure that the Zowe YAML parameter `node.home` value is **Node.js 18 or 20** home location. Node 16 and earlier versions are not supported.
-
 
 ## System and Security Changes
 
