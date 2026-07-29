@@ -152,7 +152,7 @@ http GET https://<gateway-hostname>:7554/application/loggers | grep -i "zowe"
     POST scheme://hostname:port/application/loggers/{name}
     ```
     :::caution Important:
-    Sending a `POST` request to dynamically change the log level requires the component's `debug` parameter to be set to `debug-control`. The user making the request must also have `SAF CONTROL` access to modify actuator endpoints.
+    Sending a `POST` request to dynamically change the log level requires the component's `debug` parameter to be set to `"debug-control"`. The user making the request must also have `SAF CONTROL` access to modify actuator endpoints.
     :::
 
     The **POST** request requires a new log level parameter value that is provided in the request body:
@@ -237,7 +237,7 @@ When `debug: true` is set, you may not see the debug output immediately in the S
 :::
 
 * **debug-control**  
-This property grants modification capabilities to actuator endpoints. Setting the `debug` property to `debug-control` enables the same verbose internal logging as the debug property, but also enables write operations (such as dynamically changing log levels). Use of this property requires SAF configuration to verify authorization before accepting any changes. For instructions on configuring `SAF CONTROL` access for this property, see [Configuring SAF resource checking](../user-guide/api-mediation/configuration-saf-resource-checking.md).
+This property grants modification capabilities to actuator endpoints. Setting the `debug` property to `"debug-control"` enables the same verbose internal logging as the debug property, but also enables write operations (such as dynamically changing log levels). Use of this property requires SAF configuration to verify authorization before accepting any changes. For instructions on configuring `SAF CONTROL` access for this property, see [Configuring SAF resource checking](../user-guide/api-mediation/configuration-saf-resource-checking.md).
 
 Set `debug` to `"debug-control"` under the relevant component in `zowe.yaml`:
 
