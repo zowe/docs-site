@@ -38,13 +38,6 @@ As an application developer who wants to run Zowe, set the following parameters 
     ```
   **Note:** Each URL within the list must be separated by a comma.The  directories can be specified as a parameter at startup and will be scanned by the Discovery Service. These directories contain the definitions of static services.
 
-* **components.discovery.apiml.security.ssl.verifySslCertificatesOfServices**
-
-  This parameter makes it possible to prevent server certificate validation.
-
-  **Important!** Ensure that this parameter is set to `true` in production environments.
-  Setting this parameter to `false` in production environments significantly degrades the overall security of the system.
-
 * **components.discovery.apiml.discovery.serviceIdPrefixReplacer**
     
     This parameter is used to modify the service ID of a service instance, before it registers to API ML.
