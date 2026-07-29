@@ -311,7 +311,7 @@ module.exports = {
                   "items": [
                     "user-guide/api-mediation/configuration-multi-tenancy-routing",
                     "user-guide/api-mediation/configuration-cors",
-                    "user-guide/api-mediation/configuration-url-handling",
+                    "user-guide/api-mediation/configuration-using-strict-url-validation",
                     "user-guide/api-mediation/configuration-gateway-retry-policy",
                     "user-guide/api-mediation/configuration-unique-cookie-name-for-multiple-zowe-instances",
                     "user-guide/api-mediation/configuration-access-specific-instance-of-service",
