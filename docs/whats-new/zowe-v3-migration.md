@@ -25,10 +25,19 @@ If you onboarded services that expect these encoded characters, you will encount
 
 * The previous configuration property `components.gateway.apiml.service.allowEncodedSlashes` has been removed.
 * Add the new property `components.gateway.apiml.security.enableStrictUrlValidation` to your `zowe.yaml` file and set this attribute to `false`.
-  **Note:**  
-  Previously, you set a property to true to allow these characters; now, you set the strict validation property to false to bypass the block.
-* Gateway-internal endpoints (such as `/gateway`, `/application`, `/images`, and `/v3/api-docs`) will always enforce strict validation, regardless of how you configure the `enableStrictUrlValidation` property.
-    
+
+  :::note Behavior change in Zowe v3.6: Strict URL Validation
+  Prior to Zowe v3.6, API ML allowed encoded slashes by default. The property that controlled this (`components.gateway.apiml.service.allowEncodedSlashes`) was removed and replaced with `components.gateway.apiml.security.enableStrictUrlValidation`.
+
+  Because strict validation is now **enabled** by default, requests with encoded characters that were previously accepted will now be rejected.
+
+  **Restoring pre-v3.6 behavior:**
+  Previously, you set a property to `true` to allow these characters. Now, if your southbound services require them, you must explicitly set the `enableStrictUrlValidation` property to `false` to bypass the block and restore the older behavior.
+
+  **Exceptions for Gateway-internal endpoints:**
+  Regardless of how you configure the `enableStrictUrlValidation` property, gateway-internal endpoints (such as `/gateway`, `/application`, `/images`, and `/v3/api-docs`) will always enforce strict validation.
+  :::
+
 </details>
 <br />
 
