@@ -78,7 +78,7 @@ If you have the `serverPath` property set in your [Zowe client configuration](..
 
 ## Configuration methods
 
-Create an SSH Zowe profile in your Zowe [client configuration](../appendix/zowe-glossary.md#team-configuration) to connect to z/OS and deploy to the z/OS system.
+Create an SSH Zowe profile in your Zowe [team configuration](../appendix/zowe-glossary.md#team-configuration) to connect to z/OS and deploy to the z/OS system.
 
 ### Connecting with an SSH command
 

@@ -101,8 +101,6 @@ module.exports = {
         "whats-new/zowe-v3-frequently-asked-questions",
         "whats-new/zowe-v3-office-hours",
         "whats-new/zowe-v3-conformance-criteria",
-        "whats-new/zowe-v3-migration",
-        "whats-new/upgrade-from-convenience-build-to-pswi-smpe",
       ],
     },
     {
@@ -112,16 +110,10 @@ module.exports = {
       items: [
         "getting-started/zowe_v2_faq",
         "getting-started/zowe-office-hours",
-        {
-          type: "doc",
-          label: "Migrating from Zowe V1 to Zowe V2",
-          className: "ToCitemcolor",
-          id: "extend/migrate-extensions",
-        },
       ],
     },
     "whats-new/zowe-compatibility-statement-v3",
-  ],
+  ],  
   "setup": [
     "user-guide/install-overview",
     {
@@ -282,8 +274,6 @@ module.exports = {
           ]
         },
         "user-guide/verify-zowe-runtime-install",
-        "user-guide/upgrade-zos",
-        "user-guide/backout-zos",
         {
           type: "category",
           label: "Advanced server-side configuration",
@@ -369,7 +359,6 @@ module.exports = {
             "user-guide/mvd-configuration",
           ],
         },
-        "user-guide/api-mediation/upgrade-to-single-service-apiml-deployment",
       ],
     },
     {
@@ -433,7 +422,6 @@ module.exports = {
             "user-guide/cli-uninstall",
           ],
         },
-
         {
           type: "category",
           label: "Zowe Explorer installation",
@@ -478,6 +466,25 @@ module.exports = {
       ],
     },
   ],
+ "upgrade": [
+  {
+    type: "category",
+    label: "Upgrading Zowe",
+    collapsed: false,
+    link: {
+      type: "doc",
+      id: "upgrade/upgrading-zowe", // This attaches the doc directly to the category label
+    },
+    items: [
+      "upgrade/upgrade-zowe-v3",
+      "upgrade/upgrade-zowe-v2",
+      "upgrade/upgrade-zowe-no-downtime",
+      "upgrade/upgrade-to-single-service-apiml-deployment",
+      "upgrade/migrate-from-convenience-build-to-pswi-smpe",
+      "upgrade/downgrade-to-a-previous-zowe-version",
+    ]
+  }
+],
   "use": [
     "user-guide/zowe-getting-started-tutorial",
     {
@@ -868,7 +875,7 @@ module.exports = {
         {
           type: "category",
           label: "Troubleshooting Zowe API Mediation Layer",
-          link: { type: "doc", id: "troubleshoot/troubleshoot-apiml", },
+          link: { type: "doc", id: "troubleshoot/troubleshoot-apiml" },
           items: [
             "troubleshoot/troubleshoot-apiml-error-codes",
             "troubleshoot/known-issues-with-apiml",
