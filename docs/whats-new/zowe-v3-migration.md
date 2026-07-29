@@ -31,10 +31,10 @@ If you onboarded services that expect these encoded characters, you will encount
 
   Because strict validation is now **enabled** by default, requests with encoded characters that were previously accepted will now be rejected.
 
-  **Restoring pre-v3.6 behavior:**
+  **Restoring pre-v3.6 behavior:**  
   Previously, you set a property to `true` to allow these characters. Now, if your southbound services require them, you must explicitly set the `enableStrictUrlValidation` property to `false` to bypass the block and restore the older behavior.
 
-  **Exceptions for Gateway-internal endpoints:**
+  **Exceptions for Gateway-internal endpoints:**  
   Regardless of how you configure the `enableStrictUrlValidation` property, gateway-internal endpoints (such as `/gateway`, `/application`, `/images`, and `/v3/api-docs`) will always enforce strict validation.
   :::
 
