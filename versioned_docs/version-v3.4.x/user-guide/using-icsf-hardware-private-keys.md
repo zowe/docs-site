@@ -81,4 +81,5 @@ To use ICSF Keyrings, update the `zowe.certificate` section in your `zowe.yaml` 
 
 ## Troubleshooting
 
-For information about troubleshooting ICSF keyring configuration, see [Troubleshooting certificate configuration](../../docs/troubleshoot/troubleshoot-zos-certificate.md).
+For information about troubleshooting ICSF keyring configuration, see [Troubleshooting certificate configuration](../troubleshoot/troubleshoot-zos-certificate.md).
+

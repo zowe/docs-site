@@ -1,25 +1,27 @@
-# Migrating from Zowe V1 to Zowe V2
+# Upgrading from Zowe V1 to Zowe V2
 
-This doc guides you through migrating an existing Zowe server component from version 1 to version 2. 
+Follow the procedure in this article to upgrade an existing Zowe server component from version 1 to version 2. 
 
-To make Zowe server component compatible with Zowe version 2, you must update the following configurations.
+:::info Required roles: system administrator, system programmer
+:::
 
-- [Component manifest](#component-manifest)
-- [Lifecycle scripts](#lifecycle-scripts)
-- [Environment variables](#environment-variables)
-- [Packaging one component deliverable for both Zowe v1 and v2](#packaging-one-component-deliverable-for-both-zowe-v1-and-v2)
+:::tip
+After you have updated to the last supported v2 version of Zowe (v2.18.x), we recommend you upgrade to the latest version of Zowe for highest performance and available features. For more information, see [Upgrading from Zowe Vx to Zowe V3](./upgrade-zowe-v3.md).
+:::
+
+To make a Zowe server component compatible with Zowe version 2, update the following configurations:
 
 ## Component manifest
 
 In Zowe v2, the component must define a manifest file and package it into the extension's root directory. This manifest file is used by Zowe to understand how this component should be installed, configured, and started. For detailed information of this file, see [Server Component Manifest File Reference](../appendix/server-component-manifest.md).
 
 ## Lifecycle scripts
-
+ 
 In Zowe v2, lifecycle scripts can be located anywhere in your component directory. However, you must explicitly define them in the `commands` section of the component manifest file.
 
 ## Environment variables
 
-Zowe v1 and v2 environment variables are not exact match. There are the following differences:
+Zowe v1 and v2 environment variables do no match directly. Note the following differences:
 
 - Some variables in Zowe v1 are removed in v2. 
 - Some are separated into two or more variables. 
@@ -55,7 +57,7 @@ Review the following table for a detailed mapping of Zowe v1 and v2 variables.
 | `KEY_ALIAS` | `zowe.certificate.keystore.alias` | `ZWE_zowe_certificate_keystore_alias` |                                                                                                                                                                                                                                                                                 |
 | `KEYSTORE_CERTIFICATE_AUTHORITY` | `zowe.certificate.pem.certificateAuthorities` | `ZWE_zowe_certificate_pem_certificateAuthorities` |                                                                                                                                                                                                                                                                                 |
 | `KEYSTORE_CERTIFICATE` | `zowe.certificate.pem.certificate` | `ZWE_zowe_certificate_pem_certificate` |                                                                                                                                                                                                                                                                                 |
-| `KEYSTORE_DIRECTORY` | `zowe.setup.certificate.pkcs12.directory` | `ZWE_zowe_setup_certificate_pkcs12_directory` | This is a setup variable in v2. It is optional and may not have a value if you manually prepare keystores by yourself.                                                                                                                                                          |
+| `KEYSTORE_DIRECTORY` | `zowe.setup.certificate.pkcs12.directory` | `ZWE_zowe_setup_certificate_pkcs12_directory` | This is a setup variable in v2. It is optional and might not have a value if you manually prepare keystores by yourself.                                                                                                                                                          |
 | `KEYSTORE_KEY` | `zowe.certificate.pem.key` | `ZWE_zowe_certificate_pem_key` |                                                                                                                                                                                                                                                                                 |
 | `KEYSTORE_PASSWORD` | `zowe.certificate.keystore.password` and `zowe.certificate.truststore.password` | `ZWE_zowe_certificate_keystore_password` and `ZWE_zowe_certificate_truststore_password` |                                                                                                                                                                                                                                                                                 |
 | `KEYSTORE_TYPE` | `zowe.certificate.keystore.type` and `zowe.certificate.truststore.type` | `ZWE_zowe_certificate_keystore_type` and `ZWE_zowe_certificate_truststore_type` |                                                                                                                                                                                                                                                                                 |
@@ -106,12 +108,14 @@ Review the following table for a detailed mapping of Zowe v1 and v2 variables.
 
 ## Packaging one component deliverable for both Zowe v1 and v2
 
-It is recommended that you create a dedicated package of extensions for Zowe v2, which is the most straight-forward way to address all of the breaking changes introduced in v2. We understand that this method presents the challenge of maintaining two sets of packages. If you prefer not to maintain two sets of packages, it's still possible to maintain one version of an extension which works for both Zowe v1 and v2. However, the lifecycle code will be complicated and in this case, comprehensive testing should be performed. 
+Creating a dedicated package for Zowe v2 is recommended as it is the most straightforward way to handle breaking changes. While maintaining a single extension package compatible with both v1 and v2 is possible, it adds complexity to the lifecycle code and requires thorough testing. 
+
+:::note
+While maintaining a single package avoids managing two separate codebases, it increases the complexity of your lifecycle scripts and requires comprehensive cross-version testing.
+:::
 
 :::caution
-
-The Zowe v2 App Framework desktop is upgraded from Angular version 6 to angular version 12 for support and security -  websites have a "1 version of a library" limitation. This means that plug-ins dependent upon Angular must be coded for either v6 or v12 [not both] thus the single version approach is not applicable.
-
+The Zowe v2 App Framework desktop is upgraded from Angular version 6 to Angular version 12 for support and security.  Websites have a "1 version of a library" limitation. As such, plug-ins which are dependent upon Angular must be coded for either v6 or v12 (not both). In such cases, the single version approach is not applicable.
 :::
 
 If the lifecycle scripts are the main concern, the following steps outline requirements and recommendations for the single version approach:
@@ -120,4 +124,4 @@ If the lifecycle scripts are the main concern, the following steps outline requi
 - Revisit all environment variables used in the lifecycle scripts and apply fallback variables. For example, if you use `$ROOT_DIR` in Zowe v1, this should be changed to `${ZWE_zowe_runtimeDirectory:-${ROOT_DIR}}` to make it compatible with both versions. Other variables like `$EXPLORER_HOST` should be changed to `${ZWE_haInstance_hostname:-${EXPLORER_HOST}}` or `${ZWE_externalDomains_0:-${EXPLORER_HOST}}` based on purpose.
 - In Zowe v2, we recommend you to define extension configurations in the manifest.yaml `configs` section and use `${ZWE_configs_*}` variables to access them. This feature does not exist in Zowe v1. So if you use `${ZWE_configs_*}` variables, it should fall back to the matching environment variable used in v1.
 - In Zowe v2, we recommend you to define a `commands.install` lifecycle script to handle extension installation. This lifecycle script will be executed by `zwe components install`. In v1, this also exists if you use the `zowe-install-components.sh` utility to install a Zowe extension. So if you want one extension package to work for both Zowe v1 and v2, this install lifecycle script should also be compatible with both v1 and v2. <!--Or consider not using `zowe-install-components.sh` with Zowe v1.-->
-- A new v2 variable `${ZWE_VERSION}` may help you determine the Zowe version number. This variable does not exist in Zowe v1. By knowing the Zowe version, the lifecycle scripts can implement logic to source v1 or v2 dedicated scripts to avoid handling fallbacks in the same script. This could help avoid complicated compatibility version checks, and it could be easier in the future if you decide to drop Zowe v1.
+- A new v2 variable `${ZWE_VERSION}` might help you determine the Zowe version number. This variable does not exist in Zowe v1. By knowing the Zowe version, the lifecycle scripts can implement logic to source v1 or v2 dedicated scripts to avoid handling fallbacks in the same script. This could help avoid complicated compatibility version checks, and it could be easier in the future if you decide to drop Zowe v1.
