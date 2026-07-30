@@ -1,9 +1,9 @@
 # Sharing an installation of ZRS
 
-:::info Required role: system administrator
+:::info Required roles: system administrator, system programmer
 :::
 
-If you are a systems administrator managing a team using ZRS, deploy a shared installation of ZRS to save disk space and manage user permissions.
+If you are a system administrator managing a team using ZRS, deploy a shared installation of ZRS to save disk space and manage user permissions.
 
 ## Deploying a shared installation
 
@@ -50,7 +50,7 @@ To update `zowex`, repeat the steps in [Deploying a shared installation](#deploy
 
 ## Setting up team access to a shared installation
 
-If you are a systems administrator maintaining a shared installation of ZRS, each user on your team must add `zowex` to their `$PATH` following the steps in [Adding ZRS to your $PATH](../getting-started/ze-configuring-zowe-remote-ssh.md#adding-zrs-to-your-path). Also ensure that the users have execute permission on the `zowex` binary.
+If you are a system administrator maintaining a shared installation of ZRS, each user on your team must add `zowex` to their `$PATH` following the steps in [Adding ZRS to your $PATH](../getting-started/ze-configuring-zowe-remote-ssh.md#adding-zrs-to-your-path). Also ensure that the users have execute permission on the `zowex` binary.
 
 If you do not want the users to be able to update `zowex` with a new version, set the file permissions on the directory so that the user does not have write access to the directory.
 
