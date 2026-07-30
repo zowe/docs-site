@@ -239,20 +239,24 @@ When `debug: true` is set, you may not see the debug output immediately in the S
 * **debug-control**  
 This property grants modification capabilities to actuator endpoints. Setting the `debug` property to `"debug-control"` enables the same verbose internal logging as the debug property, but also enables write operations (such as dynamically changing log levels). Use of this property requires SAF configuration to verify authorization before accepting any changes. For instructions on configuring `SAF CONTROL` access for this property, see [Configuring SAF resource checking](../user-guide/api-mediation/configuration-saf-resource-checking.md).
 
-Set `debug` to `"debug-control"` under the relevant component in `zowe.yaml`:
+Set `spring.profiles.active` to `"debug-control"` under the relevant component in `zowe.yaml`:
 
 ```yaml
 components:
   gateway:
-    debug: "debug-control"
+    spring:
+      profiles:
+        active: "debug-control"
 ```
 
-To enable debug control on the API ML single-service, set `debug` to `"debug-control"` under `apiml`:
+To enable debug control on the API ML single-service, set `spring.profiles.active` to `"debug-control"` under `apiml`:
 
 ```yaml
 components:
   apiml:
-    debug: "debug-control"
+    spring:
+      profiles:
+        active: "debug-control"
 ```
 
 * **sslDebug**  

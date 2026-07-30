@@ -89,10 +89,10 @@ PERMIT IRR.RUSERMAP CLASS(FACILITY) ID(ZWEADMIN) ACCESS(READ)
 
 ### Configuring APIML.DEBUG
 
-To permit modification access to Gateway actuator endpoints, you must configure the `ZOWE.APIML.DEBUG` resource for your respective ESM.
+To permit modification access to Gateway actuator endpoints, you must configure the `APIML.DEBUG` SAF resource in the `ZOWE` class for your respective ESM with the `CONTROL` access level.
 
 **IBM RACF example**  
-The following example defines and permits the `ZOWE.APIML.DEBUG` resource in IBM RACF:
+The following example defines and permits the `APIML.DEBUG` resource in IBM RACF:
 
 ```
 RDEFINE ZOWE APIML.DEBUG UACC(NONE)
@@ -111,7 +111,7 @@ F ACF2,REBUILD(ZOW)
 ```
 
 **Top Secret example**
-The following example defines and permits the `ZOWE.APIML.DEBUG` resource in TSS:
+The following example defines and permits the `APIML.DEBUG` resource in TSS:
 
 ```
 TSS PERMIT(ZWEADMIN) ZOWE(APIML.DEBUG) ACCESS(CONTROL)
