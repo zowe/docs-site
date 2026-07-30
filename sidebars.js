@@ -26,6 +26,7 @@ module.exports = {
       className: "ToCheadercolor",
       collapsed: true,
       items: [  
+        "whats-new/release-notes/v2_18_6",          
         "whats-new/release-notes/v2_18_5",  
         "whats-new/release-notes/v2_18_4",  
         "whats-new/release-notes/v2_18_3",   
@@ -933,7 +934,6 @@ module.exports = {
     type: "category",
     label: "Troubleshooting z/OS Services",
     collapsed: false,
-    link: { type: "doc", id: "troubleshoot/troubleshooting" },
     items: [
       "troubleshoot/zOS_services/Unable-to-generate-unique-CeaTso-APPTAG",
           ],
