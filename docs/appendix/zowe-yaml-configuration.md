@@ -524,6 +524,10 @@ These configurations can be used under the `components.gateway` section:
 
 - **port**  
  Specifies the port which the Gateway should start on. This value must be a valid port number.
+- **components.discovery.spring.profiles.active**  
+  Specifies the active Spring profiles for the Discovery component, which controls the enablement of debug mode.
+    * Set to `debug` to enable debug mode with **read-only access** to actuator endpoints.
+    * Set to `"debug-control"` to enable debug mode with **modify-with-SAF access**, which allows you to dynamically alter configurations (such as changing log levels). Proper SAF authorization is required.
 - **apiml.connectionTimeout**  
   Specifies the value in milliseconds which corresponds to the period in which API ML should establish a single, non-managed connection with the service. If omitted, the default value specified in the API ML Gateway service configuration is used.
 - **apiml.connection.idleConnectionTimeoutSeconds**  
@@ -616,10 +620,10 @@ These configurations can be applied to the `components.discovery` section:
 
 - **port**  
  Specifies the port which discovery is to be started on. This value may be a valid port number or an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
-- **debug**  
- Specifies the enablement of debug mode for the Discovery Service.  
-  * Set to `true` to enable debug mode with read-only access to actuator endpoints. 
-  * Set to `"debug-control"` to enable debug mode with modify-with-SAF access, which allows you to dynamically alter configurations (such as changing log levels). Proper SAF authorization is required.
+- **components.discovery.spring.profiles.active**  
+  Specifies the active Spring profiles for the Discovery component, which controls the enablement of debug mode.
+    * Set to `debug` to enable debug mode with **read-only access** to actuator endpoints.
+    * Set to `"debug-control"` to enable debug mode with **modify-with-SAF access**, which allows you to dynamically alter configurations (such as changing log levels). Proper SAF authorization is required.
 - **apiml.health.protected**  
   Specifies if the health check endpoint is accessible with or without authentication.
 - **apiml.security.ssl.verifySslCertificatesOfServices**  
@@ -642,10 +646,10 @@ The following configurations can be used under the `components.api-catalog` sect
 
 - **port**  
  Specifies the port which API Catalog is to be started on.
-- **debug**  
- Specifies the enablement of debug mode for the API Catalog. This value is equivalent to the `APIML_DEBUG_MODE_ENABLED` variable but with a higher granular level.
-   * Set to `true` to enable debug mode with read-only access to actuator endpoints. 
-   * Set to `"debug-control"` to enable debug mode with modify-with-SAF access, which allows you to dynamically alter configurations (such as changing log levels). Proper SAF authorization is required.
+- **components.catalog.spring.profiles.active**  
+  Specifies the active Spring profiles for the API Catalog component, which controls the enablement of debug mode.
+    * Set to `debug` to enable debug mode with **read-only access** to actuator endpoints.
+    * Set to `"debug-control"` to enable debug mode with **modify-with-SAF access**, which allows you to dynamically alter configurations (such as changing log levels). Proper SAF authorization is required.
 - **apiml.health.protected**  
   Specifies if the health check endpoint is accessible with or without authentication. The default value is `true`.
 - **apiml.security.authorization.provider**  
