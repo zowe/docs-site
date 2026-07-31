@@ -30,7 +30,7 @@ If you are a system administrator managing a team using ZRS, deploy a shared ins
 
 4. Extract the PAX file. Create or navigate to the directory (for example, `/your/remote/path`) on the mainframe where you want to extract the file, then issue the command. 
 
-    To connect to z/OS Unix over SSH:
+    To extract the PAX file:
 
     ```
     pax -rzf /u/userid/zowe-server-X.Y.Z.pax.Z
