@@ -96,9 +96,9 @@ You can change the log level of a particular code component of the API ML intern
 
 **Follow these steps:**
 
-1. Enable API ML Debug Mode as described in [Enable API ML Debug Mode](#enabling-api-ml-debug-modes).
+1. Enable API ML Debug Mode as described in [Configuring standard `debug` mode](#configuring-standard-debug-mode).
 This activates the `/application/loggers` endpoints in each API ML internal service (Gateway, Discovery service, and Catalog).
-2. List the available loggers of a service by issuing the **GET** request for the given service URL. Use the direct service URL when accessing a specific API ML component, or the Gateway-routed URL when accessing through the API Gateway:
+1. List the available loggers of a service by issuing the **GET** request for the given service URL. Use the direct service URL when accessing a specific API ML component, or the Gateway-routed URL when accessing through the API Gateway:
 
     ```
     GET scheme://hostname:port/application/loggers
