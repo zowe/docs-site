@@ -30,7 +30,7 @@ API ML provides two levels of debug access. Depending on your configuration, you
 
 * **Configuring `debug-control` for dynamic configuration control** (`components.gateway.spring.profiles.active: "debug-control"`)
 
-  * Grant modification access to actuator endpoints to dynamically alter configurations (requires modify-with-SAF access)
+  * Grant modification access to actuator endpoints to dynamically alter configurations 
   * Enable changing log levels for individual code components dynamically
   
 When on z/OS, API ML log messages are written to the STC job log.
@@ -65,9 +65,9 @@ components:
 
 ### Configuring `debug-control` for dynamic configuration control
 
-The API ML Gateway property `components.gateway.spring.profiles.active` can be set to `"debug-control"` to enable debug mode with modify-with-SAF access, which allows you to dynamically alter configurations (such as changing log levels) via actuator endpoints.
+For dynamic control over Gateway actuator endpoints, specifically modifying log levels or creating, updating, and deleting API routes at runtime, set the property `components.gateway.spring.profiles.active` to `"debug-control"`. This enables debug mode with modification access via actuator endpoints, which is protected by SAF resource checks.
 
-:::note
+:::caution Important:
 Proper SAF authorization (`APIML.DEBUG` in the `ZOWE` class) is required to use this debug feature. For more information, see [Configuring APIML.DEBUG](../user-guide/api-mediation/configuration-saf-resource-checking.md#configuring-apimldebug).
 :::
 
@@ -96,9 +96,9 @@ You can change the log level of a particular code component of the API ML intern
 
 **Follow these steps:**
 
-1. Enable API ML Debug Mode as described in [Configuring standard `debug` mode](#configuring-standard-debug-mode).
+1. Enable `debug-control` as described in the section [Configuring `debug-control` for dynamic configuration control](#configuring-debug-control-for-dynamic-configuration-control).
 This activates the `/application/loggers` endpoints in each API ML internal service (Gateway, Discovery service, and Catalog).
-1. List the available loggers of a service by issuing the **GET** request for the given service URL. Use the direct service URL when accessing a specific API ML component, or the Gateway-routed URL when accessing through the API Gateway:
+2. List the available loggers of a service by issuing the **GET** request for the given service URL. Use the direct service URL when accessing a specific API ML component, or the Gateway-routed URL when accessing through the API Gateway:
 
     ```
     GET scheme://hostname:port/application/loggers
