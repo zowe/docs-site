@@ -22,16 +22,16 @@ For production environments, certificates are required. Ensure that certificates
 
 API ML provides two levels of debug access. Depending on your configuration, you can activate the following functions:
 
-- [Troubleshooting Zowe API Mediation Layer](#troubleshooting-zowe-api-mediation-layer)
-  - [Install API ML without Certificate Setup](#install-api-ml-without-certificate-setup)
-  - [Enabling API ML Debug Modes](#enabling-api-ml-debug-modes)
-    - [Configuring standard `debug` mode](#configuring-standard-debug-mode)
-    - [Configuring `debug-control` for dynamic configuration control](#configuring-debug-control-for-dynamic-configuration-control)
-  - [Change the Log Level of Individual Code Components](#change-the-log-level-of-individual-code-components)
-  - [Gather atypical debug information](#gather-atypical-debug-information)
-  - [Services that are not running appear to be running](#services-that-are-not-running-appear-to-be-running)
-  - [Debug and Fix Common Problems with SSL/TLS Setup](#debug-and-fix-common-problems-with-ssltls-setup)
-  - [SDSF Job search fails](#sdsf-job-search-fails)
+* **Configuring standard `debug` mode** (`components.<component>.debug: true`)
+
+  * Display additional debug messages for API ML
+  * Gather atypical debug information
+  * Enable read-only access to diagnostic actuator endpoints
+
+* **Configuring `debug-control` for dynamic configuration control** (`components.gateway.spring.profiles.active: "debug-control"`)
+
+  * Grant modification access to actuator endpoints to dynamically alter configurations (requires modify-with-SAF access)
+  * Enable changing log levels for individual code components dynamically
   
 When on z/OS, API ML log messages are written to the STC job log.
 
