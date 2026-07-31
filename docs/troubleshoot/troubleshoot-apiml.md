@@ -6,7 +6,7 @@ As an API Mediation Layer user, you may encounter problems with how API ML funct
 To troubleshoot errors or warnings that can occur when configuring certificates, see the article [Troubleshooting certificate configuration](./troubleshoot-zos-certificate.md).
 :::
   
-## Install API ML without Certificate Setup
+## Installing API ML without Certificate Setup
 
 For testing purposes, it is not necessary to set up certificates when configuring the API Mediation Layer. You can configure Zowe without certificate setup and run Zowe with `zowe.verifyCertificates: DISABLED`.
 
@@ -90,7 +90,7 @@ Proper SAF authorization (`APIML.DEBUG` in the `ZOWE` class) is required to use 
 
 4. (Optional) Reproduce a bug that causes issues and review debug messages. If you are unable to resolve the issue, create an issue [here](https://github.com/zowe/api-layer/issues/).     
 
-## Change the Log Level of Individual Code Components
+## Changing the Log Level of Individual Code Components
 
 You can change the log level of a particular code component of the API ML internal service at run time.
 
@@ -237,7 +237,7 @@ http GET https://<gateway-hostname>:7554/application/loggers | grep -i "zowe"
     Log level changes made via the `/application/loggers` endpoint apply only for the current session. They are **not** persisted across restarts. To make permanent changes, set `components.<component>.debug: true` or configure logging in the component's `application.yml`.
     :::
 
-## Gather atypical debug information
+## Gathering atypical debug information
 
 Use the following configuration to set either verbose internal logging for key system packages, or enable detailed SSL/TLS tracing to analyze encrypted traffic layers.
 
@@ -307,7 +307,7 @@ The `sslDebug` property can also be enabled for other API ML components.
 :::
 
 
-## Services that are not running appear to be running
+## Addressing Services that are not running but appear to be running
 
 Services that are not running appear to be running. The following message is displayed in the Discovery service:
 
@@ -355,7 +355,7 @@ Change the frequency of the Discovery service from entering self preservation mo
    
     This threshold limit causes the Discovery service to enter self preservation mode when less than 30 percent of services are not responding.
    
-## Debug and Fix Common Problems with SSL/TLS Setup
+## Debugging and Fixing Common Problems with SSL/TLS Setup
 
 Review tips described in the blog post [Troubleshooting SSL/TLS setup with Zowe Certificate Analyzer](https://medium.com/zowe/troubleshooting-ssl-tls-setup-with-zowe-certificate-analyser-31aeec9e1144) to find out how you can use the Zowe Certificate Analyzer to address the following common issues with SSL/TLS setup:
 
@@ -366,7 +366,7 @@ Review tips described in the blog post [Troubleshooting SSL/TLS setup with Zowe 
 * How to enable mutual authentication using a client certificate
 * How to add a trusted certificate to a SAF Key ring
 
-## SDSF Job search fails
+## Addressing SDSF Job search fails
 
 Search for jobs using SDSF failed for prefix {} and owner {}: exc.sdsf_invocation_failed 8 (Issue does not impact ZD&T boxes)
 
