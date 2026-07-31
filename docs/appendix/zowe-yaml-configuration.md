@@ -513,6 +513,10 @@ Specifies if the component should be started in this Zowe instance, thereby prov
  Allows for customization for a component to use a different certificate from default values. This section follows the same format defined in [YAML configurations - certificate](#yaml-configurations---certificate). If this parameter is not customized, the component uses certificates defined in `zowe.certificate`.
 - **components._component_.launcher**  
  Specifies if a specific component has a launcher section which overrides the overall Zowe Launcher default defined in `zowe.launcher`.
+- **components._component_.spring.profiles.active**  
+ Specifies the active Spring profiles for the component, which controls the enablement of debug mode.  
+   * Set to `debug` to enable debug mode with read-only access to actuator endpoints.
+   * Set to `"debug-control"` to enable debug mode with modify-with-SAF access, which allows you to dynamically alter configurations (such as changing log levels). Proper SAF authorization is required.
 
 #### Configure component gateway
 
@@ -520,10 +524,6 @@ These configurations can be used under the `components.gateway` section:
 
 - **port**  
  Specifies the port which the Gateway should start on. This value must be a valid port number.
-- **debug**  
- Specifies the enablement of debug mode for the Gateway.
-  * Set to `true` to enable debug mode with read-only access to actuator endpoints.
-  * Set to `"debug-control"` to enable debug mode with modify-with-SAF access, which allows you to dynamically alter configurations (such as changing log levels). Proper SAF authorization is required.
 - **apiml.connectionTimeout**  
   Specifies the value in milliseconds which corresponds to the period in which API ML should establish a single, non-managed connection with the service. If omitted, the default value specified in the API ML Gateway service configuration is used.
 - **apiml.connection.idleConnectionTimeoutSeconds**  

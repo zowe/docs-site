@@ -38,27 +38,33 @@ its performance and create large log files that consume a large volume of disk s
 
 1. Open the file `zowe.yaml`.
 
-2. Each API ML component has its own `components.<component>.debug` parameter. Note that there is no single setting that enables debug mode for all components at once. For **each** component you want to debug, set the parameter based on your troubleshooting requirements:
-   * For **read-only access** to actuator endpoints, set `debug` to `true`.
-   * For **modify-with-SAF access**, which allows you to dynamically alter configurations (such as changing log levels), set `debug` to `"debug-control"`. Note that proper SAF authorization is required.
+2. Each API ML component has its own `components.<component>.spring.profiles.active` parameter. Note that there is no single setting that enables debug mode for all components at once. For each component you want to debug, set the parameter based on your troubleshooting requirements:
+  * For **read-only access** to actuator endpoints, set the value to `debug`.
+  * For **modify-with-SAF access**, which allows you to dynamically alter configurations (such as changing log levels), set the value to `"debug-control"`. Note that proper SAF authorization is required.
 
    **Example yaml to enable debug with modify-with-SAF access for all three core services:** 
-   ```yaml
-   components:
-     gateway:
-       debug: "debug-control"
-     discovery:
-       debug: "debug-control"
-     catalog:
-       debug: "debug-control"
-   ```
+  ```yaml
+  components:
+    gateway:
+      spring:
+        profiles:
+          active: "debug-control"
+    discovery:
+      spring:
+        profiles:
+          active: "debug-control"
+    catalog:
+      spring:
+        profiles:
+          active: "debug-control"
+  ```
    By default, debug mode is disabled, and the `components.*.debug` is set to `false`.
    
-3. Restart Zowe&trade;.
+1. Restart Zowe.
 
    You enabled debug mode for the configured API ML components.
 
-4. (Optional) Reproduce a bug that causes issues and review debug messages. If you are unable to resolve the issue, create an issue [here](https://github.com/zowe/api-layer/issues/).     
+2. (Optional) Reproduce a bug that causes issues and review debug messages. If you are unable to resolve the issue, create an issue [here](https://github.com/zowe/api-layer/issues/).     
 
 ## Change the Log Level of Individual Code Components
 
