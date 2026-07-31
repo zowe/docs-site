@@ -266,8 +266,8 @@ For more information, see [Spring Boot Profiles](https://docs.spring.io/spring-b
 When `debug: true` is set, you may not see the debug output immediately in the STC job log on z/OS or in the container logs. Check the component's application log file (for example, `$WORKSPACE_DIR/.logs/gateway/`) for the detailed debug messages. On z/OS, the debug output is written to the job log of the started task.
 :::
 
-* **debug-control**  
-This property grants modification capabilities to actuator endpoints. Setting the property `spring.profiles.active` to `"debug-control"` enables the same verbose internal logging as the debug property, but also enables write operations (such as dynamically changing log levels). Note that `spring.profiles.active` accepts a comma-separated list of profiles. If you already have active profiles defined, append `debug-control` to your existing list (for example, `"existing-profile,debug-control"`). Use of this property requires SAF configuration to verify authorization before accepting any changes. For instructions on configuring `SAF CONTROL` access for this property, see [Configuring SAF resource checking](../user-guide/api-mediation/configuration-saf-resource-checking.md).
+* **spring.profiles.active**  
+This property grants modification capabilities to actuator endpoints. Setting this property to `"debug-control"` enables the same verbose internal logging as the debug property, but also enables write operations (such as dynamically changing log levels). Note that `spring.profiles.active` accepts a comma-separated list of profiles. If you already have active profiles defined, append `debug-control` to your existing list (for example, `"existing-profile,debug-control"`). Use of this property requires SAF configuration to verify authorization before accepting any changes. For instructions on configuring `SAF CONTROL` access for this property, see [Configuring SAF resource checking](../user-guide/api-mediation/configuration-saf-resource-checking.md).
 
 Set `spring.profiles.active` to `"debug-control"` under the relevant component in `zowe.yaml`:
 
