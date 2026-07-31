@@ -47,7 +47,7 @@ To configure debug settings, apply the `debug` property to the generic path `com
 
 :::note Notes:
 * Standard debug mode provides read-only access to actuator endpoints.
-* By default, debug mode is disabled, and the `components.*.debug` is set to `false`
+* By default, debug mode is disabled, and the `components.*.debug` property is set to `false`
 :::
 
 Set the value to `true` for **each** component you want to debug. Note that there is no single setting that enables debug mode for all components at once.
