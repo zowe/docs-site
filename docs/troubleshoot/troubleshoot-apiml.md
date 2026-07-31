@@ -22,16 +22,16 @@ For production environments, certificates are required. Ensure that certificates
 
 API ML provides two levels of debug access. Depending on your configuration, you can activate the following functions:
 
-* **Standard debug mode** (`components.<component>.debug: true`)
-
-  * Display additional debug messages for API ML
-  * Gather atypical debug information
-  * Enable read-only access to diagnostic actuator endpoints
-
-* **Dynamic configuration control** (`components.gateway.spring.profiles.active: "debug-control"`)
-
-  * Grant modification access to actuator endpoints to dynamically alter configurations (requires modify-with-SAF access)
-  * Enable changing log levels for individual code components dynamically
+- [Troubleshooting Zowe API Mediation Layer](#troubleshooting-zowe-api-mediation-layer)
+  - [Install API ML without Certificate Setup](#install-api-ml-without-certificate-setup)
+  - [Enabling API ML Debug Modes](#enabling-api-ml-debug-modes)
+    - [Configuring standard `debug` mode](#configuring-standard-debug-mode)
+    - [Configuring `debug-control` for dynamic configuration control](#configuring-debug-control-for-dynamic-configuration-control)
+  - [Change the Log Level of Individual Code Components](#change-the-log-level-of-individual-code-components)
+  - [Gather atypical debug information](#gather-atypical-debug-information)
+  - [Services that are not running appear to be running](#services-that-are-not-running-appear-to-be-running)
+  - [Debug and Fix Common Problems with SSL/TLS Setup](#debug-and-fix-common-problems-with-ssltls-setup)
+  - [SDSF Job search fails](#sdsf-job-search-fails)
   
 When on z/OS, API ML log messages are written to the STC job log.
 
@@ -41,12 +41,13 @@ Disable debug mode when you are not troubleshooting. Running in debug mode while
 its performance and create large log files that consume a large volume of disk space.
 :::
 
-### Configuring standard debug mode 
+### Configuring standard `debug` mode 
 
 To configure debug settings, apply the `debug` property to the generic path `components.<component>`, replacing `<component>` with the specific API ML service (`gateway`, `discovery`, or `api-catalog`):
 
-:::note
-Standard debug mode provides read-only access to actuator endpoints.
+:::note Notes:
+* Standard debug mode provides read-only access to actuator endpoints.
+* By default, debug mode is disabled, and the `components.*.debug` is set to `false`
 :::
 
 Set the value to `true` for **each** component you want to debug. Note that there is no single setting that enables debug mode for all components at once.
@@ -62,7 +63,7 @@ components:
     debug: true
 ```
 
-### Configuring debug mode for dynamic configuration control
+### Configuring `debug-control` for dynamic configuration control
 
 The API ML Gateway property `components.gateway.spring.profiles.active` can be set to `"debug-control"` to enable debug mode with modify-with-SAF access, which allows you to dynamically alter configurations (such as changing log levels) via actuator endpoints.
 
@@ -82,7 +83,6 @@ Proper SAF authorization (`APIML.DEBUG` in the `ZOWE` class) is required to use 
             profiles:
               active: "debug-control"
     ```
-    By default, debug mode is disabled, and the `components.*.debug` is set to `false`.
    
 3. Restart Zowe.
 
