@@ -620,8 +620,6 @@ These configurations can be applied to the `components.discovery` section:
  Specifies the port which discovery is to be started on. This value may be a valid port number or an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
 - **debug.**  
 Specifies whether standard debug logging is enabled for the Discovery component. Set to `true` to enable verbose internal logging without enabling modification capabilities.
-- **spring.profiles.active**  
-Specifies the active Spring profiles for the Discovery component. Set to `"debug-control"` to enable debug mode with **modify-with-SAF access**, which allows you to dynamically alter configurations (such as changing log levels). Proper SAF authorization (the `APIML.DEBUG` resource) is required.
 - **apiml.health.protected**  
   Specifies if the health check endpoint is accessible with or without authentication.
 - **apiml.security.ssl.verifySslCertificatesOfServices**  
@@ -646,8 +644,6 @@ The following configurations can be used under the `components.api-catalog` sect
  Specifies the port which API Catalog is to be started on.
 - **debug**  
 Specifies whether standard debug logging is enabled for the API Catalog component. Set to `true` to enable verbose internal logging without enabling modification capabilities.
-- **spring.profiles.active**  
-Specifies the active Spring profiles for the API Catalog component. Set to `"debug-control"` to enable debug mode with **modify-with-SAF access**, which allows you to dynamically alter configurations (such as changing log levels). Proper SAF authorization (the `APIML.DEBUG` resource) is required.
 - **apiml.health.protected**  
   Specifies if the health check endpoint is accessible with or without authentication. The default value is `true`.
 - **apiml.security.authorization.provider**  
