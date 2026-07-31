@@ -26,7 +26,7 @@ Use debug mode to activate the following functions:
 - Enable changing log level for individual code components
 - Gather atypical debug information
 - Enable read-only access to diagnostic actuator endpoints
-- Grant modification access to actuator endpoints to dynamically alter configurations (requires SAF authorization)
+- Grant modification access to actuator endpoints to dynamically alter configurations
   
 When on z/OS, API ML log messages are written to the STC job log.
 
@@ -38,7 +38,7 @@ its performance and create large log files that consume a large volume of disk s
 
 ### Configuring debug mode for read-only access to actuator endpoints
 
-To configure debug settings, apply the `debug` property to the generic path `components.<component>`, replacing `<component>` with the specific API ML service (`gateway`, `discovery`, or `catalog`):
+To configure debug settings, apply the `debug` property to the generic path `components.<component>`, replacing `<component>` with the specific API ML service (`gateway`, `discovery`, or `api-catalog`):
 
 Set the value to `true` for **each** component you want to debug. Note that there is no single setting that enables debug mode for all components at once.
 
@@ -49,7 +49,7 @@ components:
     debug: true
   discovery:
     debug: true
-  catalog:
+  api-catalog:
     debug: true
 ```
 
@@ -78,7 +78,7 @@ Proper SAF authorization (`APIML.DEBUG`) is required to use this debug feature. 
           spring:
             profiles:
               active: "debug-control"
-        catalog:
+        api-catalog:
           spring:
             profiles:
               active: "debug-control"
@@ -112,7 +112,7 @@ This activates the `/application/loggers` endpoints in each API ML internal serv
 
     - **port**  
     Specifies the TCP port where API ML service listens on. The port is defined by the configuration parameter `components.gateway.port` for the Gateway,
-    `components.discovery.port` for the Discovery service (by default, set to gateway port + 1), and `components.catalog.port` for the Catalog
+    `components.discovery.port` for the Discovery service (by default, set to gateway port + 1), and `components.api-catalog.port` for the Catalog
     (by default, set to gateway port + 2).
 
     :::note Deprecated
@@ -123,7 +123,7 @@ This activates the `/application/loggers` endpoints in each API ML internal serv
     | :--- | :--- |
     | `MFS_GW_PORT` | `components.gateway.port` |
     | `MFS_DS_PORT` | `components.discovery.port` |
-    | `MFS_AC_PORT` | `components.catalog.port` |
+    | `MFS_AC_PORT` | `components.api-catalog.port` |
 
     :::
 
