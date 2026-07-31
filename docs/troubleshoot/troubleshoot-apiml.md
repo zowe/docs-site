@@ -18,15 +18,20 @@ For production environments, certificates are required. Ensure that certificates
 
 :::
 
-## Enable API ML Debug Mode
+## Enabling API ML Debug Modes
 
-Use debug mode to activate the following functions:
+API ML provides two levels of debug access. Depending on your configuration, you can activate the following functions:
 
-- Display additional debug messages for API ML
-- Enable changing log level for individual code components
-- Gather atypical debug information
-- Enable read-only access to diagnostic actuator endpoints
-- Grant modification access to actuator endpoints to dynamically alter configurations
+* **Standard debug mode** (`components.<component>.debug: true`)
+
+  * Display additional debug messages for API ML
+  * Gather atypical debug information
+  * Enable read-only access to diagnostic actuator endpoints
+
+* **Dynamic configuration control** (`components.gateway.spring.profiles.active: "debug-control"`)
+
+  * Grant modification access to actuator endpoints to dynamically alter configurations (requires modify-with-SAF access)
+  * Enable changing log levels for individual code components dynamically
   
 When on z/OS, API ML log messages are written to the STC job log.
 
@@ -36,9 +41,13 @@ Disable debug mode when you are not troubleshooting. Running in debug mode while
 its performance and create large log files that consume a large volume of disk space.
 :::
 
-### Configuring debug mode for read-only access to actuator endpoints
+### Configuring standard debug mode 
 
 To configure debug settings, apply the `debug` property to the generic path `components.<component>`, replacing `<component>` with the specific API ML service (`gateway`, `discovery`, or `api-catalog`):
+
+:::note
+Standard debug mode provides read-only access to actuator endpoints.
+:::
 
 Set the value to `true` for **each** component you want to debug. Note that there is no single setting that enables debug mode for all components at once.
 
@@ -55,30 +64,20 @@ components:
 
 ### Configuring debug mode for dynamic configuration control
 
-Each API ML component has its own `components.<component>.spring.profiles.active` parameter. Set this parameter to `"debug-control"` to enable debug mode with **modify-with-SAF access**, which allows you to dynamically alter configurations (such as changing log levels) via actuator endpoints. 
-
-As with standard debug mode, there is no single setting that enables debug-control for all components at once. 
+The API ML Gateway property `components.gateway.spring.profiles.active` can be set to `"debug-control"` to enable debug mode with modify-with-SAF access, which allows you to dynamically alter configurations (such as changing log levels) via actuator endpoints.
 
 :::note
-Proper SAF authorization (`APIML.DEBUG`) is required to use this debug feature. For more information, see [Configuring APIML.DEBUG](../user-guide/api-mediation/configuration-saf-resource-checking.md#configuring-apimldebug).
+Proper SAF authorization (`APIML.DEBUG` in the `ZOWE` class) is required to use this debug feature. For more information, see [Configuring APIML.DEBUG](../user-guide/api-mediation/configuration-saf-resource-checking.md#configuring-apimldebug).
 :::
 
 1. Open the file `zowe.yaml`.
 
-2. Set the `spring.profiles.active` property to `"debug-control"` for each specific component you want to control.
+2. Set the `spring.profiles.active` property to `"debug-control"` for the Gateway component.
 
-    **Example yaml to enable debug with modify-with-SAF access for all three core services:** 
+    **Example:** 
     ```yaml
       components:
         gateway:
-          spring:
-            profiles:
-              active: "debug-control"
-        discovery:
-          spring:
-            profiles:
-              active: "debug-control"
-        api-catalog:
           spring:
             profiles:
               active: "debug-control"
@@ -87,7 +86,7 @@ Proper SAF authorization (`APIML.DEBUG`) is required to use this debug feature. 
    
 3. Restart Zowe.
 
-   You enabled debug mode with dynamic configuration control for the configured API ML components.
+   You enabled debug mode with dynamic configuration control for the API ML Gateway.
 
 4. (Optional) Reproduce a bug that causes issues and review debug messages. If you are unable to resolve the issue, create an issue [here](https://github.com/zowe/api-layer/issues/).     
 
@@ -97,7 +96,7 @@ You can change the log level of a particular code component of the API ML intern
 
 **Follow these steps:**
 
-1. Enable API ML Debug Mode as described in [Enable API ML Debug Mode](#enable-api-ml-debug-mode).
+1. Enable API ML Debug Mode as described in [Enable API ML Debug Mode](#enabling-api-ml-debug-modes).
 This activates the `/application/loggers` endpoints in each API ML internal service (Gateway, Discovery service, and Catalog).
 2. List the available loggers of a service by issuing the **GET** request for the given service URL. Use the direct service URL when accessing a specific API ML component, or the Gateway-routed URL when accessing through the API Gateway:
 
@@ -275,16 +274,6 @@ Set `spring.profiles.active` to `"debug-control"` under the relevant component i
 ```yaml
 components:
   gateway:
-    spring:
-      profiles:
-        active: "debug-control"
-```
-
-To enable debug control on the API ML single-service, set `spring.profiles.active` to `"debug-control"` under `apiml`:
-
-```yaml
-components:
-  apiml:
     spring:
       profiles:
         active: "debug-control"
