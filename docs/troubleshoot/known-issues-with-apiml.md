@@ -223,7 +223,15 @@ Corruptions of this type can occur due to various reasons, such as:
 
 1. **Check Available Disk Space**:
 Verify that there is sufficient available space on the file system hosting `zowe.workspaceDirectory`. If the disk is full, free up space before proceeding.
-2. **Recreate the Persistent Store (Last Resort)**:
+2. **Remove the Index Directory:**  
+   If the persistent store appears corrupted, try removing only the index directory for the affected cache before clearing all persistent data:
+   * **Stop Zowe.**
+   * Delete the `/index` directory located at:
+     ```
+     <zowe.workspaceDirectory>/caching-service/<cache_name>/index
+     ```
+   * **Restart Zowe.**
+3. **Recreate the Persistent Store (Last Resort)**:
 If the persistent store is permanently corrupted and the service cannot recover automatically, perform the following steps to recreate the cache store:
    * Stop Zowe.
    * Remove the Infinispan persistence directory: Delete the contents or the folder located at:
