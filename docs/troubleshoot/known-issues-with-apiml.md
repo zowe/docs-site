@@ -201,3 +201,38 @@ Request a new certificate that contains a valid z/OSMF host name in the subject 
 
 Recreate the Zowe keystore by first deleting it and then recreating it. For more information, see [Scenario 2: Importing a file-based PKCS12 certificate](../user-guide/certificates-configuration-scenarios.md#scenario-2-use-a-file-based-pkcs12-keystore-and-import-a-certificate-generated-by-another-ca).  The Zowe keystore directory is the value of the `KEYSTORE_DIRECTORY` variable in the `zowe.yaml` file that is used to launch Zowe.
 
+### Caching Service fails to start with PersistenceException
+
+When running Zowe with Infinispan as the Caching Service storage backend, the Caching Service may fail to start and produce error code `ZWECS138E` or an error message similar to the following:
+
+```
+ZWECS138E The persistent store for cache '<cache_name>' is corrupted.
+org.infinispan.persistence.spi.PersistenceException: Found an invalid protobuf tag (1) having a field number smaller than 1
+```
+
+**Cause:**  
+
+Infinispan failed to load the persisted data for the specified cache because the persistent cache store has become corrupted.
+
+Corruptions of this type can occur due to various reasons, such as:
+* An unexpected or unclean shutdown of the Zowe instance.
+* Insufficient disk space on the target file system
+* Storage/IO errors during write operations.
+
+**Resolution:**
+
+1. **Check Available Disk Space**:
+Verify that there is sufficient available space on the file system hosting `zowe.workspaceDirectory`. If the disk is full, free up space before proceeding.
+2. **Recreate the Persistent Store (Last Resort)**:
+If the persistent store is permanently corrupted and the service cannot recover automatically, perform the following steps to recreate the cache store:
+   * Stop Zowe.
+   * Remove the Infinispan persistence directory: Delete the contents or the folder located at:
+   `<zowe.workspaceDirectory>/caching-service`
+   * Restart Zowe: The Caching Service will automatically recreate a fresh persistent store on startup.
+
+:::note
+Removing the persistence directory clears all data stored by Infinispan, including revoked Personal Access Tokens (PATs) and revoked Zowe JWT tokens.
+For Personal Access Tokens, security administrators must manually revoke the affected tokens again, either by user or by scope, using the appropriate API. For more information, see [Authenticating with a Personal Access Token](../user-guide/api-mediation/authenticating-with-personal-access-token.md)
+
+The impact on revoked Zowe JWT tokens is usually limited, since JWTs typically have a relatively short expiration time (for example, a few hours), after which they become invalid automatically.
+:::
