@@ -240,7 +240,9 @@ If the persistent store is permanently corrupted and the service cannot recover 
 
 :::note
 Removing the persistence directory clears all data stored by Infinispan, including revoked Personal Access Tokens (PATs) and revoked Zowe JWT tokens.
-For Personal Access Tokens, security administrators must manually revoke the affected tokens again, either by user or by scope, using the appropriate API. For more information, see [Authenticating with a Personal Access Token](../user-guide/api-mediation/authenticating-with-personal-access-token.md)
-
-The impact on revoked Zowe JWT tokens is usually limited, since JWTs typically have a relatively short expiration time (for example, a few hours), after which they become invalid automatically.
 :::
+
+:::note Impact on Revoked Tokens
+* **Personal Access Tokens (PATs):** Unlike short-lived tokens, PATs have a default lifespan of **90 days**. Because of this long validity period, deleting the cache store leaves previously revoked PATs active until their natural expiration. Security administrators **must manually revoke** affected PATs again, either by user or by scope, using the appropriate API. For more information, see [Authenticating with a Personal Access Token](../user-guide/api-mediation/authenticating-with-personal-access-token.md).
+* **Zowe JWT Tokens:** The impact on revoked JWT tokens is usually limited, as JWTs typically have a relatively short expiration timeframe (e.g., a few hours) after which they become invalid automatically.
+  :::
