@@ -117,7 +117,7 @@ The following example defines and permits the `APIML.DEBUG` resource in TSS:
 TSS PERMIT(ZWEADMIN) ZOWE(APIML.DEBUG) ACCESS(CONTROL)
 ```
 
-### Setting the endpoint provider to perform SAF resouce check
+### Setting the endpoint provider to perform SAF resource check
 
 To use the endpoint provider it is necessary to enable the endpoint property and customize the URL corresponding to the SAF resource authorization. By default, the ZSS API is configured and used.
 
