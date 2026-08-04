@@ -9,12 +9,6 @@ Two kinds of changes are covered:
 
 ## 1. Discovery Service now enforces an allowlist of domains for service registration
 
-<!-- | | |
-|---|---|
-| **Components affected** | `discovery`, `apiml` (all services that register with Eureka) |
-| **Type** | New, always-on enforcement |
-| **Related PRs** | [#4656](https://github.com/zowe/api-layer/pull/4656) and follow-ups [#4691](https://github.com/zowe/api-layer/pull/4691), [#4692](https://github.com/zowe/api-layer/pull/4692), [#4730](https://github.com/zowe/api-layer/pull/4730), [#4833](https://github.com/zowe/api-layer/pull/4833), [#4835](https://github.com/zowe/api-layer/pull/4835), [#4837](https://github.com/zowe/api-layer/pull/4837) | -->
-
 In Zowe versions up to 3.5 the Discovery Service accepted any service registration without validating the hostnames or URLs the service advertised. Discovery Service now validates, for **every** registering instance, its hostname, IP address, home page URL, health-check URL, status page URL, and any `apiml.*.swaggerUrl` / `documentationUrl` / `graphqlUrl` / `externalUrl` / `corsAllowedOrigins` metadata against an allowlist of domains. This check is unconditional — it runs for every registration, regardless of any other setting — and by default **rejects the entire registration** if any of those URLs point to a domain that isn't allowed.
 
 The allowlist can be customized via `zowe.network.allowedDomains` property. Items of this array should be enclosed in double quotes (`"`) to allow wildcards. If no wildcard is used, strict matching is assumed.
@@ -70,12 +64,17 @@ components:
 
 ### 4. Eureka discovery service credentials are now configurable
 
-At `Zowe_3.5.0`, the credentials used to authenticate against the Discovery Service's `/eureka` endpoint were fixed to the literal values `eureka` / `password` in the `apiml` and `discovery` components and were not configurable; the other API ML services sent no credentials at all. These are now sourced from `apiml.discovery.userid` / `apiml.discovery.password` on every API ML service. Their default depends on `zowe.verifyCertificates`:
+**Note:** This change only applies to not-recommended setups with `verifyCertificates: DISABLED`
 
-* If `zowe.verifyCertificates: DISABLED`, they still default to `eureka` / `password` when not explicitly set — this is also the credential pair automatically reused for the Caching Service authentication described in change 5, so deployments using `DISABLED` need no action for either change.
-* If `zowe.verifyCertificates` is `STRICT` (the default) or `NONSTRICT`, there is no default — the credentials are empty unless configured.
+The credentials used to authenticate against the Discovery Service's `/eureka/**` endpoints when certificate validation is disabled were fixed to the literal values `eureka` / `password`.
+These are now sourced from `apiml.discovery.userid` / `apiml.discovery.password` on every API ML service.
 
-**Required action:** If `zowe.verifyCertificates` is `STRICT` or `NONSTRICT` and your Discovery Service enforces Eureka basic authentication, set matching credentials on the Discovery Service and every service that registers with it:
+* If `zowe.verifyCertificates: DISABLED`, they still default to `eureka` / `password` when not explicitly set.
+* If `zowe.verifyCertificates` is `STRICT` (the default) or `NONSTRICT`, a valid client certificate issued by a Zowe-trusted CA is used.
+
+**Required action:** If `zowe.verifyCertificates` is `DISABLED` (not recommended), set matching credentials on the Discovery Service and every service that registers with it:
+
+**Example:**
 
 ```yaml
 components:
@@ -89,19 +88,20 @@ components:
       discovery:
         userid: eureka
         password: password
-  # repeat for caching-service, api-catalog, zaas (or apiml.apiml.discovery.* for the convenience bundle)
+  # repeat for caching-service, api-catalog, zaas
 ```
-
-No action is required if `zowe.verifyCertificates: DISABLED`.
 
 ### 5. Caching Service requires authentication when certificate validation is disabled
 
-At `Zowe_3.5.0`, when `apiml.service.ssl.verifySslCertificatesOfServices` was `false` (that is, `zowe.verifyCertificates: DISABLED`), the Caching Service's REST API allowed **any unauthenticated caller** (`permitAll()`). It now requires HTTP Basic authentication via `apiml.service.http.userId` / `apiml.service.http.password` in that mode; requests without valid matching credentials are rejected. When certificate validation is `STRICT` or `NONSTRICT`, the Caching Service still uses mutual-TLS/X.509 authentication and is unaffected.
+**Note:** This change only applies to not-recommended setups with `verifyCertificates: DISABLED`
 
-**Required action:** For deployments using Zowe's own `*-package` components, `apiml.service.http.userId`/`password` automatically fall back to the same `apiml.discovery.userid`/`password` described in change 4, so **no action is needed** if you rely on the defaults in `DISABLED` mode. Action is only needed if:
+The Caching Service's REST API allowed **any unauthenticated caller** (`permitAll()`) when certificate validation was disabled at Zowe level.
+It now requires HTTP Basic authentication via `apiml.service.http.userId` / `apiml.service.http.password` in that mode; requests without valid matching credentials are rejected. 
+When certificate validation is `STRICT` or `NONSTRICT`, the Caching Service still uses X.509 authentication and is unaffected.
+
+**Required action:** Action is only needed if:
 
 * You have a custom client calling the Caching Service's REST API directly (not through Gateway/ZAAS) — it must now send matching Basic Auth credentials.
-* You explicitly override `apiml.discovery.userid`/`password` or `apiml.service.http.userId`/`password` differently between the Caching Service and its callers, in which case they must be set to the same values everywhere:
 
 ```yaml
 components:
@@ -112,24 +112,3 @@ components:
           userId: eureka
           password: password
 ```
-
-### 6. Infinispan initial hosts are now auto-constructed for HA
-
-The Caching Service's `storage.infinispan.initialHosts` property previously defaulted to the hardcoded value `localhost[7600]`. In a high-availability (HA) deployment with more than one instance, this default never pointed at the other instances in the sysplex, which contributed to Infinispan clustering failures in HA on Java 21+.
-
-The default has been changed to an empty value. When `storage.infinispan.initialHosts` is not explicitly set, the Caching Service now automatically builds the initial hosts list from the `haInstances` entries defined in `zowe.yaml`, falling back to the local `apiml.service.hostname` only if no HA instances are configured.
-
-**Required action:**
-
-* If you never explicitly set `storage.infinispan.initialHosts`, no action is required — your deployment now gets the corrected, auto-constructed value instead of the previous, largely non-functional `localhost[7600]` default.
-* If you manually set `storage.infinispan.initialHosts` as a workaround for HA clustering issues, you can likely remove it and let it be auto-constructed:
-
-```yaml
-components:
-  caching-service:
-    storage:
-      infinispan:
-        initialHosts: # remove, or leave unset, to auto-construct from haInstances
-```
-
-Explicit values are still honored and take precedence over the auto-constructed list.
