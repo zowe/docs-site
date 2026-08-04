@@ -441,7 +441,14 @@ module.exports = {
                 "user-guide/ze-ftp-install-ze-ftp-ext",
               ],
             },
-            "getting-started/ze-configuring-zowe-remote-ssh",
+            {
+              type: "category",
+              label: "Configuring and deploying Zowe Remote SSH",
+              link: { type: "doc", id: "getting-started/ze-configuring-zowe-remote-ssh" },
+              items: [
+                "getting-started/ze-zrs-install-methods",
+              ],
+            },
             "user-guide/ze-profiles",
             "user-guide/ze-install-configuring-ze",
             "user-guide/ze-install-verify-your-installation",

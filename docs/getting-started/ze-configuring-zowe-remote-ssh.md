@@ -1,6 +1,9 @@
 # Configuring and deploying Zowe Remote SSH
 
-Use Zowe Remote SSH (ZRS) in Zowe Explorer to perform z/OS mainframe operations with minimal server-side configuration.
+:::info Required roles: system administrator, system programmer, security administrator
+:::
+
+Use Zowe Remote SSH in Zowe Explorer to perform z/OS mainframe operations with minimal server-side configuration.
 
 ## System requirements
 
