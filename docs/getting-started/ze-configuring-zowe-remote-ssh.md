@@ -4,7 +4,7 @@ Use Zowe Remote SSH (ZRS) in Zowe Explorer to perform z/OS mainframe operations 
 
 ## System requirements
 
-- 16 MB of free space for deploying ZRS on z/OS Unix
+- 20 MB of free space for deploying ZRS on z/OS Unix
 - z/OS OpenSSH set up and configured for the user
 - At minimum, user permissions for read, write, and execute (`700`) for deployment directory
 
