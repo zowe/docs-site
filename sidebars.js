@@ -574,6 +574,7 @@ module.exports = {
       label: "Zowe client-side components",
       collapsed: false,
       items: [
+          "getting-started/ways-to-connect-to-mainframe",        
         {
           type: "category",
           label: "Using Zowe CLI",
