@@ -139,7 +139,7 @@ Use an existing SSH configuration file to create a new `ssh` profile in your cli
 
 To create a new SSH profile in your client configuration:
 
-1. In the **Command Palette**, search for **Zowe Explorer: Connect to zowex server on host...**.
+1. In the **Command Palette**, search for **Zowe Explorer: Deploy SSH server on host and connect...**.
 
     If you have not yet configured a server path, you are prompted for a path to deploy the server. The path is saved in the `zowe.zowex.serverInstallPath` key in the VS Code `settings.json` file.
 2. Select a profile listed **below** the **Migrate From SSH Config** separator in the drop-down.
@@ -153,7 +153,7 @@ To create a new SSH profile in your client configuration:
 
 Use an existing SSH profile from a Zowe client configuration file to deploy Zowe Remote SSH:
 
-1. In the **Command Palette**, search for **Zowe Explorer: Connect to zowex server on host...**.
+1. In the **Command Palette**, search for **Zowe Explorer: Deploy SSH server on host and connect...**.
         
     If you have not yet configured a server path, you are prompted for a path to deploy the server. The path is saved in the `zowe.zowex.serverInstallPath` key in the VS Code `settings.json` file.
 2. Select a profile listed **above** the **Migrate From SSH Config** separator in the drop-down.
