@@ -18,7 +18,7 @@ You can authenticate only with basic authentication when using FTP.
 
 It is not recommended to use FTP unless you are using File Transfer Protocol Secure (FTPS), an FTP extension that uses Transport Layer Security (TLS) encryption to protect your data. Note that FTPS is different from SFTP (SSH File Transfer Protocol), which is a way to encrypt FTP traffic over SSH.
 
-To use FTP with Zowe CLI, see the [IBM z/OS FTP Plug-in for Zowe CLI](../user-guide/cli-ftpplugin.md) documentation. To use FTP with Zowe Explorer, see the [Zowe Explorer for IBM z/OS FTP](../user-guide/ze-ftp-using-ze-ftp-ext.md) documentation.
+To use FTP with Zowe CLI, see the [IBM z/OS FTP Plug-in for Zowe CLI](../user-guide/cli-ftpplugin.md) documentation. To use FTP with Zowe Explorer, see the [Zowe Explorer for IBM z/OS FTP](../user-guide/ze-ftp-using-ze-ftp-ext.md) documentation. To learn about FTPS, see the IBM documentation on [File Transfer Protocol](https://www.ibm.com/docs/en/zos/3.2.0?topic=reference-file-transfer-protocol).
 
 ### SSH
 
