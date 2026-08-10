@@ -6,9 +6,9 @@
 
 ## Determining your connection protocol
 
-There are several ways to connect to the mainframe, each offering its own advantages. Deciding which type of connection to use — FTP, SSH, or z/OSMF — ultimately depends on what works best with your mainframe environment. Consult your system administrator to determine the best path for you.
+There are several ways for Zowe client applications to connect to the mainframe, each offering its own advantages. Deciding which type of connection to use — FTP, Zowe Remote SSH, or z/OSMF — ultimately depends on what works best with your mainframe environment. Consult your system administrator to determine the best path for you.
 
-### FTP
+### z/OS FTP
 
 File Transfer Protocol (FTP) is a basic protocol that follows a standard set of rules to upload, download, or transfer data between your local computer and the mainframe. FTP sends data only over plain text in either ASCII or binary transfer modes, resulting in limitations that can expose sensitive information and restrict the type of data that can be transferred.
 
@@ -20,7 +20,7 @@ It is not recommended to use FTP unless you are using File Transfer Protocol Sec
 
 To use FTP with Zowe CLI, see the [IBM z/OS FTP Plug-in for Zowe CLI](../user-guide/cli-ftpplugin.md) documentation. To use FTP with Zowe Explorer, see the [Zowe Explorer for IBM z/OS FTP](../user-guide/ze-ftp-using-ze-ftp-ext.md) documentation. To learn about FTPS, see the IBM documentation on [File Transfer Protocol](https://www.ibm.com/docs/en/zos/3.2.0?topic=reference-file-transfer-protocol).
 
-### SSH
+### Zowe Remote SSH
 
 SSH (Secure Shell) is a cryptographic network protocol that offers a quick way to get started with Zowe client applications.
 
@@ -53,3 +53,23 @@ Starting in z/OS v3.1, z/OSMF is no longer set up in z/OS by default.
 
 
 To use z/OSMF, see the [IBM z/OS Management Facility](https://www.ibm.com/products/zos/management-facility) documentation.
+
+## Comparing z/OS FTP, Zowe Remote SSH, z/OSMF
+
+Three common ways to reach mainframe resources (data sets, USS files, jobs, console) from a client tool.
+
+| | z/OS FTP | Zowe Remote SSH | z/OSMF REST API |
+| --- | --- | --- | --- |
+| Data transfer security | Plain text unless FTPS is added | Encrypted by default | Encrypted by default |
+| Resources supported | Data sets, USS files, jobs | Data sets, USS files, jobs, console, TSO | Data sets, USS files, jobs, console, TSO |
+| Interactive performance | Slow — reconnects per transfer | Fast — one persistent connection | Moderate — stateless request per call |
+| Large file transfer | Strong, built for bulk transfer | Good, some encoding overhead | Workable, but has known issues with very large files |
+| Setup effort | Minimal — usually already running | Low — deploy binaries over existing SSH access | Higher — needs z/OSMF configured and started |
+| Client tooling | Any FTP client or language | Zowe CLI, Zowe Explorer, Node.js SDK | Zowe CLI, Zowe Explorer, any REST client |
+| Best for | Scripted bulk transfer, legacy integration | Low-latency interactive tooling, no extra mainframe middleware | Standardized REST automation, sites already running z/OSMF |
+
+:::note
+
+VSAM record access is not natively supported by any of the three. Console and TSO commands are not available over FTP.
+
+:::
