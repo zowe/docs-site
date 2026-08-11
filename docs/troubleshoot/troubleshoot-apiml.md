@@ -30,8 +30,10 @@ API ML provides two levels of debug access. Depending on your configuration, you
 
 * **Configuring `debug-control` for dynamic configuration control** (`components.gateway.spring.profiles.active: "debug-control"`)
 
-  * Grant modification access to actuator endpoints to dynamically alter configurations 
-  * Enable changing log levels for individual code components dynamically
+  * Grant modification access to actuator endpoints to dynamically alter configurations.
+  * Enablement of two runtime modifications in the Gateway:
+    * Dynamically change log levels for individual code components 
+    * Modify routing configurations (dynamic route modifications).
   
 When on z/OS, API ML log messages are written to the STC job log.
 
@@ -182,7 +184,7 @@ http GET https://<gateway-hostname>:7554/application/loggers | grep -i "zowe"
     POST scheme://hostname:port/application/loggers/{name}
     ```
     :::caution Important:
-    Sending a `POST` request to dynamically change the log level requires the `spring.profiles.active` parameter to be set to `"debug-control"`. The user making the request must also have `SAF CONTROL` access to modify actuator endpoints. 
+    Sending a `POST` request to dynamically change the log level requires the `spring.profiles.active` parameter to be set to `"debug-control"`. The user making the request must also have `SAF CONTROL` access with permission to the `APIML.DEBUG` resource within the `ZOWE` SAF class to modify actuator endpoints. 
     :::
 
     The **POST** request requires a new log level parameter value that is provided in the request body:
