@@ -70,7 +70,7 @@ components:
 For dynamic control over Gateway actuator endpoints, specifically modifying log levels or creating, updating, and deleting API routes at runtime, set the property `components.gateway.spring.profiles.active` to `"debug-control"`. This enables debug mode with modification access via actuator endpoints, which is protected by SAF resource checks.
 
 :::caution Important:
-Proper SAF authorization (`APIML.DEBUG` in the `ZOWE` class) is required to use this debug feature. For more information, see [Configuring APIML.DEBUG](../user-guide/api-mediation/configuration-saf-resource-checking.md#configuring-apimldebug).
+To use this debug feature, proper `SAF CONTROL` access with permission to the `APIML.DEBUG` resource within the `ZOWE` SAF class is required to modify actuator endpoints. For more information, see [Configuring APIML.DEBUG](../user-guide/api-mediation/configuration-saf-resource-checking.md#configuring-apimldebug).
 :::
 
 1. Open the file `zowe.yaml`.
