@@ -64,13 +64,20 @@ zowe:
       - "10.0.0.5"
 ```
 
-* As a temporary mitigation while you adjust the allowlist, the Discovery Service honors the environment variable `ZWE_ONLY_WARN_ON_URL_NOT_ALLOWED=true`, which downgrades rejections to warnings instead of failing registration.
+:::tip Temporary Mitigation:
+If registrations begin to fail after the upgrade, you can temporarily downgrade these rejections to warnings by setting the environment variable `ZWE_ONLY_WARN_ON_URL_NOT_ALLOWED=true`. This setting allows services to register while you identify and configure the missing domains.
+:::
 
 ### Strict URL validation replaces `allowEncodedSlashes`
 
-The Gateway's `apiml.service.allowEncodedSlashes` property has been removed and replaced by `apiml.security.enableStrictUrlValidation`. In Zowe versions up to 3.5, `allowEncodedSlashes` defaulted to `true`, allowing encoded characters (such as `%2F`) to pass through routed request URLs unvalidated. The new property inverts this: when `enableStrictUrlValidation` is `true` (the new default), the Gateway strictly validates request URLs and rejects encoded slashes, backslashes, and semicolons in routed traffic. Gateway-internal endpoints are always validated strictly regardless of this setting.
+The Gateway's `apiml.service.allowEncodedSlashes` property has been removed and replaced by `apiml.security.enableStrictUrlValidation`. 
 
-**Required action:** Remove any existing `apiml.service.allowEncodedSlashes` setting — it has no effect anymore. If routed requests need to carry encoded slashes or similar encoded characters in the URL path, explicitly disable strict validation:
+**Operational Impact:**  
+In Zowe versions up to 3.5, `allowEncodedSlashes` defaulted to `true`. This default setting allowed encoded characters (such as `%2F`) to pass through routed request URLs unvalidated. The new property inverts this validation behavior: when `enableStrictUrlValidation` is `true` (the new default), the Gateway strictly validates request URLs and rejects encoded slashes, backslashes, and semicolons in routed traffic. Gateway-internal endpoints are always validated strictly regardless of this setting.
+
+**Required Actions:**  
+1. Remove the deprecated `apiml.service.allowEncodedSlashes` property from your `zowe.yaml` (THis property will be ignored).
+2. Opt-out (if needed). If you route traffic to APIs that require encoded slashes or semicolons in the URL path, you must explicitly disable strict validation for the Gateway:
 
 ```yaml
 components:
