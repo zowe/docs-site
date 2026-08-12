@@ -41,17 +41,31 @@ New properties introduced with strict default settings. An installation that fun
 
 #### Discovery Service enforces domain allowlist for service registration
 
-In Zowe versions up to 3.5 the Discovery Service accepted any service registration without validating the hostnames or URLs the service advertised. Discovery Service now strictly validates all URLs provided by registering services, including hostname, IP address, home page URL, health-check URL, status page URL, and any `apiml.*.swaggerUrl` / `documentationUrl` / `graphqlUrl` / `externalUrl` / `corsAllowedOrigins` metadata against an allowlist of domains. 
+In Zowe versions up to v3.5, the Discovery Service accepted any service registration without validating the hostnames or URLs the service advertised. The Discovery Service now strictly validates all URLs provided by registering services against an allowlist of domains, including:  
+* hostname
+* IP address
+* home page URL
+* health-check URL
+* status page URL
+* `apiml.*.swaggerUrl`
+* `documentationUrl`
+* `graphqlUrl`
+* `externalUrl`
+* `corsAllowedOrigins` 
 
 **Operational Impact:**  
 By default, if a service attempts to register using a domain or IP address that is not on the allowlist, the registration is rejected entirely.
 
+**Required action:**  
 The allowlist can be customized via `zowe.network.allowedDomains` property. Items of this array should be enclosed in double quotes (`"`) to allow wildcards. If no wildcard is used, strict matching is assumed.
-A small set of Zowe/IBM documentation domains (`www.ibm.com`, `zowe.github.io`, `www.zowe.org`, `techdocs.broadcom.com`) is always allowed to permit core service registrations.
-
-**Required action:**
-* The allowlist will already contain your system's hostnames and no action is needed for Zowe's own services.
-* Update `zowe.network.allowedDomains` with other domains and/or IP addresses the instance connects to. 
+The following set of Zowe/IBM documentation domains is always allowed to permit core service registrations:  
+* (`www.ibm.com`
+* `zowe.github.io`
+* `www.zowe.org`
+* `techdocs.broadcom.com`)
+   
+The allowlist will already contain your system's hostnames and no action is needed for Zowe's own services.  
+Update `zowe.network.allowedDomains` with other domains and/or IP addresses the instance connects to. 
 
 **Example:**
 
