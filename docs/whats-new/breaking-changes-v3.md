@@ -27,9 +27,9 @@ In previous versions of Zowe, the API Gateway directly contained the code for th
 
 While ZAAS is now a standalone service, how ZAAS runs depends on your deployment configuration. In multi-service deployment, ZAAS runs as a physically independent microservice (a separate JVM process) on its own port. Starting with Zowe v3.4, the default and recommended single-service deployment mode bundles the standalone ZAAS component back into a single JVM process alongside the Gateway, Discovery Service, and API Catalog at runtime. 
 
-### Security updates in Zowe 3.6.0
+### Security updates in Zowe v3.6.0
 
-Zowe 3.6.0 introduces several important updates to API ML to strengthen security defaults, improve network validation, and tighten component authentication. These enhancements prioritize a secure-by-default posture which include breaking changes that may require updates to your zowe.yaml configuration to avoid disruptions during the upgrade process.
+Zowe 3.6.0 introduces several updates to API ML to strengthen security defaults, improve network validation, and tighten component authentication. These enhancements prioritize a secure-by-default posture which include breaking changes that may require updates to your `zowe.yaml` configuration to avoid disruptions during the upgrade process.
 
 Configuration changes are in two key areas:
 
@@ -39,17 +39,21 @@ Configuration properties that existed in Zowe 3.5.0, but whose default value, so
 * **Restrictive new properties**  
 New properties introduced with strict default settings. An installation that functioned correctly in Zowe 3.5.0 may require explicit configuration of these new properties to retain previous behaviors.
 
-#### Discovery Service now enforces an allowlist of domains for service registration
+#### Discovery Service enforces domain allowlist for service registration
 
-In Zowe versions up to 3.5 the Discovery Service accepted any service registration without validating the hostnames or URLs the service advertised. Discovery Service now validates, for **every** registering instance, its hostname, IP address, home page URL, health-check URL, status page URL, and any `apiml.*.swaggerUrl` / `documentationUrl` / `graphqlUrl` / `externalUrl` / `corsAllowedOrigins` metadata against an allowlist of domains. This check is unconditional — it runs for every registration, regardless of any other setting — and by default **rejects the entire registration** if any of those URLs point to a domain that isn't allowed.
+In Zowe versions up to 3.5 the Discovery Service accepted any service registration without validating the hostnames or URLs the service advertised. Discovery Service now strictly validates all URLs provided by registering services, including hostname, IP address, home page URL, health-check URL, status page URL, and any `apiml.*.swaggerUrl` / `documentationUrl` / `graphqlUrl` / `externalUrl` / `corsAllowedOrigins` metadata against an allowlist of domains. 
+
+**Operational Impact:**  
+By default, if a service attempts to register using a domain or IP address that is not on the allowlist, the registration is rejected entirely.
 
 The allowlist can be customized via `zowe.network.allowedDomains` property. Items of this array should be enclosed in double quotes (`"`) to allow wildcards. If no wildcard is used, strict matching is assumed.
 A small set of Zowe/IBM documentation domains (`www.ibm.com`, `zowe.github.io`, `www.zowe.org`, `techdocs.broadcom.com`) is always allowed to permit core service registrations.
 
 **Required action:**
-
 * The allowlist will already contain your system's hostnames and no action is needed for Zowe's own services.
-* Update `zowe.network.allowedDomains` with other domains and/or IP addresses the instance connects to. For example:
+* Update `zowe.network.allowedDomains` with other domains and/or IP addresses the instance connects to. 
+
+**Example:**
 
 ```yaml
 zowe:
