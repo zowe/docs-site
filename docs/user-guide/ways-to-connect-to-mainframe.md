@@ -6,7 +6,7 @@
 
 ## Determining your connection protocol
 
-There are several ways for Zowe client applications to connect to the mainframe, each offering its own advantages. Deciding which type of connection to use — FTP, Zowe Remote SSH, or z/OSMF — ultimately depends on what works best with your mainframe environment. Consult your system administrator to determine the best path for you.
+There are several ways for Zowe client applications to connect to the mainframe, each offering its own advantages. Deciding which type of connection to use — Zowe Remote SSH, z/OSMF, or FTP — ultimately depends on what works best with your mainframe environment. Consult your system administrator to determine the best path for you.
 
 
 ### Zowe Remote SSH (introduced in Zowe v3.6)
@@ -33,12 +33,6 @@ Part of IBM z/OS, z/OSMF (IBM z/OS Management Facility) is a web browser-based g
 To use z/OSMF, a system administrator must configure and enable the service on the mainframe. When configured, z/OSMF is a common way for users to access mainframe resources.
 
 z/OSMF is accessible over a REST API and can be registered as a service with [API Mediation Layer](../appendix/zowe-glossary.md#zowe-api-mediation-layer-api-ml). z/OSMF supports basic authentication and certificate authentication. When using API ML, you can authenticate using a token.
-
-:::note 
-
-Starting in z/OS v3.1, z/OSMF is no longer set up in z/OS by default.
-
-:::
 
 To use z/OSMF, see the [IBM z/OS Management Facility](https://www.ibm.com/products/zos/management-facility) documentation.
 
