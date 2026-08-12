@@ -19,10 +19,135 @@ Review this article for details about changes to various Zowe components that ar
 | Java 17 will be required for the API Mediation Layer to run                                                                   | For V3, it is necessary to update z/OS to version 2.5 or later as this brings support of Java 17. It is necessary to install Java 17 and provide the path to Java 17 to Zowe Java configuration.                                                                                                                                                                                                                       |
 | z/OSMF in version V2R5 with APAR PH12143 applied (JWT setup)                                                                  | If you are running a version of z/OS before 3.1, validate that the PH12143 APAR was applied to the z/OSMF installation used by Zowe. The value `auto` is no longer supported. For v3R1, validate that the JWT support is enabled. If you do not want to enable JWT support, make sure that you set the value of `components.gateway.apiml.security.auth.zosmf.jwtAutoconfiguration` to `ltpa`. The `ltpa` option cannot be used with hardware accelerated ICSF Keyrings. See [example-zowe.yaml](https://github.com/zowe/zowe-install-packaging/blob/v3.x/staging/example-zowe.yaml) for new component values. |
 | Configuration of keyrings will require transformation from `safkeyring:////` to `safkeyring://`                               | If your Zowe configuration contains `safkeyring:////`, change this part to `safkeyring://`.                                                                                                                                                                                                                                                                                                                            |
-| Support access to z/OSMF only through `/ibmzosmf` route. V3 will not support access through the `/zosmf` route                | If you use z/OSMF via `{apimlUrl}/zosmf/{zosmfEndpoint}` it is necessary to move to `{apimlUrl}/ibmzosmf/{zosmfEndpoint}.`                                                                                                                                                                                                                                                                                                    |
-### Important API ML updates
+| Support access to z/OSMF only through `/ibmzosmf` route. V3 will not support access through the `/zosmf` route                | If you use z/OSMF via `{apimlUrl}/zosmf/{zosmfEndpoint}` it is necessary to move to `{apimlUrl}/ibmzosmf/{zosmfEndpoint}.`                                                                                                                                                                                                                                                                                                |
 
-The current API Gateway contains the Authentication and Authorization Service. This service will be separated as a standalone service. The Authentication and Authorization Service is the only API ML service that directly requires z/OS.
+### Important API ML updates in Zowe v3
+
+In previous versions of Zowe, the API Gateway directly contained the code for the Authentication and Authorization Service (ZAAS). In Zowe V3, ZAAS was architecturally decoupled into a standalone component with its own configuration, as it is the only API Mediation Layer (API ML) service that natively requires direct interaction with z/OS security services (such as z/OSMF and SAF).
+
+While ZAAS is now a standalone service, how ZAAS runs depends on your deployment configuration. In multi-service deployment, ZAAS runs as a physically independent microservice (a separate JVM process) on its own port. Starting with Zowe v3.4, the default and recommended single-service deployment mode bundles the standalone ZAAS component back into a single JVM process alongside the Gateway, Discovery Service, and API Catalog at runtime. 
+
+### Security updates in Zowe 3.6.0
+
+Zowe 3.6.0 introduces several important updates to API ML to strengthen security defaults, improve network validation, and tighten component authentication. These enhancements prioritize a secure-by-default posture which include breaking changes that may require updates to your zowe.yaml configuration to avoid disruptions during the upgrade process.
+
+Configuration changes are in two key areas:
+
+* **Modified existing properties**  
+Configuration properties that existed in Zowe 3.5.0, but whose default value, source, or underlying behavior has changed.
+
+* **Restrictive new properties**  
+New properties introduced with strict default settings. An installation that functioned correctly in Zowe 3.5.0 may require explicit configuration of these new properties to retain previous behaviors.
+
+#### Discovery Service now enforces an allowlist of domains for service registration
+
+In Zowe versions up to 3.5 the Discovery Service accepted any service registration without validating the hostnames or URLs the service advertised. Discovery Service now validates, for **every** registering instance, its hostname, IP address, home page URL, health-check URL, status page URL, and any `apiml.*.swaggerUrl` / `documentationUrl` / `graphqlUrl` / `externalUrl` / `corsAllowedOrigins` metadata against an allowlist of domains. This check is unconditional — it runs for every registration, regardless of any other setting — and by default **rejects the entire registration** if any of those URLs point to a domain that isn't allowed.
+
+The allowlist can be customized via `zowe.network.allowedDomains` property. Items of this array should be enclosed in double quotes (`"`) to allow wildcards. If no wildcard is used, strict matching is assumed.
+A small set of Zowe/IBM documentation domains (`www.ibm.com`, `zowe.github.io`, `www.zowe.org`, `techdocs.broadcom.com`) is always allowed to permit core service registrations.
+
+**Required action:**
+
+* The allowlist will already contain your system's hostnames and no action is needed for Zowe's own services.
+* Update `zowe.network.allowedDomains` with other domains and/or IP addresses the instance connects to. For example:
+
+```yaml
+zowe:
+  network:
+    allowedDomains:
+      - "*.zowe.org"
+      - "ibm.com"
+      - "10.0.0.5"
+```
+
+* As a temporary mitigation while you adjust the allowlist, the Discovery Service honors the environment variable `ZWE_ONLY_WARN_ON_URL_NOT_ALLOWED=true`, which downgrades rejections to warnings instead of failing registration.
+
+### Strict URL validation replaces `allowEncodedSlashes`
+
+The Gateway's `apiml.service.allowEncodedSlashes` property has been removed and replaced by `apiml.security.enableStrictUrlValidation`. In Zowe versions up to 3.5, `allowEncodedSlashes` defaulted to `true`, allowing encoded characters (such as `%2F`) to pass through routed request URLs unvalidated. The new property inverts this: when `enableStrictUrlValidation` is `true` (the new default), the Gateway strictly validates request URLs and rejects encoded slashes, backslashes, and semicolons in routed traffic. Gateway-internal endpoints are always validated strictly regardless of this setting.
+
+**Required action:** Remove any existing `apiml.service.allowEncodedSlashes` setting — it has no effect anymore. If routed requests need to carry encoded slashes or similar encoded characters in the URL path, explicitly disable strict validation:
+
+```yaml
+components:
+  gateway:
+    apiml:
+      security:
+        enableStrictUrlValidation: false
+```
+
+Without this change, routed requests containing encoded slashes, backslashes, or semicolons — previously allowed by default — are now rejected by default.
+
+#### CORS: default allowed origin for routed services narrowed
+
+This only matters if you have `apiml.service.corsEnabled: true` (CORS handling in the Gateway is `false`/disabled by default).
+
+When CORS handling is enabled, for a southbound service that opts in via its own `apiml.corsEnabled` metadata but does not declare its own `apiml.corsAllowedOrigins`, the Gateway used to allow **any** origin (`Access-Control-Allow-Origin: *`). It now falls back to a configurable default, `apiml.service.corsDefaultAllowedOrigins`, whose effective default is the Gateway's own base URL (`https://<apiml.service.hostname>:<apiml.service.port>`) rather than "any origin." A companion property, `apiml.service.corsDefaultAllowedHeaders`, was also added but its effective default (`*`) matches previous behavior, so it does not require action.
+
+**Required action:** If `apiml.service.corsEnabled: true` and your browser-based clients call routed services from an origin other than the Gateway's own hostname/port, set:
+
+```yaml
+components:
+  gateway:
+    apiml:
+      service:
+        corsDefaultAllowedOrigins: https://my-external-client.example.com
+```
+
+#### Eureka discovery service credentials are now configurable
+
+:::note
+This change only applies to not-recommended setups with `verifyCertificates: DISABLED`
+:::
+
+The credentials used to authenticate against the Discovery Service's `/eureka/**` endpoints when certificate validation is disabled were fixed to the literal values `eureka` / `password`.
+These are now sourced from `apiml.discovery.userid` / `apiml.discovery.password` on every API ML service.
+
+* If `zowe.verifyCertificates: DISABLED`, they still default to `eureka` / `password` when not explicitly set.
+* If `zowe.verifyCertificates` is `STRICT` (the default) or `NONSTRICT`, a valid client certificate issued by a Zowe-trusted CA is used.
+
+**Required action:** If `zowe.verifyCertificates` is `DISABLED` (not recommended), set matching credentials on the Discovery Service and every service that registers with it:
+
+**Example:**
+
+```yaml
+components:
+  discovery:
+    apiml:
+      discovery:
+        userid: eureka
+        password: password
+  gateway:
+    apiml:
+      discovery:
+        userid: eureka
+        password: password
+  # repeat for caching-service, api-catalog, zaas
+```
+
+#### Caching Service requires authentication when certificate validation is disabled
+
+:::note
+This change only applies to not-recommended setups with `verifyCertificates: DISABLED`
+:::
+
+The Caching Service's REST API allowed **any unauthenticated caller** (`permitAll()`) when certificate validation was disabled at Zowe level.
+It now requires HTTP Basic authentication via `apiml.service.http.userId` / `apiml.service.http.password` in that mode; requests without valid matching credentials are rejected. 
+When certificate validation is `STRICT` or `NONSTRICT`, the Caching Service still uses X.509 authentication and is unaffected.
+
+**Required action:** Action is only needed if:
+
+* You have a custom client calling the Caching Service's REST API directly (not through Gateway/ZAAS) — it must now send matching Basic Auth credentials.
+
+```yaml
+components:
+  caching-service:
+    apiml:
+      service:
+        http:
+          userId: eureka
+          password: password
+```
 
 
 ## Application Framework
