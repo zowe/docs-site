@@ -27,7 +27,7 @@ Prior to Zowe v3, the API Gateway directly contained the code for the Authentica
 
 While ZAAS is now a standalone service, how ZAAS runs depends on your deployment configuration. In multi-service deployment, ZAAS runs as an independent microservice (a separate JVM process) on a port dedicated to ZAAS. Starting with Zowe v3.4, the default and recommended single-service deployment mode bundles the standalone ZAAS component into a single JVM process alongside the Gateway, Discovery Service, and API Catalog at runtime. 
 
-### Security updates in Zowe v3.6.0
+## Security updates in Zowe v3.6.0
 
 Zowe v3.6.0 introduces several updates to API ML to strengthen security defaults, improve network validation, and tighten component authentication. These enhancements prioritize a secure-by-default posture which include breaking changes that may require updates to your `zowe.yaml` configuration to avoid disruptions during the upgrade process.
 
@@ -39,7 +39,7 @@ Configuration properties that existed in Zowe v3.5.0, but whose default value, s
 * **Restrictive new properties**  
 New properties introduced with strict default settings. An installation that functioned correctly in Zowe v3.5.0 may require explicit configuration of these new properties to retain previous behavior.
 
-#### Discovery Service enforces domain allowlist for service registration
+### Discovery Service enforces domain allowlist for service registration
 
 In Zowe versions up to v3.5.0, the Discovery Service accepted any service registration without validating the hostnames or URLs the service advertised. The Discovery Service now strictly validates all URLs provided by registering services against an allowlist of domains, including:  
 * hostname
@@ -103,13 +103,15 @@ components:
 
 Without this change, routed requests containing encoded slashes, backslashes, or semicolons — previously allowed by default — are now rejected by default.
 
-#### CORS: default allowed origin for routed services narrowed
+### CORS: default allowed origin for routed services narrowed
 
-When CORS handling is enabled globally (`apiml.service.corsEnabled: true)`, southbound services can explicitly ask the Gateway to manage CORS on their behalf by setting their own `apiml.corsEnabled` metadata to `true`. For these services, if they opt in but fail to define a specific list of allowed origins (`apiml.corsAllowedOrigins`), the API Gateway no longer defaults to allowing any origin (`Access-Control-Allow-Origin: *`). Instead, the API Gateway falls back to a new property, `apiml.service.corsDefaultAllowedOrigins`. The default value is now the API Gateway's base URL (`https://<apiml.service.hostname>:<apiml.service.port>`).
+**Operational Impact:**    
+When CORS handling is enabled globally (`apiml.service.corsEnabled: true)`, southbound services can explicitly ask the Gateway to manage CORS on their behalf by setting their own `apiml.corsEnabled` metadata to `true`. For services that enable this Gateway-managed CORS but fail to define a specific list of allowed origins (`apiml.corsAllowedOrigins)`, the API Gateway no longer defaults to allowing any origin (`Access-Control-Allow-Origin: *`). Instead, the API Gateway falls back to a new property: `apiml.service.corsDefaultAllowedOrigins`. The default value is now the API Gateway's base URL (`https://<apiml.service.hostname>:<apiml.service.port>`).
 
-A companion property, `apiml.service.corsDefaultAllowedHeaders`, was also added but its effective default (`*`) matches previous behavior, so no action is required.
+A companion property, `apiml.service.corsDefaultAllowedHeaders`, was also added but the effective default (`*`) matches previous behavior, so no action is required.
 
-**Required action:** If `apiml.service.corsEnabled: true` and your browser-based clients call routed services from an external origin (other than the Gateway's own hostname and port), you must explicitly allow the origin in your `zowe.yaml` file:
+**Required action:**  
+If `apiml.service.corsEnabled: true` and your browser-based clients call routed services from an external origin (other than the Gateway's own hostname and port), you must explicitly allow the origin in your `zowe.yaml` file:
 
 ```yaml
 components:
@@ -119,7 +121,7 @@ components:
         corsDefaultAllowedOrigins: https://my-external-client.example.com
 ```
 
-#### Eureka discovery service credentials are now configurable
+### Eureka Discovery Service credentials are now configurable
 
 :::note
 This change only applies to configurations where `verifyCertificates` is set to `DISABLED` (not recommended).
@@ -152,14 +154,14 @@ components:
   # repeat for caching-service, api-catalog, zaas
 ```
 
-#### Caching Service requires authentication when certificate validation is disabled
+### Caching Service requires authentication when certificate validation is disabled
 
 :::note
 This change only applies to configurations where `verifyCertificates` is set to `DISABLED` (not recommended).
 :::
 
-**Operational Impact:**
-The Caching Service's REST API no longer permits unauthenticated callers (`permitAll()`) when Zowe-level certificate validation is disabled. In this mode, the service now requires HTTP Basic authentication via the `apiml.service.http.userId` and `apiml.service.http.password` propserties. Requests without valid matching credentials are rejected. 
+**Operational Impact:**  
+The Caching Service's REST API no longer permits unauthenticated callers (`permitAll()`) when Zowe-level certificate validation is disabled. In this mode, the service now requires HTTP Basic authentication via the `apiml.service.http.userId` and `apiml.service.http.password` properties. Requests without valid matching credentials are rejected. 
 
 When certificate validation configuration is `STRICT` or `NONSTRICT`, the Caching Service still uses X.509 authentication and is unaffected.
 
