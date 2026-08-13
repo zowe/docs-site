@@ -57,7 +57,7 @@ In Zowe versions up to v3.5.0, the Discovery Service accepted any service regist
 By default, if a service attempts to register using a domain or IP address that is not on the allowlist, the registration is rejected entirely.
 
 **Required action:**  
-The allowlist can be customized via `zowe.network.allowedDomains` property. Items of this array should be enclosed in double quotes (`"`) to allow wildcards. If no wildcard is used, strict matching is assumed.
+The allowlist can be customized via the `zowe.network.allowedDomains` property. Items of this array should be enclosed in double quotes (`"`) to allow wildcards. If no wildcard is used, strict matching is assumed.
 The following set of Zowe/IBM documentation domains is always allowed to permit core service registrations:  
 * `www.ibm.com`
 * `zowe.github.io`
@@ -90,7 +90,7 @@ The Gateway's `apiml.service.allowEncodedSlashes` property has been removed and 
 In Zowe versions up to 3.5, `allowEncodedSlashes` defaulted to `true`. This default setting allowed encoded characters (such as `%2F`) to pass through routed request URLs unvalidated. The new property inverts this validation behavior: when `enableStrictUrlValidation` is `true` (the new default), the Gateway strictly validates request URLs and rejects encoded slashes, backslashes, and semicolons in routed traffic. Gateway-internal endpoints are always validated strictly regardless of this setting.
 
 **Required Actions:**  
-1. Remove the deprecated `apiml.service.allowEncodedSlashes` property from your `zowe.yaml` (Th is property will be ignored).
+1. Remove the deprecated `apiml.service.allowEncodedSlashes` property from your `zowe.yaml` (This property will be ignored).
 2. Opt-out (if needed). If you route traffic to APIs that require encoded slashes or semicolons in the URL path, you must explicitly disable strict validation for the Gateway:
 
 ```yaml
@@ -101,12 +101,12 @@ components:
         enableStrictUrlValidation: false
 ```
 
-Without this change, routed requests containing encoded slashes, backslashes, or semicolons — previously allowed by default — are now rejected by default.
+Without this change, routed requests containing encoded slashes, backslashes, or semicolons, which were previously allowed by default, are now rejected by default.
 
 ### CORS: default allowed origin for routed services narrowed
 
 **Operational Impact:**    
-When CORS handling is enabled globally (`apiml.service.corsEnabled: true)`, southbound services can explicitly ask the Gateway to manage CORS on their behalf by setting their own `apiml.corsEnabled` metadata to `true`. For services that enable this Gateway-managed CORS but fail to define a specific list of allowed origins (`apiml.corsAllowedOrigins)`, the API Gateway no longer defaults to allowing any origin (`Access-Control-Allow-Origin: *`). Instead, the API Gateway falls back to a new property: `apiml.service.corsDefaultAllowedOrigins`. The default value is now the API Gateway's base URL (`https://<apiml.service.hostname>:<apiml.service.port>`).
+When CORS handling is enabled globally (`apiml.service.corsEnabled: true`), southbound services can explicitly ask the Gateway to manage CORS on their behalf by setting their own `apiml.corsEnabled` metadata to `true`. For services that enable this Gateway-managed CORS but fail to define a specific list of allowed origins (`apiml.corsAllowedOrigins`), the API Gateway no longer defaults to allowing any origin (`Access-Control-Allow-Origin: *`). Instead, the API Gateway falls back to a new property: `apiml.service.corsDefaultAllowedOrigins`. The default value is now the API Gateway's base URL (`https://<apiml.service.hostname>:<apiml.service.port>`).
 
 A companion property, `apiml.service.corsDefaultAllowedHeaders`, was also added but the effective default (`*`) matches previous behavior, so no action is required.
 
@@ -128,7 +128,7 @@ This change only applies to configurations where `verifyCertificates` is set to 
 :::
 
 **Operational Impact:**  
-When certificate validation is disabled, the credentials used to authenticate against the Discovery Service's /eureka/** endpoints are no longer hardcoded to the literal values `eureka` / `password`
+When certificate validation is disabled, the credentials used to authenticate against the Discovery Service's `/eureka/**` endpoints are no longer hardcoded to the literal values `eureka` / `password`
 These values are now sourced from `apiml.discovery.userid` and `apiml.discovery.password` on every API ML service.
 
 * If `zowe.verifyCertificates` is `DISABLED`, the credentials still default to `eureka` / `password` when not explicitly set.
