@@ -2,16 +2,26 @@
 
 Zowe&trade; is a collection of components that together form a framework that makes Z-based functionality accessible across an organization. Zowe functionality includes exposing Z-based components, such as z/OSMF, as REST APIs. The Zowe framework provides an environment where other components can be included and exposed to a broader non-Z based audience.
 
+Zowe components can be categorized by location: server or client. While the client is always an end-user tool such as a PC, browser, or mobile device, the server components can be further categorized by what machine they run on.
+
+Zowe server components can be installed and run entirely on z/OS, but a subset of the components can alternatively run on Linux or z/Linux via Docker. While on z/OS, many of these components run under UNIX System Services (USS). The components that do not run under USS must remain on z/OS when using Docker in order to provide connectivity to the mainframe.
+
+## API Mediation Layer
+
+The API Mediation Layer is a collection of services for management and administration of APIs, and is comprised of the following components that are described in detail below:
+
+* API Gateway
+* API Catalog
+* API Discovery Service
+* Caching Service
+* Zowe Authentication & Authorization Service (ZAAS)
+
 
 The following diagram illustrates the high-level Zowe architecture using Single-Service API Mediation Layer deployment. Single-Service deployment is the preferred deployment method.
 
 ![Zowe API ML Single-service Architecture Diagram](../images/common/zowe-architecture-apiml-single-service.png)
     
 The diagram shows the default port numbers that are used by Zowe. These are dependent on each instance of Zowe and are held in the Zowe YAML configuration file.
-
-Zowe components can be categorized by location: server or client. While the client is always an end-user tool such as a PC, browser, or mobile device, the server components can be further categorized by what machine they run on.
-
-Zowe server components can be installed and run entirely on z/OS, but a subset of the components can alternatively run on Linux or z/Linux via Docker. While on z/OS, many of these components run under UNIX System Services (USS). The components that do not run under USS must remain on z/OS when using Docker in order to provide connectivity to the mainframe.
 
 <details>
 
@@ -24,6 +34,46 @@ The following diagram illustrates the high-level Zowe architecture using multi-s
 As with the single-service architecture diagram, the diagram for multi-service deployment shows the default port numbers that are used by Zowe. These ports are dependent on each instance of Zowe and are held in the Zowe YAML configuration file.
 
 </details>
+
+### API Gateway
+
+The API Gateway is a proxy server that routes requests from clients on its northbound or upstream edge, such as web browsers or the Zowe command line interface, to servers on its southbound (downstream) edge that are able to provide data to serve the request. The API Gateway is also responsible for generating the authentication token used to provide single sign-on (SSO) functionality. The API Gateway homepage is `https://<ZOWE_HOST_ADDRESS>:7554`. Following authentication, this URL enables users to navigate to the API Catalog.
+
+![Zowe API Mediation Layer](../getting-started/diagrams/api-ml-homepage-single-instance.png)
+
+When the API Gateway is running, this server is accessible at `https://<ZOWE_HOST_ADDRESS>:7554/`.
+When running on z/OS, the server uses the jobname suffix of AG.
+
+### API Catalog
+
+The API Catalog provides a list of the API services that have registered themselves as catalog tiles. These tiles make it possible to view the available APIs from Zowe's southbound (downstream) servers, as well as test REST API calls.  
+
+![Zowe API Catalog](../images/api-mediation/api-catalog.png)
+
+When the API Gateway is running, this server is accessible at `https://<ZOWE_HOST_ADDRESS>:7554/apicatalog/ui/v1`.
+When the API Catalog is running, the API documentation of this server is accessible at the API Catalog tile `Zowe Applications` which can be viewed at `https://<ZOWE_HOST_ADDRESS>:7554/apicatalog/ui/v1/#/tile/apimediationlayer/apicatalog`
+When running on z/OS, the server uses the jobname suffix of AC.
+
+### API Discovery Service
+
+The API Discovery Service acts as the registration service broker between the API Gateway and its southbound (downstream) servers. This server can be accessed through the URL `https://<ZOWE_HOST_ADDRESS>:7553` making it possible to view a list of registered API services on the API discovery homepage.
+
+![Zowe API Discovery](../getting-started/diagrams/api-discovery-single-service.png)
+
+When running on z/OS, the server uses the jobname suffix of AD.
+
+### Caching Service
+
+The Caching service aims to provide an API which offers the possibility to store, retrieve, and delete data associated with keys. The service is used only by internal Zowe applications and is not exposed to the internet. 
+
+For more information about the Caching service, see [Using the Caching Service](../user-guide/api-mediation/api-mediation-caching-service.md).
+
+When the API Gateway is running, this server is accessible at `https://<ZOWE_HOST_ADDRESS>:7554/cachingservice/api/v1`.
+When the API Catalog is running, the API documentation of this server is accessible at the API Catalog tile `Zowe Applications` which can be viewed at `https://<ZOWE_HOST_ADDRESS>:7554/apicatalog/ui/v1/#/tile/zowe/cachingservice`.
+When running on z/OS in single-service deployment mode, the caching service is part of the gateway, which uses the jobname suffix of GW.
+When running on z/OS in multi-service deployment mode, the caching service uses the jobname suffix of CS.
+
+
 
 ## Zowe architecture with high availability enablement on Sysplex
 
@@ -96,52 +146,6 @@ ZIS is a z/OS native, authorized cross-memory server that allows a secure and co
 
 Unlike all of the servers described above which run under the `ZWESLSTC` started task as address spaces for USS processes, the Cross Memory server has its own separate started task `ZWESISTC` and its own user ID `ZWESIUSR` that runs the program `ZWESIS01`.
 
-## API Mediation Layer
-
-The API Mediation Layer is a collection of services for management and administration of APIs, and is comprised of the following components that are described in detail below:
-
-* API Gateway
-* API Catalog
-* API Discovery Service
-* Caching Service
-
-### API Gateway
-
-The API Gateway is a proxy server that routes requests from clients on its northbound or upstream edge, such as web browsers or the Zowe command line interface, to servers on its southbound (downstream) edge that are able to provide data to serve the request. The API Gateway is also responsible for generating the authentication token used to provide single sign-on (SSO) functionality. The API Gateway homepage is `https://<ZOWE_HOST_ADDRESS>:7554`. Following authentication, this URL enables users to navigate to the API Catalog.
-
-![Zowe API Mediation Layer](../getting-started/diagrams/api-ml-homepage-single-instance.png)
-
-When the API Gateway is running, this server is accessible at `https://<ZOWE_HOST_ADDRESS>:7554/`.
-When running on z/OS, the server uses the jobname suffix of AG.
-
-### API Catalog
-
-The API Catalog provides a list of the API services that have registered themselves as catalog tiles. These tiles make it possible to view the available APIs from Zowe's southbound (downstream) servers, as well as test REST API calls.  
-
-![Zowe API Catalog](../images/api-mediation/api-catalog.png)
-
-When the API Gateway is running, this server is accessible at `https://<ZOWE_HOST_ADDRESS>:7554/apicatalog/ui/v1`.
-When the API Catalog is running, the API documentation of this server is accessible at the API Catalog tile `Zowe Applications` which can be viewed at `https://<ZOWE_HOST_ADDRESS>:7554/apicatalog/ui/v1/#/tile/apimediationlayer/apicatalog`
-When running on z/OS, the server uses the jobname suffix of AC.
-
-### API Discovery Service
-
-The API Discovery Service acts as the registration service broker between the API Gateway and its southbound (downstream) servers. This server can be accessed through the URL `https://<ZOWE_HOST_ADDRESS>:7553` making it possible to view a list of registered API services on the API discovery homepage.
-
-![Zowe API Discovery](../getting-started/diagrams/api-discovery-single-service.png)
-
-When running on z/OS, the server uses the jobname suffix of AD.
-
-### Caching Service
-
-The Caching service aims to provide an API which offers the possibility to store, retrieve, and delete data associated with keys. The service is used only by internal Zowe applications and is not exposed to the internet. 
-
-For more information about the Caching service, see [Using the Caching Service](../user-guide/api-mediation/api-mediation-caching-service.md).
-
-When the API Gateway is running, this server is accessible at `https://<ZOWE_HOST_ADDRESS>:7554/cachingservice/api/v1`.
-When the API Catalog is running, the API documentation of this server is accessible at the API Catalog tile `Zowe Applications` which can be viewed at `https://<ZOWE_HOST_ADDRESS>:7554/apicatalog/ui/v1/#/tile/zowe/cachingservice`.
-When running on z/OS in single-service deployment mode, the caching service is part of the gateway, which uses the jobname suffix of GW.
-When running on z/OS in multi-service deployment mode, the caching service uses the jobname suffix of CS.
 
 ## Desktop Apps
 
