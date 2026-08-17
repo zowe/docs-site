@@ -62,7 +62,7 @@ The API Mediation Layer offers enterprise, cloud-like features such as high-avai
 #### API Mediation Layer structural architecture
 The following diagram illustrates the single point of access through the Gateway, and the interactions between API ML components and services:
 
-![API Mediation Layer Architecture diagram](../images/api-mediation/api-ml-architecture.png)
+![API Mediation Layer Architecture diagram](../images/api-mediation/api-ml-architecture1.png)
 
 #### Components
 The API Layer consists of the following key components:
