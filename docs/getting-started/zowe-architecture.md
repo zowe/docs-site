@@ -16,6 +16,9 @@ The API Mediation Layer is a collection of services for management and administr
 * Caching Service
 * Zowe Authentication & Authorization Service (ZAAS)
 
+:::info
+For details about the internal relationships between these core API ML components and how they interact with external services and clients, see [API Mediation Layer structural architecture](./overview.md#api-mediation-layer-structural-architecture) in the _Zowe Overview_.
+:::
 
 The following diagram illustrates the high-level Zowe architecture using Single-Service API Mediation Layer deployment. Single-Service deployment is the preferred deployment method.
 
@@ -42,7 +45,7 @@ The API Gateway is a proxy server that routes requests from clients on its north
 ![Zowe API Mediation Layer](../getting-started/diagrams/api-ml-homepage-single-instance.png)
 
 When the API Gateway is running, this server is accessible at `https://<ZOWE_HOST_ADDRESS>:7554/`.
-When running on z/OS, the server uses the jobname suffix of AG.
+When running on z/OS in single-service deployment mode, the server uses the jobname suffix of `GW`. (In multi-service deployment, the server uses the suffix `AG`.)
 
 ### API Catalog
 
@@ -52,7 +55,7 @@ The API Catalog provides a list of the API services that have registered themsel
 
 When the API Gateway is running, this server is accessible at `https://<ZOWE_HOST_ADDRESS>:7554/apicatalog/ui/v1`.
 When the API Catalog is running, the API documentation of this server is accessible at the API Catalog tile `Zowe Applications` which can be viewed at `https://<ZOWE_HOST_ADDRESS>:7554/apicatalog/ui/v1/#/tile/apimediationlayer/apicatalog`
-When running on z/OS, the server uses the jobname suffix of AC.
+When running on z/OS in single-service deployment mode, the API Catalog is part of the Gateway, which uses the jobname suffix of `GW`. (In multi-service deployment, the API Catalog uses the suffix `AC`.)
 
 ### API Discovery Service
 
@@ -60,7 +63,7 @@ The API Discovery Service acts as the registration service broker between the AP
 
 ![Zowe API Discovery](../getting-started/diagrams/api-discovery-single-service.png)
 
-When running on z/OS, the server uses the jobname suffix of AD.
+When running on z/OS in single-service deployment mode, the Discovery Service is part of the Gateway, which uses the jobname suffix of `GW`. (In multi-service deployment, the Discovery Service uses the suffix `AD`.)
 
 ### Caching Service
 
@@ -70,10 +73,12 @@ For more information about the Caching service, see [Using the Caching Service](
 
 When the API Gateway is running, this server is accessible at `https://<ZOWE_HOST_ADDRESS>:7554/cachingservice/api/v1`.
 When the API Catalog is running, the API documentation of this server is accessible at the API Catalog tile `Zowe Applications` which can be viewed at `https://<ZOWE_HOST_ADDRESS>:7554/apicatalog/ui/v1/#/tile/zowe/cachingservice`.
-When running on z/OS in single-service deployment mode, the caching service is part of the gateway, which uses the jobname suffix of GW.
-When running on z/OS in multi-service deployment mode, the caching service uses the jobname suffix of CS.
+When running on z/OS in single-service deployment mode, the Caching Service is part of the Gateway, which uses the jobname suffix of `GW`.
+When running on z/OS in multi-service deployment mode, the Caching Service uses the jobname suffix of `CS`.
 
+### Zowe Authentication & Authorization Service (ZAAS)
 
+The Zowe Authentication & Authorization Service (ZAAS) validates user identity and manages access control. It integrates directly with the API Gateway to ensure that incoming client requests are properly authenticated and authorized before they are routed to the appropriate downstream Zowe or z/OS services.
 
 ## Zowe architecture with high availability enablement on Sysplex
 
