@@ -148,7 +148,7 @@ Several application-type plug-ins are provided. For more information, see [Using
 <br />
 
 :::tip
-Use the Zowe Launcher to launch Zowe z/OS server components in a high availability configuration. ZOwe Launcher performs the following operations:
+Use the Zowe Launcher to launch Zowe z/OS server components in a high availability configuration. Zowe Launcher performs the following operations:
 
 - Start all Zowe server components using the `START` (or `S`) operator command.
 - Stop Zowe server components using the `STOP` (or `P`) operator command.
