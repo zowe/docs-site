@@ -22,16 +22,15 @@ Watch this [video](https://www.youtube.com/embed/NX20ZMRoTtk) to see a quick dem
 [Download the deck for this video](/Zowe_introduction_video_deck.pptx) | [Download the script](/Zowe_introduction_video_script.txt)
 ## Zowe component overview
 
-Zowe is comprised of the following server side and client side components:
+Zowe is comprised of the following server-side and client-side components:
 
 ### Zowe API Mediation Layer (API ML)
 
-Zowe API Mediation Layer (API ML)offers enterprise, cloud-like features such as high-availability, scalability, dynamic API discovery, consistent security, a single sign-on experience, and API documentation.
+Zowe API Mediation Layer (API ML) is a Zowe server-side component which provides a secure, single point of access for mainframe REST APIs (such as MVS Data Sets, JES, and z/OSMF). Acting as a reverse proxy, API ML bridges the gap between client applications and backend mainframe microservices by securely routing incoming requests to the appropriate underlying service.
 
-API ML provides a single point of access for APIs of mainframe services, and provides a [Single Sign On (SSO)](../user-guide/api-mediation-sso.md) capability for mainframe users.
+To facilitate communication between these loosely coupled clients and services, API ML supports a variety of API protocols, including REST, GraphQL, and WebSocket.
 
-API ML facilitates secure communication between loosely coupled clients and services through a variety of API types, such as REST, GraphQL or Web-Socket. 
-
+API ML brings enterprise, cloud-like capabilities to the mainframe environment.  
 API ML consists of the following core components: 
 
 * **API Gateway**  
@@ -41,59 +40,64 @@ The Discovery Service allows dynamic registration of microservices and enables t
 * **API Catalog**  
 The API Catalog provides a user-friendly interface to view and try out all registered services, read their associated APIs documentation in OpenAPI/Swagger format.
 * **Caching Service**  
-The Caching Service allows components to store, search and retrieve their state. The Caching service can be configured to store the cached data using various backends. Recommended is usage of Inifinispan packaged with the Caching Service. 
+The Caching Service allows components to store, search and retrieve their state. The Caching service can be configured to store the cached data using various backends, although the recommended storage system is Infinispan. 
 * **Zowe Authorization and Authentication Servcie (ZAAS)**  
 ZAAS is the core security component responsible for handling user authentication and enabling Single Sign-On (SSO) across the mainframe services registered with Zowe API ML. 
-
-
 
 <details>
 <summary>Click here for more information about Zowe API Mediation Layer.</summary>
 
 #### Key features
-* Consistent Access: API routing and standardization of API service URLs through the Gateway component provides users with a consistent way to access mainframe APIs at a predefined address.
-* Dynamic Discovery: The Discovery Service automatically determines the location and status of API services.
-* High-Availability: API Mediation Layer is designed with high-availability of services and scalability in mind.
-* Caching Service: This feature is designed for Zowe components in a high availability configuration, and supports high availability of all components within Zowe. As such, components can remain stateless whereby the state of the component is offloaded to a location accessible by all instances of the service, including those which just started.
-* Redundancy and Scalability: API service throughput is easily increased by starting multiple API service instances without the need to change configuration.
-* Presentation of Services: The API Catalog component provides easy access to discovered API services and their associated documentation in a user-friendly manner. 
-* Encrypted Communication: API ML facilitates secure and trusted communication across both internal components and discovered API services.
+* **Consistent Access:**  
+API routing and standardization of API service URLs through the Gateway component provides users with a consistent way to access mainframe APIs at a predefined address.
+* **Dynamic Discovery:**  
+The Discovery Service automatically determines the location and status of API services.
+* **High-Availability:**  
+API Mediation Layer is designed with high-availability of services and scalability in mind.
+* **Caching Service:**  
+This feature is designed for Zowe components in a high availability configuration, and supports high availability of all components within Zowe. As such, components can remain stateless whereby the state of the component is offloaded to a location accessible by all instances of the service, including those which just started.
+* **Redundancy and Scalability:**  
+API service throughput is easily increased by starting multiple API service instances without the need to change configuration.
+* **Presentation of Services:**  
+The API Catalog component provides easy access to discovered API services and their associated documentation in a user-friendly manner. 
+* **Encrypted Communication:**  
+API ML facilitates secure and trusted communication across both internal components and discovered API services.
 
 #### API Mediation Layer structural architecture
-The following diagram illustrates the single point of access through the Gateway, and the interactions between API ML components and services:
+The following diagram illustrates the single point of access through the API Gateway, and the interactions between API ML components and services:
 
 ![API Mediation Layer Architecture diagram](../images/api-mediation/api-ml-architecture1.png)
 
 #### API Mediation Layer Components
-The API Layer consists of the following key components:
+The API ML consists of the following key components:
 
-**Gateway Service**  
+**API Gateway**  
 Services that comprise the API ML service ecosystem are located behind a gateway (reverse proxy). All end users and API 
-client applications interact through the Gateway. Each service is assigned a unique service ID that is used in the access URL. 
+client applications interact through the API Gateway. Each service is assigned a unique service ID that is used in the access URL. 
 Based on the service ID, the Gateway forwards incoming API requests to the appropriate service. Multiple Gateway instances 
-can be started to achieve high-availability. The Gateway access URL remains unchanged. The Gateway Service is built on Spring
+can be started to achieve high-availability. The Gateway access URL remains unchanged. The API Gateway is built on Spring
 Cloud Gateway and Spring Boot technology.
 
 **Discovery Service**  
 The Discovery Service is the central repository of active services in the API ML ecosystem. The Discovery Service 
 continuously collects and aggregates service information and serves as a repository of active services. When a service is 
-started, it sends its metadata, such as the original URL, assigned serviceId, and status information to the Discovery Service. 
-Back-end microservices register with this service either directly or by using a Eureka client. Multiple enablers are 
+started, the service sends its metadata, such as the original URL, assigned serviceId, and status information to the Discovery Service. 
+Back-end microservices register with the Discovery Service either directly or by using a Eureka client. Multiple enablers are 
 available to help with service on-boarding of various application architectures including plain Java applications and 
 Java applications that use the Spring Boot framework. The Discovery Service is built on Eureka and Spring Boot technology.
 
 **API Catalog**  
-The API Catalog is the catalog of published API services and their associated documentation. The Catalog provides both 
-the REST APIs and a web user interface (UI) to access them. The web UI follows the industry standard Swagger UI component 
+The API Catalog is the catalog of published API services and their associated documentation. The API Catalog provides both 
+the REST APIs and a web user interface (UI) to access these services. The web UI follows the industry standard Swagger UI component 
 to visualize API documentation in OpenAPI JSON format for each service. A service can be implemented by one or more service 
 instances, which provide exactly the same service for high-availability or scalability. API Catalog requires authentication
 from the accessing user. 
 
 **Caching Service**  
-The Caching Service provides a centralized, in-memory key-value store API that offers the possibility to store, retrieve, and delete data associated with keys. The Caching Service enables state sharing across API ML, which is essential for running the Mediation Layer in high-availability (HA) mode. Because components like the Gateway Service and Discovery Service are designed to be stateless, they rely on the Caching Service to share critical, time-sensitive data, such as user authentication sessions, JWTs, and routing information, across multiple instances. By decoupling state from the individual service instances, the Caching Service ensures that if one instance of a component goes down, other instances can seamlessly pick up the context without disrupting the end-user experience or requiring the user to re-authenticate. The Caching Service is built on Spring Boot technology.
+The Caching Service provides a centralized, in-memory key-value store API that offers the possibility to store, retrieve, and delete data associated with keys. The Caching Service enables state sharing across API ML, which is essential for running API ML in high-availability (HA) mode. Because components like the API Gateway and Discovery Service are designed to be stateless, these services rely on the Caching Service to share critical, time-sensitive data, such as user authentication sessions, JWTs, and routing information, across multiple instances. By decoupling state from the individual service instances, the Caching Service ensures that if one instance of a component goes down, other instances can seamlessly pick up the context without disrupting the end-user experience or requiring the user to re-authenticate. The Caching Service is built on Spring Boot technology.
 
 **Zowe Authentication and Authorization Service (ZAAS)**  
-ZAAS is the centralized security and identity provider for Zowe API Mediaiton Layer. ZAAS handles user authentication by securely validating mainframe credentials and Multi-Factor Authentication (MFA) against underlying z/OS security managers (such as RACF, ACF2, or Top Secret). Upon successful authentication, ZAAS issues a JSON Web Token (JWT) that enables Single Sign-On (SSO), allowing end users to access all registered REST APIs without having to repeatedly provide credentials. To support integration with legacy mainframe back-end services that do not natively support JWTs, ZAAS can also dynamically generate PassTickets. ZAAS accommodates complex integration scenarios through SAF identity mapping, which translates external credentials like x509 client certificates or OAuth tokens into valid mainframe identities. ZAAS features Personal Access Token (PAT) management, empowering users to generate scoped, long-lived credentials for automated scripts and CI/CD pipelines without requiring interactive login. ZAAS is built on Spring Boot technology and integrates closely with the Gateway Service to secure incoming requests.
+ZAAS is the centralized security and identity provider for Zowe API ML. ZAAS handles user authentication by securely validating mainframe credentials and Multi-Factor Authentication (MFA) against underlying z/OS security managers (such as RACF, ACF2, or Top Secret). Upon successful authentication, ZAAS issues a JSON Web Token (JWT) that enables Single Sign-On (SSO), allowing end users to access all registered REST APIs without having to repeatedly provide credentials. To support integration with legacy mainframe back-end services that do not natively support JWTs, ZAAS can also dynamically generate PassTickets. ZAAS accommodates complex integration scenarios through SAF identity mapping, which translates external credentials like x509 client certificates or OAuth tokens into valid mainframe identities. ZAAS features Personal Access Token (PAT) management, empowering users to generate scoped, long-lived credentials for automated scripts and CI/CD pipelines without requiring interactive login. ZAAS is built on Spring Boot technology and integrates closely with the API Gateway to secure incoming requests.
 
 #### Onboarding APIs
 Essential to the API Mediation Layer ecosystem is the API services that expose their useful APIs. Use the following topics 
