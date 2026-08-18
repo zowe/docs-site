@@ -39,8 +39,6 @@ ZAAS is a core security service that validates user identity and manages access 
 </details>
 <br />
 
-</details>
-
 ### Zowe Application Framework
 
 Modernizes and simplifies working on the mainframe via a web visual interface. Functionality is provided through apps and a desktop user experience called the [Zowe Desktop](#zowe-desktop). Base functionality includes apps to work with JES, MVS Data Sets, Unix System Services, as well as a [3270 Terminal](#3270-terminal), [Virtual Terminal](#virtual-vt-terminal), and an [Editor](#zowe-editor).
