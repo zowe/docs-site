@@ -14,7 +14,7 @@ For an overview of security in Zowe, see [the Zowe Security policy](https://www.
 
 ### Zowe API Mediation Layer (API ML)
 
-Zowe API Mediation Layer (API ML) is a Zowe server-side component which provides a secure single point of access for mainframe service REST APIs (such as MVS Data Sets, JES, and z/OSMF). API ML acts as a reverse proxy, providing a bridge between client applications and backend mainframe microservices, while securely routing and forwarding incoming client requests to the appropriate underlying service. API ML has dynamic discovery capabilities to automatically determine the location and status of these registered services.
+Zowe API Mediation Layer (API ML) is a Zowe server-side component which provides a secure single point of access for mainframe infrastructure REST APIs (such as MVS Data Sets, JES, and z/OSMF). API ML acts as a reverse proxy, providing a bridge between client applications and backend mainframe microservices, while securely routing and forwarding incoming client requests to the appropriate underlying service. API ML has dynamic discovery capabilities to automatically determine the location and status of these registered services.
 
 <details>
 <summary>
@@ -22,10 +22,10 @@ Click here for descriptions of the various components that form Zowe API Mediati
 </summary>
 
 #### API Gateway    
-The API Gateway is a proxy server and centralized entry point that provides standardized access to mainframe REST APIs. The API Gateway dynamically routes requests from clients on its northbound edge (such as web browsers or [Zowe CLI](#zowe-cli)) to appropriate servers on the API Gateway southbound (downstream) edge. Additionally, the API Gateway enforces secure communication and integrates with ZAAS to generate authentication tokens for Single Sign-On (SSO) functionality.
+The API Gateway is a proxy server and centralized entry point that provides standardized access to mainframe infrastructure REST APIs. The API Gateway dynamically routes requests from clients on its northbound edge (such as web browsers or [Zowe CLI](#zowe-cli)) to appropriate servers on the API Gateway southbound (downstream) edge. Additionally, the API Gateway enforces secure communication and integrates with ZAAS to generate authentication tokens for Single Sign-On (SSO) functionality.
 
 #### Discovery Service  
-The Discovery Service is the registration service broker that maintains the central registry of active services within Zowe API Mediation Layer. The Discovery Service enables the dynamic registration of API services upon startup, continuously monitors their health and availability via heartbeats, and provides the API Gateway with real-time routing intelligence to support load balancing and high availability.
+The Discovery Service is the service registry of active services within Zowe API Mediation Layer. The Discovery Service enables the dynamic registration of API services upon startup, continuously monitors their health and availability via heartbeats, and provides the API Gateway with real-time routing intelligence to support load balancing and high availability.
 
 #### API Catalog  
 The API Catalog is a user-friendly web dashboard that provides centralized visibility into all API services registered with Zowe API ML. The API Catalog aggregates and displays service status, versioning details, and Swagger/OpenAPI documentation, while also providing a built-in interactive client that allows developers to test REST API endpoints directly from the browser.

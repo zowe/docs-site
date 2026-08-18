@@ -26,11 +26,10 @@ Zowe is comprised of the following server-side and client-side components:
 
 ### Zowe API Mediation Layer (API ML)
 
-Zowe API Mediation Layer (API ML) is a Zowe server-side component which provides a secure, single point of access for mainframe REST APIs (such as MVS Data Sets, JES, and z/OSMF). Acting as a reverse proxy, API ML bridges the gap between client applications and backend mainframe microservices by securely routing incoming requests to the appropriate underlying service.
+Zowe API Mediation Layer (API ML) is a Zowe server-side component which provides a secure, single point of access for mainframe infrastructure REST APIs (such as MVS Data Sets, JES, and z/OSMF). Acting as a reverse proxy, API ML bridges the gap between client applications and backend mainframe microservices by securely routing incoming requests to the appropriate underlying service.
 
 To facilitate communication between these loosely coupled clients and services, API ML supports a variety of API protocols, including REST, GraphQL, and WebSocket.
-
-API ML brings enterprise, cloud-like capabilities to the mainframe environment.  
+  
 API ML consists of the following core components: 
 
 * **API Gateway**  
@@ -41,7 +40,7 @@ The Discovery Service allows dynamic registration of microservices and enables t
 The API Catalog provides a user-friendly interface to view and try out all registered services, read their associated APIs documentation in OpenAPI/Swagger format.
 * **Caching Service**  
 The Caching Service allows components to store, search and retrieve their state. The Caching service can be configured to store the cached data using various backends, although the recommended storage system is Infinispan. 
-* **Zowe Authorization and Authentication Servcie (ZAAS)**  
+* **Zowe Authorization and Authentication Service (ZAAS)**  
 ZAAS is the core security component responsible for handling user authentication and enabling Single Sign-On (SSO) across the mainframe services registered with Zowe API ML. 
 
 <details>
@@ -49,7 +48,7 @@ ZAAS is the core security component responsible for handling user authentication
 
 #### Key features
 * **Consistent Access:**  
-API routing and standardization of API service URLs through the Gateway component provides users with a consistent way to access mainframe APIs at a predefined address.
+API routing and standardization of API service URLs through the Gateway component provides users with a consistent way to access mainframe infrastructure REST APIs at a predefined address.
 * **Dynamic Discovery:**  
 The Discovery Service automatically determines the location and status of API services.
 * **High-Availability:**  

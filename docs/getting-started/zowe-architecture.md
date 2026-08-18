@@ -2,15 +2,11 @@
 
 Zowe&trade; is a collection of components that together form a framework that makes Z-based functionality accessible across an organization. Zowe functionality includes exposing Z-based components, such as z/OSMF, as REST APIs. The Zowe framework provides an environment where other components can be included and exposed to a broader non-Z based audience.
 
-Zowe components can be categorized by location: server or client. While the client is always an end-user tool such as a PC, browser, or mobile device, the server components can be further categorized by what machine they run on.
-
-Zowe server components can be installed and run entirely on z/OS, but a subset of the components can alternatively run on Linux or z/Linux via Docker. While on z/OS, many of these components run under UNIX System Services (USS). The components that do not run under USS must remain on z/OS when using Docker in order to provide connectivity to the mainframe.
+Zowe components can be categorized by location: server or client. While the client is always an end-user tool such as a PC, browser, or mobile device, the server components are installed on z/OS, most of which run subsequently under USS.
 
 ## API Mediation Layer
 
-Zowe API Mediation Layer (API ML) functions as a secure, single point of entry for mainframe REST APIs, which bridges the gap between underlying z/OS services and modern application development.  API ML provides an alternative to requiring clients to manage individual connections and credentials for various mainframe endpoints. Instead, all traffic is routed centrally through Zowe API ML.
-
-By functioning as a cloud-like infrastructure for the mainframe, Zowe API ML abstracts underlying complexities through dynamic service discovery, single sign-on (SSO) authentication, and a unified API catalog that standardizes how APIs are explored and consumed.
+Zowe API Mediation Layer (API ML) functions as a secure, single point of entry for mainframe infrastructure REST APIs, which bridges the gap between underlying z/OS services and modern application development. API ML provides an alternative to requiring clients to manage individual connections and credentials for various mainframe endpoints. Instead, all traffic is routed centrally through Zowe API ML.
 
 ### Core Components
 
@@ -27,7 +23,7 @@ The following diagram illustrates the internal relationships between these core 
 ![Zowe API Mediation Layer Architecture](../images/api-mediation/api-ml-architecture1.png)
 
 ### API Gateway 
-The API Gateway is a proxy server and centralized entry point that provides standardized access to mainframe REST APIs. The API Gateway dynamically routes requests from clients on its northbound edge (such as web browsers or Zowe CLI) to appropriate servers on the API Gateway southbound (downstream) edge. Additionally, the API Gateway enforces secure communication and integrates with ZAAS to generate authentication tokens for Single Sign-On (SSO) functionality.
+The API Gateway is a proxy server and centralized entry point that provides standardized access to mainframe infrastructure REST APIs. The API Gateway dynamically routes requests from clients on its northbound edge (such as web browsers or Zowe CLI) to appropriate servers on the API Gateway's southbound (downstream) edge. Additionally, the API Gateway enforces secure communication and integrates with ZAAS to generate authentication tokens for Single Sign-On (SSO) functionality.
 
 <details>
 <summary>Click here for details about the API Gateway. </summary>
@@ -45,7 +41,7 @@ The API Gateway is a proxy server and centralized entry point that provides stan
 * **Dynamic Routing**  
 Acts as a reverse proxy, routing incoming client requests to the appropriate downstream API services based on the routing information dynamically provided by the Discovery Service.
 * **Standardized Access**  
-Provides a single, consistent entry point (URL and port) for all mainframe REST APIs, simplifying client configuration and network security.
+Provides a single, consistent entry point (URL and port) for all mainframe infrastructure REST APIs, simplifying client configuration and network security.
 * **Security & Authentication Integration**  
 Enforces secure communication via HTTPS and acts as the enforcement point for Single Sign-On (SSO), relying on ZAAS to validate identities and issue tokens.
 
@@ -53,7 +49,7 @@ Enforces secure communication via HTTPS and acts as the enforcement point for Si
 <br />
 
 ### Discovery Service
-The Discovery Service is the registration service broker that maintains the central registry of active services within Zowe API Mediation Layer. The Discovery Service enables the dynamic registration of API services upon startup, continuously monitors their health and availability via heartbeats, and provides the API Gateway with real-time routing intelligence to support load balancing and high availability.
+The Discovery Service is the service registry of active services within Zowe API Mediation Layer. The Discovery Service enables the dynamic registration of API services upon startup, continuously monitors their health and availability via heartbeats, and provides the API Gateway with real-time routing intelligence to support load balancing and high availability.
 
 <details>
 <summary>Click here for details about the Discovery Service. </summary>
@@ -68,12 +64,12 @@ The Discovery Service is the registration service broker that maintains the cent
 
 **Key capabilities of the Discovery Service:**
 
-* **Dynamic Registration**  
-Allows API services to automatically register themselves and their metadata upon startup, eliminating the need for manual routing configuration updates.
+* **Registration Management**  
+Supports both dynamic and static registration of API services. Dynamic registration allows services to automatically register themselves and their metadata upon startup, while static registration enables onboarding and routing for services that cannot be modified to use a discovery client.
 * **Health Monitoring**  
-Continuously monitors the health and availability of registered services by requiring and tracking regular heartbeat signals.
+Continuously monitors the health and availability of dynamically registered services by requiring and tracking regular heartbeat signals.
 * **Routing Intelligence**  
-Maintains the central registry of active services and provides the API Gateway with real-time routing information, enabling load balancing and high availability.
+Maintains the central registry of all active services (both statically and dynamically registered) and provides the API Gateway with real-time routing information, enabling load balancing and high availability.
 
 </details>
 <br />
