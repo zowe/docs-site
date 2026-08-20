@@ -40,12 +40,12 @@ This guide is maintained in the `zowe/api-layer` repository [keystore/README.md]
 
 ### Generate a certificate for a new service on localhost
 
-To generate a certificate for a new service on localhost, see the [api-layer keystore guide](https://github.com/zowe/api-layer/blob/v3.x.x/keystore/README.md).
+To generate a certificate for a new service on localhost, see [Certificates for an onboarded service](https://github.com/zowe/api-layer/blob/v3.x.x/keystore/README.md#certificates-for-an-onboarded-service) in the api-layer keystore guide.
 
 
 ### Add a service with an existing certificate to API ML on localhost
 
-For information about adding a service with an existing certificate to API ML on localhost, see [Trusting the certificates of other services](https://github.com/zowe/api-layer/blob/v3.x.x/keystore/README.md#trusting-the-certificates-of-other-services).
+For information about adding a service with an existing certificate to API ML on localhost, see [Trusting the certificate of an onboarded service](https://github.com/zowe/api-layer/blob/v3.x.x/keystore/README.md#trusting-the-certificate-of-an-onboarded-service).
 
 
 ### Service registration to Discovery Service on localhost
