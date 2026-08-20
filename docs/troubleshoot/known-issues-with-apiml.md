@@ -212,7 +212,7 @@ org.infinispan.persistence.spi.PersistenceException: Found an invalid protobuf t
 
 **Cause:**  
 
-Infinispan failed to load the persisted data for the specified cache because the persistent cache store has become corrupted.
+Infinispan failed to load the persisted data for the specified cache because the persistent cache store is corrupted.
 
 Corruptions of this type can occur due to various reasons, such as:
 * An unexpected or unclean shutdown of the Zowe instance.
@@ -221,28 +221,31 @@ Corruptions of this type can occur due to various reasons, such as:
 
 **Resolution:**
 
-1. **Check Available Disk Space**:
+1. **Check Available Disk Space.**  
 Verify that there is sufficient available space on the file system hosting `zowe.workspaceDirectory`. If the disk is full, free up space before proceeding.
-2. **Remove the Index Directory:**  
-   If the persistent store appears corrupted, try removing only the index directory for the affected cache before clearing all persistent data:
-   * Stop Zowe.
-   * Delete the `/index` directory located at:
-     ```
-     <zowe.workspaceDirectory>/caching-service/<cache_name>/index
-     ```
-   * Restart Zowe.
-3. **Recreate the Persistent Store (Last Resort)**:
-If the persistent store is permanently corrupted and the service cannot recover automatically, perform the following steps to recreate the cache store:
-   * Stop Zowe.
-   * Remove the Infinispan persistence directory: Delete the contents or the folder located at:
-   `<zowe.workspaceDirectory>/caching-service`
-   * Restart Zowe: The Caching Service will automatically recreate a fresh persistent store on startup.
+2. **Remove the Index Directory.**    
+   If the persistent store appears corrupted, try removing only the index directory for the affected cache before clearing all persistent data:  
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a. Stop Zowe.  
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b. Delete the `/index` directory located at:  
+      ```
+      <zowe.workspaceDirectory>/caching-service/<cache_name>/index
+      ```  
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c. Restart Zowe.
+3. **Recreate the Persistent Store (Last Resort).**  
+If the persistent store is permanently corrupted and the service cannot recover automatically, perform the following steps to recreate the cache store:  
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a. Stop Zowe.  
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b. Remove the Infinispan persistence directory:  
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Delete the contents or the folder located at:
+   `<zowe.workspaceDirectory>/caching-service`    
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c. Restart Zowe: The Caching Service will automatically recreate a fresh persistent store on startup.
 
-:::note
-Removing the persistence directory clears all data stored by Infinispan, including revoked Personal Access Tokens (PATs) and revoked Zowe JWT tokens.
-:::
+    :::info
+    Removing the persistence directory clears all data stored by Infinispan, including revoked Personal Access Tokens (PATs) and revoked Zowe JWT tokens.
+    :::
 
-:::note Impact on Revoked Tokens
-* **Personal Access Tokens (PATs):** Unlike short-lived tokens, PATs have a default lifespan of **90 days**. Because of this long validity period, deleting the cache store leaves previously revoked PATs active until their natural expiration. Security administrators **must manually revoke** affected PATs again, either by user or by scope, using the appropriate API. For more information, see [Authenticating with a Personal Access Token](../user-guide/api-mediation/authenticating-with-personal-access-token.md).
-* **Zowe JWT Tokens:** The impact on revoked JWT tokens is usually limited, as JWTs typically have a relatively short expiration timeframe (e.g., a few hours) after which they become invalid automatically.
+  :::note Impact on Revoked Tokens
+  * **Personal Access Tokens (PATs):**  
+  Unlike short-lived tokens, PATs have a default lifespan of **90 days**. Because of this long validity period, deleting the cache store leaves previously revoked PATs active until their natural expiration. Security administrators **must manually revoke** affected PATs again, either by user or by scope, using the appropriate API. For more information, see [Authenticating with a Personal Access Token](../user-guide/api-mediation/authenticating-with-personal-access-token.md).
+* **Zowe JWT Tokens:**  
+The impact on revoked JWT tokens is usually limited, as JWTs typically have a relatively short expiration timeframe, such as a few hours, after which they become invalid automatically.
   :::
