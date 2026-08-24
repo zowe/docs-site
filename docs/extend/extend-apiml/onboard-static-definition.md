@@ -32,12 +32,26 @@ For more information about the structure of APIs and which APIs to expose in Zow
 The first step in API service onboarding is to identify the APIs that you want to expose.
 
 :::warning Important  
-Ensure that all domains and hostnames referenced in your service's registration profile are permitted by the API ML configuration property `zowe.network.allowedDomains`. 
+Ensure that all domains, hostnames and literal IP addresses referenced in your service's registration profile are permitted by the API ML configuration property `zowe.network.allowedDomains`. 
 
-If your service utilizes an unauthorized domain in its metadata fields (such as a documentation endpoint or a base connection URL), the registration will be blocked, and a `ZWEAM601W` warning message will be issued in the logs. This validation applies to:
-* **Base Connection URLs:** Such as `instanceBaseUrls`. 
-* **Service Metadata Keys:** Such as `apiml.*.swaggerUrl`, `apiml.*.graphqlUrl`, `apiml.*.documentationUrl`, `apiml.*.externalUrl`, and `apiml.corsAllowedOrigins`.
-* **Standard Eureka Endpoints:** Including Home Page, Health Check, Status Page, and Secure Health Check URLs.
+If your service utilizes an unauthorized domain or IP address in its metadata fields (such as a documentation endpoint or a base connection URL), the registration will be blocked, and a `ZWEAM601W` warning message will be issued in the logs. This validation applies to:
+* **Service Instance IP**  
+The literal IP address of the service attempting to onboard.
+* **Base Connection URLs**  
+Such as `instanceBaseUrls`. 
+* **Service Metadata Keys**  
+Such as the following:  
+  * `apiml.*.swaggerUrl`
+  * `apiml.*.graphqlUrl`
+  * `apiml.*.documentationUrl`
+  * `apiml.*.externalUrl`
+  * `apiml.corsAllowedOrigins`.
+* **Standard Eureka Endpoints**  
+Such as the following:  
+  * Home Page
+  * Health Check
+  * Status Page
+  * Secure Health Check URLs
 
 By default, the Discovery Service automatically trusts:
 * `zowe.externalDomains` (in both single instance and HA setups)
@@ -49,7 +63,7 @@ By default, the Discovery Service automatically trusts:
     * `www.zowe.org`
     * `techdocs.broadcom.com`
 
-Any additional external domains must be explicitly configured in `zowe.network.allowedDomains`. For more information, see [Configuring Allowed Domains for Service Registration](../../user-guide/api-mediation/config-allowed-domains-for-service-reg.md).
+Any additional external domains, exact IP addresses, or IPv4/IPv6 CIDR ranges must be explicitly configured in `zowe.network.allowedDomains`. For more information, see [Configuring allowed domains and IP addresses for service registration](../../user-guide/api-mediation/config-allowed-domains-for-service-reg.md).
 :::
 
 
@@ -369,16 +383,27 @@ additionalServiceMetadata:
     * **statusPageRelativeUrl**
     * **healthCheckRelativeUrl**
 
-  **Examples:**
-    * `- http://host:port/ftpservice` for an HTTP service
-    * `- https://host:port/source-code-mngmnt` for an HTTPS service
+  **Examples:**  
+  `- http://host:port/ftpservice` for an HTTP service  
+  `- https://host:port/source-code-mngmnt` for an HTTPS service
 
   You can provide one URL if your service has one instance. If your service provides multiple instances for the high-availability then you can provide URLs to these instances.
 
-  **Examples:**
-    * `- https://host1:port1/source-code-mngmnt`
-    * `- https://host2:port2/source-code-mngmnt`
+  **Examples:**  
+  `- https://host1:port1/source-code-mngmnt`  
+  `- https://host2:port2/source-code-mngmnt`  
+  `- http://192.168.1.50:8080/source-code-mngmnt`  
 
+:::note Note on using IP Addresses in Static Definitions
+  If you define endpoints using literal IP addresses instead of hostnames (for example, in `instanceBaseUrls`, `swaggerUrl`, `documentationUrl`), API ML strictly validates these IPs against the `zowe.network.allowedDomains` property in `zowe.yaml`.
+
+  * **Exact Match**  
+  The literal IP address in your static definition URL must exactly match an IP address listed in the allowlist.
+  * **CIDR Match**   
+  Alternatively, the literal IP address must fall within a configured IPv4/IPv6 CIDR range in the allowlist (for example, `192.168.1.0/24`).
+
+  CIDR notation is an allowlist-entry syntax used exclusively in the `zowe.yaml` configuration to define permissible ranges. Do not use CIDR notation in the URLs of your static service definition file. Your service's URLs must contain the exact literal IP addresses.
+  :::
 
 * **homePageRelativeUrl**
 

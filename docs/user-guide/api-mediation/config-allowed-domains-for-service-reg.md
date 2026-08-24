@@ -1,4 +1,4 @@
-# Configuring allowed domains for service registration
+# Configuring allowed domains and IP addresses for service registration
 
 Use the property `zowe.network.allowedDomains`in your `zowe.yaml` file to secure Zowe API Mediation Layer (API ML) by restricting which domains, literal IP addresses, and IP ranges are permitted to register services with the API ML Discovery Service.
 
@@ -86,7 +86,8 @@ An allowlist entry like `192.168.1.0/35` is malformed (IPv4 CIDR cannot exceed `
 
 ## Troubleshooting and `allowedDomains` Override
 
-If your service utilizes an unauthorized domain in its metadata fields (such as a documentation endpoint or a base connection URL), the registration will be blocked, and a `ZWEAM601W` warning message will be issued in the logs. This validation applies to:
+If your service utilizes an unauthorized domain or IP in its metadata fields (such as a documentation endpoint or a base connection URL, or its instance IP address), the registration will be blocked, and a `ZWEAM601W` warning message will be issued in the logs. This validation applies to:
+* **Service Instance IP:** The literal IP address of the service attempting to onboard.
 * **Base Connection URLs:** Such as `instanceBaseUrls`. 
 * **Service Metadata Keys:** Such as `apiml.*.swaggerUrl`, `apiml.*.graphqlUrl`, `apiml.*.documentationUrl`, `apiml.*.externalUrl`, and `apiml.corsAllowedOrigins`.
 * **Standard Eureka Endpoints:** Including Home Page, Health Check, Status Page, and Secure Health Check URLs.
@@ -94,18 +95,24 @@ If your service utilizes an unauthorized domain in its metadata fields (such as 
 
 **Error Log Example (Blocked Registration)**
 
-When registration is blocked due to an unlisted domain, an entry similar to the following appears in the Zowe server log:
+When registration is blocked due to an unlisted domain, a nonmatching IP, an out-of-range address, or malformed CIDR syntax, an entry similar to the following appears in the Zowe server log:
 
 ```text
 ZWEAM601W 'apiml.service.externalUrl' https://evil.example.com/api is not allowed for instance 'my-service:my-service:8080'
 ```
 
+In the case of an out-of-range IP address:
+
+```text
+ZWEAM601W 'instanceBaseUrls' http://10.0.1.15:8080 is not allowed for instance 'my-service:my-service:8080'
+```
+
 **Resolution:**
-1. **Identify the Blocked Domain.**  
-   Check the log entry to find the offending URL and domain.
+1. **Identify the Blocked Domain or IP.**  
+   Check the log entry to find the offending URL and domain, or IP address. If you see a malformed CIDR error, identify the incorrect syntax in your configuration.
 
 2. **Update the Allowlist.**  
-   Coordinate with your System Administrator to add the missing domain or wildcard pattern to the `zowe.network.allowedDomains` array in `zowe.yaml`.
+   Coordinate with your System Administrator to add the missing domain or wildcard pattern, literal IP, or corrected CIDR range to the `zowe.network.allowedDomains` array in `zowe.yaml`.
 
 
   :::tip `allowedDomains` Override
@@ -117,4 +124,6 @@ ZWEAM601W 'apiml.service.externalUrl' https://evil.example.com/api is not allowe
     environments:
       ZWE_ONLY_WARN_ON_URL_NOT_ALLOWED: true
   ```
+
+  Note that `ZWE_ONLY_WARN_ON_URL_NOT_ALLOWED=true` is intended for temporary diagnostic behavior only. It is not a production substitute for a properly configured allowlist.
   :::
