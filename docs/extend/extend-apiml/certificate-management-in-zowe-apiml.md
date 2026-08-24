@@ -22,13 +22,37 @@ Review details of certificate management in Zowe API Mediation Layer (API ML). T
 
 ### How to start API ML on localhost with full HTTPS
 
-The [api-layer repository](https://github.com/zowe/api-layer) does not check in any certificates or private keys. Instead, the certificates needed to start API ML with HTTPS on your computer are generated automatically by Gradle when needed. These certificates are not trusted by your browser, so you can either ignore the security warning, or import the local CA certificate to the truststore of your browser or system.
+The [api-layer repository](https://github.com/zowe/api-layer) does not check in any certificates or private keys. Instead, the certificates needed to start API ML with HTTPS on your computer are generated automatically by Gradle when needed. Gradle runs the generator automatically from a fresh clone, so you can start API ML on localhost with HTTPS without manually generating certificates. 
+
+These certificates are not trusted by your browser, so you can either ignore the security warning, or import the local CA certificate to the truststore of your browser or system. <!--To establish browser trust on localhost, you must locate the Certificate Authority certificate at the new path (<KEYSTORE_DIRECTORY>/ca/service-ca.cer) and import it into your root certificate store. -->
 
 For more information about certificates, see [TLS certificates for local development and testing](https://github.com/zowe/api-layer/blob/v3.x.x/keystore/README.md).
 
 :::note
 When running on localhost, only the combination of using a keystore and truststore is supported.
 :::
+
+<!-- ### Understanding the local development keystore layout
+
+The structure of the local deployment keystore structure and the z/OS runtime keystore structure is distict. The local development keystore layout  has changed, whereas the z/OS runtime keystore layout remains unchanged. The z/OS runtime continues to use the legacy local_ca structure. The localhost development environment now utilizes a new by-purpose directory layout to better organize generated certificates.
+
+The new by-purpose directory layout under <KEYSTORE_DIRECTORY> on localhost includes:
+
+* **ca/**  
+Contains the Service CA (the primary certificate authority that signs the certificates in the service/ and client/ directories) and its truststore.
+
+* **service/**  
+Contains the certificates, private keys, and keystores used by the API ML services. These are signed by the Service CA.
+
+* **client/**  
+Contains the client certificates used for mutual TLS (mTLS) authentication. These are also signed by the Service CA.
+
+* **public_ca/**  
+Contains mock external CAs (public CAs) used to test how the API ML handles externally signed certificates.
+
+* **negative/**  
+Contains invalid, expired, or untrusted certificates used exclusively for testing failure scenarios.
+-->
 
 
 ### Certificate management guide
@@ -47,6 +71,23 @@ To generate a certificate for a new service on localhost, see [Certificates for 
 
 For information about adding a service with an existing certificate to API ML on localhost, see [Trusting the certificate of an onboarded service](https://github.com/zowe/api-layer/blob/v3.x.x/keystore/README.md#trusting-the-certificate-of-an-onboarded-service).
 
+<!-- 
+### Onboard a static-definition service with the new PEM/CA paths
+
+When onboarding a static-definition service on localhost, it is necessary to configure the service's YAML or JSON definition file to reference the new PEM and CA paths from the by-purpose directory structure. Update your static definition to point to the correct Service CA to ensure the full certificate chain is trusted.
+
+For example, define the properties as follows:
+
+* **Service Certificate**  
+<KEYSTORE_DIRECTORY>/service/service.cer
+
+* **Private Key**  
+<KEYSTORE_DIRECTORY>/service/service.key
+
+* **Certificate Authority (CA)**  
+<KEYSTORE_DIRECTORY>/ca/service-ca.cer
+
+-->
 
 ### Service registration to Discovery Service on localhost
 
