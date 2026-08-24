@@ -44,7 +44,7 @@ The structure of the local deployment keystore structure and the z/OS runtime ke
   For local deployments, the public CA certificate used to establish trust has moved from `local_ca/localca.cer` to `ca/service-ca.cer`.
   :::
 
-The new by-purpose directory layout under <KEYSTORE_DIRECTORY> on localhost includes:
+The new by-purpose directory layout under `<KEYSTORE_DIRECTORY>` on localhost includes:
 
 * **ca/**  
 Contains the Service CA (the primary certificate authority that signs the certificates in the service/ and client/ directories) and its truststore.
