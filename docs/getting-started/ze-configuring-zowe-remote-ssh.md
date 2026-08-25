@@ -165,7 +165,7 @@ Use an existing SSH profile from a Zowe client configuration file to deploy Zowe
 
 ## ZRS deployment dialog setting
 
-When you use an SSH profile in a tree view (**Data Sets**, **USS**, or **Jobs**) to connect to the mainframe, by default a dialog displays advising that you are about to use ZRS to perform actions on the mainframe.
+When you use an SSH profile in a tree view (**Data Sets**, **USS**, or **Jobs**) to connect to the mainframe, by default a dialog displays advising that you are about to deploy ZRS to perform actions on the mainframe.
 
 To change the default setting for the dialog, either:
 
