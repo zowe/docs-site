@@ -26,7 +26,7 @@ Review details of certificate management in Zowe API Mediation Layer (API ML). T
 
 The [api-layer repository](https://github.com/zowe/api-layer) does not check in any certificates or private keys. Instead, Gradle automatically generates the certificates needed to start API ML with HTTPS from a fresh clone, so no manual generation is required. 
 
-These certificates are not trusted by your browser, so you can either ignore the security warning, or import the local CA certificate to the truststore of your browser or system. <!--To establish browser trust on localhost, you must locate the Certificate Authority certificate at the new path (<KEYSTORE_DIRECTORY>/ca/service-ca.cer) and import it into your root certificate store. -->
+These certificates are not trusted by your browser by default, so you can either ignore the security warning, or establish trust manually. To establish browser trust on localhost, locate the public Service CA certificate at the new path (`<KEYSTORE_DIRECTORY>/ca/service-ca.cer`) and import the Service CA certificate into your system or browser's root certificate store.
 
 For more information about certificates, see [TLS certificates for local development and testing](https://github.com/zowe/api-layer/blob/v3.x.x/keystore/README.md).
 
@@ -36,9 +36,7 @@ When running on localhost, only the combination of using a keystore and truststo
 
 ### Understanding the local development keystore layout
 
-The structure of the local deployment keystore structure and the z/OS runtime keystore structure is distinct. The local development keystore layout has changed, whereas the z/OS runtime keystore layout remains unchanged:
-* The z/OS runtime continues to use the legacy local_ca structure. 
-* The localhost development environment utilizes a new by-purpose directory layout to better organize generated certificates.
+The localhost development environment utilizes a new by-purpose directory layout to better organize generated certificates.
 
   :::note
   For local deployments, the public CA certificate used to establish trust has moved from `local_ca/localca.cer` to `ca/service-ca.cer`.
@@ -47,42 +45,24 @@ The structure of the local deployment keystore structure and the z/OS runtime ke
 The new by-purpose directory layout under `<KEYSTORE_DIRECTORY>` on localhost includes:
 
 * **ca/**  
-Contains the Service CA (the primary certificate authority that signs the certificates in the service/ and client/ directories) and its truststore.
+Contains the Certificate Authorities, including the Service CA (which signs the API ML service certificates) and the Client CA (`client-ca`), which signs the client certificates.
 
 * **service/**  
-Contains the certificates, private keys, and keystores used by the API ML services. These are signed by the Service CA.
+Contains the certificates (identities), private keys, and the default truststore used by the API ML components. These are signed by the Service CA (`service-ca`).
 
 * **client/**  
-Contains the client certificates used for mutual TLS (mTLS) authentication. These are also signed by the Service CA.
+Contains the user (client) certificates used for mutual TLS (mTLS) authentication. These are signed by the Client CA (`client-ca`) to simulate a real-world, multi-anchor truststore.
 
 * **public_ca/**  
-Contains mock external CAs (public CAs) used to test how the API ML handles externally signed certificates.
+Contains third-party public root certificates. These certificates are used to provide trusted public anchors for external validation.
 
 * **negative/**  
-Contains invalid, expired, or untrusted certificates used exclusively for testing failure scenarios.
+Contains invalid or untrusted certificates used exclusively for testing failure scenarios.
 
-**Example layout:**
-
-```<KEYSTORE_DIRECTORY>/
-├── ca/
-│   ├── service-ca.cer
-│   └── service-ca.truststore.p12
-├── service/
-│   ├── service.cer
-│   ├── service.key
-│   └── service.keystore.p12
-├── client/
-│   ├── client.cer
-│   └── client.key
-├── public_ca/
-│   └── mock-external-ca.cer
-└── negative/
-    └── expired-cert.cer
-```
 
 ### Certificate management guide
 
-Zowe API Mediation Layer provides a guide that can be used to generate a keystore and truststore using the Zowe local certificate authority on Windows, Mac, Linux, and z/OS.
+Zowe API Mediation Layer provides a guide that can be used to generate a keystore and truststore using the Zowe local certificate authority on Windows, Mac, and Linux.
 
 This guide is maintained in the `zowe/api-layer` repository [keystore/README.md](https://github.com/zowe/api-layer/blob/v3.x.x/keystore/README.md), and uses a combination of openssl and java keytool.
 
