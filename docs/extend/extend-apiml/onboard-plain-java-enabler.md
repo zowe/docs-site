@@ -702,7 +702,9 @@ If you have an issue with loading the keystore file in your environment, try to 
 
   Specifies the truststore file used to keep other parties public keys and certificates. When using keyring, this value should be set to the SAF keyring location. For information about required certificates, see [Zowe API ML TLS requirements](https://github.com/zowe/api-layer/blob/v3.x.x/docs/api-ml-security-overview.md#zowe-api-ml-tls-requirements).
 
-  If you have an issue with loading the truststore file in your environment, try to provide the absolute path to the truststore file. The sample truststore file for local deployment is in [api-layer repository](https://github.com/zowe/api-layer/tree/master/keystore/localhost)
+  :::tip
+  If you have an issue with loading the truststore file in your environment, provide the absolute path to the truststore file.
+  :::
 
 * **trustStorePassword: password**
 
