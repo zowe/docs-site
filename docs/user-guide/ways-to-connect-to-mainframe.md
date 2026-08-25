@@ -66,7 +66,3 @@ Three common ways to reach mainframe resources (data sets, USS files, jobs, cons
 VSAM record access is not natively supported by any of the three. Console and TSO commands are not available over FTP.
 
 :::
-
-
-
-
