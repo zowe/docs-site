@@ -96,7 +96,12 @@ When onboarding a static service (or reloading your static definitions) on local
         --cacert <KEYSTORE_DIRECTORY>/ca/service-ca.cer \
         https://localhost:10011/discovery/api/v1/staticApi
     ```
-2. Check if your updated definition is effective.
+
+  :::tip
+  Alternatively, you can click **Refresh Static API** in the API Catalog.
+  :::
+
+1. Check if your updated definition is effective.
 
 :::note
 It can take up to 30 seconds for the API Gateway to pick up the new routing.
