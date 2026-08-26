@@ -70,7 +70,7 @@ Add a custom server path using the `Open user preferences (JSON)` command:
     },
     ```
 3. To validate the configuration, use Zowe Explorer to connect to the mainframe using the SSH profile with the host added in Step 2. 
-4. In the **USS** tree view, use the same SSH profile to navigate to the location specified in Step 2 to confirm that it contains the zowex binary.
+4. In the **USS** tree view, use the same SSH profile to navigate to the location specified in Step 2 to confirm that it contains the `zowex` binary.
 
 :::note
 If you have the `serverPath` property set in your [Zowe client configuration](../appendix/zowe-glossary.md#team-configuration) and a server path is also set in your VS Code configuration, the VS Code configuration takes precedence when using ZRS functionality.
@@ -162,3 +162,12 @@ Use an existing SSH profile from a Zowe client configuration file to deploy Zowe
     The Zowe Remote SSH binary is uploaded to your mainframe host to be used with this new profile. 
 
     You can now interact with this SSH profile in its Zowe Explorer tree view (**Data Sets**, **USS**, or **Jobs**) to start using ZRS.
+
+## ZRS deployment dialog setting
+
+When you use an SSH profile in a tree view (**Data Sets**, **USS**, or **Jobs**) to connect to the mainframe, by default a dialog displays advising that you are about to deploy ZRS to perform actions on the mainframe.
+
+To change the default setting for the dialog, either:
+
+- Click the **Connect, don't ask me again** button to not require confirmation before connecting with an SSH profile.
+- Open your **Settings** and navigate to **Zowe: Confirm Ssh Server Deploy**. Disable the setting to not require confirmation before connecting with an SSH profile.
