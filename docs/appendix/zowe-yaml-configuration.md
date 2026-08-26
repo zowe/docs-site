@@ -218,7 +218,11 @@ The high-level configuration `zowe` supports these definitions:
  In Kubernetes deployment, this value is the domain name you will use to access your Zowe running in a Kubernetes cluster.
 
 - **zowe.network.allowedDomains**  
-Specifies a list of trusted hostnames and domain patterns that the API Mediation Layer uses when validating service registration metadata. A service registration is rejected if any hostname referenced in its metadata (such as base connection URLs or documentation endpoints) does not match an entry in this list. Supports exact hostnames and leading wildcard patterns (such as `*.example.com`).
+Specifies a list of trusted hostnames and domain patterns, exact IPv4/IPv6 addresses, and IPv4/IPv6 CIDR ranges that the API Mediation Layer uses when validating service registration metadata. A service registration is rejected if any hostname or IP address referenced in its metadata (such as the service instance IP, base connection URLs or documentation endpoints) does not match an entry in this list. Supports exact hostnames, wildcard prefixes for subdomains (for example, `*.example.com`, which matches any hostname ending in `.example.com`), exact IP addresses (such as `192.168.1.50` or `2001:db8::1`), and CIDR ranges (such as `10.0.0.0/24` or `2001:db8::/32`).
+
+  :::note
+  Hostname wildcard matching is distinct from IP-range matching. CIDR is an allowlist-entry syntax used to define IP ranges. CIDR is not a valid host portion of a service URL. API ML evaluates literal IPs found in service URLs against the configured CIDR entries.
+  :::
 
   If left unconfigured, the Discovery Service aggregates a base allowlist from your environment configuration. Any values explicitly provided in this parameter are appended to this default list. By default, the system automatically trusts:
   * `zowe.externalDomains` (in both single instance and HA setups)
@@ -228,7 +232,10 @@ Specifies a list of trusted hostnames and domain patterns that the API Mediation
     * `www.ibm.com`
     * `zowe.github.io`
     * `www.zowe.org`
-    * `techdocs.broadcom.com`
+    * `techdocs.broadcom.com`  
+  :::note
+  For full configuration details, IP/CIDR matching examples, and troubleshooting, see [Configuring allowed domains and IP addresses for service registration](../user-guide/api-mediation/config-allowed-domains-for-service-reg.md).
+  :::
 
 - **zowe.externalPort**  
  Specifies the port that is to be exposed to external Zowe users. By default, this value is set based on Zowe APIML Gateway port.
