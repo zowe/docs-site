@@ -207,7 +207,19 @@ HttpClient employs a special entity to manage access to HTTP connections called 
 Specifies whether all operations can be retried for this service. The default value is `false`. The `false` value allows retries for only GET requests if a response code of `503` is returned. Setting this value to `true` enables retry requests for all methods, which return a `503` response code. Enabling retry can impact server resources resulting from buffering of the request body.
 
 * **apiml.service.corsEnabled**  
-When this parameter is set to `true`, CORS is enabled on the service level for all service routes. The same parameter can also be set on the service level, by providing the parameter as `customMetadata` as shown in the [Custom Metadata](./custom-metadata.md).
+  When this parameter is set to `true`, CORS is enabled on the service level for all service routes. The same parameter can also be set on the service level by providing the parameter as `customMetadata` as shown in [Custom Metadata](./custom-metadata.md).
+
+* **customMetadata.apiml.corsAllowedOrigins**  
+  (Optional) Specify which origins are accepted by the Gateway during CORS handling for this service. If not set, this value falls back to the Gateway's global `corsDefaultAllowedOrigins` default (`https://${hostname}:${port}`). Inclusion of other allowed orgins is additive to the Gateway defaults rather than replacing these defaults.
+
+* **customMetadata.apiml.corsAllowedHeaders**  
+  (Optional) Specify a comma-separated list of HTTP headers that are allowed during a CORS request to this service.
+
+* **customMetadata.apiml.corsAllowCredentials**  
+  (Optional) Configure whether the browser should include credentials (such as cookies, authorization headers, or TLS client certificates) in CORS requests. Note that the per-service default is `false`, whereas the Gateway-level default is hardcoded to `true`.
+
+* **customMetadata.apiml.corsAllowedMethods**  
+  (Optional) Specify a comma-separated list of HTTP methods (e.g., `GET`, `POST`, `PUT`, `DELETE`) that are allowed when accessing the service via CORS.
 
 * **apiml.response.compress**  
 When this parameter is set to `true`, API ML compresses content for all responses from these services using GZIP. API ML also adds the `Content-Encoding` header with the value `gzip` to responses.
