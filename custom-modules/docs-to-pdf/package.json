@@ -59,5 +59,8 @@
     "*.{js,ts}": [
       "./node_modules/.bin/eslint --fix"
     ]
+  },
+  "overrides": {
+    "basic-ftp": "5.3.1"
   }
 }
