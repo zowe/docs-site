@@ -26,9 +26,9 @@ Review details of certificate management in Zowe API Mediation Layer (API ML). T
 
 The [api-layer repository](https://github.com/zowe/api-layer) does not check in any certificates or private keys. Instead, Gradle automatically generates the certificates needed to start API ML with HTTPS from a fresh clone, so no manual generation is required. 
 
-These certificates are not trusted by your browser by default, so you can either ignore the security warning, or establish trust manually. To establish browser trust on localhost, locate the public Service CA certificate at the new path (`<KEYSTORE_DIRECTORY>/ca/service-ca.cer`) and import the Service CA certificate into your system or browser's root certificate store.
+These certificates are not trusted by your browser by default, so you can either ignore the security warning, or establish trust manually. To establish browser trust on localhost, locate the public Service CA certificate  (`<KEYSTORE_DIRECTORY>/ca/service-ca.cer`) and import the Service CA certificate into your system or browser's root certificate store.
 
-For more information about certificates, see [TLS certificates for local development and testing](https://github.com/zowe/api-layer/blob/v3.x.x/keystore/README.md).
+For more information about certificates, see the README: [TLS certificates for local development and testing](https://github.com/zowe/api-layer/blob/v3.x.x/keystore/README.md).
 
 :::note
 When running on localhost, only the combination of using a keystore and truststore is supported.
