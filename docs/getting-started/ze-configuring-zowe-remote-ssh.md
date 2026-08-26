@@ -70,7 +70,7 @@ Add a custom server path using the `Open user preferences (JSON)` command:
     },
     ```
 3. To validate the configuration, use Zowe Explorer to connect to the mainframe using the SSH profile with the host added in Step 2. 
-4. In the **USS** tree view, use the same SSH profile to navigate to the location specified in Step 2 to confirm that it contains the zowex binary.
+4. In the **USS** tree view, use the same SSH profile to navigate to the location specified in Step 2 to confirm that it contains the `zowex` binary.
 
 :::note
 If you have the `serverPath` property set in your [Zowe client configuration](../appendix/zowe-glossary.md#team-configuration) and a server path is also set in your VS Code configuration, the VS Code configuration takes precedence when using ZRS functionality.
