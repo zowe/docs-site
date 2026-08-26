@@ -30,7 +30,7 @@ Implementing an explicit domain and IP allowlist ensures the following security 
 * Malicious or misconfigured services are blocked at the boundary before they can expose users to SSRF (Server-Side Request Forgery).
 
 :::tip Best Practice for CIDR Ranges
-When configuring IP ranges, administrators are strongly advised to use the narrowest practical CIDR range. Every address within the specified range satisfies the allowlist check. The best practive is to avoid overly broad ranges like `0.0.0.0/0` which effectively bypass this security control.
+When configuring IP ranges, administrators are strongly advised to use the narrowest practical CIDR range. Every address within the specified range satisfies the allowlist check. The best practice is to avoid overly broad ranges like `0.0.0.0/0` which effectively bypass this security control.
 :::
 
 ## Configuration Examples (`zowe.yaml`)
