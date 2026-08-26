@@ -5,9 +5,11 @@ Review details of certificate management in Zowe API Mediation Layer (API ML). T
 - [Managing certificates in Zowe API Mediation Layer](#managing-certificates-in-zowe-api-mediation-layer)
   - [Running on localhost](#running-on-localhost)
     - [How to start API ML on localhost with full HTTPS](#how-to-start-api-ml-on-localhost-with-full-https)
+    - [Understanding the local development keystore layout](#understanding-the-local-development-keystore-layout)
     - [Certificate management guide](#certificate-management-guide)
     - [Generate a certificate for a new service on localhost](#generate-a-certificate-for-a-new-service-on-localhost)
     - [Add a service with an existing certificate to API ML on localhost](#add-a-service-with-an-existing-certificate-to-api-ml-on-localhost)
+    - [Onboard a static-definition service with the new PEM/CA paths](#onboard-a-static-definition-service-with-the-new-pemca-paths)
     - [Service registration to Discovery Service on localhost](#service-registration-to-discovery-service-on-localhost)
   - [Zowe runtime on z/OS](#zowe-runtime-on-zos)
     - [Import the local CA certificate to your browser](#import-the-local-ca-certificate-to-your-browser)
@@ -22,31 +24,88 @@ Review details of certificate management in Zowe API Mediation Layer (API ML). T
 
 ### How to start API ML on localhost with full HTTPS
 
-The [api-layer repository](https://github.com/zowe/api-layer) contains pre-generated certificates that can be used to start API ML with HTTPS on your computer. The certificates are not trusted by your browser so you can either ignore the security warning, or generate your own certificates and add them to the truststore of your browser or system.
+The [api-layer repository](https://github.com/zowe/api-layer) does not check in any certificates or private keys. Instead, Gradle automatically generates the certificates needed to start API ML with HTTPS from a fresh clone, so no manual generation is required. 
 
-For more information about certificates, see [TLS Certificates for localhost](https://github.com/zowe/api-layer/blob/master/keystore/README.md).
+These certificates are not trusted by your browser by default, so you can either ignore the security warning, or establish trust manually. To establish browser trust on localhost, locate the public Service CA certificate  (`<KEYSTORE_DIRECTORY>/ca/service-ca.cer`) and import the Service CA certificate into your system or browser's root certificate store.
+
+For more information about certificates, see the README: [TLS certificates for local development and testing](https://github.com/zowe/api-layer/blob/v3.x.x/keystore/README.md).
 
 :::note
 When running on localhost, only the combination of using a keystore and truststore is supported.
 :::
 
+### Understanding the local development keystore layout
+
+The localhost development environment utilizes a new by-purpose directory layout to better organize generated certificates.
+
+  :::note
+  For local deployments, the public CA certificate used to establish trust has moved from `local_ca/localca.cer` to `ca/service-ca.cer`.
+  :::
+
+The new by-purpose directory layout under `<KEYSTORE_DIRECTORY>` on localhost includes:
+
+* **ca/**  
+Contains the Certificate Authorities, including the Service CA (which signs the API ML service certificates) and the Client CA (`client-ca`), which signs the client certificates.
+
+* **service/**  
+Contains the certificates (identities), private keys, and the default truststore used by the API ML components. These are signed by the Service CA (`service-ca`).
+
+* **client/**  
+Contains the user (client) certificates used for mutual TLS (mTLS) authentication. These are signed by the Client CA (`client-ca`) to simulate a real-world, multi-anchor truststore.
+
+* **public_ca/**  
+Contains third-party public root certificates. These certificates are used to provide trusted public anchors for external validation.
+
+* **negative/**  
+Contains invalid or untrusted certificates used exclusively for testing failure scenarios.
+
 
 ### Certificate management guide
 
-Zowe API Mediation Layer provides a guide that can be used to generate a keystore and truststore using the Zowe local certificate authority on Windows, Mac, Linux, and z/OS.
+Zowe API Mediation Layer provides a guide that can be used to generate a keystore and truststore using the Zowe local certificate authority on Windows, Mac, and Linux.
 
-This guide is maintained in the `zowe/api-layer` repository [keystore/README.md](https://github.com/zowe/api-layer/blob/v2.x.x/keystore/README.md), and uses a combination of openssl and java keytool. 
+This guide is maintained in the `zowe/api-layer` repository [keystore/README.md](https://github.com/zowe/api-layer/blob/v3.x.x/keystore/README.md), and uses a combination of openssl and java keytool.
 
 
 ### Generate a certificate for a new service on localhost
 
-To generate a certificate for a new service on localhost, see [Generating certificate for a new service on localhost](https://github.com/zowe/api-layer/blob/master/keystore/README.md#generating-certificate-for-a-new-service-on-localhost).
+To generate a certificate for a new service on localhost, see [Certificates for an onboarded service](https://github.com/zowe/api-layer/blob/v3.x.x/keystore/README.md#certificates-for-an-onboarded-service) in the api-layer keystore guide.
 
 
 ### Add a service with an existing certificate to API ML on localhost
 
-For information about adding a service with an existing certificate to API ML on localhost, see [Trust certificates of other services](https://github.com/zowe/api-layer/blob/master/keystore/README.md#trust-certificates-of-other-services).
+For information about adding a service with an existing certificate to API ML on localhost, see [Trusting the certificate of an onboarded service](https://github.com/zowe/api-layer/blob/v3.x.x/keystore/README.md#trusting-the-certificate-of-an-onboarded-service).
 
+
+### Onboard a static-definition service with the new PEM/CA paths
+
+When onboarding a static service (or reloading your static definitions) on localhost without restarting API ML, you must issue a **POST** request to the Discovery Service. To authenticate this request, you must provide a trusted client certificate and the Service CA.
+
+1. Use a REST API client to issue a POST request to the Discovery Service (port `10011`):
+    ```
+    https://localhost:10011/discovery/api/v1/staticApi
+    ```
+
+    Using the new keystore layout, point your HTTP client to the Service CA and your generated service or client certificate.
+  For example, you can use _cURL_ to issue a **POST** call:
+
+    ```
+    curl -X POST \
+        --cert <KEYSTORE_DIRECTORY>/service/service.cer \
+        --key <KEYSTORE_DIRECTORY>/service/service.key \
+        --cacert <KEYSTORE_DIRECTORY>/ca/service-ca.cer \
+        https://localhost:10011/discovery/api/v1/staticApi
+    ```
+
+  :::tip
+  Alternatively, you can click **Refresh Static API** in the API Catalog.
+  :::
+
+1. Check if your updated definition is effective.
+
+:::note
+It can take up to 30 seconds for the API Gateway to pick up the new routing.
+:::
 
 ### Service registration to Discovery Service on localhost
 
@@ -246,14 +305,14 @@ Review the characteristics of following elements of the API ML SAF keyring:
 - The API ML local certificate authority is used to sign certificates of services.
 - The API ML local CA certificate is trusted by API services and clients.
 
-**The API ML keystore or API ML SAF Keyring**
+**The API ML keystore or API ML SAF keyring**
 
 - The server certificate of the Gateway (with PK)can be signed by the local CA or an external CA.
 - The server certificate of the Discovery Service (with PK) can be signed by the local CA.
 - The server certificate of the Catalog (with PK) can be signed by the local CA.
 - The API ML keystore is used by API ML services.
 
-**The API ML truststore or API ML SAF Keyring**
+**The API ML truststore or API ML SAF keyring**
 
 - Local CA public certificate
 - External CA public certificate (optional)
