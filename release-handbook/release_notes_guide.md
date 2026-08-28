@@ -39,6 +39,8 @@ Zowe Version 2.3.0 contains the enhancements that are described in the following
 
 #### IMS Plug-in for Zowe CLI
 
+#### z/OS FTP Plug-in for Zow CLI 
+
 ### Zowe Explorer
 
 #### Zowe Explorer (Core)
@@ -80,6 +82,8 @@ Zowe Version 2.3.0 contains the bug fixes that are described in the following to
 #### MQ Plug-in for Zowe CLI
 
 #### IMS Plug-in for Zowe CLI
+
+#### z/OS FTP Plug-in for Zow CLI 
 
 ### Zowe Explorer
 
