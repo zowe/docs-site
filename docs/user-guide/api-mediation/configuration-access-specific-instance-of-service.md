@@ -66,4 +66,14 @@ If the requested instance is not found or is unregistered, the Gateway rejects t
 
 While direct targeting is useful for debugging, operational testing, and stateful interactions managed by the client, you can also combine this input header with the Gateway's output header to achieve complete sticky session routing.
 
-For full details on configuring and using the sticky session pattern, see the `headerRequest` load balancing schema in [Customizing Metadata (optional)](../../extend/extend-apiml/custom-metadata.md#sticky-sessions-using-x-instanceid).
+For full details on configuring and using the sticky session pattern, see **Sticky sessions using `X-InstanceId`** in [Customizing Metadata (optional)](../../extend/extend-apiml/custom-metadata.md).
+
+## Verify direct instance targeting
+
+Use the following procedure to validate that direct instance targeting is functioning correctly in your environment:
+
+1. Start API ML with a discoverable client registered with at least two instances.
+2. Call the Gateway without the `X-InstanceId` header and confirm that requests are distributed across both instances in a round-robin fashion.
+3. Call the Gateway with the header `X-InstanceId: <instance1>` and confirm the request is routed to instance 1 only.
+4. Call the Gateway with the header `X-InstanceId: <instance2>` and confirm the request is routed to instance 2 only.
+5. Call the Gateway with a non-existent `X-InstanceId` value and confirm the Gateway returns a `404` error response with the exact message: `"Service instance not found for the provided instance ID"`.
