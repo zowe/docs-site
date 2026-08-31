@@ -81,19 +81,20 @@ Optionally, service can specify which origins are to be accepted by the Gateway 
   :::
 
   For more information, refer to enabling CORS with Custom Metadata on the Gateway: [Customizing Cross-Origin Resource Sharing (CORS)](../../user-guide/api-mediation/configuration-cors.md).
-  
-* **customMetadata.apiml.lb.type**  
- This parameter is part of the load balancing configuration for the Deterministic Routing capability. Through this parameter, the service can specify which load balancing schema the service requires. If this parameter is not specified, the service is routed using the basic round robin schema. This parameter can be set to the following values:
 
-  * **`authentication`**  
-  This value applies the Authentication load balancing schema. This is a sticky session functionality based on the ID of the user. The user ID is understood from the Zowe SSO token on the client's request. Requests without the token are routed in a round robin fashion. The user is first routed in a round robin fashion, and then the routed instance Id is cached. The instance information is used for subsequent requests to route the client to the cached target service instance. This session's default expiration time is 8 hours. After the session expires, the process initiates again.
+* **customMetadata.apiml.lb.type**   
+  This parameter is part of the load balancing configuration for the Deterministic Routing capability. Through this parameter, the service can specify which load balancing schema the service requires. If this parameter is not specified, the service is routed using the basic round robin schema. This parameter can be set to the following values:
+
+  * **`authentication`**   
+    This value applies the Authentication load balancing schema. This is a sticky session functionality based on the ID of the user. The user ID is understood from the Zowe SSO token on the client's request. Requests without the token are routed in a round robin fashion. The user is first routed in a round robin fashion, and then the routed instance Id is cached. The instance information is used for subsequent requests to route the client to the cached target service instance. This session's default expiration time is 8 hours. After the session expires, the process initiates again.
   
-    In default configuration, this cache is stored on each Gateway instance. You can choose to distribute this cache between the Gateway's instances. To do configure this cache distribution, see [Distributing the load balancer cache](../../user-guide/api-mediation/configuration-distributed-load-balancer-cache.md).
+    In default configuration, this cache is stored on each Gateway instance. You can choose to distribute this cache between the Gateway's instances. To configure this cache distribution, see [Distributing the load balancer cache](../../user-guide/api-mediation/configuration-distributed-load-balancer-cache.md).
    
-  * **`headerRequest`**  
-  This value applies the Header Request load balancing schema. Clients can call the API Gateway and provide a special header with the value of the requested `instanceId`. The Gateway understands this as a request from the client for routing to a specific instance. Clients have several possibilities for understanding the topology of service instances, such as via the `/eureka/apps` endpoint on the Discovery service, or the `/gateway/services` endpoint on the Gateway. In either case, the information is provided. 
+  * **`headerRequest`**   
+    This value applies the Header Request load balancing schema. Clients can call the API Gateway and provide a special header with the value of the requested `instanceId`. The Gateway understands this as a request from the client for routing to a specific instance. Clients have several possibilities for understanding the topology of service instances, such as via the `/eureka/apps` endpoint on the Discovery service, or the `/gateway/services` endpoint on the Gateway. In either case, the information is provided. 
 
     Using the `headerRequest` schema enables two distinct routing capabilities based on the `X-InstanceId` header: 
+    
     * Direct instance targeting with `X-InstanceId`
     * Sticky sessions using `X-InstanceId`
 
@@ -124,7 +125,7 @@ Optionally, service can specify which origins are to be accepted by the Gateway 
 
     **cURL equivalent:**
 
-    ``bash
+    ```bash
     curl -H "X-InstanceId: myhost:discoverable-client:10012" \
         https://gateway-host:port/discoverable-client/api/v1/endpoint
     ```
@@ -157,7 +158,6 @@ Optionally, service can specify which origins are to be accepted by the Gateway 
     3. For all subsequent requests, the client provides the `X-InstanceId` header with previously read value to get routed to the same instance of the service.
 
     </details>
-    
 
 * **customMetadata.apiml.lb.cacheRecordExpirationTimeInHours**  
 When the property `customMetadata.apiml.lb.type` is set to `authentication`, the user can also define the expiration time for the selected instance information that is cached. This property aims to prevent any discrepancy which might occur if the required target server is no longer available. The default value is 8 hours.   
