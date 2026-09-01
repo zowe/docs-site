@@ -15,6 +15,10 @@ Ensure that you meet the following requirements before you start your Zowe confi
 - Install Zowe with an [SMP/E build](install-zowe-smpe-overview.md), [Portable Software Instance](install-zowe-pswi.md), 
 or a [Convenience Build](install-zowe-zos-convenience-build.md).
 
+:::note
+From Zowe 3.3.0 forward, the Zowe z/OSMF Workflow supports JCL-driven configuration. This will become the default method of configuration in a future release. Read [this guide](./configuring-zowe-via-jcl.md#following-existing-zosmf-workflow-documentation) for more information.
+:::
+
 ## Overview of Stand-alone Zowe API ML Configuration workflow
 
 You can execute the **Stand-alone Zowe API ML Configuration** workflow either from a PSWI during deployment or later from a created software instance in z/OSMF. Alternatively, you can execute the configuration workflow in z/OSMF during the workflow registration process.

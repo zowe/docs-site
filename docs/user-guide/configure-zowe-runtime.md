@@ -7,7 +7,7 @@ Begin configuration of your installation of Zowe z/OS components by initializing
 
 Use one of the following options to initialize Zowe z/OS runtime:
 
-* Initialize Zowe maunually using zwe init command group
+* Initialize Zowe manually using zwe init command group
 * Configure Zowe with z/OSMF workflows
 
 ## Initialize Zowe manually using zwe init command group
@@ -18,7 +18,7 @@ After your installation of Zowe runtime, you can run the `zwe init` command to p
 * Create user IDs and security manager settings (Security Admin)
 * Provide APF authorize load libraries (Security Admin)
 * Configure Zowe to use TLS certificates (Security Admin)
-* Configure VSAM files to run the Zowe caching service used for high availability (HA)
+* Configure the Zowe caching service for high availability (HA)
 * Configure the system to launch the Zowe started task
 
 For more information about this z/OS runtime initialization method, see [Configuring Zowe with zwe init](./initialize-zos-system.md)
