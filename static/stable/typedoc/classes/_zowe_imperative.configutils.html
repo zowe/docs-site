@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ConfigUtils | Zowe Node.js SDK - v3.4.1</title>
-	<meta name="description" content="Documentation for Zowe Node.js SDK - v3.4.1">
+	<title>ConfigUtils | Zowe Node.js SDK - v3.6.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v3.6.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">Zowe Node.js SDK - v3.4.1</a>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v3.6.0</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -80,6 +80,12 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.configutils.html#unsafe_prop_names" class="tsd-kind-icon">UNSAFE_<wbr>PROP_<wbr>NAMES</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
 							<h3>Accessors</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.configutils.html#onlyv1profilesexist" class="tsd-kind-icon">only<wbr>V1Profiles<wbr>Exist</a></li>
@@ -94,6 +100,7 @@
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.configutils.html#getactiveprofilename" class="tsd-kind-icon">get<wbr>Active<wbr>Profile<wbr>Name</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.configutils.html#getzowedir" class="tsd-kind-icon">get<wbr>Zowe<wbr>Dir</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.configutils.html#hastokenexpired" class="tsd-kind-icon">has<wbr>Token<wbr>Expired</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.configutils.html#hasunsafeoremptyproperty" class="tsd-kind-icon">has<wbr>Unsafe<wbr>OrEmpty<wbr>Property</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.configutils.html#initimputils" class="tsd-kind-icon">init<wbr>Imp<wbr>Utils</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.configutils.html#jsonpathmatches" class="tsd-kind-icon">json<wbr>Path<wbr>Matches</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.configutils.html#readextendersjson" class="tsd-kind-icon">read<wbr>Extenders<wbr>Json</a></li>
@@ -101,6 +108,27 @@
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.configutils.html#writeextendersjson" class="tsd-kind-icon">write<wbr>Extenders<wbr>Json</a></li>
 							</ul>
 						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static">
+					<a name="unsafe_prop_names" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> UNSAFE_<wbr>PROP_<wbr>NAMES</h3>
+					<div class="tsd-signature tsd-kind-icon">UNSAFE_<wbr>PROP_<wbr>NAMES<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">readonly </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = [&quot;__proto__&quot;, &quot;constructor&quot;, &quot;prototype&quot;]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/imperative/src/config/src/ConfigUtils.ts#L36">@zowe/imperative/src/config/src/ConfigUtils.ts:36</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Property names that must never appear as a segment when walking a plain
+								object with hand-rolled (non-lodash) dotted-path traversal. Dereferencing
+								or assigning to any of these keys can mutate <code>Object.prototype</code>
+							(prototype pollution) or otherwise corrupt the JS object graph.</p>
+						</div>
 					</div>
 				</section>
 			</section>
@@ -116,7 +144,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/config/src/ConfigUtils.ts#L142">@zowe/imperative/src/config/src/ConfigUtils.ts:142</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/imperative/src/config/src/ConfigUtils.ts#L163">@zowe/imperative/src/config/src/ConfigUtils.ts:163</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -146,7 +174,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/config/src/ConfigUtils.ts#L89">@zowe/imperative/src/config/src/ConfigUtils.ts:89</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/imperative/src/config/src/ConfigUtils.ts#L110">@zowe/imperative/src/config/src/ConfigUtils.ts:110</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -184,7 +212,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/config/src/ConfigUtils.ts#L276">@zowe/imperative/src/config/src/ConfigUtils.ts:276</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/imperative/src/config/src/ConfigUtils.ts#L297">@zowe/imperative/src/config/src/ConfigUtils.ts:297</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -230,7 +258,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/config/src/ConfigUtils.ts#L234">@zowe/imperative/src/config/src/ConfigUtils.ts:234</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/imperative/src/config/src/ConfigUtils.ts#L255">@zowe/imperative/src/config/src/ConfigUtils.ts:255</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -280,7 +308,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/config/src/ConfigUtils.ts#L115">@zowe/imperative/src/config/src/ConfigUtils.ts:115</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/imperative/src/config/src/ConfigUtils.ts#L136">@zowe/imperative/src/config/src/ConfigUtils.ts:136</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -326,7 +354,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/config/src/ConfigUtils.ts#L35">@zowe/imperative/src/config/src/ConfigUtils.ts:35</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/imperative/src/config/src/ConfigUtils.ts#L56">@zowe/imperative/src/config/src/ConfigUtils.ts:56</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -352,7 +380,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/config/src/ConfigUtils.ts#L302">@zowe/imperative/src/config/src/ConfigUtils.ts:302</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/imperative/src/config/src/ConfigUtils.ts#L323">@zowe/imperative/src/config/src/ConfigUtils.ts:323</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -377,6 +405,42 @@ be decoded <span class="hljs-keyword">or</span> <span class="hljs-keyword">an</s
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="hasunsafeoremptyproperty" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> has<wbr>Unsafe<wbr>OrEmpty<wbr>Property</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">has<wbr>Unsafe<wbr>OrEmpty<wbr>Property<span class="tsd-signature-symbol">(</span>propertyPath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/imperative/src/config/src/ConfigUtils.ts#L47">@zowe/imperative/src/config/src/ConfigUtils.ts:47</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Determine whether a dotted config property path or profile name contains
+										a segment that is empty (e.g. from a leading, trailing, or consecutive
+										dot) or that could be abused for prototype pollution. Both flavors of bad
+									segment are unsafe to hand to a hand-rolled dotted-path walker.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>propertyPath: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Dotted path (e.g. &quot;profiles.lpar1.properties.host&quot;)
+										or profile name (e.g. &quot;lpar1.zosmf&quot;)</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<p>True if any segment is empty or a reserved/unsafe property name</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
 					<a name="initimputils" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> init<wbr>Imp<wbr>Utils</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
@@ -386,7 +450,7 @@ be decoded <span class="hljs-keyword">or</span> <span class="hljs-keyword">an</s
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/config/src/ConfigUtils.ts#L180">@zowe/imperative/src/config/src/ConfigUtils.ts:180</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/imperative/src/config/src/ConfigUtils.ts#L201">@zowe/imperative/src/config/src/ConfigUtils.ts:201</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -419,7 +483,7 @@ be decoded <span class="hljs-keyword">or</span> <span class="hljs-keyword">an</s
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/config/src/ConfigUtils.ts#L129">@zowe/imperative/src/config/src/ConfigUtils.ts:129</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/imperative/src/config/src/ConfigUtils.ts#L150">@zowe/imperative/src/config/src/ConfigUtils.ts:150</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -456,7 +520,7 @@ be decoded <span class="hljs-keyword">or</span> <span class="hljs-keyword">an</s
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/config/src/ConfigUtils.ts#L54">@zowe/imperative/src/config/src/ConfigUtils.ts:54</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/imperative/src/config/src/ConfigUtils.ts#L75">@zowe/imperative/src/config/src/ConfigUtils.ts:75</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -489,7 +553,7 @@ be decoded <span class="hljs-keyword">or</span> <span class="hljs-keyword">an</s
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/config/src/ConfigUtils.ts#L163">@zowe/imperative/src/config/src/ConfigUtils.ts:163</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/imperative/src/config/src/ConfigUtils.ts#L184">@zowe/imperative/src/config/src/ConfigUtils.ts:184</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -521,7 +585,7 @@ be decoded <span class="hljs-keyword">or</span> <span class="hljs-keyword">an</s
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/config/src/ConfigUtils.ts#L72">@zowe/imperative/src/config/src/ConfigUtils.ts:72</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/imperative/src/config/src/ConfigUtils.ts#L93">@zowe/imperative/src/config/src/ConfigUtils.ts:93</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -600,6 +664,9 @@ be decoded <span class="hljs-keyword">or</span> <span class="hljs-keyword">an</s
 							<li class="current tsd-kind-class tsd-parent-kind-module">
 								<a href="_zowe_imperative.configutils.html" class="tsd-kind-icon">Config<wbr>Utils</a>
 								<ul>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_imperative.configutils.html#unsafe_prop_names" class="tsd-kind-icon">UNSAFE_<wbr>PROP_<wbr>NAMES</a>
+									</li>
 									<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-static">
 										<a href="_zowe_imperative.configutils.html#onlyv1profilesexist" class="tsd-kind-icon">only<wbr>V1Profiles<wbr>Exist</a>
 									</li>
@@ -620,6 +687,9 @@ be decoded <span class="hljs-keyword">or</span> <span class="hljs-keyword">an</s
 									</li>
 									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
 										<a href="_zowe_imperative.configutils.html#hastokenexpired" class="tsd-kind-icon">has<wbr>Token<wbr>Expired</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_imperative.configutils.html#hasunsafeoremptyproperty" class="tsd-kind-icon">has<wbr>Unsafe<wbr>OrEmpty<wbr>Property</a>
 									</li>
 									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
 										<a href="_zowe_imperative.configutils.html#initimputils" class="tsd-kind-icon">init<wbr>Imp<wbr>Utils</a>
@@ -694,10 +764,11 @@ be decoded <span class="hljs-keyword">or</span> <span class="hljs-keyword">an</s
 				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
-				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
 			</ul>
 			<ul class="tsd-legend">
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
 			</ul>
 		</div>
 	</div>
