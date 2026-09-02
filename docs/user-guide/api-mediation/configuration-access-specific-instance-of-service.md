@@ -62,12 +62,6 @@ If the requested instance is not found or is unregistered, the Gateway rejects t
 }
 ```
 
-### Sticky sessions pattern
-
-While direct targeting is useful for debugging, operational testing, and stateful interactions managed by the client, you can also combine this input header with the Gateway's output header to achieve complete sticky session routing.
-
-For full details on configuring and using the sticky session pattern, see **Sticky sessions using `X-InstanceId`** in [Customizing Metadata (optional)](../../extend/extend-apiml/custom-metadata.md).
-
 ## Verify direct instance targeting
 
 Use the following procedure to validate that direct instance targeting is functioning correctly in your environment:

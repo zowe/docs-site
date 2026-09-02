@@ -93,10 +93,7 @@ Optionally, service can specify which origins are to be accepted by the Gateway 
   * **`headerRequest`**   
     This value applies the Header Request load balancing schema. Clients can call the API Gateway and provide a special header with the value of the requested `instanceId`. The Gateway understands this as a request from the client for routing to a specific instance. Clients have several possibilities for understanding the topology of service instances, such as via the `/eureka/apps` endpoint on the Discovery service, or the `/gateway/services` endpoint on the Gateway. In either case, the information is provided. 
 
-    Using the `headerRequest` schema enables two distinct routing capabilities based on the `X-InstanceId` header: 
-    
-    * Direct instance targeting with `X-InstanceId`
-    * Sticky sessions using `X-InstanceId`
+    Using the `headerRequest` schema enables routing capabilities based on direct instance targeting with `X-InstanceId` header. 
 
     **Direct instance targeting with `X-InstanceId`**
 
@@ -138,15 +135,6 @@ Optionally, service can specify which origins are to be accepted by the Gateway 
     }
     ``` 
    
-    **Sticky sessions using `X-InstanceId`**
-
-    In combination with enabling [Routed instance header](../../user-guide/api-mediation/configuration-access-specific-instance-of-service.md), the client can achieve sticky session functionality. (The term, 'sticky session' refers to the feature of many load balancing solutions to route the requests for a particular session to the same physical machine that serviced the first request for that session). The benefit of this approach is that there is no session on the Gateway, and the client ultimately decides whether or not to go to a specific instance. 
-
-    This method uses the following sequence:
-    
-    1. The client calls API Gateway and gets routed to a service.
-    2. The client reads the `X-InstanceId` header value from the response to understand the service was routed to.
-    3. For all subsequent requests, the client provides the `X-InstanceId` header with previously read value to get routed to the same instance of the service.
 
 * **customMetadata.apiml.lb.cacheRecordExpirationTimeInHours**  
 When the property `customMetadata.apiml.lb.type` is set to `authentication`, the user can also define the expiration time for the selected instance information that is cached. This property aims to prevent any discrepancy which might occur if the required target server is no longer available. The default value is 8 hours.   
