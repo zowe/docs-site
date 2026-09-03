@@ -27,7 +27,7 @@ Use the following procedure to output a special header that contains the value o
 In addition to returning the `X-InstanceId` in responses, the API Gateway also accepts `X-InstanceId` as an incoming request header. When a client knows the exact Eureka instance ID of a service, they can use this header to bypass default load balancing (such as round-robin) and route a request directly to that specific instance. 
 
 :::note
-No additional Gateway configuration is required to use this request header. Direct instance targeting works out of the box as long as the target service instance is registered in Eureka.
+To use direct instance targeting, the target service must have the Authentication load balancing schema enabled (`customMetadata.apiml.lb.type: authentication`). As long as this schema is applied and the instance is registered in Eureka, no additional Gateway configuration is required.
 :::
 
 ### Request format
