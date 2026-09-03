@@ -86,7 +86,7 @@ Optionally, service can specify which origins are to be accepted by the Gateway 
   This parameter is part of the load balancing configuration for the Deterministic Routing capability. Through this parameter, the `authentication` load balancing schema can be applied to the service. If this parameter is not specified, the service is routed using the basic round robin schema. 
 
   * **`authentication`**   
-    This value applies the Authentication load balancing schema. This is a sticky session functionality based on the ID of the user. The user ID is understood from the Zowe SSO token on the client's request. Requests without the token are routed in a round robin fashion. The user is first routed in a round robin fashion, and then the routed instance Id is cached. The instance information is used for subsequent requests to route the client to the cached target service instance. This session's default expiration time is 8 hours. After the session expires, the process initiates again.
+    This value applies the Authentication load balancing schema. This is a sticky session functionality based on the ID of the user. The user ID is understood from the Zowe SSO token on the client's request. Requests without the token are routed in a round-robin fashion. The user is first routed in a round robin fashion, and then the routed instance Id is cached. The instance information is used for subsequent requests to route the client to the cached target service instance. This session's default expiration time is 8 hours. After the session expires, the process initiates again.
 
     **Direct instance targeting with `X-InstanceId`**
 
