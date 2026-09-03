@@ -83,7 +83,7 @@ Optionally, service can specify which origins are to be accepted by the Gateway 
   For more information, refer to enabling CORS with Custom Metadata on the Gateway: [Customizing Cross-Origin Resource Sharing (CORS)](../../user-guide/api-mediation/configuration-cors.md).
 
 * **customMetadata.apiml.lb.type**   
-  This parameter is part of the load balancing configuration for the Deterministic Routing capability. Through this parameter, the service can apply the `authentication` load balancing schema to the service. If this parameter is not specified, the service is routed using the basic round robin schema. 
+  This parameter is part of the load balancing configuration for the Deterministic Routing capability. Through this parameter, the `authentication` load balancing schema can be applied to the service. If this parameter is not specified, the service is routed using the basic round robin schema. 
 
   * **`authentication`**   
     This value applies the Authentication load balancing schema. This is a sticky session functionality based on the ID of the user. The user ID is understood from the Zowe SSO token on the client's request. Requests without the token are routed in a round robin fashion. The user is first routed in a round robin fashion, and then the routed instance Id is cached. The instance information is used for subsequent requests to route the client to the cached target service instance. This session's default expiration time is 8 hours. After the session expires, the process initiates again.
