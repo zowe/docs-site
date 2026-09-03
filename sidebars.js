@@ -401,7 +401,6 @@ module.exports = {
                 "user-guide/cli-configure-cli-on-os-where-scs-unavailable",
               ],
             },
-            "user-guide/cli-updatingcli",
             {
               type: "category",
               label: "Configuring Zowe CLI",
@@ -468,14 +467,11 @@ module.exports = {
     },
   ],
  "upgrade": [
+  "upgrade/upgrading-zowe",
   {
     type: "category",
-    label: "Upgrading Zowe",
+    label: "Zowe server-side components",
     collapsed: false,
-    link: {
-      type: "doc",
-      id: "upgrade/upgrading-zowe", // This attaches the doc directly to the category label
-    },
     items: [
       "upgrade/upgrade-zowe-v3",
       "upgrade/upgrade-zowe-v2",
@@ -483,6 +479,19 @@ module.exports = {
       "upgrade/upgrade-to-single-service-apiml-deployment",
       "upgrade/migrate-from-convenience-build-to-pswi-smpe",
       "upgrade/downgrade-to-a-previous-zowe-version",
+    ]
+  },
+  {
+    type: "category",
+    label: "Zowe client-side components",
+    collapsed: false,
+    link: {
+      type: "doc",
+      id: "upgrade/upgrading-zowe", // This attaches the doc directly to the category label
+    },
+    items: [
+      "upgrade/cli-updatingcli",
+      "upgrade/ze-updatingze",
     ]
   }
 ],

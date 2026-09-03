@@ -26,9 +26,9 @@ Before you install the plug-in, ensure that you meet the software requirements i
 
 Use one of the following methods to install or update the plug-in:
 
-- [Installing plug-ins from an online registry](cli-installplugins.md#installing-plug-ins-from-an-online-registry)
+- [Installing plug-ins from an online registry](./cli-installplugins.md#installing-plug-ins-from-an-online-registry)
 
-- [Installing plug-ins from a local package](cli-installplugins.md#installing-plug-ins-from-a-local-package)
+- [Installing plug-ins from a local package](./cli-installplugins.md#installing-plug-ins-from-a-local-package)
 
 Use the following Plug-in ID with either of these installation methods:
 
