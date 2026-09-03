@@ -23,7 +23,7 @@ For a printable version of this checklist, <a href="/stable/Zowe_CLI_Installatio
 | Step        | Description | Role       | Time Estimate |
 | ----------- | ----------- | ---------- | ------------- |
 | Installing Zowe CLI and Zowe CLI plug-ins from [a local package](../user-guide/cli-installcli.md#installing-zowe-cli-and-zowe-cli-plug-ins-from-a-local-package) or <br/>[an NPM public online registry](../user-guide/cli-installcli.md#installing-zowe-cli-and-zowe-cli-plug-ins-from-an-npm-online-registry) | Install Zowe CLI from an online registry or a local package.| Systems administrator | 30 min. |
-| [Updating Zowe CLI and Zowe CLI plug-ins](../user-guide/cli-updatingcli.md) | Identify the currently installed version of Zowe CLI and update to the most recent version. Or, revert to a specific previous release of Zowe CLI. | Systems administrator | 30 min. |
+| [Updating Zowe CLI and Zowe CLI plug-ins](../upgrade/cli-updatingcli.md) | Identify the currently installed version of Zowe CLI and update to the most recent version. Or, revert to a specific previous release of Zowe CLI. | Systems administrator | 30 min. |
 
 ## Configuring Zowe CLI
 

@@ -1,9 +1,9 @@
 # Updating Zowe CLI and Zowe CLI plug-ins
 
-Zowe&trade; CLI is updated continuously. You can update Zowe CLI to a more recent version using either the online registry or the local package method.
-
-:::info Required role: systems administrator
+:::info Required role: system administrator
 :::
+
+Zowe&trade; CLI is updated continuously. You can update Zowe CLI to a more recent version using either the online registry or the local package method.
 
 You must update Zowe CLI using the method that you used to install Zowe CLI.
 
