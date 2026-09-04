@@ -1,4 +1,4 @@
-# Configuring Health Check, Information, and Version Endpoint Protection
+# Configuring health check, information, and version endpoint protection
 
 :::info Role: system programmer
 ::: 
