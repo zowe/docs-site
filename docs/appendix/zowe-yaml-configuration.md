@@ -617,7 +617,7 @@ These configurations can be used under the `components.gateway` section:
   Specifies how long the connection to southbound remains open without communication. The default value is 5 seconds. The unit is in seconds.
 
 - **apiml.health.protected**  
-  Specifies if the health check endpoint is accessible with or without authentication.  
+  Specifies if the health check, information, and version endpoints are accessible with or without authentication. This property governs the following endpoints: `/application/health`, `/application/info`, `/application/version`, `/gateway/version`, and `/gateway/api/v1/version`. The default value is `true`.
 
 - **apiml.gateway.timeoutMillis**  
  Specifies the timeout for the connection to the services in milliseconds.
@@ -739,7 +739,8 @@ These configurations can be applied to the `components.discovery` section:
  Specifies the enablement of debug mode for the Discovery Service.
 
 - **apiml.health.protected**  
-  Specifies if the health check endpoint is accessible with or without authentication.
+  Specifies if the health check endpoint is accessible with or without authentication. 
+  The default value is `true`.
 
 - **apiml.security.ssl.verifySslCertificatesOfServices**  
  Specifies if API ML is to verify certificates of services in `strict` mode. Set to `true` to enable `strict` mode where API ML validates both trust in the certificate in the truststore, and also if the certificate Common Name or Subject Alternate Name (SAN) matches the service hostname.
@@ -753,7 +754,7 @@ These configurations can be applied to the `components.discovery` section:
 - **apiml.server.maxTotalConnections**  
  Specifies the total number of connections for all services registered under API Mediation Layer.
 
-- **apiml.discovery.serviceIdPrefixReplacer**  
+- **apiml.discovery.serviceIdPrefixReplacer**   
  Modifies the service ID of a service instance before it registers to API Mediation Layer.
  Use this parameter to ensure compatibility of services that use a non-conformant organization prefix with v2, based on Zowe v2 conformance.
 
