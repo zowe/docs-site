@@ -9,7 +9,8 @@ Review this topic to identify which endpoints are protected, determine default a
 
 ## Migration Guidance and Upgrade Warning
 
-:::caution Upgrade Warning
+:::caution Upgrade Warning  
+
 Because the default value of the protection setting remains `true`, the endpoints for application info and version now actively enforce authentication. 
 
 Monitoring systems, availability probes, readiness checks, automated scripts, and diagnostic tools that call these endpoints without credentials will begin receiving HTTP `401 Unauthorized` responses after upgrading. Administrators must either update clients to authenticate (recommended) or explicitly disable protection where unauthenticated access is required.
@@ -17,7 +18,7 @@ Monitoring systems, availability probes, readiness checks, automated scripts, an
 
 ## Endpoint Matrix
 
-The Gateway configuration was expanded to govern multiple endpoints under a single property, which differs from other components whose settings remained unchanged. 
+Beginning with Zowe v3.6, the Gateway configuration has been expanded to govern multiple endpoints under a single property, which differs from other components whose settings remained unchanged. 
 
 The following matrix details which endpoints are governed by the `apiml.health.protected` property for each component:
 
@@ -76,9 +77,10 @@ components:
 ```
 
 :::caution Security Restriction
-Setting `components.gateway.apiml.health.protected: false` exposes the Gateway health, information, and version endpoints without authentication. This can reveal operational status, build identifiers, commit information, or other deployment metadata. Use the default protected setting in production unless unauthenticated monitoring is required and access is restricted through another trusted control.
-:::
 
+Setting `components.gateway.apiml.health.protected: false` exposes the Gateway health, information, and version endpoints without authentication. This setting can reveal operational status, build identifiers, commit information, or other deployment metadata. Use the default protected setting in production unless unauthenticated monitoring is required and access is restricted through another trusted control.
+:::
+ 
 
 ## Verification Examples
 
