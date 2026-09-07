@@ -11,21 +11,21 @@ Review this topic to identify which endpoints are protected, determine default a
 
 :::caution Upgrade Warning  
 
-Because the default value of the protection setting remains `true`, the endpoints for application health,  info, and version now actively enforce authentication. 
+Because the default value of the protection setting remains `true`, the endpoints for application health,  info, and version actively enforce authentication. 
 
 Monitoring systems, availability probes, readiness checks, automated scripts, and diagnostic tools that call these endpoints without credentials will begin receiving HTTP `401 Unauthorized` responses after upgrading. Administrators must either update clients to authenticate (recommended) or explicitly disable protection where unauthenticated access is required.
 :::
 
 ## Endpoint Matrix
 
-Beginning with Zowe v3.6, the Gateway configuration has been expanded to govern multiple endpoints under a single property, which differs from other components whose settings remained unchanged. 
+Beginning with Zowe v3.6, the API Gateway configuration has been expanded to govern multiple endpoints under a single property, which differs from other components whose settings remained unchanged. 
 
 The following matrix details which endpoints are governed by the `apiml.health.protected` property for each component:
 
 | Component | Governed Endpoints | Property |
 | :--- | :--- | :--- |
-| **Gateway** | `/application/health`<br />`/application/info`<br />`/application/version`<br />`/gateway/version`<br />`/gateway/api/v1/version` | `components.gateway.apiml.health.protected` |
-| **Discovery** | `/application/health` | `components.discovery.apiml.health.protected` |
+| **API Gateway** | `/application/health`<br />`/application/info`<br />`/application/version`<br />`/gateway/version`<br />`/gateway/api/v1/version` | `components.gateway.apiml.health.protected` |
+| **Discovery Service** | `/application/health` | `components.discovery.apiml.health.protected` |
 | **API Catalog** | `/application/health` | `components.api-catalog.apiml.health.protected` |
 | **ZAAS** | `/application/health` | `components.zaas.apiml.health.protected` |
 
@@ -43,7 +43,7 @@ Provide a valid z/OS username and password (for example, using the `--user` flag
 Send a valid JSON Web Token in the `Authorization` header using the `Bearer <token>` format.
 
 :::note
-While the `apimlAuthenticationToken` cookie is supported for active browser sessions, we do not recommend relying on browser cookies for external monitoring automation or script-based health checks. For these use cases, we recommend generating and using a [Personal Access Token (PAT)](../api-mediation/authenticating-with-personal-access-token.md) sent as a Bearer token in the Authorization header.
+While the `apimlAuthenticationToken` cookie is supported for active browser sessions, we do not recommend relying on browser cookies for external monitoring automation or script-based health checks. For these use cases, we recommend generating and using a Personal Access Token (PAT) sent as a Bearer token in the Authorization header. For more information, see [Authenticating with a Personal Access Token](../api-mediation/authenticating-with-personal-access-token.md).
 :::
 
 ## Configuration 
@@ -65,7 +65,7 @@ components:
 
 ### Explicitly allow unauthenticated access
 
-Setting this property to `false` permits unauthenticated access to **all five** listed Gateway endpoints, not only `/application/health`.
+Setting this property to `false` permits unauthenticated access to **all five** listed API Gateway endpoints, not only `/application/health`.
 
 **zowe.yaml:**
 ```yaml
@@ -78,7 +78,7 @@ components:
 
 :::caution Security Restriction
 
-Setting `components.gateway.apiml.health.protected: false` exposes the Gateway health, information, and version endpoints without authentication. This setting can reveal operational status, build identifiers, commit information, or other deployment metadata. Use the default protected setting in production unless unauthenticated monitoring is required and access is restricted through another trusted control.
+Setting `components.gateway.apiml.health.protected: false` exposes API Gateway health, information, and version endpoints without authentication. This setting can reveal operational status, build identifiers, commit information, or other deployment metadata. Use the default protected setting in production unless unauthenticated monitoring is required and access is restricted through another trusted control.
 :::
  
 
@@ -87,7 +87,7 @@ Setting `components.gateway.apiml.health.protected: false` exposes the Gateway h
 You can use the following commands to verify the expected HTTP status with and without authentication. 
 
 :::note
-The following specific comands are not intended for direct use in pipelines.
+The following specific commands are not intended for direct use in pipelines.
 :::
 
 **Verify that an unauthenticated request is rejected:**
