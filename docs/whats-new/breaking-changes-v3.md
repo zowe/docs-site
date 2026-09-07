@@ -2,7 +2,7 @@
 
 Zowe 3.0 brings a range of major changes in Zowe functionality, including *breaking changes*, or modifications that require updates to avoid disruptions in your applications.
 
-Review this article for details about changes to various Zowe components that are introduced in Zowe V3, and any required actions you need to take.
+Review this article for details about changes to various Zowe components introduced in Zowe V3, and any required actions you need to take.
 
 ## API Mediation Layer (API ML)
 
@@ -23,7 +23,7 @@ Review this article for details about changes to various Zowe components that ar
 | Support access to z/OSMF only through `/ibmzosmf` route. V3 does not support access through the `/zosmf` route                | If you use z/OSMF via `{apimlUrl}/zosmf/{zosmfEndpoint}` it is necessary to move to `{apimlUrl}/ibmzosmf/{zosmfEndpoint}.`                                                                                                                                                                                                                                                                                                    |
 ### Important API ML updates
 
-The current API Gateway contains the Zowe Authentication and Authorization Service (ZAAS). This service has been separated as a standalone service. ZAAS is the only API ML service that directly requires z/OS.
+The current API Gateway contains the Zowe Authentication and Authorization Service (ZAAS). In Zowe v3, ZAAS is a standalone service, and is the only API ML service that directly requires z/OS.
 
 
 ## Application Framework
@@ -94,7 +94,7 @@ The current API Gateway contains the Zowe Authentication and Authorization Servi
 ### Important updates
 
 * Removed the dependency on Node.js for configuration
-* Introduced _ZEN_, a wizard to simplify configuration via the UI
+* Introduced the Zowe Server Install Wizard, a wizard to simplify configuration via the UI
 
 ## ZSS
 
