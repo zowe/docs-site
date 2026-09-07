@@ -11,7 +11,7 @@ Review this topic to identify which endpoints are protected, determine default a
 
 :::caution Upgrade Warning  
 
-Because the default value of the protection setting remains `true`, the endpoints for application info and version now actively enforce authentication. 
+Because the default value of the protection setting remains `true`, the endpoints for application health,  info, and version now actively enforce authentication. 
 
 Monitoring systems, availability probes, readiness checks, automated scripts, and diagnostic tools that call these endpoints without credentials will begin receiving HTTP `401 Unauthorized` responses after upgrading. Administrators must either update clients to authenticate (recommended) or explicitly disable protection where unauthenticated access is required.
 :::
@@ -24,7 +24,7 @@ The following matrix details which endpoints are governed by the `apiml.health.p
 
 | Component | Governed Endpoints | Property |
 | :--- | :--- | :--- |
-| **Gateway** | `/application/health`<br>`/application/info`<br>`/application/version`<br>`/gateway/version`<br>`/gateway/api/v1/version` | `components.gateway.apiml.health.protected` |
+| **Gateway** | `/application/health`<br />`/application/info`<br />`/application/version`<br />`/gateway/version`<br />`/gateway/api/v1/version` | `components.gateway.apiml.health.protected` |
 | **Discovery** | `/application/health` | `components.discovery.apiml.health.protected` |
 | **API Catalog** | `/application/health` | `components.api-catalog.apiml.health.protected` |
 | **ZAAS** | `/application/health` | `components.zaas.apiml.health.protected` |
@@ -43,7 +43,7 @@ Provide a valid z/OS username and password (for example, using the `--user` flag
 Send a valid JSON Web Token in the `Authorization` header using the `Bearer <token>` format.
 
 :::note
-While the `apimlAuthenticationToken` cookie is supported for active browser sessions, we do not recommend relying on browser cookies for external monitoring automation or script-based health checks.
+While the `apimlAuthenticationToken` cookie is supported for active browser sessions, we do not recommend relying on browser cookies for external monitoring automation or script-based health checks. For these use cases, we recommend generating and using a [Personal Access Token (PAT)](../api-mediation/authenticating-with-personal-access-token.md) sent as a Bearer token in the Authorization header.
 :::
 
 ## Configuration 
@@ -84,7 +84,11 @@ Setting `components.gateway.apiml.health.protected: false` exposes the Gateway h
 
 ## Verification Examples
 
-You can use the following copy-ready commands to verify the expected HTTP status with and without authentication.
+You can use the following commands to verify the expected HTTP status with and without authentication. 
+
+:::note
+The following specific comands are not intended for direct use in pipelines.
+:::
 
 **Verify that an unauthenticated request is rejected:**
 *Expected status: 401*
