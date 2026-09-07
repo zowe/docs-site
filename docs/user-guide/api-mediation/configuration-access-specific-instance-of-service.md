@@ -3,7 +3,7 @@
 :::info Roles: system programmer, system administrator
 :::
 
-When working with multiple instances of a service behind the API Gateway, you can identify which specific instance handles a request or direct a client request to a particular instance. Review this article for details about how to use the `X-InstanceId` HTTP header to interact with specific service instances to enable the following functions:  
+When working with multiple service instances behind an API Gateway, clients can bypass default round-robin load balancing and route requests directly to a specific instance by setting the `X-InstanceId` header with the target's `instanceId`. Review this article for details about how to use the `X-InstanceId` HTTP header to interact with specific service instances to enable the following functions:  
 
 * **Output a routed instance header**  
 Configure the Gateway to output the `X-InstanceId` HTTP header in responses for visibility.
@@ -24,11 +24,11 @@ Use the following procedure to output a special header that contains the value o
 
 ## Target a specific instance with X-InstanceId
 
-In addition to returning the `X-InstanceId` in responses, the API Gateway also accepts `X-InstanceId` as an incoming request header. When a client knows the exact Eureka instance ID of a service, they can use this header to bypass default load balancing (such as round-robin) and route a request directly to that specific instance. 
+In addition to returning the `X-InstanceId` in responses, the API Gateway also accepts `X-InstanceId` as an incoming request header. When a client knows the exact instance ID of a service, they can use this header to bypass default load balancing (such as round-robin) and route a request directly to that specific instance. 
 
 ### Request format
 
-To target a specific instance, include the `X-InstanceId` header in your HTTP request using the exact Eureka instance ID format:
+To target a specific instance, include the `X-InstanceId` header in your HTTP request using the exact  instance ID format:
 
 * **Header name:** `X-InstanceId`
 * **Value format:** `<hostname>:<serviceId>:<port>`
