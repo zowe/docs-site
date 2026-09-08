@@ -74,23 +74,23 @@ Use this option if your z/OSMF instances are identical and you want the API Gate
 
 ## Validating authentication
 
-Use the following steps to validate for both z/OSMF and SAF authentication providers. This validation validates that the authentication flow functions as expected.
+Use the following steps to validate the functionality of both z/OSMF and SAF authentication providers.
 
-When configuring the SAF authentication provider, the system issues the informational message `ZWEAM105I`. For details about this message, see [ZWEAM105I] in Error Message Codes.
+When configuring the SAF authentication provider, the system issues the informational message `ZWEAM105I`. For details about this message, see [ZWEAM105I](../troubleshoot/troubleshoot-apiml-error-codes.md#zweam105i) in Error Message Codes.
 
 :::note
-The validation steps below use _cURL_. If _cURL_ is not available, or if network restrictions prevent external requests, you can execute _cURL_ directly from the API ML server itself. _cURL_ shipped with the API ML binaries and can be found in the `bin/utils` directory of your Zowe installation.
+The validation steps below use _cURL_. If _cURL_ is not available, or if network restrictions prevent external requests, you can execute _cURL_ directly from the API ML server itself. _cURL_ is shipped with the API ML binaries and can be found in the `bin/utils` directory of your Zowe installation.
 :::
 
 Follow these steps to validate your authentication setup:
 
-1. Set authentication provider to SAF.  
-Ensure your environment is configured to use the SAF authentication provider. You can verify this by checking your server logs for the `ZWEAM105I` message.
+1. Set your authentication provider to SAF.  
+You can verify this setting by checking your server logs for the `ZWEAM105I` message.
 
-2. Verify _cURL_ availability.  
+1. Verify _cURL_ availability.  
 Confirm that you have access to _cURL_ either on your local client machine or via the `bin/utils` directory on the API ML server.
 
-3. Verify credentials and issue a token.  
+1. Verify credentials and issue a token.  
 Submit a login request to generate an authentication token.
 
     ```Bash
@@ -102,7 +102,7 @@ Submit a login request to generate an authentication token.
     < Set-Cookie: apimlAuthenticationToken=APIML_TOKEN
     ```
 
-4. Validate the token.  
+1. Validate the token.  
 Verify that the token you just issued is recognized and valid.
 
     ```Bash
@@ -114,13 +114,13 @@ Verify that the token you just issued is recognized and valid.
     **Validating z/OSMF login via API ML token (SAF Provider)**  
 With the SAF authentication provider, z/OSMF is not required for API ML authentication. However, if you use z/OSMF (for example, with Zowe client components), API ML must be configured to use PassTickets for z/OSMF authentication.
 
-    For more information, see [Enabling single sign on for extending services via PassTicket configuration](../user-guide/api-mediation/configuration-extender-passtickets.md). 
+    For more information about configuring PassTickets, see [Enabling single sign on for extending services via PassTicket configuration](../user-guide/api-mediation/configuration-extender-passtickets.md). 
 
     :::note
     The following validation will fail if you are using the SAF provider and PassTickets have not been set up.
     :::
 
-    Validate that login to z/OSMF via APIML works using the APIML token:
+    Validate that login to z/OSMF via API  ML works using the APIML token:
 
     ```Bash
     curl -k -s -o /dev/null -w "%{http_code}" --cookie "apimlAuthenticationToken=APIML_TOKEN" -H "X-CSRF-ZOSMF-HEADER: *" -X POST https://hostname:port/ibmzosmf/api/v1/zosmf/services/authenticate
@@ -128,8 +128,8 @@ With the SAF authentication provider, z/OSMF is not required for API ML authenti
 
     A successful login returns an HTTP status code `200`.
 
-5. For HA setup, validate cross-instance token trust.  
-For High Availability (HA) setups, you must validate that individual instances trust tokens issued by another instance. Generate a token on one instance, and validate this same token against a different instance.
+1. For High Availability (HA) setup, validate cross-instance token trust.  
+For HA setups, you must validate that individual instances trust tokens issued by another instance. Generate a token on one instance, and validate this same token against a different instance.
 
     **Generate token on instance 1:**
     ```bash
@@ -142,7 +142,7 @@ For High Availability (HA) setups, you must validate that individual instances t
     curl -k -s -o /dev/null -w "%{http_code}" --cookie "apimlAuthenticationToken=APIML_TOKEN" https://hostname2:port/gateway/api/v1/auth/query
     ```
 
-    A successful validation across instances returns an HTTP status code `200`.
+    Successful validation across instances returns the HTTP status code `200`.
 
 
 
