@@ -96,7 +96,7 @@ Submit a login request to generate an authentication token.
     ```Bash
     curl -k -v -u "username:password" -X POST https://hostname:port/gateway/api/v1/auth/login
     ```
-    A successful response returns an authentication token in the Set-Cookie header:
+    A successful response returns an authentication token in the `Set-Cookie` header:
 
     ```
     < Set-Cookie: apimlAuthenticationToken=APIML_TOKEN
@@ -109,10 +109,13 @@ Verify that the token you just issued is recognized and valid.
     curl -k -s -o /dev/null -w "%{http_code}" --cookie "apimlAuthenticationToken=APIML_TOKEN" https://hostname:port/gateway/api/v1/auth/query
     ```
 
-    A successful validation returns an HTTP status code `200`.
+    A successful validation returns an HTTP status code `200`. 
 
-    **Validating z/OSMF login via API ML token (SAF Provider)**  
-With the SAF authentication provider, z/OSMF is not required for API ML authentication. However, if you use z/OSMF (for example, with Zowe client components), API ML must be configured to use PassTickets for z/OSMF authentication.
+    * **SAF authentication provider:**  
+    z/OSMF is not required for API ML authentication. However, if you route requests to z/OSMF (for example, with Zowe client components), API ML must use PassTickets for the downstream z/OSMF authentication.
+
+    * **z/OSMF authentication provider:**  
+    z/OSMF acts as the primary authentication mechanism for API ML, so PassTickets are not required for the initial login flow.
 
     For more information about configuring PassTickets, see [Enabling single sign on for extending services via PassTicket configuration](../user-guide/api-mediation/configuration-extender-passtickets.md). 
 
