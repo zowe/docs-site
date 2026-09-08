@@ -106,7 +106,7 @@ a. To make Zowe v2 certificates work in Kubernetes, in your `zowe.yaml` (in runt
 
 - set `zowe.verifyCertificate` to `STRICT` mode.
 - set `zowe.setup.certificate.pkcs12.caAlias`. Default alias is `local_ca`.
-- set `zowe.setup.certificate.pkcs12.caPassword`. Default CA password is `local_ca_password`.
+- set `zowe.setup.certificate.pkcs12.caPassword`. This must match the password that was used when the CA keystore was created.
 - make sure the certificate that you are using have defined the following domains in certificate Subject Alt Name (SAN):
 
   - your external domains to access Zowe API ML Gateway Service running in Kubernetes cluster
