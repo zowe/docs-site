@@ -76,10 +76,10 @@ Use this option if your z/OSMF instances are identical and you want the API Gate
 
 Use the following steps to validate the functionality of both z/OSMF and SAF authentication providers.
 
-When configuring the SAF authentication provider, the system issues the informational message `ZWEAM105I`. For details about this message, see [ZWEAM105I](../troubleshoot/troubleshoot-apiml-error-codes.md#zweam105i) in Error Message Codes.
+When configuring the SAF authentication provider, the system issues the informational message `ZWEAM105I`. 
 
 :::note
-The validation steps below use _cURL_. If _cURL_ is not available, or if network restrictions prevent external requests, you can execute _cURL_ directly from the API ML server itself. _cURL_ is shipped with the API ML binaries and can be found in the `bin/utils` directory of your Zowe installation.
+The validation steps below use _curl_, which can be executed directly from the API ML server. _curl_ is shipped with the API ML binaries and can be found in the `bin/utils` directory of your Zowe installation.
 :::
 
 Follow these steps to validate your authentication setup:
@@ -87,14 +87,14 @@ Follow these steps to validate your authentication setup:
 1. Set your authentication provider to SAF.  
 You can verify this setting by checking your server logs for the `ZWEAM105I` message.
 
-1. Verify _cURL_ availability.  
-Confirm that you have access to _cURL_ either on your local client machine or via the `bin/utils` directory on the API ML server.
+2. Verify _curl_ availability.  
+Confirm that you have access to _curl_ either on your local client machine or via the `bin/utils` directory on the API ML server.
 
-1. Verify credentials and issue a token.  
+3. Verify credentials and issue a token.  
 Submit a login request to generate an authentication token.
 
     ```Bash
-    curl -k -v -u "username:password" -X POST https://hostname:port/gateway/api/v1/auth/login
+    curl -kvu "username:password" -X POST https://hostname:port/gateway/api/v1/auth/login
     ```
     A successful response returns an authentication token in the `Set-Cookie` header:
 
@@ -102,47 +102,42 @@ Submit a login request to generate an authentication token.
     < Set-Cookie: apimlAuthenticationToken=APIML_TOKEN
     ```
 
-1. Validate the token.  
+4. Validate the token.  
 Verify that the token you just issued is recognized and valid.
 
     ```Bash
-    curl -k -s -o /dev/null -w "%{http_code}" --cookie "apimlAuthenticationToken=APIML_TOKEN" https://hostname:port/gateway/api/v1/auth/query
+    curl -kso /dev/null -w "%{http_code}" --cookie "apimlAuthenticationToken=APIML_TOKEN" https://hostname:port/gateway/api/v1/auth/query
     ```
 
-    A successful validation returns an HTTP status code `200`. 
+    A successful validation returns the HTTP status code `200`. 
 
-    * **SAF authentication provider:**  
-    z/OSMF is not required for API ML authentication. However, if you route requests to z/OSMF (for example, with Zowe client components), API ML must use PassTickets for the downstream z/OSMF authentication.
-
-    * **z/OSMF authentication provider:**  
-    z/OSMF acts as the primary authentication mechanism for API ML, so PassTickets are not required for the initial login flow.
-
-    For more information about configuring PassTickets, see [Enabling single sign on for extending services via PassTicket configuration](../user-guide/api-mediation/configuration-extender-passtickets.md). 
+1. Validate downstream z/OSMF authentication.  
+Verify that the API ML token can successfully authenticate to downstream z/OSMF services.
 
     :::note
-    The following validation will fail if you are using the SAF provider and PassTickets have not been set up.
+    When using SAF authentication, API ML must be configured to use PassTickets to route requests to z/OSMF. Without PassTicket configuration, the validation will fail. For more information, see [Enabling single sign on for extending services via PassTicket configuration](../user-guide/api-mediation/configuration-extender-passtickets.md).
     :::
 
-    Validate that login to z/OSMF via API  ML works using the APIML token:
+    Run the following command to validate that login to z/OSMF via API ML works using the API ML token:
 
     ```Bash
-    curl -k -s -o /dev/null -w "%{http_code}" --cookie "apimlAuthenticationToken=APIML_TOKEN" -H "X-CSRF-ZOSMF-HEADER: *" -X POST https://hostname:port/ibmzosmf/api/v1/zosmf/services/authenticate
+    curl -kso /dev/null -w "%{http_code}" --cookie "apimlAuthenticationToken=APIML_TOKEN" -H "X-CSRF-ZOSMF-HEADER: *" -X POST https://hostname:port/ibmzosmf/api/v1/zosmf/services/authenticate
     ```
 
-    A successful login returns an HTTP status code `200`.
+    A successful login returns the HTTP status code `200`.
 
 1. For High Availability (HA) setup, validate cross-instance token trust.  
-For HA setups, you must validate that individual instances trust tokens issued by another instance. Generate a token on one instance, and validate this same token against a different instance.
+For HA setups, it is necessary to validate that individual instances trust tokens issued by another instance. Generate a token on one instance, and validate this same token against a different instance.
 
     **Generate token on instance 1:**
     ```bash
-    curl -k -v -u "username:password" -X POST https://hostname1:port/gateway/api/v1/auth/login
+    curl -kvu "username:password" -X POST https://hostname1:port/gateway/api/v1/auth/login
     ```
 
     **Validate the same token on instance 2:**
 
     ```bash
-    curl -k -s -o /dev/null -w "%{http_code}" --cookie "apimlAuthenticationToken=APIML_TOKEN" https://hostname2:port/gateway/api/v1/auth/query
+    curl -kso /dev/null -w "%{http_code}" --cookie "apimlAuthenticationToken=APIML_TOKEN" https://hostname2:port/gateway/api/v1/auth/query
     ```
 
     Successful validation across instances returns the HTTP status code `200`.
