@@ -53,7 +53,7 @@ components.gateway.apiml.security.auth.zosmfServiceId: ibmzosmf  # Default z/OSM
 
  If your environment utilizes multiple z/OSMF instances, choose one of the following configuration options based on your architectural needs:
 
-- **Identical instances (HA across sysplex):** 
+- **Identical instances (HA across sysplex):**   
 Use this option if your z/OSMF instances are identical and you want the API Gateway to automatically load-balance requests across your sysplex for High Availability.
 
   Use the same service ID (`ibmzosmf`). The Gateway discovers all instances and load-balances.
@@ -113,7 +113,7 @@ Verify that the token you just issued is recognized and valid.
 
     A successful validation returns the HTTP status code `200`. 
 
-1. Validate downstream z/OSMF authentication.  
+5. Validate downstream z/OSMF authentication.  
 Verify that the API ML token can successfully authenticate to downstream z/OSMF services.
 
     :::note
@@ -128,7 +128,7 @@ Verify that the API ML token can successfully authenticate to downstream z/OSMF 
 
     A successful login returns the HTTP status code `200`.
 
-1. For High Availability (HA) setup, validate cross-instance token trust.  
+6. For High Availability (HA) setup, validate cross-instance token trust.  
 For HA setups, it is necessary to validate that individual instances trust tokens issued by another instance. Generate a token on one instance, and validate this same token against a different instance.
 
     **Generate token on instance 1:**
