@@ -108,6 +108,8 @@ Verify that the token you just issued is recognized and valid.
     ```Bash
     curl -kso /dev/null -w "%{http_code}" --cookie "apimlAuthenticationToken=APIML_TOKEN" https://hostname:port/gateway/api/v1/auth/query
     ```
+    * **APIML_TOKEN**  
+    The authentication token value returned in the `Set-Cookie` header during the login step.
 
     A successful validation returns the HTTP status code `200`. 
 
