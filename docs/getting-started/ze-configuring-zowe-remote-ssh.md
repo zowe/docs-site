@@ -38,7 +38,7 @@ To add the `zo` binary to your `$PATH`:
 
     The ZRS version is returned when the `$PATH` has been configured successfully.
     
-    The `zo` binary is now set in your `$PATH`. You can now execute the `zo` command without specifying the full `/user/shared/zrs/zowex` location, which is now stored in the `zowe.zowex.serverInstallPath` key in the VS Code `settings.json` file. 
+    The `zo` binary is now set in your `$PATH`. You can now execute the `zo` command without specifying the full `/user/shared/zrs/zo location`, which is now stored in the `zowe.zowex.serverInstallPath` key in the VS Code `settings.json` file. 
  
 ### Alternatives to adding ZRS to your `$PATH`
 
