@@ -488,10 +488,16 @@
 </ul><ul><li><a href="#zowe_jclcheck_check_local-file">local-file | lf</a></li>
 </ul></li>
 </ul></li>
-<li><a href="#zowe_mat">mat | mat</a><ul><li><a href="#zowe_mat_monitor">monitor</a><ul><li><a href="#zowe_mat_monitor_codeview">codeview</a><ul><li><a href="#zowe_mat_monitor_codeview_callerid">callerid | cil</a></li>
+<li><a href="#zowe_mat">mat | mat</a><ul><li><a href="#zowe_mat_monitor">monitor</a><ul><li><a href="#zowe_mat_monitor_adabas">adabas | ada</a></li>
+</ul><ul><li><a href="#zowe_mat_monitor_codeview">codeview | cv</a><ul><li><a href="#zowe_mat_monitor_codeview_callerid">callerid | cil</a></li>
 </ul><ul><li><a href="#zowe_mat_monitor_codeview_csect">csect | cs</a></li>
-</ul><ul><li><a href="#zowe_mat_monitor_codeview_histogram">histogram | hsg</a></li>
+</ul><ul><li><a href="#zowe_mat_monitor_codeview_histogram">histogram | hsg</a><ul><li><a href="#zowe_mat_monitor_codeview_histogram_csect">csect | cs</a></li>
+</ul><ul><li><a href="#zowe_mat_monitor_codeview_histogram_ideal">ideal | idl</a></li>
+</ul><ul><li><a href="#zowe_mat_monitor_codeview_histogram_natural">natural | nat</a></li>
+</ul></li>
+</ul><ul><li><a href="#zowe_mat_monitor_codeview_ideal">ideal | idl</a></li>
 </ul><ul><li><a href="#zowe_mat_monitor_codeview_module">module | mod</a></li>
+</ul><ul><li><a href="#zowe_mat_monitor_codeview_natural">natural | nat</a></li>
 </ul></li>
 </ul><ul><li><a href="#zowe_mat_monitor_db2">db2</a><ul><li><a href="#zowe_mat_monitor_db2_db2view">db2view | db2v</a></li>
 </ul><ul><li><a href="#zowe_mat_monitor_db2_sqlstmt">sqlstmt | sql</a></li>
@@ -70546,6 +70552,155 @@ Allowed values: http, https</p>
 <p>The MAT Analyze plug-in for ZOWE CLI enables you to manage monitor profiles and get the measurement analysis data using Mainframe Application Tuner (MAT)</p>
 <a name="zowe_mat_monitor"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_mat">mat</a> › <a href="#zowe_mat_monitor">monitor</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Get monitor history and measurement analysis data from MAT.</p>
+<a class="cmd-anchor" name="zowe_mat_monitor_adabas"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_mat">mat</a> › <a href="#zowe_mat_monitor">monitor</a> › <a href="#zowe_mat_monitor_adabas">adabas</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
+<p>Get the Adabas measurement details.</p>
+<h4>Usage</h4>
+<p>zowe mat monitor adabas [options]</p>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--profile</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the name of the profile that you want to analyze. When you specify the profile name, you get the data for the latest measurement within the specified profile.</li>
+</ul>
+</li>
+<li>
+<p><code>--mon_num</code> <em>(number)</em></p>
+<ul>
+<li>Specifies the unique monitor number of the measurement.</li>
+</ul>
+</li>
+</ul>
+<h4>MAT Profile Options</h4>
+<ul>
+<li>
+<p><code>--protocol</code> | <code>-o</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the protocol defined for the MAT REST API server (http or https).</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the hostname or IP address defined for the MAT REST API server (e.g. 127.0.0.0 or localhost).</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>Specifies the server port (e.g. 8080).</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>Your mainframe username.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Your mainframe password.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--listingDir</code> | <code>--ldir</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the directory where you want to store the registered program listings (e.g. 'c:\listings') for your immediate source code inspection. You can use the advantage of automated listing registration with MAT and listing retrieval through Endevor® footprints for Cobol, C/C++, and Assembler programs. When a source program listing is registered with MAT, you can enhance the histogram analysis data with the program listing details that pertain to the specific CSECT and program statement. The listing is transfered to the specified directory, which enables you to navigate directly to the line of the source code in you VS Code IDE and inspect the program statement. To use the listing retrieval option through Endevor® footprints, you need to have the Endevor® Web Services installed and configured and specify the Endevor® web server details in the MAT database configuration.</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--mat-profile</code> | <code>--mat-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (mat) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-account</code> <em>(string)</em></p>
+<ul>
+<li>The account name for PKCS 12 certificate stored in credential manager</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Get the Adabas measurement details for monitor number 5:</p>
+<ul>
+<li><code>zowe mat monitor adabas --mon_num 5</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe mat monitor adabas --mon_num 5">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Get the Adabas measurement details for the latest monitor in the TESTPROF profile:</p>
+<ul>
+<li><code>zowe mat monitor adabas --profile TESTPROF</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe mat monitor adabas --profile TESTPROF">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Get the Adabas measurement details for monitor number 5, with the specific MAT profile details defined:</p>
+<ul>
+<li><code>zowe mat monitor adabas --mon_num 5 --host &quot;example.com&quot; --port 12345 --user johndoe --password qwerty</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe mat monitor adabas --mon_num 5 --host &quot;example.com&quot; --port 12345 --user johndoe --password qwerty">Copy</button></li>
+</ul>
+</li>
+</ul>
 <a name="zowe_mat_monitor_codeview"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_mat">mat</a> › <a href="#zowe_mat_monitor">monitor</a> › <a href="#zowe_mat_monitor_codeview">codeview</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Get the CodeView measurement details.</p>
 <a class="cmd-anchor" name="zowe_mat_monitor_codeview_callerid"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_mat">mat</a> › <a href="#zowe_mat_monitor">monitor</a> › <a href="#zowe_mat_monitor_codeview">codeview</a> › <a href="#zowe_mat_monitor_codeview_callerid">callerid</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
@@ -70710,7 +70865,7 @@ Allowed values: http, https</p>
 </li>
 </ul>
 <a class="cmd-anchor" name="zowe_mat_monitor_codeview_csect"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_mat">mat</a> › <a href="#zowe_mat_monitor">monitor</a> › <a href="#zowe_mat_monitor_codeview">codeview</a> › <a href="#zowe_mat_monitor_codeview_csect">csect</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
-<p>Get the CodeView measurement details in Csect mode.</p>
+<p>Get the CodeView measurement details in CSECT mode.</p>
 <h4>Usage</h4>
 <p>zowe mat monitor codeview csect [options]</p>
 <h4>Options</h4>
@@ -70840,28 +70995,30 @@ Allowed values: http, https</p>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Get the CodeView measurement details in Csect mode for monitor number 5:</p>
+<p>Get the CodeView measurement details in CSECT mode for monitor number 5:</p>
 <ul>
 <li><code>zowe mat monitor codeview csect --mon_num 5</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe mat monitor codeview csect --mon_num 5">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Get the CodeView measurement details in Csect mode for the latest monitor in the TESTPROF profile:</p>
+<p>Get the CodeView measurement details in CSECT mode for the latest monitor in the TESTPROF profile:</p>
 <ul>
 <li><code>zowe mat monitor codeview csect --profile TESTPROF</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe mat monitor codeview csect --profile TESTPROF">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Get the CodeView measurement details in Csect mode for monitor number 5, with the specific MAT profile details defined:</p>
+<p>Get the CodeView measurement details in CSECT mode for monitor number 5, with the specific MAT profile details defined:</p>
 <ul>
 <li><code>zowe mat monitor codeview csect --mon_num 5 --host &quot;example.com&quot; --port 12345 --user johndoe --password qwerty</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe mat monitor codeview csect --mon_num 5 --host &quot;example.com&quot; --port 12345 --user johndoe --password qwerty">Copy</button></li>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_mat_monitor_codeview_histogram"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_mat">mat</a> › <a href="#zowe_mat_monitor">monitor</a> › <a href="#zowe_mat_monitor_codeview">codeview</a> › <a href="#zowe_mat_monitor_codeview_histogram">histogram</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
-<p>Get the Histogram details for the measurement.</p>
+<a name="zowe_mat_monitor_codeview_histogram"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_mat">mat</a> › <a href="#zowe_mat_monitor">monitor</a> › <a href="#zowe_mat_monitor_codeview">codeview</a> › <a href="#zowe_mat_monitor_codeview_histogram">histogram</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Get the Histogram measurement details.</p>
+<a class="cmd-anchor" name="zowe_mat_monitor_codeview_histogram_csect"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_mat">mat</a> › <a href="#zowe_mat_monitor">monitor</a> › <a href="#zowe_mat_monitor_codeview">codeview</a> › <a href="#zowe_mat_monitor_codeview_histogram">histogram</a> › <a href="#zowe_mat_monitor_codeview_histogram_csect">csect</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
+<p>Get the Histogram measurement details in CSECT mode.</p>
 <h4>Usage</h4>
-<p>zowe mat monitor codeview histogram [options]</p>
+<p>zowe mat monitor codeview histogram csect [options]</p>
 <h4>Options</h4>
 <ul>
 <li>
@@ -70903,7 +71060,61 @@ Allowed values: http, https</p>
 <li>
 <p><code>--listing</code> <em>(boolean)</em></p>
 <ul>
-<li>Enables you to retrieve program listing details that pertain to the specific CSECT and statement. To use the listing retrieval option, you must install and configure the Endevor® Web Services and have the program listing for the specific measurement registered with MAT. The source code listing is retrieved through Endevor® footprints for Cobol, C/C++, and Assembler programs. The program listing file is downloaded to your local directory that you specified with the 'listingDir' parameter in your MAT configuration profile. When you request the histogram details with the '--listing' option, the 'histogram' command returns the additional 'listing' column that contains a reference to the program listing with the specific CSECT name, program type, line and column number that pertain to the requested CSECT and statement, for example, c:listingsSA420LE.asm:382:51. If you use Visual Studio Code (VS Code) IDE, you can click on the reference in the command responce in your VS Code terminal to navigate directly to the indicated source program location.The --listing parameter is optional.</li>
+<li>Enables you to retrieve program listing details that pertain to the specific CSECT and statement. To use the listing retrieval option, ensure that the program listing for the specific measurement is registered with MAT, and that you have the Endevor® Web Services connection configured locally via the --endevor-* options below (or the ZOWE_OPT_ENDEVOR_* environment variable). The source code listing is retrieved through Endevor® footprints for Cobol, C/C++, and Assembler programs. The program listing file is downloaded to your local directory that you specified with the 'listingDir' parameter in your MAT configuration profile. When you request the histogram details with the '--listing' option, the 'histogram' command returns the additional 'listing' column that contains a reference to the program listing with the specific CSECT name, program type, line and column number that pertain to the requested CSECT and statement, for example, c:listingsSA420LE.asm:382:51. If you use Visual Studio Code (VS Code) IDE, you can click on the reference in the command responce in your VS Code terminal to navigate directly to the indicated source program location.The --listing parameter is optional.</li>
+</ul>
+</li>
+</ul>
+<h4>MAT Endevor Listing Options</h4>
+<ul>
+<li>
+<p><code>--endevor-host</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the host of the Endevor Web Services used to retrieve program listings. Can also be configured via the ZOWE_OPT_ENDEVOR_HOST environment variable.</li>
+</ul>
+</li>
+<li>
+<p><code>--endevor-port</code> <em>(number)</em></p>
+<ul>
+<li>Specifies the port of the Endevor Web Services used to retrieve program listings. Can also be configured via the ZOWE_OPT_ENDEVOR_PORT environment variable.</li>
+</ul>
+</li>
+<li>
+<p><code>--endevor-base-path</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the base path prefix for the Endevor Web Services REST call. Can also be configured via the ZOWE_OPT_ENDEVOR_BASE_PATH environment variable.</p>
+<p>Default value:</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--endevor-reject-unauthorized</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates on the Endevor Web Services connection. Can also be configured via the ZOWE_OPT_ENDEVOR_REJECT_UNAUTHORIZED environment variable.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--endevor-reuse-mat-credentials</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reuses the MAT profile --user/--password as the basic authentication credentials for the Endevor call. If not configured, supply --endevor-user and --endevor-password.Can also be configured via the ZOWE_OPT_ENDEVOR_REUSE_MAT_CREDENTIALS environment variable.</p>
+<p>Default value: false</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--endevor-user</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the username for the Endevor Web Services connection. Not required if --endevor-reuse-mat-credentials is specified. Can also be configured via the ZOWE_OPT_ENDEVOR_USER environment variable.</li>
+</ul>
+</li>
+<li>
+<p><code>--endevor-password</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the password for the Endevor Web Services connection. Not required if --endevor-reuse-mat-credentials is specified. Can also be configured via the ZOWE_OPT_ENDEVOR_PASSWORD environment variable.</li>
 </ul>
 </li>
 </ul>
@@ -71019,27 +71230,522 @@ Allowed values: http, https</p>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Get the Histogram details for monitor number 5, CSECT name TUNCOB01, and module name RUNCOB:</p>
+<p>Get the Histogram details in CSECT mode for monitor number 5, CSECT name TUNCOB01, and module name RUNCOB:</p>
 <ul>
-<li><code>zowe mat monitor codeview histogram --mon_num 5 --csect &quot;TUNCOB01&quot; --module &quot;RUNCOB&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe mat monitor codeview histogram --mon_num 5 --csect &quot;TUNCOB01&quot; --module &quot;RUNCOB&quot;">Copy</button></li>
+<li><code>zowe mat monitor codeview histogram csect --mon_num 5 --csect &quot;TUNCOB01&quot; --module &quot;RUNCOB&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe mat monitor codeview histogram csect --mon_num 5 --csect &quot;TUNCOB01&quot; --module &quot;RUNCOB&quot;">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Get the Histogram details for the latest monitor in the TESTPROF profile for CSECT name TUNCOB01, empty module name, limiting the group size to 32 bytes and the number of returned records to 5 top consumers:</p>
+<p>Get the Histogram details in CSECT mode for the latest monitor in the TESTPROF profile for CSECT name TUNCOB01, empty module name, limiting the group size to 32 bytes and the number of returned records to 5 top consumers:</p>
 <ul>
-<li><code>zowe mat monitor codeview histogram --profile TESTPROF --csect &quot;TUNCOB01&quot; --module '&quot;&quot;' --top 5 --group 32</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe mat monitor codeview histogram --profile TESTPROF --csect &quot;TUNCOB01&quot; --module '&quot;&quot;' --top 5 --group 32">Copy</button></li>
+<li><code>zowe mat monitor codeview histogram csect --profile TESTPROF --csect &quot;TUNCOB01&quot; --module '&quot;&quot;' --top 5 --group 32</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe mat monitor codeview histogram csect --profile TESTPROF --csect &quot;TUNCOB01&quot; --module '&quot;&quot;' --top 5 --group 32">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Get the Histogram details for monitor number 5, CSECT name TUNCOB01, and module name RUNCOB, limit the number of returned records to 5 top consumers, and request the listing details:</p>
+<p>Get the Histogram details for in CSECT mode monitor number 5, CSECT name TUNCOB01, and module name RUNCOB, limit the number of returned records to 5 top consumers, and request the listing details:</p>
 <ul>
-<li><code>zowe mat monitor codeview histogram --mon_num 5 --csect &quot;TUNCOB01&quot; --module &quot;RUNCOB&quot; --top 5 --listing</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe mat monitor codeview histogram --mon_num 5 --csect &quot;TUNCOB01&quot; --module &quot;RUNCOB&quot; --top 5 --listing">Copy</button></li>
+<li><code>zowe mat monitor codeview histogram csect --mon_num 5 --csect &quot;TUNCOB01&quot; --module &quot;RUNCOB&quot; --top 5 --listing</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe mat monitor codeview histogram csect --mon_num 5 --csect &quot;TUNCOB01&quot; --module &quot;RUNCOB&quot; --top 5 --listing">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Get the Histogram details for monitor number 5, CSECT name TUNCOB01, and module name RUNCOB, with the specific MAT profile details defined:</p>
+<p>Get the Histogram details in CSECT mode for monitor number 5, CSECT name TUNCOB01, and module name RUNCOB, with the specific MAT profile details defined:</p>
 <ul>
-<li><code>zowe mat monitor codeview histogram --mon_num 5 --csect &quot;TUNCOB01&quot; --module &quot;RUNCOB&quot; --host &quot;example.com&quot; --port 12345 --user johndoe --password qwerty</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe mat monitor codeview histogram --mon_num 5 --csect &quot;TUNCOB01&quot; --module &quot;RUNCOB&quot; --host &quot;example.com&quot; --port 12345 --user johndoe --password qwerty">Copy</button></li>
+<li><code>zowe mat monitor codeview histogram csect --mon_num 5 --csect &quot;TUNCOB01&quot; --module &quot;RUNCOB&quot; --host &quot;example.com&quot; --port 12345 --user johndoe --password qwerty</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe mat monitor codeview histogram csect --mon_num 5 --csect &quot;TUNCOB01&quot; --module &quot;RUNCOB&quot; --host &quot;example.com&quot; --port 12345 --user johndoe --password qwerty">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Get the Histogram details about listing retrieval with the re-used MAT profile credentials for a locally-configured Endevor host options:</p>
+<ul>
+<li><code>zowe mat monitor codeview histogram csect --csect &quot;TUNCOB01&quot; --listing --endevor-host &quot;endevor.example.com&quot; --endevor-port 8080 --endevor-base-path &quot;EndevorService/rest&quot; --endevor-reuse-mat-credentials</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe mat monitor codeview histogram csect --csect &quot;TUNCOB01&quot; --listing --endevor-host &quot;endevor.example.com&quot; --endevor-port 8080 --endevor-base-path &quot;EndevorService/rest&quot; --endevor-reuse-mat-credentials">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Get the Histogram details about listing retrieval with Endevor-specific credential options:</p>
+<ul>
+<li><code>zowe mat monitor codeview histogram csect --csect &quot;TUNCOB01&quot; --listing --endevor-host &quot;endevor.example.com&quot; --endevor-port 8080 --endevor-base-path &quot;EndevorService/rest&quot; --endevor-user janedoe --endevor-password qwerty</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe mat monitor codeview histogram csect --csect &quot;TUNCOB01&quot; --listing --endevor-host &quot;endevor.example.com&quot; --endevor-port 8080 --endevor-base-path &quot;EndevorService/rest&quot; --endevor-user janedoe --endevor-password qwerty">Copy</button></li>
+</ul>
+</li>
+</ul>
+<a class="cmd-anchor" name="zowe_mat_monitor_codeview_histogram_ideal"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_mat">mat</a> › <a href="#zowe_mat_monitor">monitor</a> › <a href="#zowe_mat_monitor_codeview">codeview</a> › <a href="#zowe_mat_monitor_codeview_histogram">histogram</a> › <a href="#zowe_mat_monitor_codeview_histogram_ideal">ideal</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
+<p>Get the Histogram measurement details in Ideal mode.</p>
+<h4>Usage</h4>
+<p>zowe mat monitor codeview histogram ideal [options]</p>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--profile</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the name of the profile that you want to analyze. When you specify the profile name, you get the data for the latest measurement within the specified profile.</li>
+</ul>
+</li>
+<li>
+<p><code>--mon_num</code> <em>(number)</em></p>
+<ul>
+<li>Specifies the unique monitor number of the measurement.</li>
+</ul>
+</li>
+<li>
+<p><code>--system</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the system ID that you request the Histogram data for. You can get the system ID value from the 'codeview ideal' command response.</li>
+</ul>
+</li>
+<li>
+<p><code>--program</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the program name that you request the Histogram data for. You can get the program name from the 'codeview ideal' command response.</li>
+</ul>
+</li>
+<li>
+<p><code>--objVersion</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the object version that you request the Histogram data for. You can get the object version from the 'codeview ideal' command response.</li>
+</ul>
+</li>
+<li>
+<p><code>--srcVersion</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the source version that you request the Histogram data for. You can get the source version from the 'codeview ideal' command response.</li>
+</ul>
+</li>
+</ul>
+<h4>MAT Profile Options</h4>
+<ul>
+<li>
+<p><code>--protocol</code> | <code>-o</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the protocol defined for the MAT REST API server (http or https).</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the hostname or IP address defined for the MAT REST API server (e.g. 127.0.0.0 or localhost).</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>Specifies the server port (e.g. 8080).</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>Your mainframe username.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Your mainframe password.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--listingDir</code> | <code>--ldir</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the directory where you want to store the registered program listings (e.g. 'c:\listings') for your immediate source code inspection. You can use the advantage of automated listing registration with MAT and listing retrieval through Endevor® footprints for Cobol, C/C++, and Assembler programs. When a source program listing is registered with MAT, you can enhance the histogram analysis data with the program listing details that pertain to the specific CSECT and program statement. The listing is transfered to the specified directory, which enables you to navigate directly to the line of the source code in you VS Code IDE and inspect the program statement. To use the listing retrieval option through Endevor® footprints, you need to have the Endevor® Web Services installed and configured and specify the Endevor® web server details in the MAT database configuration.</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--mat-profile</code> | <code>--mat-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (mat) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-account</code> <em>(string)</em></p>
+<ul>
+<li>The account name for PKCS 12 certificate stored in credential manager</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Get the Histogram data in Ideal mode for monitor number 5,system ID '$ID', program name 'BAGTEST2', object version 'PRD', source version '001'.:</p>
+<ul>
+<li><code>zowe mat monitor codeview histogram ideal --mon_num 5 --system '$ID' --program 'BAGTEST2' --objVersion 'PRD' --srcVersion '001'</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe mat monitor codeview histogram ideal --mon_num 5 --system '$ID' --program 'BAGTEST2' --objVersion 'PRD' --srcVersion '001'">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Get the Histogram data in Ideal mode for the latest monitor in the TESTPROF profile for system ID '$ID', program name 'BAGTEST2', object version 'PRD', source version '001'.:</p>
+<ul>
+<li><code>zowe mat monitor codeview histogram ideal --profile 'TESTPROF' --system '$ID' --program 'BAGTEST2' --objVersion 'PRD' --srcVersion '001'</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe mat monitor codeview histogram ideal --profile 'TESTPROF' --system '$ID' --program 'BAGTEST2' --objVersion 'PRD' --srcVersion '001'">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Get the Histogram data in Ideal mode for monitor number 5,system ID '$ID', program name 'BAGTEST2', object version 'PRD', source version '001' with the specific MAT profile details defined.:</p>
+<ul>
+<li><code>zowe mat monitor codeview histogram ideal --mon_num 5 --system '$ID' --program 'BAGTEST2' --objVersion 'PRD' --srcVersion '001' --host 'example.com' --port 12345 --user 'johndoe' --password 'qwerty'</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe mat monitor codeview histogram ideal --mon_num 5 --system '$ID' --program 'BAGTEST2' --objVersion 'PRD' --srcVersion '001' --host 'example.com' --port 12345 --user 'johndoe' --password 'qwerty'">Copy</button></li>
+</ul>
+</li>
+</ul>
+<a class="cmd-anchor" name="zowe_mat_monitor_codeview_histogram_natural"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_mat">mat</a> › <a href="#zowe_mat_monitor">monitor</a> › <a href="#zowe_mat_monitor_codeview">codeview</a> › <a href="#zowe_mat_monitor_codeview_histogram">histogram</a> › <a href="#zowe_mat_monitor_codeview_histogram_natural">natural</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
+<p>Get the Histogram measurement details in Natural mode.</p>
+<h4>Usage</h4>
+<p>zowe mat monitor codeview histogram natural [options]</p>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--profile</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the name of the profile that you want to analyze. When you specify the profile name, you get the data for the latest measurement within the specified profile.</li>
+</ul>
+</li>
+<li>
+<p><code>--mon_num</code> <em>(number)</em></p>
+<ul>
+<li>Specifies the unique monitor number of the measurement.</li>
+</ul>
+</li>
+<li>
+<p><code>--library</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the library name that you request the Histogram data for. You can get the library name from the 'codeview natural' command response.</li>
+</ul>
+</li>
+<li>
+<p><code>--routine</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the routine name that you request the Histogram data for. You can get the routine name from the 'codeview natural' command response.</li>
+</ul>
+</li>
+</ul>
+<h4>MAT Profile Options</h4>
+<ul>
+<li>
+<p><code>--protocol</code> | <code>-o</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the protocol defined for the MAT REST API server (http or https).</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the hostname or IP address defined for the MAT REST API server (e.g. 127.0.0.0 or localhost).</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>Specifies the server port (e.g. 8080).</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>Your mainframe username.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Your mainframe password.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--listingDir</code> | <code>--ldir</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the directory where you want to store the registered program listings (e.g. 'c:\listings') for your immediate source code inspection. You can use the advantage of automated listing registration with MAT and listing retrieval through Endevor® footprints for Cobol, C/C++, and Assembler programs. When a source program listing is registered with MAT, you can enhance the histogram analysis data with the program listing details that pertain to the specific CSECT and program statement. The listing is transfered to the specified directory, which enables you to navigate directly to the line of the source code in you VS Code IDE and inspect the program statement. To use the listing retrieval option through Endevor® footprints, you need to have the Endevor® Web Services installed and configured and specify the Endevor® web server details in the MAT database configuration.</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--mat-profile</code> | <code>--mat-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (mat) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-account</code> <em>(string)</em></p>
+<ul>
+<li>The account name for PKCS 12 certificate stored in credential manager</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Get the Histogram data in Natural mode for monitor number 5,library name CATAPPS, routine name IFEX1R.:</p>
+<ul>
+<li><code>zowe mat monitor codeview histogram natural --mon_num 5 --library 'CATAPPS' --routine 'IFEX1R'</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe mat monitor codeview histogram natural --mon_num 5 --library 'CATAPPS' --routine 'IFEX1R'">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Get the Histogram data in Natural mode for the latest monitor in the TESTPROF profile for library name CATAPPS, routine name IFEX1R.:</p>
+<ul>
+<li><code>zowe mat monitor codeview histogram natural --profile 'TESTPROF' --library 'CATAPPS' --routine 'IFEX1R'</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe mat monitor codeview histogram natural --profile 'TESTPROF' --library 'CATAPPS' --routine 'IFEX1R'">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Get the Histogram data in Natural mode for monitor number 5,library name CATAPPS, routine name IFEX1R with the specific MAT profile details defined.:</p>
+<ul>
+<li><code>zowe mat monitor codeview histogram natural --mon_num 5 --library 'CATAPPS' --routine 'IFEX1R' --host 'example.com' --port 12345 --user 'johndoe' --password 'qwerty'</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe mat monitor codeview histogram natural --mon_num 5 --library 'CATAPPS' --routine 'IFEX1R' --host 'example.com' --port 12345 --user 'johndoe' --password 'qwerty'">Copy</button></li>
+</ul>
+</li>
+</ul>
+<a class="cmd-anchor" name="zowe_mat_monitor_codeview_ideal"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_mat">mat</a> › <a href="#zowe_mat_monitor">monitor</a> › <a href="#zowe_mat_monitor_codeview">codeview</a> › <a href="#zowe_mat_monitor_codeview_ideal">ideal</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
+<p>Get the CodeView measurement details in Ideal mode.</p>
+<h4>Usage</h4>
+<p>zowe mat monitor codeview ideal [options]</p>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--profile</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the name of the profile that you want to analyze. When you specify the profile name, you get the data for the latest measurement within the specified profile.</li>
+</ul>
+</li>
+<li>
+<p><code>--mon_num</code> <em>(number)</em></p>
+<ul>
+<li>Specifies the unique monitor number of the measurement.</li>
+</ul>
+</li>
+</ul>
+<h4>MAT Profile Options</h4>
+<ul>
+<li>
+<p><code>--protocol</code> | <code>-o</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the protocol defined for the MAT REST API server (http or https).</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the hostname or IP address defined for the MAT REST API server (e.g. 127.0.0.0 or localhost).</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>Specifies the server port (e.g. 8080).</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>Your mainframe username.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Your mainframe password.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--listingDir</code> | <code>--ldir</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the directory where you want to store the registered program listings (e.g. 'c:\listings') for your immediate source code inspection. You can use the advantage of automated listing registration with MAT and listing retrieval through Endevor® footprints for Cobol, C/C++, and Assembler programs. When a source program listing is registered with MAT, you can enhance the histogram analysis data with the program listing details that pertain to the specific CSECT and program statement. The listing is transfered to the specified directory, which enables you to navigate directly to the line of the source code in you VS Code IDE and inspect the program statement. To use the listing retrieval option through Endevor® footprints, you need to have the Endevor® Web Services installed and configured and specify the Endevor® web server details in the MAT database configuration.</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--mat-profile</code> | <code>--mat-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (mat) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-account</code> <em>(string)</em></p>
+<ul>
+<li>The account name for PKCS 12 certificate stored in credential manager</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Get the CodeView measurement details in Ideal mode for monitor number 5:</p>
+<ul>
+<li><code>zowe mat monitor codeview ideal --mon_num 5</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe mat monitor codeview ideal --mon_num 5">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Get the CodeView measurement details in Ideal mode for the latest monitor in the TESTPROF profile:</p>
+<ul>
+<li><code>zowe mat monitor codeview ideal --profile TESTPROF</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe mat monitor codeview ideal --profile TESTPROF">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Get the CodeView measurement details in Ideal mode for monitor number 5, with the specific MAT profile details defined:</p>
+<ul>
+<li><code>zowe mat monitor codeview ideal --mon_num 5 --host &quot;example.com&quot; --port 12345 --user johndoe --password qwerty</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe mat monitor codeview ideal --mon_num 5 --host &quot;example.com&quot; --port 12345 --user johndoe --password qwerty">Copy</button></li>
 </ul>
 </li>
 </ul>
@@ -71189,6 +71895,155 @@ Allowed values: http, https</p>
 <p>Get the CodeView measurement details in Module mode for monitor number 5, with the specific MAT profile details defined:</p>
 <ul>
 <li><code>zowe mat monitor codeview module --mon_num 5 --host &quot;example.com&quot; --port 12345 --user johndoe --password qwerty</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe mat monitor codeview module --mon_num 5 --host &quot;example.com&quot; --port 12345 --user johndoe --password qwerty">Copy</button></li>
+</ul>
+</li>
+</ul>
+<a class="cmd-anchor" name="zowe_mat_monitor_codeview_natural"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_mat">mat</a> › <a href="#zowe_mat_monitor">monitor</a> › <a href="#zowe_mat_monitor_codeview">codeview</a> › <a href="#zowe_mat_monitor_codeview_natural">natural</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
+<p>Get the CodeView measurement details in Natural mode.</p>
+<h4>Usage</h4>
+<p>zowe mat monitor codeview natural [options]</p>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--profile</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the name of the profile that you want to analyze. When you specify the profile name, you get the data for the latest measurement within the specified profile.</li>
+</ul>
+</li>
+<li>
+<p><code>--mon_num</code> <em>(number)</em></p>
+<ul>
+<li>Specifies the unique monitor number of the measurement.</li>
+</ul>
+</li>
+</ul>
+<h4>MAT Profile Options</h4>
+<ul>
+<li>
+<p><code>--protocol</code> | <code>-o</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the protocol defined for the MAT REST API server (http or https).</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the hostname or IP address defined for the MAT REST API server (e.g. 127.0.0.0 or localhost).</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>Specifies the server port (e.g. 8080).</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>Your mainframe username.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Your mainframe password.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--listingDir</code> | <code>--ldir</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the directory where you want to store the registered program listings (e.g. 'c:\listings') for your immediate source code inspection. You can use the advantage of automated listing registration with MAT and listing retrieval through Endevor® footprints for Cobol, C/C++, and Assembler programs. When a source program listing is registered with MAT, you can enhance the histogram analysis data with the program listing details that pertain to the specific CSECT and program statement. The listing is transfered to the specified directory, which enables you to navigate directly to the line of the source code in you VS Code IDE and inspect the program statement. To use the listing retrieval option through Endevor® footprints, you need to have the Endevor® Web Services installed and configured and specify the Endevor® web server details in the MAT database configuration.</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--mat-profile</code> | <code>--mat-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (mat) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-account</code> <em>(string)</em></p>
+<ul>
+<li>The account name for PKCS 12 certificate stored in credential manager</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Get the CodeView measurement details in Natural mode for monitor number 5:</p>
+<ul>
+<li><code>zowe mat monitor codeview natural --mon_num 5</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe mat monitor codeview natural --mon_num 5">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Get the CodeView measurement details in Natural mode for the latest monitor in the TESTPROF profile:</p>
+<ul>
+<li><code>zowe mat monitor codeview natural --profile TESTPROF</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe mat monitor codeview natural --profile TESTPROF">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Get the CodeView measurement details in Natural mode for monitor number 5, with the specific MAT profile details defined:</p>
+<ul>
+<li><code>zowe mat monitor codeview natural --mon_num 5 --host &quot;example.com&quot; --port 12345 --user johndoe --password qwerty</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe mat monitor codeview natural --mon_num 5 --host &quot;example.com&quot; --port 12345 --user johndoe --password qwerty">Copy</button></li>
 </ul>
 </li>
 </ul>
@@ -73939,7 +74794,7 @@ Allowed values: http, https</p>
 </li>
 </ul>
 <a class="cmd-anchor" name="zowe_mat_monitor_tranview_csect"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_mat">mat</a> › <a href="#zowe_mat_monitor">monitor</a> › <a href="#zowe_mat_monitor_tranview">tranview</a> › <a href="#zowe_mat_monitor_tranview_csect">csect</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
-<p>Get the CodeView measurement details in Csect mode.</p>
+<p>Get the CodeView measurement details in CSECT mode.</p>
 <h4>Usage</h4>
 <p>zowe mat monitor tranview csect [options]</p>
 <h4>Options</h4>
@@ -74075,19 +74930,19 @@ Allowed values: http, https</p>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Get the CodeView measurement details in Csect mode for monitor number 5:</p>
+<p>Get the CodeView measurement details in CSECT mode for monitor number 5:</p>
 <ul>
 <li><code>zowe mat monitor tranview csect --mon_num 5</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe mat monitor tranview csect --mon_num 5">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Get the CodeView measurement details in Csect mode for the latest monitor in the TESTPROF profile:</p>
+<p>Get the CodeView measurement details in CSECT mode for the latest monitor in the TESTPROF profile:</p>
 <ul>
 <li><code>zowe mat monitor tranview csect --profile TESTPROF</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe mat monitor tranview csect --profile TESTPROF">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Get the CodeView measurement details in Csect mode for monitor number 5, with the specific MAT profile details defined:</p>
+<p>Get the CodeView measurement details in CSECT mode for monitor number 5, with the specific MAT profile details defined:</p>
 <ul>
 <li><code>zowe mat monitor tranview csect --mon_num 5 --host &quot;example.com&quot; --port 12345 --user johndoe --password qwerty</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe mat monitor tranview csect --mon_num 5 --host &quot;example.com&quot; --port 12345 --user johndoe --password qwerty">Copy</button></li>
 </ul>
