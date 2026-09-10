@@ -9,7 +9,16 @@ module.exports = {
       link: { type: "doc", id: "whats-new/release-notes/release-notes-overview" },
       collapsed: false,
       items: [
-        "whats-new/release-notes/v3_6_0", 
+        {
+          type: "category", // doc(default), 'link'(external links), 'ref'(page without without sidebar)
+          label: "Version 3.6.0",
+          className: "ToCheadercolor",
+          link: { type: "doc", id: "whats-new/release-notes/v3_6_0" },
+          items: [
+            "whats-new/release-notes/v3_6_0-client", 
+            "whats-new/release-notes/v3_6_0-server",             
+          ],        
+        },
         "whats-new/release-notes/v3_5_0",        
         "whats-new/release-notes/v3_4_1",
         "whats-new/release-notes/v3_4_0",
@@ -54,7 +63,7 @@ module.exports = {
         "whats-new/release-notes/v2_2_0",
         "whats-new/release-notes/v2_1_0",
         "whats-new/release-notes/v2_0_0",
-      ],
+      ]
     },
   ],
   "getting-started": [
