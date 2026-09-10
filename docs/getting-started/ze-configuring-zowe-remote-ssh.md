@@ -15,13 +15,13 @@ Use Zowe Remote SSH (ZRS) in Zowe Explorer to perform z/OS mainframe operations 
 
 ZRS can be deployed to a shared location that multiple users access, or to a home directory when used by a single user. For large-scale multi-user systems, it is advised to add the ZRS binary to your `$PATH` to prevent storage overuse.
 
-When you use an `ssh` profile with Zowe Explorer, the ZRS `zowex` binary is automatically deployed to the user's z/OS UNIX filesystem. In cases where the binary is shared across multiple developers, this could result in hundreds of users consuming redundant storage space, creating a potential storage denial of service risk.
+When you use an `ssh` profile with Zowe Explorer, the ZRS `zo` binary is automatically deployed to the user's z/OS UNIX filesystem. In cases where the binary is shared across multiple developers, this could result in hundreds of users consuming redundant storage space, creating a potential storage denial of service risk.
 
-Before attempting to deploy the binary, the system checks if `zowex` already exists in the user's `$PATH` and is executable by the user. If a compatible version is found in the `$PATH`, the existing binary is used and no additional storage is used.
+Before attempting to deploy the binary, the system checks if `zo` already exists in the user's `$PATH` and is executable by the user. If a compatible version is found in the `$PATH`, the existing binary is used and no additional storage is used.
 
 If you do not have concerns about redundant use of storage, then allow the binary to be deployed to the default location, or [set a different location in your Visual Studio Code configuration](#alternatives-to-adding-zrs-to-your-path).
 
-To add the `zowex` binary to your `$PATH`:
+To add the `zo` binary to your `$PATH`:
 
 1. Use a text editor to open your `.profile` file in your home directory on z/OS UNIX.
 
@@ -33,12 +33,12 @@ To add the `zowex` binary to your `$PATH`:
 
     - `/user/shared/zrs` 
     
-        Specifies the directory where the `zowex` binary was deployed.
-3.  To validate the configuration, restart your shell environment by logging in to the mainframe over SSH again and issue the command `zowex -v`.
+        Specifies the directory where the `zo` binary was deployed.
+3.  To validate the configuration, restart your shell environment by logging in to the mainframe over SSH again and issue the command `zo -v`.
 
     The ZRS version is returned when the `$PATH` has been configured successfully.
     
-    The `zowex` binary is now set in your `$PATH`. You can now execute the `zowex` command without specifying the full `/user/shared/zrs/zowex` location, which is now stored in the `zowe.zowex.serverInstallPath` key in the VS Code `settings.json` file. 
+    The `zo` binary is now set in your `$PATH`. You can now execute the `zo` command without specifying the full `/user/shared/zrs/zowex` location, which is now stored in the `zowe.zowex.serverInstallPath` key in the VS Code `settings.json` file. 
  
 ### Alternatives to adding ZRS to your `$PATH`
 
@@ -53,9 +53,9 @@ Add a custom server path with the VS Code Settings editor:
 3. In **Server Install Path**, click **Add Item**.
 4. In the **Item** column, enter the host name of the mainframe for the SSH profile. In the **Value** column, enter the path to use for ZRS.
 5. To validate the configuration, use Zowe Explorer to connect to the mainframe using the SSH profile with the host added in Step 4. 
-6. In the **USS** tree view, use the same SSH profile to navigate to the location specified in Step 4 to confirm that it contains the `zowex` binary.
+6. In the **USS** tree view, use the same SSH profile to navigate to the location specified in Step 4 to confirm that it contains the `zo` binary.
 
-    The `zowex` binary is now set in your VS Code settings and the custom server path is used to deploy ZRS when you connect to that host.
+    The `zo` binary is now set in your VS Code settings and the custom server path is used to deploy ZRS when you connect to that host.
 
 #### Editing the VS Code Configuration JSON file
 
@@ -70,7 +70,7 @@ Add a custom server path using the `Open user preferences (JSON)` command:
     },
     ```
 3. To validate the configuration, use Zowe Explorer to connect to the mainframe using the SSH profile with the host added in Step 2. 
-4. In the **USS** tree view, use the same SSH profile to navigate to the location specified in Step 2 to confirm that it contains the `zowex` binary.
+4. In the **USS** tree view, use the same SSH profile to navigate to the location specified in Step 2 to confirm that it contains the `zo` binary.
 
 :::note
 If you have the `serverPath` property set in your [Zowe client configuration](../appendix/zowe-glossary.md#team-configuration) and a server path is also set in your VS Code configuration, the VS Code configuration takes precedence when using ZRS functionality.
