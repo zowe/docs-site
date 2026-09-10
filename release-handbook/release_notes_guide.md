@@ -41,7 +41,7 @@ Zowe Version 2.3.0 contains the enhancements that are described in the following
 
 #### z/OS FTP Plug-in for Zow CLI 
 
-### Zowe Explorer
+### Zowe Explorer for Visual Studio Code
 
 #### Zowe Explorer (Core)
 
@@ -58,6 +58,12 @@ Zowe Version 2.3.0 contains the enhancements that are described in the following
 #### Zowe Explorer ESLint Plug-in
 
 - See the [Zowe Explorer ESLint Plug-in](https://github.com/zowe/zowe-explorer-vscode/blob/main/packages/eslint-plugin-zowe-explorer/CHANGELOG.md) changelog for updates included in this release.
+
+#### Zowe Remote SSH (ZRS)
+
+### Zowe Explorer plug-in for IntelliJ IDEA
+
+- See the [Zowe Explorer plug-in for IntelliJ IDEA](https://github.com/zowe/zowe-explorer-intellij/blob/release/v2.4.0/CHANGELOG.md) changelog for updates included in this release.
 
 ## Bug fixes
 
@@ -102,6 +108,12 @@ Zowe Version 2.3.0 contains the bug fixes that are described in the following to
 #### Zowe Explorer ESLint Plug-in
 
 - See the [Zowe Explorer ESLint Plug-in](https://github.com/zowe/zowe-explorer-vscode/blob/main/packages/eslint-plugin-zowe-explorer/CHANGELOG.md) changelog for updates included in this release.
+
+#### Zowe Remote SSH (ZRS)
+
+### Zowe Explorer plug-in for IntelliJ IDEA
+
+- See the [Zowe Explorer plug-in for IntelliJ IDEA](https://github.com/zowe/zowe-explorer-intellij/blob/release/v2.4.0/CHANGELOG.md) changelog for updates included in this release.
 
 ### Vulnerabilities fixed
 
