@@ -33,7 +33,7 @@ For more information on Redis Sentinel and how to configure Sentinel instances w
 
 Redis supports SSL/TLS starting in version 6. For information on enabled SSL/TLS with Redis, see the [official Redis TLS Support documentation](https://redis.io/topics/replication).
 
-### Redis and Lettuce
+### Redis and Lettuce 
 
 The [Lettuce](https://github.com/redis/lettuce) library is used to connect to Redis. Lettuce uses Master or Sentinel node registration information to automatically discover other instances.
 The IP address used to register between nodes is therefore what Lettuce uses to connect to downstream replica instances. This means the IP address of replica instances,

@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Imperative | Zowe Node.js SDK - v3.4.1</title>
-	<meta name="description" content="Documentation for Zowe Node.js SDK - v3.4.1">
+	<title>Imperative | Zowe Node.js SDK - v3.6.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v3.6.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">Zowe Node.js SDK - v3.4.1</a>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v3.6.0</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -82,6 +82,7 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="_zowe_imperative.imperative.html#debug_file_name" class="tsd-kind-icon">DEBUG_<wbr>FILE_<wbr>NAME</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.imperative.html#default_debug_file" class="tsd-kind-icon">DEFAULT_<wbr>DEBUG_<wbr>FILE</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="_zowe_imperative.imperative.html#mapi" class="tsd-kind-icon">m<wbr>Api</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="_zowe_imperative.imperative.html#mcommandline" class="tsd-kind-icon">m<wbr>Command<wbr>Line</a></li>
@@ -129,15 +130,33 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static">
+					<a name="debug_file_name" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> DEBUG_<wbr>FILE_<wbr>NAME</h3>
+					<div class="tsd-signature tsd-kind-icon">DEBUG_<wbr>FILE_<wbr>NAME<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"imperative_debug.log"</span><span class="tsd-signature-symbol"> = &quot;imperative_debug.log&quot;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/imperative/src/imperative/src/Imperative.ts#L73">@zowe/imperative/src/imperative/src/Imperative.ts:73</a></li>
+						</ul>
+					</aside>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static">
 					<a name="default_debug_file" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> DEFAULT_<wbr>DEBUG_<wbr>FILE</h3>
 					<div class="tsd-signature tsd-kind-icon">DEFAULT_<wbr>DEBUG_<wbr>FILE<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = join(process.cwd(), &quot;imperative_debug.log&quot;)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/imperative/src/Imperative.ts#L67">@zowe/imperative/src/imperative/src/Imperative.ts:67</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/imperative/src/imperative/src/Imperative.ts#L71">@zowe/imperative/src/imperative/src/Imperative.ts:71</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<dl class="tsd-comment-tags">
+							<dt>deprecated</dt>
+							<dd><p>DEFAULT_DEBUG_FILE is no longer used.
+								We cannot remove it because it is public. It should be removed in V4.</p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static">
 					<a name="mapi" class="tsd-anchor"></a>
@@ -145,7 +164,7 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Api<span class="tsd-signature-symbol">:</span> <a href="_zowe_imperative.imperativeapi.html" class="tsd-signature-type">ImperativeApi</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/imperative/src/Imperative.ts#L425">@zowe/imperative/src/imperative/src/Imperative.ts:425</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/imperative/src/imperative/src/Imperative.ts#L447">@zowe/imperative/src/imperative/src/Imperative.ts:447</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -155,7 +174,7 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Command<wbr>Line<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/imperative/src/Imperative.ts#L429">@zowe/imperative/src/imperative/src/Imperative.ts:429</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/imperative/src/imperative/src/Imperative.ts#L451">@zowe/imperative/src/imperative/src/Imperative.ts:451</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -165,7 +184,7 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Console<wbr>Log<span class="tsd-signature-symbol">:</span> <a href="_zowe_imperative.logger.html" class="tsd-signature-type">Logger</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/imperative/src/Imperative.ts#L426">@zowe/imperative/src/imperative/src/Imperative.ts:426</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/imperative/src/imperative/src/Imperative.ts#L448">@zowe/imperative/src/imperative/src/Imperative.ts:448</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -175,7 +194,7 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Full<wbr>Command<wbr>Tree<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_zowe_imperative.icommanddefinition.html" class="tsd-signature-type">ICommandDefinition</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/imperative/src/Imperative.ts#L427">@zowe/imperative/src/imperative/src/Imperative.ts:427</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/imperative/src/imperative/src/Imperative.ts#L449">@zowe/imperative/src/imperative/src/Imperative.ts:449</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -185,7 +204,7 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Help<wbr>Generator<wbr>Factory<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_zowe_imperative.ihelpgeneratorfactory.html" class="tsd-signature-type">IHelpGeneratorFactory</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/imperative/src/Imperative.ts#L430">@zowe/imperative/src/imperative/src/Imperative.ts:430</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/imperative/src/imperative/src/Imperative.ts#L452">@zowe/imperative/src/imperative/src/Imperative.ts:452</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -195,7 +214,7 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Root<wbr>Command<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/imperative/src/Imperative.ts#L428">@zowe/imperative/src/imperative/src/Imperative.ts:428</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/imperative/src/imperative/src/Imperative.ts#L450">@zowe/imperative/src/imperative/src/Imperative.ts:450</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -212,7 +231,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/imperative/src/Imperative.ts#L391">@zowe/imperative/src/imperative/src/Imperative.ts:391</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/imperative/src/imperative/src/Imperative.ts#L413">@zowe/imperative/src/imperative/src/Imperative.ts:413</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -236,7 +255,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/imperative/src/Imperative.ts#L85">@zowe/imperative/src/imperative/src/Imperative.ts:85</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/imperative/src/imperative/src/Imperative.ts#L91">@zowe/imperative/src/imperative/src/Imperative.ts:91</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -257,7 +276,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/imperative/src/Imperative.ts#L94">@zowe/imperative/src/imperative/src/Imperative.ts:94</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/imperative/src/imperative/src/Imperative.ts#L100">@zowe/imperative/src/imperative/src/Imperative.ts:100</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -295,7 +314,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/imperative/src/Imperative.ts#L341">@zowe/imperative/src/imperative/src/Imperative.ts:341</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/imperative/src/imperative/src/Imperative.ts#L363">@zowe/imperative/src/imperative/src/Imperative.ts:363</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -320,7 +339,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/imperative/src/Imperative.ts#L103">@zowe/imperative/src/imperative/src/Imperative.ts:103</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/imperative/src/imperative/src/Imperative.ts#L109">@zowe/imperative/src/imperative/src/Imperative.ts:109</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -342,7 +361,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/imperative/src/Imperative.ts#L435">@zowe/imperative/src/imperative/src/Imperative.ts:435</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/imperative/src/imperative/src/Imperative.ts#L457">@zowe/imperative/src/imperative/src/Imperative.ts:457</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -364,7 +383,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/imperative/src/Imperative.ts#L75">@zowe/imperative/src/imperative/src/Imperative.ts:75</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/imperative/src/imperative/src/Imperative.ts#L81">@zowe/imperative/src/imperative/src/Imperative.ts:81</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -397,7 +416,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/imperative/src/Imperative.ts#L681">@zowe/imperative/src/imperative/src/Imperative.ts:681</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/imperative/src/imperative/src/Imperative.ts#L703">@zowe/imperative/src/imperative/src/Imperative.ts:703</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -431,7 +450,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/imperative/src/Imperative.ts#L589">@zowe/imperative/src/imperative/src/Imperative.ts:589</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/imperative/src/imperative/src/Imperative.ts#L611">@zowe/imperative/src/imperative/src/Imperative.ts:611</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -454,7 +473,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/imperative/src/Imperative.ts#L613">@zowe/imperative/src/imperative/src/Imperative.ts:613</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/imperative/src/imperative/src/Imperative.ts#L635">@zowe/imperative/src/imperative/src/Imperative.ts:635</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -477,7 +496,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/imperative/src/Imperative.ts#L629">@zowe/imperative/src/imperative/src/Imperative.ts:629</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/imperative/src/imperative/src/Imperative.ts#L651">@zowe/imperative/src/imperative/src/Imperative.ts:651</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -500,7 +519,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/imperative/src/Imperative.ts#L638">@zowe/imperative/src/imperative/src/Imperative.ts:638</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/imperative/src/imperative/src/Imperative.ts#L660">@zowe/imperative/src/imperative/src/Imperative.ts:660</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -523,7 +542,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/imperative/src/Imperative.ts#L621">@zowe/imperative/src/imperative/src/Imperative.ts:621</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/imperative/src/imperative/src/Imperative.ts#L643">@zowe/imperative/src/imperative/src/Imperative.ts:643</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -546,7 +565,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/imperative/src/Imperative.ts#L525">@zowe/imperative/src/imperative/src/Imperative.ts:525</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/imperative/src/imperative/src/Imperative.ts#L547">@zowe/imperative/src/imperative/src/Imperative.ts:547</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -578,7 +597,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/imperative/src/Imperative.ts#L383">@zowe/imperative/src/imperative/src/Imperative.ts:383</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/imperative/src/imperative/src/Imperative.ts#L405">@zowe/imperative/src/imperative/src/Imperative.ts:405</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -614,7 +633,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/imperative/src/Imperative.ts#L670">@zowe/imperative/src/imperative/src/Imperative.ts:670</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/imperative/src/imperative/src/Imperative.ts#L692">@zowe/imperative/src/imperative/src/Imperative.ts:692</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -652,7 +671,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/imperative/src/Imperative.ts#L362">@zowe/imperative/src/imperative/src/Imperative.ts:362</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/imperative/src/imperative/src/Imperative.ts#L384">@zowe/imperative/src/imperative/src/Imperative.ts:384</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -681,7 +700,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/imperative/src/Imperative.ts#L654">@zowe/imperative/src/imperative/src/Imperative.ts:654</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/imperative/src/imperative/src/Imperative.ts#L676">@zowe/imperative/src/imperative/src/Imperative.ts:676</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -710,7 +729,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/imperative/src/Imperative.ts#L412">@zowe/imperative/src/imperative/src/Imperative.ts:412</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/imperative/src/imperative/src/Imperative.ts#L434">@zowe/imperative/src/imperative/src/Imperative.ts:434</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -744,7 +763,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/imperative/src/Imperative.ts#L421">@zowe/imperative/src/imperative/src/Imperative.ts:421</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/imperative/src/imperative/src/Imperative.ts#L443">@zowe/imperative/src/imperative/src/Imperative.ts:443</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -778,7 +797,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/imperative/src/Imperative.ts#L121">@zowe/imperative/src/imperative/src/Imperative.ts:121</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/imperative/src/imperative/src/Imperative.ts#L127">@zowe/imperative/src/imperative/src/Imperative.ts:127</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -808,7 +827,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/imperative/src/Imperative.ts#L443">@zowe/imperative/src/imperative/src/Imperative.ts:443</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/imperative/src/imperative/src/Imperative.ts#L465">@zowe/imperative/src/imperative/src/Imperative.ts:465</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -831,7 +850,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/imperative/src/Imperative.ts#L466">@zowe/imperative/src/imperative/src/Imperative.ts:466</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/imperative/src/imperative/src/Imperative.ts#L488">@zowe/imperative/src/imperative/src/Imperative.ts:488</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -855,7 +874,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/imperative/src/Imperative.ts#L350">@zowe/imperative/src/imperative/src/Imperative.ts:350</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/imperative/src/imperative/src/Imperative.ts#L372">@zowe/imperative/src/imperative/src/Imperative.ts:372</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -933,6 +952,9 @@
 							<li class="current tsd-kind-class tsd-parent-kind-module">
 								<a href="_zowe_imperative.imperative.html" class="tsd-kind-icon">Imperative</a>
 								<ul>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static">
+										<a href="_zowe_imperative.imperative.html#debug_file_name" class="tsd-kind-icon">DEBUG_<wbr>FILE_<wbr>NAME</a>
+									</li>
 									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-static">
 										<a href="_zowe_imperative.imperative.html#default_debug_file" class="tsd-kind-icon">DEFAULT_<wbr>DEBUG_<wbr>FILE</a>
 									</li>

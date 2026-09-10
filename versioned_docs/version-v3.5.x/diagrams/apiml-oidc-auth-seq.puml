@@ -1,0 +1,43 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+actor User
+actor "User Agent" as Agent
+actor OIDC as OIDC
+actor "API ML GW" as GW
+
+User -> Agent: Do stuff
+Agent -> GW: /gateway/oauth2/authorization/<provider-id>
+GW -> OIDC: Initiate OIDC flow [client_id, client_secret]
+group MFA
+OIDC -> Agent: Request user credentials
+User <-> Agent: Provide credentials
+Agent -> OIDC: Validate credentials
+end
+OIDC --> GW: Return Auth Code / JWTs[access,refresh,identity]
+GW -> Agent: Set-cookie access token
+Agent -> GW: Request resources [access token]
+GW -> GW: Validate access token
+GW -> GW: Cache access token validity
+group map user
+GW -> SAF: Map distributed ID to mainframe ID
+end
+alt mapping success
+GW -> GW: Create Zowe JWT
+GW -> Service: Call API service with Zowe JWT
+Service -> Service: Validate JWT
+Service --> GW: Return Response
+autonumber 14 1
+else mapping failure
+
+GW -> Service: call API service with access token
+note left: Step 13 Create Zowe JWT was skipped
+Service -> Service: Validate access token
+Service --> GW: Return Response
+end
+autonumber 17 1
+GW --> Agent: Response
+
+
+@enduml

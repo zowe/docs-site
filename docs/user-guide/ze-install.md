@@ -3,7 +3,7 @@
 <a href="https://app.codecov.io/gh/zowe/zowe-explorer-vscode"><img src="https://codecov.io/gh/zowe/vscode-extension-for-zowe/branch/main/graph/badge.svg" alt="codecov" scope="external"/></a>
 <a href="https://app.slack.com/client/T1BAJVCTY/CUVE37Z5F"><img src="https://img.shields.io/badge/chat-on%20Slack-blue" alt="slack" scope="external"/></a>
 
-:::info Required roles: systems administrator
+:::info Required roles: system administrator
 :::
 
 Install Zowe Explorer directly to [Visual Studio Code](https://code.visualstudio.com/) to enable the extension within the GUI. 
@@ -59,16 +59,7 @@ To install a particular version on VS Code:
 4. Select **Install Another Version…** to open a dropdown menu that lists previous versions of Zowe Explorer.
 5. Click the version of Zowe Explorer you want to install.
 
-#### Preventing automatic updates to retain a specific version
-
-By default, VS Code automatically updates extensions as new versions are released. Refer to the following steps to prevent automatic updates:
-
-1. On the VS Code menu bar, click **File**, **Preferences**, and click **Settings** to display the Settings editor.
-2. Select the **User** or **Workspace** tab, depending on which settings you want to update.
-3. In the Settings navigation menu, click **Features** and click **Extensions**.
-4. In the **Auto Update** dropdown menu, select **None**. This prevents VS Code from updating your extensions automatically.
-
-      VS Code is configured to stop updating your extensions, and Zowe Explorer extensions, automatically.
+By default, VS Code automatically updates extensions as new versions are released. Refer to [Updating Zowe Explorer and Zowe Explorer extensions](../upgrade/ze-updatingze.md) for instructions on how to prevent automatic updates:
 
 ## Installing Zowe Explorer extensions
 
@@ -97,7 +88,3 @@ By default, VS Code automatically updates extensions as new versions are release
 4. Close and reopen VS Code to check that the notification message "Zowe Explorer was modified for FTP support" displays.
 
    Once installed, the notification displays every time you open VS Code to confirm that the FTP extension is available.
-
-## Updating Zowe Explorer and Zowe Explorer extensions
-
-By default, VS Code automatically updates extensions as new versions are released. To stop automatic updates, see [Preventing automatic updates to retain a specific version](#preventing-automatic-updates-to-retain-a-specific-version).

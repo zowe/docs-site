@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>config export-redacted</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_config.html">config</a> › <a href="zowe_config_export-redacted.html">export-redacted</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Export your Zowe configuration with sensitive values redacted and common properties given matching keys for troubleshooting and sharing purposes.</p>
+<h4>Usage</h4>
+<p>zowe config export-redacted [options]</p>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--redact-strings</code> | <code>--rs</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Redact string values with consistent keys</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--redact-numbers</code> | <code>--rn</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Redact numeric values with consistent keys</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--redact-booleans</code> | <code>--rb</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Redact boolean values with consistent keys</p>
+<p>Default value: false</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--hide-secure-fields</code> | <code>--hsf</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Hide secure field names from output (secure field names are shown by default since they don't contain sensitive values)</p>
+<p>Default value: false</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--redact-profile-names</code> | <code>--rpn</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Redact profile names and their references in defaults section</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--show-host-path</code> | <code>--shp</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Show the host and basePath property values instead of redacting them. Takes precedence over `redact-strings` option</p>
+<p>Default value: false</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--dry-run</code> | <code>--dr</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Print redacted configs to stdout instead of exporting to directory</p>
+<p>Default value: false</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--export-dir</code> | <code>-d</code> <em>(string)</em></p>
+<ul>
+<li>Directory where config files will be exported. Defaults to current working directory.</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Export all config layers to current directory:</p>
+<ul>
+<li><code>zowe config export-redacted</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config export-redacted">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Export all config layers to specified directory:</p>
+<ul>
+<li><code>zowe config export-redacted --export-dir ./exported-configs</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config export-redacted --export-dir ./exported-configs">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Dry run - show redacted config to stdout:</p>
+<ul>
+<li><code>zowe config export-redacted --dry-run</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config export-redacted --dry-run">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Export without redacting profile names:</p>
+<ul>
+<li><code>zowe config export-redacted --export-dir ./configs --no-redact-profile-names</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config export-redacted --export-dir ./configs --no-redact-profile-names">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Export while showing the host and basePath values:</p>
+<ul>
+<li><code>zowe config export-redacted --export-dir ./configs --show-host-path</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config export-redacted --export-dir ./configs --show-host-path">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/docs.js"></script>
