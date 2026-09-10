@@ -35,7 +35,7 @@ Redis supports SSL/TLS starting in version 6. For information on enabled SSL/TLS
 
 ### Redis and Lettuce
 
-The [Lettuce](https://lettuce.io/) library is used to connect to Redis. Lettuce uses Master or Sentinel node registration information to automatically discover other instances.
+The [Lettuce](https://github.com/redis/lettuce) library is used to connect to Redis. Lettuce uses Master or Sentinel node registration information to automatically discover other instances.
 The IP address used to register between nodes is therefore what Lettuce uses to connect to downstream replica instances. This means the IP address of replica instances,
 or the IP address of both master and replica instances in the case of Sentinel topology, must be accessible to the Caching service. For example, in a master/replica topology running
 in separate Docker containers, the replica container's IP address needs to be accessible to the Caching service, rather than only exposing a port.

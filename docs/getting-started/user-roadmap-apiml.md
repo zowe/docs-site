@@ -12,7 +12,7 @@ The following definition of skill levels about Zowe assist you with gathering th
 
 > Zowe skill level: Beginner
 
-- [**Zowe API Mediation Layer overview**](overview.md#api-mediation-layer)
+- [**Zowe API Mediation Layer overview**](overview.md#zowe-api-mediation-layer-api-ml)
 
    New to API Mediation Layer? This overview topic introduces the key features, main components, benefits, and architecture of the API Mediation Layer.
 

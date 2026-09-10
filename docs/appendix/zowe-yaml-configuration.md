@@ -460,9 +460,10 @@ Specifies the list of certificate authorities to be imported to the Zowe `PKCS12
 Specifies the directory where the PKCS12 keystore and truststore are stored. This value is required if `zowe.setup.certificate.type` is `PKCS12`.
 - **zowe.setup.certificate.pkcs12.lock**  
 Specifies a boolean configuration to indicate if the PKCS12 keystore directory is to be locked only for Zowe runtime user and group. The default value is `true`.
-- **name**, **password**, **caAlias**, and **caPassword**  
-Under `zowe.setup.certificate.pkcs12`, these parameters   
-customize the keystore and truststore. These configurations are optional, but it is recommended to update the values from default values.
+- **name** and **caAlias**  
+Under `zowe.setup.certificate.pkcs12`, these parameters customize the keystore and truststore. These configurations are optional.
+- **password** and **caPassword**  
+Under `zowe.setup.certificate.pkcs12`, these parameters specify the passwords that protect the keystore and the self-signed certificate authority keystore. These configurations are optional. If either password is left at its default value, `zwe init certificate` generates a random password instead. With `--update-config`, the generated password is written to your `zowe.yaml` configuration file. Without `--update-config`, the password is shown only in the command output and must be saved manually.
 - **zowe.setup.certificate.pkcs12.import.keystore**  
  Specify this parameter if you already acquired certificates from another CA, stored them in PKCS12 format, and want to import into Zowe PKCS12 keystore.
 - **zowe.setup.certificate.pkcs12.import.password**  
