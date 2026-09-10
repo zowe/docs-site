@@ -495,6 +495,41 @@ Contact your administrator.
 
   Remove or fix the referenced metadata parameter.
 
+
+### ZWEAM601W 
+
+  `<key>` `<value>` is not allowed for instance `<instanceID>`
+
+  **Reason:**  
+  
+  The URL or literal IP address provided for the service instance does not match an entry in the allowed domains list configured in API ML. This error can occur due to an unlisted hostname, a nonmatching literal IP, an IP address falling outside of a configured CIDR range, or malformed CIDR syntax in the configuration. By default, this validation failure blocks the service from successfully onboarding.
+
+  **Action:**  
+  
+  Check the `zowe.network.allowedDomains` configuration in `zowe.yaml` to ensure the instance's URL is permitted. If you are encountering this error due to IP configurations, verify that the literal IP falls within the specified IPv4/IPv6 CIDR range, and ensure that your CIDR entries use valid syntax (for example, an IPv4 CIDR cannot exceed `/32`).
+
+  :::tip Best Practice for CIDR Ranges
+  When updating the allowlist to permit IP ranges, administrators should use the narrowest practical CIDR range. Every address within the specified range satisfies the allowlist check.
+  :::
+
+  * **Emergency Override**  
+  If you need to temporarily prevent this error from blocking service onboarding in a development environment, set the environment variable `ZWE_ONLY_WARN_ON_URL_NOT_ALLOWED=true`. This downgrades the behavior to a log warning only and allows the service to register. Note that this setting is intended for temporary diagnostic behavior only. The use of this override is not a production substitute for a properly configured allowlist.
+  
+ 
+
+### ZWEAM602W 
+
+  Pattern `*` is not recommended in `apiml.corsAllowedOrigins`
+
+  **Reason:**  
+  
+  Using the wildcard (`*`) pattern in the Cross-Origin Resource Sharing (CORS) configuration parameter `apiml.corsAllowedOrigins` allows requests from any domain, which creates a potential security risk by bypassing intended origin restrictions.
+
+  **Action:**  
+  
+  Replace the wildcard pattern with a specific list of trusted domains or use a more restrictive pattern in the `apiml.corsAllowedOrigins` parameter defined as a metadata entry in the onboarding service.
+
+
 ### ZWEAM700E
 
   No response received within the allowed time: `%s`
@@ -1753,6 +1788,18 @@ Contact your administrator.
 
   Verify folder with static definition files or try it later.
 
+### ZWEAD707W
+
+  Service '%s' registered with the httpBasicPassTicket authentication scheme but without a configured APPLID. The authentication scheme will be ignored
+
+  **Reason:**
+
+  The service is onboarded with the httpBasicPassTicket authentication scheme but does not provide an APPLID, which is required to generate PassTickets.
+
+  **Action:**
+
+  Configure the 'authentication.applid' parameter of the httpBasicPassTicket authentication scheme in the service metadata.
+
 ## Gateway service messages
 
 ### ZWEAG111E
@@ -1790,18 +1837,6 @@ Contact your administrator.
   **Action:**
 
   Contact the system administrator and request enablement of encoded characters in the service.
-
-### ZWEAG702E
-
-  Gateway does not allow encoded slashes in request: `%s`.
-
-  **Reason:**
-
-  The request that was issued to the Gateway contains an encoded slash in the URL path. Gateway configuration does not allow this encoding in the URL.
-
-  **Action:**
-
-  Contact the system administrator and request enablement of encoded slashes in the Gateway.
 
 ### ZWEAG717E
 

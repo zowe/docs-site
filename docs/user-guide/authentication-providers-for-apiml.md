@@ -28,9 +28,8 @@ components.gateway.apiml.security.auth.provider: saf
 
 :::note
 
-In Zowe v3.4 and later versions, if the API Gateway is configured to use SAF authentication, z/OSMF APIs used by 
-Desktop Explorer apps authenticate using PassTickets instead of a JWT/LTPA token. As such, ensure that 
-PassTickets are configured and enabled for z/OSMF. 
+Starting in Zowe v3.4.0, System Authorization Facility (SAF) is the default authentication provider (`apiml.security.auth.provider=saf`) for all new installations performed via Portable Software Instance (**PSWI**), which is the recommended method for installing Zowe API Mediation Layer (API ML). Under this framework, authentication requests natively utilize SAF directly rather than routing explicitly through z/OSMF for initial validation. If the API Gateway is configured to use SAF authentication, z/OSMF APIs used by Desktop Explorer apps authenticate using PassTickets instead of a JWT/LTPA token. Due to this dependency, ensure that 
+PassTickets are configured and enabled for z/OSMF. For more information about how to configure PassTickets for z/OSMF authentication, see [Addressing z/OSMF PassTicket and authentication requirements](./api-mediation/configuring-passtickets-for-zosmf-authentication.md).
 
 :::
 

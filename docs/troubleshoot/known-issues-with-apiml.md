@@ -175,9 +175,7 @@ Fix the missing z/OSMF host name in subject alternative names using the followin
 **Follow these steps:**
 
 1. Re-create the Zowe keystore by deleting it and re-creating it. 
-2. In the `zowe.yaml` file that used to launch Zowe, ensure the property `zowe.verifyCertificates` is set to `DISABLED` or `NONSTRICT`. The default value is `STRICT` which ensures that Zowe validates the certificate authority's signing chain is trusted, and that the IP address for Zowe's servers match the certificate's subject alternative name. 
-
-**Important!** Disabling `zowe.verifyCertificates` may expose your server to security risks. Ensure that you contact your system administrator before disabling these certificates and use these options only for troubleshooting purposes.
+2. In the `zowe.yaml` file that used to launch Zowe, ensure the property `zowe.verifyCertificates` is set to `NONSTRICT`. The default value is `STRICT` which ensures that Zowe validates the certificate authority's signing chain is trusted, and that the IP address for Zowe's servers match the certificate's subject alternative name.
 
 ### Invalid z/OSMF host name in subject alternative names
 
@@ -201,14 +199,53 @@ Request a new certificate that contains a valid z/OSMF host name in the subject 
 
 ### Re-create the Zowe keystore
 
-Recreate the Zowe keystore by deleting it and recreating it. For more information, see [Scenario 2: Importing a file-based PKCS12 certificate](../user-guide/certificates-configuration-scenarios.md#scenario-2-use-a-file-based-pkcs12-keystore-and-import-a-certificate-generated-by-another-ca).  The Zowe keystore directory is the value of the `KEYSTORE_DIRECTORY` variable in the `zowe.yaml` file that is used to launch Zowe.
+Recreate the Zowe keystore by first deleting it and then recreating it. For more information, see [Scenario 2: Importing a file-based PKCS12 certificate](../user-guide/certificates-configuration-scenarios.md#scenario-2-use-a-file-based-pkcs12-keystore-and-import-a-certificate-generated-by-another-ca).  The Zowe keystore directory is the value of the `KEYSTORE_DIRECTORY` variable in the `zowe.yaml` file that is used to launch Zowe.
 
-### Caching Service stalls in HA mode on z/OS with Java 21+ after upgrading to Zowe 3.5.0
+### Caching Service fails to start with PersistenceException
 
-When running Zowe v3.5.0 in High Availability (HA) mode with Infinispan as the Caching Service storage backend, the Caching Service randomly freezes or stalls resulting from JGroups cluster communication failure, nodes dropping out or failing to form a stable cluster, and a failure in correct data replication.
+When running Zowe with Infinispan as the Caching Service storage backend, the Caching Service may fail to start and produce error code `ZWECS138E` or an error message similar to the following:
+
+```
+ZWECS138E The persistent store for cache '<cache_name>' is corrupted.
+org.infinispan.persistence.spi.PersistenceException: Found an invalid protobuf tag (1) having a field number smaller than 1
+```
 
 **Cause:**  
-Infinispan 16 introduces and enables virtual thread pools by default when running on JDK 21+. On the z/OS operating system, using virtual threads within this architecture causes underlying thread pinning. This pinning stalls the JGroups network stack communication, rendering the Caching Service unresponsive.
 
-**Resolution:**  
-In Zowe v3.5.0, the startup scripts will not automatically disable this feature. To prevent the Caching Service from freezing in HA mode, downgrade the Zowe runtime Java version to Java 17, where virtual threads are not enabled by default in Infinispan.
+Infinispan failed to load the persisted data for the specified cache because the persistent cache store is corrupted.
+
+Corruptions of this type can occur due to various reasons, such as:
+* An unexpected or unclean shutdown of the Zowe instance.
+* Insufficient disk space on the target file system
+* Storage/IO errors during write operations.
+
+**Resolution:**
+
+1. **Check Available Disk Space.**  
+Verify that there is sufficient available space on the file system hosting `zowe.workspaceDirectory`. If the disk is full, free up space before proceeding.
+2. **Remove the Index Directory.**    
+   If the persistent store appears corrupted, try removing only the index directory for the affected cache before clearing all persistent data:  
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a. Stop Zowe.  
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b. Delete the `/index` directory located at:  
+      ```
+      <zowe.workspaceDirectory>/caching-service/<cache_name>/index
+      ```  
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c. Restart Zowe.
+3. **Recreate the Persistent Store (Last Resort).**  
+If the persistent store is permanently corrupted and the service cannot recover automatically, perform the following steps to recreate the cache store:  
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a. Stop Zowe.  
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b. Remove the Infinispan persistence directory:  
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Delete the contents or the folder located at:
+   `<zowe.workspaceDirectory>/caching-service`    
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c. Restart Zowe: The Caching Service will automatically recreate a fresh persistent store on startup.
+
+    :::info
+    Removing the persistence directory clears all data stored by Infinispan, including revoked Personal Access Tokens (PATs) and revoked Zowe JWT tokens.
+    :::
+
+  :::note Impact on Revoked Tokens
+  * **Personal Access Tokens (PATs):**  
+  Unlike short-lived tokens, PATs have a default lifespan of **90 days**. Because of this long validity period, deleting the cache store leaves previously revoked PATs active until their natural expiration. Security administrators **must manually revoke** affected PATs again, either by user or by scope, using the appropriate API. For more information, see [Authenticating with a Personal Access Token](../user-guide/api-mediation/authenticating-with-personal-access-token.md).
+* **Zowe JWT Tokens:**  
+The impact on revoked JWT tokens is usually limited, as JWTs typically have a relatively short expiration timeframe, such as a few hours, after which they become invalid automatically.
+  :::

@@ -3,7 +3,7 @@
 <a href="https://app.codecov.io/gh/zowe/zowe-explorer-vscode"><img src="https://codecov.io/gh/zowe/vscode-extension-for-zowe/branch/main/graph/badge.svg" alt="codecov" scope="external"/></a>
 <a href="https://app.slack.com/client/T1BAJVCTY/CUVE37Z5F"><img src="https://img.shields.io/badge/chat-on%20Slack-blue" alt="slack" scope="external"/></a>
 
-:::info Required roles: systems administrator
+:::info Required roles: system administrator
 :::
 
 Install Zowe Explorer directly to [Visual Studio Code](https://code.visualstudio.com/) to enable the extension within the GUI. 

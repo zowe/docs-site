@@ -7,15 +7,17 @@ module.exports = {
   url: "https://docs.zowe.org/",
   baseUrl: "/",
   onBrokenLinks: "warn",
-  onBrokenMarkdownLinks: "warn",
   onDuplicateRoutes: "ignore",
   favicon: "img/zowe-icon.png",
   organizationName: "zowe",
   projectName: "docs-site",
   markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: "warn",
+    },
     mdx1Compat: {
-      comments: true
-    }
+      comments: true,
+    },
   },
   future: {
     // https://docusaurus.io/blog/releases/3.6#docusaurus-faster
@@ -29,7 +31,7 @@ module.exports = {
     announcementBar: {
       id: 'announcementBar-1', // increment on change
       content:
-          '📌  <b>Support for Zowe Version 2 ends March 30, 2027</b>. Use <a href="https://docs.zowe.org/stable/whats-new/zowe-v3-migration/" target="_blank">this guide</a> to migrate to Zowe Version 3, which transitions to maintenance on March 1, 2027.',
+          '📌  <b>Support for Zowe Version 2 ends March 30, 2027</b>. Use <a href="https://docs.zowe.org/stable/upgrade/upgrade-zowe-v3/" target="_blank">this guide</a> to upgrade to Zowe Version 3, which transitions to maintenance on March 1, 2027.',
       textColor: '#000',
       },
     docs: {
@@ -64,6 +66,12 @@ module.exports = {
           type: "doc",
           label: "Install",
           docId: "user-guide/install-overview",
+          position: "left",
+        },
+        {
+          type: "doc",
+          label: "Upgrade",
+          docId: "upgrade/upgrading-zowe",
           position: "left",
         },
         {

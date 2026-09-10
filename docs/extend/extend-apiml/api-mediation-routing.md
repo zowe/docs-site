@@ -143,3 +143,5 @@ Refer to the detailed configuration guide for more advanced settings and example
 By default, routing through the API Mediation Layer selects the instance to route to in Round-robin fashion for each
 specific request. It is possible to change this behavior to assign a specific user to a specific instance or to change 
 the behavior by providing the option to go to a specific instance of a service.
+
+For details about how to route a client request to a specific instance using the `X-InstanceId` header, see [Retrieving a specific service within your environment](../../user-guide/api-mediation/configuration-access-specific-instance-of-service.md).
