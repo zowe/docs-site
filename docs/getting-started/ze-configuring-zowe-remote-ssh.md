@@ -65,8 +65,8 @@ Add a custom server path using the `Open user preferences (JSON)` command:
 2. Use the Editor to enter your custom server path, as in the following example:
     ```
     "zowe.zowex.serverInstallPath": {
-        "hostexample1": "~/custom_zowex",
-        "hostexample2": "/u/users/chris/customserverpath",
+        "hostexample1": "~/custom_zo",
+        "hostexample2": "/u/users/example/custom",
     },
     ```
 3. To validate the configuration, use Zowe Explorer to connect to the mainframe using the SSH profile with the host added in Step 2. 
