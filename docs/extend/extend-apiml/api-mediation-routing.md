@@ -103,19 +103,19 @@ When there is one instance of the API Mediation Layer in the system, the API ML 
 
 The following diagram shows the flow of a `GET` request through different involved components to the z/OSMF service deployed on one LPAR with one instance. z/OSMF in this case does not version the API. 
 
-![Single instance](../../images/api-mediation/SimpleRouting.png "Simple Routing")
+![Single instance](../../images/api-mediation/routing_diagram_1.png "Simple Routing")
 
 #### A GET call to a service with multiple versions on a single instance
 
 The following diagram shows the flow of a `GET` request through different involved components to the z/OSMF service deployed on one LPAR with one instance. In this case, z/OSMF versions the API and the request is intended for a specific major version.  
 
-![Multiple versions](../../images/api-mediation/RoutingVersioned.png "Versioned Routing")
+![Multiple versions](../../images/api-mediation/routing_diagram_2.png "Versioned Routing")
 
 #### GET calls to multiple instances of a service
 
 The following diagram shows the flow of a `GET` request through different involved components to the z/OSMF service deployed on one LPAR with multiple instances. In this case, z/OSMF versions the API and the request is intended for a specific major version.
 
-![Multiple Instances](../../images/api-mediation/RoutingOneLparMultipleInstances.png "Multiple Instances")
+![Multiple Instances](../../images/api-mediation/routing_diagram_3.png "Multiple Instances")
 
 ### A GET call to a service through multiple API Mediation Layer Instances
 
@@ -125,7 +125,7 @@ When there are multiple API Mediation Layer Instances in the system, DVIPA is ex
 
 The following diagram shows the flow of the `GET` request through different involved components to the z/OSMF service deployed on multiple LPARs with multiple instances on one LPAR, and one instance on another LPAR. In this case, z/OSMF versions the API and the request is intended for a specific major version. DVIPA randomly selects one of the available API Mediation Layer instances, which then randomly selects one of the available service instances (in this case on the same LPAR). 
 
-![Same LPAR Multiple API Mediation Layer Instances](../../images/api-mediation/RoutingSysplexSameLpar.png "Same LPAR Multiple API Mediation Layer Instances")
+![Same LPAR Multiple API Mediation Layer Instances](../../images/api-mediation/routing_diagram_4.png "Same LPAR Multiple API Mediation Layer Instances")
 
 #### Different LPAR Multiple API Mediation Layer Instances
 
@@ -133,7 +133,7 @@ The following diagram shows the flow of the `GET` request through different invo
 instance resides on the same LPAR. In this case the selected instance is on another LPAR. 
 
 
-![Different LPAR Multiple API Mediation Layer Instances](../../images/api-mediation/RoutingSysplexDifferentLpar.png "Different LPAR Multiple API Mediation Layer Instances")
+![Different LPAR Multiple API Mediation Layer Instances](../../images/api-mediation/routing_diagram_5.png "Different LPAR Multiple API Mediation Layer Instances")
 
 ## Advanced Configuration
 
