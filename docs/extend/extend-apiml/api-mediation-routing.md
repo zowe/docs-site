@@ -5,7 +5,7 @@ services. The routing feature supports both single and multiple API ML instances
 
 The following diagram shows a request for a specific job from a customer and the services involved in the delivery of the request.
 
-![Services Diagram](../../images/api-mediation/RoutingNorthboundSouthbound.png "Example services diagram")
+![Services Diagram](../../images/api-mediation/job_request_diagram.png "Example services diagram")
 
 **Key Concepts**
 - **Service**
