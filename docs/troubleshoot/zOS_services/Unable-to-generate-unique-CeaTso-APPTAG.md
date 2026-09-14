@@ -12,6 +12,43 @@ Check the z/OSMF settings of REST API of file. You must define `RESTAPI_FILE` in
 `RESTAPI_FILE ACCT(IZUACCT) REGION(32768) PROC(IZUFPROC)`
 The default `IZUFPROC` can be found in `SYS1.PPROCLIB`. And the proper authorization is needed to get `IZUFPROC` to work successfully.
 
+## ISSUE: CeaTso request failed with HTTP 500 error
+
+**Symptom**
+
+When you use Zowe CLI or Zowe Explorer to access USS files or data sets, you receive the following error:
+
+```
+Rest API failure with HTTP(S) status 500
+rc:       12
+reason:   2
+category: 3
+message:  CeaTso request failed
+```
+
+**Solution**
+
+This error is caused by a buildup of IPC message queues on z/OS.
+
+1. Run the following command to check IPC resource usage:
+
+```
+   ipcs -x
+```
+
+   If a long list of entries is returned, the queues need to be cleared.
+
+2. **Immediate fix:** Recycle the Zowe `ZWESLSTC` started task.
+
+3. **Permanent fix:** Add the following to your `zowe.yaml` configuration:
+
+```yaml
+   zowe:
+     environments:
+       ZWE_PRIVATE_CLEANUP_IPC_MQ: true
+```
+
+   This enables automatic IPC message queue cleanup on Zowe startup.
 
 ### ISSUE: z/OSMF JVM cache corruption
 
