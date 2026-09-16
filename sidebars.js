@@ -210,6 +210,7 @@ module.exports = {
               label: "Initializing Zowe z/OS runtime",
               link: { type: "doc", id: "user-guide/configure-zowe-runtime" },
               items: [
+                "user-guide/Cross-LPAR-Deployment-Considerations",
                 "user-guide/initialize-zos-system",
                 "user-guide/zwe-init-subcommand-overview",
                 "user-guide/configuring-zowe-via-jcl",
