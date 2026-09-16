@@ -1,4 +1,4 @@
-# Cross-LPAR deployment
+# Cross-LPAR deployment considerations
 
 This section provides information about additional steps to configure a cross-LPAR deployment. The steps in this section not in the standard single-LPAR installation.
 
