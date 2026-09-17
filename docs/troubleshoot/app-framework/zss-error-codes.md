@@ -740,7 +740,11 @@ The following error message codes may appear on ZSS log. Use the following messa
   **Action:**
   
   * This message is repeated each `<n>` seconds. After a successful attempt, the message `ZWES1601I` is displayed and no action is required.
-  * If message `ZWES1601I` does not appear, but rather the message `ZWES1606W Failed to get JWK. rc=failed to init HTTP request (9), rsn=TLS error (17). Retry in 10 seconds`, consider the following:
+  * If the message `ZWES1601I` does not appear, but rather the message `ZWES1606W Failed to get JWK. rc=failed to init HTTP request (9), rsn=TLS error (17). Retry in 10 seconds` appears, then this message indicates that ZSS cannot complete the outbound TLS handshake to the API Gateway. When rsn=17 ('TLS error') appears, the most common cause on z/OS systems is an ICSF incompatibility with TLS 1.3. ICSF cannot complete the AES-GCM step of the TLS 1.3 handshake (CSFPSKE returns RC=8, rsnCode=bfe).
+
+
+
+  You can consider the following:
     * TLSv1.3 recommends encryption `ChaCha20-Poly1305`. However, this encryption may be restricted by the `ICSF FIPS 140-2` policy. When ZSS requests `ChaCha20-Poly1305`, such request will fail.
     * Modify the `zowe.yaml` to use TLSv1.2 to avoid the problem with `ChaCha20-Poly1305`:
 ```
@@ -753,3 +757,28 @@ zowe:
       tls:
         maxTls: "TLSv1.2"
 ```
+
+  * If the message `ZWES1606W Failed to get JWK. rc=failed to init HTTP request (9), rsn=TLS error (17). Retry in 10 seconds` appears, do the following to diagnose the system:
+  - Enable `GSK_TRACE` for the `ZSS` process. 
+  - In Zowe v3, set the following variables in `STDENV DD` of the `ZWESLSTC JCL` procedure:
+   - GSK_TRACE=7
+   - GSK_TRACE_FILE=/path/to/logs/gsk_trace.log
+   :::note
+   Setting these in `components.zss.environment in zowe.yaml` is not effective in Zowe v3; set them directly `STDENV`.
+   :::
+  If the GSK trace shows `gsk_encrypt_tls13_record: AES GCM Encryption failed` or if `CSFPSKE` returns `RC=0x8`, the system's `ICSF` does not support the AES-GCM operation required for TLS 1.3 finished messages.
+  Apply the following workaround to cap `ZSS` outbound connections at TLS 1.2:  
+      ```
+       zowe:
+       network:
+         client:
+           tls:
+             maxTls: 'TLSv1.2'
+      ```
+    - Restart Zowe after you apply this change. 
+    If `ZWES1602I` appears in the log file, it confirms that JWK keys were retrieved successfully.
+
+
+
+
+
