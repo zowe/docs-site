@@ -772,6 +772,9 @@ The following configurations can be used under the `components.zss` section:
 
 - **port**  
 Specifies the port which ZSS is to be started on. This value may be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
+:::note
+Set system SSL environment variables (GSK_TRACE, GSK_TRACE_FILE, GSK_PROBE_FILE) in the `STDENV DD` of the `ZWESLSTC JCL` procedure, not in `zowe.yaml`, because `configmgr` prefixes all variables in `components.<name>.environment` with `ZWE_` before passing them to the component.
+:::
 
 #### Configure external extension
 
