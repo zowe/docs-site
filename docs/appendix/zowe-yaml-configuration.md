@@ -557,6 +557,7 @@ Specifies the active Spring profiles for the Gateway component. Set to `"debug-c
   - Use this setting when z/OSMF is on a separate LPAR that does not register in the local Eureka instance, or when z/OSMF cannot be reached via service discovery. `LTPA` mode contacts z/OSMF directly over HTTP using the configured z/OSMF host and port. This is the required setting for cross-LPAR deployments with separate security databases.
   :::note
   Do not use `ltpa` with hardware-accelerated ICSF keyrings.
+  Also see apiml.security.auth.provider in the [Configure component gateway](/docs/appendix/zowe-yaml-configuration.md#configure-component-gateway) section.
   :::
 - **apiml.security.authorization.endpoint.url**  
   Specifies the URL to the authorization endpoint. This endpoint informs the Gateway if a user has a particular permission on SAF profile, such as permission to the `APIML.SERVICES` profile of the `ZOWE` class.
