@@ -5,6 +5,8 @@ Review details of certificate management in Zowe API Mediation Layer (API ML). T
 - [Managing certificates in Zowe API Mediation Layer](#managing-certificates-in-zowe-api-mediation-layer)
   - [Running on localhost](#running-on-localhost)
     - [How to start API ML on localhost with full HTTPS](#how-to-start-api-ml-on-localhost-with-full-https)
+  - [Note that this on-demand workflow is specifically for local source development. This is not a migration of production z/OS certificates, SAF keyrings, or `zowe.yaml` certificate properties used in an installed Zowe environment.](#note-that-this-on-demand-workflow-is-specifically-for-local-source-development-this-is-not-a-migration-of-production-zos-certificates-saf-keyrings-or-zoweyaml-certificate-properties-used-in-an-installed-zowe-environment)
+    - [Local development certificate artifacts and paths](#local-development-certificate-artifacts-and-paths)
     - [Certificate management guide](#certificate-management-guide)
     - [Generate a certificate for a new service on localhost](#generate-a-certificate-for-a-new-service-on-localhost)
     - [Add a service with an existing certificate to API ML on localhost](#add-a-service-with-an-existing-certificate-to-api-ml-on-localhost)
@@ -22,7 +24,14 @@ Review details of certificate management in Zowe API Mediation Layer (API ML). T
 
 ### How to start API ML on localhost with full HTTPS
 
-The [api-layer repository](https://github.com/zowe/api-layer) contains pre-generated certificates that can be used to start API ML with HTTPS on your computer. The certificates are not trusted by your browser so you can either ignore the security warning, or generate your own certificates and add them to the truststore of your browser or system.
+When developing Zowe API Mediation Layer from source, the [api-layer repository](https://github.com/zowe/api-layer) no longer supplies checked-in development private keys and their associated generated stores. To improve security, development certificates are now generated locally on demand.
+
+You can generate these certificates to start API ML with HTTPS on your computer by running `keystore/generate-certificates.sh` directly, or through Gradle integration using the `generateCertificates` task.
+
+Note that this on-demand workflow is specifically for local source development. This is not a migration of production z/OS certificates, SAF keyrings, or `zowe.yaml` certificate properties used in an installed Zowe environment.
+------
+
+The certificates are not trusted by your browser so you can either ignore the security warning, or generate your own certificates and add the local certificate authority to the truststore of your browser or system.
 
 For more information about certificates, see [TLS Certificates for localhost](https://github.com/zowe/api-layer/blob/master/keystore/README.md).
 
@@ -30,6 +39,11 @@ For more information about certificates, see [TLS Certificates for localhost](ht
 When running on localhost, only the combination of using a keystore and truststore is supported.
 :::
 
+### Local development certificate artifacts and paths
+
+The Zowe API Mediation Layer V2 architecture retains a single, shared service identity for both client and server authentication. After running the generation script, every API ML component uses the `service/service.keystore.p12` artifact for both roles. This replaces the previous `docker/all-services.keystore.p12` path and uses the localhost key alias.
+
+Because these single-purpose development certificates form a local security boundary, these certificates are not tracked in version control. For certificate renewal, re-run the generator script to overwrite the expired artifacts.
 
 ### Certificate management guide
 
@@ -40,17 +54,16 @@ This guide is maintained in the `zowe/api-layer` repository [keystore/README.md]
 
 ### Generate a certificate for a new service on localhost
 
-To generate a certificate for a new service on localhost, see [Generating certificate for a new service on localhost](https://github.com/zowe/api-layer/blob/master/keystore/README.md#generating-certificate-for-a-new-service-on-localhost).
+To generate a certificate for a new service on localhost, you no longer need to manually manage keys using openssl and keytool. The `generate-certificates.sh` script configuration determines the SAN list for V2's hostnames. For details on adapting this for new services, see the updated guide at [keystore/README.md](https://github.com/zowe/api-layer/blob/v2.x.x/keystore/README.md)
 
 
 ### Add a service with an existing certificate to API ML on localhost
 
-For information about adding a service with an existing certificate to API ML on localhost, see [Trust certificates of other services](https://github.com/zowe/api-layer/blob/master/keystore/README.md#trust-certificates-of-other-services).
-
+For information about adding a service with an existing certificate to API ML on localhost, see [Truststores](https://github.com/zowe/api-layer/blob/v2.x.x/keystore/README.md#truststores) in _keystore/README.md_
 
 ### Service registration to Discovery Service on localhost
 
-To register a new service to the Discovery Service using HTTPS, provide a valid client certificate that is trusted by the Discovery Service.
+To register a new service to the Discovery Service using HTTPS, provide a valid client certificate that is trusted by the Discovery Service. In V2 local development, this is achieved by presenting the dual-purpose `service/service.keystore.p12` keystore.
 
 
 ## Zowe runtime on z/OS
