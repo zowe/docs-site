@@ -5,8 +5,9 @@ Review details of certificate management in Zowe API Mediation Layer (API ML). T
 - [Managing certificates in Zowe API Mediation Layer](#managing-certificates-in-zowe-api-mediation-layer)
   - [Running on localhost](#running-on-localhost)
     - [How to start API ML on localhost with full HTTPS](#how-to-start-api-ml-on-localhost-with-full-https)
-  - [Note that this on-demand workflow is specifically for local source development. This is not a migration of production z/OS certificates, SAF keyrings, or `zowe.yaml` certificate properties used in an installed Zowe environment.](#note-that-this-on-demand-workflow-is-specifically-for-local-source-development-this-is-not-a-migration-of-production-zos-certificates-saf-keyrings-or-zoweyaml-certificate-properties-used-in-an-installed-zowe-environment)
     - [Local development certificate artifacts and paths](#local-development-certificate-artifacts-and-paths)
+    - [Inspect and verify the generated service certificate](#inspect-and-verify-the-generated-service-certificate)
+    - [Certificate Validity, Renewal, and Recovery](#certificate-validity-renewal-and-recovery)
     - [Certificate management guide](#certificate-management-guide)
     - [Generate a certificate for a new service on localhost](#generate-a-certificate-for-a-new-service-on-localhost)
     - [Add a service with an existing certificate to API ML on localhost](#add-a-service-with-an-existing-certificate-to-api-ml-on-localhost)
@@ -26,10 +27,17 @@ Review details of certificate management in Zowe API Mediation Layer (API ML). T
 
 When developing Zowe API Mediation Layer from source, the [api-layer repository](https://github.com/zowe/api-layer) no longer supplies checked-in development private keys and their associated generated stores. To improve security, development certificates are now generated locally on demand.
 
-You can generate these certificates to start API ML with HTTPS on your computer by running `keystore/generate-certificates.sh` directly, or through Gradle integration using the `generateCertificates` task.
+:::warning Security Callout
+This on-demand workflow is strictly limited to isolated source development and testing. It explicitly distinguishes source development from an installed Zowe environment. This is not a migration of production z/OS certificates, SAF keyrings, or zowe.yaml certificate properties used in an installed Zowe environment. Production procedures remain unchanged.
+:::
 
-Note that this on-demand workflow is specifically for local source development. This is not a migration of production z/OS certificates, SAF keyrings, or `zowe.yaml` certificate properties used in an installed Zowe environment.
-------
+To generate the required certificates, run `./gradlew generateCertificates` from the repository root. This generation occurs automatically when running Gradle test or Jib image tasks. However, you must explicitly run the generation task before initiating direct npm, IDE, or sample application launches that bypass those Gradle tasks.
+
+Alternative direct generator — run from the API ML repository root:
+
+```
+cd keystore && sh ./generate-certificates.sh password local_ca_password
+```
 
 The certificates are not trusted by your browser so you can either ignore the security warning, or generate your own certificates and add the local certificate authority to the truststore of your browser or system.
 
@@ -41,9 +49,49 @@ When running on localhost, only the combination of using a keystore and truststo
 
 ### Local development certificate artifacts and paths
 
-The Zowe API Mediation Layer V2 architecture retains a single, shared service identity for both client and server authentication. After running the generation script, every API ML component uses the `service/service.keystore.p12` artifact for both roles. This replaces the previous `docker/all-services.keystore.p12` path and uses the localhost key alias.
+If you are updating an existing V2 local environment, be aware of the following path migrations and artifact changes:
+
+* `keystore/localhost/localhost.keystore.p12` is replaced by `keystore/service/service.keystore.p12`.
+* The associated truststore is replaced by `keystore/service/service.truststore.p12`.
+* `keystore/local_ca/localca.cer` is replaced by `keystore/ca/service-ca.cer`.
+* `service.cer, service.key`, and `service.pem` are provided separately. Note that `service.pem` contains the certificate chain, not the private key.
+
+The Zowe API Mediation Layer V2 architecture retains a single, shared service identity for both client and server authentication. After running the generation script, every API ML component uses the `service/service.keystore.p12` artifact for both roles. This replaces the previous `docker/all-services.keystore.p12` path and uses the localhost key alias. The default development passwords are password (for keystores) and `local_ca_password` (for the CA).
 
 Because these single-purpose development certificates form a local security boundary, these certificates are not tracked in version control. For certificate renewal, re-run the generator script to overwrite the expired artifacts.
+
+-----
+### Inspect and verify the generated service certificate
+To confirm your artifacts were generated successfully, inspect the certificate from the repository root.
+
+```Bash
+openssl verify -CAfile keystore/ca/service-ca.cer \
+  keystore/service/service.cer
+
+openssl x509 -in keystore/service/service.cer -noout \
+  -dates -ext subjectAltName,extendedKeyUsage
+```
+
+Expected properties, to confirm during validation:
+
+* Chain verification succeeds.
+* localhost and 127.0.0.1 are covered by SANs.
+* Both client and server authentication usages are present.
+
+### Certificate Validity, Renewal, and Recovery
+
+Generated certificates and CAs have a 90-day validity period (excluding maintained public roots). Gradle uses a default seven-day renewal window—if artifacts are within seven days of expiration, they are automatically regenerated. You can also force regeneration by running the script manually.
+
+:::caution Warning
+Regeneration replaces the CA keys and completely invalidates trust in the previous set. Because of this, CI jobs must share one generated set across steps rather than generating independent authorities.
+:::
+
+If your certificates have been regenerated, you must perform the following recovery steps:
+
+1. Stop and restart any affected local processes.
+2. Rebuild any development images (such as those created via Jib) that contain the old certificates.
+3. Refresh your client trust (e.g., your browser or OS truststore).
+4. Reissue any additional custom certificates that were signed by the old development CA.
 
 ### Certificate management guide
 
