@@ -1,29 +1,29 @@
 # Onboarding a Node.js based REST API service
 
-This article is part of a series of onboarding articles, which outline the process of onboarding REST API services to the Zowe API Mediation Layer (API ML). As a service developer, you can onboard a REST service based on NodeJS with the API ML with the Zowe API Mediation Layer using our Node.js Enabler.
+This article is part of a series of onboarding articles, which outline the process of onboarding REST API services to the Zowe API Mediation Layer (API ML). As a service developer, you can onboard a REST service based on Node.js with API ML using the Node.js Enabler.
 
 :::note
-For more information about onboarding API services with the API ML, see the [Onboarding Overview](./onboard-overview.md).
+For more information about onboarding API services with API ML, see the [Onboarding Overview](./onboard-overview.md).
 :::
 
 ## Introduction
 
-The [API ML onboarding Node.js enabler](https://www.npmjs.com/package/@zowe/apiml-onboarding-enabler-nodejs) is an NPM package which helps to simplify the process of onboarding a REST service written in Node.js with the API ML. 
+The [API ML onboarding Node.js enabler](https://www.npmjs.com/package/@zowe/apiml-onboarding-enabler-nodejs) is an NPM package which helps to simplify the process of onboarding a REST service written in Node.js with API ML. 
 
-For more information about how to utilize another API ML enablers, see the [Onboarding Overview](onboard-overview.md).
+For more information about how to utilize other API ML enablers, see the [Onboarding Overview](onboard-overview.md).
 ## Onboarding your Node.js service with API ML
 
-The following steps outline the overall process to onboard a REST service with the API ML using the onboarding Node.js enabler. Each step is described in further detail in this article.
+The following steps outline the overall process to onboard a REST service with API ML using the onboarding Node.js enabler. Each step is described in further detail in this article.
 
-1. [Prerequisites](#prerequisites)
-
-2. [Install the npm dependency](#installing-the-npm-dependency)
-
-3. [Configure your service](#configuring-your-service)
-   
-4. [Register your service with API ML](#registering-your-service-with-api-ml)
-
-5. (Optional) [Validate the discoverability of your API service by the Discovery Service](#validating-the-discoverability-of-your-api-service-by-the-discovery-service)
+- [Onboarding a Node.js based REST API service](#onboarding-a-nodejs-based-rest-api-service)
+  - [Introduction](#introduction)
+  - [Onboarding your Node.js service with API ML](#onboarding-your-nodejs-service-with-api-ml)
+  - [Prerequisites](#prerequisites)
+  - [Installing the npm dependency](#installing-the-npm-dependency)
+  - [Configuring your service](#configuring-your-service)
+    - [Repository-Sample TLS Configuration](#repository-sample-tls-configuration)
+  - [Registering your service with API ML](#registering-your-service-with-api-ml)
+  - [Validating the discoverability of your API service by the Discovery Service](#validating-the-discoverability-of-your-api-service-by-the-discovery-service)
 
 ## Prerequisites
 Ensure that you meet the following prerequisites:
@@ -46,7 +46,7 @@ If you have a multi-module project, you have to run the npm command from the sub
 
 Create a yaml file named `service-configuration.yml` inside a `/config` directory at the same level of your `index.js`, and add the following configuration properties. 
 
-The following example shows a sample configuration. 
+The following example shows a sample configuration. Note that the generic ssl block at the bottom references custom paths. Adjust these paths to point to your application's actual certificate artifacts.
  
  **Example:**
     
@@ -115,12 +115,33 @@ The following example shows a sample configuration.
         apiml.service.description: 'The Proxy Server is an HTTP HTTPS, and Websocket server built upon NodeJS and ExpressJS.'
     
     ssl:
-      certificate: ssl/localhost.keystore.cer
-      keystore: ssl/localhost.keystore.key
-      caFile: ssl/localhost.pem
+      certificate: ssl/service.cer
+      keystore: ssl/service.key
+      caFile: ssl/service.pem
       keyPassword: password
     
   ```
+### Repository-Sample TLS Configuration
+
+If you are running the `onboarding-enabler-nodejs-sample-app` provided within the Zowe `api-layer` repository for local testing, note that this sample app relies on single-purpose development certificates generated on demand.
+
+Before starting the sample application, you must explicitly generate these certificates by running `./gradlew generateCertificates` from the repository root.
+
+When launching the Node.js sample, ensure your process working directory is the sample application directory itself (`onboarding-enabler-nodejs-sample-app`). The sample's configuration relies on this explicit working directory to resolve relative paths to the generated certificates in the repository root.
+
+The TLS subsection of the `onboarding-enabler-nodejs-sample-app/config/service-configuration.yml` sample has the following structure:
+
+```yaml
+ssl:
+  certificate: ../keystore/service/service.cer
+  keystore: ../keystore/service/service.key
+  caFile: ../keystore/service/service.pem
+  keyPassword: password
+```
+:::note
+This directory structure and the use of relative paths such as `../keystore/...` are specific to the internal repository sample. External applications are not required to adopt this same directory structure. External applications should reference certificates from their own appropriate secure locations.
+:::
+
 
 ## Registering your service with API ML
 
