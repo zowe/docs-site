@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IIssueTsoCmdOpts | Zowe Node.js SDK - v3.4.1</title>
-	<meta name="description" content="Documentation for Zowe Node.js SDK - v3.4.1">
+	<title>IIssueTsoCmdOpts | Zowe Node.js SDK - v3.6.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v3.6.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">Zowe Node.js SDK - v3.4.1</a>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v3.6.0</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -99,6 +99,7 @@
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_tso_for_zowe_sdk.iissuetsocmdopts.html#addressspaceoptions" class="tsd-kind-icon">address<wbr>Space<wbr>Options</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_tso_for_zowe_sdk.iissuetsocmdopts.html#isstateful" class="tsd-kind-icon">is<wbr>Stateful</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_tso_for_zowe_sdk.iissuetsocmdopts.html#suppressstartupmessages" class="tsd-kind-icon">suppress<wbr>Startup<wbr>Messages</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_tso_for_zowe_sdk.iissuetsocmdopts.html#uselegacyapi" class="tsd-kind-icon">use<wbr>Legacy<wbr>Api</a></li>
 							</ul>
 						</section>
 					</div>
@@ -112,7 +113,7 @@
 					<div class="tsd-signature tsd-kind-icon">address<wbr>Space<wbr>Options<span class="tsd-signature-symbol">:</span> <a href="_zowe_zos_tso_for_zowe_sdk.istarttsoparms.html" class="tsd-signature-type">IStartTsoParms</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/zostso/src/doc/input/IIssueTsoCmdOpts.ts#L25">@zowe/zos-tso-for-zowe-sdk/src/doc/input/IIssueTsoCmdOpts.ts:25</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/zostso/src/doc/input/IIssueTsoCmdOpts.ts#L25">@zowe/zos-tso-for-zowe-sdk/src/doc/input/IIssueTsoCmdOpts.ts:25</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -132,7 +133,7 @@
 					<div class="tsd-signature tsd-kind-icon">is<wbr>Stateful<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/zostso/src/doc/input/IIssueTsoCmdOpts.ts#L32">@zowe/zos-tso-for-zowe-sdk/src/doc/input/IIssueTsoCmdOpts.ts:32</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/zostso/src/doc/input/IIssueTsoCmdOpts.ts#L32">@zowe/zos-tso-for-zowe-sdk/src/doc/input/IIssueTsoCmdOpts.ts:32</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -152,12 +153,33 @@
 					<div class="tsd-signature tsd-kind-icon">suppress<wbr>Startup<wbr>Messages<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/zostso/src/doc/input/IIssueTsoCmdOpts.ts#L39">@zowe/zos-tso-for-zowe-sdk/src/doc/input/IIssueTsoCmdOpts.ts:39</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/zostso/src/doc/input/IIssueTsoCmdOpts.ts#L39">@zowe/zos-tso-for-zowe-sdk/src/doc/input/IIssueTsoCmdOpts.ts:39</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>suppressing broadcast message from TSO address space</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>IIssueTsoCmdOpts</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="uselegacyapi" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> use<wbr>Legacy<wbr>Api</h3>
+					<div class="tsd-signature tsd-kind-icon">use<wbr>Legacy<wbr>Api<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/zostso/src/doc/input/IIssueTsoCmdOpts.ts#L47">@zowe/zos-tso-for-zowe-sdk/src/doc/input/IIssueTsoCmdOpts.ts:47</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Use the deprecated code for issuing TSO commands which avoids an issue
+							with the newer z/OSMF API where sometimes no output is returned.</p>
 						</div>
 						<dl class="tsd-comment-tags">
 							<dt>memberof</dt>
@@ -248,6 +270,9 @@
 									</li>
 									<li class=" tsd-kind-property tsd-parent-kind-interface">
 										<a href="_zowe_zos_tso_for_zowe_sdk.iissuetsocmdopts.html#suppressstartupmessages" class="tsd-kind-icon">suppress<wbr>Startup<wbr>Messages</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-interface">
+										<a href="_zowe_zos_tso_for_zowe_sdk.iissuetsocmdopts.html#uselegacyapi" class="tsd-kind-icon">use<wbr>Legacy<wbr>Api</a>
 									</li>
 								</ul>
 							</li>

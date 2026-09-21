@@ -2,7 +2,7 @@
 
 Verify that Zowe Explorer has been installed successfully by searching data sets to test your connection to z/OSMF.
 
-:::info Required roles: systems administrator, DevOps architect
+:::info Required roles: system administrator, DevOps architect
 :::
 
 ## Using your profile to search data sets

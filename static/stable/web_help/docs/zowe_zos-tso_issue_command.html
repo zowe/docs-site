@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_zos-tso.html">zos-tso</a> › <a href="zowe_zos-tso_issue.html">issue</a> › <a href="zowe_zos-tso_issue_command.html">command</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>Creates a TSO address space, issues a TSO command through the newly created address space, waits for the READY prompt to print the response, and terminates the TSO address space. All response data are returned to the user up to (but not including) the TSO 'READY' prompt.</p>
+<p>Creates a TSO address space, issues a TSO command through the newly created address space, waits for the READY prompt to print the response, and terminates the TSO address space. All response data is returned to the user up to (but not including) the TSO 'READY' prompt.</p>
 <h4>Usage</h4>
 <p>zowe zos-tso issue command &lt;commandText&gt; [options]</p>
 <h4>Positional Arguments</h4>
@@ -35,6 +35,15 @@
 <ul>
 <li>
 <p>Statefulness of address space created for TSO command. This option is not supported when --suppress-startup-messages is set to false.</p>
+<p>Default value: false</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--legacy</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Force the use of the previous TSO command functionality (where Zowe CLI creates and tears down the TSO address space via multiple API calls). This is useful for working around an issue that might occur when using the newer z/OSMF API where an error reading 'Did not receive output from the z/OSMF TSO API' is thrown.</p>
 <p>Default value: false</p>
 </li>
 </ul>
@@ -167,6 +176,12 @@ Allowed values: http, https</p>
 <p><code>--cert-key-file</code> <em>(local file path)</em></p>
 <ul>
 <li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-account</code> <em>(string)</em></p>
+<ul>
+<li>The account name for PKCS 12 certificate stored in credential manager</li>
 </ul>
 </li>
 <li>
