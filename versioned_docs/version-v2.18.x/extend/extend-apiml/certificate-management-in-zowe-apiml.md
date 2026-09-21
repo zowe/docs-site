@@ -21,7 +21,7 @@ Review details of certificate management in Zowe API Mediation Layer (API ML). T
     - [API ML truststore and keystore](#api-ml-truststore-and-keystore)
     - [API ML SAF Keyring](#api-ml-saf-keyring)
 
-## Running on localhost
+## Running on localhost 
 
 ### How to start API ML on localhost with full HTTPS
 
