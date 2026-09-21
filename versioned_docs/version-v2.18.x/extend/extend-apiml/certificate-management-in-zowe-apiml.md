@@ -33,15 +33,18 @@ This on-demand workflow is strictly limited to isolated source development and t
 
 To generate the required certificates, run `./gradlew generateCertificates` from the repository root. This generation occurs automatically when running Gradle test or Jib image tasks. However, you must explicitly run the generation task before initiating direct npm, IDE, or sample application launches that bypass those Gradle tasks.
 
-Alternative direct generator — run from the API ML repository root:
+As an alternative, you can  generate from the API ML repository root:
 
 ```
 cd keystore && sh ./generate-certificates.sh password local_ca_password
 ```
 
+* **&&**  
+A logical operator that tells the system to run the second command only if the first command succeeds.
+
 The certificates are not trusted by your browser so you can either ignore the security warning, or generate your own certificates and add the local certificate authority to the truststore of your browser or system.
 
-For more information about certificates, see [TLS Certificates for localhost](https://github.com/zowe/api-layer/blob/master/keystore/README.md).
+For more information about certificates, see the README [TLS certificates for local development and testing](https://github.com/zowe/api-layer/blob/master/keystore/README.md) in the api-layer repository.
 
 :::note
 When running on localhost, only the combination of using a keystore and truststore is supported.
@@ -80,10 +83,10 @@ Expected properties, to confirm during validation:
 
 ### Certificate Validity, Renewal, and Recovery
 
-Generated certificates and CAs have a 90-day validity period (excluding maintained public roots). Gradle uses a default seven-day renewal window—if artifacts are within seven days of expiration, they are automatically regenerated. You can also force regeneration by running the script manually.
+Generated certificates and CAs have a 90-day validity period (excluding maintained public roots). Gradle uses a default seven-day renewal window. If artifacts are within seven days of expiration, they are automatically regenerated. You can also force regeneration by running the script manually.
 
 :::caution Warning
-Regeneration replaces the CA keys and completely invalidates trust in the previous set. Because of this, CI jobs must share one generated set across steps rather than generating independent authorities.
+Regeneration replaces the CA keys and completely invalidates trust in the previous set. Because of this regeneration behavior, CI jobs must share one generated set across steps rather than generating independent authorities.
 :::
 
 If your certificates have been regenerated, you must perform the following recovery steps:
@@ -97,17 +100,17 @@ If your certificates have been regenerated, you must perform the following recov
 
 Zowe API Mediation Layer provides a guide that can be used to generate a keystore and truststore using the Zowe local certificate authority on Windows, Mac, Linux, and z/OS.
 
-This guide is maintained in the `zowe/api-layer` repository [keystore/README.md](https://github.com/zowe/api-layer/blob/v2.x.x/keystore/README.md), and uses a combination of openssl and java keytool. 
+This guide is maintained in the README [TLS certificates for local development and testing](https://github.com/zowe/api-layer/blob/master/keystore/README.md) in the api-layer repository, and uses a combination of openssl and java keytool. 
 
 
 ### Generate a certificate for a new service on localhost
 
-To generate a certificate for a new service on localhost, you no longer need to manually manage keys using openssl and keytool. The `generate-certificates.sh` script configuration determines the SAN list for V2's hostnames. For details on adapting this for new services, see the updated guide at [keystore/README.md](https://github.com/zowe/api-layer/blob/v2.x.x/keystore/README.md)
+To generate a certificate for a new service on localhost, you no longer need to manually manage keys using openssl and keytool. The `generate-certificates.sh` script configuration determines the SAN list for V2's hostnames. For details on adapting this for new services, see the updated guide in the README [TLS certificates for local development and testing](https://github.com/zowe/api-layer/blob/master/keystore/README.md) in the api-layer repository.
 
 
 ### Add a service with an existing certificate to API ML on localhost
 
-For information about adding a service with an existing certificate to API ML on localhost, see [Truststores](https://github.com/zowe/api-layer/blob/v2.x.x/keystore/README.md#truststores) in _keystore/README.md_
+For information about adding a service with an existing certificate to API ML on localhost, see [Truststores](https://github.com/zowe/api-layer/blob/v2.x.x/keystore/README.md#truststores) in the README _TLS certificates for local development and testing_.in the api-layer repository.
 
 ### Service registration to Discovery Service on localhost
 
