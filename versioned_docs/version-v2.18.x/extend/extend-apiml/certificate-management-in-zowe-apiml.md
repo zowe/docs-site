@@ -44,7 +44,7 @@ A logical operator that tells the system to run the second command only if the f
 
 The certificates are not trusted by your browser so you can either ignore the security warning, or generate your own certificates and add the local certificate authority to the truststore of your browser or system.
 
-For more information about certificates, see the README [TLS certificates for local development and testing](https://github.com/zowe/api-layer/blob/master/keystore/README.md) in the api-layer repository.
+For more information about certificates, see the README [TLS certificates for local development and testing](https://github.com/zowe/api-layer/blob/v2.x.x/keystore/README.md) in the api-layer repository.
 
 :::note
 When running on localhost, only the combination of using a keystore and truststore is supported.
@@ -100,12 +100,12 @@ If your certificates have been regenerated, you must perform the following recov
 
 Zowe API Mediation Layer provides a guide that can be used to generate a keystore and truststore using the Zowe local certificate authority on Windows, Mac, Linux, and z/OS.
 
-This guide is maintained in the README [TLS certificates for local development and testing](https://github.com/zowe/api-layer/blob/master/keystore/README.md) in the api-layer repository, and uses a combination of openssl and java keytool. 
+This guide is maintained in the README [TLS certificates for local development and testing](https://github.com/zowe/api-layer/blob/v2.x.x/keystore/README.md) in the api-layer repository, and uses a combination of openssl and java keytool. 
 
 
 ### Generate a certificate for a new service on localhost
 
-To generate a certificate for a new service on localhost, you no longer need to manually manage keys using openssl and keytool. The `generate-certificates.sh` script configuration determines the SAN list for V2's hostnames. For details on adapting this for new services, see the updated guide in the README [TLS certificates for local development and testing](https://github.com/zowe/api-layer/blob/master/keystore/README.md) in the api-layer repository.
+To generate a certificate for a new service on localhost, see [Generating certificate for a new service on localhost](https://github.com/zowe/api-layer/blob/v2.x.x/keystore/README.mdd#generating-certificate-for-a-new-service-on-localhost).
 
 
 ### Add a service with an existing certificate to API ML on localhost

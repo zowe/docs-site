@@ -536,7 +536,7 @@ The following procedure enables you to refresh the API definitions after you cha
     Use curl to issue the POST call:
 
     ```
-    curl -X POST --cert keystore/service/service.pem --key keystore/service/service.key --cacert keystore/ca/service-ca.cer https://localhost:10011/discovery/api/v1/staticApi**
+    curl -X POST --cert keystore/service/service.pem --key keystore/service/service.key --cacert keystore/ca/service-ca.cer https://localhost:10011/discovery/api/v1/staticApi
     ```
 
 2. Check if your updated definition is effective.

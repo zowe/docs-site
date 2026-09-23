@@ -24,7 +24,7 @@ When you run Gradle test or Jib image tasks, certificate generation occurs autom
 
 **Example:**
 ``` 
-./gradlew bootRun
+./gradlew build
 ```
 
 ### Starting directly via IDE or npm
