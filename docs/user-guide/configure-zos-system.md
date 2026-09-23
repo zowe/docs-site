@@ -937,6 +937,21 @@ TSS PERMIT(user-acid) CSFSERV(profile-prefix.profile-suffix) ACCESS(READ)
 - Enable `FACILITY IRR.PROGRAM.SIGNATURE.VERIFICATION` and `RDEFINE CSFINPV2` if required.
 :::
 
+**Verifying CSFSERV class status:**
+
+If your security team reports `no rules defined` for the `CSFSERV` class, see the following to verify whether the class is active before you conclude that access is unrestricted:
+
+|--|--|
+| RACF: | SETROPTS LIST (look for CSFSERV in the ACTIVE CLASSES list) |
+| ACF2: | LIST CLASMAP (look for a CSFSERV entry; active status indicator) |
+| TSS:  | TSS LIST(SYS) CLASMAP (look for CSFSERV) |
+
+If the class is active with no rules, ALL access to `CSFSERV` resources is denied by default. In this case, `ZWESVUSR` cannot call ICSF functions including `CSFRNGL` (random number generation) and `CSFPSKE` (`PKCS#11 Secret Key Encrypt`), which are required for TLS operations of ZSS and Zowe Desktop cookies.
+If the class is not active, `CSFSERV` resource checks bypass and access is unrestricted.
+If access is denied, grant `ZWESVUSR` `READ` access to at minimum: `CSFRNGL`.
+For TLS 1.3 support, also grant: `CSFPSKE`, `CSFPSKD`, `CSFPGKP`.
+
+
 ### Configure the cross memory server for SAF
 
 :::info
