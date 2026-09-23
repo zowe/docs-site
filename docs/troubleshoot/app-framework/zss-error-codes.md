@@ -758,7 +758,7 @@ zowe:
         maxTls: "TLSv1.2"
 ```
 
-  * If the message `ZWES1606W Failed to get JWK. rc=failed to init HTTP request (9), rsn=TLS error (17). Retry in 10 seconds` appears, do the following to diagnose the system:
+  * If the message `ZWES1606W Failed to get JWK. rc=failed to init HTTP request (9), rsn=TLS error (17). Retry in 10 seconds` displays, do the following to diagnose the system:
   - Enable `GSK_TRACE` for the `ZSS` process. 
   - In Zowe v3, set the following variables in `STDENV DD` of the `ZWESLSTC JCL` procedure:
    - GSK_TRACE=7
