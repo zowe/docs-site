@@ -23,6 +23,78 @@ Configuring Zowe to use PassTickets involves two processes:
 
 This section applies to users who do not already have PassTickets enabled in the system, or users who need to define a PassTicket for a new APPLID. If you already have an APPLID that you intend to use to define your API service, skip to the section [Configuring security to allow the Zowe API Gateway to generate PassTickets for an API service](#configuring-security-to-allow-zowe-api-gateway-to-generate-passtickets-for-an-api-service).
 
+To allow an API service extender to onboard a second (or subsequent) service using `httpBasicPassTicket` without repeating unnecessary ESM-level setup, reference the following comparison table to determine your path:
+
+| Step | First service | Second+ service |
+|---|---|---|
+| Activate PTKTDATA class | Required | Already done |
+| Define APPLID | Required | Required (new APPLID) |
+| Set session key (SSIGNON) | Required | Required (new key) |
+| Permit ZWESVUSR for IRRPTAUTH | Required | Required (new APPLID) |
+
+### First service onboarding with PassTickets
+
+Follow this path if you are setting up PassTickets in your ESM for the first time.
+
+**Pre-requisites:**
+- SAF as auth provider
+- Known APPLID
+- ESM admin authority
+- PTKTDATA class not yet activated
+
+First service onboarding with PassTickets requires a full ESM setup. Requirements for this first service onboarding include:
+- Activatation of the PTKTDATA class
+- Defining your APPLID
+- Setting the session key
+- Permitting the ZWESVUSR user ID.
+
+The following example presents the full first service configuration for IBM RACF.
+
+**Example:** 
+```racf
+SETROPTS CLASSACT(PTKTDATA) RACLIST(PTKTDATA)
+RDEFINE APPL MYAPPL1 UACC(READ)
+RDEFINE PTKTDATA MYAPPL1 UACC(NONE) APPLDATA('NO REPLAY PROTECTION') SSIGNON(KEYMASKED(<key>))
+PERMIT IRRPTAUTH.MYAPPL1.* CLASS(PTKTDATA) ACCESS(UPDATE) ID(ZWESVUSR)
+SETROPTS RACLIST(PTKTDATA) REFRESH
+```
+  
+Follow all steps in the ESM-specific sections presented later in this article.
+
+### Second and subsequent service onboarding with PassTickets
+
+Follow this path to onboard a second, or subsequent service.
+
+**Pre-requisites:**
+- PassTickets already enabled (PTKTDATA active, session keys exist)
+- ZWESVUSR already permitted for at least one existing APPLID
+- New APPLID known
+
+When onboarding subsequent services, the activaton of the PTKTDATA class and configuring global session key parameters have already been performed. These are one-time operations and are already complete in your environment after initial service onboarding.
+
+Ensure that you satify the following requirements:
+
+- Define the new APPLID
+- Set the new APPLID unique session key
+- Run the PERMIT step for the new APPLID 
+
+:::note
+You do not need to repeat the full ESM setup. In the ESM-specific instructions presented later in this article, you may skip the class activation steps.
+:::
+
+The following example presents the second or subsequent service configuration for IBM RACF.
+
+**Example:**
+```racf
+RDEFINE APPL MYAPPL2 UACC(READ)
+RDEFINE PTKTDATA MYAPPL2 UACC(NONE) APPLDATA('NO REPLAY PROTECTION') SSIGNON(KEYMASKED(<key>))
+PERMIT IRRPTAUTH.MYAPPL2.* CLASS(PTKTDATA) ACCESS(UPDATE) ID(ZWESVUSR)
+SETROPTS RACLIST(PTKTDATA) REFRESH
+```
+:::note  
+`SETROPTS CLASSACT(PTKTDATA)` is skipped for second and subsequent service configuration as this operation was already performed during first-service onboarding.
+:::
+
 :::tip
 To validate if a PassTicket is already defined, list the APPL and PTKTDATA with a command corresponding to your ESM. Output indicates if a PassTicket is already defined. No results after issuing an ESM command indicates that a PassTicket is not defined. If a PassTicket is defined, the access of the ZWESVUSR can be determined.
 
