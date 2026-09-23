@@ -791,7 +791,17 @@ F ACF2,REBUILD(APL)
 This configuration applies to all Zowe components.
 :::
 
-Zowe has an SSO scheme with the goal that each time you use multiple Zowe components you should only be prompted to login once. 
+Zowe has an SSO scheme with the goal that each time you use multiple Zowe components you should only be prompted to login once.
+**Cross-LPAR SSO requirement for JES Explorer and MVS Explorer:**
+JES Explorer and MVS Explorer fetch data through z/OSMF REST APIs, not through ZSS. When Zowe runs on a LPAR different than z/OSMF, the API Gateway generates a passticket on the Zowe LPAR and presents it to z/OSMF on the remote LPAR.
+
+**Ensure that both LPARs have the following configuration:**
+- Define the `PTKTDATA` profile for `IZUDFLT` (or your z/OSMF application name) with the SAME session key (SSIGN/KEYMASKED value) on both LPARs. If the keys differ, z/OSMF rejects the passticket even when generation succeeds.
+- Authorize `ZWESVUSR` to generate passtickets for `IZUDFLT` on the Zowe LPAR. 
+- Define the `PTKTDATA` profile on each LPAR and then rebuild the `ACF2/RACF` class: `F ACF2,PROFILE(PTKTDATA),REBUILD(SSIG)`.
+
+Additionally, each user who uses JES Explorer or MVS Explorer must have a valid login ID in the z/OSMF LPAR's security database, with an OMVS segment (`UID` and `HOME` directory). The user's Zowe LPAR ID is used to generate the passticket, so z/OSMF must be able to recognize that same user ID."
+
 
 **Requirements:**
 
