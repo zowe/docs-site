@@ -1,6 +1,6 @@
 # zwe init apfauth
 
-[zwe](./.././zwe.md) > [init](././zwe-init.md) > [apfauth](./zwe-init-apfauth.md)
+[zwe](./.././zwe) > [init](././zwe-init) > [apfauth](./zwe-init-apfauth)
 
 	zwe init apfauth [parameter [parameter]...]
 
@@ -15,30 +15,24 @@ These Zowe YAML configurations showing with sample values are used:
 ```yaml
 zowe:
   setup:
-    jcl:
-      header: "123456"
     dataset:
       prefix: IBMUSER.ZWE
-      jcllib: IBMUSER.ZWE.CUST.JCLLIB
       authLoadlib: IBMUSER.ZWE.CUST.ZWESALL
       authPluginLib: IBMUSER.ZWE.CUST.ZWESAPL
 ```
-- `zowe.setup.jcl.header` is optional additional JCL fields used for submitting JCLs.
+
 - `zowe.setup.dataset.prefix` shows where the `SZWEAUTH` data set is installed.
-- `zowe.setup.dataset.jcllib` is the custom JCL library. Zowe server command may
-  generate sample JCLs and put into this data set.
 - `zowe.setup.dataset.authLoadlib` is the user custom APF LOADLIB. This field is
   optional. If it's not defined, `SZWEAUTH` from `zowe.setup.dataset.prefix` data
   set will be APF authorized.
 - `zowe.setup.dataset.authPluginLib` is the user custom APF PLUGINLIB.
-  You can install Zowe ZIS plugins into this load library. This field is optional.
+  You can install Zowe ZIS plugins into this load library.
 
 
 ## Examples
 
 ```
 zwe init apfauth --security-dry-run -c /path/to/zowe.yaml
-zwe init apfauth --security-dry-run -c /path/to/zowe.yaml --generate
 
 ```
 
@@ -46,9 +40,8 @@ zwe init apfauth --security-dry-run -c /path/to/zowe.yaml --generate
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
---jcl||boolean|no|Generates and submits JCL to drive the install, rather than using USS utilities.
---security-dry-run,--dry-run||boolean|no|Generates JCL or displays actions to be taken on the system without modifying the system.
---generate||boolean|no|Whether to force rebuild of JCL prior to submission. Use this when you've changed zowe.yaml and are re-submitting this command.
+--security-dry-run||boolean|no|Whether to dry run security related setup.
+--ignore-security-failures||boolean|no|Whether to ignore security setup job failures.
 
 
 ### Inherited from parent command
@@ -56,30 +49,24 @@ Full name|Alias|Type|Required|Help message
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --allow-overwrite,--allow-overwritten||boolean|no|Allow overwritten existing MVS data set.
---skip-security-setup||boolean|no|Whether to skip security related setup.
---security-dry-run,--dry-run||boolean|no|Generates JCL or displays actions to be taken on the system without modifying the system.
+--skip-security-setup||boolean|no|Whether should skip security related setup.
+--security-dry-run||boolean|no|Whether to dry run security related setup.
 --ignore-security-failures||boolean|no|Whether to ignore security setup job failures.
 --update-config||boolean|no|Whether to update YAML configuration file with initialization result.
---jcl||boolean|no|Generates and submits JCL to drive the init command, rather than using USS utilities.
 --help|-h|boolean|no|Display this help.
 --debug,--verbose|-v|boolean|no|Enable verbose mode.
 --trace|-vv|boolean|no|Enable trace level debug mode.
 --silent|-s|boolean|no|Do not display messages to standard output.
 --log-dir,--log|-l|string|no|Write logs to this directory.
 --config|-c|string|no|Path to Zowe configuration zowe.yaml file.
---configmgr||boolean|no|Deprecated. This behavior is always enabled.
+--configmgr||boolean|no|Enable use of configmgr capabilities.
 
 
 ## Errors
 
 Error code|Exit code|Error message
 |---|---|---
-ZWEL0319E|319|zowe.setup.dataset.jcllib does not exist, cannot run. Run 'zwe init', 'zwe init generate', or submit JCL zowe.setup.dataset.prefix.SZWESAMP(ZWEGENER) before running this command.
-ZWEL0324E|324|The dataset specified in %s does not exist.
-ZWEL0325E|325|Failed to prepare %s
-ZWEL0158I|158|zowe.setup.dataset.authLoadlib is not defined in Zowe YAML configuration file. Using the default value %s.SZWEAUTH.
-ZWEL0159I|159|zowe.setup.dataset.authPluginLib is not defined in Zowe YAML configuration file. Skipping.
-ZWEL0326E|326|An error occurred while processing Zowe YAML config %s:
+ZWEL0157E|157|%s (%s) is not defined in Zowe YAML configuration file.
 
 
 ### Inherited from parent command
@@ -87,9 +74,8 @@ ZWEL0326E|326|An error occurred while processing Zowe YAML config %s:
 Error code|Exit code|Error message
 |---|---|---
 ||100|If the user pass `--help` or `-h` parameter, the zwe command always exits with `100` code.
-ZWEL0064E|64|failed to run command os.pipe - Cannot start component %s
 ZWEL0101E|101|ZWE_zowe_runtimeDirectory is not defined.
-ZWEL0102E|102|Invalid parameter %s. %s
+ZWEL0102E|102|Invalid parameter %s.
 ZWEL0103E|103|Invalid type of parameter %s.
 ZWEL0104E|104|Invalid command %s.
 ZWEL0105E|105|The Zowe YAML config file is associated to Zowe runtime "%s", which is not same as where zwe command is located.
@@ -101,8 +87,6 @@ ZWEL0110E|110|Doesn't have write permission on %s directory.
 ZWEL0111E|111|Command aborts with error.
 ZWEL0112E|112|Zowe runtime environment must be prepared first with "zwe internal start prepare" command.
 ZWEL0114E|114|Reached max retries on allocating random number.
-ZWEL0115E|115|This command was submitted with FILE() or PARMLIB() syntax, which is only supported when JCL is also enabled.
-ZWEL0116E|116|Could not delete existing dataset: %s
 ZWEL0120E|120|This command must run on a z/OS system.
 ZWEL0121E|121|Cannot find node. Please define NODE_HOME environment variable.
 ZWEL0122E|122|Cannot find java. Please define JAVA_HOME environment variable.
@@ -118,25 +102,10 @@ ZWEL0138E|138|Failed to update key %s of file %s.
 ZWEL0139E|139|Failed to create directory %s.
 ZWEL0140E|140|Failed to translate Zowe configuration (%s).
 ZWEL0142E|142|Failed to refresh APIML static registrations.
-ZWEL0144E|144|Cannot generate JCL with a header line greater than 80 characters. Line in error: %s. Please adjust this line in 'zowe.setup.jcl.header'.
-ZWEL0151E|151|Failed to create temporary file %s. Please check permission or volume free space.
-ZWEL0157E|157|%s (%s) is not defined in Zowe YAML configuration file.
-ZWEL0158W||Failed to find job %s result.
-ZWEL0159E|159|Failed to modify %s.
-ZWEL0160W||Failed to run JCL %s.
-ZWEL0160E|160|Failed to write to %s. Please check if target data set is opened by others.
-ZWEL0161E|161|Failed to run JCL %s.
-ZWEL0162E|162|Failed to find job %s result.
-ZWEL0163E|163|Job %s ends with code %s.
-ZWEL0164W||Job %s(%s) ends with code %s (%s).
 ZWEL0172E||Component %s has %s defined but the file is missing.
-ZWEL0173E|173|Please enter an IP address in either the subject alternative name (zowe.setup.certificate.san) or external domain (zowe.externalDomains) in the Zowe YAML configuration file.
 ZWEL0200E||Failed to copy USS file %s to MVS data set %s.
 ZWEL0201E||File %s does not exist.
 ZWEL0202E||Unable to find samplib key for %s.
 ZWEL0203E||Env value in key-value pair %s has not been defined.
-ZWEL0300W||%s already exists. This %s will be overwritten.
-ZWEL0301W||%s already exists and will not be overwritten. For upgrades, you must use --allow-overwrite.
-ZWEL0316E|316|Invalid PARMLIB format %s.
-ZWEL0322E|322|%s is not a valid directory.
-ZWEL0326E|326|An error occurred while processing Zowe YAML config %s:
+ZWEL0316E||Command requires zowe.useConfigmgr=true to use.
+ZWEL0319E||NodeJS required but not found. Errors such as ZWEL0157E may occur as a result. The value 'node.home' in the Zowe YAML is not correct.
