@@ -33,16 +33,7 @@ This on-demand workflow is strictly limited to isolated source development and t
 
 To generate the required certificates, run `./gradlew generateCertificates` from the repository root. This generation occurs automatically when running Gradle test or Jib image tasks. However, you must explicitly run the generation task before initiating direct npm, IDE, or sample application launches that bypass those Gradle tasks.
 
-As an alternative, you can  generate from the API ML repository root:
-
-```
-cd keystore && sh ./generate-certificates.sh password local_ca_password
-```
-
-* **&&**  
-A logical operator that tells the system to run the second command only if the first command succeeds.
-
-The certificates are not trusted by your browser so you can either ignore the security warning, or generate your own certificates and add the local certificate authority to the truststore of your browser or system.
+The certificates are not trusted by your browser. You can either ignore the security warning or add the local generated certificate authority to the truststore of your browser or system.
 
 For more information about certificates, see the README [TLS certificates for local development and testing](https://github.com/zowe/api-layer/blob/v2.x.x/keystore/README.md) in the api-layer repository.
 
@@ -63,7 +54,6 @@ The Zowe API Mediation Layer V2 architecture retains a single, shared service id
 
 Because these single-purpose development certificates form a local security boundary, these certificates are not tracked in version control. For certificate renewal, re-run the generator script to overwrite the expired artifacts.
 
------
 ### Inspect and verify the generated service certificate
 To confirm your artifacts were generated successfully, inspect the certificate from the repository root.
 

@@ -22,10 +22,25 @@ Depending on your development workflow, you can start the API Mediation Layer co
 
 When you run Gradle test or Jib image tasks, certificate generation occurs automatically. You can start the services using standard Gradle commands.
 
-**Example:**
-``` 
-./gradlew build
-```
+1. Build all modules:
+
+    ```sh
+    ./gradlew build
+    ```
+
+2. Install the same version of the `concurrently` globally:
+
+     ```sh
+   npm install -g concurrently@^6.0.0
+   ```
+
+3. Run all service on your local machine:
+
+    ```sh
+    npm run api-layer
+    ```
+
+Alternatively, to use Docker to run the API ML, consult the [Docker README](https://github.com/zowe/api-layer/blob/v2.x.x/docker/README.md).
 
 ### Starting directly via IDE or npm
 
