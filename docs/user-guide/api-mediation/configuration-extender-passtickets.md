@@ -157,11 +157,11 @@ In your ESM command line interface or other security environment, perform the fo
 
 </details>
 
-**Validating an existing PassTicket for RACF**
+**Validating an existing PassTicket for IBM RACF**
 
 <details>
 
-<summary>Click here for command details about validating an existing PassTicket for RACF.</summary>
+<summary>Click here for command details about validating an existing PassTicket for IBM RACF.</summary>
 
 In your ESM command line interface or other security environment, execute the following commands:
 
@@ -296,11 +296,11 @@ You configured Zowe to use PassTickets using Top Secret.
 
 </details>
 
-#### Enabling PassTickets with RACF
+#### Enabling PassTickets with IBM RACF
 
 <details>
 
-<summary> Click here for command details about configuring Zowe to use PassTickets using RACF.</summary>
+<summary> Click here for command details about configuring Zowe to use PassTickets using IBM RACF.</summary>
 
 1. Activate the `PTKTDATA` class, which encompasses all profiles containing PassTicket information.
 
@@ -354,12 +354,12 @@ PassTickets for the API service must have the replay protection switched off. Th
 * **`userid`**  
 Specifies the value of the LDAP Server started task.
 
-7. Refresh the RACF PTKTDATA definition with the new profile:
+7. Refresh the IBM RACF PTKTDATA definition with the new profile:
     ```
     SETROPTS RACLIST(PTKTDATA) REFRESH
     ```
 
-You configured Zowe to use PassTickets using RACF.
+You configured Zowe to use PassTickets using IBM RACF.
 
 </details>
 
@@ -417,11 +417,11 @@ Grant the Zowe started task user ID permission to generate PassTickets for users
 
 </details>
 
-#### Generating PassTickets using RACF
+#### Generating PassTickets using IBM RACF
 
 <details>
 
-<summary> Click here for command details about generating PassTickets using RACF.</summary>
+<summary> Click here for command details about generating PassTickets using IBM RACF.</summary>
 
 Grant the Zowe started task user ID permission to generate PassTickets for users of the API service.
 
@@ -474,12 +474,12 @@ TSS WHOHAS PTKTDATA(IRRPTAUTH.<applid>)
 
 </details>
 
-#### Verifying PassTickets using RACF
+#### Verifying PassTickets using IBM RACF
 
 <details>
-<summary>Click here for command details for RACF</summary>
+<summary>Click here for command details for IBM RACF</summary>
 
-**RACF:**
+**IBM RACF:**
 ```racf
  RLIST APPL <applid> ALL
  RLIST PTKTDATA IRRPTAUTH.<applid>.* ALL
