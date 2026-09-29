@@ -189,7 +189,7 @@ Ensure that you validate PTKTDATA access for APPL.
 
 ### Configuring your specific External Security Manager (ESM)
 
-To complete the PassTicket setup, choose the configuration instructions that correspond to your system's ESM (ACF2, Top Secret, or IBM RACF).
+To complete the PassTicket setup for first service onboarding, choose the configuration instructions that correspond to your system's ESM (ACF2, Top Secret, or IBM RACF).
 
 #### Enabling PassTickets with ACF2
 
