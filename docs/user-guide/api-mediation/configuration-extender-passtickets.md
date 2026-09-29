@@ -37,16 +37,15 @@ To allow an API service extender to onboard a second (or subsequent) service usi
 Follow this path if you are setting up PassTickets in your ESM for the first time.
 
 **Pre-requisites:**
-- SAF as auth provider
 - Known APPLID
 - ESM admin authority
 - PTKTDATA class not yet activated
 
 First service onboarding with PassTickets requires a full ESM setup. Requirements for this first service onboarding include:
-- Activatation of the PTKTDATA class
+- Activation of the PTKTDATA class
 - Defining your APPLID
 - Setting the session key
-- Permitting the ZWESVUSR user ID.
+- Permitting the ZWESVUSR user ID
 
 The following example presents the full first service configuration for IBM RACF.
 
