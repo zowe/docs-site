@@ -59,7 +59,7 @@ PERMIT IRRPTAUTH.MYAPPL1.* CLASS(PTKTDATA) ACCESS(UPDATE) ID(ZWESVUSR)
 SETROPTS RACLIST(PTKTDATA) REFRESH
 ```
   
-Follow all steps in the ESM-specific sections presented later in this article.
+Follow all steps in the ESM-specific sections presented later in this article. For more information, see [Configuring your specific External Security Manager (ESM)](#configuring-your-specific-external-security-manager-esm).
 
 ### Second and subsequent service onboarding with PassTickets
 
@@ -187,7 +187,9 @@ Ensure that you validate PTKTDATA access for APPL.
 
 :::
 
-Follow these steps to enable PassTicket Support specific to your ESM. 
+### Configuring your specific External Security Manager (ESM)
+
+To complete the PassTicket setup, choose the configuration instructions that correspond to your system's ESM (ACF2, Top Secret, or IBM RACF).
 
 #### Enabling PassTickets with ACF2
 
