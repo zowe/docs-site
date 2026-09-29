@@ -792,6 +792,16 @@ This configuration applies to all Zowe components.
 :::
 
 Zowe has an SSO scheme with the goal that each time you use multiple Zowe components you should only be prompted to login once. 
+**Cross-LPAR SSO requirement for JES Explorer and MVS Explorer:**
+JES Explorer and MVS Explorer fetch data through z/OSMF REST APIs, not through ZSS. When Zowe runs on a LPAR different than z/OSMF, the API Gateway generates a passticket on the Zowe LPAR and presents it to z/OSMF on the remote LPAR.
+
+**Ensure that both LPARs have the following configuration:**
+- Define the `PTKTDATA` profile for `IZUDFLT` (or your z/OSMF application name) with the SAME session key (SSIGN/KEYMASKED value) on both LPARs. If the keys differ, z/OSMF rejects the passticket even when generation succeeds.
+- Authorize `ZWESVUSR` to generate passtickets for `IZUDFLT` on the Zowe LPAR. 
+- Define the `PTKTDATA` profile on each LPAR and then rebuild the `ACF2/RACF` class: `F ACF2,PROFILE(PTKTDATA),REBUILD(SSIG)`.
+
+Additionally, each user who uses JES Explorer or MVS Explorer must have a valid login ID in the z/OSMF LPAR's security database, with an OMVS segment (`UID` and `HOME` directory). The user's Zowe LPAR ID is used to generate the passticket, so z/OSMF must be able to recognize that same user ID."
+
 
 **Requirements:**
 
@@ -926,6 +936,21 @@ TSS PERMIT(user-acid) CSFSERV(profile-prefix.profile-suffix) ACCESS(READ)
 - CCA and/or PKCS #11 coprocessor for random number generation.
 - Enable `FACILITY IRR.PROGRAM.SIGNATURE.VERIFICATION` and `RDEFINE CSFINPV2` if required.
 :::
+
+**Verifying CSFSERV class status:**
+
+If your security team reports `no rules defined` for the `CSFSERV` class, see the following to verify whether the class is active before you conclude that access is unrestricted:
+
+|--|--|
+| RACF: | SETROPTS LIST (look for CSFSERV in the ACTIVE CLASSES list) |
+| ACF2: | LIST CLASMAP (look for a CSFSERV entry; active status indicator) |
+| TSS:  | TSS LIST(SYS) CLASMAP (look for CSFSERV) |
+
+If the class is active with no rules, ALL access to `CSFSERV` resources is denied by default. In this case, `ZWESVUSR` cannot call ICSF functions including `CSFRNGL` (random number generation) and `CSFPSKE` (`PKCS#11 Secret Key Encrypt`), which are required for TLS operations of ZSS and Zowe Desktop cookies.
+If the class is not active, `CSFSERV` resource checks bypass and access is unrestricted.
+If access is denied, grant `ZWESVUSR` `READ` access to at minimum: `CSFRNGL`.
+For TLS 1.3 support, also grant: `CSFPSKE`, `CSFPSKD`, `CSFPGKP`.
+
 
 ### Configure the cross memory server for SAF
 
