@@ -95,6 +95,11 @@ SETROPTS RACLIST(PTKTDATA) REFRESH
 `SETROPTS CLASSACT(PTKTDATA)` is skipped for second and subsequent service configuration as this operation was already performed during first-service onboarding.
 :::
 
+### Configuring your specific External Security Manager (ESM)
+
+To complete the PassTicket setup for first service onboarding, choose the configuration instructions that correspond to your system's ESM (ACF2, Top Secret, or IBM RACF).
+
+
 :::tip
 To validate if a PassTicket is already defined, list the APPL and PTKTDATA with a command corresponding to your ESM. Output indicates if a PassTicket is already defined. No results after issuing an ESM command indicates that a PassTicket is not defined. If a PassTicket is defined, the access of the ZWESVUSR can be determined.
 
@@ -186,10 +191,6 @@ Ensure that you validate PTKTDATA access for APPL.
 </details>
 
 :::
-
-### Configuring your specific External Security Manager (ESM)
-
-To complete the PassTicket setup for first service onboarding, choose the configuration instructions that correspond to your system's ESM (ACF2, Top Secret, or IBM RACF).
 
 #### Enabling PassTickets with ACF2
 
