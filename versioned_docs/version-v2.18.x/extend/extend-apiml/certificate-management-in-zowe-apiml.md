@@ -106,7 +106,6 @@ For information about adding a service with an existing certificate to API ML on
 
 To register a new service to the Discovery Service using HTTPS, provide a valid client certificate that is trusted by the Discovery Service. In V2 local development, this is achieved by presenting the dual-purpose `service/service.keystore.p12` keystore.
 
-
 ## Zowe runtime on z/OS
 
 Certificates for the API ML local CA and API ML service are managed by installing the Zowe runtime on z/OS. For more information see [Installing the Zowe runtime on z/OS](../../user-guide/install-zos.md).
