@@ -422,7 +422,10 @@ additionalServiceMetadata:
 
     * `zoweJwt` — The service accepts Zowe JWT tokens
     * `safIdt` — The service accepts SAF IDT tokens
-    * `httpBasicPassTicket` — The service accepts PassTickets via HTTP Basic Authentication
+    * `httpBasicPassTicket` — The service accepts PassTickets via HTTP Basic Authentication  
+      :::note
+      If onboarding a second or subsequent service with `httpBasicPassTicket`, only permit `ZWESVUSR` for the new APPLID. For more information, see [Second and subsequent service onboarding with PassTickets](../../user-guide/api-mediation/configuration-extender-passtickets.md#second-and-subsequent-service-onboarding-with-passtickets).
+      :::
     * `zosmf` — The service accepts z/OSMF LTPA tokens
     * `bypass` — The token is passed unchanged (no authentication)
     * `x509` — The service accepts client certificates forwarded in headers
