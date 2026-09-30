@@ -52,8 +52,11 @@ The following example presents the full first service configuration for IBM RACF
 **Example:** 
 ```racf
 SETROPTS CLASSACT(PTKTDATA) RACLIST(PTKTDATA)
+SETROPTS CLASSACT(APPL)
+SETROPTS GENERIC(PTKTDATA)
 RDEFINE APPL MYAPPL1 UACC(READ)
 RDEFINE PTKTDATA MYAPPL1 UACC(NONE) APPLDATA('NO REPLAY PROTECTION') SSIGNON(KEYMASKED(<key>))
+RDEFINE PTKTDATA IRRPTAUTH.MYAPPL1.* UACC(NONE)
 PERMIT IRRPTAUTH.MYAPPL1.* CLASS(PTKTDATA) ACCESS(UPDATE) ID(ZWESVUSR)
 SETROPTS RACLIST(PTKTDATA) REFRESH
 ```
@@ -69,9 +72,9 @@ Follow this path to onboard a second, or subsequent service.
 - ZWESVUSR already permitted for at least one existing APPLID
 - New APPLID known
 
-When onboarding subsequent services, the activaton of the PTKTDATA class and configuring global session key parameters have already been performed. These are one-time operations and are already complete in your environment after initial service onboarding.
+When onboarding subsequent services, the activation of the PTKTDATA class and configuring global session key parameters have already been performed. These are one-time operations and are already complete in your environment after initial service onboarding.
 
-Ensure that you satify the following requirements:
+Ensure that you satisfy the following requirements:
 
 - Define the new APPLID
 - Set the new APPLID unique session key
@@ -87,6 +90,7 @@ The following example presents the second or subsequent service configuration fo
 ```racf
 RDEFINE APPL MYAPPL2 UACC(READ)
 RDEFINE PTKTDATA MYAPPL2 UACC(NONE) APPLDATA('NO REPLAY PROTECTION') SSIGNON(KEYMASKED(<key>))
+RDEFINE PTKTDATA IRRPTAUTH.MYAPPL2.* UACC(NONE)
 PERMIT IRRPTAUTH.MYAPPL2.* CLASS(PTKTDATA) ACCESS(UPDATE) ID(ZWESVUSR)
 SETROPTS RACLIST(PTKTDATA) REFRESH
 ```
