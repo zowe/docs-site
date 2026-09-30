@@ -95,12 +95,12 @@ This guide is maintained in the README [TLS certificates for local development a
 
 ### Generate a certificate for a new service on localhost
 
-To generate a certificate for a new service on localhost, see [Generating certificate for a new service on localhost](https://github.com/zowe/api-layer/blob/v2.x.x/keystore/README.mdd#generating-certificate-for-a-new-service-on-localhost).
+To generate a certificate for a new service on localhost, see [Issuing a new certificate from service-ca](https://github.com/zowe/api-layer/blob/v2.x.x/keystore/README.md#issuing-a-new-certificate-from-service-ca).
 
 
 ### Add a service with an existing certificate to API ML on localhost
 
-For information about adding a service with an existing certificate to API ML on localhost, see [Truststores](https://github.com/zowe/api-layer/blob/v2.x.x/keystore/README.md#truststores) in the README _TLS certificates for local development and testing_.in the api-layer repository.
+For information about adding a service with an existing certificate to API ML on localhost, see [Truststores](https://github.com/zowe/api-layer/blob/v2.x.x/keystore/README.md#truststores) in the README in the api-layer repository.
 
 ### Service registration to Discovery Service on localhost
 
