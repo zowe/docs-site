@@ -206,13 +206,13 @@ HttpClient employs a special entity to manage access to HTTP connections called 
 * **apiml.okToRetryOnAllOperations**  
 Specifies whether all operations can be retried for this service. The default value is `false`. The `false` value allows retries for only GET requests if a response code of `503` is returned. Setting this value to `true` enables retry requests for all methods, which return a `503` response code. Enabling retry can impact server resources resulting from buffering of the request body.
 
-* **apiml.service.corsEnabled**  
+* **apiml.service.corsEnabled**   
   When this parameter is set to `true`, CORS is enabled on the service level for all service routes. The same parameter can also be set on the service level by providing the parameter as `customMetadata` as shown in [Custom Metadata](./custom-metadata.md).
 
 * **customMetadata.apiml.corsAllowedOrigins**  
   (Optional) Specify which origins are accepted by the Gateway during CORS handling for this service. If not set, this value falls back to the Gateway's global `corsDefaultAllowedOrigins` default (`https://${hostname}:${port}`). Inclusion of other allowed origins is additive to the Gateway defaults rather than replacing these defaults.
 
-* **customMetadata.apiml.corsAllowedHeaders**  
+* **customMetadata.apiml.corsAllowedHeaders**    
   (Optional) Specify a comma-separated list of HTTP headers that are allowed during a CORS request to this service.
 
 * **customMetadata.apiml.corsAllowCredentials**  
