@@ -52,7 +52,7 @@ Provide critical mainframe context by identifying the specific physical and logi
 The API ML service itself produces a range of telemetry data referred to as _signals_. A signal, defined as a discrete stream of telemetry data, is represented by any one of three types: metrics, traces, and logs.
 
 <details>
-<summary>Click here for futher details about API ML <b>Signals</b> used in OpenTelemetry.</summary>
+<summary>Click here for further details about API ML <b>Signals</b> used in OpenTelemetry.</summary>
 
 ## Telemetry Signals and Observability
 
@@ -102,7 +102,7 @@ For detailed instructions of how to configure these settings, see [Quick-start c
 
 ## Automated Resource Attribution
 
-To simplify the configuration process, API ML is designed to automatically detect the z/OS environment context. This automation ensures that every telemetry signal (metric, trace, or log) is enriched with mainframe-specific metadata. This metadate enrichment allows users to filter, group, and visualize data by Sysplex, LPAR, or specific environment without tagging manually.
+To simplify the configuration process, API ML is designed to automatically detect the z/OS environment context. This automation ensures that every telemetry signal (metric, trace, or log) is enriched with mainframe-specific metadata. This metadata enrichment allows users to filter, group, and visualize data by Sysplex, LPAR, or specific environment without tagging manually.
 
 ### Automated Environment Discovery
 
