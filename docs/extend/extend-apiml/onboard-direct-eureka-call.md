@@ -197,7 +197,7 @@ When this parameter is set to `true`, the Gateway allows encoded characters to b
 * **apiml.connectTimeout**  
 The value in milliseconds that specifies a period in which API ML should establish a single, non-managed connection with this service. If omitted, the default value specified in the API ML Gateway service configuration is used.
 
-* **apiml.readTimeout**  
+* **apiml.readTimeout**   
 The value in milliseconds that specifies maximum time of inactivity between two packets in response from this service to API ML. If omitted, the default value specified in the API ML Gateway service configuration is used.
     
 * **apiml.connectionManagerTimeout**  
