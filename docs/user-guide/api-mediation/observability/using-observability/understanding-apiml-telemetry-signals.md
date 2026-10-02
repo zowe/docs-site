@@ -15,7 +15,7 @@ Metrics are numerical representations of data measured over intervals of time. I
 Traces record the end-to-end path of a request as it moves through the API ML. They provide a "big picture" view of how the gateway interacts with discovery services and backend providers.
 
   * **Span Intervals**  
-  Captures discrete segments of work (called Spans), such as the time required for SAF authentication, service ID resolution, or the physical routing of a request to a provider.
+  Captures discrete segments of work (called Spans), such as the time required for SAF authentication, service ID resolution, or the physical routing of a request to a provider. 
 
   * **Latency Analysis**  
   Identifies specific bottlenecks in the request lifecycle, allowing you to see exactly which stage of processing is causing delays.
