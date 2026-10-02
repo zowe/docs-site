@@ -2,7 +2,7 @@
 
 Before installing Zowe Explorer, make sure that you meet the following requirements.
 
-:::info Required roles: systems administrator, devops architect
+:::info Required roles: system administrator, devops architect
 :::
 
 ## Client side requirements

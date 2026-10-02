@@ -2,7 +2,7 @@
 
 You can uninstall Zowe Explorer from Visual Studio Code (VS Code) if you no longer need to use it.
 
-:::info Required roles: systems administrator
+:::info Required roles: system administrator
 :::
 
 :::warning Important

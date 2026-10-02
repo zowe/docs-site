@@ -2,7 +2,7 @@
 
 This checklist outlines the required steps for a first-time installation of Zowe CLI.
 
-:::info Required roles: systems administrator, devops architect, security administrator, systems programmer
+:::info Required roles: system administrator, devops architect, security administrator, systems programmer
 :::
 
 The checklist includes a brief description of the steps required for installation of Zowe CLI. The checklist also identifies the roles that are typically required to complete the step, which enables the pre-installation planning team to focus on the tasks for which they are responsible.
@@ -23,7 +23,7 @@ For a printable version of this checklist, <a href="/stable/Zowe_CLI_Installatio
 | Step        | Description | Role       | Time Estimate |
 | ----------- | ----------- | ---------- | ------------- |
 | Installing Zowe CLI and Zowe CLI plug-ins from [a local package](../user-guide/cli-installcli.md#installing-zowe-cli-and-zowe-cli-plug-ins-from-a-local-package) or <br/>[an NPM public online registry](../user-guide/cli-installcli.md#installing-zowe-cli-and-zowe-cli-plug-ins-from-an-npm-online-registry) | Install Zowe CLI from an online registry or a local package.| Systems administrator | 30 min. |
-| [Updating Zowe CLI and Zowe CLI plug-ins](../user-guide/cli-updatingcli.md) | Identify the currently installed version of Zowe CLI and update to the most recent version. Or, revert to a specific previous release of Zowe CLI. | Systems administrator | 30 min. |
+| [Updating Zowe CLI and Zowe CLI plug-ins](../upgrade/cli-updatingcli.md) | Identify the currently installed version of Zowe CLI and update to the most recent version. Or, revert to a specific previous release of Zowe CLI. | Systems administrator | 30 min. |
 
 ## Configuring Zowe CLI
 

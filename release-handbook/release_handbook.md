@@ -172,7 +172,7 @@ Summary: Using Visual Studio Code, update the necessary files to add the next re
 **Procedure**
 
 1. Create and publish a new (temporary) branch based off the `docs-staging` branch.
-2. Open your branch branch in Visual Studio Code.
+2. Open your branch in Visual Studio Code.
 3. Navigate to the `/docusaurus.config.js` file.
 4. Change the `LATEST_VERSION` variable present in Line 1 of the `/docusaurus.config.js` file to a new version.
 5. Locate the presets: `> @docusaurus/preset-classic" > docs > versions` in the `/docusaurus.config.js` file to include the previous version in the list.
