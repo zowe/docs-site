@@ -1,6 +1,6 @@
 # Understanding API ML Telemetry Signals
 
-API Mediation Layer utilizes the three core OpenTelemetry signals to provide a complete picture of your mainframe gateway’s health and performance. By combining these signals, administrators can identify high-level symptoms, and also pinpoint root causes within a specific service or address space. The follow points describe how diffent signal types apply to API ML observability:
+API Mediation Layer utilizes the three core OpenTelemetry signals to provide a complete picture of your mainframe gateway’s health and performance. By combining these signals, administrators can identify high-level symptoms, and also pinpoint root causes within a specific service or address space. The follow points describe how different signal types apply to API ML observability:
 
 * **Metrics (The "How Much")**  
 Metrics are numerical representations of data measured over intervals of time. In the context of API ML, they are used to track system health, observe performance trends, and trigger automated alerts before issues impact end-users.
@@ -15,7 +15,7 @@ Metrics are numerical representations of data measured over intervals of time. I
 Traces record the end-to-end path of a request as it moves through the API ML. They provide a "big picture" view of how the gateway interacts with discovery services and backend providers.
 
   * **Span Intervals**  
-  Captures discrete segments of work (called Spans), such as the time required for SAF authentication, service ID resolution, or the physical routing of a request to a provider.
+  Captures discrete segments of work (called Spans), such as the time required for SAF authentication, service ID resolution, or the physical routing of a request to a provider. 
 
   * **Latency Analysis**  
   Identifies specific bottlenecks in the request lifecycle, allowing you to see exactly which stage of processing is causing delays.
