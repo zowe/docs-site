@@ -210,7 +210,7 @@ Specifies whether all operations can be retried for this service. The default va
   When this parameter is set to `true`, CORS is enabled on the service level for all service routes. The same parameter can also be set on the service level by providing the parameter as `customMetadata` as shown in [Custom Metadata](./custom-metadata.md).
 
 * **customMetadata.apiml.corsAllowedOrigins**  
-  (Optional) Specify which origins are accepted by the Gateway during CORS handling for this service. If not set, this value falls back to the Gateway's global `corsDefaultAllowedOrigins` default (`https://${hostname}:${port}`). Inclusion of other allowed orgins is additive to the Gateway defaults rather than replacing these defaults.
+  (Optional) Specify which origins are accepted by the Gateway during CORS handling for this service. If not set, this value falls back to the Gateway's global `corsDefaultAllowedOrigins` default (`https://${hostname}:${port}`). Inclusion of other allowed origins is additive to the Gateway defaults rather than replacing these defaults.
 
 * **customMetadata.apiml.corsAllowedHeaders**  
   (Optional) Specify a comma-separated list of HTTP headers that are allowed during a CORS request to this service.

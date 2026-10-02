@@ -3,7 +3,7 @@
 :::info Required Role: system programmer
 :::
 
-You can enable the Gateway to terminate CORS requests for itself and also for routed services. By default, Cross-Origin Resource Sharing (CORS) handling is disabled for Gateway routes `gateway/api/v1/**` and for individual services. Once enabled, API Gateway endpoints handle CORS requests according to your global configuration, and individual services can delegate CORS handling to the Gateway using per-service [Custom Metadata](../../extend/extend-apiml/onboard-spring-boot-enabler.md#custom-metadata) CORS parameters. 
+You can enable the Gateway to terminate CORS requests for itself and also for routed services. In packaged Zowe, `components.gateway.apiml.service.corsEnabled` defaults to `false`: the Gateway terminates CORS itself for all paths and rejects every cross-origin request (no origins are allow-listed). Setting `corsEnabled` to `true` enables the Gateway's defaults on its own endpoints (`/gateway/**`) and per-service overrides via Custom Metadata.. Once enabled, API Gateway endpoints handle CORS requests according to your global configuration, and individual services can delegate CORS handling to the Gateway using per-service [Custom Metadata](../../extend/extend-apiml/onboard-spring-boot-enabler.md#custom-metadata) CORS parameters. 
 
 ## How the Gateway Resolves CORS
 
@@ -42,8 +42,8 @@ When CORS handling is disabled, the Gateway strictly uses the global defaults an
 Unless overridden globally in `zowe.yaml` or by service-specific metadata (when enabled), the Gateway replies with the following default CORS response headers:  
 
   * **`Access-Control-Allow-Methods: GET,HEAD,POST,PATCH,DELETE,PUT,OPTIONS`**  
-    Can be overridden globally using `components.gateway.apiml.service.corsDefaultAllowedMethods` in `zowe.yaml`.
-  * **`Access-Control-Allow-Headers: origin, x-requested-with`**  
+    Can be overridden globally using `components.gateway.apiml.service.corsAllowedMethods` in `zowe.yaml`.
+  * **`Access-Control-Allow-Headers: *`**  
     Can be overridden globally using `components.gateway.apiml.service.corsDefaultAllowedHeaders` in `zowe.yaml`.
   * **`Access-Control-Allow-Credentials: true`**
   * **`Access-Control-Allow-Origin: https://${hostname}:${port}`**    
@@ -58,9 +58,9 @@ Specifies the allowed origins for CORS requests across the Gateway. This paramet
 
 * **`apiml.service.corsDefaultAllowedHeaders`**  
 Defines which HTTP headers are accepted during a CORS request. This can be customized as a specific comma-separated list of headers to match your enterprise security requirements.  
-**Default:** `origin, x-requested-with`
+**Default:** `*`
 
-* **`apiml.service.corsDefaultAllowedMethods`**  
+* **`apiml.service.corsAllowedMethods`**  
 Defines the allowed HTTP methods for CORS requests across the Gateway.  
 **Default:** `GET,HEAD,POST,PATCH,DELETE,PUT,OPTIONS`
 

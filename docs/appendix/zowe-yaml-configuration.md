@@ -591,9 +591,10 @@ User authorization is required to use the `IRR.RUSERMAP` resource within the `FA
 - **apiml.service.allowEncodedSlashes**  
  Specifies if the Gateway allows encoded characters to be part of URL requests redirected through the Gateway. Set to `true` to allow encoded characters to be part of URL requests. 
 - **apiml.service.corsEnabled**  
- Specifies if CORS are enabled in the API Gateway for Gateway routes `gateway/api/v1/**`. Set to `true` to enable CORS.
+ Specifies if CORS are enabled in the API Gateway for Gateway routes `gateway/**`. Set to `true` to enable CORS.
 - **apiml.service.corsDefaultAllowedOrigins**  
-  Specifies the default origins accepted by the Gateway during CORS handling when a per-service configuration is not specified  **Default:** `https://${hostname}:${port}`
+  Specifies the default origins accepted by the Gateway during CORS handling when a per-service configuration is not specified  
+  **Default:** `https://${hostname}:${port}`
 - **apiml.service.corsDefaultAllowedHeaders**  
   Specifies the default HTTP headers allowed by the Gateway during a CORS request across all services when not explicitly overridden.
   **Default:** `*`
