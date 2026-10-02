@@ -12,7 +12,7 @@ Zowe's assisted certificate setup begins with customizing certificate scenario Y
 :::note 
 Reminder: Zowe assisted generation of certificates is an option, but is not required. If you already have certificates and a key ring or keystore/truststore combination you created on your own, you can instead go to [Finalize certificate configuration](./certificates-finalize-configuration.md).
 :::
-
+  
 ## What is a valid certificate in Zowe?
 
 A valid certificate for use in Zowe conforms to one of the following two options: 
@@ -197,9 +197,9 @@ The following command output shows the generation of a PKCS12 keystore using the
 You are ready to [Finalize your Zowe certificate configuration](./certificates-finalize-configuration.md). 
 
 
-::note
+:::note
 For more information about using a file-based PKCS12 certificate in Zowe services, see  the [video tutorials](https://www.youtube.com/playlist?list=PL8REpLGaY9QERUmM--1USMF8yOG-Awzwn) on YouTube. More information about this certificate configuration scenario is also available in [this Medium blog post](https://medium.com/zowe/step-by-step-guide-use-a-pkcs12-file-based-keystore-with-zowe-generated-certificate-365dc48eea29). Both of these resources target an older release of Zowe and modify `zowe.yaml` directly, so you will need to adapt some of their configuration to your `scenario-1.yaml` configuration file instead.
-::
+:::
 
 </details>
 

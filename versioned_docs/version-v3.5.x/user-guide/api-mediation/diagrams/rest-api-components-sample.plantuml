@@ -1,0 +1,29 @@
+
+@startuml rest-api-components-sample
+
+skinparam rectangle {
+    roundCorner<<Service>> 25
+    BackgroundColor<<API>> LightBlue
+    BackgroundColor<<Service>> PaleGreen
+}
+
+rectangle gateway [
+<b>API Gateway</b>
+===
+/api/v2/petstore
+]
+
+rectangle petstore <<Service>> {
+    rectangle petstore_api_v2 <<API>> [
+    <b>/v2</b>
+    ==
+    /pets
+    ]
+}
+
+note right of gateway: API Gateway routes\nHTTP requests to /v2 of the API in the petstore service
+note bottom of petstore: The petstore service provides one API (/v2)\nThis service runs in its own embedded web server
+
+gateway --> petstore_api_v2
+
+@enduml
