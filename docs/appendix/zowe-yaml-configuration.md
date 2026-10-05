@@ -31,7 +31,7 @@ The YAML configuration file has few high-level sections:
 - **zOSMF**  
  Tells Zowe your z/OSMF configurations.
 - **components**  
- Defines detailed configurations for each Zowe component or extension. Each component or extension may have a key entry under this section. For example, `components.gateway` is the configuration for the API Mediation Layer Gateway service.
+ Defines detailed configurations for each Zowe component or extension. Each component or extension might have a key entry under this section. For example, `components.gateway` is the configuration for the API Mediation Layer Gateway service.
 - **haInstances**  
  Defines customized configurations for each High Availability (HA) instance. You should predefine all Zowe HA instances you want to start within your Sysplex.
 
@@ -144,7 +144,7 @@ In the `zowe.yaml`, you can define default values which can be overridden in mor
 
 ### YAML configurations - certificate
 
-In Zowe YAML configuration, the certificate definition shares the same format which can be used in several configuration entries. For example, `zowe.certificate`, `components.<component>.certificate`, and `haInstances.<ha-instance>.components.<component>.certificate`. The certificate definition may include the following entries:
+In Zowe YAML configuration, the certificate definition shares the same format which can be used in several configuration entries. For example, `zowe.certificate`, `components.<component>.certificate`, and `haInstances.<ha-instance>.components.<component>.certificate`. The certificate definition might include the following entries:
 
 - **keystore.type**  
  Specifies the type of the keystore. If you are using keystore, this value usually should be `PKCS12`. If you are using z/OS keyring, this value should be one of `JCEHYBRIDRACFKS`, `JCECCARACFKS`, `JCERACFKS`.
@@ -250,7 +250,7 @@ Launcher is the program behind the `ZWESLSTC` started task.
 - **zowe.launcher.shareAs**  
  Specifies if the launcher should start components in the same address space. See documentation for [_BPX_SHAREAS](https://www.ibm.com/docs/en/zos/2.4.0?topic=shell-setting-bpx-shareas-bpx-spawn-script) for details.
 - **zowe.launchScript.logLevel**  
- Set to `debug` or `trace` to enable different levels of debug messages from Zowe launch scripts. This setting may help troubleshoot issues during Zowe start.
+ Set to `debug` or `trace` to enable different levels of debug messages from Zowe launch scripts. This setting might help troubleshoot issues during Zowe start.
 
 #### System messages
 
@@ -360,9 +360,9 @@ zowe:
 - **zowe.setup.dataset.prefix**  
 Specifies where the `SZWEAUTH` data set is installed.
 - **zowe.setup.dataset.parmlib**  
-Specifies the user custom parameter library. The Zowe server command may generate sample PARMLIB members and stores in this library.
+Specifies the user custom parameter library. The Zowe server command might generate sample PARMLIB members and stores in this library.
 - **zowe.setup.dataset.jcllib**  
-Specifies the custom JCL library. The Zowe server command may generate sample JCLs and put into this data set.
+Specifies the custom JCL library. The Zowe server command might generate sample JCLs and put into this data set.
 - **zowe.setup.dataset.authLoadlib**  
 Specifies the user custom APF LOADLIB. This field is optional. If this parameter is defined, members of `SZWEAUTH` are copied over to this data set to be APF authorized. If this parameter is not defined, `SZWEAUTH` from `zowe.setup.dataset.prefix` is APF authorized.
 - **zowe.setup.dataset.authPluginLib**  
@@ -555,13 +555,13 @@ When you change `auth.provider` from `zosmf` to `saf`, also set `jwtAutoconfigur
 - **apiml.security.auth.zosmf.jwtAutoconfiguration**  
  Customizes the behavior of the Gateway with respect to how JWTs are produced. Valid options are `jwt` and `ltpa`. `jwt` is the default and recommended option. `ltpa` allows API ML to produce JWTs instead of the z/OSMF service.  
  The two types are:
- - jwtAutoconfiguration: jwt (default)
+ - jwtAutoconfiguration: `jwt` (default)
   - Use this setting when you install z/OSMF on the same LPAR as the Zowe API Gateway. z/OSMF auto-registers with the API Mediation Layer's Eureka discovery service. If z/OSMF is on a separate LPAR or does not register in Eureka (which is common in cross-LPAR deployments), the Gateway startup fails and displays a message `z/OSMF service ibmzosmf is either not registered or not online yet` and the authentication returns a value of 401.
- - jwtAutoconfiguration: ltpa
+ - jwtAutoconfiguration: `ltpa`
   - Use this setting when z/OSMF is on a separate LPAR that does not register in the local Eureka instance, or when z/OSMF cannot be reached via service discovery. `LTPA` mode contacts z/OSMF directly over HTTP using the configured z/OSMF host and port. This is the required setting for cross-LPAR deployments with separate security data bases.
   :::note
   Do not use `ltpa` with hardware-accelerated ICSF keyrings.
-  Also see apiml.security.auth.provider in the [Configure component gateway](/docs/appendix/zowe-yaml-configuration.md#configure-component-gateway) section.
+  Also see apiml.security.auth.provider in the [Configure component gateway](/docs/appendix/zowe-yaml-configuration.md#configure-component-gateway) section for more information to configure component gateway.
   :::
 - **apiml.security.authorization.endpoint.url**  
   Specifies the URL to the authorization endpoint. This endpoint informs the Gateway if a user has a particular permission on SAF profile, such as permission to the `APIML.SERVICES` profile of the `ZOWE` class.
@@ -628,7 +628,7 @@ User authorization is required to use the `IRR.RUSERMAP` resource within the `FA
 These configurations can be applied to the `components.discovery` section:
 
 - **port**  
- Specifies the port which discovery is to be started on. This value may be a valid port number or an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
+ Specifies the port which discovery is to be started on. This value might be a valid port number or an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
 - **debug.**  
 Specifies whether standard debug logging is enabled for the Discovery component. Set to `true` to enable verbose internal logging without enabling modification capabilities.
 - **apiml.health.protected**  
@@ -681,7 +681,7 @@ Specifies whether standard debug logging is enabled for the API Catalog componen
 These configurations can be used under the `components.caching-service` section:
 
 - **port**  
-  Specifies the port which Caching Service should be started on. This may be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
+  Specifies the port which Caching Service should be started on. This might be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
 - **debug**  
   Specifies if debug mode is enabled for the Caching Service.
 - **apiml.security.ssl.verifySslCertificatesOfServices**  
@@ -777,14 +777,14 @@ These configurations can be used under the `components.caching-service` section:
 The following configurations can be used under the `components.app-server` section:
 
 - **port**  
-Specifies the port which App Server is to be started on. This value may be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
+Specifies the port which App Server is to be started on. This value might be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
 
 #### Configure component zss
 
 The following configurations can be used under the `components.zss` section:
 
 - **port**  
-Specifies the port which ZSS is to be started on. This value may be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
+Specifies the port which ZSS is to be started on. This value might be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
 :::note
 Set system SSL environment variables (GSK_TRACE, GSK_TRACE_FILE, GSK_PROBE_FILE) in the `STDENV DD` of the `ZWESLSTC JCL` procedure, not in `zowe.yaml`, because `configmgr` prefixes all variables in `components.<name>.environment` with `ZWE_` before passing them to the component.
 :::
