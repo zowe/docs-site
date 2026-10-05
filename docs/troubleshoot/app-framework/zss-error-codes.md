@@ -773,4 +773,4 @@ zowe:
       ```
     - Restart Zowe after you apply this change. 
     If `ZWES1602I` displays in the log file, it confirms that JWK keys were retrieved successfully.
-    You can also see Configure component zss in the [Zowe YAML server configuration file reference](../../appendix/zowe-yaml-configuration.md#configure-component-zss)
+    You can also see "Configure component zss" in the [Zowe YAML server configuration file reference](../../appendix/zowe-yaml-configuration.md#configure-component-zss)
