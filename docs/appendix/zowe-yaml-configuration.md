@@ -547,7 +547,7 @@ Specifies the active Spring profiles for the Gateway component. Set to `"debug-c
 - **apiml.security.auth.provider**  
  Specifies the authentication provider used by the API Gateway. Valid options are `saf` or `zosmf`.
  :::caution
-In case of separate security databases: If Zowe runs on a different LPAR than z/OSMF and the two LPARs use separate, unshared security databases (RACF, ACF2, or TSS), change `auth.provider` from the default `zosmf` to `saf`. Users authenticate against z/OSMF's security database. If the user ID exists only in the Zowe LPAR's database, z/OSMF returns `401` and login fails. The `saf` value authenticates users directly against the local security manager on the LPAR running Zowe, eliminating the cross-LPAR dependency for login.
+In case of separate security data bases: If Zowe runs on a different LPAR than z/OSMF and the two LPARs use separate, unshared security data bases (RACF, ACF2, or TSS), change `auth.provider` from the default `zosmf` to `saf`. Users authenticate against z/OSMF's security data base. If the user ID exists only in the Zowe LPAR's data base, z/OSMF returns `401` and login fails. The `saf` value authenticates users directly against the local security manager on the LPAR running Zowe, eliminating the cross-LPAR dependency for login.
 When you change `auth.provider` from `zosmf` to `saf`, also set `jwtAutoconfiguration` to `ltpa` if z/OSMF is on a separate LPAR. You should change these two settings together in cross-LPAR deployments.
 :::
 - **apiml.security.auth.zosmf.serviceId**  
@@ -558,7 +558,7 @@ When you change `auth.provider` from `zosmf` to `saf`, also set `jwtAutoconfigur
  - jwtAutoconfiguration: jwt (default)
   - Use this setting when you install z/OSMF on the same LPAR as the Zowe API Gateway. z/OSMF auto-registers with the API Mediation Layer's Eureka discovery service. If z/OSMF is on a separate LPAR or does not register in Eureka (which is common in cross-LPAR deployments), the Gateway startup fails and displays a message `z/OSMF service ibmzosmf is either not registered or not online yet` and the authentication returns a value of 401.
  - jwtAutoconfiguration: ltpa
-  - Use this setting when z/OSMF is on a separate LPAR that does not register in the local Eureka instance, or when z/OSMF cannot be reached via service discovery. `LTPA` mode contacts z/OSMF directly over HTTP using the configured z/OSMF host and port. This is the required setting for cross-LPAR deployments with separate security databases.
+  - Use this setting when z/OSMF is on a separate LPAR that does not register in the local Eureka instance, or when z/OSMF cannot be reached via service discovery. `LTPA` mode contacts z/OSMF directly over HTTP using the configured z/OSMF host and port. This is the required setting for cross-LPAR deployments with separate security data bases.
   :::note
   Do not use `ltpa` with hardware-accelerated ICSF keyrings.
   Also see apiml.security.auth.provider in the [Configure component gateway](/docs/appendix/zowe-yaml-configuration.md#configure-component-gateway) section.
