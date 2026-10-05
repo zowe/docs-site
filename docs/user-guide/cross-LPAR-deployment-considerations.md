@@ -8,9 +8,9 @@ This section provides information about additional steps to configure a cross-LP
 
 - Do not add the z/OSMF server's personal certificate to `ZOWEKeyring`. Add only the CA certificates with `USAGE(CERTAUTH)`.
 
-- Create the user IDs that can access JES Explorer and MVS Explorer in the z/OSMF LPAR's security database, not only in the Zowe LPAR's database.
+- Create the user IDs that can access JES Explorer and MVS Explorer in the z/OSMF LPAR's security data base, not only in the Zowe LPAR's data base.
 
-- Set `components.gateway.apiml.security.auth.provider` to `saf` when Zowe and z/OSMF run on LPARs with separate, unshared security databases.
+- Set `components.gateway.apiml.security.auth.provider` to `saf` when Zowe and z/OSMF run on LPARs with separate, unshared security data bases.
 :::note
 The default value `zosmf` fails because z/OSMF cannot validate users that are only defined on the Zowe LPAR.
 :::
@@ -25,7 +25,7 @@ The default `jwt` value requires z/OSMF to register itself in the Zowe API Media
 | Condition | Do this action  |
 |-----------|-----------------|
 
-| z/OSMF on same LPAR, shared security database | Standard installation; no special steps         |
+| z/OSMF on same LPAR, shared security data base | Standard installation; no special steps         |
 | z/OSMF on different LPAR, shared DB (sysplex) | Add z/OSMF CA to ZOWEKeyring                        |
 | z/OSMF on different LPAR, separate security DB| Use auth.provider=saf, jwtAutoconfiguration=        |
 |                                               | ltpa, add z/OSMF CA (correct fingerprint),      |
