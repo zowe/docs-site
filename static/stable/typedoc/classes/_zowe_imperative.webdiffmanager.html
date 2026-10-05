@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>WebDiffManager | Zowe Node.js SDK - v3.4.1</title>
-	<meta name="description" content="Documentation for Zowe Node.js SDK - v3.4.1">
+	<title>WebDiffManager | Zowe Node.js SDK - v3.6.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v3.6.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">Zowe Node.js SDK - v3.4.1</a>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v3.6.0</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -113,6 +113,7 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.webdiffmanager.html#encodeforscript" class="tsd-kind-icon">encode<wbr>For<wbr>Script</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.webdiffmanager.html#genhtmlfordiffs" class="tsd-kind-icon">gen<wbr>Html<wbr>For<wbr>Diffs</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.webdiffmanager.html#opendiffs" class="tsd-kind-icon">open<wbr>Diffs</a></li>
 							</ul>
@@ -128,7 +129,7 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Instance<span class="tsd-signature-symbol">:</span> <a href="_zowe_imperative.webdiffmanager.html" class="tsd-signature-type">WebDiffManager</a><span class="tsd-signature-symbol"> = null</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/utilities/src/diff/WebDiffManager.ts#L37">@zowe/imperative/src/utilities/src/diff/WebDiffManager.ts:37</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/imperative/src/utilities/src/diff/WebDiffManager.ts#L37">@zowe/imperative/src/utilities/src/diff/WebDiffManager.ts:37</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -157,7 +158,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/utilities/src/diff/WebDiffManager.ts#L109">@zowe/imperative/src/utilities/src/diff/WebDiffManager.ts:109</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/imperative/src/utilities/src/diff/WebDiffManager.ts#L112">@zowe/imperative/src/utilities/src/diff/WebDiffManager.ts:112</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -184,7 +185,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/utilities/src/diff/WebDiffManager.ts#L44">@zowe/imperative/src/utilities/src/diff/WebDiffManager.ts:44</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/imperative/src/utilities/src/diff/WebDiffManager.ts#L44">@zowe/imperative/src/utilities/src/diff/WebDiffManager.ts:44</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -206,6 +207,42 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="encodeforscript" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> encode<wbr>For<wbr>Script</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">encode<wbr>For<wbr>Script<span class="tsd-signature-symbol">(</span>str<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/imperative/src/utilities/src/diff/WebDiffManager.ts#L126">@zowe/imperative/src/utilities/src/diff/WebDiffManager.ts:126</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Encodes a string so it can be safely embedded inside an inline <code>&lt;script&gt;</code>
+										element. <code>JSON.stringify</code> produces a valid JavaScript string literal, and
+										the additional replacements prevent the value from terminating the script
+										element (e.g. a <code>&lt;/script&gt;</code> sequence in the diff content) or introducing
+									line terminators that are illegal inside JS string literals (U+2028/U+2029).</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>str: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the raw string to embed in a script context</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<p>A safely-encoded JavaScript string literal</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
 					<a name="genhtmlfordiffs" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> gen<wbr>Html<wbr>For<wbr>Diffs</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
@@ -215,7 +252,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/utilities/src/diff/WebDiffManager.ts#L119">@zowe/imperative/src/utilities/src/diff/WebDiffManager.ts:119</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/imperative/src/utilities/src/diff/WebDiffManager.ts#L140">@zowe/imperative/src/utilities/src/diff/WebDiffManager.ts:140</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -253,7 +290,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/_zowe_imperative.iwebdiffmanager.html">IWebDiffManager</a>.<a href="../interfaces/_zowe_imperative.iwebdiffmanager.html#opendiffs">openDiffs</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/utilities/src/diff/WebDiffManager.ts#L57">@zowe/imperative/src/utilities/src/diff/WebDiffManager.ts:57</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/imperative/src/utilities/src/diff/WebDiffManager.ts#L57">@zowe/imperative/src/utilities/src/diff/WebDiffManager.ts:57</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -340,6 +377,9 @@
 									</li>
 									<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-static">
 										<a href="_zowe_imperative.webdiffmanager.html#instance" class="tsd-kind-icon">instance</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.webdiffmanager.html#encodeforscript" class="tsd-kind-icon">encode<wbr>For<wbr>Script</a>
 									</li>
 									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
 										<a href="_zowe_imperative.webdiffmanager.html#genhtmlfordiffs" class="tsd-kind-icon">gen<wbr>Html<wbr>For<wbr>Diffs</a>

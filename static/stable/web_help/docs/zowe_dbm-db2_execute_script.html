@@ -27,8 +27,16 @@
 <ul>
 <li>
 <p>Specifies the target Db2 subsystem or data sharing group where you want to execute the script. If this option is not specified, the target subsystem is identified by the first .CONNECT statement in the script.</p>
-<p>Note: If you specify the data sharing group, the first active Db2 subsystem in the group is used.</p>
-<p>The target-db2 option takes precedence over any other value that is specified for the Db2 subsystem or data sharing group.</p>
+<p>Note: The target-db2 option takes precedence over any other value that is specified for the Db2 subsystem or data sharing group.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--output-script-logfile</code> | <code>--osl</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the local output file name that contains the script execution log.</p>
+<p>Default value: script.log</p>
 </li>
 </ul>
 </li>
@@ -200,6 +208,12 @@
 <p><code>--cert-key-file</code> <em>(local file path)</em></p>
 <ul>
 <li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-account</code> <em>(string)</em></p>
+<ul>
+<li>The account name for PKCS 12 certificate stored in credential manager</li>
 </ul>
 </li>
 </ul>

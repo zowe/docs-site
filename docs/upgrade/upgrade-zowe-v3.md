@@ -1,3 +1,5 @@
+<!--THIS TOPIC IS SLATED TO BE DEPRECATED AND REPLACED WITH THE FILE: upgrading-zowe-v3.md -->
+
 # Upgrading from Zowe Vx to Zowe V3
 
 Follow the procedure outlined in this article to upgrade from Zowe v2 to Zowe v3, or from Zowe v1 to Zowe v3.

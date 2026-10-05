@@ -1,0 +1,206 @@
+# Troubleshooting Zowe Explorer
+
+As a Zowe Explorer user, you may encounter problems when using Visual Studio Code extension functions. Review Zowe Explorer known issues and troubleshooting solutions here.
+
+## Before reaching out for support
+
+1. Is there already a GitHub issue (open or closed) that covers the problem? Check [Zowe Explorer Issues](https://github.com/zowe/zowe-explorer-vscode/issues).
+2. Review the current list of [Known issues](known-ze.md) in documentation. Also, try searching using the Zowe Docs search bar (keyboard shortcut `ctrl` + `k`).
+3. Collect the following information to help diagnose the issue:
+    - The Zowe Explorer and Visual Studio Code versions installed
+        - See [Checking your Zowe version release number](../troubleshoot-check-your-zowe-version.md#zowe-explorer-for-visual-studio-code) for information.
+    - Node.js and NPM versions installed
+    - Your operating system
+    - Zowe Logs, which usually can be found in `C:\Users\userID\.vscode\extensions\zowe.vscode-extension-for-zowe-X.Y.Z\logs`
+    
+      :::note
+      In some cases, this path can differ. On operating systems such Linux or Mac, the default path is `~/.vscode/extensions/zowe.vscode-extension-for-zowe-X.Y.Z/logs`. In a non-standard installation of Visual Studio Code, extensions could be stored under a different directory.
+      :::
+
+Use [the Slack channel](https://app.slack.com/client/T1BAJVCTY/CUVE37Z5F) to reach the Zowe Explorer community for assistance.
+
+## Connection issues with Zowe Explorer
+
+If you are using Zowe Explorer at a site that uses an Internet proxy but cannot connect to a mainframe, ensure that the **Proxy Support** setting in Visual Studio Code is properly configured. Your system administrator can provide information on which option works best for your network environment.
+
+Note that Zowe Explorer cannot bypass this setting as it would circumvent the VS Code setting applied to all other extensions.
+
+To access the **Proxy Support** setting in VS Code:
+
+1. Open VS Code and select the **Manage** icon on the **Side Bar**.
+2. Select the **Settings** option from the context menu.
+3. In the Settings view, open the **Application** menu and select **Proxy**.
+4. Find the **Proxy Support** drop-down menu and select the appropriate option.
+
+In addition, VS Code allows users and administrators to configure proxy options on launch. See [Network Connections in Visual Studio Code](https://code.visualstudio.com/docs/setup/network#_proxy-server-support) for more information on proxy server support.
+
+System administrators can also add IP addresses, IP ranges, or DNS hostnames for each system inaccessible by proxy to the `NO_PROXY` environment variable. VS Code uses this variable for outgoing requests.
+
+## Resolving invalid profiles
+
+A problem with a configuration file can make Zowe Explorer unable to read your configurations.
+
+Zowe Explorer displays an error message advising it cannot read the configuration file when a Zowe V3 configuration file fails to load.
+
+Possible problems in the file could include a syntax error, or an invalid keyword or symbol.
+
+To fix the configuration file causing the error:
+
+1. Click the **Show Config** button in the message window.
+
+    ![Show Config button](../../images/ze/ZE-show-config-button.gif)
+
+    This opens the file in an **Editor** tab.
+
+2. Modify the file as needed and save the changes.
+3. Reload Visual Studio Code to confirm that Zowe Explorer can read the updated file.
+
+## Missing write access to VS Code `extensions` folder
+
+In some environments, the path for VS Code extensions (typically `~/.vscode/extensions`) can be read-only. This can happen when an environment has developers sharing a common read-only extensions folder that is managed by an admin with write access.
+
+In these cases, Zowe Explorer fails to activate because it cannot write to the `logs` and `temp` folders in the extension path. When Zowe Explorer launches, an `EACCES: permission denied` error displays. See the following examples.
+
+`logs` folder write access error:
+
+![Logs folder write access error](../../images/troubleshoot/ZE/write-access-error-logs-folder.png)
+
+`temp` folder write access error:
+
+![Logs folder write access error](../../images/troubleshoot/ZE/write-access-error-temp-folder.png)
+
+To avoid this, change the `logs` and `temp` folder locations:
+
+1. In VS Code, select the **File menu**, select **Preferences**, and click on **Settings**.
+
+2. In either the **User** or **Workspace** tab, click on the **Extensions** option to open the menu.
+
+3. Select **Zowe Explorer**.
+
+4. Enter the new path in the **Logs Folder** or **Temporary Downloads Folder** fields. For examples:
+
+    `logs` folder setting:
+
+    ![Logs folder write access error](../../images/troubleshoot/ZE/new-logs-folder-path.png)
+
+    - Log files include information about Zowe Explorer and the connections it makes to the mainframe. These files can be used for troubleshooting and to analyze errors.
+
+    <br/>`temp` folder setting:
+
+    ![Temp folder write access error](../../images/troubleshoot/ZE/new-temp-folder-path.png)
+
+    - Temporary files are local copies of data sets or USS files downloaded from the mainframe to edit in VS Code. These files last until VS Code closes and all changes have been uploaded to the mainframe.
+
+    <br/>After a new path is entered, Zowe Explorer writes logs and temporary files using the corresponding path.
+
+## Activation failures when downgrading Zowe Explorer
+
+When you downgrade your Zowe Explorer version from a more recent version, it is possible to experience activation failures when starting Zowe Explorer.
+
+This can be resolved by clearing the local storage that contains your Zowe Explorer historical data that Zowe Explorer manages for improved performance.
+
+:::warning
+
+Clearing your local storage removes your historical data on Zowe Explorer such favorites, search history, and profiles added to tree views.
+
+:::
+
+To clear your local storage on Visual Studio Code:
+
+1. Install the [SQLite3 Editor](https://marketplace.visualstudio.com/items?itemName=yy0931.vscode-sqlite3-editor) extension on VS Code.
+
+2. In your operating system's file explorer, locate the `state.vscdb` file:
+
+    - In macOS, go to `~/Library/Application Support/Code/User/globalStorage/`.
+
+    - In Linux, go to `~/.config/Code/User/globalStorage/`.
+    
+    - In Windows, go to `%APPDATA%\Code\User\globalStorage\`.
+
+3. Open the `state.vscdb` file in VS Code.
+
+4. Ensure that the `ItemTable` option is selected in the `tables` tab.
+
+    A table displays showing historical data for all VS Code extensions. 
+
+5.  Use the **Find** tab to search for `zowe.vscode`.
+
+    A filtered version of the table displays.
+
+6. Locate the `zowe.vscode-extension-for-zowe` key and select its value.
+
+    The value entry displays at the bottom of VS Code.
+
+7. Select and delete the value entry contents.
+
+    :::tip
+
+    To reuse this data later, save the content in a new, separate file.
+
+    :::
+
+8. Click the **Commit** button and close/quit VS Code.
+
+9. Reopen VS Code and restart Zowe Explorer.
+
+    Zowe Explorer activates and favorites and search history are now empty.
+
+## Excessive z/OSMF address space `S222` ABENDs
+
+**Symptom**:
+
+Numerous user address spaces are spawned and abend with reason code `S222`, resulting in excessive spool use.
+
+**Sample errors:**
+
+![ABENDs with reason code S222](../../images/troubleshoot/ZE/ZE-throttling-troubleshoot-symptom.png)
+
+z/OSMF attempts to continually use up to two address spaces by default. When too many concurrent REST requests are received, additional address spaces are spawned. These additional address spaces are immediately terminated when the request has been processed. This results in many terminated address spaces, and increased spool resource use, particularly when performing many parallel operations (such as downloading many data set members).
+
+**Solution**: Lower the value of the **zowe.settings.zosmfMaxConcurrentRequests** setting. If the issue persists, continue lowering the setting value to `1`.
+
+:::note
+
+Lowering this setting might cause requests to take longer, negatively impacting performance.
+
+:::
+
+![The zosmfMaxConcurrentRequests setting can be modified to help avoid ABENDs.](../../images/troubleshoot/ZE/ZE-throttling-troubleshoot-solution.png)
+
+## Common issues with Zowe Explorer table view
+
+To troubleshoot the table view for data sets and jobs, review the following common issues:
+
+#### Table does not load
+  - Verify that your z/OSMF profile is active and connected.
+  - Check that your search criteria is valid.
+  - Ensure you have the proper permissions to access the data sets or jobs on the mainframe.
+#### Slow performance with large number of results
+  - Use a more specific search to reduce the number of results.
+  - Lower the number of results per page.
+#### Data set table view: members view shows no data
+  - Verify that the PDS exists, is accessible, and contains members.
+  - Ensure that the PDS is not migrated.
+#### Jobs table view: action buttons are disabled
+  - Ensure you have selected at least one job row.
+  - For the **Cancel** action, verify that all selected jobs have **ACTIVE** status.
+
+## Error message with extension schema files
+
+There can be instances where issuing the Zowe CLI command `zowe config update-schemas` removes an installed extension's schema from the `extenders.json` file. In this case, an error message displays either in the extension's tree view or in a pop-up window.
+
+Reinstalling the extension does not fix the issue.
+
+This affects IBM® CICS® Transaction Server, Zowe Explorer for IBM z/OS FTP, and other Zowe Explorer extensions.
+
+To resolve the error message, update the `extenders.json` file:
+
+1. Remove the profile type from the `~/.zowe/extenders.json` file and save.
+
+    For example, if this affects the CICS extensions, remove the `cics` section from the `extenders.json` file:
+
+    ![CICS extenstion](../../images/troubleshoot/ZE/cics-section.png)
+
+2. Reload Visual Studio Code.
+
+    The profile type is re-added to the schema (`zowe.schema.json`) and reappears in `extenders.json`. The profiles should now be accessible from the extension.
