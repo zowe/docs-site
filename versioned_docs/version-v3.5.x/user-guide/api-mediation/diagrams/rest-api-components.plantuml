@@ -1,0 +1,67 @@
+@startuml rest-api-components
+
+skinparam rectangle {
+    roundCorner<<Service>> 25
+    BackgroundColor<<API>> LightBlue
+    BackgroundColor<<Service>> PaleGreen
+}
+
+rectangle gateway [
+<b>API Gateway</b>
+===
+/api/v1/service1
+/api/v2/service1
+---
+/api/v2/service2
+---
+/api/v1/service3
+]
+
+rectangle service1 <<Service>> {
+    rectangle api1v1 <<API>> [
+    <b>/v1</b>
+    ==
+    /endpoint1
+    /endpoint2
+    ]
+}
+
+node "Web Application Server" as server {
+    rectangle service3 <<Service>> {
+        rectangle api3v1 <<API>> [
+        <b>/v1</b>
+        ==
+        /endpoint1
+        /endpoint2
+        ]
+    }
+
+    rectangle service2 <<Service>> {
+        rectangle api2v2 <<API>> [
+        <b>/v2</b>
+        ==
+        /endpoint1
+        /endpoint2
+        ]
+
+        rectangle api2v1 <<API>> [
+        <b>/v1</b>
+        ==
+        /endpoint1
+        /endpoint2
+        ]
+    }
+
+}
+
+note bottom of server: A web server can host\none or more API services
+note bottom of service1: A service usually provides one API\n\nA service can run\nin its own embedded web server
+note bottom of service2: A service can provide\nmultiple versions of a REST API
+note right of gateway: API Gateway routes\nHTTP requests to REST APIs
+
+gateway --> api1v1
+gateway --> api2v1
+gateway --> api2v2
+gateway --> api3v1
+
+@enduml

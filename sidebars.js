@@ -9,6 +9,16 @@ module.exports = {
       link: { type: "doc", id: "whats-new/release-notes/release-notes-overview" },
       collapsed: false,
       items: [
+        {
+          type: "category", // doc(default), 'link'(external links), 'ref'(page without without sidebar)
+          label: "Version 3.6.0",
+          className: "ToCheadercolor",
+          link: { type: "doc", id: "whats-new/release-notes/v3_6_0" },
+          items: [
+            "whats-new/release-notes/v3_6_0-client", 
+            "whats-new/release-notes/v3_6_0-server",             
+          ],        
+        },
         "whats-new/release-notes/v3_5_0",        
         "whats-new/release-notes/v3_4_1",
         "whats-new/release-notes/v3_4_0",
@@ -53,7 +63,7 @@ module.exports = {
         "whats-new/release-notes/v2_2_0",
         "whats-new/release-notes/v2_1_0",
         "whats-new/release-notes/v2_0_0",
-      ],
+      ]
     },
   ],
   "getting-started": [
@@ -402,7 +412,6 @@ module.exports = {
                 "user-guide/cli-configure-cli-on-os-where-scs-unavailable",
               ],
             },
-            "user-guide/cli-updatingcli",
             {
               type: "category",
               label: "Configuring Zowe CLI",
@@ -469,14 +478,11 @@ module.exports = {
     },
   ],
  "upgrade": [
+  "upgrade/upgrading-zowe",
   {
     type: "category",
-    label: "Upgrading Zowe",
+    label: "Zowe server-side components",
     collapsed: false,
-    link: {
-      type: "doc",
-      id: "upgrade/upgrading-zowe", // This attaches the doc directly to the category label
-    },
     items: [
       "upgrade/upgrade-zowe-v3",
       "upgrade/upgrade-zowe-v2",
@@ -484,6 +490,19 @@ module.exports = {
       "upgrade/upgrade-to-single-service-apiml-deployment",
       "upgrade/migrate-from-convenience-build-to-pswi-smpe",
       "upgrade/downgrade-to-a-previous-zowe-version",
+    ]
+  },
+  {
+    type: "category",
+    label: "Zowe client-side components",
+    collapsed: false,
+    link: {
+      type: "doc",
+      id: "upgrade/upgrading-zowe", // This attaches the doc directly to the category label
+    },
+    items: [
+      "upgrade/cli-updatingcli",
+      "upgrade/ze-updatingze",
     ]
   }
 ],
@@ -1007,7 +1026,7 @@ module.exports = {
     {
       type: "link",
       label: "Third Party Software Requirements",
-      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v3.5.x.md",
+      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v3.6.x.md",
     },
   ],
 }

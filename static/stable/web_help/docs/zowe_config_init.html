@@ -8,7 +8,7 @@
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_config.html">config</a> › <a href="zowe_config_init.html">init</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Initialize config files. Defaults to initializing &quot;zowe.config.json&quot; in the current working directory unless otherwise specified.</p>
-<p>Use &quot;--user-config&quot; to init &quot;zowe.config.user.json&quot;. Use &quot;--global-config&quot; to initialize the configuration files in your home &quot;~/.zowe&quot; directory.</p>
+<p>Use &quot;--user-config&quot; to init &quot;zowe.config.user.json&quot;. Use &quot;--global-config&quot; to initialize the configuration files in your home &quot;&lt;The User Home Directory&gt;/.zowe&quot; directory.</p>
 <p>Use &quot;--no-prompt&quot; to skip prompting for values in a CI environment.</p>
 <h4>Usage</h4>
 <p>zowe config init [options]</p>
@@ -78,13 +78,13 @@
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Initialize configuration files in your home &quot;~/.zowe&quot; directory:</p>
+<p>Initialize configuration files in your home &quot;&lt;The User Home Directory&gt;/.zowe&quot; directory:</p>
 <ul>
 <li><code>zowe config init --global-config</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config init --global-config">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Do a dry run of initializing configuration files in your home &quot;~/.zowe&quot; directory:</p>
+<p>Do a dry run of initializing configuration files in your home &quot;&lt;The User Home Directory&gt;/.zowe&quot; directory:</p>
 <ul>
 <li><code>zowe config init --global-config --dry-run</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config init --global-config --dry-run">Copy</button></li>
 </ul>
