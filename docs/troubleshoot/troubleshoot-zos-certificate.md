@@ -472,7 +472,7 @@ Do the following to confirm you have the correct CA:
 RACDCERT CHKCERT ID(IZUSVR) LABEL('your-zosmf-cert') CHAIN
 
 ```
-In the output, locate the issuing CA and record its SHA-256 fingerprint.
+In the output, locate the issuing CA and record its `SHA-256` fingerprint.
 2. On the Zowe LPAR, run: 
 ```
 RACDCERT CHKCERT CERTAUTH LABEL('your-zosmf-ca-label')
