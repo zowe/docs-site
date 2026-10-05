@@ -800,7 +800,7 @@ JES Explorer and MVS Explorer fetch data through z/OSMF REST APIs, not through Z
 - Authorize `ZWESVUSR` to generate passtickets for `IZUDFLT` on the Zowe LPAR. 
 - Define the `PTKTDATA` profile on each LPAR and then rebuild the `ACF2/RACF` class: `F ACF2,PROFILE(PTKTDATA),REBUILD(SSIG)`.
 
-Additionally, each user who uses JES Explorer or MVS Explorer must have a valid login ID in the z/OSMF LPAR's security database, with an OMVS segment (`UID` and `HOME` directory). The user's Zowe LPAR ID is used to generate the passticket, so z/OSMF must be able to recognize that same user ID."
+Additionally, each user who uses JES Explorer or MVS Explorer must have a valid login ID in the z/OSMF LPAR's security data base, with an OMVS segment (`UID` and `HOME` directory). The user's Zowe LPAR ID is used to generate the passticket, so z/OSMF must be able to recognize that same user ID."
 
 
 **Requirements:**
