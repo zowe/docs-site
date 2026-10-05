@@ -553,7 +553,7 @@ When you change `auth.provider` from `zosmf` to `saf`, also set `jwtAutoconfigur
 - **apiml.security.auth.zosmf.serviceId**  
  Allows customization of the service id in case `zosmf` is specified as an authentication provider. The default value is `ibmzosmf`
 - **apiml.security.auth.zosmf.jwtAutoconfiguration**  
- Customizes the behavior of the Gateway with respect to how JWTs are produced. Valid options are `jwt` and `ltpa`.  `jwt` is the default option. `ltpa` allows API ML to produce JWTs instead of the z/OSMF service. `jwt` is the default and recommended option. 
+ Customizes the behavior of the Gateway with respect to how JWTs are produced. Valid options are `jwt` and `ltpa`. `jwt` is the default and recommended option. `ltpa` allows API ML to produce JWTs instead of the z/OSMF service.  
  The two types are:
  - jwtAutoconfiguration: jwt (default)
   - Use this setting when you install z/OSMF on the same LPAR as the Zowe API Gateway. z/OSMF auto-registers with the API Mediation Layer's Eureka discovery service. If z/OSMF is on a separate LPAR or does not register in Eureka (which is common in cross-LPAR deployments), the Gateway startup fails and displays a message `z/OSMF service ibmzosmf is either not registered or not online yet` and the authentication returns a value of 401.
