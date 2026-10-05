@@ -793,7 +793,7 @@ This configuration applies to all Zowe components.
 
 Zowe has an SSO scheme with the goal that each time you use multiple Zowe components you should only be prompted to login once. 
 **Cross-LPAR SSO requirement for JES Explorer and MVS Explorer:**
-JES Explorer and MVS Explorer fetch data through z/OSMF REST APIs, not through ZSS. When Zowe runs on a LPAR different than z/OSMF, the API Gateway generates a passticket on the Zowe LPAR and presents it to z/OSMF on the remote LPAR.
+JES Explorer and MVS Explorer fetch data through z/OSMF REST APIs, not through ZSS. When Zowe runs on an LPAR different than z/OSMF, the API Gateway generates a passticket on the Zowe LPAR and presents it to z/OSMF on the remote LPAR.
 
 **Ensure that both LPARs have the following configuration:**
 - Define the `PTKTDATA` profile for `IZUDFLT` (or your z/OSMF application name) with the SAME session key (SSIGN/KEYMASKED value) on both LPARs. If the keys differ, z/OSMF rejects the passticket even when generation succeeds.
