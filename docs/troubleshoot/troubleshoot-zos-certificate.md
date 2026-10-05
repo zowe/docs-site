@@ -483,6 +483,6 @@ Record its SHA-256 fingerprint.
 :::Important
 Connect CA certificates to `ZOWEKeyring` with `USAGE(CERTAUTH)` only.
 
-Do not connect the personal certificate (typically owned by `IZUSVR`, `label DefaultzOSMFCert.IZUDFLT`) of the z/OSMF server  to ZOWEKeyring.
+Do not connect the personal certificate (typically owned by `IZUSVR`, `label DefaultzOSMFCert.IZUDFLT`) of the z/OSMF server to ZOWEKeyring.
 If this certificate is present in ZOWEKeyring as `PERSONAL`, remove the certificate. The presence of the certificate can cause Java's TLS stack to select the wrong certificate while establishing outbound TLS connections.
 :::
