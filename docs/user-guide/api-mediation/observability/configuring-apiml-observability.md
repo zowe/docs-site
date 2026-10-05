@@ -12,7 +12,7 @@ API ML system observability is available exclusively for the API ML single-servi
 :::
 
 :::note Notes:
-* Beginning with Zowe v 3.5.0, API ML integrates OpenTelemetry following current OTel semantics and defaults from the OTel project, and select z/OS-specific features. 
+* Observability integration is available beginning with Zowe v3.4.0, with the complete log-signal set available since Zowe v3.5.0. API ML integrates OpenTelemetry following current OTel semantics, defaults from the OTel project, and select z/OS-specific features.
   
 * API ML supports both z/OS and non-z/OS deployments. 
 :::
@@ -87,7 +87,7 @@ The observability stack for API ML consists of three primary layers:
 * **The Provider (API ML)**  
 Captures internal events and exports them using the OTLP protocol. Details about the provider are found in the Zowe Docs documentation.
 * **The Collector**  
-A standalone service (OTel Collector) that receives, processes, and exports data. Details about the OTel Colector are found in the [OpenTelemetry documentation](https://opentelemetry.io/).
+A standalone service (OTel Collector) that receives, processes, and exports data. Details about the OTel Collector are found in the [OpenTelemetry documentation](https://opentelemetry.io/).
 * **The Backend (Visualization)**  
 Tools like Grafana, Jaeger, or Prometheus where the data is stored and visualized. Details about backend visualization are found in the specific product documentation.
 

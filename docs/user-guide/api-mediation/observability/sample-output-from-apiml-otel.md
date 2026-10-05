@@ -2,7 +2,6 @@
 
 Once the configuration is active, API ML exports OTLP-compliant packets to your collector. The result is a context-aware telemetry stream where every signal (metric, trace, or log) is enriched with resource attributes. These attributes allow you to filter and group performance data by infrastructure, application identity, or specific process details.
 
-<!-- Note output data also contains attributes coming from the  Spring OpenTelemetry SDK, these are documented in the respective SDK documentation -->
 **Sample Output:**
 
 ```json
@@ -118,7 +117,19 @@ Once the configuration is active, API ML exports OTLP-compliant packets to your 
                     {
                         "key": "service.version",
                         "value": {
-                            "stringValue": "3.5.7-PR-4456-3-SNAPSHOT"
+                            "stringValue": "3.6.0"
+                        }
+                    },
+                    {
+                        "key": "telemetry.distro.version",
+                        "value": {
+                            "stringValue": "2.31.1"
+                        }
+                    },
+                    {
+                        "key": "telemetry.sdk.version",
+                        "value": {
+                            "stringValue": "1.66.0"
                         }
                     },
                     {
