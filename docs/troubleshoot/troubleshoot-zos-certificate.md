@@ -390,7 +390,7 @@ The Zowe log contains the following ERROR message:
 
 This error occurs when the `Java Cryptography Extension` (JCE) provider cannot access the `RSA` key dataset defined for Zowe.
 In ACF2, access to RSA key resources is controlled through the `CSFKEYS` resource class,
-which governs permissions to use or read private keys stored in the security database.
+which governs permissions to use or read private keys stored in the security data base.
 If the Zowe started task ID (`ZWESVUSR`) lacks the appropriate `READ` access to the RSA key resource, all configured JCE providers
 fail to initialize, resulting in this failover error.
 
@@ -479,7 +479,7 @@ RACDCERT CHKCERT CERTAUTH LABEL('your-zosmf-ca-label')
 
 ```
 Record its SHA-256 fingerprint.
-3. The fingerprints must match. If they do not, the certificate in `ZOWEKeyring` is not the correct CA. Export the actual issuing CA from the z/OSMF LPAR security database and re-import the CA.
+3. The fingerprints must match. If they do not, the certificate in `ZOWEKeyring` is not the correct CA. Export the actual issuing CA from the z/OSMF LPAR security data base and re-import the CA.
 :::Important
 Connect CA certificates to `ZOWEKeyring` with `USAGE(CERTAUTH)` only.
 
