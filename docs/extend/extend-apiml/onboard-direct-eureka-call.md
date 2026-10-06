@@ -18,7 +18,7 @@ This article outlines a process to make an API service available in the API Medi
 - [Onboarding a service with the Zowe API Mediation Layer without an onboarding enabler](#onboarding-a-service-with-the-zowe-api-mediation-layer-without-an-onboarding-enabler)
   - [Introduction](#introduction)
   - [Registering with the Discovery Service](#registering-with-the-discovery-service)
-    - [API Mediation Layer Service onboarding metadata](#api-mediation-layer-service-onboarding-metadata)
+    - [API Mediation Layer service onboarding metadata](#api-mediation-layer-service-onboarding-metadata)
       - [Catalog parameters](#catalog-parameters)
       - [Service parameters](#service-parameters)
       - [Routing parameters](#routing-parameters)
@@ -26,7 +26,7 @@ This article outlines a process to make an API service available in the API Medi
       - [API Info parameters](#api-info-parameters)
   - [Sending a heartbeat to API Mediation Layer Discovery Service](#sending-a-heartbeat-to-api-mediation-layer-discovery-service)
   - [Validating successful onboarding with API Mediation Layer](#validating-successful-onboarding-with-api-mediation-layer)
-  - [External Resources](#external-resources)
+  - [External resources](#external-resources)
 
 ## Introduction
 
@@ -117,7 +117,7 @@ a current limitation in Spring Cloud Netflix, routes are created only for instan
  * **metadata**  
  specifies the set of parameters described in the following section addressing API ML service metadata.
 
-### API Mediation Layer Service onboarding metadata
+### API Mediation Layer service onboarding metadata
 
 At registration time, provide metadata in the following format. Metadata parameters contained in this code block are described in the following section.
 
@@ -216,7 +216,7 @@ Specifies whether all operations can be retried for this service. The default va
   (Optional) Specify a comma-separated list of HTTP headers that are allowed during a CORS request to this service.
 
 * **customMetadata.apiml.corsAllowCredentials**  
-  (Optional) Configure whether the browser should include credentials (such as cookies, authorization headers, or TLS client certificates) in CORS requests. Note that the per-service default is `false`, whereas the Gateway-level default is hardcoded to `true`.
+  (Optional) Configure whether the browser should include credentials (such as cookies, authorization headers, or TLS client certificates) in CORS requests. The Gateway-level default and the per-service default are hardcoded to `true`.  
 
 * **customMetadata.apiml.corsAllowedMethods**  
   (Optional) Specify a comma-separated list of HTTP methods (e.g., `GET`, `POST`, `PUT`, `DELETE`) that are allowed when accessing the service via CORS.
@@ -380,6 +380,6 @@ Ensure that you successfully onboarded a service with the API Mediation Layer.
 
   3. (Optional) Check that you can access your API service endpoints directly outside of the Gateway.
 
-## External Resources
+## External resources
 
  - https://github.com/Netflix/eureka/wiki/Eureka-REST-operations

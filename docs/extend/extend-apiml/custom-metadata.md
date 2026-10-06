@@ -1,4 +1,4 @@
-# Customizing Metadata (optional)
+# Customizing metadata (optional)
 
 Additional metadata can be added to the instance information that is registered in the Discovery Service in the `customMetadata` section. This information is propagated from the Discovery Service to the onboarded services (clients). In general, additional metadata do not change the behavior of the client. Some specific metadata can configure the functionality of the API Mediation Layer. Such metadata are generally prefixed with the `apiml.` qualifier. We recommend you define your own qualifier, and group all metadata you wish to publish under this qualifier. If you use the Spring enabler, ensure that you include the prefix `apiml.service` before the parameter name.
 
@@ -84,14 +84,14 @@ Specifies the Gateway port used by the ZAAS Client configuration. The default va
   :::
 
 * **customMetadata.apiml.corsAllowCredentials**  
-(Optional) Configure whether the browser should include credentials (such as cookies, authorization headers, or TLS client certificates) in CORS requests. Note that while the Gateway-level default is hardcoded to `true`, the per-service default for this parameter is `false`.  
+(Optional) Configure whether the browser should include credentials (such as cookies, authorization headers, or TLS client certificates) in CORS requests. The Gateway-level default and the per-service default are hardcoded to `true`.  
   :::note
   If you use the Spring enabler, use the following parameter name:
   `apiml.service.customMetadata.apiml.corsAllowCredentials`
   :::
 
 * **customMetadata.apiml.corsAllowedMethods** 
-(Optional) Specify a comma-separated list of HTTP methods (e.g., `GET`, `POST`, `PUT`, `DELETE`) that are allowed when accessing the service via CORS.  
+(Optional) Specify a comma-separated list of HTTP methods (for example, `GET`, `POST`, `PUT`, `DELETE`) that are allowed when accessing the service via CORS.  
   :::note
   If you use the Spring enabler, use the following parameter name:
   `apiml.service.customMetadata.apiml.corsAllowedMethods`
