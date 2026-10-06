@@ -1,4 +1,4 @@
-# Customizing and Interpreting API ML OpenTelemetry Log Signals
+# Customizing and interpreting API ML OpenTelemetry log signals
 
 Use API ML OpenTelemetry (OTel) log signals to monitor and assess security and routing activity of your z/OS-based service infrastructure. By aggregating these signals in a monitoring backend, administrators can validate request routing, visualize usage trends and operational evolution, such as shifting latency patterns and fluctuations in traffic volume, and maintain a comprehensive audit trail of all Gateway transactions. 
 
@@ -7,7 +7,7 @@ Use API ML OpenTelemetry (OTel) log signals to monitor and assess security and r
 
 Every individual request, service heartbeat, and registration event triggers a unique, independent log signal. Signals are generated and queued for export only after the Gateway has obtained a definitive result (success or failure) from a target service. To optimize network performance, log signals are buffered in memory and transmitted via a Batch Exporter. While delivered as a bundle, each entry in the export is processed by your OTel Collector as a unique, independent log signal.
 
-## Functional Classification of API ML Signals
+## Functional classification of API ML signals
 
 API ML signals represent a standardized telemetry log record for every transaction handled by the Gateway. 
 
@@ -22,13 +22,13 @@ The telemetry data identifies users as authenticated principals (captured via th
 | **Onboarded Microservices** | Requests where the Gateway acts as a reverse proxy, authenticating and forwarding traffic to external microservices. | `/apicatalog/api/v1/...`, `/your-app/api/...` |
 
 
-## Log Record Attributes  
+## Log record attributes  
 
 API ML telemetry links a parent Resource Context with individual Log Records to provide a complete operational picture. The Resource Context identifies API ML as the producing service and details the API ML environment, including the deployment tier, hosting infrastructure (such as the LPAR and Host name), and the runtime stack (including z/OS version, OS type, and JVM/Process specifics).
 
 By linking discrete Log Records to this parent context, the telemetry hierarchy ensures that every signal, such as service heartbeats to routed requests, is automatically contextualized by the metadata of the specific API ML instance that generated the signal.
 
-### Resource Context (Resource Logs)  
+### Resource context (Resource Logs)  
 Resource Logs provide the metadata about the entity producing the logs (for example, the service, host, and OS). Resource Logs define the environmental and process context, such as host architecture and service names, to ensure that global metadata is defined once rather than redundantly for every event.
 
 For details, see [Resource Attributes](../configuring-apiml-observability.md#resource-attributes) in _Configuring API ML Observability_
@@ -77,7 +77,7 @@ Due to the batch nature of the API ML implementation, each entry in the `logReco
   **Type:** String.
 
 
-## Body JSON Attributes (Custom API ML Signals)
+## Body JSON attributes (custom API ML signals)
 
 API ML automatically collects specific data points including request paths, HTTP methods, user IDs, and authentication status to enable customized filtering within your monitoring backend. The following attributes are found within the JSON of the `body` field and represent API ML specific logic:
 
@@ -132,7 +132,7 @@ The original remote identity provided during OIDC-based authentication. While th
 ```
 
 
-## Example of Batch exporter
+## Example of batch exporter
 
 In the following example, the exporter functions as a batch exporter, where multiple logs are collected and transmitted simultaneously.
 

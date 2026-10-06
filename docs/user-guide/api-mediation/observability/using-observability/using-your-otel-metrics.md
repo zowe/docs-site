@@ -1,12 +1,12 @@
-# Using Your API ML OpenTelemetry Metrics
+# Using Your API ML OpenTelemetry metrics
 
-## Examples of Usability of Telemetry data in API ML
+## Examplesyof Usability of Telemetry data in API ML
 
 How a system administrator interacts with this data depends on the visualization tool used (e.g., Grafana, Jaeger, or Broadcom WatchTower).
 
 Review the following examples of how to to query and visualize the OpenTelemetry signals (Logs, Metrics, and Traces) using standard observability backends.
 
-### Logs: Monitoring Service Usage Over Time (Grafana/Loki)
+### Logs: Monitoring service usage over time (Grafana/Loki)
 
 You can query the OpenTelemetry log-signal body attributes to audit active users or track service adoption. For example, to find the distinct authenticated users interacting with a specific service within a specified time period, you can use the following LogQL query in Grafana/Loki:
 

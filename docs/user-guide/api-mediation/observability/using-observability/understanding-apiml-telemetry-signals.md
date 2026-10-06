@@ -1,4 +1,4 @@
-# Understanding API ML Telemetry Signals
+# Understanding API ML telemetry signals
 
 API Mediation Layer utilizes the three core OpenTelemetry signals to provide a complete picture of your mainframe gateway’s health and performance. By combining these signals, administrators can identify high-level symptoms, and also pinpoint root causes within a specific service or address space. The follow points describe how different signal types apply to API ML observability:
 

@@ -1,4 +1,4 @@
-# API ML Observability Use Cases
+# API ML Observability use cases
 
 <!-- PABLO TO VALIDATE IF THESE CASES ARE CORRECT-->
 
