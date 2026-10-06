@@ -1,4 +1,4 @@
-# Using Your API ML OpenTelemetry metrics
+# Using your API ML OpenTelemetry metrics
 
 ## Examplesyof Usability of Telemetry data in API ML
 

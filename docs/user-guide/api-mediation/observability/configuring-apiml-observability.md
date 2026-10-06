@@ -1,4 +1,4 @@
-# Configuring API ML Observability 
+# Configuring API ML observability 
 
 Enable system observability of Zowe API Mediation Layer (API ML) through integration with [OpenTelemetry (OTel)](https://opentelemetry.io/). This integration enables API ML to produce observability data that describes runtime behavior, request processing, and service interactions.
 
@@ -17,7 +17,7 @@ API ML system observability is available exclusively for the API ML single-servi
 * API ML supports both z/OS and non-z/OS deployments. 
 :::
 
-## Overview of OpenTelemetry Architecture
+## Overview of OpenTelemetry architecture
 
 API ML observability is built upon **Resources** (the 'who' and 'where'), which define the identity and z/OS context of the system, and **Signals** (the 'what' and 'how'), which represent the actual streams of metrics, traces, and logs produced by those resources. 
 In the API ML context, resource attributes are defined in three categories:
@@ -28,13 +28,13 @@ In the API ML context, resource attributes are defined in three categories:
 <details>
 <summary>Click here for details about <b>Resource Attributes</b> in OpenTelemetry.</summary>
 
-## Resource Attributes
+## Resource attributes
 
 A **Resource** In OpenTelemetry represents the entity producing telemetry. For Zowe, this is the API ML single-service instance. Every _signal_ (metric/trace/log) produced carries a set of attributes that identify a specific instance.
 
 OpenTelemetry resource attributes for API ML are organized into three logical groups of attributes: Service, Deployment, and z/OS. This categorization follows the [OpenTelemetry Semantic Conventions](https://opentelemetry.io/docs/specs/semconv/resource/) (standardized naming rules) to ensure that the telemetry produced by Zowe is consistent with industry standards and easily consumable by monitoring backends.
 
-### Resource Attribute Categories
+### Resource attribute categories
 
 * **Service Attributes**  
 Define the logical identity of your application. The service.name allows you to group multiple instances into a single functional view. Additional attributes like `service.instance.id` or `service.namespace` distinguish between different installations or individual jobs, allowing you to monitor the entire ecosystem while pinpointing issues within a specific Logical Partition (LPAR) or site.
@@ -54,7 +54,7 @@ The API ML service itself produces a range of telemetry data referred to as _sig
 <details>
 <summary>Click here for further details about API ML <b>Signals</b> used in OpenTelemetry.</summary>
 
-## Telemetry Signals and Observability
+## Telemetry signals and observability
 
 By default, the OpenTelemetry integration captures performance, health, and interaction signals, which are enriched with the resource attributes configured in your zowe.yaml to provide environmental context. You can also specify where data is exported. Observability is achieved through the combination of telemetry signals, which quantify the real-time state and activity of the system, and resource attributes, which provide the structural labels necessary to organize and interpret those signals.
 
@@ -80,7 +80,7 @@ Taken together, the Signal provides the evidence of what happened (the "what"), 
 
 </details>
 
-### Architectural Components of API ML Observability
+### Architectural components of API ML observability
 
 The observability stack for API ML consists of three primary layers:
 
@@ -91,7 +91,7 @@ A standalone service (OTel Collector) that receives, processes, and exports data
 * **The Backend (Visualization)**  
 Tools like Grafana, Jaeger, or Prometheus where the data is stored and visualized. Details about backend visualization are found in the specific product documentation.
 
-## Overview of Manual Core Configuration 
+## Overview of manual core configuration 
 
 To activate observability, you must:
 
@@ -100,11 +100,11 @@ To activate observability, you must:
 
 For detailed instructions of how to configure these settings, see [Quick-start configuration of API ML Observability](quick-start-configuration-of-apiml-observability.md).
 
-## Automated Resource Attribution
+## Automated resource attribution
 
 To simplify the configuration process, API ML is designed to automatically detect the z/OS environment context. This automation ensures that every telemetry signal (metric, trace, or log) is enriched with mainframe-specific metadata. This metadata enrichment allows users to filter, group, and visualize data by Sysplex, LPAR, or specific environment without tagging manually.
 
-### Automated Environment Discovery
+### Automated environment discovery
 
 By default, API ML automatically discovers your environment name using the `&ENVIRON.` z/OS system symbol. Manual configuration of the deployment environment is only necessary if:
 
@@ -114,7 +114,7 @@ By default, API ML automatically discovers your environment name using the `&ENV
 
 For details about how to override the deployment environment variable, see [Advanced configuration of API ML Observability](advanced-configuration-of-apiml-observability.md).
 
-### z/OS Contextual Metadata
+### z/OS contextual metadata
 
 API ML automatically queries z/OS control blocks to identify the SMF ID, Sysplex, and LPAR. The following system symbols are used to automatically assign values to the corresponding OpenTelemetry resource attributes:
 
@@ -128,11 +128,11 @@ This contextual automation ensures that telemetry data remains traceable to the 
 
 For details about how to override the values of these z/OS attributes, see [Advanced configuration of API ML Observability](advanced-configuration-of-apiml-observability.md).
 
-## Next Step
+## Next step
 
 * For a quick-start to configure API ML to collect observability data through OpenTelemetry, see [Quick-start configuration of API ML Observability](quick-start-configuration-of-apiml-observability.md).
 
-## Additional Resources
+## Additional resources
 
 * For details about API ML Telemetry signals, see [Understanding API ML Telemetry Signals](./using-observability/understanding-apiml-telemetry-signals.md).
 * For details about how API ML OpenTelemetry data could apply to a range of use cases, see [API ML Observability Use Cases](./using-observability/apiml-observability-use-cases.md).

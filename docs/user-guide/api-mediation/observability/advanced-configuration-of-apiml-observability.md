@@ -23,7 +23,7 @@ Configuration of the following core attributes is required:
 
 * **enabled**  
 A flag that initializes the OpenTelemetry SDK. Must be set to `true` to generate and export observability data.  
-**Default:** `true` (OpenTelemetry is disabled unless explicitly enabled)
+**Default:** `false` (OpenTelemetry is disabled unless explicitly enabled)
 
 * **exporter.endpoint**  
 The destination URL for your OTLP (OpenTelemetry Protocol) collector.
