@@ -1,4 +1,4 @@
-# Quick-start configuration of API ML Observability
+# Quick-start configuration of API ML observability
 
 To enable observability in the Zowe API Mediation Layer (API ML), you must configure the OpenTelemetry (OTel) SDK to capture **telemetry signals** and enrich them with **resource attributes**. This process ensures that your mainframe performance and health data are accurately identified and correlated within your observability backend.
 
@@ -32,20 +32,20 @@ In complex mainframe environments, you may have multiple API ML installations ac
 OpenTelemetry uses a three-tier approach to define service identity:
 
 * **service.name** (The Service)  
-Identifies the logical name of the service. This property value should be identical for all instances across your entire organization that perform the same function (e.g., zowe-apiml). Expected to be globally unique if `namespace` is not defined.
+Identifies the logical name of the service. This property value should be identical for all instances across your entire organization that perform the same function (for example, `zowe-apiml`). Expected to be globally unique if `namespace` is not defined. Configuration of this attribute is optional. If this attribute is omitted, a default name is generated automatically in the format `apiml:<sysplex|hostname>:<port>`.
 
 * **service.namespace** (The Environment/Site)  
-Groups services into logical sets. Use this property value to distinguish between different installations, such as sysplex-a vs. sysplex-b, or north-datacenter vs. south-datacenter. `service.name` is expected to be unique within the same `namespace`.
+Groups services into logical sets. Use this property value to distinguish between different installations, such as sysplex-a vs. sysplex-b, or north-datacenter vs. south-datacenter. `service.name` is expected to be unique within the same `namespace`. Configuration of this attribute is optional.
 
 * **service.instance.id** (The Unique Instance)  
 Identifies a specific running process or Address Space. This attribute is automatically generated via `hostname:serviceId:port`.
 :::
 
 i. **Assign a common service name.**  
-    Set the `service.name` to a shared value across all instances belonging to the same logical application (For example, `zowe-apiml`). This attribute identifies the logical name of the service. This property value should be identical for all instances across your entire organization that perform the same function. The service name value is expected to be globally unique if `namespace` is not defined.
+    Set the `service.name` to a shared value across all instances belonging to the same logical application (For example, `zowe-apiml`). This attribute identifies the logical name of the service. This property value should be identical for all instances across your entire organization that perform the same function. The service name value is expected to be globally unique if `namespace` is not defined. 
 
 ii. **Define the service namespace.**  
-Use `service.namespace` to group instances by logical boundaries, such as a specific data center, sysplex, or business unit. `service.name` is expected to be unique within the same `namespace`.
+Use `service.namespace` to group instances by logical boundaries, such as a specific data center, sysplex, or business unit. `service.name` is expected to be unique within the same `namespace`. 
 
 iii. **Confirm attribute requirements.**  
 Ensure these identifiers align with the grouping and filtering logic of your backend.
@@ -60,17 +60,22 @@ components:
     telemetry:
       enabled: true
       exporter:
-        endpoint: "https://otel-collector.your.domain:4317"
+        endpoint: "https://otel-collector.your.domain:4318"
+        protocol: "http/protobuf" # or "grpc" with port 4317
       service:
         name: "<your-service-name>"           # example: "zowe-apiml"
         namespace: "<your-service-namespace>" # example: "sysplex-a" 
 ```
 
 :::note **Notes:**
+* 
 
 * If your collector is working and you have defined the service identity and correctly configured the zowe.yaml file, the integration is fully functional. API Mediation Layer automatically discovers the `service.instance.id` and existing z/OS system attributes defined in zowe.yaml. If you choose to manually override these automated values or define custom environment labels, you can perform the remaining optional steps in this procedure.
 
-* To customize automatically discovered attributes, see the full zowe.yaml configuration for API ML observability in the article [Advanced configuration of API ML Observability](advanced-configuration-of-apiml-observability.md). Note that using the values generated through the automization is the preferred method.  
+* To customize automatically discovered attributes, see the full zowe.yaml configuration for API ML observability in the article [Advanced configuration of API ML Observability](advanced-configuration-of-apiml-observability.md). Note that using the values generated through the automation is the preferred method.  
+
+* To configure a secure (HTTPS) connection to your collector, or to change exporter transport protocols, see [Collector connection](advanced-configuration-of-apiml-observability.md#collector-connection) in _Advanced configuration of API ML Observability_.
+
 :::
 
 API ML observability is enabled.

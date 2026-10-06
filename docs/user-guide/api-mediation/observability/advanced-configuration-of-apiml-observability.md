@@ -9,37 +9,53 @@ Review the complete configuration structure for OpenTelemetry (OTel) integration
 For a simplified setup that relies on automatic system discovery, see [Quick-start configuration of API ML Observability](quick-start-configuration-of-apiml-observability.md).
 :::
 
-<!--
-PLEASE ADD SECTION ABOUT THE COLLECTOR CONNECTION ADVANCED CONFIGURATION
+## Configuring a collector 
 
--->
+When defining your exporter endpoint, ensure that the chosen protocol matches your collector's configuration. The exporter protocol (`telemetry.exporter.protocol`) can be set to either `http/protobuf` (typically port `4318`) or `grpc` (typically port `4317`). If you do not specify an endpoint, the exporter defaults to `http://localhost:4318` using `http/protobuf`.
 
+If you configure a secure HTTPS collector endpoint (for example, `https://otel-collector.your.domain:4318`), the OTLP exporter automatically reuses the API ML SSLContext. By using the API ML SSLContext, the exporter uses the same key and trust stores as the rest of API ML. Note the requirement that the collector must trust the API ML certificate chain and vice versa.
 
 Review the following attributes and their corresponding definitions in the full zowe.yaml configuration for API ML observability.
 
-### Core Configuration
+## Configuring core attributes
 
 Configuration of the following core attributes is required:
 
 * **enabled**  
 A flag that initializes the OpenTelemetry SDK. Must be set to `true` to generate and export observability data.  
-**Default:** `true`
+**Default:** `false` (OpenTelemetry is disabled unless explicitly enabled)
 
 * **exporter.endpoint**  
 The destination URL for your OTLP (OpenTelemetry Protocol) collector.
+**Default:** `http://localhost:4318`
 
-### Service Identity Attributes
+* **exporter.protocol**  
+Specifies the transport protocol for the exporter. Valid values are `http/protobuf` or `grpc`.
+
+* **traces.exporter**  
+Specifies the exporter for trace signals.  
+**Default:** `otlp`
+
+* **metrics.exporter**
+Specifies the exporter for metric signals.  
+**Default:** `otlp`
+
+* **logs.exporter**  
+Specifies the exporter for log signals.  
+**Default:** `otlp`
+
+## Configuring service identity attributes
 
 * **service.name**  
-The logical name of the application. All instances of API ML in a high-availability (HA) cluster should share this name to be grouped correctly in your backend (for example, `zowe-apiml`). The `service.name` value is expected to be globally unique if `namespace` is not defined. Configuration of this attribute is required.
+The logical name of the application. All instances of API ML in a high-availability (HA) cluster should share this name to be grouped correctly in your backend (for example, `zowe-apiml`). The `service.name` value is expected to be globally unique if `namespace` is not defined. Configuration of this attribute is optional. If this attribute is omitted, a default name is generated automatically in the format `apiml:<sysplex|hostname>:<port>`.
 
 * **service.namespace**  
-The assigned value used to distinguish a group of services, such as the LPAR, or owner team. `service.name` is expected to be unique within the same `namespace`. Configuration of this attribute is required.
+The assigned value used to distinguish a group of services, such as the LPAR, or owner team. `service.name` is expected to be unique within the same `namespace`. Configuration of this attribute is optional.
 
 * **service.instance.id** (The Unique Instance)    
 Identifies a specific running process or Address Space. This attribute is  generated automatically via `hostname:serviceId:port`. This value must be globally unique for every instance. As multiple z/OS systems can run identical job names, if customizing this attribute, ensure that you combine the job name with a unique identifier (such as the LPAR name or a UUID) to ensure the instance can be isolated during troubleshooting.
 
-### Resource Attributes (Manual Overrides)
+## Configuring resource attributes (manual overrides)
 
 The following resource attributes describe the host environment. While API ML attempts to discover these automatically from z/OS system symbols, these attributes can be manually defined as needed according to your company policies.  
 
@@ -73,7 +89,14 @@ components:
     telemetry:
       enabled: true
       exporter:
-        endpoint: "http://otel-collector.your.domain:4317"
+        endpoint: "https://otel-collector.your.domain:4318"
+        protocol: "http/protobuf"  # or "grpc" with port 4317
+      traces:
+        exporter: "otlp"
+      metrics:
+        exporter: "otlp"
+      logs:
+        exporter: "otlp"
       service:
         name: "zowe-apiml"
         namespace: "production"

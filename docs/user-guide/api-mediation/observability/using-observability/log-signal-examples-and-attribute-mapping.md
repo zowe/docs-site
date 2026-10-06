@@ -1,5 +1,5 @@
 
-# Log Signal Examples and Attribute Mapping
+# Log signal examples and attribute mapping
 
 The following scenarios represent common log signals emitted by API ML. Each example includes the specific attributes present in the signal body and the resulting JSON payload.
 
