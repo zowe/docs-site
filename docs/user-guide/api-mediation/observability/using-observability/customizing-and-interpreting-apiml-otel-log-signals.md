@@ -84,8 +84,8 @@ API ML automatically collects specific data points including request paths, HTTP
 * **auth.service.auth.method**  
 The specific authentication credential required by the target backend service from the API ML Gateway (for example, `passticket` or `jwt`). This attribute identifies the mechanism used to ensure the Gateway can successfully authenticate with the microservice on behalf of the user.
 
-* **user.distributed_id**  
-The original remote identity provided during OIDC-based authentication. While the standard `user.id` attribute contains the identity as mapped to the local z/OS environment, `user.distributed_id` applies the unique identifier from the external distributed identity provider.
+* **user.distributed.id**  
+The original remote identity provided during OIDC-based authentication. While the standard `user.id` attribute contains the identity as mapped to the local z/OS environment, `user.distributed.id` applies the unique identifier from the external distributed identity provider.
 
 * **url.path**  
   The absolute path of the request processed by the API ML Gateway. 
@@ -154,7 +154,7 @@ The signals in these examples are presented in JSON format, which reflects how t
             "resource": {
                 "attributes": [
                     {
-                        "key": "deployment.environment",
+                        "key": "deployment.environment.name",
                         "value": {
                             "stringValue": "dev"
                         }
@@ -273,7 +273,7 @@ The signals in these examples are presented in JSON format, which reflects how t
                     {
                         "key": "service.version",
                         "value": {
-                            "stringValue": "3.5.12-SNAPSHOT"
+                            "stringValue": "3.6.0"
                         }
                     },
                     {
@@ -285,7 +285,7 @@ The signals in these examples are presented in JSON format, which reflects how t
                     {
                         "key": "telemetry.distro.version",
                         "value": {
-                            "stringValue": "2.24.0"
+                            "stringValue": "2.31.1"
                         }
                     },
                     {
