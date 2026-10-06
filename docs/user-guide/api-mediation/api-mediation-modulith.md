@@ -35,7 +35,7 @@ Kubernetes is not supported in Zowe 3.4 single-service deployment mode.
 
 ### System Requirements 
 
-Single-service deployment mode requires a minimum of **1 GB of Java heap memory**. Ensure that your z/OS address space has sufficient memory available. For details about configuring heap size for the single-service deployment, see [Customizing Java Heap Sizes](./configuration-customizing-java-heap-sizes.md).
+Single-service deployment mode requires a **minimum of 1024 MB (1 GB)** of Java heap memory. Ensure that your z/OS address space has sufficient memory available. For details about configuring heap size for the single-service deployment, see [Customizing Java Heap Sizes](./configuration-customizing-java-heap-sizes.md).
 
 ## Breaking Changes
 

@@ -20,7 +20,8 @@ Must be upgraded to Java 17 or Java 21. Ensure the `java.home` parameter in your
 * **Node.js**  
 Upgrading to v20 is recommended. Update the `node.home` parameter in your `zowe.yaml` accordingly.
 
-* **Memory**  Single-service deployment requires a minimum of 1 GB of Java heap memory.  Set the heap size via `components.apiml.heap.init` and `components.apiml.heap.max`.  For details, see [Customizing Java Heap Sizes](../user-guide/api-mediation/configuration-customizing-java-heap-sizes.md).
+* **Memory**  
+Single-service deployment requires a **minimum of 1024 MB (1 GB)** of Java heap memory.  Set the heap size via `components.apiml.heap.init` and `components.apiml.heap.max`.  For details, see [Customizing Java Heap Sizes](../user-guide/api-mediation/configuration-customizing-java-heap-sizes.md).
 
 ## Authenticating and validating identity 
 API ML supports the following methods for validating user identity. Use one of the following providers for enterprise security on z/OS:
