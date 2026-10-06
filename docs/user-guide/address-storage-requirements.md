@@ -31,6 +31,7 @@ ZAAS | 128MB
 Discovery Service | 128MB
 API Catalog | 128MB
 Caching Service | 256MB
+API ML Single-Service (apiml) | 1024MB (1 GB minimum)
 
 ### JVM Memory
 
