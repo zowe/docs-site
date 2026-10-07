@@ -21,7 +21,7 @@ const data = [
     icon: "img/zowe-icon.png",
     description: (
       <>
-        Support for Zowe V2 ends March 30, 2027. Use <a href="https://docs.zowe.org/stable/upgrade/upgrade-zowe-v3.html">this guide</a> to migrate 
+        Support for Zowe V2 ends March 30, 2027. Use <a href="https://docs.zowe.org/stable/upgrade/upgrade-zowe-v3.html">this guide</a> to upgrade
         to Zowe V3, which transitions to maintenance on March 1, 2027. 
       </>
     ),
