@@ -154,7 +154,7 @@ zowe:
 Your YAML file is now configured to enable Zowe to use generated PKCS12 certificates. You can now go to [Running a scenario file](#running-a-scenario-file).
 
 :::note
-If you leave `password` or `caPassword` at its default value, `zwe init certificate` generates a random password instead of using the well-known default value. When you run the command with `--update-config`, the generated password is written to your `zowe.yaml` configuration file. Without `--update-config`, the generated password is only printed in the command output, so make sure you save it before you close your terminal session.
+If you leave `password` or `caPassword` at its default value, `zwe init certificate` generates a random password instead of using the well-known default value. Run the command with `--update-config`, to write the generated password to your `zowe.yaml` configuration file. Without `--update-config`, the generated password is only printed in the command output. Ensure that you save the generated password before you close your terminal session.
 :::
 
 The following command output shows the generation of a PKCS12 keystore using the default values, and has the following associated artifacts. (Note that some detailed output messages have been omitted.)
@@ -223,7 +223,7 @@ Follow this procedure and configure `scenario-2.yaml` within the `files/examples
     ```yaml
     lock: true
     ```
-4. Set keystore password. If you leave the default value `password`, `zwe init certificate` generates a random password instead. As in scenario 1, save the generated password if you do not use `--update-config`.
+4. Set your keystore password. If you leave the default value `password`, `zwe init certificate` generates a random password instead. Ensure that you save the generated password if you do not use `--update-config`.
 5. Set the existing PKCS12 keystore which holds the certificate issued by an external CA.  
     ```yaml
     keystore: "<your-keystore-value>"  
