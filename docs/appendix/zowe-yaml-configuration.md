@@ -547,8 +547,9 @@ Specifies the active Spring profiles for the Gateway component. Set to `"debug-c
 - **apiml.security.auth.provider**  
  Specifies the authentication provider used by the API Gateway. Valid options are `saf` or `zosmf`.
  :::caution
-In case of separate security data bases: If Zowe runs on a different LPAR than z/OSMF and the two LPARs use separate, unshared security data bases (RACF, ACF2, or TSS), change `auth.provider` from the default `zosmf` to `saf`. Users authenticate against z/OSMF's security data base. If the user ID exists only in the Zowe LPAR's data base, z/OSMF returns `401` and login fails. The `saf` value authenticates users directly against the local security manager on the LPAR running Zowe, eliminating the cross-LPAR dependency for login.
-When you change `auth.provider` from `zosmf` to `saf`, also set `jwtAutoconfiguration` to `ltpa` if z/OSMF is on a separate LPAR. You should change these two settings together in cross-LPAR deployments.
+If Zowe and z/OSMF run on different LPARs with separate, unshared security databases (`RACF`, `ACF2`, or `TSS`), make the following configuration changes:
+1. Change `auth.provider` to `saf`: By default (`zosmf`), Zowe authenticates via z/OSMF, which returns a 401 failure if the user only exists in the Zowe LPAR's database. Setting auth.provider to saf authenticates users directly against the local LPAR's security manager, removing the z/OSMF dependency.
+2. Remove `jwtAutoconfiguration`: Do not configure this property (for example, `ltpa` or `jwt`) when using the `saf` provider. Those token settings are exclusive to the `zosmf` provider and are ignored when Zowe bypasses z/OSMF.
 :::
 - **apiml.security.auth.zosmf.serviceId**  
  Allows customization of the service id in case `zosmf` is specified as an authentication provider. The default value is `ibmzosmf`
