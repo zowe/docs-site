@@ -494,10 +494,6 @@ module.exports = {
     type: "category",
     label: "Zowe client-side components",
     collapsed: false,
-    link: {
-      type: "doc",
-      id: "upgrade/upgrading-zowe", // This attaches the doc directly to the category label
-    },
     items: [
       "upgrade/cli-updatingcli",
       "upgrade/ze-updatingze",
