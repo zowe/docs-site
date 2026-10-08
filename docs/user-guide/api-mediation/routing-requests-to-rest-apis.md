@@ -1,6 +1,6 @@
 # Routing requests to REST APIs
 
-API consumers can access any services onboarded to the API Mediation Layer through a single port. In this context, 'service' refers to one or more instances that share the same API and are onboarded under the same service Id. Some services provide versioned APIs, while other services provide an unversioned API. From the consumer side, the API Mediation Layer takes care of situations in which one instance is down and/or ditributing the load between different instances of a service. 
+API consumers can access any services onboarded to the API Mediation Layer through a single port. In this context, 'service' refers to one or more instances that share the same API and are onboarded under the same service Id. Some services provide versioned APIs, while other services provide an unversioned API. From the consumer side, the API Mediation Layer takes care of situations in which one instance is down and/or distributing the load between different instances of a service. 
 
 Types of services include both versioned and nonversioned services:
 
@@ -33,7 +33,7 @@ The basic method of routing is based on the service ID. For services that have m
 
 The URI identifies the resource, but does not identify the instance of the service as unique when multiple instances of the same service are provided, such as when a service is running in high-availability (HA) mode. To get to a specific instance, it is necessary to access the instance with a specific API ML configuration and header X-Instance-Id.
 
-In addition to the basic Zuul routing, the Zowe API Gateway supports versioning in which the user can specify a major version. The Gateway routes a request only to an instance that provides the specified major version of the API.
+In addition to the basic routing, the Zowe API Gateway supports versioning in which the user can specify a major version. The Gateway routes a request only to an instance that provides the specified major version of the API.
 
 * The `/api/` prefix is used for REST APIs.
 * The prefix `/ui/` applies to web UIs
@@ -55,15 +55,12 @@ https://service:10015/enablerv1sampleapp/api/v1/samples
 The following address shows the API Gateway URL of the resource:
 
 ```
-https://gateway:10010/enablerv1sampleapp/api/v1/samples
+https://gateway:7554/enablerv1sampleapp/api/v1/samples
 ```
 
 The following diagram illustrates how basic routing works:
 
 ![Zowe API Mediation basic routing](../../images/api-mediation/Basic-Routing.png)
-
-### Implementation details for routing
-
 
 ## Zowe architecture with high availability enablement on Sysplex
 
@@ -71,18 +68,7 @@ The following diagram illustrates the difference in locations of Zowe components
 
 ![Zowe Architecture Diagram with High Availability Enablement](../../images/common/zowe-architecture-lpar.png)
 
-Zowe has a high availability feature built-in. To enable this feature, you can define the `haInstances` section in your YAML configuration file.
-
-The preceding diagram shows that `ZWESLSTC` started two Zowe instances running on two separate LPARs. These LPARs can be on the same or different sysplexes.  
-
-- Sysplex distributor port sharing enables the API Gateway 7554 ports to be shared, which makes it possible for  incoming requests to be routed to either the Gateway on LPAR A or LPAR B.
-- The discovery servers on each LPAR communicate with each other and share their registered instances, which allows the API Gateway on LPAR A to dispatch APIs to components either on its own LPAR, or alternatively to components on LPAR B. As indicated in the diagram, each component has two input lines: one from the API Gateway on its own LPAR, and one from the Gateway on the other LPAR. When one of the LPARs goes down, the other LPAR remains operating within the sysplex, thereby providing high availability to clients that connect through the shared port irrespective of which Zowe instance is serving the API requests.
-
-The `zowe.yaml` file can be configured to start Zowe instances on more than two LPARS, and also to start more than one Zowe instance on a single LPAR, thereby providing a grid cluster of Zowe components that can meet availability and scalability requirements.  
-
-The configuration entries of each LPAR in the `zowe.yaml` file control which components are started. This configuration mechanism makes it possible to start just the desktop and API Mediation Layer on the first LPAR, and start all of the Zowe components on the second LPAR. Because the desktop on the first LPAR is available to the gateway of the second LPAR, all desktop traffic is routed to the second LPAR.  
-
-The caching services for each Zowe instance, whether on the same LPAR, or distributed across the sysplex, are connected to each other by the same shared VSAM data set. This arrangement allows state sharing so that each instance behaves similarly to the user irrespective of where their request is routed.  
+Zowe has a high availability feature built-in. To enable this feature, you can define the `haInstances` section in your YAML configuration file. 
 
 To learn more about Zowe with high availability enablement, see [Configuring Sysplex for high availability](../configure-sysplex.md).
 
