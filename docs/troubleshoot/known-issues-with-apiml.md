@@ -212,3 +212,21 @@ Infinispan 16 introduces and enables virtual thread pools by default when runnin
 
 **Resolution:**  
 In Zowe v3.5.0, the startup scripts will not automatically disable this feature. To prevent the Caching Service from freezing in HA mode, downgrade the Zowe runtime Java version to Java 17, where virtual threads are not enabled by default in Infinispan.
+
+## Caching Service persistence directory issue after upgrading to Zowe 3.5.0
+
+When running Zowe v3.5.0 with Infinispan as the Caching Service storage backend, you may encounter a Caching Service startup failure caused by Infinispan 16.x being unable to read persisted cache data from an earlier Infinispan version.
+
+You may see the following message:  
+```log
+org.infinispan.persistence.spi.PersistenceException: Found an invalid protobuf tag (1) having a field number smaller than 1
+```
+
+**Resolution:**  
+Use the following procedure to clear the Caching Service persistence directory:  
+1. Stop Zowe.
+2. Remove the persistence directory under `<workspaceDirectory>/caching-service/`.
+3. Restart Zowe.
+
+**Note:** Removing the persistence directory clears all Infinispan-stored data, including revoked Personal Access Tokens (PATs) and revoked Zowe JWT tokens. For more information about revocation of PATs, see [Authenticating with a Personal Access Token](../user-guide/api-mediation/authenticating-with-personal-access-token.md).  
+The impact on revoked Zowe JWT tokens is generally limted as they expire automatically.
