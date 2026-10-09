@@ -238,9 +238,9 @@ org.infinispan.persistence.spi.PersistenceException: Found an invalid protobuf t
 
 **Action:**  
 Use the following procedure to clear the Caching Service persistence directory:  
-1. Stop Zowe.
-2. Remove the persistence directory under `<workspaceDirectory>/caching-service/`.
+1. Stop Zowe. For more information, see [Starting and stopping Zowe](../user-guide/start-zowe-zos.md). 
+2. Remove the persistence directory under `<workspaceDirectory>/caching-service/`. The workspace directory should be defined in your Zowe configuration file as `zowe.workspaceDirectory`.
 3. Restart Zowe.
 
 **Note:** Removing the persistence directory clears all Infinispan-stored data, including revoked Personal Access Tokens (PATs) and revoked Zowe JWT tokens. For more information about revocation of PATs, see [Authenticating with a Personal Access Token](../user-guide/api-mediation/authenticating-with-personal-access-token.md).  
-The impact on revoked Zowe JWT tokens is generally limted as they expire automatically.
+Revoked tokens may continue to be valid until they expire automatically.
