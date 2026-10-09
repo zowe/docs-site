@@ -3,7 +3,7 @@
 :::info Required Role: system programmer
 :::
 
-You can enable the Gateway to terminate CORS requests for itself and also for routed services. In packaged Zowe, `components.gateway.apiml.service.corsEnabled` defaults to `false`: the Gateway terminates CORS itself for all paths and rejects every cross-origin request (no origins are allow-listed). Setting `corsEnabled` to `true` enables the Gateway's defaults on its own endpoints (`/gateway/**`) and per-service overrides via Custom Metadata.. Once enabled, API Gateway endpoints handle CORS requests according to your global configuration, and individual services can delegate CORS handling to the Gateway using per-service [Custom Metadata](../../extend/extend-apiml/onboard-spring-boot-enabler.md#custom-metadata) CORS parameters. 
+You can enable the Gateway to allow CORS requests for itself and also for routed services. In packaged Zowe, `components.gateway.apiml.service.corsEnabled` defaults to `false`: the Gateway handles CORS itself for all paths and rejects every cross-origin request (no origins are allow-listed). Setting `corsEnabled` to `true` enables the Gateway's defaults on its own endpoints (`/gateway/**`) and per-service overrides via Custom Metadata.. Once enabled, API Gateway endpoints handle CORS requests according to your global configuration, and individual services can delegate CORS handling to the Gateway using per-service [Custom Metadata](../../extend/extend-apiml/onboard-spring-boot-enabler.md#custom-metadata) CORS parameters. 
 
 ## How the Gateway resolves CORS
 
