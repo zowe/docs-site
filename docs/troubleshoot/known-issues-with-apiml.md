@@ -2,7 +2,7 @@
 
 ## Error messages from TCP/IP
 
-**Symptom:**
+**Reason:**
 
 On starting Zowe, you may see the following messages in `DDNAME SYSPRINT`:
 
@@ -26,12 +26,12 @@ TSS7220E 101 J=stc A=user VOL=volume ACC=READ DSN=systcpd.dataset.name TSS7221E 
 IEC150I 913-38,IFG0194E,stc,*OMVSEX,SYS00003,24A4,volume, 692 systcpd.dataset.name(member) *EZZ9297E UNABLE TO ACCESS FILE systcpd.dataset.name(member) - RC 00080008
 ```
 
-**Solution:**  
+**Action:**  
 The security administrator should grant READ access to the SYSTCPD dataset mentioned on the SYSLOG to the user running Zowe.
 
 ## API ML stops accepting connections after z/OS TCP/IP stack is recycled
 
-**Symptom:**
+**Reason:**
 
 When z/OS TCP/IP stack is restarted, it is possible that the internal services of API Mediation Layer
 (Gateway, Catalog, and Discovery service) stop accepting all incoming connections, go into a continuous loop,
@@ -50,7 +50,7 @@ The following message is a typical error message displayed in STDOUT:
 .at org.apache.tomcat.util.net.NioEndpoint$Acceptor.run(NioEndpoint.java:455) ~.tomcat-coyote-8.5.29.jar!/:8.5.29.
 .at java.lang.Thread.run(Thread.java:811) .na:2.9 (12-15-2017).
 ```
-**Solution:**
+**Action:**
 
 Restart API Mediation Layer.
 
@@ -58,7 +58,7 @@ Restart API Mediation Layer.
 
 ## API ML throws I/O error on GET request and cannot connect to other services
 
-**Symptom:**
+**Reason:**
 
 The API ML services are running but they are in the DOWN state and not working properly. The following exceptions can be found in the log: `java.net.UnknownHostException` and `java.net.NoRouteToHostException`. 
 
@@ -88,7 +88,7 @@ main¨ o.a.http.impl.client.DefaultHttpClient   : I/O exception (java.net.NoRout
 main¨ o.a.http.impl.client.DefaultHttpClient   : Retrying connect to {s}->https://localhost:7553 
 ```
 
-**Solution:**
+**Action:**
 
 The Zowe started task needs to run under a user with sufficient privileges. As a workaround, you can try to run the started task under the same user ID as z/OSMF (typically IZUSVR).
 
@@ -98,7 +98,7 @@ You can fix it by setting up the security environment as described in the [Zowe 
 
 ## SEC0002 error when logging in to API Catalog
 
-**Symptom:**
+**Reason:**
 
 SEC0002 error typically appears when users fail to log in to API Catalog. The following image shows the API Catalog login page with the SEC0002 error.
 
@@ -115,7 +115,7 @@ Check the rest of the message, and identify the cause of the problem. The follow
    
 ### Connection refused
 
-**Symptom:**
+**Reason:**
 
 In the following message, failure to connect to API Catalog occurs when connection is refused:
 
@@ -124,7 +124,7 @@ Connect to ABC12.slv.broadcom.net:1443 .ABC12.slv.broadcom.net/127.0.0.1. failed
 ```
 The reason for the refused connection message is either invalid z/OSMF configuration or z/OSMF being unavailable. The preceding message indicates that z/OSMF is not on the 127.0.0.1:1443 interface.
 
-**Solution:**
+**Action:**
 
 **Configure z/OSMF**
 
@@ -154,7 +154,7 @@ If changing the z/OSMF configuration does not fix the issue, reconfigure Zowe.
 
 ### Missing z/OSMF host name in subject alternative names
 
-**Symptom:**
+**Reason:**
 
 In following message, failure to connect to API Catalog is caused by a missing z/OSMF host name in the subject alternative names:
 
@@ -162,7 +162,7 @@ In following message, failure to connect to API Catalog is caused by a missing z
 Certificate for <ABC12.slv.broadcom.net> doesn't match any of the subject alternative names: ..; nested exception is javax.net.ssl.SSLPeerUnverifiedException: Certificate for <ABC12.slv.broadcom.net> doesn't match any of the subject alternative names: ..
 ```
 
-**Solution:**
+**Action:**
 
 Fix the missing z/OSMF host name in subject alternative names using the following methods:
 
@@ -189,7 +189,7 @@ Fix the missing z/OSMF host name in subject alternative names using the followin
 
 ### Invalid z/OSMF host name in subject alternative names
 
-**Symptom:**
+**Reason:**
 
 In the following message, failure to connect to API Catalog is caused by an invalid z/OSMF host name in the subject alternative names:
 
@@ -198,7 +198,7 @@ Certificate for <ABC12.slv.broadcom.net> doesn't match any of the subject altern
 nested exception is javax.net.ssl.SSLPeerUnverifiedException: Certificate for <ABC12.slv.broadcom.net> doesn't match any of the subject alternative names: [abc12.ca.com, abc12, localhost, abc12-slck, abc12-slck.ca.com, abc12-slck1, abc12-slck1.ca.com, abc12-slck2, abc12-slck2.ca.com, usilabc12, usilabc12.ca.com]
 ```
 
-**Solution:**
+**Action:**
 
 Fix the invalid z/OSMF host name in the subject alternative names using the following methods:
 
@@ -215,19 +215,19 @@ Recreate the Zowe keystore by deleting it and recreating it. For more informatio
 
 ### Caching Service stalls in HA mode on z/OS with Java 21+ after upgrading to Zowe 3.5.0
 
-**Symptom:**
+**Reason:**
 
 When running Zowe v3.5.0 in High Availability (HA) mode with Infinispan as the Caching Service storage backend, the Caching Service randomly freezes or stalls resulting from JGroups cluster communication failure, nodes dropping out or failing to form a stable cluster, and a failure in correct data replication.
 
 **Cause:**  
 Infinispan 16 introduces and enables virtual thread pools by default when running on JDK 21+. On the z/OS operating system, using virtual threads within this architecture causes underlying thread pinning. This pinning stalls the JGroups network stack communication, rendering the Caching Service unresponsive.
 
-**Solution:**  
+**Action:**  
 In Zowe v3.5.0, the startup scripts will not automatically disable this feature. To prevent the Caching Service from freezing in HA mode, downgrade the Zowe runtime Java version to Java 17, where virtual threads are not enabled by default in Infinispan.
 
 ## Caching Service persistence directory issue after upgrading to Zowe 3.5.0
 
-**Symptom:**
+**Reason:**
 
 When running Zowe v3.5.0 with Infinispan as the Caching Service storage backend, you may encounter a Caching Service startup failure caused by Infinispan 16.x being unable to read persisted cache data from an earlier Infinispan version.
 
@@ -236,7 +236,7 @@ You may see the following message:
 org.infinispan.persistence.spi.PersistenceException: Found an invalid protobuf tag (1) having a field number smaller than 1
 ```
 
-**Solution:**  
+**Action:**  
 Use the following procedure to clear the Caching Service persistence directory:  
 1. Stop Zowe.
 2. Remove the persistence directory under `<workspaceDirectory>/caching-service/`.
