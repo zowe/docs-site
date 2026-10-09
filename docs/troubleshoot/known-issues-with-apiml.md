@@ -168,8 +168,8 @@ Fix the missing z/OSMF host name in subject alternative names using the followin
 
 **Note:** Apply the insecure fix only if you use API Catalog for testing purposes.
 
-- [Secure fix](#secure-fix)
-- [Insecure fix](#insecure-fix)
+- **Secure fix**
+- **Insecure fix**
 
 **Secure fix**
 
@@ -202,8 +202,8 @@ nested exception is javax.net.ssl.SSLPeerUnverifiedException: Certificate for <A
 
 Fix the invalid z/OSMF host name in the subject alternative names using the following methods:
 
-- [Request a new certificate](#request-a-new-certificate)
-- [Re-create the Zowe keystore](#re-create-the-zowe-keystore)
+- **Request a new certificate**
+- **Re-create the Zowe keystore**
 
 **Request a new certificate**
 
