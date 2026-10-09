@@ -216,7 +216,7 @@ Specifies whether all operations can be retried for this service. The default va
   (Optional) Specify a comma-separated list of HTTP headers that are allowed during a CORS request to this service.
 
 * **customMetadata.apiml.corsAllowCredentials**  
-  (Optional) Configure whether the browser should include credentials (such as cookies, authorization headers, or TLS client certificates) in CORS requests. The Gateway-level default and the per-service default are hardcoded to `true`.  
+  (Optional) Configure whether the browser should include credentials (such as cookies, authorization headers, or TLS client certificates) in CORS requests. The Gateway-level default and the per-service default are set to `true`.  
 
 * **customMetadata.apiml.corsAllowedMethods**  
   (Optional) Specify a comma-separated list of HTTP methods (e.g., `GET`, `POST`, `PUT`, `DELETE`) that are allowed when accessing the service via CORS.

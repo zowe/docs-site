@@ -84,7 +84,7 @@ Specifies the Gateway port used by the ZAAS Client configuration. The default va
   :::
 
 * **customMetadata.apiml.corsAllowCredentials**  
-(Optional) Configure whether the browser should include credentials (such as cookies, authorization headers, or TLS client certificates) in CORS requests. The Gateway-level default and the per-service default are hardcoded to `true`.  
+(Optional) Configure whether the browser should include credentials (such as cookies, authorization headers, or TLS client certificates) in CORS requests. The Gateway-level default and the per-service default are set to `true`.  
   :::note
   If you use the Spring enabler, use the following parameter name:
   `apiml.service.customMetadata.apiml.corsAllowCredentials`
