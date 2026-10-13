@@ -7,7 +7,7 @@ If you are a system administrator managing a team using ZRS, deploy a shared ins
 
 ## Deploying a shared installation
 
-1. Open the [ZRS release list](https://github.com/zowe/zowex/releases) and navigate to the desired release.
+1. Open the [ZRS release list](https://github.com/zowe/zo/releases) and navigate to the desired release.
 2. Expand the **Assets** section and select the `zowe-server` PAX file to download it.
 3. Upload the PAX file to the mainframe using your preferred method.
 
