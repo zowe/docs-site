@@ -16,8 +16,8 @@ You can customize the configuration or make your own. If you do so, note the fol
 | [Secret](https://kubernetes.io/docs/concepts/configuration/secret/) | zowe-certificates-secret | Contains the base64 PEM and P12 data for keystore and truststore |
 | [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) | discovery-ingress | Used for external access to the Discovery service |
 | [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) | gateway-ingress | Used for external access to the Gateway service |
-| [Route](https://docs.openshift.com/enterprise/3.0/architecture/core_concepts/routes.html) | discovery | Used for external access to the Discovery service |
-| [Route](https://docs.openshift.com/enterprise/3.0/architecture/core_concepts/routes.html) | gateway | Used for external access to the Gateway service |
+| [Route](https://docs.openshift.com/container-platform/latest/networking/routes/route-configuration.html) | discovery | Used for external access to the Discovery service |
+| [Route](https://docs.openshift.com/container-platform/latest/networking/routes/route-configuration.html) | gateway | Used for external access to the Gateway service |
 | [Service](https://kubernetes.io/docs/concepts/services-networking/service/) | discovery-service | Used for internal or external access to the Discovery service |
 | [Service](https://kubernetes.io/docs/concepts/services-networking/service/) | gateway-service | Used for external access to the Gateway service |
 | [Service](https://kubernetes.io/docs/concepts/services-networking/service/) | catalog-service | Used for access to the Catalog service |
