@@ -390,7 +390,7 @@ The Zowe log contains the following ERROR message:
 
 This error occurs when the `Java Cryptography Extension` (JCE) provider cannot access the `RSA` key dataset defined for Zowe.
 In ACF2, access to RSA key resources is controlled through the `CSFKEYS` resource class,
-which governs permissions to use or read private keys stored in the security database.
+which governs permissions to use or read private keys stored in the security data base.
 If the Zowe started task ID (`ZWESVUSR`) lacks the appropriate `READ` access to the RSA key resource, all configured JCE providers
 fail to initialize, resulting in this failover error.
 
@@ -446,3 +446,43 @@ F ACF2,REBUILD(FAC)
 
 * **`ZWESVUSR`**  
 Specifies the Zowe started task user ID.
+
+## PKIX path validation failed: signature check failed Unable to find valid certification path.
+
+**Symptom**
+
+The Zowe log contains either of the following error messages:
+- PKIX path validation failed: signature check failed
+- Unable to find valid certification path. 
+
+**Issue**
+The personal certificate (`IZUSVR.CERT01` / `DefaultzOSMFCert.IZUDFLT`) of the z/OSMF server connects to `ZOWEKeyring`. Therefore, Java selects wrong certificate while establishing outbound TLS connections.
+
+**Explanation**
+
+The z/OSMF CA certificate that adds to the `ZOWEKeyring` is the wrong certificate. Its fingerprint does not match the Certificate Authority (CA) that had signed the z/OSMF server certificate on MVSA.
+
+**Solution**
+
+When Zowe runs on a different LPAR than z/OSMF, you must add the CA certificate that signed the z/OSMF server certificate to `ZOWEKeyring` on the Zowe LPAR.
+Verify the correct z/OSMF CA certificate to establish trust for cross-LPAR.
+Do the following to confirm you have the correct CA:
+1. On the z/OSMF LPAR, run: 
+```
+RACDCERT CHKCERT ID(IZUSVR) LABEL('your-zosmf-cert') CHAIN
+
+```
+In the output, locate the issuing CA and record its `SHA-256` fingerprint.
+2. On the Zowe LPAR, run: 
+```
+RACDCERT CHKCERT CERTAUTH LABEL('your-zosmf-ca-label')
+
+```
+Record its SHA-256 fingerprint.
+3. The fingerprints must match. If they do not, the certificate in `ZOWEKeyring` is not the correct CA. Export the actual issuing CA from the z/OSMF LPAR security data base and re-import the CA.
+:::Important
+Connect CA certificates to `ZOWEKeyring` with `USAGE(CERTAUTH)` only.
+
+Do not connect the personal certificate (typically owned by `IZUSVR`, `label DefaultzOSMFCert.IZUDFLT`) of the z/OSMF server to ZOWEKeyring.
+If this certificate is present in ZOWEKeyring as `PERSONAL`, remove the certificate. The presence of the certificate can cause Java's TLS stack to select the wrong certificate while establishing outbound TLS connections.
+:::
