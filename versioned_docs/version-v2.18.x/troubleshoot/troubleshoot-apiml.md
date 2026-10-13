@@ -116,11 +116,13 @@ This activates the application/loggers endpoints in each API ML internal service
 
     **Example:**
 
-    ```
-    HTTPie command:
-    http GET https://&lt;gateway-hostname&gt;:7554/application/loggers
+    ```bash
+    # HTTPie (requires: pip install httpie)
+    http GET https://<gateway-hostname>:7554/application/loggers
+   ```
+   **Output:**
 
-    Output:
+   ```bash
     {"levels":["OFF","ERROR","WARN","INFO","DEBUG","TRACE"],
      "loggers":{
        "ROOT":{"configuredLevel":"INFO","effectiveLevel":"INFO"},
