@@ -270,7 +270,7 @@ If you are using OpenShift and choose to use `LoadBalancer` services, you may al
 oc get svc -n zowe
 ```
 
-If you see an IP in the `EXTERNAL-IP` column, that means your OpenShift is properly configured and can provision external IP for you. If you see `<pending>` and it does not change after waiting for a while, that means you may not be able to use `LoadBalancer` services with your current configuration. Try `ClusterIP` services and define `Route`. A [Route](https://docs.openshift.com/container-platform/4.13/networking/routes/route-configuration.html) is a way to expose a service by giving it an externally reachable hostname. 
+If you see an IP in the `EXTERNAL-IP` column, that means your OpenShift is properly configured and can provision external IP for you. If you see `<pending>` and it does not change after waiting for a while, that means you may not be able to use `LoadBalancer` services with your current configuration. Try `ClusterIP` services and define `Route`. A [Route](https://kubernetes.io/docs/concepts/services-networking/topology-aware-routing/) is a way to expose a service by giving it an externally reachable hostname. 
 
 To create a route, perform the following steps:
 
