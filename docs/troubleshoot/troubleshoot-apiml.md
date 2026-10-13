@@ -98,7 +98,11 @@ You can change the log level of a particular code component of the API ML intern
 
 **Follow these steps:**
 
-1. Enable `debug-control` as described in the section [Configuring `debug-control` for dynamic configuration control](#configuring-debug-control-for-dynamic-configuration-control).
+1. Enable `debug-control` as described in the section [Configuring `debug-control` for dynamic configuration control](#configuring-debug-control-for-dynamic-configuration-control).  
+**Note:**  
+To enable `debug-control`, consider the following activation conditions per service:  
+- For the Gateway write path, set the property component `gateway.spring.profiles.active` to `"debug-control"`.
+- For the Gateway read-only path and the Discovery/Catalog paths, set the debug profile property `components.<component>.debug` to `true`.  
 Enablement activates the `/application/loggers` endpoint for the API ML Gateway.
 2. List the available loggers of a service by issuing the **GET** request for the given service URL. Use the direct service URL when accessing a specific API ML component, or the Gateway-routed URL when accessing through the API Gateway:
 
@@ -148,9 +152,9 @@ http GET https://<gateway-hostname>:7554/application/loggers
 # curl
 curl -k https://<gateway-hostname>:7554/application/loggers | jq .
 ```
-```
+**Output:**
 
-    Output:
+```bash
     {"levels":["OFF","ERROR","WARN","INFO","DEBUG","TRACE"],
      "loggers":{
        "ROOT":{"configuredLevel":"INFO","effectiveLevel":"INFO"},
@@ -168,7 +172,7 @@ http GET https://<gateway-hostname>:7554/application/loggers | grep -i "zowe"
 ```
 :::
 
-1. Alternatively, extract the configuration of a specific logger using the extended **GET** request:
+3. Alternatively, extract the configuration of a specific logger using the extended **GET** request:
 
     ```
     GET scheme://hostname:port/application/loggers/{name}
@@ -178,7 +182,7 @@ http GET https://<gateway-hostname>:7554/application/loggers | grep -i "zowe"
 
          Specifies the logger name
 
-2. Change the log level of the given component of the API ML internal service. Use the **POST** request for the given service URL:
+4. Change the log level of the given component of the API ML internal service. Use the **POST** request for the given service URL:
 
     ```
     POST scheme://hostname:port/application/loggers/{name}
