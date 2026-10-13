@@ -91,12 +91,6 @@ components:
       exporter:
         endpoint: "https://otel-collector.your.domain:4318"
         protocol: "http/protobuf"  # or "grpc" with port 4317
-      traces:
-        exporter: "otlp"
-      metrics:
-        exporter: "otlp"
-      logs:
-        exporter: "otlp"
       service:
         name: "zowe-apiml"
         namespace: "production"
