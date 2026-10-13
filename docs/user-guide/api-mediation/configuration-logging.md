@@ -141,7 +141,7 @@ components:
          enabled: true # Or use environment variable: ZWE_configs_logging_toFile_enabled=true
 ```
 
-To keep your standard stdout clean during troubleshooting, you can force only the DEBUG and TRACE level messages to route to the log file:
+To keep your standard `stdout` clean during troubleshooting, you can force only the DEBUG and TRACE level messages to route to the log file:
 
 ```YAML
 components:
@@ -153,7 +153,7 @@ components:
 ```
 
 :::caution Important:
-If debugOnly is set to true, but enabled is false, the debugOnly setting is actively ignored by the startup script.
+If `debugOnly` is set to `true`, but enabled is `false`, the `debugOnly` setting is actively ignored by the startup script.
 :::
 
 ### Feature-Level Debugging
@@ -175,9 +175,9 @@ components:
 ```
 
 Supported debug features are categorized as follows:
-* **Core routing and registry:** gateway, discovery, catalog, and caching
-* **Security operations:** authentication
-* **Network diagnostics:** wiretap (enables detailed HTTP request and response traffic logging)
+* **Core routing and registry:** `gateway`, `discovery`, `catalog`, and `caching`
+* **Security operations:** `authentication`
+* **Network diagnostics:** `wiretap` (enables detailed HTTP request and response traffic logging)
 
 Enabling any of these options automatically applies the debug-common Spring profile along with the specific `debug-<feature>` profile.
 
@@ -191,8 +191,9 @@ Enabling any of these options automatically applies the debug-common Spring prof
 * `ZWE_configs_logging_debug_wiretap`
 
 
+The following configuration example demonstrates how to enable debug logs for specific features (`authentication`, `discovery`, `wiretap`) while keeping the global debug `false`. To prevent these high-volume logs from overwhelming your `stdout` or spool, they are routed exclusively to a file.
+
 **Example:**
-The following configuration example demonstrates how to enable debug logs for specific features (`authentication`, `discovery`, `wiretap`) while keeping the global debug `false`. To prevent these high-volume logs from overwhelming your stdout or spool, they are routed exclusively to a file.
 
 ```yaml
 components:
