@@ -170,6 +170,75 @@ Provides full diagnostic output for troubleshooting.
   * **Microservice Deployment:** Individual service parameters such as `components.gateway.debug: true` take precedence and force a resolution to `debug` for that specific microservice, overriding settings like `components.gateway.logging.level`.
   :::
 
+------
+
+## Granular Troubleshooting Options
+
+If a full debug level generates an unmanageable number of log messages, you can utilize the following granular options to restrict output. These options allow you to isolate debug data to a specific file or a specific feature without overwhelming `stdout`.
+
+### Routing Logs to a File
+
+You can configure the system to send logs to a dedicated file, which is recommended when enabling debug features.
+
+To enable logging to a file, add the following to your zowe.yaml or set the equivalent environment variable:
+
+```YAML
+components:
+  apiml:
+    logging:
+      toFile: 
+         enabled: true # Or use environment variable: ZWE_configs_logging_toFile_enabled=true
+```
+
+To keep your standard stdout clean during troubleshooting, you can force only the DEBUG and TRACE level messages to route to the log file:
+
+```YAML
+components:
+  apiml:
+    logging:
+      toFile: 
+         enabled: true
+         debugOnly: true # Or use environment variable: ZWE_configs_logging_toFile_debugOnly=true
+```
+
+:::caution Important:
+If debugOnly is set to true, but enabled is false, the debugOnly setting is actively ignored by the startup script.
+:::
+
+### Feature-Level Debugging
+To troubleshoot a specific microservice concept within the single-service deployment, you can target specific features instead of enabling a global debug. Ensure the global `components.apiml.debug` is set to `false`, and define your targeted feature under `components.apiml.logging.debug`:
+
+```YAML
+components:
+  apiml:
+    debug: false # The legacy global toggle must be false to use feature-level debugging
+    logging:
+      debug:
+         gateway: false 
+         authentication: true 
+         discovery: true 
+         caching: false 
+         catalog: false 
+         wiretap: false 
+```
+
+Supported debug features are categorized as follows:
+* **Core routing and registry:** gateway, discovery, catalog, and caching
+* **Security operations:** authentication
+* **Network diagnostics:** wiretap (enables detailed HTTP request and response traffic logging)
+
+Enabling any of these options automatically applies the debug-common Spring profile along with the specific `debug-<feature>` profile.
+
+**Environment variable equivalents:**
+
+* `ZWE_configs_logging_debug_gateway`
+* `ZWE_configs_logging_debug_authentication`
+* `ZWE_configs_logging_debug_discovery`
+* `ZWE_configs_logging_debug_caching`
+* `ZWE_configs_logging_debug_catalog`
+* `ZWE_configs_logging_debug_wiretap`
+
+
 ### Log Output Comparisons
 The following examples demonstrate how the different logging levels affect the output and volume in your system logs.
 

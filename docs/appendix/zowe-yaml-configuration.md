@@ -603,6 +603,24 @@ Configures the logging verbosity for individual API Mediation Layer microservice
   * **Microservice Deployment:** Individual service parameters such as `components.gateway.debug: true` take precedence and force a resolution to `debug` for that specific microservice, overriding settings like `components.gateway.logging.level`.
   :::
 
+* **components.apiml.logging.debug._feature_**  
+Enables targeted debug logging for specific API ML features in single-service deployment mode without enabling a global debug. The global components.apiml.debug must be false to use these settings.
+
+  Supported features:  
+  * **Core routing and registry:** `gateway`, `discovery`, `catalog`, and `caching`
+  * **Security operations:** `authentication`
+  * **Network diagnostics:** `wiretap` (enables detailed HTTP request and response traffic logging)
+
+* **components.apiml.logging.toFile.enabled**  
+When set to true, routes API ML logs to a dedicated file (`<ZOWE_INSTANCE_DIR>/logs/apiml/`). Note that if any debug feature (or the legacy global debug) is enabled, this is automatically forced to true.
+
+* **components.apiml.logging.toFile.debugOnly**  
+When set to `true`, high-volume `DEBUG` and `TRACE` level messages are written exclusively to the log file, keeping the standard stdout/spool clean.  
+**Note:** `components.apiml.logging.toFile.enabled` must also be `true`, otherwise this setting is ignored.
+
+* **components.apiml.logging.loggerLevels**  
+Allows exact package or class-level control for fine-grained troubleshooting. Accepts a YAML array of `<logger>=<level>` strings (for example, `org.zowe.apiml.zaas.security.service.AuthenticationService=DEBUG`). Internal turbofilters automatically bypass these specified loggers to ensure your scoped debug logs are not accidentally suppressed.
+
 #### Configure component gateway
 
 These configurations can be used under the `components.gateway` section:
