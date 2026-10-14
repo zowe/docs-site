@@ -173,7 +173,7 @@ This activates the application/loggers endpoints in each API ML internal service
 This property can be used to unconditionally add active debug profiles.
 
 :::note
-  The Gateway, Discovery, and Catalog services only expose loggers under the `debug` profile.
+  The API Gateway, Discovery, and API Catalog services only expose loggers under the `debug` profile.
   :::
 
 For more information, see [Adding active profiles](https://docs.spring.io/spring-boot/docs/1.2.0.M1/reference/html/boot-features-profiles.html#boot-features-adding-active-profiles) in the Spring documentation.
