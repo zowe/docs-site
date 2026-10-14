@@ -98,7 +98,11 @@ You can change the log level of a particular code component of the API ML intern
 
 **Follow these steps:**
 
-1. Enable `debug-control` as described in the section [Configuring `debug-control` for dynamic configuration control](#configuring-debug-control-for-dynamic-configuration-control).
+1. Enable `debug-control` as described in the section [Configuring `debug-control` for dynamic configuration control](#configuring-debug-control-for-dynamic-configuration-control).  
+**Note:**
+To enable `debug-control`, consider the following activation conditions per service:  
+   - For the API Gateway write path, set or append the property `components.gateway.spring.profiles.active` to `"debug-control"`.
+    - For the API Gateway read-only path and the Discovery/API Catalog paths, set the debug profile property `components.<component>.debug` to `true`.  
 Enablement activates the `/application/loggers` endpoint for the API ML Gateway.
 2. List the available loggers of a service by issuing the **GET** request for the given service URL. Use the direct service URL when accessing a specific API ML component, or the Gateway-routed URL when accessing through the API Gateway:
 
@@ -135,40 +139,40 @@ Enablement activates the `/application/loggers` endpoint for the API ML Gateway.
     GET [gateway-scheme]://[gateway-hostname]:[gateway-port]/apicatalog/api/v1/application/loggers
     ```
 
-:::tip
+   :::tip
 
-One way to issue REST calls is to use the http command in the free HTTPie tool: https://httpie.org/.
+    One way to issue REST calls is to use the http command in the free HTTPie tool: https://httpie.org/.
 
-**Example:**
+    **Example:**
 
-```bash
-# HTTPie (requires: pip install httpie)
-http GET https://<gateway-hostname>:7554/application/loggers
+    ```bash
+    # HTTPie (requires: pip install httpie)
+    http GET https://<gateway-hostname>:7554/application/loggers
 
-# curl
-curl -k https://<gateway-hostname>:7554/application/loggers | jq .
-```
-```
+    # curl
+    curl -k https://<gateway-hostname>:7554/application/loggers | jq .
+    ```
+    **Output:**
 
-    Output:
+    ```json
     {"levels":["OFF","ERROR","WARN","INFO","DEBUG","TRACE"],
      "loggers":{
-       "ROOT":{"configuredLevel":"INFO","effectiveLevel":"INFO"},
+     "ROOT":{"configuredLevel":"INFO""effectiveLevel":"INFO"},
        "com":{"configuredLevel":null,"effectiveLevel":"INFO"},
        "com.ca":{"configuredLevel":null,"effectiveLevel":"INFO"},
        ...
      }
     }
-```
+    ```
 
-Filter logger output with `grep` to narrow down specific packages, for example:
+    Filter logger output with `grep` to narrow down specific packages, for example:
 
-```bash
-http GET https://<gateway-hostname>:7554/application/loggers | grep -i "zowe"
-```
-:::
+    ```bash
+    http GET https://<gateway-hostname>:7554/application/loggers | grep -i "zowe"
+    ```
+      :::
 
-1. Alternatively, extract the configuration of a specific logger using the extended **GET** request:
+3. Alternatively, extract the configuration of a specific logger using the extended **GET** request:
 
     ```
     GET scheme://hostname:port/application/loggers/{name}
@@ -178,7 +182,7 @@ http GET https://<gateway-hostname>:7554/application/loggers | grep -i "zowe"
 
          Specifies the logger name
 
-2. Change the log level of the given component of the API ML internal service. Use the **POST** request for the given service URL:
+4. Change the log level of the given component of the API ML internal service. Use the **POST** request for the given service URL:
 
     ```
     POST scheme://hostname:port/application/loggers/{name}
