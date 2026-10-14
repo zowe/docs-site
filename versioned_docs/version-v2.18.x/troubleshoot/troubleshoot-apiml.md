@@ -83,7 +83,7 @@ You can change the log level of a particular code component of the API ML intern
 **Follow these steps:**
 
 1. Enable API ML Debug Mode as described in Enable API ML Debug Mode.
-This activates the application/loggers endpoints in each API ML internal service (Gateway, Discovery Service, and Catalog).
+This activates the application/loggers endpoints in each API ML internal service (API Gateway, Discovery Service, and API Catalog).
 2. List the available loggers of a service by issuing the **GET** request for the given service URL:
 
     ```
@@ -99,15 +99,15 @@ This activates the application/loggers endpoints in each API ML internal service
 
     - **port**
 
-        Specifies the TCP port where API ML service listens on. The port is defined by the configuration parameter `components.gateway.port` for the Gateway,
-    `components.discovery.port` for the Discovery service (by default, set to gateway port + 1), and `components.catalog.port` for the Catalog
+        Specifies the TCP port where API ML service listens on. The port is defined by the configuration parameter `components.gateway.port` for the API Gateway,
+    `components.discovery.port` for the Discovery service (by default, set to gateway port + 1), and `components.catalog.port` for the API Catalog
     (by default, set to gateway port + 2).  
 
     :::note deprecated
     The environment variables `MFS_GW_PORT`, `MFS_DS_PORT`, and `MFS_AC_PORT` are deprecated. Use the `zowe.yaml` parameters `components.gateway.port`, `components.discovery.port`, and `components.catalog.port` instead.
     :::
 
-    **Note:**  For the Catalog you can list the available loggers by issuing a **GET** request for the given service URL in the following format:
+    **Note:**  For the API Catalog you can list the available loggers by issuing a **GET** request for the given service URL in the following format:
     ```
     GET [gateway-scheme]://[gateway-hostname]:[gateway-port]/apicatalog/api/v1/application/loggers
     ```
@@ -122,7 +122,7 @@ This activates the application/loggers endpoints in each API ML internal service
    ```
    **Output:**
 
-   ```bash
+   ```json
     {"levels":["OFF","ERROR","WARN","INFO","DEBUG","TRACE"],
      "loggers":{
        "ROOT":{"configuredLevel":"INFO","effectiveLevel":"INFO"},
