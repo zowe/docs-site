@@ -101,8 +101,8 @@ You can change the log level of a particular code component of the API ML intern
 1. Enable `debug-control` as described in the section [Configuring `debug-control` for dynamic configuration control](#configuring-debug-control-for-dynamic-configuration-control).  
 **Note:**
 To enable `debug-control`, consider the following activation conditions per service:  
-   - For the API Gateway write path, set the property component `gateway.spring.profiles.active` to `"debug-control"`.
-    - For the Gateway read-only path and the Discovery/API Catalog paths, set the debug profile property `components.<component>.debug` to `true`.  
+   - For the API Gateway write path, set or append the property `components.gateway.spring.profiles.active` to `"debug-control"`.
+    - For the API Gateway read-only path and the Discovery/API Catalog paths, set the debug profile property `components.<component>.debug` to `true`.  
 Enablement activates the `/application/loggers` endpoint for the API ML Gateway.
 2. List the available loggers of a service by issuing the **GET** request for the given service URL. Use the direct service URL when accessing a specific API ML component, or the Gateway-routed URL when accessing through the API Gateway:
 
@@ -154,10 +154,10 @@ Enablement activates the `/application/loggers` endpoint for the API ML Gateway.
     ```
     **Output:**
 
-    ```bash
+    ```json
     {"levels":["OFF","ERROR","WARN","INFO","DEBUG","TRACE"],
      "loggers":{
-       "ROOT":{"configuredLevel":"INFO""effectiveLevel":"INFO"},
+     "ROOT":{"configuredLevel":"INFO""effectiveLevel":"INFO"},
        "com":{"configuredLevel":null,"effectiveLevel":"INFO"},
        "com.ca":{"configuredLevel":null,"effectiveLevel":"INFO"},
        ...
