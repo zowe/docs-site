@@ -1,10 +1,10 @@
-# Index of OpenTelemetry z/OS Attributes
+# Index of OpenTelemetry z/OS attributes
 
 z/OS-specific resource attributes for API ML provide essential mainframe context to your telemetry data, allowing you to correlate metrics, traces, and logs with specific system identifiers such as SMF IDs, Sysplex names, and LPARs. By providing z/OS platform context, mainframe performance data can be integrated into distributed observability backends.
 
-## z/OS Attribute Reference
+## z/OS attribute reference
 
-The following attributes are captured during system discovery to describe the mainframe environment. For a full list of OTel z/OS attributes for z/OS integration, see the _OpenTelemetry Semanic Conventions_ for [z/OS software](https://opentelemetry.io/docs/specs/semconv/resource/zos/).
+The following attributes are captured during system discovery to describe the mainframe environment. For a full list of OTel z/OS attributes for z/OS integration, see the _OpenTelemetry Semantic Conventions_ for [z/OS software](https://opentelemetry.io/docs/specs/semconv/resource/zos/).
 
 * **zos.smf.id**  
 The System Management Facility (SMF) Identifier that uniquely identifies a z/OS system within a SYSPLEX.
@@ -32,9 +32,13 @@ Configuration Source: Static
 The version string of the operating system (e.g., the release returned by `D IPLINFO`).
 Configuration Source: System discovery
 
-* **process.command**  
-The command or JOB name used to launch the Zowe process.
-Configuration Source: System discovery
+* **process.command_line**  
+The command used to launch the Zowe process.
+Configuration Source: OpenTelemetry SDK
+
+* **process.zos.jobname**  
+The JOB name associated with the Zowe process.
+Configuration Source: API ML
 
 * **process.pid**  
 The Process Identifier. For details about this property, see [Process Attributes](https://opentelemetry.io/docs/specs/semconv/registry/attributes/process/) in the OpenTelemetry documentation.
