@@ -15,7 +15,7 @@ Install or update Zowe® Explorer for IBM® CICS® Transaction Server from Visua
 
 ### Installing from a `VSIX` file
 
-Before you install Zowe Explorer for IBM CICS Transaction Server from a `VSIX` file, ensure that Zowe Explorer is installed. Zowe Explorer is a required dependency. See [Installing Zowe Explorer](../user-guide/ze-install.md#installing-zowe-explorer) for instructions..
+Before you install Zowe Explorer for IBM CICS Transaction Server from a `VSIX` file, ensure that Zowe Explorer is installed. Zowe Explorer is a required dependency. See [Installing Zowe Explorer](../user-guide/ze-install.md#installing-zowe-explorer) for instructions.
 
 If Zowe Explorer is installed, you can install Zowe Explorer for IBM CICS Transaction Server from a `VSIX` file.
 

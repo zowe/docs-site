@@ -6,16 +6,31 @@ As an API Mediation Layer user, you may encounter problems with how the API ML f
 To troubleshoot errors or warnings that can occur when configuring certificates, see the article [Troubleshooting certificate configuration](./troubleshoot-zos-certificate.md).
 :::
 
-* [Install API ML without Certificate Setup](#install-api-ml-without-certificate-setup)
-* [Enable API ML Debug Mode](#enable-api-ml-debug-mode)
-* [Change the Log Level of Individual Code Components](#change-the-log-level-of-individual-code-components)
-* [Services that are not running appear to be running](#services-that-are-not-running-appear-to-be-running)
-* [Debug and Fix Common Problems with SSL/TLS Setup](#debug-and-fix-common-problems-with-ssltls-setup)
-* [SDSF Job search fails](#sdsf-job-search-fails)
-* [Known Issues](#known-issues)
-    * [API ML stops accepting connections after z/OS TCP/IP stack is recycled](#api-ml-stops-accepting-connections-after-zos-tcpip-stack-is-recycled)
-    * [SEC0002 error when logging in to API Catalog](#sec0002-error-when-logging-in-to-api-catalog)
-    * [API ML throws I/O error on GET request and cannot connect to other services](#api-ml-throws-io-error-on-get-request-and-cannot-connect-to-other-services)
+- [Troubleshooting Zowe API Mediation Layer](#troubleshooting-zowe-api-mediation-layer)
+  - [Install API ML without Certificate Setup](#install-api-ml-without-certificate-setup)
+  - [Enable API ML debug mode](#enable-api-ml-debug-mode)
+  - [Change the log level of individual code components](#change-the-log-level-of-individual-code-components)
+    - [Gather atypical debug information](#gather-atypical-debug-information)
+  - [Services that are not running appear to be running](#services-that-are-not-running-appear-to-be-running)
+  - [Debugging and fixing common problems with SSL/TLS setup](#debugging-and-fixing-common-problems-with-ssltls-setup)
+  - [Troubleshooting local development certificates](#troubleshooting-local-development-certificates)
+    - [Missing tools or artifacts](#missing-tools-or-artifacts)
+    - [Certificate renewal and expiration](#certificate-renewal-and-expiration)
+    - [Mismatched CAs after regeneration](#mismatched-cas-after-regeneration)
+  - [SDSF Job search fails](#sdsf-job-search-fails)
+    - [Solution:](#solution)
+  - [Known Issues](#known-issues)
+    - [API ML stops accepting connections after z/OS TCP/IP stack is recycled](#api-ml-stops-accepting-connections-after-zos-tcpip-stack-is-recycled)
+    - [SEC0002 error when logging in to API Catalog](#sec0002-error-when-logging-in-to-api-catalog)
+      - [Connection refused](#connection-refused)
+      - [Configure z/OSMF](#configure-zosmf)
+      - [Missing z/OSMF host name in subject alternative names](#missing-zosmf-host-name-in-subject-alternative-names)
+      - [Secure fix](#secure-fix)
+      - [Insecure fix](#insecure-fix)
+      - [Invalid z/OSMF host name in subject alternative names](#invalid-zosmf-host-name-in-subject-alternative-names)
+      - [Request a new certificate](#request-a-new-certificate)
+      - [Re-create the Zowe keystore](#re-create-the-zowe-keystore)
+    - [API ML throws I/O error on GET request and cannot connect to other services](#api-ml-throws-io-error-on-get-request-and-cannot-connect-to-other-services)
     
 ## Install API ML without Certificate Setup
 
@@ -26,7 +41,7 @@ For testing purposes, it is not necessary to set up certificates when configurin
 * Zowe
 * The service that is onboarded to Zowe
 
-## Enable API ML Debug Mode
+## Enable API ML debug mode
 
 Use debug mode to activate the following functions:
 
@@ -57,7 +72,7 @@ its performance and create large log files that consume a large volume of disk s
 
 4. (Optional) Reproduce a bug that causes issues and review debug messages. If you are unable to resolve the issue, create an issue [here](https://github.com/zowe/api-layer/issues/).     
 
-## Change the Log Level of Individual Code Components
+## Change the log level of individual code components
 
 You can change the log level of a particular code component of the API ML internal service at run time.
 
@@ -198,7 +213,7 @@ Use one of the following options to exit self preservation mode:
    
         This threshold limit causes the discovery service to enter self preservation mode when less than 30 percent of services are not responding.
    
-## Debug and Fix Common Problems with SSL/TLS Setup
+## Debugging and fixing common problems with SSL/TLS setup
 
 Review tips described in the blog post [Troubleshooting SSL/TLS setup with Zowe Certificate Analyzer](https://medium.com/zowe/troubleshooting-ssl-tls-setup-with-zowe-certificate-analyser-31aeec9e1144) to find out how you can use the Zowe Certificate Analyzer to address the following common issues with SSL/TLS setup:
 
@@ -208,6 +223,40 @@ Review tips described in the blog post [Troubleshooting SSL/TLS setup with Zowe 
 * How to debug remote services
 * How to enable mutual authentication using a client certificate
 * How to add a trusted certificate to a SAF Key ring
+
+## Troubleshooting local development certificates
+
+It is possible that you may encounter issues specifically with the on-demand local development certificates. Review the following subsections to troubleshoot issues with local development certificates.
+
+:::warning Security Callout
+These troubleshooting steps apply strictly to isolated local testing and source development. These steps do not apply to production certificates, SAF keyrings, or an installed Zowe runtime configured via `zowe.yaml`.
+:::
+
+### Missing tools or artifacts
+
+If your local services fail to start due to missing keystore or truststore artifacts, you are likely bypassing the Gradle tasks (`test` or Jib image tasks) that generate them automatically. This bypass commonly happens when launching services directly via an IDE, running sample applications, or using direct `npm` commands.
+
+**Solution:**  
+Run `./gradlew generateCertificates` from the repository root before starting the services. Ensure your application configuration points to the correct V2 generated paths: `keystore/service/service.keystore.p12` and `keystore/ca/service-ca.cer`.
+
+### Certificate renewal and expiration
+
+Generated local development certificates and CAs have a 90-day validity period (excluding maintained public roots). Gradle uses a default seven-day renewal window. If you run a Gradle task and the artifacts are within seven days of expiration, they are automatically regenerated. 
+
+### Mismatched CAs after regeneration
+
+:::caution Warning:
+If certificates are regenerated (either automatically by the renewal window, or by manually forcing regeneration), the process replaces the CA keys and completely invalidates trust in the previous set. This CA key replacement subsequently causes TLS handshake failures and broken trust across your local environment. Due to this behavior, CI jobs must share one generated set rather than generating independent authorities.
+:::
+
+**Solution:**  
+To recover from a mismatched CA after regeneration, perform the following steps:
+
+1. Stop and restart all affected local processes.
+2. Rebuild development images (such as Jib containers) that still contain the old certificates.
+3. Refresh your client trust by removing the old CA and adding the newly generated development CA to your browser or operating system truststore.
+4. Reissue custom certificates. If you generated any additional custom certificates signed by the old development CA, you must reissue these certificates using the new CA.
+
 
 ## SDSF Job search fails
 
