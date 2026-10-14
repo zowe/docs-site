@@ -156,9 +156,9 @@ Enablement activates the `/application/loggers` endpoint for the API ML Gateway.
 
     ```bash
     {"levels":["OFF","ERROR","WARN","INFO","DEBUG","TRACE"],
-   "loggers":{
-     "ROOT":{"configuredLevel":"INFO""effectiveLevel":"INFO"},
-      "com":{"configuredLevel":null,"effectiveLevel":"INFO"},
+     "loggers":{
+       "ROOT":{"configuredLevel":"INFO""effectiveLevel":"INFO"},
+       "com":{"configuredLevel":null,"effectiveLevel":"INFO"},
        "com.ca":{"configuredLevel":null,"effectiveLevel":"INFO"},
        ...
      }
