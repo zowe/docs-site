@@ -139,7 +139,7 @@ Enablement activates the `/application/loggers` endpoint for the API ML Gateway.
     GET [gateway-scheme]://[gateway-hostname]:[gateway-port]/apicatalog/api/v1/application/loggers
     ```
 
-:::tip
+  :::tip
 
 One way to issue REST calls is to use the http command in the free HTTPie tool: https://httpie.org/.
 
@@ -170,7 +170,7 @@ Filter logger output with `grep` to narrow down specific packages, for example:
 ```bash
 http GET https://<gateway-hostname>:7554/application/loggers | grep -i "zowe"
 ```
-:::
+  :::
 
 3. Alternatively, extract the configuration of a specific logger using the extended **GET** request:
 
