@@ -139,38 +139,38 @@ Enablement activates the `/application/loggers` endpoint for the API ML Gateway.
     GET [gateway-scheme]://[gateway-hostname]:[gateway-port]/apicatalog/api/v1/application/loggers
     ```
 
-  :::tip
+   :::tip
 
-One way to issue REST calls is to use the http command in the free HTTPie tool: https://httpie.org/.
+    One way to issue REST calls is to use the http command in the free HTTPie tool: https://httpie.org/.
 
-**Example:**
+    **Example:**
 
-```bash
-# HTTPie (requires: pip install httpie)
-http GET https://<gateway-hostname>:7554/application/loggers
+    ```bash
+    # HTTPie (requires: pip install httpie)
+    http GET https://<gateway-hostname>:7554/application/loggers
 
-# curl
-curl -k https://<gateway-hostname>:7554/application/loggers | jq .
-```
-**Output:**
+    # curl
+    curl -k https://<gateway-hostname>:7554/application/loggers | jq .
+    ```
+    **Output:**
 
-```bash
+    ```bash
     {"levels":["OFF","ERROR","WARN","INFO","DEBUG","TRACE"],
-     "loggers":{
-       "ROOT":{"configuredLevel":"INFO","effectiveLevel":"INFO"},
-       "com":{"configuredLevel":null,"effectiveLevel":"INFO"},
+   "loggers":{
+     "ROOT":{"configuredLevel":"INFO""effectiveLevel":"INFO"},
+      "com":{"configuredLevel":null,"effectiveLevel":"INFO"},
        "com.ca":{"configuredLevel":null,"effectiveLevel":"INFO"},
        ...
      }
     }
-```
+    ```
 
-Filter logger output with `grep` to narrow down specific packages, for example:
+    Filter logger output with `grep` to narrow down specific packages, for example:
 
-```bash
-http GET https://<gateway-hostname>:7554/application/loggers | grep -i "zowe"
-```
-  :::
+    ```bash
+    http GET https://<gateway-hostname>:7554/application/loggers | grep -i "zowe"
+    ```
+      :::
 
 3. Alternatively, extract the configuration of a specific logger using the extended **GET** request:
 
