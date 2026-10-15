@@ -117,6 +117,10 @@ CONFIG=FILE(/home/me/zowe-customizations.yaml)\
 
 When you use multiple storage types, Zowe constructs the unified configuration by having the storage types listed on the left override the values of storage types to their right in the list. This means the left-most storage type's values take priority, and the right-most storage type should be treated as a set of defaults. Here is an example of splitting configuration into multiple files:
 
+:::warning
+Replace the placeholder values (such as `1234`) in the following snippet with your actual configuration details before using the code.
+:::
+
 ```yaml
 # /home/me/zowe-customizations.yaml
 components:

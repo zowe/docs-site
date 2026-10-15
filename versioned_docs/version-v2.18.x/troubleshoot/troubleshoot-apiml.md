@@ -51,6 +51,10 @@ Use debug mode to activate the following functions:
 
 When on z/OS, API ML log messages are written to the STC job log.
 
+:::caution Important:
+To use this debug feature, proper `SAF CONTROL` access with permission to the `APIML.DEBUG` resource within the `ZOWE` SAF class is required to modify actuator endpoints. For more information, see [Configuring APIML.DEBUG](../user-guide/api-mediation/configuration-saf-resource-checking.md).
+:::
+
 **Important:** We highly recommend that you enable debug mode only when you want to troubleshoot issues.
 Disable debug mode when you are not troubleshooting. Running in debug mode while operating API ML can adversely affect
 its performance and create large log files that consume a large volume of disk space.
@@ -79,7 +83,7 @@ You can change the log level of a particular code component of the API ML intern
 **Follow these steps:**
 
 1. Enable API ML Debug Mode as described in Enable API ML Debug Mode.
-This activates the application/loggers endpoints in each API ML internal service (Gateway, Discovery Service, and Catalog).
+This activates the application/loggers endpoints in each API ML internal service (API Gateway, Discovery Service, and API Catalog).
 2. List the available loggers of a service by issuing the **GET** request for the given service URL:
 
     ```
@@ -95,15 +99,15 @@ This activates the application/loggers endpoints in each API ML internal service
 
     - **port**
 
-        Specifies the TCP port where API ML service listens on. The port is defined by the configuration parameter `components.gateway.port` for the Gateway,
-    `components.discovery.port` for the Discovery service (by default, set to gateway port + 1), and `components.catalog.port` for the Catalog
-    (by default, set to gateway port + 2).
+        Specifies the TCP port where API ML service listens on. The port is defined by the configuration parameter `components.gateway.port` for the API Gateway,
+    `components.discovery.port` for the Discovery service (by default, set to gateway port + 1), and `components.catalog.port` for the API Catalog
+    (by default, set to gateway port + 2).  
 
     :::note deprecated
     The environment variables `MFS_GW_PORT`, `MFS_DS_PORT`, and `MFS_AC_PORT` are deprecated. Use the `zowe.yaml` parameters `components.gateway.port`, `components.discovery.port`, and `components.catalog.port` instead.
     :::
 
-    **Note:**  For the Catalog you can list the available loggers by issuing a **GET** request for the given service URL in the following format:
+    **Note:**  For the API Catalog you can list the available loggers by issuing a **GET** request for the given service URL in the following format:
     ```
     GET [gateway-scheme]://[gateway-hostname]:[gateway-port]/apicatalog/api/v1/application/loggers
     ```
@@ -112,11 +116,13 @@ This activates the application/loggers endpoints in each API ML internal service
 
     **Example:**
 
-    ```
-    HTTPie command:
-    http GET https://&lt;gateway-hostname&gt;:7554/application/loggers
+    ```bash
+    # HTTPie (requires: pip install httpie)
+    http GET https://<gateway-hostname>:7554/application/loggers
+   ```
+   **Output:**
 
-    Output:
+   ```json
     {"levels":["OFF","ERROR","WARN","INFO","DEBUG","TRACE"],
      "loggers":{
        "ROOT":{"configuredLevel":"INFO","effectiveLevel":"INFO"},
@@ -165,6 +171,10 @@ This activates the application/loggers endpoints in each API ML internal service
 
 * **ZWE_configs_debug**  
 This property can be used to unconditionally add active debug profiles.
+
+:::note
+  The API Gateway, Discovery, and API Catalog services only expose loggers under the `debug` profile.
+  :::
 
 For more information, see [Adding active profiles](https://docs.spring.io/spring-boot/docs/1.2.0.M1/reference/html/boot-features-profiles.html#boot-features-adding-active-profiles) in the Spring documentation.
 
