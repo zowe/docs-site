@@ -153,7 +153,7 @@ components:
 ```
 
 :::caution Important:
-If `debugOnly` is set to `true`, but enabled is `false`, the `debugOnly` setting is actively ignored by the startup script.
+If `debugOnly` is set to `true`, but enabled is `false`, the `debugOnly` setting is actively ignored.
 :::
 
 ### Feature-Level Debugging
