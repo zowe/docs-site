@@ -6,13 +6,18 @@
 
 ## Description
 
-This command will generate certificate used by Zowe services.
+This command will generate the certificate used by Zowe services.
 
 If you specify `--update-config` with this command, these configurations could
 be written back to your Zowe YAML configuration file:
 
 - `zowe.certificate` based on your `zowe.setup.certificate` configuration.
 - `zowe.setup.security.product` based on the detected External Security Manager
+- `zowe.setup.certificate.pkcs12.password` and `zowe.setup.certificate.pkcs12.caPassword`. If these parameters are left at their default values, the command generates random passwords and saves them to the file.
+
+ :::note
+ If you do not use `--update-config`, any randomly generated PKCS12 passwords are only displayed in the command output and must be saved manually.
+ :::
 
 These Zowe YAML configurations showing with sample values are used:
 

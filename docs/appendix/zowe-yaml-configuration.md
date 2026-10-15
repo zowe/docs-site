@@ -218,7 +218,11 @@ The high-level configuration `zowe` supports these definitions:
  In Kubernetes deployment, this value is the domain name you will use to access your Zowe running in a Kubernetes cluster.
 
 - **zowe.network.allowedDomains**  
-Specifies a list of trusted hostnames and domain patterns that the API Mediation Layer uses when validating service registration metadata. A service registration is rejected if any hostname referenced in its metadata (such as base connection URLs or documentation endpoints) does not match an entry in this list. Supports exact hostnames and leading wildcard patterns (such as `*.example.com`).
+Specifies a list of trusted hostnames and domain patterns, exact IPv4/IPv6 addresses, and IPv4/IPv6 CIDR ranges that the API Mediation Layer uses when validating service registration metadata. A service registration is rejected if any hostname or IP address referenced in its metadata (such as the service instance IP, base connection URLs or documentation endpoints) does not match an entry in this list. Supports exact hostnames, wildcard prefixes for subdomains (for example, `*.example.com`, which matches any hostname ending in `.example.com`), exact IP addresses (such as `192.168.1.50` or `2001:db8::1`), and CIDR ranges (such as `10.0.0.0/24` or `2001:db8::/32`).
+
+  :::note
+  Hostname wildcard matching is distinct from IP-range matching. CIDR is an allowlist-entry syntax used to define IP ranges. CIDR is not a valid host portion of a service URL. API ML evaluates literal IPs found in service URLs against the configured CIDR entries.
+  :::
 
   If left unconfigured, the Discovery Service aggregates a base allowlist from your environment configuration. Any values explicitly provided in this parameter are appended to this default list. By default, the system automatically trusts:
   * `zowe.externalDomains` (in both single instance and HA setups)
@@ -228,7 +232,10 @@ Specifies a list of trusted hostnames and domain patterns that the API Mediation
     * `www.ibm.com`
     * `zowe.github.io`
     * `www.zowe.org`
-    * `techdocs.broadcom.com`
+    * `techdocs.broadcom.com`  
+  :::note
+  For full configuration details, IP/CIDR matching examples, and troubleshooting, see [Configuring allowed domains and IP addresses for service registration](../user-guide/api-mediation/config-allowed-domains-for-service-reg.md).
+  :::
 
 - **zowe.externalPort**  
  Specifies the port that is to be exposed to external Zowe users. By default, this value is set based on Zowe APIML Gateway port.
@@ -453,9 +460,12 @@ Specifies the list of certificate authorities to be imported to the Zowe `PKCS12
 Specifies the directory where the PKCS12 keystore and truststore are stored. This value is required if `zowe.setup.certificate.type` is `PKCS12`.
 - **zowe.setup.certificate.pkcs12.lock**  
 Specifies a boolean configuration to indicate if the PKCS12 keystore directory is to be locked only for Zowe runtime user and group. The default value is `true`.
-- **name**, **password**, **caAlias**, and **caPassword**  
-Under `zowe.setup.certificate.pkcs12`, these parameters   
-customize the keystore and truststore. These configurations are optional, but it is recommended to update the values from default values.
+- **zowe.setup.certificate.pkcs12.name** and **zowe.setup.certificate.pkcs12.caAlias**  
+  These parameters customize the keystore and truststore. These configurations are optional.
+- **zowe.setup.certificate.pkcs12.password** and **zowe.setup.certificate.pkcs12.caPassword**  
+These parameters specify the passwords that protect the keystore and the self-signed certificate authority keystore. These configurations are optional.  
+  **Note:**  
+  If either password is left at its default value, `zwe init certificate` generates a random password instead. With `--update-config`, the generated password is written to your `zowe.yaml` configuration file. Without `--update-config`, the password is shown only in the command output and must be saved manually.
 - **zowe.setup.certificate.pkcs12.import.keystore**  
  Specify this parameter if you already acquired certificates from another CA, stored them in PKCS12 format, and want to import into Zowe PKCS12 keystore.
 - **zowe.setup.certificate.pkcs12.import.password**  
@@ -610,7 +620,7 @@ These configurations can be used under the `components.gateway` section:
   Specifies how long the connection to southbound remains open without communication. The default value is 5 seconds. The unit is in seconds.
 
 - **apiml.health.protected**  
-  Specifies if the health check endpoint is accessible with or without authentication.  
+  Specifies if the health check, information, and version endpoints are accessible with or without authentication. This property governs the following endpoints: `/application/health`, `/application/info`, `/application/version`, `/gateway/version`, and `/gateway/api/v1/version`. The default value is `true`.
 
 - **apiml.gateway.timeoutMillis**  
  Specifies the timeout for the connection to the services in milliseconds.
@@ -732,7 +742,8 @@ These configurations can be applied to the `components.discovery` section:
  Specifies the enablement of debug mode for the Discovery Service.
 
 - **apiml.health.protected**  
-  Specifies if the health check endpoint is accessible with or without authentication.
+  Specifies if the health check endpoint is accessible with or without authentication. 
+  The default value is `true`.
 
 - **apiml.security.ssl.verifySslCertificatesOfServices**  
  Specifies if API ML is to verify certificates of services in `strict` mode. Set to `true` to enable `strict` mode where API ML validates both trust in the certificate in the truststore, and also if the certificate Common Name or Subject Alternate Name (SAN) matches the service hostname.
@@ -746,7 +757,7 @@ These configurations can be applied to the `components.discovery` section:
 - **apiml.server.maxTotalConnections**  
  Specifies the total number of connections for all services registered under API Mediation Layer.
 
-- **apiml.discovery.serviceIdPrefixReplacer**  
+- **apiml.discovery.serviceIdPrefixReplacer**   
  Modifies the service ID of a service instance before it registers to API Mediation Layer.
  Use this parameter to ensure compatibility of services that use a non-conformant organization prefix with v2, based on Zowe v2 conformance.
 

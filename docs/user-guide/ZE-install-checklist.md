@@ -2,7 +2,7 @@
 
 This checklist outlines the required steps for a first-time installation of Zowe Explorer.
 
-:::info Required roles: systems administrator, devops architect, security administrator, systems programmer
+:::info Required roles: system administrator, devops architect, security administrator, systems programmer
 :::
 
 The checklist includes a brief description of the steps  required for installation of Zowe Explorer. The checklist also identifies the roles that are typically required to complete the step, which enables the pre-installation planning team to focus on the tasks for which they are responsible.

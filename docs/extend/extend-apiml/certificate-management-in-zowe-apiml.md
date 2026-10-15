@@ -68,6 +68,10 @@ For detailed instructions about how to set up certificates during installation, 
 
 Follow the procedure in the applicable section in this article during installation.
 
+:::important  
+When following the PKCS12 installation scenarios to initialize your certificates using the `zwe init certificate` command, we highly recommend appending the `--update-config` parameter. If you omit this flag, any randomly generated keystore passwords will only be printed to the console and must be manually copied to your `zowe.yaml` file to avoid losing access to the certificates.  
+:::
+
 ### Import the local CA certificate to your browser
 
 Trust in the API ML server is a necessary precondition for secure communication between a browser or API Client application. Ensure this trust through the installation of a Certificate Authority (CA) public certificate. By default, API ML creates a local CA. Import the CA public certificate to the truststore for REST API clients and to your browser. You can also import the certificate to your root certificate store.

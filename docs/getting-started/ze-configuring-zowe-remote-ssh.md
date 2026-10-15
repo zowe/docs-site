@@ -1,10 +1,13 @@
 # Configuring and deploying Zowe Remote SSH
 
-Use Zowe Remote SSH (ZRS) in Zowe Explorer to perform z/OS mainframe operations with minimal server-side configuration.
+:::info Required roles: system administrator, system programmer, security administrator
+:::
+
+Use Zowe Remote SSH in Zowe Explorer to perform z/OS mainframe operations with minimal server-side configuration.
 
 ## System requirements
 
-- 16 MB of free space for deploying ZRS on z/OS Unix
+- 20 MB of free space for deploying ZRS on z/OS Unix
 - z/OS OpenSSH set up and configured for the user
 - At minimum, user permissions for read, write, and execute (`700`) for deployment directory
 
@@ -136,7 +139,7 @@ Use an existing SSH configuration file to create a new `ssh` profile in your cli
 
 To create a new SSH profile in your client configuration:
 
-1. In the **Command Palette**, search for **Zowe Explorer: Connect to zowex server on host...**.
+1. In the **Command Palette**, search for **Zowe Explorer: Deploy SSH server on host and connect...**.
 
     If you have not yet configured a server path, you are prompted for a path to deploy the server. The path is saved in the `zowe.zowex.serverInstallPath` key in the VS Code `settings.json` file.
 2. Select a profile listed **below** the **Migrate From SSH Config** separator in the drop-down.
@@ -150,7 +153,7 @@ To create a new SSH profile in your client configuration:
 
 Use an existing SSH profile from a Zowe client configuration file to deploy Zowe Remote SSH:
 
-1. In the **Command Palette**, search for **Zowe Explorer: Connect to zowex server on host...**.
+1. In the **Command Palette**, search for **Zowe Explorer: Deploy SSH server on host and connect...**.
         
     If you have not yet configured a server path, you are prompted for a path to deploy the server. The path is saved in the `zowe.zowex.serverInstallPath` key in the VS Code `settings.json` file.
 2. Select a profile listed **above** the **Migrate From SSH Config** separator in the drop-down.
