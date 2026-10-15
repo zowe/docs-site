@@ -8,8 +8,7 @@ Zowe API Mediation Layer uses logback for its logging.
 
 ## Configuring logging level
 
-You can manage the volume of API ML logs written to the spool by configuring their verbosity for both **single-service deployment** or a distributed **microservice deployment**. Adjust the logging level property by configuring the attribute corresponding to your deployment mode within your `zowe.yaml` file. 
-
+You can manage the volume of API ML logs written to various destinations, such as the **standard output streams** (`stdout`, typically viewed in the JES spool), versus **dedicated log files** in the USS file system. You can configure this routing and verbosity for both a **single-service deployment** or a distributed **microservice deployment**. Adjust the logging level property by configuring the attribute corresponding to your deployment mode within your `zowe.yaml` file.
 
 
 ### Configuration Examples
@@ -125,7 +124,7 @@ If an operational issue occurs while using the quiet level, the system dynamical
 
 ## Granular Troubleshooting Options
 
-If a full debug level generates an unmanageable number of log messages, you can utilize the following granular options to restrict output. These options allow you to isolate debug data to a specific file or a specific feature without overwhelming `stdout`.
+If a full debug level generates an unmanageable number of log messages, you can utilize the following granular options to restrict output. These options allow you to isolate debug data to a specific file or a specific feature without overwhelming your standard output stream.
 
 ### Routing Logs to a File
 
@@ -141,7 +140,7 @@ components:
          enabled: true # Or use environment variable: ZWE_configs_logging_toFile_enabled=true
 ```
 
-To keep your standard `stdout` clean during troubleshooting, you can force only the DEBUG and TRACE level messages to route to the log file:
+To keep your standard output stream clean during troubleshooting, you can force only the DEBUG and TRACE level messages to route to the log file:
 
 ```YAML
 components:
@@ -171,15 +170,14 @@ components:
          discovery: true 
          caching: false 
          catalog: false 
-         wiretap: false 
+      
 ```
 
 Supported debug features are categorized as follows:
 * **Core routing and registry:** `gateway`, `discovery`, `catalog`, and `caching`
 * **Security operations:** `authentication`
-* **Network diagnostics:** `wiretap` (enables detailed HTTP request and response traffic logging)
 
-Enabling any of these options automatically applies the debug-common Spring profile along with the specific `debug-<feature>` profile.
+Enabling any of these feature-specific options automatically includes foundational debug logging for shared API ML features. This configuration ensures that essential system context (such as core framework and infrastructure logs) is captured alongside your targeted feature logs.
 
 **Environment variable equivalents:**
 
@@ -188,10 +186,9 @@ Enabling any of these options automatically applies the debug-common Spring prof
 * `ZWE_configs_logging_debug_discovery`
 * `ZWE_configs_logging_debug_caching`
 * `ZWE_configs_logging_debug_catalog`
-* `ZWE_configs_logging_debug_wiretap`
 
 
-The following configuration example demonstrates how to enable debug logs for specific features (`authentication`, `discovery`, `wiretap`) while keeping the global debug `false`. To prevent these high-volume logs from overwhelming your `stdout` or spool, they are routed exclusively to a file.
+The following configuration example demonstrates how to enable debug logs for specific features (`authentication`, `discovery`) while keeping the global debug `false`. To prevent these high-volume logs from overwhelming your standard output stream, they are routed exclusively to a file.
 
 **Example:**
 
@@ -207,7 +204,6 @@ components:
          discovery: true
          caching: false
          catalog: false
-         wiretap: true
       toFile: 
          enabled: true
          debugOnly: true
@@ -218,7 +214,7 @@ components:
 
 You can define fine-grained loggers directly in your `zowe.yaml` configuration using the `loggerLevels` array. This is the recommended approach for targeting specific diagnostic data when the preconfigured feature-level debug logging is not convenient enough. Internal turbofilters automatically bypass these specified loggers to ensure your scoped debug logs are not suppressed.
 
-The following example illustrates tracking Personal Access Token (PAT) diagnostics. To ensure these highly specific logs do not overwhelm stdout or the spool, the standard logging level is set to `quiet`, and the specific security classes are routed only to the log file at the `DEBUG` level.
+The following example illustrates tracking Personal Access Token (PAT) diagnostics. To ensure these highly specific logs do not overwhelm your standard output stream, the standard logging level is set to `quiet`, and the specific security classes are routed only to the log file at the `DEBUG` level.
 
 ```yaml
 components:
@@ -350,7 +346,7 @@ For more information about the current default logging configuration, see the [l
 The default `logback.xml` configuration defines two appenders:
 
 - **STDOUT**  
-A console appender that prints log messages to standard output. This appender is useful for real-time monitoring and containerized deployments.
+A console appender that prints log messages to standard output. This appender is useful for real-time monitoring and containerized deployments. `STDOUT` is part of the stand output stream.
 
 - **FILE**  
 A rolling file appender that writes log messages to files in the location specified by `STORAGE_LOCATION`.

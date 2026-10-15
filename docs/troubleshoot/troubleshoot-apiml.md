@@ -199,12 +199,12 @@ http GET https://<gateway-hostname>:7554/application/loggers | grep -i "zowe"
     Log level changes made via the `/application/loggers` endpoint apply only for the current session. They are **not** persisted across restarts. To make permanent changes, use the configuration method that matches your deployment mode:
 
     **For Single-Service Deployments:**  
-    Define exact package levels in your zowe.yaml using the `components.apiml.logging.loggerLevels` array.
+    Define exact package levels in your `zowe.yaml` using the `components.apiml.logging.loggerLevels` array.
 
     **For Microservice Deployments:**
     
       * **For select component control:**  
-      For more granular control, define specific package log levels in the individual service's `application.yml` using standard Spring Boot syntax (for example, `logging.level.org.zowe.apiml.gateway=DEBUG`), or point to a custom logback file using `components.<component>.logging.config` in your `zowe.yaml`.
+      For more granular control over specific packages, point to a custom logback configuration file using the `components.<component>.logging.config` parameter in your `zowe.yaml`. 
 
       * **For service-wide debug:**  
       Set `components.<component>.debug: true` in your `zowe.yaml` to force global debug logging for that specific microservice. 
@@ -242,11 +242,11 @@ When `debug: true` is set, you may not see the debug output immediately in the S
 
 :::info Targeted Debugging (Single-Service Deployment)
 
-Because the global `debug: true` toggle generates extremely large log files, it is recommended to use granular debugging options in single-service deployment. You can route debug logs exclusively to a file to keep your spool clean, and target specific features instead of the entire application.
+Because the global `debug: true` toggle generates a large volume of log output that can overwhelm your spool or create excessively large files, it is recommended to use granular debugging options in single-service deployment. You can route debug logs exclusively to a file to keep your spool clean, and target specific features instead of the entire application.
 
 To target specific features (like `gateway`, `authentication`, or `discovery`), keep the global `components.apiml.debug` set to `false`, and enable the specific feature under `components.apiml.logging.debug.<feature>` in your `zowe.yaml`.
 
-For detailed instructions on configuring log routing, feature-level debugging, and setting permanent package-level logger levels, see [Customizing Zowe API Mediation Layer logging](../user-guide/api-mediation/configuration-logging.md).
+For detailed instructions on managing log output destinations (such as separating debug messages from standard spool output), and feature-level debugging, see [Customizing Zowe API Mediation Layer logging](../user-guide/api-mediation/configuration-logging.md).
 :::
 
 
