@@ -87,8 +87,9 @@ The API user specifies only the major version in the URI. The API Catalog needs 
  - **Patch version**  
  The Patch version is not specified in the URI and does not indicate a difference in the API. A patch version is used only when the API documentation is patched or a bug was fixed with no change in the API.
 
- ![API Versioning](../../images/api-mediation/api-versioning.png)
+ ![API Versioning](../../images/api-mediation/api-versioning1.png)
  
+
  
 
  
