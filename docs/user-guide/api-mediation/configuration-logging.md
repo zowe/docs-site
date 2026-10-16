@@ -8,7 +8,7 @@ Zowe API Mediation Layer uses logback for its logging.
 
 ## Configuring logging level
 
-You can manage the volume of API ML logs written to various destinations, such as the **standard output streams** (`stdout`, typically viewed in the JES spool), versus **dedicated log files** in the USS file system. You can configure this routing and verbosity for both a **single-service deployment** or a distributed **microservice deployment**. Adjust the logging level property by configuring the attribute corresponding to your deployment mode within your `zowe.yaml` file.
+You can manage the volume of API ML logs written to various destinations, such as the **standard output streams** (`stdout`, typically viewed in the JES spool on a mainframe), versus **dedicated log files** on the local file system. You can configure this routing and verbosity for both a **single-service deployment** or a distributed **microservice deployment**. Adjust the logging level property by configuring the attribute corresponding to your deployment mode within your `zowe.yaml` file.
 
 
 ### Configuration Examples
@@ -209,31 +209,6 @@ components:
          debugOnly: true
 ```
 
-## Setting different log levels for specific packages
-
-
-You can define fine-grained loggers directly in your `zowe.yaml` configuration using the `loggerLevels` array. This is the recommended approach for targeting specific diagnostic data when the preconfigured feature-level debug logging is not convenient enough. Internal turbofilters automatically bypass these specified loggers to ensure your scoped debug logs are not suppressed.
-
-The following example illustrates tracking Personal Access Token (PAT) diagnostics. To ensure these highly specific logs do not overwhelm your standard output stream, the standard logging level is set to `quiet`, and the specific security classes are routed only to the log file at the `DEBUG` level.
-
-```yaml
-components:
-  apiml:
-    logging:
-     # Standard logging level is quiet - stdout/spool contains only errors, warnings and important APIML messages
-      level: quiet
-      toFile: 
-         # Logs will be saved in file
-         enabled: true
-         # Debug logs will be saved only to the log file
-         debugOnly: true
-      # Debug log levels are set only for relevant classes
-      loggerLevels:
-        - org.zowe.apiml.zaas.security.service.AuthenticationService=DEBUG
-        - org.zowe.apiml.zaas.security.service.JwtSecurity=DEBUG
-        - org.zowe.apiml.zaas.security.service.token.ApimlAccessTokenProvider=DEBUG
-```
-
 ### Configuring granular logging with environment variables
 
 If you are running API Mediation Layer in a containerized environment (such as Docker or Kubernetes) or executing scripts directly, you can pass these granular configurations as environment variables rather than modifying the `zowe.yaml` file.
@@ -346,7 +321,7 @@ For more information about the current default logging configuration, see the [l
 The default `logback.xml` configuration defines two appenders:
 
 - **STDOUT**  
-A console appender that prints log messages to standard output. This appender is useful for real-time monitoring and containerized deployments. `STDOUT` is part of the stand output stream.
+A console appender that prints log messages to standard output. This appender is useful for real-time monitoring and containerized deployments. 
 
 - **FILE**  
 A rolling file appender that writes log messages to files in the location specified by `STORAGE_LOCATION`.
