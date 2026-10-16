@@ -1,4 +1,4 @@
-# Zowe CLI Extenders Checklist
+# Extending Zowe CLI Checklist
 
 | Phase | Task Description | Status |
 |---|---|---|
