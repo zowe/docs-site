@@ -745,6 +745,7 @@ module.exports = {
           label: "Developing for Zowe API Mediation Layer",
           items: [
             "extend/extend-apiml/onboard-overview",
+            "extend/extend-apiml/extend-apiml-checklist",
             {
               type: "category",
               label: "API Mediation Layer Quick start for development",
@@ -839,6 +840,7 @@ module.exports = {
       label: "Developing client-side components",
       collapsed: false,
       items: [
+        "extend/extend-cli/extend-cli-checklist",
         {
           type: "category",
           label: "Developing for Zowe CLI",
