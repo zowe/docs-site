@@ -37,7 +37,9 @@ The app-server component requires one of the following Node.js versions:
 <details>
 <summary> Click here for details about the node.js versions supported by Zowe. </summary>
 
-The following Node.js versions are supported to run Zowe. See the [Node.js hardware and software prerequisites for Zowe](#nodejs-hardware-and-software-prerequisites-for-zowe) section for the prerequisites that are required by Zowe.
+The following Node.js versions are supported to run Zowe. Node.js version `20.19.0` and version `22.19.0` are the minimum versions which are supported to run Zowe 3.6 and higher versions.
+
+See the [Node.js hardware and software prerequisites for Zowe](#nodejs-hardware-and-software-prerequisites-for-zowe) section for the prerequisites that are required by Zowe.
 
 The corresponding [IBM SDK for Node.js - z/OS documentation](https://www.ibm.com/docs/en/sdk-nodejs-zos) lists all the prerequisites for Node.js. Some software packages, which might be listed as prerequisites there, are **NOT** required by Zowe. Specifically, you do **NOT** need to install Python, Make, Perl, or C/C++ runtime or compiler.  If you can run `node --version` successfully, you have installed the prerequisites required by Zowe.
 
