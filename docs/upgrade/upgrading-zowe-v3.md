@@ -1,34 +1,34 @@
-# Upgrading from Zowe Vx to Zowe V3
+# Upgrading from Zowe Vx to Zowe V3.6
 
-Follow the procedure outlined in this article to upgrade from Zowe v2 to Zowe v3, or from Zowe v1 to Zowe v3.
+Follow the procedure outlined in this article to upgrade from Zowe v2 to Zowe v3.6, or from Zowe v1 to Zowe v3.6.
 
 :::info Required roles: system administrator, system programmer
 :::
 
 While the major version upgrading process is similar to a Zowe v2 minor release upgrade, there are several new and updated configuration parameters to consider. 
 
-Follow the steps described in this article to ensure a smooth upgrade to Zowe v3.
+Follow the steps described in this article to ensure a smooth upgrade to Zowe v3.6.
 
 :::note
 The workspace directory should be re-created only if you are using the app-server component.
 :::
 
-## Prerequisites for Zowe v3
+## Prerequisites for Zowe v3.6
 
 Before starting the upgrade, ensure the following base system requirements are met:
 
 *   **z/OSMF**  
     Version V2R5 or V3R1 is required. JWT support for z/OSMF is highly recommended. For more information, see [Enabling JSON Web Token support](https://www.ibm.com/docs/en/zos/3.1.0?topic=configurations-enabling-json-web-token-support) in the IBM documentation. If you do not have JWT support in z/OSMF, make sure to set `components.gateway.apiml.security.auth.zosmf.jwtAutoconfiguration` to `ltpa`.
 *   **Java**  
-    Java 17 is required. The Zowe YAML parameter `java.home` value should be a **Java 17** home location. If an administrator uses `zwe init` to set up Zowe, ensure the `java` for that user is v17 by including it in the `PATH` environment variable.
+    Java 17 or higher (21 supported, 17–21 enforced) is required. The Zowe YAML parameter `java.home` value should be a **Java 17** or **Java 21** home location. If an administrator uses `zwe init` to set up Zowe, ensure the `java` for that user is v17 or higher by including it in the `PATH` environment variable.
 *   **Node.js**  
-    Ensure that the Zowe YAML parameter `node.home` value is a **Node.js 18 or 20** home location. Node 16 and earlier versions are not supported.
+    Ensure that the Zowe YAML parameter `node.home` value is a **Node.js 18 - 24** home location. Node 16 and earlier versions are not supported.
 
 ---
 
 ## Preparing Your Current Zowe Instance
 
-To ensure a smooth transition to Zowe v3, you must first resolve any configuration changes required by your current version. **Expand the section below that matches your current Zowe version** and apply the necessary configurations before proceeding with the v3 upgrade. 
+To ensure a smooth transition to Zowe v3.6, you must first resolve any configuration changes required by your current version. **Expand the section below that matches your current Zowe version** and apply the necessary configurations before proceeding with the v3 upgrade. 
 
 :::note
 Before upgrading to Zowe v3, All v2.x installations must first upgrade to v2.18.x before upgrading to v3.
