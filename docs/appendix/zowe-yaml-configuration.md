@@ -579,7 +579,8 @@ Specifies if the component should be started in this Zowe instance, thereby prov
 #### Configure API Mediation Layer Global Logging
 
 - **components.apiml.logging.level**  
-Configures the logging verbosity for the API ML when running in **single-service deployment** mode.
+Configures the logging verbosity for the API ML when running in **single-service deployment** mode. (Options are `quiet`, `info`, or `debug`)  
+**Default:** `info`
   
 - **components._component_.logging.level**  
 Configures the logging verbosity for individual API Mediation Layer microservices when running in **microservice deployment** mode.  
@@ -602,6 +603,23 @@ Configures the logging verbosity for individual API Mediation Layer microservice
   * **Single-Service Deployment:** The legacy parameter `components.apiml.debug: true` takes precedence and forces a resolution to `debug`, overriding `components.apiml.logging.level`.
   * **Microservice Deployment:** Individual service parameters such as `components.gateway.debug: true` take precedence and force a resolution to `debug` for that specific microservice, overriding settings like `components.gateway.logging.level`.
   :::
+
+* **components.apiml.logging.debug._feature_**  
+Enables targeted debug logging for specific API ML features in single-service deployment mode. Ensure that `components.apiml.debug` is set to `false` when using this parameter.  
+**Default:** `false` (disables targeted debug logging for the specific API ML feature)
+
+  Supported features:  
+  * **Core routing and registry:** `gateway`, `discovery`, `catalog`, and `caching`
+  * **Security operations:** `authentication`
+ 
+* **components.apiml.logging.toFile.enabled**  
+When set to `true`, routes API ML logs to a dedicated file. Note that if any debug feature is enabled, this is automatically forced to `true`.  
+**Default:** `false` (file routing, wherein logs go only to your standard output stream (stdout/spool), is disabled)
+
+* **components.apiml.logging.toFile.debugOnly**  
+When set to `true`,`DEBUG` and `TRACE` level messages are written to the log file. This reduces the amount of logging statements going to your standard output stream (stdout/spool). Note that enabling debug also triggers additional `INFO` level messages that will continue to be routed to your standard output stream (stdout/spool).
+**Default:** `false` (all standard logs are written to both your standard output stream (stdout/spool) and the log file (if `toFile.enabled` is `true`)) 
+**Note:** `components.apiml.logging.toFile.enabled` must also be `true`, otherwise this setting is ignored.
 
 #### Configure component gateway
 

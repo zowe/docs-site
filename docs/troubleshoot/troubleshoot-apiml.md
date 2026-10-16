@@ -196,7 +196,18 @@ http GET https://<gateway-hostname>:7554/application/loggers | grep -i "zowe"
     | `reactor.netty` | Reactive Netty I/O operations |
 
     :::warning Runtime-only persistence
-    Log level changes made via the `/application/loggers` endpoint apply only for the current session. They are **not** persisted across restarts. To make permanent changes, set `components.<component>.debug: true` or configure logging in the component's `application.yml`.
+    Log level changes made via the `/application/loggers` endpoint apply only for the current session. They are **not** persisted across restarts. To make permanent changes, use the configuration method that matches your deployment mode:
+
+    **For Single-Service Deployments:**  
+    Define exact package levels in your `zowe.yaml` using the `components.apiml.logging.loggerLevels` array.
+
+    **For Microservice Deployments:**
+    
+      * **For select component control:**  
+      For more granular control over specific packages, point to a custom logback configuration file using the `components.<component>.logging.config` parameter in your `zowe.yaml`. 
+
+      * **For full microservice debugging:**  
+      Set `components.<component>.debug: true` in your `zowe.yaml` to force debug logging for all operations within that specific microservice (without affecting the rest of the API ML components).
     :::
 
 ## Gather atypical debug information
@@ -227,6 +238,15 @@ For more information, see [Spring Boot Profiles](https://docs.spring.io/spring-b
 :::note 
 
 When `debug: true` is set, you may not see the debug output immediately in the STC job log on z/OS or in the container logs. Check the component's application log file (for example, `$WORKSPACE_DIR/.logs/gateway/`) for the detailed debug messages. On z/OS, the debug output is written to the job log of the started task.
+:::
+
+:::info Targeted Debugging (Single-Service Deployment)
+
+Because the `debug: true` toggle generates a large volume of log output that can overwhelm your spool or create excessively large files, it is recommended to use granular debugging options in single-service deployment. You can route debug logs exclusively to a file to keep your spool clean, and target specific features instead of the entire application.
+
+To target specific features (like `gateway`, `authentication`, or `discovery`), keep `components.apiml.debug` set to `false`, and enable the specific feature under `components.apiml.logging.debug.<feature>` in your `zowe.yaml`.
+
+For detailed instructions on managing log output destinations (such as separating debug messages from standard spool output), and feature-level debugging, see [Customizing Zowe API Mediation Layer logging](../user-guide/api-mediation/configuration-logging.md).
 :::
 
 
