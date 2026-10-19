@@ -41,8 +41,8 @@ Before upgrading to Zowe v3.6, All v2.x installations must first upgrade to v2.1
 <details>
 <summary><strong>Upgrading from Zowe v2.18.6</strong></summary>
 <br />
-
-To upgrade from Zowe v2.18.x, perform the following tasks **before** you install Zowe v3.6.
+<!-- This whole dropdown section is new -->
+To upgrade from Zowe v2.18.x, perform the following tasks before you install Zowe v3.6.
 
 1. **Set the authentication provider.**  
 Set `components.gateway.apiml.security.auth.provider` explicitly to `zosmf` or `saf` in `zowe.yaml`, so that the behavior does not depend on version-dependent defaults. The provider default is not changed when you upgrade: `zosmf` is preserved for upgraded configurations, while `saf` is the default in `example-zowe.yaml` for new installations.
@@ -62,8 +62,24 @@ Confirm that the Java and Node.js versions meet the [prerequisites](#prerequisit
 3. **Verify z/OSMF JWT support.**  
 Confirm that z/OSMF JWT support is available, as described in the [prerequisites](#prerequisites-for-zowe-v36). If z/OSMF JWT support is not available, choose one of the following actions:
   - Apply or enable JWT support. For more information, see [Enabling JSON Web Token support](https://www.ibm.com/docs/en/zos/3.1.0?topic=configurations-enabling-json-web-token-support) in the IBM documentation.
-  - Set `jwtAutoconfiguration` to `ltpa` (not usable with hardware-accelerated ICSF keyrings). 
-  - Downgrade the `zosmfjwt` startup check to `warn` or `disabled`. 
+  - Set `jwtAutoconfiguration` to `ltpa` (not usable with hardware-accelerated ICSF keyrings).
+
+    ```yaml
+      components:
+        gateway:
+          apiml:
+            security:
+              auth:
+                zosmf:
+                  jwtAutoconfiguration: ltpa   # jwt (default) | ltpa
+      zowe:
+        launchScript:
+          startupChecks:
+            zosmfjwt: warn                     # exit (default) | warn | disabled
+    ``` 
+
+  - Downgrade the `zosmfjwt` startup check to `warn` or `disabled`.
+
   :::note
   If z/OSMF is not used for login, no JWT setup is needed.
   :::
@@ -263,11 +279,11 @@ zowe:
 
 </details>
 
-## Phase 1: Upgrade the runtime
+## Upgrade the runtime
 
-After you complete Phase 0, upgrade the Zowe runtime to v3.6.
+After you prepare your current Zowe instance, upgrade the Zowe runtime to v3.6.
 <!-- Standard upgrade flow ?? this should be reworded -->
-1. Run the standard upgrade flow
+1. **Run the standard upgrade flow**
 
    a. Install the Zowe v3.6 build. <!-- Need to link somewhere to Installing -->  
    b. Run the `zwe init` steps that apply to your installation, such as `zwe init mvs`, `zwe init apfauth`, `zwe init stc`, and `zwe init security`.  
@@ -275,7 +291,7 @@ After you complete Phase 0, upgrade the Zowe runtime to v3.6.
 
     Existing SAF permissions and keyrings or keystores do not need to be set up again. Unless an SMP/E HOLD statement states otherwise, your certificates and security rules carry over to the new version as well.
 
-2. Expect automatic startup checks on the first start
+2. **Expect automatic startup checks on the first start**
 
     Zowe v3.6 runs the following checks automatically each time it starts. For more information, see [z/OS pre-flight checks](../user-guide/zos-preflight.md).
 
@@ -291,16 +307,20 @@ After you complete Phase 0, upgrade the Zowe runtime to v3.6.
 
     ```yaml
     zowe:
-      launchScript:
-        startupChecks:
-          zosmfjwt: warn
+    launchScript:
+      startupChecks:
+        zosmfjwt: exit       # exit (default) | warn | disabled
+        user: exit           # superuser (UID 0) check for ZWESVUSR
+        certificate: exit    # keystore/truststore validation (zwe validate certificate)
+        components: warn     # YAML component existence check
+        # javaMin/javaMax and nodeMin/nodeMax govern the dependency checks
     ```
 
      :::note
       Setting a check to `warn` or `disabled` hides a real misconfiguration. Use these values as a temporary measure, and resolve the underlying finding.
       :::
 
-3. (Optional) Clear Infinispan persistence data
+3. **(Optional) Clear Infinispan persistence data**
 
     If the Caching Service uses Infinispan storage, persistence data written by the earlier Infinispan version can prevent the service from starting after the upgrade. If this occurs, see the following procedure:
 
@@ -317,7 +337,7 @@ After you complete Phase 0, upgrade the Zowe runtime to v3.6.
     On Java 21 and later, virtual threads are automatically disabled on z/OS. To control this behavior explicitly, use the `storage.infinispan.useVirtualThreads` property of the Caching Service.
     :::
 
-## Phase 2: Verify the upgrade
+## Verify the upgrade
 
 After Zowe v3.6 starts, use the following checklist to confirm that the upgrade is successful.
 
@@ -332,8 +352,8 @@ After Zowe v3.6 starts, use the following checklist to confirm that the upgrade 
 - Confirm z/OSMF is reachable through the API Gateway by the `/ibmzosmf` route, not `/zosmf`.
 - (HA installations only) Confirm that on startup, Zowe creates `.zowe-<haInstance>-merged.yaml` in the workspace `.env` directory, and that `ZWE_HA_INSTANCE_CONFIG` points to that file.
 <!-- TODO: perhaps add a link here for guidance -->
-
-## System and Architecture Changes
+<!-- All these System and Configuration changes come after Verifying the Upgrad ?? Should probably be a separate topic -->
+## System and Security Changes
 
 * **SAF Settings**  
 Existing SAF settings for Zowe do not need to be changed for v3. Install steps such as zwe init security, the job or workflow `ZWESECUR`, and the jobs `ZWEIRAC`, `ZWEITSS`, and `ZWEIACF` are not required to be re-run.
@@ -352,6 +372,7 @@ The following network changes are needed for added or removed servers:
 | cloud-gateway | Removed | 7563 | ZWE1CG | The cloud-gateway has been removed as a standalone component and merged into the gateway |
 
 ## V3 Configuration changes
+<!-- Need to update t v 3.6 changes -->
 
 Review the following changes to configuration and updated configuration parameters.
 
