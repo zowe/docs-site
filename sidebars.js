@@ -102,6 +102,7 @@ module.exports = {
         "whats-new/zowe-v3-frequently-asked-questions",
         "whats-new/zowe-v3-office-hours",
         "whats-new/zowe-v3-conformance-criteria",
+        "whats-new/api-ml-v3.6-upgrade-and-security-enhancements",
       ],
     },
     {
