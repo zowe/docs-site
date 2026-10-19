@@ -1,6 +1,6 @@
 # Important updates in Zowe V3
 
-Zowe 3.0 brings a range of major changes in Zowe functionality, including *breaking changes*, or modifications that require updates to avoid disruptions in your applications.
+Zowe v3 brings a range of major changes in Zowe functionality, including *breaking changes*, or modifications that require updates to avoid disruptions in your applications.
 
 Review this article for details about changes to various Zowe components introduced in Zowe V3, and any required actions you need to take.
 
@@ -28,23 +28,23 @@ Prior to Zowe v3, the API Gateway directly contained the code for the Authentica
 
 While ZAAS is now a standalone service, how ZAAS runs depends on your deployment configuration. In multi-service deployment, ZAAS runs as an independent microservice (a separate JVM process) on a port dedicated to ZAAS. Starting with Zowe v3.4, the default and recommended single-service deployment mode bundles the standalone ZAAS component into a single JVM process alongside the Gateway, Discovery Service, and API Catalog at runtime. 
 
-### Security updates in Zowe v3.6.0
+### API ML security updates in Zowe v3.6.0
 
 Zowe v3.6.0 introduces several updates to the API Mediation Layer to strengthen security defaults, improve network validation, and tighten component authentication. These enhancements prioritize a secure-by-default posture and include breaking changes that may require updates to your zowe.yaml configuration.
 
 :::caution Important
-For detailed configuration instructions and mitigation steps, see [API ML V3.6 upgrade and security enhancements](./api-ml-v3.6-upgrade-and-security-enhancements).
+For detailed configuration instructions and mitigation steps introduced to API ML in Zowe v3.6, see [API ML V3.6 upgrade and security enhancements](./api-ml-v3.6-upgrade-and-security-enhancements).
 :::
 
-**Key Security Enhancements and Breaking Changes:**
+Zowe v 3.6 introduces the following key security enhancements and breaking changes:
+
+* **Strict URL Validation**  
+The Gateway now rejects encoded slashes, backslashes, and semicolons in routed traffic by default, replacing the deprecated allowEncodedSlashes property.  
+For details, see [Strict URL validation replaces `allowEncodedSlashes`](./api-ml-v3.6-upgrade-and-security-enhancements.md#strict-url-validation-replaces-allowencodedslashes).
 
 * **Domain Allowlist Enforcement**  
 The Discovery Service and API Catalog now strictly validate service registration and API document URLs against a configurable allowlist (`zowe.network.allowedDomains`)`.  
 For details, see [Discovery Service enforces allowlist for service registration](./api-ml-v3.6-upgrade-and-security-enhancements.md#discovery-service-enforces-domain-allowlist-for-service-registration).
-
-* **Strict URL Validation**  
-The Gateway now rejects encoded slashes, backslashes, and semicolons in routed traffic by default, replacing the deprecated allowEncodedSlashes property.  
-For details, see [Strict URL validation replaces allowEncodedSlashes](./api-ml-v3.6-upgrade-and-security-enhancements.md#strict-url-validation-replaces-allowencodedslashes).
 
 * **Cross-Site Request Protection**  
 The Gateway validates Sec-Fetch-* browser headers, rejecting cross-site requests (including WebSocket handshakes) unless validated by the CORS layer.  
@@ -65,7 +65,7 @@ For details, see the following topics:
   * [Caching Service requires authentication when certificate validation is disabled](./api-ml-v3.6-upgrade-and-security-enhancements.md#caching-service-requires-authentication-when-certificate-validation-is-disabled).
 
 * **Actuator Endpoint Authorization**  
-Modifiable actuator endpoints (such as /application/loggers) now require the authenticated user to have CONTROL access to the APIML.DEBUG SAF profile.  
+Modifiable actuator endpoints (such as /application/loggers) now require the authenticated user to have **CONTROL** access to the `APIML.DEBUG SAF` profile.  
 For details, see [Modifiable actuator endpoints require SAF authorization](./api-ml-v3.6-upgrade-and-security-enhancements.md#modifiable-actuator-endpoints-require-saf-authorization).
 
 * **Endpoint and Header Removals**  

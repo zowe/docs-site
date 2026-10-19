@@ -3,7 +3,7 @@
 
 Zowe v3.6.0 introduces several updates to API ML to strengthen security defaults, improve network validation, and tighten component authentication. These enhancements prioritize a secure-by-default posture which include breaking changes that may require updates to your `zowe.yaml` configuration to avoid disruptions during the upgrade process.
 
-Configuration changes in Zowe v3.6.0 are in three key areas:
+Configuration changes in Zowe v3.6.0 affect the following key areas:
 
 * **Modified existing properties**  
 Configuration properties that existed in Zowe v3.5.0, but whose default value, source, or underlying behavior has changed.
@@ -16,6 +16,27 @@ Endpoints that now enforce stricter HTTP header requirements, payload formats, o
 
 * **Removed properties and endpoints**  
 Properties and REST endpoints that no longer exist. Removed properties are ignored, and requests to removed endpoints are rejected.
+
+## Strict URL validation replaces `allowEncodedSlashes`
+
+The Gateway's `apiml.service.allowEncodedSlashes` property has been removed and replaced by `apiml.security.enableStrictUrlValidation`. 
+
+**Operational Impact:**  
+In Zowe versions up to 3.5, `allowEncodedSlashes` defaulted to `true`. This default setting allowed encoded characters (such as `%2F`) to pass through routed request URLs unvalidated. The new property inverts this validation behavior: when `enableStrictUrlValidation` is `true` (the new default), the Gateway strictly validates request URLs and rejects encoded slashes, backslashes, and semicolons in routed traffic. Gateway-internal endpoints are always validated strictly regardless of this setting.
+
+**Required Actions:**  
+1. Remove the deprecated `apiml.service.allowEncodedSlashes` property from your `zowe.yaml` (This property will be ignored).
+2. Opt-out (if needed). If you route traffic to APIs that require encoded slashes or semicolons in the URL path, you must explicitly disable strict validation for the Gateway:
+
+```yaml
+components:
+  gateway:
+    apiml:
+      security:
+        enableStrictUrlValidation: false
+```
+
+Without this change, routed requests containing encoded slashes, backslashes, or semicolons, which were previously allowed by default, are now rejected by default.
 
 ## Discovery Service enforces domain allowlist for service registration
 
@@ -90,27 +111,6 @@ These properties are also available on `components.api-catalog` , and can altern
 :::note
 To allow the API Catalog to retrieve API documents from any URL, without validating the URL against the allowlist, set `components.api-catalog.apiml.security.domains.allowAnyApiDocUrl: true`. This affects only API document retrieval and does not relax registration validation.
 :::
-
-## Strict URL validation replaces `allowEncodedSlashes`
-
-The Gateway's `apiml.service.allowEncodedSlashes` property has been removed and replaced by `apiml.security.enableStrictUrlValidation`. 
-
-**Operational Impact:**  
-In Zowe versions up to 3.5, `allowEncodedSlashes` defaulted to `true`. This default setting allowed encoded characters (such as `%2F`) to pass through routed request URLs unvalidated. The new property inverts this validation behavior: when `enableStrictUrlValidation` is `true` (the new default), the Gateway strictly validates request URLs and rejects encoded slashes, backslashes, and semicolons in routed traffic. Gateway-internal endpoints are always validated strictly regardless of this setting.
-
-**Required Actions:**  
-1. Remove the deprecated `apiml.service.allowEncodedSlashes` property from your `zowe.yaml` (This property will be ignored).
-2. Opt-out (if needed). If you route traffic to APIs that require encoded slashes or semicolons in the URL path, you must explicitly disable strict validation for the Gateway:
-
-```yaml
-components:
-  gateway:
-    apiml:
-      security:
-        enableStrictUrlValidation: false
-```
-
-Without this change, routed requests containing encoded slashes, backslashes, or semicolons, which were previously allowed by default, are now rejected by default.
 
 ## Cross-site requests are rejected by Fetch Metadata validation
 
