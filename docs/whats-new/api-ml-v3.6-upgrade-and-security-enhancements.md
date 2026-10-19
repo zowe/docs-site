@@ -139,7 +139,7 @@ To prevent the authentication endpoints from being targeted by simple cross-site
 **Required action:**  
 Update any script, automation, or custom client that posts credentials as form data (`application/x-www-form-urlencoded`) or without a `Content-Type` header to send a JSON body with the `Content-Type: application/json` header. There is no property to restore the previous behavior.
 
-#### CORS: default allowed origin for routed services narrowed
+## CORS: default allowed origin for routed services narrowed
 
 **Operational Impact:**    
 When CORS handling is enabled globally (`apiml.service.corsEnabled: true`), southbound services can explicitly ask the Gateway to manage CORS on their behalf by setting their own `apiml.corsEnabled` metadata to `true`. For services that enable this Gateway-managed CORS but fail to define a specific list of allowed origins (`apiml.corsAllowedOrigins`), the API Gateway no longer defaults to allowing any origin (`Access-Control-Allow-Origin: *`). Instead, the API Gateway falls back to a new property: `apiml.service.corsDefaultAllowedOrigins`. The default value is now the API Gateway's base URL (`https://<apiml.service.hostname>:<apiml.service.port>`).
