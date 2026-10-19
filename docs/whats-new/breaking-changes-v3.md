@@ -13,22 +13,22 @@ Review this article for details about changes to various Zowe components introdu
 | Authentication endpoints do not support the route `/api/v1/gateway`, and instead support only `/gateway/api/v1`        | If you use the endpoints directly, change the URLs to start with `/gateway/api/v1`. If you use ZAAS client to integrate with API Mediation Layer, no action is required as the change is handled in the ZAAS client code.                                                                                                                                                                                              |
 | API Gateway operational endpoints are now protected by default. The property `components.gateway.apiml.health.protected` now defaults to `true`.<br /><br />This setting governs access to the following endpoints:<br />• `/application/health`<br />• `/application/info`<br />• `/application/version`<br />• `/gateway/version`<br />• `/gateway/api/v1/version`<br /><br />Unauthenticated requests will return HTTP `401`. | **(Option 1) Update clients to authenticate (Recommended):**<br />Update monitoring systems, availability probes, readiness checks, automated scripts, and diagnostic tools to provide valid credentials (Basic authentication or Bearer JWT).<br /><br />**(Option 2) Revert to open access:**<br />Alternatively, explicitly set `components.gateway.apiml.health.protected: false` in `zowe.yaml` if unauthenticated access is required.<br /> *Security Warning:*<br /> Setting this property to `false` exposes the Gateway health, information, and version endpoints without authentication. Use the default `true` setting in production unless unauthenticated monitoring is required and access is restricted through another trusted control. |
 | Spring Enabler has been updated to Spring Boot 3 and Spring 6. Spring Boot 2 and Spring 5 versions are no longer be supported. | Upgrade extending services based on the Spring Enabler to Spring Boot 3 and Spring 6.                                                                                                                                                                                                                                                                                                                                  |
-| Datasets API is archived                                                                                                 | This service was disabled by default in Version 2. If you enable the service via `components.data-sets.enabled: true` and use the APIs documented in [Data sets Swagger](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/zowe/docs-site/docs-staging/api_definitions/datasets.json), it is necessary to move to the usage of the similar z/OSMF endpoints.                                          |
-| Jobs API is archived                                                                                                     | The service was disabled by default in Version 2. If you enable the service via `components.jobs.enabled: true` and use the APIs documented in [Jobs Swagger](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/zowe/docs-site/docs-staging/api_definitions/jobs.json), it is necessary to move to the usage of the similar z/OSMF endpoints.                                                         |
-| Metrics service is archived                                                                                              | The Metrics service was in Technical Preview. Currently, there is no replacement. In V3, the Open Telemetry standard whas been implemented, which serves as a replacement.                                                                                                                                                                                                                                                    |
+| Datasets API is archived                                                                                                 | This service was disabled by default in Version 2. If you enable the service via `components.data-sets.enabled: true` and use the APIs documented in [Data sets Swagger](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/zowe/docs-site/docs-staging/api_definitions/datasets.json), update your integration to use the equivalent z/OSMF endpoints.                                          |
+| Jobs API is archived                                                                                                     | The service was disabled by default in Version 2. If you enable the service via `components.jobs.enabled: true` and use the APIs documented in [Jobs Swagger](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/zowe/docs-site/docs-staging/api_definitions/jobs.json), update your integration to use the equivalent z/OSMF endpoints.                                                        |
+| Metrics Service is archived                                                                                              | The Metrics service was in Technical Preview and has been removed. In V3, the Metrics Service is replaced by the OpenTelemetry standard.                                                                                                                                  |
 | IMS API is archived                                                                                                      | The IMS API service was not fully supported. If you were using the API, please reach out to the IBM team for follow-up steps.                                                                                                                                                                                                                                                                                                  |
-| Java 17 is required for the API Mediation Layer to run                                                                   | For V3, it is necessary to update z/OS to version 2.5 or later as this brings support of Java 17. It is necessary to install Java 17 and provide the path to Java 17 to Zowe Java configuration.                                                                                                                                                                                                                       |
+| Java 17 is required for the API Mediation Layer to run                                                                   | For V3, it is necessary to update z/OS to version 2.5 or later as this brings support of Java 17. Ensure that you installed Java 17 and provide the path to the Zowe Java configuration.                                                                                                                                                                                                                       |
 | z/OSMF in version V2R5 with APAR PH12143 applied (JWT setup)                                                                  | If you are running a version of z/OS before 3.1, validate that the PH12143 APAR was applied to the z/OSMF installation used by Zowe. The value `auto` is no longer supported. For v3R1, validate that the JWT support is enabled. If you do not want to enable JWT support, make sure that you set the value of `components.gateway.apiml.security.auth.zosmf.jwtAutoconfiguration` to `ltpa`. The `ltpa` option cannot be used with hardware accelerated ICSF Keyrings. See [example-zowe.yaml](https://github.com/zowe/zowe-install-packaging/blob/v3.x/staging/example-zowe.yaml) for new component values. |
 | Configuration of keyrings will require transformation from `safkeyring:////` to `safkeyring://`                               | If your Zowe configuration contains `safkeyring:////`, change this part to `safkeyring://`.                                                                                                                                                                                                                                                                                                                            |
-| Support access to z/OSMF only through `/ibmzosmf` route. V3 will not support access through the `/zosmf` route                | If you use z/OSMF via `{apimlUrl}/zosmf/{zosmfEndpoint}` it is necessary to move to `{apimlUrl}/ibmzosmf/{zosmfEndpoint}.`                                                                                                                                                                                                                                                                                                |
+| Support access to z/OSMF only through `/ibmzosmf` route. V3 will not support access through the `/zosmf` route                | If you use z/OSMF via `{apimlUrl}/zosmf/{zosmfEndpoint}`, ensure that you move to `{apimlUrl}/ibmzosmf/{zosmfEndpoint}.`                                                                                                                                                                                                                                                                                                |
 
 ### Important API ML updates in Zowe v3
 
-Prior to Zowe v3, the API Gateway directly contained the code for the Authentication and Authorization Service (ZAAS). In Zowe v3, ZAAS was architecturally decoupled into a standalone component with its own configuration, as it is the only API ML service that natively requires direct interaction with z/OS security services (such as z/OSMF and SAF).
+Prior to Zowe v3, the API Gateway directly contained the code for the Authentication and Authorization Service (ZAAS). In Zowe v3, ZAAS was architecturally decoupled into a standalone component with its own configuration, as ZAAS is the only API ML service that natively requires direct interaction with z/OS security services (such as z/OSMF and SAF).
 
 While ZAAS is now a standalone service, how ZAAS runs depends on your deployment configuration. In multi-service deployment, ZAAS runs as an independent microservice (a separate JVM process) on a port dedicated to ZAAS. Starting with Zowe v3.4, the default and recommended single-service deployment mode bundles the standalone ZAAS component into a single JVM process alongside the Gateway, Discovery Service, and API Catalog at runtime. 
 
-## Security updates in Zowe v3.6.0
+### Security updates in Zowe v3.6.0
 
 Zowe v3.6.0 introduces several updates to API ML to strengthen security defaults, improve network validation, and tighten component authentication. These enhancements prioritize a secure-by-default posture which include breaking changes that may require updates to your `zowe.yaml` configuration to avoid disruptions during the upgrade process.
 
@@ -40,10 +40,13 @@ Configuration properties that existed in Zowe v3.5.0, but whose default value, s
 * **Restrictive new properties**  
 New properties introduced with strict default settings. An installation that functioned correctly in Zowe v3.5.0 may require explicit configuration of these new properties to retain previous behavior.
 
+* **Stricter endpoint and network validations**  
+Endpoints that now enforce stricter HTTP header requirements, payload formats, or SAF authorizations, which cannot be reverted via configuration.
+
 * **Removed properties and endpoints**  
 Properties and REST endpoints that no longer exist. Removed properties are ignored, and requests to removed endpoints are rejected.
 
-### Discovery Service enforces domain allowlist for service registration
+#### Discovery Service enforces domain allowlist for service registration
 
 In Zowe versions up to v3.5.0, the Discovery Service accepted any service registration without validating the hostnames or URLs the service advertised. The Discovery Service now strictly validates all URLs provided by registering services against an allowlist of domains, including:  
 * hostname
@@ -61,7 +64,7 @@ In Zowe versions up to v3.5.0, the Discovery Service accepted any service regist
 The API Catalog applies the same validation before it retrieves an API document from a registered service.
 
 **Operational Impact:**  
-By default, if a service attempts to register using a domain or IP address that is not on the allowlist, the registration is rejected entirely and message `ZWEAM601` is logged. Three additional restrictions apply:
+By default, if a service attempts to register using a domain or IP address that is not on the allowlist, the registration is rejected entirely and message `ZWEAM601` is logged. See the following additional restrictions:
 
 * **The `http` scheme is rejected** unless AT-TLS is enabled for the client. Message `ZWEAM603` is logged.
 * **Loopback and local addresses are no longer allowed automatically.** Add them to the allowlist explicitly if your services register on them.
@@ -85,7 +88,7 @@ The following entry formats are supported:
 | `"myhost.example.com:*"` | The host `myhost.example.com` on any port |
 | `"*.example.com:*"` | Any sub-domain of `example.com` on any port. A leading `*.` is the only supported wildcard form, and it does not match `example.com` itself |
 | `"10.0.0.5:*"` | That IP address on any port |
-| `"10.0.0.0/24"` | Any IPv4 address in the range. An IP mask cannot carry a port, so it is only matched for `documentationUrl` and `corsAllowedOrigins`, or when port validation is disabled |
+| `"10.0.0.0/24"` | Any IPv4 address in the range. An IP mask cannot carry a port, so the IP mask is only matched for `documentationUrl` and `corsAllowedOrigins`, or when port validation is disabled |
 
 **Example:**
 
@@ -110,14 +113,14 @@ components:
           onlyWarn: true
 ```
 
-These properties are also available on `components.api-catalog` , and can alternatively be set as the environment variables `ZWE_ONLY_WARN_ON_URL_NOT_ALLOWED=true` and `ZWE_DISABLE_PORT_VALIDATION=true`. Configure all components that perform the validation, otherwise registrations continue to fail in the component that still enforces it.
+These properties are also available on `components.api-catalog` , and can alternatively be set as the environment variables `ZWE_ONLY_WARN_ON_URL_NOT_ALLOWED=true` and `ZWE_DISABLE_PORT_VALIDATION=true`. Configure all components that perform the validation, otherwise registrations continue to fail in the component that still enforces the domain allowlist validation for service registrations.
 :::
 
 :::note
 To allow the API Catalog to retrieve API documents from any URL, without validating the URL against the allowlist, set `components.api-catalog.apiml.security.domains.allowAnyApiDocUrl: true`. This affects only API document retrieval and does not relax registration validation.
 :::
 
-### Strict URL validation replaces `allowEncodedSlashes`
+#### Strict URL validation replaces `allowEncodedSlashes`
 
 The Gateway's `apiml.service.allowEncodedSlashes` property has been removed and replaced by `apiml.security.enableStrictUrlValidation`. 
 
@@ -138,7 +141,7 @@ components:
 
 Without this change, routed requests containing encoded slashes, backslashes, or semicolons, which were previously allowed by default, are now rejected by default.
 
-### Cross-site requests are rejected by Fetch Metadata validation
+#### Cross-site requests are rejected by Fetch Metadata validation
 
 **Operational Impact:**  
 The Gateway now inspects the `Sec-Fetch-Site`, `Sec-Fetch-Mode`, and `Sec-Fetch-Dest` request headers that browsers send, to protect against cross-site request forgery. A request whose `Sec-Fetch-Site` is `same-site` or `cross-site` is rejected with HTTP `403` unless the origin is validated by the CORS layer, or the request is a safe top-level navigation (a `GET` or `HEAD` the user navigated to). Requests without the `Sec-Fetch-Site` header, such as those from non-browser and legacy clients, and requests with `same-origin` or `none`, are unaffected.
@@ -157,7 +160,7 @@ components:
           enabled: false
 ```
 
-### Login requests with a body must use `Content-Type: application/json`
+#### Login requests with a body must use `Content-Type: application/json`
 
 **Operational Impact:**  
 To prevent the authentication endpoints from being targeted by simple cross-site form posts, a request that carries a body is now rejected with HTTP `415 Unsupported Media Type` unless it declares `Content-Type: application/json`. Requests without a body, such as client-certificate login, Basic authentication login, and logout, are unaffected.
@@ -165,7 +168,7 @@ To prevent the authentication endpoints from being targeted by simple cross-site
 **Required action:**  
 Update any script, automation, or custom client that posts credentials as form data (`application/x-www-form-urlencoded`) or without a `Content-Type` header to send a JSON body with the `Content-Type: application/json` header. There is no property to restore the previous behavior.
 
-### CORS: default allowed origin for routed services narrowed
+#### CORS: default allowed origin for routed services narrowed
 
 **Operational Impact:**    
 When CORS handling is enabled globally (`apiml.service.corsEnabled: true`), southbound services can explicitly ask the Gateway to manage CORS on their behalf by setting their own `apiml.corsEnabled` metadata to `true`. For services that enable this Gateway-managed CORS but fail to define a specific list of allowed origins (`apiml.corsAllowedOrigins`), the API Gateway no longer defaults to allowing any origin (`Access-Control-Allow-Origin: *`). Instead, the API Gateway falls back to a new property: `apiml.service.corsDefaultAllowedOrigins`. The default value is now the API Gateway's base URL (`https://<apiml.service.hostname>:<apiml.service.port>`).
@@ -183,7 +186,7 @@ components:
         corsDefaultAllowedOrigins: https://my-external-client.example.com
 ```
 
-### Eureka Discovery Service credentials are now configurable
+#### Discovery Service credentials are now configurable
 
 :::note
 This change only applies to configurations where `verifyCertificates` is set to `DISABLED` (not recommended).
@@ -220,7 +223,7 @@ components:
   # repeat for caching-service, api-catalog, zaas
 ```
 
-### Caching Service requires authentication when certificate validation is disabled
+#### Caching Service requires authentication when certificate validation is disabled
 
 :::note
 This change only applies to configurations where `verifyCertificates` is set to `DISABLED` (not recommended).
@@ -248,7 +251,7 @@ components:
 When these properties are not set, they default to the `apiml.discovery.userid` and `apiml.discovery.password` values described in the previous section, so the API ML services themselves continue to reach the Caching Service without further configuration.
 :::
 
-### Modifiable actuator endpoints require SAF authorization
+#### Modifiable actuator endpoints require SAF authorization
 
 **Operational Impact:**  
 This change extends the protection of operational endpoints described in [Breaking changes](#breaking-changes). In addition to requiring authentication, the actuator endpoints that change the running configuration, `/application/loggers` and `/application/gateway`, are now read-only by default and require the authenticated user to have `CONTROL` access to the `APIML.DEBUG` profile in the `ZOWE` class. Endpoints that only read state continue to require authentication alone.
@@ -266,7 +269,7 @@ SETROPTS RACLIST(ZOWE) REFRESH
 
 To make the endpoints writable, the component must additionally run with debug logging enabled (`components.gateway.debug: true`).
 
-### Removed endpoints and security headers
+#### Removed endpoints and security headers
 
 **Operational Impact:**  
 * The onboarding conformance and validation endpoints, `/gateway/[api/v1/]conformance/**` and `/gateway/[api/v1/]validate`, have been removed.
@@ -275,7 +278,7 @@ To make the endpoints writable, the component must additionally run with debug l
 **Required action:**  
 Remove calls to the conformance and validation endpoints from onboarding automation and CI pipelines. If you embed the API Catalog UI in a page served from another origin, that embedding no longer works.
 
-### Personal Access Token revocation store
+#### Personal Access Token revocation store
 
 :::note
 This change only applies when Personal Access Tokens are enabled (`components.gateway.apiml.security.personalAccessToken.enabled: true`).
