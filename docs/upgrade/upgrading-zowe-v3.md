@@ -7,7 +7,11 @@ Follow the procedure outlined in this article to upgrade from Zowe v2 to Zowe v3
 
 While the major version upgrading process is similar to a Zowe v2 minor release upgrade, there are several new and updated configuration parameters to consider. 
 
-Follow the steps described in this article to ensure a smooth upgrade to Zowe v3.6.
+Follow the steps described in this article to ensure a smooth upgrade to Zowe v3.6. The procedure is written for installations running Zowe v2.18.6 or a later v2.18.x release, and has three phases:
+
+1. [**Preparing your current Zowe instance**](#preparing-your-current-zowe-instance).
+2. [**Upgrade the runtime**](#upgrade-the-runtime) to Zowe v3.6.
+3. [**Verify the upgrade**](#verify-the-upgrade) with the post-upgrade checklist.
 
 :::note
 The workspace directory should be re-created only if you are using the app-server component.
@@ -28,19 +32,78 @@ Before starting the upgrade, ensure the following base system requirements are m
 
 ## Preparing Your Current Zowe Instance
 
-To ensure a smooth transition to Zowe v3.6, you must first resolve any configuration changes required by your current version. **Expand the section below that matches your current Zowe version** and apply the necessary configurations before proceeding with the v3 upgrade. 
+To ensure a smooth transition to Zowe v3.6, you must first resolve any configuration changes required by your current version. **Expand the section below that matches your current Zowe version** and apply the necessary configurations before proceeding with the v3.6 upgrade. 
 
 :::note
-Before upgrading to Zowe v3, All v2.x installations must first upgrade to v2.18.x before upgrading to v3.
+Before upgrading to Zowe v3.6, All v2.x installations must first upgrade to v2.18.x before upgrading to v3.6.
 :::
 
 <details>
-<summary><strong>Upgrading from Zowe v2.17.x or v2.18.x</strong></summary>
+<summary><strong>Upgrading from Zowe v2.18.6</strong></summary>
+<br />
+
+To upgrade from Zowe v2.18.x, perform the following tasks **before** you install Zowe v3.6.
+
+1. **Set the authentication provider.**  
+Set `components.gateway.apiml.security.auth.provider` explicitly to `zosmf` or `saf` in `zowe.yaml`, so that the behavior does not depend on version-dependent defaults. The provider default is not changed when you upgrade: `zosmf` is preserved for upgraded configurations, while `saf` is the default in `example-zowe.yaml` for new installations.
+
+    ```yaml
+    components:
+      gateway:
+        apiml:
+          security:
+            auth:
+              provider: zosmf # or saf
+    ```
+
+2. **Verify runtime levels.**  
+Confirm that the Java and Node.js versions meet the [prerequisites](#prerequisites-for-zowe-v36). If the installation runs older or newer levels, update `java.home` and `node.home` in `zowe.yaml`.
+
+3. **Verify z/OSMF JWT support.**  
+Confirm that z/OSMF JWT support is available, as described in the [prerequisites](#prerequisites-for-zowe-v36). If z/OSMF JWT support is not available, choose one of the following actions:
+  - Apply or enable JWT support. For more information, see [Enabling JSON Web Token support](https://www.ibm.com/docs/en/zos/3.1.0?topic=configurations-enabling-json-web-token-support) in the IBM documentation.
+  - Set `jwtAutoconfiguration` to `ltpa` (not usable with hardware-accelerated ICSF keyrings). 
+  - Downgrade the `zosmfjwt` startup check to `warn` or `disabled`. 
+  :::note
+  If z/OSMF is not used for login, no JWT setup is needed.
+  :::
+
+4. **Identify consumers of unauthenticated operational endpoints.**  
+Identify any monitoring probes, readiness checks, and automation that call the following endpoints without credentials:
+    * `/application/info`
+    * `/application/version`
+    * `/application/health`
+    * `/gateway/version`
+    * `/gateway/api/v1/version`
+
+    Update the endpoints to send credentials (Basic authentication or a Bearer JWT). Alternatively, if you choose to accept the exposure, set `components.gateway.apiml.health.protected` to `false`.
+<!-- TODO: perhaps add a link here for guidance -->
+
+5. **Add registration metadata hosts to the allow-list.**  
+Zowe v3.6 validates the hosts in service registration metadata against `zowe.network.allowedDomains`. The defaults cover `externalDomains` and high availability (HA) hostnames only. Add services that register URL metadata (such as `instanceBaseUrls`, API documentation or Swagger URLs, or `corsAllowedOrigins`) from other hosts to `zowe.network.allowedDomains` before you upgrade.
+<!-- TODO: perhaps add a link here for guidance -->
+
+6. **Apply the v2 to v3 breaking changes.**  
+Review the [System and Security Changes](#system-and-security-changes) and [Configuration changes](#configuration-changes) sections of this article. The following breaking changes affect the upgrade:
+    * The authentication route `/api/v1/gateway` is now `/gateway/api/v1`.
+    * `zaas` is a separate component that uses port 7558.
+    * `jobs-api`, `files-api`, `metrics-service`, and `cloud-gateway` are removed. `metrics-service` is replaced by the OpenTelemetry implementation. <!-- TODO: perhaps add a link here for guidance -->
+    * Keyring URIs use exactly two slashes (`safkeyring://`).
+    * Keyring `keystore` and `truststore` passwords use the literal value `password`.
+    * `zowe.useConfigmgr=false` and the gateway internal server are no longer supported.
+
+    For the complete list, see [Breaking changes in Zowe v3](../whats-new/breaking-changes-v3.md).
+<!-- TODO: confirm the exact article title of breaking-changes-v3.md -->
+
+</details>
+
+<details>
+<summary><strong>Upgrading from Zowe v2.17.x</strong></summary>
 <br />
 
 If you are on v2.17.x, first upgrade to v2.18.x. 
-
-Your configuration is already up-to-date with the necessary v2 prerequisites. You may proceed directly to the **System and Architecture Changes** and **V3 Configuration Changes** sections below to complete your upgrade to v3.
+<!-- how does a user do this -->
+Your configuration is already up-to-date with the necessary v2 prerequisites. You may proceed directly to the **System and Architecture Changes** and **V3 Configuration Changes** sections below to complete your upgrade to v3. <!-- This text may need to change for v 3.6 -->
 
 </details>
 
@@ -199,6 +262,76 @@ zowe:
 ```
 
 </details>
+
+## Phase 1: Upgrade the runtime
+
+After you complete Phase 0, upgrade the Zowe runtime to v3.6.
+<!-- Standard upgrade flow ?? this should be reworded -->
+1. Run the standard upgrade flow
+
+   a. Install the Zowe v3.6 build. <!-- Need to link somewhere to Installing -->  
+   b. Run the `zwe init` steps that apply to your installation, such as `zwe init mvs`, `zwe init apfauth`, `zwe init stc`, and `zwe init security`.  
+   c. Refresh the PROCLIB members. <!-- Need to link somewhere how to do this -->
+
+    Existing SAF permissions and keyrings or keystores do not need to be set up again. Unless an SMP/E HOLD statement states otherwise, your certificates and security rules carry over to the new version as well.
+
+2. Expect automatic startup checks on the first start
+
+    Zowe v3.6 runs the following checks automatically each time it starts. For more information, see [z/OS pre-flight checks](../user-guide/zos-preflight.md).
+
+    | Startup check | Default behavior | Override property |
+    |---------------|------------------|-------------------|
+    | Certificate | `exit` | `zowe.launchScript.startupChecks.certificate` |
+    | User superuser check | `exit` | `zowe.launchScript.startupChecks.user` |
+    | Components | `warn` | <!-- TODO: confirm property --> |
+    | Java and Node.js dependency checks | Enforce Java 17–21 and Node.js 18–24 | <!-- TODO: confirm property --> |
+    | z/OSMF JWT (`zosmfjwt`) | `exit` | `zowe.launchScript.startupChecks.zosmfjwt` |
+
+    A failing check with the `exit` behavior stops Zowe from starting. Resolve the finding that the check reports. Alternatively, set the matching `zowe.launchScript.startupChecks.*` property to `warn` or `disabled`:
+
+    ```yaml
+    zowe:
+      launchScript:
+        startupChecks:
+          zosmfjwt: warn
+    ```
+
+     :::note
+      Setting a check to `warn` or `disabled` hides a real misconfiguration. Use these values as a temporary measure, and resolve the underlying finding.
+      :::
+
+3. (Optional) Clear Infinispan persistence data
+
+    If the Caching Service uses Infinispan storage, persistence data written by the earlier Infinispan version can prevent the service from starting after the upgrade. If this occurs, see the following procedure:
+
+      a. Stop Zowe.  
+      b. Remove the Infinispan persistence directory. Delete the contents or the folder located at:
+   `<zowe.workspaceDirectory>/caching-service`.  
+      c. Restart Zowe.
+
+    :::warning
+    Removing the persistence directory clears all stored Caching Service data, including revoked Personal Access Tokens (PATs) and revoked Zowe JWTs.
+    :::
+
+    :::note
+    On Java 21 and later, virtual threads are automatically disabled on z/OS. To control this behavior explicitly, use the `storage.infinispan.useVirtualThreads` property of the Caching Service.
+    :::
+
+## Phase 2: Verify the upgrade
+
+After Zowe v3.6 starts, use the following checklist to confirm that the upgrade is successful.
+
+- The following commands pass at the intended levels:
+  
+    - `zwe validate dependencies`
+    - `zwe validate certificate`
+    - `zwe validate zosmf jwt`
+  
+- Confirm that unauthenticated requests to `/application/info` returns HTTP 401. The same request with credentials returns HTTP 200.
+- Confirm that onboarded services successfully. Any rejected registration metadata should be explained by the allow-list, and is not an error.
+- Confirm z/OSMF is reachable through the API Gateway by the `/ibmzosmf` route, not `/zosmf`.
+- (HA installations only) Confirm that on startup, Zowe creates `.zowe-<haInstance>-merged.yaml` in the workspace `.env` directory, and that `ZWE_HA_INSTANCE_CONFIG` points to that file.
+<!-- TODO: perhaps add a link here for guidance -->
 
 ## System and Architecture Changes
 
