@@ -18,7 +18,7 @@ This article outlines a process to make an API service available in the API Medi
 - [Onboarding a service with the Zowe API Mediation Layer without an onboarding enabler](#onboarding-a-service-with-the-zowe-api-mediation-layer-without-an-onboarding-enabler)
   - [Introduction](#introduction)
   - [Registering with the Discovery Service](#registering-with-the-discovery-service)
-    - [API Mediation Layer Service onboarding metadata](#api-mediation-layer-service-onboarding-metadata)
+    - [API Mediation Layer service onboarding metadata](#api-mediation-layer-service-onboarding-metadata)
       - [Catalog parameters](#catalog-parameters)
       - [Service parameters](#service-parameters)
       - [Routing parameters](#routing-parameters)
@@ -26,7 +26,7 @@ This article outlines a process to make an API service available in the API Medi
       - [API Info parameters](#api-info-parameters)
   - [Sending a heartbeat to API Mediation Layer Discovery Service](#sending-a-heartbeat-to-api-mediation-layer-discovery-service)
   - [Validating successful onboarding with API Mediation Layer](#validating-successful-onboarding-with-api-mediation-layer)
-  - [External Resources](#external-resources)
+  - [External resources](#external-resources)
 
 ## Introduction
 
@@ -117,7 +117,7 @@ a current limitation in Spring Cloud Netflix, routes are created only for instan
  * **metadata**  
  specifies the set of parameters described in the following section addressing API ML service metadata.
 
-### API Mediation Layer Service onboarding metadata
+### API Mediation Layer service onboarding metadata
 
 At registration time, provide metadata in the following format. Metadata parameters contained in this code block are described in the following section.
 
@@ -197,7 +197,7 @@ When this parameter is set to `true`, the Gateway allows encoded characters to b
 * **apiml.connectTimeout**  
 The value in milliseconds that specifies a period in which API ML should establish a single, non-managed connection with this service. If omitted, the default value specified in the API ML Gateway service configuration is used.
 
-* **apiml.readTimeout**  
+* **apiml.readTimeout**   
 The value in milliseconds that specifies maximum time of inactivity between two packets in response from this service to API ML. If omitted, the default value specified in the API ML Gateway service configuration is used.
     
 * **apiml.connectionManagerTimeout**  
@@ -206,8 +206,20 @@ HttpClient employs a special entity to manage access to HTTP connections called 
 * **apiml.okToRetryOnAllOperations**  
 Specifies whether all operations can be retried for this service. The default value is `false`. The `false` value allows retries for only GET requests if a response code of `503` is returned. Setting this value to `true` enables retry requests for all methods, which return a `503` response code. Enabling retry can impact server resources resulting from buffering of the request body.
 
-* **apiml.service.corsEnabled**  
-When this parameter is set to `true`, CORS is enabled on the service level for all service routes. The same parameter can also be set on the service level, by providing the parameter as `customMetadata` as shown in the [Custom Metadata](./custom-metadata.md).
+* **apiml.service.corsEnabled**   
+  When this parameter is set to `true`, CORS is enabled on the service level for all service routes. The same parameter can also be set on the service level by providing the parameter as `customMetadata` as shown in [Custom Metadata](./custom-metadata.md).
+
+* **customMetadata.apiml.corsAllowedOrigins**  
+  (Optional) Specify which origins are accepted by the Gateway during CORS handling for this service. If not set, this value falls back to the Gateway's global `corsDefaultAllowedOrigins` default (`https://${hostname}:${port}`). Inclusion of other allowed origins is additive to the Gateway defaults rather than replacing these defaults.
+
+* **customMetadata.apiml.corsAllowedHeaders**    
+  (Optional) Specify a comma-separated list of HTTP headers that are allowed during a CORS request to this service.
+
+* **customMetadata.apiml.corsAllowCredentials**  
+  (Optional) Configure whether the browser should include credentials (such as cookies, authorization headers, or TLS client certificates) in CORS requests. The Gateway-level default and the per-service default are set to `true`.  
+
+* **customMetadata.apiml.corsAllowedMethods**  
+  (Optional) Specify a comma-separated list of HTTP methods (e.g., `GET`, `POST`, `PUT`, `DELETE`) that are allowed when accessing the service via CORS.
 
 * **apiml.response.compress**  
 When this parameter is set to `true`, API ML compresses content for all responses from these services using GZIP. API ML also adds the `Content-Encoding` header with the value `gzip` to responses.
@@ -368,6 +380,6 @@ Ensure that you successfully onboarded a service with the API Mediation Layer.
 
   3. (Optional) Check that you can access your API service endpoints directly outside of the Gateway.
 
-## External Resources
+## External resources
 
  - https://github.com/Netflix/eureka/wiki/Eureka-REST-operations

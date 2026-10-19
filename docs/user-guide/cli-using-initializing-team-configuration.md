@@ -84,6 +84,10 @@ To create a team plug-in profile:
     
     In the example from Step 1, the profile information displays similarly to the example below:
 
+    :::warning
+    Replace the placeholder values (such as `123`) in the following snippet with your actual configuration details before using the code.
+    :::
+
     ```
     "cics": {
             "type": "cics",
