@@ -61,8 +61,8 @@ For details, see [CORS: default allowed origin for routed services narrowed](./a
 * **Disabled Certificate Validation Stricter Defaults**  
 When certificate validation is disabled, Discovery Service credentials are now configurable rather than hardcoded, and the Caching Service now explicitly requires HTTP Basic authentication.  
 For details, see the following topics:  
-* [Discovery Service credentials are now configurable](./api-ml-v3.6-upgrade-and-security-enhancements.md#discovery-service-credentials-are-now-configurable).
-* [Caching Service requires authentication when certificate validation is disabled](./api-ml-v3.6-upgrade-and-security-enhancements.md#caching-service-requires-authentication-when-certificate-validation-is-disabled).
+  * [Discovery Service credentials are now configurable](./api-ml-v3.6-upgrade-and-security-enhancements.md#discovery-service-credentials-are-now-configurable).
+  * [Caching Service requires authentication when certificate validation is disabled](./api-ml-v3.6-upgrade-and-security-enhancements.md#caching-service-requires-authentication-when-certificate-validation-is-disabled).
 
 * **Actuator Endpoint Authorization**  
 Modifiable actuator endpoints (such as /application/loggers) now require the authenticated user to have CONTROL access to the APIML.DEBUG SAF profile.  
