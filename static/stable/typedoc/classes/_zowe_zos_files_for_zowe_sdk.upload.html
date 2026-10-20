@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Upload | Zowe Node.js SDK - v3.4.1</title>
-	<meta name="description" content="Documentation for Zowe Node.js SDK - v3.4.1">
+	<title>Upload | Zowe Node.js SDK - v3.6.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v3.6.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">Zowe Node.js SDK - v3.4.1</a>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v3.6.0</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -90,6 +90,7 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_zos_files_for_zowe_sdk.upload.html#buffertodataset" class="tsd-kind-icon">buffer<wbr>ToData<wbr>Set</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_zos_files_for_zowe_sdk.upload.html#buffertoussfile" class="tsd-kind-icon">buffer<wbr>ToUss<wbr>File</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="_zowe_zos_files_for_zowe_sdk.upload.html#createdirectoriesrecursively" class="tsd-kind-icon">create<wbr>Directories<wbr>Recursively</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_zos_files_for_zowe_sdk.upload.html#dirtopds" class="tsd-kind-icon">dir<wbr>ToPds</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_zos_files_for_zowe_sdk.upload.html#dirtoussdir" class="tsd-kind-icon">dir<wbr>ToUSSDir</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_zos_files_for_zowe_sdk.upload.html#dirtoussdirrecursive" class="tsd-kind-icon">dir<wbr>ToUSSDir<wbr>Recursive</a></li>
@@ -121,7 +122,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/zosfiles/src/methods/upload/Upload.ts#L923">@zowe/zos-files-for-zowe-sdk/src/methods/upload/Upload.ts:923</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/zosfiles/src/methods/upload/Upload.ts#L1004">@zowe/zos-files-for-zowe-sdk/src/methods/upload/Upload.ts:1004</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -147,7 +148,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/zosfiles/src/methods/upload/Upload.ts#L152">@zowe/zos-files-for-zowe-sdk/src/methods/upload/Upload.ts:152</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/zosfiles/src/methods/upload/Upload.ts#L154">@zowe/zos-files-for-zowe-sdk/src/methods/upload/Upload.ts:154</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -199,7 +200,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/zosfiles/src/methods/upload/Upload.ts#L464">@zowe/zos-files-for-zowe-sdk/src/methods/upload/Upload.ts:464</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/zosfiles/src/methods/upload/Upload.ts#L466">@zowe/zos-files-for-zowe-sdk/src/methods/upload/Upload.ts:466</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -235,6 +236,35 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+					<a name="createdirectoriesrecursively" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> create<wbr>Directories<wbr>Recursively</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">create<wbr>Directories<wbr>Recursively<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a>, dirPath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, skipCheck<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/zosfiles/src/methods/upload/Upload.ts#L681">@zowe/zos-files-for-zowe-sdk/src/methods/upload/Upload.ts:681</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>session: <a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a></h5>
+								</li>
+								<li>
+									<h5>dirPath: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> skipCheck: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
 					<a name="dirtopds" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> dir<wbr>ToPds</h3>
@@ -245,7 +275,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/zosfiles/src/methods/upload/Upload.ts#L98">@zowe/zos-files-for-zowe-sdk/src/methods/upload/Upload.ts:98</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/zosfiles/src/methods/upload/Upload.ts#L100">@zowe/zos-files-for-zowe-sdk/src/methods/upload/Upload.ts:100</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -297,7 +327,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/zosfiles/src/methods/upload/Upload.ts#L652">@zowe/zos-files-for-zowe-sdk/src/methods/upload/Upload.ts:652</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/zosfiles/src/methods/upload/Upload.ts#L732">@zowe/zos-files-for-zowe-sdk/src/methods/upload/Upload.ts:732</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -343,7 +373,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/zosfiles/src/methods/upload/Upload.ts#L771">@zowe/zos-files-for-zowe-sdk/src/methods/upload/Upload.ts:771</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/zosfiles/src/methods/upload/Upload.ts#L852">@zowe/zos-files-for-zowe-sdk/src/methods/upload/Upload.ts:852</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -389,7 +419,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/zosfiles/src/methods/upload/Upload.ts#L49">@zowe/zos-files-for-zowe-sdk/src/methods/upload/Upload.ts:49</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/zosfiles/src/methods/upload/Upload.ts#L51">@zowe/zos-files-for-zowe-sdk/src/methods/upload/Upload.ts:51</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -441,7 +471,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/zosfiles/src/methods/upload/Upload.ts#L590">@zowe/zos-files-for-zowe-sdk/src/methods/upload/Upload.ts:590</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/zosfiles/src/methods/upload/Upload.ts#L591">@zowe/zos-files-for-zowe-sdk/src/methods/upload/Upload.ts:591</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -493,7 +523,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/zosfiles/src/methods/upload/Upload.ts#L964">@zowe/zos-files-for-zowe-sdk/src/methods/upload/Upload.ts:964</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/zosfiles/src/methods/upload/Upload.ts#L1045">@zowe/zos-files-for-zowe-sdk/src/methods/upload/Upload.ts:1045</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -524,7 +554,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/zosfiles/src/methods/upload/Upload.ts#L977">@zowe/zos-files-for-zowe-sdk/src/methods/upload/Upload.ts:977</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/zosfiles/src/methods/upload/Upload.ts#L1058">@zowe/zos-files-for-zowe-sdk/src/methods/upload/Upload.ts:1058</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -561,7 +591,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/zosfiles/src/methods/upload/Upload.ts#L945">@zowe/zos-files-for-zowe-sdk/src/methods/upload/Upload.ts:945</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/zosfiles/src/methods/upload/Upload.ts#L1026">@zowe/zos-files-for-zowe-sdk/src/methods/upload/Upload.ts:1026</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -592,7 +622,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/zosfiles/src/methods/upload/Upload.ts#L932">@zowe/zos-files-for-zowe-sdk/src/methods/upload/Upload.ts:932</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/zosfiles/src/methods/upload/Upload.ts#L1013">@zowe/zos-files-for-zowe-sdk/src/methods/upload/Upload.ts:1013</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -623,7 +653,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/zosfiles/src/methods/upload/Upload.ts#L746">@zowe/zos-files-for-zowe-sdk/src/methods/upload/Upload.ts:746</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/zosfiles/src/methods/upload/Upload.ts#L826">@zowe/zos-files-for-zowe-sdk/src/methods/upload/Upload.ts:826</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -660,7 +690,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/zosfiles/src/methods/upload/Upload.ts#L295">@zowe/zos-files-for-zowe-sdk/src/methods/upload/Upload.ts:295</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/zosfiles/src/methods/upload/Upload.ts#L297">@zowe/zos-files-for-zowe-sdk/src/methods/upload/Upload.ts:297</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -728,7 +758,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/zosfiles/src/methods/upload/Upload.ts#L222">@zowe/zos-files-for-zowe-sdk/src/methods/upload/Upload.ts:222</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/zosfiles/src/methods/upload/Upload.ts#L224">@zowe/zos-files-for-zowe-sdk/src/methods/upload/Upload.ts:224</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -777,7 +807,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/zosfiles/src/methods/upload/Upload.ts#L533">@zowe/zos-files-for-zowe-sdk/src/methods/upload/Upload.ts:533</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/zosfiles/src/methods/upload/Upload.ts#L534">@zowe/zos-files-for-zowe-sdk/src/methods/upload/Upload.ts:534</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -826,7 +856,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/zosfiles/src/methods/upload/Upload.ts#L889">@zowe/zos-files-for-zowe-sdk/src/methods/upload/Upload.ts:889</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/zosfiles/src/methods/upload/Upload.ts#L970">@zowe/zos-files-for-zowe-sdk/src/methods/upload/Upload.ts:970</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -921,6 +951,9 @@
 									</li>
 									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
 										<a href="_zowe_zos_files_for_zowe_sdk.upload.html#buffertoussfile" class="tsd-kind-icon">buffer<wbr>ToUss<wbr>File</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+										<a href="_zowe_zos_files_for_zowe_sdk.upload.html#createdirectoriesrecursively" class="tsd-kind-icon">create<wbr>Directories<wbr>Recursively</a>
 									</li>
 									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
 										<a href="_zowe_zos_files_for_zowe_sdk.upload.html#dirtopds" class="tsd-kind-icon">dir<wbr>ToPds</a>

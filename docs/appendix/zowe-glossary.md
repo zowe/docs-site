@@ -14,36 +14,38 @@ For an overview of security in Zowe, see [the Zowe Security policy](https://www.
 
 ### Zowe API Mediation Layer (API ML)
 
-Provides a reverse proxy and enables REST APIs by providing a single point of access for mainframe service REST APIs like MVS Data Sets, JES, as well as working with z/OSMF. API ML has dynamic discovery capability for these services and Gateway is also responsible for generating the authentication token used to provide single sign-on (SSO) functionality.
+Zowe API Mediation Layer (API ML) is a Zowe server-side component which provides a secure single point of access for mainframe infrastructure REST APIs (such as MVS Data Sets, JES, and z/OSMF). API ML acts as a reverse proxy, providing a bridge between client applications and backend mainframe microservices, while securely routing and forwarding incoming client requests to the appropriate underlying service. API ML has dynamic discovery capabilities to automatically determine the location and status of these registered services.
 
 <details>
 <summary>
-Click here for descriptions of the various components that form the API Mediation Layer. 
+Click here for descriptions of the various components that form Zowe API Mediation Layer. 
 </summary>
 
-#### API Catalog  
-Displays API services that have been discovered by the [API Mediation Layer](#zowe-api-mediation-layer-api-ml).
-
-#### API Discovery Service  
-As the central repository of active services in the [API Mediation Layer](#zowe-api-mediation-layer-api-ml) ecosystem, the API Discovery Service continuously collects and aggregates service information to provide status updates. This enables the discoverability of services.
-
 #### API Gateway    
-A proxy server that routes requests from clients on its northbound edge (such as web browsers or [Zowe CLI](#zowe-cli)) to servers on its southbound edge that are able to provide data to serve the request.
-  
-Also responsible for generating the authentication token used to provide single sign-on (SSO) functionality.
+The API Gateway is a proxy server and centralized entry point that provides standardized access to mainframe infrastructure REST APIs. The API Gateway dynamically routes requests from clients on its northbound edge (such as web browsers or [Zowe CLI](#zowe-cli)) to appropriate servers on the API Gateway southbound (downstream) edge. Additionally, the API Gateway enforces secure communication and integrates with ZAAS to generate authentication tokens for Single Sign-On (SSO) functionality.
+
+#### Discovery Service  
+The Discovery Service is the service registry of active services within Zowe API Mediation Layer. The Discovery Service enables the dynamic registration of API services upon startup, continuously monitors their health and availability via heartbeats, and provides the API Gateway with real-time routing intelligence to support load balancing and high availability.
+
+#### API Catalog  
+The API Catalog is a user-friendly web dashboard that provides centralized visibility into all API services registered with Zowe API ML. The API Catalog aggregates and displays service status, versioning details, and Swagger/OpenAPI documentation, while also providing a built-in interactive client that allows developers to test REST API endpoints directly from the browser.
 
 #### Caching Service  
-Designed for Zowe components in a high availability (HA) configuration. The caching service supports the HA of all components within Zowe, allowing components to be stateless by providing a mechanism to offload their state to a location accessible by all instances of the service, including those which just started.
+The Caching Service is a secure, internal key-value data storage mechanism dedicated to Zowe applications. The Caching Service is designed to support high availability (HA) configurations by allowing Zowe components to remain stateless. By offloading their state to this centralized service, components can share information across multiple instances (such as in a Sysplex or Kubernetes cluster) without exposing sensitive cached data to the public internet.
+
+#### Zowe Authentication & Authorization Service (ZAAS)
+ZAAS is a core security service that validates user identity and manages access control. Integrating directly with the API Gateway, ZAAS serves as the foundation for Single Sign-On (SSO) by issuing JSON Web Tokens (JWTs) upon validating z/OS credentials. ZAAS also handles PassTicket generation, allowing clients to securely authenticate to downstream Zowe or z/OS services without repeatedly providing base credentials.
 
 </details>
+<br />
 
 ### Zowe Application Framework
 
-Modernizes and simplifies working on the mainframe via a web visual interface. Functionality is provided through apps and a desktop user experience called the [Zowe Desktop](#zowe-desktop). Base functionality includes apps to work with JES, MVS Data Sets, Unix System Services, as well as a [3270 Terminal](#3270-terminal), [Virtual Terminal](#virtual-vt-terminal), and an [Editor](#zowe-editor).
+Zowe Application Framework modernizes and simplifies working on the mainframe via a web visual interface. Functionality is provided through apps and a desktop user experience called the [Zowe Desktop](#zowe-desktop). Base functionality includes apps to work with JES, MVS Data Sets, Unix System Services, as well as a [3270 Terminal](#3270-terminal), [Virtual Terminal](#virtual-vt-terminal), and an [Editor](#zowe-editor).
 
 ### Zowe CLI
 
-Provides a command-line interface that lets you interact with the mainframe remotely and use common tools such as Integrated Development Environments (IDEs), shell commands, bash scripts, and build tools for mainframe development. The core set of commands includes working with data sets, USS, JES, as well as issuing TSO and console commands. The Zowe CLI is incredibly popular in modern mainframe education.
+Zowe CLI provides a command-line interface that lets you interact with the mainframe remotely and use common tools such as Integrated Development Environments (IDEs), shell commands, bash scripts, and build tools for mainframe development. The core set of commands includes working with data sets, USS, JES, as well as issuing TSO and console commands. The Zowe CLI is incredibly popular in modern mainframe education.
 
 ### Zowe client projects
 
@@ -53,11 +55,11 @@ Examples include Zowe CLI, Zowe Explorer for Visual Studio Code, Zowe Explorer f
 
 ### Zowe Client SDKs
 
-Allow extenders to build applications on top of existing programmatic APIs such as z/OSMF. Currently supported client SDKs include Node.js (core), Kotlin, Python, Swift, and Java.
+Zowe Client SDKs allow extenders to build applications on top of existing programmatic APIs such as z/OSMF. Currently supported client SDKs include Node.js (core), Kotlin, Python, Swift, and Java.
 
 ### Zowe Explorer
 
-A Visual Studio Code extension that modernizes the way developers and system administrators interact with z/OS mainframes. Zowe Explorer lets you interact with data sets, USS files, and jobs that are stored on z/OS. Zowe Explorer is incredibly popular in modern mainframe education.
+Zowe Explorer is a Visual Studio Code extension that modernizes the way developers and system administrators interact with z/OS mainframes. Zowe Explorer lets you interact with data sets, USS files, and jobs that are stored on z/OS. Zowe Explorer is incredibly popular in modern mainframe education.
 
 ### Zowe server components
 
@@ -77,7 +79,7 @@ In client components such as Zowe CLI and Zowe Explorer, credential information 
 
 #### Configuration Manager
 
-Works closely with the [Zowe Launcher](#zowe-launcher) to manage the configuration of Zowe across its lifecycle. Interacted with primarily via `zwe` command
+Configuration Manager works closely with the [Zowe Launcher](#zowe-launcher) to manage the configuration of Zowe across its lifecycle. Interacted with primarily via `zwe` command
 
 #### Core component
 

@@ -36,23 +36,23 @@ If you are a system administrator managing a team using ZRS, deploy a shared ins
     pax -rzf /u/userid/zowe-server-X.Y.Z.pax.Z
     ```
 
-5. Validate the installation. Run the command `./zowex --version` to check that `zowex` can be run. 
+5. Validate the installation. Run the command `./zo --version` to check that `zo` can be run. 
 
-    The ZRS version is returned when `zowex` has been installed successfully.
+    The ZRS version is returned when `zo` has been installed successfully.
 
     Next, set up your team's access to the shared installation.
 
 :::note
 
-To update `zowex`, repeat the steps in [Deploying a shared installation](#deploying-a-shared-installation).
+To update `zo`, repeat the steps in [Deploying a shared installation](#deploying-a-shared-installation).
 
 :::
 
 ## Setting up team access to a shared installation
 
-If you are a system administrator maintaining a shared installation of ZRS, each user on your team must add `zowex` to their `$PATH` following the steps in [Adding ZRS to your $PATH](../getting-started/ze-configuring-zowe-remote-ssh.md#adding-zrs-to-your-path). Also ensure that the users have execute permission on the `zowex` binary.
+If you are a system administrator maintaining a shared installation of ZRS, each user on your team must add `zo` to their `$PATH` following the steps in [Adding ZRS to your $PATH](../getting-started/ze-configuring-zowe-remote-ssh.md#adding-zrs-to-your-path). Also ensure that the users have execute permission on the `zo` binary.
 
-If you do not want the users to be able to update `zowex` with a new version, set the file permissions on the directory so that the user does not have write access to the directory.
+If you do not want the users to be able to update `zo` with a new version, set the file permissions on the directory so that the user does not have write access to the directory.
 
 To set file permissions on the directory:
 ```
@@ -61,6 +61,6 @@ chmod go-w /your/remote/path
 
 - `/your/remote/path`
 
-    Specifies the directory that contains the `zowex` binary.
+    Specifies the directory that contains the `zo` binary.
 
 This command removes write permissions for all other users so that only a system administrator has permission to update the shared installation.
