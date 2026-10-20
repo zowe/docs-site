@@ -219,6 +219,8 @@ When running Zowe with Infinispan as the Caching Service storage backend, the Ca
 
 **Reason:**
 
+**Reason:**
+
 When running Zowe v3.5.0 in High Availability (HA) mode with Infinispan as the Caching Service storage backend, the Caching Service randomly freezes or stalls resulting from JGroups cluster communication failure, nodes dropping out or failing to form a stable cluster, and a failure in correct data replication.
 ```
 ZWECS138E The persistent store for cache '<cache_name>' is corrupted.
@@ -248,6 +250,7 @@ Use the following procedure to clear the Caching Service persistence directory:
 3. Restart Zowe.
 
 **Note:** Removing the persistence directory clears all Infinispan-stored data, including revoked Personal Access Tokens (PATs) and revoked Zowe JWT tokens. For more information about revocation of PATs, see [Authenticating with a Personal Access Token](../user-guide/api-mediation/authenticating-with-personal-access-token.md).  
+
 Revoked tokens may continue to be valid until they expire automatically.
 Infinispan failed to load the persisted data for the specified cache because the persistent cache store is corrupted.
 
