@@ -230,15 +230,18 @@ This change extends the protection of operational endpoints described in [Breaki
 Also note that, prior to Zowe v3.6.0, `/application/info` and `/application/version` remained unauthenticated even when `apiml.health.protected` was `true`. These two endpoints, and `/gateway/version` and `/gateway/api/v1/version`, are now covered by that setting.
 
 **Required action:**  
-Define the `APIML.DEBUG` profile and permit the users who need to change log levels at run time:
+1. Define the `APIML.DEBUG` profile and permit the users who need to change log levels at run time:
 
-```
-RDEFINE ZOWE APIML.DEBUG UACC(NONE)
-PERMIT APIML.DEBUG CLASS(ZOWE) ID(<userid>) ACCESS(CONTROL)
-SETROPTS RACLIST(ZOWE) REFRESH
-```
+    ```
+    RDEFINE ZOWE APIML.DEBUG UACC(NONE)
+    PERMIT APIML.DEBUG CLASS(ZOWE) ID(<userid>) ACCESS(CONTROL)
+    SETROPTS RACLIST(ZOWE) REFRESH
+    ```
 
-To make the endpoints writable, the component must additionally run with debug logging enabled (`components.gateway.debug: true`).
+    To make the endpoints writable, the component must additionally run with debug logging enabled (`components.gateway.debug: true`).
+
+2. For `info` and `version` endpoints:
+Review and update any automation or scripts that previously called `/application/info` or `/application/version` without credentials to provide valid Zowe authentication credentials. If you explicitly want to allow unauthenticated access to these informational endpoints, you must opt out by setting `components.gateway.apiml.health.protected: false` in your `zowe.yaml` configuration.
 
 ## Removed endpoints and security headers
 
@@ -273,3 +276,11 @@ components:
 ```
 
 A value that is too early silently stops enforcing revocations that were made before the upgrade. A value without a time zone, earlier than `2026-09-01`, or more than a day in the future is rejected with message `ZWEAZ607`.
+
+## Spring profile https removed
+
+**Operational Impact:**  
+The explicit Spring profile `https` has been removed from API ML components. Zowe components now handle HTTPS configuration dynamically based on your core `zowe.yaml` configuration without requiring this specific profile.
+
+**Required action:**  
+If you have extenders, or external configurations that manually reference or inject the `https` Spring profile (for example, via the `spring.profiles.active` property or `ZWE_profile` environment variables), you must remove the reference to avoid startup warnings or profile resolution errors.
