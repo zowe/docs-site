@@ -215,6 +215,9 @@ Recreate the Zowe keystore by first deleting it and then recreating it. For more
 
 When running Zowe with Infinispan as the Caching Service storage backend, the Caching Service may fail to start and produce error code `ZWECS138E` or an error message similar to the following:
 
+**Reason:**
+
+When running Zowe v3.5.0 in High Availability (HA) mode with Infinispan as the Caching Service storage backend, the Caching Service randomly freezes or stalls resulting from JGroups cluster communication failure, nodes dropping out or failing to form a stable cluster, and a failure in correct data replication.
 ```
 ZWECS138E The persistent store for cache '<cache_name>' is corrupted.
 org.infinispan.persistence.spi.PersistenceException: Found an invalid protobuf tag (1) having a field number smaller than 1
@@ -222,6 +225,28 @@ org.infinispan.persistence.spi.PersistenceException: Found an invalid protobuf t
 
 **Cause:**  
 
+**Action:**  
+In Zowe v3.5.0, the startup scripts will not automatically disable this feature. To prevent the Caching Service from freezing in HA mode, downgrade the Zowe runtime Java version to Java 17, where virtual threads are not enabled by default in Infinispan.
+
+## Caching Service persistence directory issue after upgrading to Zowe 3.5.0
+
+**Reason:**
+
+When running Zowe v3.5.0 with Infinispan as the Caching Service storage backend, you may encounter a Caching Service startup failure caused by Infinispan 16.x being unable to read persisted cache data from an earlier Infinispan version.
+
+You may see the following message:  
+```log
+org.infinispan.persistence.spi.PersistenceException: Found an invalid protobuf tag (1) having a field number smaller than 1
+```
+
+**Action:**  
+Use the following procedure to clear the Caching Service persistence directory:  
+1. Stop Zowe. For more information, see [Starting and stopping Zowe](../user-guide/start-zowe-zos.md). 
+2. Remove the persistence directory under `<workspaceDirectory>/caching-service/`. The workspace directory should be defined in your Zowe configuration file as `zowe.workspaceDirectory`.
+3. Restart Zowe.
+
+**Note:** Removing the persistence directory clears all Infinispan-stored data, including revoked Personal Access Tokens (PATs) and revoked Zowe JWT tokens. For more information about revocation of PATs, see [Authenticating with a Personal Access Token](../user-guide/api-mediation/authenticating-with-personal-access-token.md).  
+Revoked tokens may continue to be valid until they expire automatically.
 Infinispan failed to load the persisted data for the specified cache because the persistent cache store is corrupted.
 
 Corruptions of this type can occur due to various reasons, such as:
