@@ -45,7 +45,7 @@ Before upgrading to Zowe v3.6, All v2.x installations must first upgrade to v2.1
 To upgrade from Zowe v2.18.x, perform the following procedure before you install Zowe v3.6.
 
 :::note  
-v2.18.6 does not contain registration metadata validation filters. In v3.6, upgrades contain both actuator authentication and metadata validation.
+v2.18.6 does not contain registration metadata validation filters. In v3.6, upgrades meet the actuator endpoint authentication requirements and review the registration metadata validation impact for extenders.
 :::
 
 1. **Set the authentication provider.**  

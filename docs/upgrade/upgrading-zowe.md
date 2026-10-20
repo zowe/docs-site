@@ -68,7 +68,7 @@ Any extensions or products built upon Zowe v1 are unlikely to work in v2 or v3 w
 :::
 
 * **[Upgrading from Zowe Vx to Zowe V3.6](./upgrade-zowe-v3.md)**  
-Follow this procedure to upgrade from Zowe v2 to Zowe v3.6, or from Zowe v1 to Zowe v3.6. This article details V3.6 prerequisites (including Java versions 17-21, Node.js versions 18-24, and z/OSMF JWT support), new component configurations such as `zaas` and Infinispan caching, and handles migration exceptions for older v2.x releases.
+Follow this procedure to upgrade from Zowe v2 to Zowe v3.6, or from Zowe v1 to Zowe v3.6. This article details V3.6 prerequisites (including Java versions 17-21, Node.js versions 18-24, and z/OSMF JWT support), new component configurations such as `zaas` and Infinispan caching, the actuator endpoint authentication requirements, the registration metadata validation impact for extenders, and handles migration exceptions for older v2.x releases.
 
     :::caution Important
     If you are currently running on an earlier v2 version of Zowe, before upgrading to Zowe v3.x, first upgrade to Zowe v2.18.x.
