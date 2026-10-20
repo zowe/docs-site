@@ -2,7 +2,7 @@
 
 The following features are not required, but are recommended with additional prerequisites.
 
-:::info Roles required: security administrator
+:::info Required role: security administrator
 :::
 
 ## Multi-Factor Authentication (MFA)

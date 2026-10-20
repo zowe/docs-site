@@ -47,8 +47,6 @@ If you cannot add those domains into certificate Subject Alt Name (SAN), you can
 names but will continue to validate certificate chain, validity and whether it's trusted
 in Zowe truststore.
 
-**IMPORTANT**: It's not recommended to disable `zowe.verifyCertificates`.
-
 **NOTES**: With below conditions, this migration script will re-generate a new
 set of certificate for you with proper domain names listed above.
 

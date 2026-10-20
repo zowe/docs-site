@@ -61,14 +61,9 @@ A self-signed certificate is one that is not signed by a public or private certi
 ## Certificate verification
 When you configure Zowe, you can change whether Zowe verifies certificates against its truststore or not.
 
-In the Zowe configuration YAML, the property `zowe.verifyCertificates` controls the verification behavior. It can be `DISABLED`, `NONSTRICT`, or `STRICT`.
+In the Zowe configuration YAML, the property `zowe.verifyCertificates` controls the verification behavior. It can be `NONSTRICT`, or `STRICT`.
 
 You can set this property either before or after certificate setup, but **it is recommended to set `zowe.verifyCertificates` before certificate setup**.
-
-### DISABLED verification
-If you set `zowe.verifyCertificates` to `DISABLED`, certificate verification is not performed. It is not recommended for security reasons, but may be used for proof of concept or when certificates within your environment are self-signed.
-
-If you set `DISABLED` before certificate setup, Zowe does not automate putting z/OSMF trust objects into the Zowe truststore. This action can result in failure to communicate with z/OSMF if later you enable verification. As such, it is recommended to either set verification on by default, or to reinitialize the keystore if you choose to turn on verification at a later point.
 
 ### NON-STRICT verification
 If you set `zowe.verifyCertificates` to `NONSTRICT`, certificate verification is performed except for hostname validation. Using this setting, the certificate Common Name or Subject Alternate Name (SAN) is not checked. Skipping hostname validation facilitates deployment to environments where certificates are valid but do not contain a valid hostname. This configuration is for development purposes only and should not be used for production.
