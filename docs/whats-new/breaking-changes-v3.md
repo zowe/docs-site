@@ -76,6 +76,9 @@ For details, see [Removed endpoints and security headers](./api-ml-v3.6-upgrade-
 Personal Access Token revocation is now backed by the Caching Service, requiring property alignment between the ZAAS and Caching Service configurations.  
 For details, see [Personal Access Token revocation store](./api-ml-v3.6-upgrade-and-security-enhancements.md#personal-access-token-revocation-store).
 
+* **Spring profile https removed**  
+The `https` Spring profile has been removed from API ML components, requiring you to remove any manual references to this profile in extenders or external configurations to avoid startup errors.  
+For details, see [Spring profile `https` removed](./api-ml-v3.6-upgrade-and-security-enhancements.md#spring-profile-https-removed).
 
 ## Application Framework
 
