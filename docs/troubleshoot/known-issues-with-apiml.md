@@ -217,6 +217,8 @@ When running Zowe with Infinispan as the Caching Service storage backend, the Ca
 
 **Reason:**
 
+**Reason:**
+
 When running Zowe v3.5.0 in High Availability (HA) mode with Infinispan as the Caching Service storage backend, the Caching Service randomly freezes or stalls resulting from JGroups cluster communication failure, nodes dropping out or failing to form a stable cluster, and a failure in correct data replication.
 ```
 ZWECS138E The persistent store for cache '<cache_name>' is corrupted.
