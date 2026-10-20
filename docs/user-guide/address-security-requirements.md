@@ -1,6 +1,6 @@
 # Addressing security requirements
 
-:::info Required role: security administrator
+:::info Roles required: security administrator
 :::
 
 During configuration of server-side components, it is necessary to configure various system security settings. Your
