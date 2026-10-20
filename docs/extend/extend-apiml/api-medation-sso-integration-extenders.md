@@ -94,6 +94,10 @@ It is necessary to provide a service APPLID in the `authentication.applid` param
 * If the downstream service needs to consume the user ID and the PassTicket from custom HTTP request headers (for example, to participate in the Zowe SSO), it is possible to provide the headers in the Gateway configuration.
 * The HTTP headers are then added to each request towards the downstream service. The headers contain the user ID and the PassTicket to be consumed by the service. For more information about the custom HTTP request headers, see [Adding a custom HTTP Auth header to store Zowe JWT](../../user-guide/api-mediation/configuration-extender-jwt.md#adding-a-custom-http-auth-header-to-store-zowe-jwt). 
 
+:::note
+Starting in Zowe v3.4.0, when the default SAF authentication provider is active, Zowe automatically configures its internal z/OSMF static routing definitions to use this exact `httpBasicPassTicket` scheme with the default z/OSMF APPLID (`IZUDFLT`).
+:::
+
 ```yaml
 authentication:
     scheme: httpBasicPassTicket
@@ -101,9 +105,13 @@ authentication:
 ```
 
 - `<applid>`  
-Specifies the APPLID value that is used by the API service for PassTicket support (for example, `OMVSAPPL`).
+Specifies the APPLID value that is used by the API service for PassTicket support. For standard z/OSMF routing under the SAF default authentication provider, this defaults to `IZUDFLT`. For custom extending services, this matches your specific service application ID (for example, `OMVSAPPL`).
 
-For more information, see [Enabling single sign on for extending services via PassTicket configuration](../../user-guide/api-mediation/configuration-extender-passtickets.md).
+Use the configuration that applies to your use case:
+
+* To configure PassTickets for core Zowe and z/OSMF functionality, see [Addressing z/OSMF PassTicket and authentication requirements](../../user-guide/api-mediation/configuring-passtickets-for-zosmf-authentication.md)
+
+* To configure PassTickets for an external extending service onboarding to API Mediation Layer, see [Enabling single sign on for extending services via PassTicket configuration](../../user-guide/api-mediation/configuration-extender-passtickets.md).
 
 ## Bypassing authentication for the service
 
