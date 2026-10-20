@@ -1,26 +1,26 @@
 # Upgrading to single-service API ML deployment
 
-Enable the single-service deployment of API ML for an existing multi-service API ML deployment. This procedure is specifically designed for users upgrading from **Zowe v2.18** (the final v2 release) or **Zowe v3.3.x** multi-service deployments to the consolidated single-service deployment model.
+Enable the single-service deployment of API ML for an existing multi-service API ML deployment. This procedure is specifically designed for users upgrading from **Zowe v2.18.x** (the latest v2 release) or **Zowe v3.3.x** multi-service deployments to the consolidated single-service deployment model.
 
-:::info Required role: system administrator
+:::info Required roles: system administrator, system programmer
 :::
 
 Single-service deployment reduces the Zowe footprint by running the Gateway, Discovery Service, API Catalog, Caching Service, and ZAAS within a single address space.
 
 :::note
-For comprehensive information about single-service deployment, performance improvements, and internal service consolidation, see [Enabling single-service deployment of API Mediation Layer](../api-mediation/api-mediation-modulith.md).
+For comprehensive information about single-service deployment, performance improvements, and internal service consolidation, see [Enabling single-service deployment of API Mediation Layer](../user-guide/api-mediation/api-mediation-modulith.md).
 :::
 
 ## System requirements and prerequisites
 Before transitioning to the single-service model, verify that your z/OS environment meets the minimum standards for Zowe v3:
 
 * **Java**  
-Must be upgraded to Java 17 or Java 21. Ensure the `java.home` parameter in your zowe.yaml points to the correct home location for one of these versions.
+Must be upgraded to Java 17 or Java 21. Ensure the `java.home` parameter in your `zowe.yaml` points to the correct home location for one of these versions.
 
 * **Node.js**  
-Upgrading to v20 is recommended. Update the `node.home` parameter in your zowe.yaml accordingly.
+Upgrading to v20 is recommended. Update the `node.home` parameter in your `zowe.yaml` accordingly.
 
-## Authentication and Identity Validation 
+## Authenticating and validating identity 
 API ML supports the following methods for validating user identity. Use one of the following providers for enterprise security on z/OS:
 
 * **SAF (System Authorization Facility) (Recommended)**  
@@ -29,18 +29,25 @@ API ML supports the following methods for validating user identity. Use one of t
 * **z/OSMF**  
   The Gateway delegates authentication to z/OSMF REST APIs. If you are using z/OSMF as the authentication provider, the following versions are supported: `V2R5`, `V3R1`, or `V3R2`.
 
-## Ensure JWT Support  
+## Ensuring JWT support
+
 Zowe v3 utilizes JSON Web Tokens (JWT) as the primary mechanism for Single Sign-On (SSO). JWT provides the authentication context to downstream services.
 
-* **When using SAF**  
-  The Gateway signs the JWT directly using the private key of the server certificate. Note that API ML exclusively uses the server's identity certificate for this purpose. Ensure the Gateway has access to a private key (stored in a PKCS12 keystore or SAF keyring) for signing.
+### Authentication methods
 
-  Set `components.gateway.apiml.security.auth.provider: saf`.  
-  The certificate that is used for signing is found in `zowe.certificate.keystore.file`.  
-  This configuration enables API ML to validate identities using SAF Direct APIs.
+* **SAF**  
+  The Gateway signs the JWT directly using the private key of the server certificate. Note that API ML exclusively uses the server's identity certificate for this purpose.
+  
+* **z/OSMF**  
+  Token issuance is delegated entirely to z/OSMF, wherein the JWT is produced by the z/OSMF authentication provider rather than the Gateway.
 
-* **When using z/OSMF**  
-  Token issuance is delegated to z/OSMF, wherein the JWT is produced by the z/OSMF authentication provider.
+**Configuration using SAF:**  
+1. Ensure the Gateway has access to a private key (stored in a PKCS12 keystore or SAF keyring) for signing.
+2. Verify the certificate used for signing is correctly mapped in your configuration under `zowe.certificate.keystore.file`. 
+3. Set `components.gateway.apiml.security.auth.provider: saf` to enable API ML to validate identities using SAF Direct APIs.
+
+**Configuration using z/OSMF:**    
+Because token generation is fully delegated to the z/OSMF authentication provider, the Gateway does not require a local private key configuration for JWT signing.
 
 ## Transitioning to single-service mode
 
@@ -48,9 +55,9 @@ Zowe v3 utilizes JSON Web Tokens (JWT) as the primary mechanism for Single Sign-
 Ensure that all Zowe address spaces are stopped before modifying configuration files.
 :::
 
-To migrate from the multi-service deployment to the single-service deployment, apply these changes to your zowe.yaml file:
+To migrate from the multi-service deployment to the single-service deployment, apply these changes to your `zowe.yaml` file:
 
-Enable single-service deployment.
+Enable single-service deployment.  
 Set `components.apiml.enabled` to `true`:
 
   ```yaml
@@ -63,9 +70,9 @@ Set `components.apiml.enabled` to `true`:
 All standalone components from the multi-service API ML deployment including the Discovery Service, API Catalog, and Caching Service are internal to the Gateway address space in the single-service deployment and are disabled when `components.apiml.enabled` is configured.
 :::
 
-
-:::note Alternative authentication with z/OSMF
+:::info Alternative authentication with z/OSMF
 While SAF is the recommended authentication provider, it is possible to use z/OSMF authentication with a JSON Web Token (JWT) or LTPA if you prefer not to use SAF. Note that while LTPA remains supported, it is not generally recommended.
+:::
 
 <details>
 
@@ -76,22 +83,22 @@ While SAF is the recommended authentication provider, it is possible to use z/OS
 To use z/OSMF as authentication provider, set `auth.provider` to `zosmf`, and `jwtAutoconfiguration` to `jwt`:
   
 ```yaml
-  components:
-    gateway:
-      apiml:
-        security:
-          auth:
-            provider: zosmf
-            zosmf:
-              jwtAutoconfiguration: jwt
-              serviceId: ibmzosmf
+components:
+  gateway:
+    apiml:
+      security:
+        auth:
+          provider: zosmf
+          zosmf:
+            jwtAutoconfiguration: jwt
+            serviceId: ibmzosmf
 ```
 
-For details about using JWT and the token lifecycle, see [Authenticating with a JWT token](../authenticating-with-jwt-token.md).
-  
+For details about using JWT and the token lifecycle, see [Authenticating with a JSON Web Token (JWT)](../user-guide/authenticating-with-jwt-token.md).
+
 </details>
 
-:::
+<br />
 
 ## Refreshing infrastructure and cleanup
 
@@ -111,7 +118,7 @@ If you are using ZIS, start this component first. This server provides the autho
 ```
 /S ZWESISTC 
 ```
-For details about ZIS configuration, see [Configuring the Zowe cross memory server (ZIS)](../configure-xmem-server.md).
+For details about ZIS configuration, see [Configuring the Zowe cross memory server (ZIS)](../user-guide/configure-xmem-server.md)
 :::
 
 Start the main Zowe task. 
@@ -120,3 +127,7 @@ Start the main Zowe task.
 /S ZWESLSTC
 ```
 The launcher now initializes the API Mediation Layer in a single address space instead of multiple address spaces.
+
+## Additional Resources
+
+* **[Enabling single-service deployment of API Mediation Layer](../user-guide/api-mediation/api-mediation-modulith.md)**

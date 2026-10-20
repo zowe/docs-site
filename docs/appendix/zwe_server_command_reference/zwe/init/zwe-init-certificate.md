@@ -6,13 +6,18 @@
 
 ## Description
 
-This command will generate certificate used by Zowe services.
+This command will generate the certificate used by Zowe services.
 
 If you specify `--update-config` with this command, these configurations could
 be written back to your Zowe YAML configuration file:
 
 - `zowe.certificate` based on your `zowe.setup.certificate` configuration.
 - `zowe.setup.security.product` based on the detected External Security Manager
+- `zowe.setup.certificate.pkcs12.password` and `zowe.setup.certificate.pkcs12.caPassword`. If these parameters are left at their default values, the command generates random passwords and saves them to the file.
+
+ :::note
+ If you do not use `--update-config`, any randomly generated PKCS12 passwords are only displayed in the command output and must be saved manually.
+ :::
 
 These Zowe YAML configurations showing with sample values are used:
 
@@ -104,8 +109,8 @@ zOSMF:
 - `zOSMF.host` and `zOSMF.port` is the z/OSMF service information. This is
   required if you are using z/OSMF as authentication service.
 - `zowe.verifyCertificates` indicates how Zowe should validate the certificate
-  of services registered under Zowe APIML. Valid values are "STRICT",
-  "NONSTRICT" or "DISABLED". If this is "STRICT", this command will try to
+  of services registered under Zowe APIML. Valid values are "STRICT", or 
+  "NONSTRICT". If this is "STRICT", this command will try to
   validate the z/OSMF service certificate if z/OSMF is defined.
 
 **For `PKCS12` certificate users,**
@@ -157,7 +162,7 @@ zOSMF:
     the owner of existing certificate. This field can have value of `SITE`.
   * `zowe.setup.certificate.keyring.connect.label` is also required and tells
     Zowe the label of existing certificate.
-- If `zowe.verifyCertificates` is not `DISABLED`, and z/OSMF host (`zOSMF.host`)
+- When `zowe.verifyCertificates` is `STRICT` or `NONSTRICT`, and z/OSMF host (`zOSMF.host`)
   is provided, Zowe will try to trust z/OSMF certificate.
   * If you are using `RACF` or `TSS` security manager, Zowe will try to
     automatically detect the z/OSMF CA based on certificate owner specified by

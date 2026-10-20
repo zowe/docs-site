@@ -1,27 +1,81 @@
 # Upgrading from Zowe Vx to Zowe V3
 
-Follow the procedure outlined in this article to upgrade from Zowe v2 to Zowe v3, or from Zowe v1 to Zowe v3. While the major version upgrading process is similar to a Zowe v2 minor release upgrade, there are several new and updated configuration parameters to consider. 
+Follow the procedure outlined in this article to upgrade from Zowe v2 to Zowe v3, or from Zowe v1 to Zowe v3.
+
+:::info Required roles: system administrator, system programmer
+:::
+
+While the major version upgrading process is similar to a Zowe v2 minor release upgrade, there are several new and updated configuration parameters to consider depending on your current version. 
+
+Follow the steps described in this article to ensure a smooth upgrade to the latest Zowe version.
 
 :::note
 The workspace directory should be re-created only if you are using the app-server component.
 :::
 
-Follow the steps described in this article to ensure a smooth upgrade to Zowe v3.
-
-
-## Upgrading to the latest version of Zowe v2 (v2.18)
-
-Before upgrading to Zowe v3.0.0, first upgrade to Zowe v2.18, as the rest of the upgrading instructions are based upon Zowe v2.18.
-Please follow the instructions from the version of Zowe you have and newer in order to prepare to upgrade from Zowe v2 to v3.0.0.
-
-### Upgrading from Zowe v2.16.0 or Lower
+## Upgrading from Zowe v3.5 and previous Zowe v3 versions
 
 <details>
 <summary>Click here for configuration details.</summary>  
 
-To upgrade from Zowe **v2.16.0** or a lower version, perform the following tasks. 
+In Zowe v3.6, the API ML Gateway introduces a breaking change by enabling strict URL validation by default. The Gateway now automatically rejects requests that contain any of the following encoded characters in the URL path: 
 
-1) Ensure the following `zowe.network` section is added to your configuration:
+* encoded slashes (`%2F`)
+* encoded double slashes (`%2F%2F`)
+* backslashes (`%5C`)
+* encoded percent signs (`%25`)
+* encoded periods (`%2E`)
+* semicolons (`;`).
+
+If you onboarded services that expect these encoded characters, you will encounter rejected requests after upgrading unless you update your configuration.
+
+* The previous configuration property `components.gateway.apiml.service.allowEncodedSlashes` has been removed.
+* Add the new property `components.gateway.apiml.security.enableStrictUrlValidation` to your `zowe.yaml` file and set this attribute to `false`.
+
+  :::note Behavior change in Zowe v3.6: Strict URL Validation
+  Prior to Zowe v3.6, API ML allowed encoded slashes by default. The property that controlled this (`components.gateway.apiml.service.allowEncodedSlashes`) was removed and replaced with `components.gateway.apiml.security.enableStrictUrlValidation`.
+
+  Because strict validation is now **enabled** by default, requests with encoded characters that were previously accepted will now be rejected.
+
+  **Restoring pre-v3.6 behavior:**  
+  Previously, the property `components.gateway.apiml.service.allowEncodedSlashes` was set to `true` by default, thereby allowing for encoded characters. Now, if your southbound services require them, you must explicitly set the `enableStrictUrlValidation` property to `false` to bypass the block and restore the older behavior.
+
+  **Exceptions for Gateway-internal endpoints:**  
+  Regardless of how you configure the `enableStrictUrlValidation` property, gateway-internal endpoints (such as `/gateway`, `/application`, `/images`, and `/v3/api-docs`) will always enforce strict validation.
+  :::
+
+</details>
+<br />
+
+
+## Upgrading from Zowe v1 or v2 to Zowe v3
+
+If you are upgrading from an older major version of Zowe, ensure you meet the prerequisites and prepare your configuration accordingly.
+
+### Prerequisite to upgrade to Zowe v3
+
+* **Upgrade to the latest version of Zowe v2 (v2.18.x)**  
+If you are currently running on an earlier v2 version of Zowe, before upgrading to Zowe v3.x, first upgrade to Zowe v2.18.x. The following upgrade procedure to Zowe v3 applies to Zowe v2.18.x.
+Please follow the instructions from the version of Zowe you have and newer in order to prepare to upgrade from Zowe v2 to v3.0.0.
+* **z/OSMF**  
+  Version V2R5 or V3R1 is required. JWT support for z/OSMF is highly recommended. For more information, see [Enabling JSON Web Token support](https://www.ibm.com/docs/en/zos/3.1.0?topic=configurations-enabling-json-web-token-support) in the IBM documentation. If you do not have JWT support in z/OSMF, make sure to set `components.gateway.apiml.security.auth.zosmf.jwtAutoconfiguration` to `ltpa`.
+* **Java**  
+  Java 17 is required. The Zowe YAML parameter `java.home` value should be a **Java 17** home location. If an administrator uses `zwe init` to set up Zowe, ensure the `java` for that user is v17 by including it in the `PATH` environment variable.
+* **Node.js**  
+  Ensure that the Zowe YAML parameter `node.home` value is a **Node.js 18 or 20** home location. Node 16 and earlier versions are not supported.
+
+### Preparing Your Current Zowe Instance
+
+To ensure a smooth transition to the latest Zowe version, you must first resolve any configuration changes required by your current version. Configuration updates are cumulative. If you are running an earlier v2 version of Zowe, you must follow all of the procedures that correspond to your current version, plus each of the later Zowe versions up to and including v2.18.x. Apply the necessary configurations before proceeding with the v3 upgrade. 
+
+### Upgrading from Zowe v2.16.x and previous Zowe versions
+
+<details>
+<summary>Click here for configuration details.</summary>  
+
+To upgrade from Zowe v2.16.x, perform the following tasks. 
+
+1. Ensure the following `zowe.network` section is added to your `zowe.yaml` file.
 
 ```yaml
   network:
@@ -37,69 +91,66 @@ To upgrade from Zowe **v2.16.0** or a lower version, perform the following tasks
         attls: false
 ```
 
-2) Update your PROCLIB entries for Zowe, as enhancements and default parameters have changed throughout Zowe v2.
-This can be performed with the unix command `zwe init stc`, by running the job ZWEISTC, or by copying the SZWESAMP members ZWESLSTC, ZWESISTC, and ZWESASTC into your desired PROCLIB.
-3) If you use keyrings, verify that Zowe YAML references to `safkeyring`. Use two forward slashes (`safkeyring://`). Do not use four forward slashes (`safkeyring:////`).
+2. Update your PROCLIB entries for Zowe, as enhancements and default parameters have changed throughout Zowe v2.
+This can be performed with the unix command `zwe init stc`, by running the job `ZWEISTC`, or by copying the `SZWESAMP` members `ZWESLSTC`, `ZWESISTC`, and `ZWESASTC` into your desired PROCLIB.
+3. If you use keyrings, verify that Zowe YAML references to `safkeyring`. Use two forward slashes (`safkeyring://`). Do not use four forward slashes (`safkeyring:////`).
 
 </details>
+<br />
 
-### Upgrading from Zowe v2.15.0 or Lower
+### Upgrading from Zowe v2.15.x and previous Zowe versions
 
 <details>
 <summary>Click here for configuration details.</summary>  
 
-To upgrade from Zowe **v2.15.0** or a lower version, perform the following tasks. 
+If your current version is between v2.11.x and v2.15.x, perform the following tasks. 
 
-If you are upgrading from Zowe **v2.15.0** or a lower version, ensure that Zowe configurations using keyrings do not have the section `zowe.certificate.pem`.
-This section is no longer needed and can cause startup error in newer versions of Zowe.
+Ensure that Zowe configurations using keyrings do not have the section `zowe.certificate.pem`.
+This section is no longer needed and can cause a start-up error in newer versions of Zowe.
 
 </details>
+<br />
 
-### Upgrading from Zowe v2.10.0 or Lower
+### Upgrading from Zowe v2.10.x and previous Zowe versions
 
 <details>
 <summary>Click here for configuration details.</summary>  
 
-To upgrade from Zowe **v2.10.0** or a lower version, perform the following tasks. 
-
-If you are upgrading from Zowe **v2.10.0** or a lower version, consider taking advantage of the new **sysMessages** feature.
-
-The `zowe.sysMessages` is a new array that allows you to select messages that, when found by the launcher, will be duplicated into the system's log.
+:::tip
+You now have the option to use the array  `zowe.sysMessages` to select messages that, when found by the launcher, are duplicated into the system's log.
+:::
 
 </details>
+<br />
 
-### Upgrading from Zowe v2.9.0 or Lower
+### Upgrading from Zowe v2.9.x and previous Zowe versions
 
 <details>
 <summary>Click here for configuration details.</summary>
 
-To upgrade from Zowe **v2.9.0** or a lower version, perform the following tasks. 
-
-If you are upgrading from Zowe **v2.9.0** or a lower version, it is recommended to delete the `<zowe.workspaceDirectory>/app-server/plugins` directory so that it can be regenerated on the next run of Zowe.
-In this version and prior there were old and no longer used Application Framework plugins and references to them will complicate logs with harmless errors.
+Delete the `<zowe.workspaceDirectory>/app-server/plugins` directory so that it can be regenerated on the next run of Zowe.
+In this version and prior versions there were old and no longer used Application Framework plug-ins and references to them will complicate logs with harmless errors.
 
 </details>
+<br />
 
-### Upgrading from Zowe v2.3.0 or Lower
+### Upgrading from Zowe v2.3.x and previous Zowe versions
 
 <details>
 <summary>Click here for configuration details.</summary>
 
-To upgrade from Zowe **v2.3.0** or a lower version, perform the following tasks. 
-
-If you are running Zowe **v2.3.0** or a lower version, a **clean install** of Zowe v3 is highly recommended to avoid potential issues during the upgrade process.
+If your current version is v2.3.x or earlier, a clean install of Zowe v3 is highly recommended to avoid potential issues during the upgrade process, rather than attempting to manually patch the configuration forward.
 
 </details>
+<br />
 
-### Upgrading from Zowe v1
+### Upgrading from Zowe v1.x
 
 <details>
 <summary>Click here for configuration details.</summary>
-
-To upgrade from Zowe **v1** perform the following tasks. 
 
 If you are using v1, you must perform a clean install of Zowe rather than upgrading it as there is not a clear upgrade path from v1 to v2 or v3.
-Any extensions or products built upon Zowe v1 are unlikely to work in v2 or v3 without upgrading them. Refer to any product documentation on actions to take. For more information, see [Upgrading from Zowe V1 to Zowe V2](../extend/migrate-extensions.md).
+Any extensions or products built upon Zowe v1 are unlikely to work in v2 or v3 without upgrading them. Refer to any product documentation on actions to take. For more information, see [Upgrading from Zowe V1 to Zowe V2](../upgrade/upgrade-zowe-v2.md).
 
 If you are using v1.27 or a later version of Zowe v1, you can retain your keyring or keystore with Zowe v2 and v3. 
 During v2 or v3 installation, once your Zowe YAML configuration file is created, you can define the section `zowe.certificate` to re-use your certificates.
@@ -123,24 +174,13 @@ zowe:
 ```
 
 </details>
-
-## V3 Prerequisite Changes
-
-Before starting the upgrade, ensure the following system requirements are met:
-
-- **z/OSMF**  
-Version V2R5 or V3R1 is required. JWT support for z/OSMF is highly recommended. For more information, see [Enabling JSON Web Token support](https://www.ibm.com/docs/en/zos/3.1.0?topic=configurations-enabling-json-web-token-support) in the IBM documentation. If you do not have JWT support in z/OSMF, make sure to set `components.gateway.apiml.security.auth.zosmf.jwtAutoconfiguration` to `ltpa`.
-- **Java**  
-Java 17 is required. The Zowe YAML parameter `java.home` value should be a **Java 17** home location. If an administrator uses `zwe init` to set up Zowe, ensure the `java` for that user is v17 by including it in the `PATH` environment variable.
-- **Node.js**  
-Ensure that the Zowe YAML parameter `node.home` value is **Node.js 18 or 20** home location. Node 16 and earlier versions are not supported.
-
+<br />
 
 ## System and Security Changes
 
-- Existing SAF settings for Zowe do not need to be changed for v3. Install steps such as `zwe init security`, the job or workflow ZWESECUR, and the jobs ZWEIRAC, ZWEITSS, and ZWEIACF are not required to be re-run.
+- Existing SAF settings for Zowe do not need to be changed for v3. Install steps such as `zwe init security`, the job or workflow `ZWESECUR`, and the jobs `ZWEIRAC`, `ZWEITSS`, and `ZWEIACF` are not required to be re-run.
 
-- Existing keyrings and keystores do not need to be changed for v3. Install steps such as `zwe init certificate`, the job or workflow ZWEKRING, or jobs starting with ZWEIKR* are not required to be re-run.
+- Existing keyrings and keystores do not need to be changed for v3. Install steps such as `zwe init certificate`, the job or workflow `ZWEKRING`, or jobs starting with `ZWEIKR*` are not required to be re-run.
 
 - The following network changes are needed for added or removed servers:
 
@@ -249,7 +289,7 @@ components:
       64bit: true
 ```
 
-### Deprecated Settings
+### Deprecated Settings in Zowe v3
 
 The following configuration parameters have been deprecated in Zowe v3. Ensure that these parameters are removed from your configuration.
 

@@ -142,6 +142,7 @@ module.exports = {
             "user-guide/install-nodejs-zos",
             "user-guide/address-security-requirements",
             "user-guide/address-authentication-requirements",
+            "user-guide/api-mediation/configuring-passtickets-for-zosmf-authentication",
             "user-guide/configure-uss",
             "user-guide/address-storage-requirements",
             "user-guide/address-network-requirements",
@@ -320,7 +321,7 @@ module.exports = {
                   "items": [
                     "user-guide/api-mediation/configuration-multi-tenancy-routing",
                     "user-guide/api-mediation/configuration-cors",
-                    "user-guide/api-mediation/configuration-url-handling",
+                    "user-guide/api-mediation/configuration-using-strict-url-validation",
                     "user-guide/api-mediation/configuration-gateway-retry-policy",
                     "user-guide/api-mediation/configuration-unique-cookie-name-for-multiple-zowe-instances",
                     "user-guide/api-mediation/configuration-access-specific-instance-of-service",
@@ -362,6 +363,7 @@ module.exports = {
                 "user-guide/api-mediation/configuration-customizing-the-api-catalog-ui",
                 "user-guide/api-mediation/configuration-logging",
                 "user-guide/api-mediation/wto-message-on-startup",
+                "user-guide/api-mediation/config-allowed-domains-for-service-reg",
               ]
             },
             "user-guide/configmgr-using",
