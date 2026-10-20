@@ -48,18 +48,12 @@ A self-signed certificate is one that is not signed by a CA at all – neither p
 
 ## Certificate verification
 When you configure Zowe, it is necessary to decide whether Zowe will perform verification of certificates against its truststore.
-In the Zowe configuration YAML, the property `zowe.verifyCertificates` controls the verification behavior. It can be `DISABLED`, `NONSTRICT`, or `STRICT`.
+In the Zowe configuration YAML, the property `zowe.verifyCertificates` controls the verification behavior. It can be `NONSTRICT`, or `STRICT`.
 
 You can set this property either before or after certificate setup, but **it is recommended to set `zowe.verifyCertificates` before certificate setup** because it affects the automation that Zowe can perform during certificate setup.
 
-- [DISABLED verification](#disabled-verification)
 - [NON-STRICT verification](#non-strict-verification)
 - [STRICT verification](#strict-verification)
-
-### DISABLED verification
-If you set `zowe.verifyCertificates` to `DISABLED`, certificate verification is not performed. This is not recommended for security reasons, but may be used for proof of concept or when certificates within your environment are self-signed.
-
-If you set `DISABLED` before certificate setup, Zowe will not automate putting z/OSMF trust objects into the Zowe truststore. This can result in failure to communicate with z/OSMF if at a later time you enable verification. As such, it is recommended to either set verification on by default, or to re-initialize the keystore if you choose to turn verification on at a later point.
 
 ### NON-STRICT verification
 If you set `zowe.verifyCertificates` to `NONSTRICT`, certificate verification will be performed except for hostname validation. Using this setting, the certificate Common Name or Subject Alternate Name (SAN) is not checked. Skipping hostname validation facilitates deployment to environments where certificates are valid but do not contain a valid hostname. This configuration is for development purposes only and should not be used for production.
@@ -85,7 +79,7 @@ Some Zowe components act as a server, some as a client, and some as both - clien
 The host communicating with a certificate should have its hostname match one of the values of the certificate's Common Name or Subject Alternate Name (SAN). If this condition is not true for at least one of the certificates seen by Zowe, then you may wish to set [NON-STRICT verification](#non-strict-verification) within Zowe configuration.
 
 ### z/OSMF access
-The z/OSMF certificate is verified according to Zowe [Certificate verification setting](#certificate-verification), as is the case with any certificate seen by Zowe. However, Zowe will also set up a trust relationship with z/OSMF within the Zowe truststore during certificate setup automation if the certificate setting is set to any value other than [DISABLED](#disabled-verification).
+The z/OSMF certificate is verified according to Zowe [Certificate verification setting](#certificate-verification), as is the case with any certificate seen by Zowe. However, Zowe will also set up a trust relationship with z/OSMF within the Zowe truststore during certificate setup automation.
 
 
 ## Certificate setup types
