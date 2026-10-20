@@ -42,7 +42,11 @@ Before upgrading to Zowe v3.6, All v2.x installations must first upgrade to v2.1
 <summary><strong>Upgrading from Zowe v2.18.6</strong></summary>
 <br />
 <!-- This whole dropdown section is new -->
-To upgrade from Zowe v2.18.x, perform the following tasks before you install Zowe v3.6.
+To upgrade from Zowe v2.18.x, perform the following procedure before you install Zowe v3.6.
+
+:::note  
+v2.18.6 does not contain registration metadata validation filters. In v3.6, upgrades contain both actuator authentication and metadata validation.
+:::
 
 1. **Set the authentication provider.**  
 Set `components.gateway.apiml.security.auth.provider` explicitly to `zosmf` or `saf` in `zowe.yaml`, so that the behavior does not depend on version-dependent defaults. The provider default is not changed when you upgrade: `zosmf` is preserved for upgraded configurations, while `saf` is the default in `example-zowe.yaml` for new installations.
@@ -303,7 +307,7 @@ After you prepare your current Zowe instance, upgrade the Zowe runtime to v3.6.
     | Java and Node.js dependency checks | Enforce Java 17–21 and Node.js 18–24 | <!-- TODO: confirm property --> |
     | z/OSMF JWT (`zosmfjwt`) | `exit` | `zowe.launchScript.startupChecks.zosmfjwt` |
 
-    A failing check with the `exit` behavior stops Zowe from starting. Resolve the finding that the check reports. Alternatively, set the matching `zowe.launchScript.startupChecks.*` property to `warn` or `disabled`:
+    A failing check defaulting to `exit` prevents Zowe from starting. Resolve the failing check<!-- maybe we need more guidance here? --> or set the matching `zowe.launchScript.startupChecks.*` property to `warn` or `disabled`:
 
     ```yaml
     zowe:

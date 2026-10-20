@@ -29,8 +29,12 @@ Node.js is not required if using Docker instead of z/OS, or if running Zowe with
 #### Application server Node.js requirements
 
 The app-server component requires one of the following Node.js versions:
+  * v18.x
+  * v19.x
   * v20.x
-  * v22.x 
+  * v22.x
+  * v23.x
+  * v24.x
 
 #### Supported Node.js versions
 
@@ -63,7 +67,6 @@ You can obtain IBM SDK for Node.js - z/OS for free in one of the following ways:
 
 For more information, see the blog ["Options on how to obtain IBM Open Enterprise SDK for Node.js"](https://community.ibm.com/community/user/ibmz-and-linuxone/blogs/bruce-armstrong/2022/07/27/options-on-how-to-obtain-ibm-open-enterprise-sdk-f).
 
-Here's a rewritten version of that section, aiming for improved readability, clarity, and flow while retaining all the essential information.
 
 ---
 
