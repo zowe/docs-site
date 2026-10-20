@@ -10,7 +10,7 @@ To ensure a successful Zowe server-side installation on z/OS, certain components
 | Component | Prerequisite | Zowe v2.x (LTS) | Zowe v3.x (Current) | Notes |
 | :-------- | :----------- | :------------------------------------------------------ | :-------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | **Zowe Application Framework (ZLUX / Desktop)** | Node.js | Node.js 20, or 22 | **Node.js 20, or 22** | The Zowe Desktop and many of its web-based applications are built on Node.js and require a 64-bit z/OS port of Node.js to function. **The Zowe Application Framework itself does not directly require Java.** |
-| **API Mediation Layer (APIML)** | Java | IBM Java SDK 11 (or OpenJDK 11).<br /> Java 21 is also supported in Zowe v2.18.2. and later v2.18 minor releases.<br />| **IBM Semeru Runtime Certified Edition for z/OS, Version 17** (or OpenJDK 17) <br /> Java 21 is also supported in Zowe v3.2. and later releases. <br />| The API Mediation Layer, as a core Zowe component, requires a 64-bit Java Runtime Environment (JRE) or Java Development Kit (JDK) for z/OS. **The API Mediation Layer itself does not directly require Node.js.** |
+| **API Mediation Layer (APIML)** | Java | v2: Java 8, 11, 17 (≥ 2.15), all community-tested <br /> **Note:** On Zowe version 2 with Java 11+, `zwe setup` cannot create PKCS12 keystores, and SAF key ring references must use two forward slashes (`safkeyring://`), not four. For details, see [Upgrading from Zowe Vx to Zowe V3](/docs/upgrade/upgrade-zowe-v3.md). | v3: Java 17 (all versions), Java 21 (≥ 3.3, tested by community member) | See the [Zowe compatibility matrix](https://www.zowe.org/compatibility) for the current status of each combination. |
 | **General Zowe Setup & Integration** | z/OSMF | Highly Recommended | Highly Recommended | While Zowe can operate in limited scenarios without z/OSMF, it is **highly recommended** for full functionality, robust security integrations (SAF roles, certificates), simplified certificate management, and leveraging many underlying z/OS services. Zowe is architected for seamless integration with z/OSMF across all its components. | 
  
 
@@ -37,7 +37,9 @@ The app-server component requires one of the following Node.js versions:
 <details>
 <summary> Click here for details about the node.js versions supported by Zowe. </summary>
 
-The following Node.js versions are supported to run Zowe. See the [Node.js hardware and software prerequisites for Zowe](#nodejs-hardware-and-software-prerequisites-for-zowe) section for the prerequisites that are required by Zowe.
+The following Node.js versions are supported to run Zowe. Node.js version `20.19.0` and version `22.19.0` are the minimum versions which are supported to run Zowe 3.6 and higher versions.
+
+See the [Node.js hardware and software prerequisites for Zowe](#nodejs-hardware-and-software-prerequisites-for-zowe) section for the prerequisites that are required by Zowe.
 
 The corresponding [IBM SDK for Node.js - z/OS documentation](https://www.ibm.com/docs/en/sdk-nodejs-zos) lists all the prerequisites for Node.js. Some software packages, which might be listed as prerequisites there, are **NOT** required by Zowe. Specifically, you do **NOT** need to install Python, Make, Perl, or C/C++ runtime or compiler.  If you can run `node --version` successfully, you have installed the prerequisites required by Zowe.
 
@@ -62,8 +64,6 @@ You can obtain IBM SDK for Node.js - z/OS for free in one of the following ways:
 - Download PAX file format at [ibm.com/products/sdk-nodejs-compiler-zos](https://www.ibm.com/products/sdk-nodejs-compiler-zos). IBM defect Support is not available for this format.
 
 For more information, see the blog ["Options on how to obtain IBM Open Enterprise SDK for Node.js"](https://community.ibm.com/community/user/ibmz-and-linuxone/blogs/bruce-armstrong/2022/07/27/options-on-how-to-obtain-ibm-open-enterprise-sdk-f).
-
-Here's a rewritten version of that section, aiming for improved readability, clarity, and flow while retaining all the essential information.
 
 ---
 
