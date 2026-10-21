@@ -2,7 +2,30 @@
 
 The implementation of the OpenTelemetry standard provides a vendor-neutral way to observe API Mediation Layer (API ML). By combining environment-aware resource attributes, including mainframe support, with real-time signals, you can monitor performance and pinpoint issue troubleshooting.
 
-The collection of API ML OpenTelemetry data could apply to the following use cases: 
+## User and Service Activity Reporting
+
+Report on who uses your z/OS APIs, which services they use, and how that usage changes over time. API ML creates an OpenTelemetry log record for every request to a service. Each record carries the request path, HTTP method, response code, authentication method and result, the mapped mainframe `user.id`, and the `service.id` of the requested service. You can aggregate these records in your observability backend to answer questions such as:
+
+  * Who are the users, and which services do they use?
+  * When does usage occur?
+  * How often do users call each service?
+  * Which authentication methods do users rely on (Basic, JWT, client certificate, or PAT)?
+  * How does usage develop over time?
+
+  API ML does not create metrics for every combination of service, URL path, and user ID, because the number of unique combinations can grow without limit and overwhelm your metrics backend (a problem known as cardinality explosion). Instead, API ML records this detail as semi-structured log attributes, so you can derive the information on demand with a log query. For example, you can count distinct `user.id` values per `service.id` per week for a management report, or group requests by `auth.method` to see whether users are moving from Basic authentication to tokens. 
+  
+  ::info
+  * For a sample query, see [Using your OpenTelemetry metrics](./using-your-otel-metrics.md). 
+  * For the full list of attributes, see [Log signal examples and attribute mapping](./log-signal-examples-and-attribute-mapping.md).
+  :::
+
+  :::caution
+  These log records contain `user.id` values. Apply the same access restrictions to this data as you apply to API ML audit logs.
+  :::
+
+## Other possible observability use cases
+
+The collection of API ML OpenTelemetry data could also apply to the following use cases: 
 
 * **Sysplex-Wide Traffic Analysis**  
 Use the `zos.sysplex.name` and `zos.smf.id` attributes to aggregate and compare API traffic across your entire mainframe footprint. This traffic analysis allows you to identify if a performance spike is isolated to a single LPAR or if the spike is caused by a systemic issue affecting the entire Sysplex.
@@ -19,7 +42,8 @@ Use the `zos.sysplex.name` and `zos.smf.id` attributes to aggregate and compare 
 * **Security and Audit Forensics**  
  Correlate log records with traces to investigate failed security audits. If a request is rejected by the Gateway, the trace can show the origin of the call, while the associated logs (linked via the same `traceId`) provide the technical reason for the rejection, such as an expired token or insufficient SAF permissions.
 
- ## Next Steps
+
+## Next Steps
 
 * For a quick-start to configure API ML to collect observability data through OpenTelemetry, see [Quick-start Configuration of API ML Observability](../quick-start-configuration-of-apiml-observability.md).
 
