@@ -4,7 +4,23 @@ The implementation of the OpenTelemetry standard provides a vendor-neutral way t
 
 ## User and Service Activity Reporting
 
-Report on who uses your z/OS APIs, which services they use, and how that usage changes over time. API ML creates an OpenTelemetry log record for every request to a service. Each record carries the request path, HTTP method, response code, authentication method and result, the mapped mainframe `user.id`, and the `service.id` of the requested service. You can aggregate these records in your observability backend to answer questions such as:
+You can use telemetry data to report the following information:
+
+  * Who uses your z/OS APIs
+  * Which services they use
+  * How that usage changes over time. 
+  
+API ML creates an OpenTelemetry log record for every request to a service. Each record carries the following pieces of information:  
+
+  * Request path
+  * HTTP method
+  * Response code
+  * Authentication method
+  * Result
+  * Mapped mainframe `user.id`
+  * `service.id` of the requested service. 
+
+You can aggregate these records in your observability backend to answer questions such as:
 
   * Who are the users, and which services do they use?
   * When does usage occur?
@@ -12,16 +28,16 @@ Report on who uses your z/OS APIs, which services they use, and how that usage c
   * Which authentication methods do users rely on (Basic, JWT, client certificate, or PAT)?
   * How does usage develop over time?
 
-  API ML does not create metrics for every combination of service, URL path, and user ID, because the number of unique combinations can grow without limit and overwhelm your metrics backend (a problem known as cardinality explosion). Instead, API ML records this detail as semi-structured log attributes, so you can derive the information on demand with a log query. For example, you can count distinct `user.id` values per `service.id` per week for a management report, or group requests by `auth.method` to see whether users are moving from Basic authentication to tokens. 
+API ML does not create metrics for every combination of service, URL path, and user ID, because the number of unique combinations can grow without limit and overwhelm your metrics backend. Instead, API ML records this detail as semi-structured log attributes, so you can derive the information on demand with a log query. For example, you can count distinct `user.id` values per `service.id` per week for a management report, or group requests by `auth.method` to see whether users are moving from Basic authentication to tokens. 
   
-  ::info
-  * For a sample query, see [Using your OpenTelemetry metrics](./using-your-otel-metrics.md). 
-  * For the full list of attributes, see [Log signal examples and attribute mapping](./log-signal-examples-and-attribute-mapping.md).
-  :::
+::info
+* For a sample query, see [Using your OpenTelemetry metrics](./using-your-otel-metrics.md). 
+* For the full list of attributes, see [Log signal examples and attribute mapping](./log-signal-examples-and-attribute-mapping.md).
+:::
 
-  :::caution
-  These log records contain `user.id` values. Apply the same access restrictions to this data as you apply to API ML audit logs.
-  :::
+:::caution Important:
+These log records contain `user.id` values. Apply the same access restrictions to this data as you apply to API ML audit logs.
+:::
 
 ## Other possible observability use cases
 

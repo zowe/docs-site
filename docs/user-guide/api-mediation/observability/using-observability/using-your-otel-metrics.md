@@ -1,8 +1,11 @@
 # Using your API ML OpenTelemetry metrics
 
-## Examplesyof Usability of Telemetry data in API ML
+## Examples of Usability of Telemetry data in API ML
 
-How a system administrator interacts with this data depends on the visualization tool used (e.g., Grafana, Jaeger, or Broadcom WatchTower).
+How a system administrator interacts with this data depends on the visualization tool used (for example, Grafana, Jaeger, or Broadcom WatchTower).
+
+:::info Required role: System administrator
+:::
 
 Review the following examples of how to to query and visualize the OpenTelemetry signals (Logs, Metrics, and Traces) using standard observability backends.
 

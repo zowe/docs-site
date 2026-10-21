@@ -25,23 +25,23 @@ The attributes `zos.smf.id`, `zos.sysplex.name`, and `mainframe.lpar.name` are a
 :::
 
 * **os.type**  
-The operating system type, set to `zos`.
+The operating system type, set to `zos`.  
 Configuration Source: Static
 
 * **os.version**  
-The version string of the operating system (e.g., the release returned by `D IPLINFO`).
+The version string of the operating system (for example, the release returned by `D IPLINFO`).  
 Configuration Source: System discovery
 
 * **process.command_line**  
-The command used to launch the Zowe process.
+The command used to launch the Zowe process.  
 Configuration Source: OpenTelemetry SDK
 
 * **process.zos.jobname**  
-The JOB name associated with the Zowe process.
+The JOB name associated with the Zowe process.  
 Configuration Source: API ML
 
 * **process.pid**  
-The Process Identifier. For details about this property, see [Process Attributes](https://opentelemetry.io/docs/specs/semconv/registry/attributes/process/) in the OpenTelemetry documentation.
+The Process Identifier. For details about this property, see [Process Attributes](https://opentelemetry.io/docs/specs/semconv/registry/attributes/process/) in the OpenTelemetry documentation.  
 Configuration Source: System discovery
 
 :::note

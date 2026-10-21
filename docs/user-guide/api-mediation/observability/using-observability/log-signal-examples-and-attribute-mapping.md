@@ -3,7 +3,7 @@
 
 The following scenarios represent common log signals emitted by API ML. Each example includes the specific attributes present in the signal body and the resulting JSON payload.
 
-## A Service registered successfully to Eureka (API ML - Discovery Service)
+## A Service registered successfully to API ML Discovery Service
 
 This signal is emitted when an onboarded service instance successfully registers its metadata with the Discovery Service registry.
 
@@ -134,7 +134,7 @@ The communication protocol (`https`).
 ```
 This signal confirms that the API Catalog communication layer and authentication are working correctly, and that the empty response is due to an empty service registry rather than a system connectivity failure.
 
-## Valid authentication when routing to an onboarded service (JWT)
+## Valid authentication when routing to an onboarded service (Zowe JWT)
 
 This signal describes a request successfully authenticated via a Zowe JWT that has been routed to a downstream onboarded service.
 
@@ -184,7 +184,7 @@ The identifier of the authenticated user.
 ```
 This signal verifies an end-to-end successful transaction where the user's identity was validated via token and securely propagated to the target downstream microservice.
 
-## Invalid authentication when routing to an onboarded service (JWT)
+## Invalid authentication when routing to an onboarded service (Zowe JWT)
 
 This signal describes a request with an expired Zowe JWT token that was routed to a downstream onboarded service.
 
