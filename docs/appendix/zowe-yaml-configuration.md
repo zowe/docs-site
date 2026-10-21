@@ -557,9 +557,9 @@ If Zowe and z/OSMF run on different LPARs with separate, unshared security data 
  Customizes the behavior of the Gateway with respect to how JWTs are produced. Valid options are `jwt` and `ltpa`. `jwt` is the default and recommended option. `ltpa` allows API ML to produce JWTs instead of the z/OSMF service.  
  The two types are:
  - jwtAutoconfiguration: `jwt` (default)
-  - Use this setting when you install z/OSMF on the same LPAR as the Zowe API Gateway. z/OSMF auto-registers with the API Mediation Layer's Eureka discovery service. If z/OSMF is on a separate LPAR or does not register in Eureka (which is common in cross-LPAR deployments), the Gateway startup fails and displays a message `z/OSMF service ibmzosmf is either not registered or not online yet` and the authentication returns a value of 401.
+  - Use this setting when you install z/OSMF on the same LPAR as the Zowe API Gateway. z/OSMF auto-registers with the API Mediation Layer's Discovery service. If z/OSMF is on a separate LPAR or does not register in Discovery service (which is common in cross-LPAR deployments), the Gateway startup fails and displays a message `z/OSMF service ibmzosmf is either not registered or not online yet` and the authentication returns a value of 401.
  - jwtAutoconfiguration: `ltpa`
-  - Use this setting when z/OSMF is on a separate LPAR that does not register in the local Eureka instance, or when z/OSMF cannot be reached via service discovery. `LTPA` mode contacts z/OSMF directly over HTTP using the configured z/OSMF host and port. This is the required setting for cross-LPAR deployments with separate security data bases.
+  - Use this setting when z/OSMF is on a separate LPAR that does not register in the local Discovery service's instance, or when z/OSMF cannot be reached via service discovery. `LTPA` mode contacts z/OSMF directly over HTTP using the configured z/OSMF host and port. This is the required setting for cross-LPAR deployments with separate security data bases.
   :::note
   Do not use `ltpa` with hardware-accelerated ICSF keyrings.
   Also see apiml.security.auth.provider in the [Configure component gateway](/docs/appendix/zowe-yaml-configuration.md#configure-component-gateway) section for more information to configure component gateway.
