@@ -325,7 +325,7 @@ After you prepare your current Zowe instance, upgrade the Zowe runtime to v3.6.
 
 3. **(Optional) Clear Infinispan persistence data**
 
-    If the Caching Service uses Infinispan storage, persistence data written by the earlier Infinispan version can prevent the service from starting after the upgrade. If this occurs, see the following procedure:
+    If the Caching Service uses Infinispan storage, persistence data written by the earlier Infinispan version can prevent the service from starting after the upgrade. If this occurs, use the following procedure:
 
       a. Stop Zowe.  
       b. Remove the Infinispan persistence directory. Delete the contents or the folder located at:
@@ -350,8 +350,8 @@ After Zowe v3.6 starts, use the following checklist to confirm that the upgrade 
     - `zwe validate certificate`
     - `zwe validate zosmf jwt`
   
-- Confirm that unauthenticated requests to `/application/info` returns HTTP 401. The same request with credentials returns HTTP 200.
-- Confirm that onboarded services successfully. Any rejected registration metadata should be explained by the allow-list, and is not an error.
+- Confirm that unauthenticated requests to `/application/info` return HTTP 401. The same requests with credentials return HTTP 200.
+- Confirm that onboarded services successfully. Any rejected registration metadata should be explained by the allow-list and not be an error.
 - Confirm z/OSMF is reachable through the API Gateway by the `/ibmzosmf` route, not `/zosmf`.
 - (HA installations only) Confirm that on startup, Zowe creates `.zowe-<haInstance>-merged.yaml` in the workspace `.env` directory, and that `ZWE_HA_INSTANCE_CONFIG` points to that file.
 <!-- TODO: perhaps add a link here for guidance -->
@@ -369,10 +369,10 @@ The following network changes are needed for added or removed servers:
 | Component name | Change | Default Port | Default Jobname | Details |
 |----------------|--------|--------------|-----------------|---------|
 | zaas | Added | 7558 | ZWE1AZ | This component is responsible for authentication and is now required when using the API Mediation Layer |
-| metrics-service | Removed | 7551 | ZWE1MS | This service has been deprecated and removed. Currently, no replacement is available. The Open Telemetry standard will be implemented later, which will serve as a replacement |
-| jobs-api | Removed | 7558 | ZWE1EJ | This component was deprecated in Zowe v2 and is now removed. Ensure that you switch to using equivalent z/OSMF endpoints |
-| files-api | Removed | 7559 | ZWE1EF | This component was deprecated in Zowe v2 and is now removed. Ensure that you switch to using equivalent z/OSMF endpoints |
-| cloud-gateway | Removed | 7563 | ZWE1CG | The cloud-gateway has been removed as a standalone component and merged into the gateway |
+| metrics-service | Removed | 7551 | ZWE1MS | This service has been deprecated and removed. The Open Telemetry standard serves as a replacement. |
+| jobs-api | Removed | 7558 | ZWE1EJ | This component was deprecated in Zowe v2 and is now removed. Ensure that you switch to using equivalent z/OSMF endpoints. |
+| files-api | Removed | 7559 | ZWE1EF | This component was deprecated in Zowe v2 and is now removed. Ensure that you switch to using equivalent z/OSMF endpoints. |
+| cloud-gateway | Removed | 7563 | ZWE1CG | The cloud-gateway has been removed as a standalone component and merged into the gateway. |
 
 ## V3.6 Configuration changes
 <!-- Need to update t v 3.6 changes -->
@@ -382,7 +382,7 @@ Review the following changes to configuration and updated configuration paramete
 ### New Configuration
 
 * **components.zaas**  
-Previously part of the `components.gateway` component, `zaas` in Zowe v3 is a separate component responsible for authentication. If you do not explicitly configure this section, `zaas` will still be enabled by default and will use **port 7558**.
+Previously part of the `components.gateway` component, `zaas` in Zowe v3 is a separate component responsible for authentication. If you do not explicitly configure this section, `zaas` will still be enabled by default and will use **port 7558** unless you use single-service deployment mode.
 
 ```yaml
 components:
@@ -420,7 +420,7 @@ zowe:
 
 The service ID for `gateway.apiml.security.auth.zosmf` has changed to **ibmzosmf**. <br />
 Set `jwtAutoconfiguration` to `jwt` (default) or `ltpa`. Note that `auto` is no longer supported.<br />
-If you are using zosmf as your auth service, ensure that you update this z/OSMF service configuration. 
+If you are using zosmf as your authorization service, ensure that you update this z/OSMF service configuration. 
 
 ```yaml
 components:

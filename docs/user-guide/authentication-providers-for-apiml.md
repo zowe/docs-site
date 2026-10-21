@@ -15,8 +15,8 @@ For development purposes, a dummy authentication provider is also available. Thi
 
 :::note
 The `components.gateway.apiml.security.auth.provider` property of the API Gateway default depends on the installation path.  
-- `zosmf` preserved for upgraded configurations.
-- `saf` preserved for new installations
+- `zosmf` is preserved for upgraded configurations
+- `saf` is the default for new installations
 Set the property explicitly before upgrading.
 :::
 
