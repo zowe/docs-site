@@ -1,7 +1,7 @@
 
 # API ML V3.6 upgrade and security enhancements
 
-Zowe v3.6.0 introduces several updates to API ML to strengthen security defaults, improve network validation, and tighten component authentication. These enhancements prioritize a secure-by-default posture which include breaking changes that may require updates to your `zowe.yaml` configuration to avoid disruptions during the upgrade process.
+Zowe v3.6.0 introduces several updates to API ML to strengthen security defaults, improve network validation, and tighten component authentication. These enhancements prioritize a secure-by-default posture which include breaking changes that may require updates to your `zowe.yaml` configuration to avoid disruption during the upgrade process.
 
 Configuration changes in Zowe v3.6.0 affect the following key areas:
 
@@ -22,7 +22,7 @@ Properties and REST endpoints that no longer exist. Removed properties are ignor
 The Gateway's `apiml.service.allowEncodedSlashes` property has been removed and replaced by `apiml.security.enableStrictUrlValidation`. 
 
 **Operational Impact:**  
-In Zowe versions up to 3.5, `allowEncodedSlashes` defaulted to `true`. This default setting allowed encoded characters (such as `%2F`) to pass through routed request URLs unvalidated. The new property inverts this validation behavior: when `enableStrictUrlValidation` is `true` (the new default), the Gateway strictly validates request URLs and rejects encoded slashes, backslashes, and semicolons in routed traffic. Gateway-internal endpoints are always validated strictly regardless of this setting.
+In Zowe versions up to 3.5, `allowEncodedSlashes` defaulted to `true`. This default setting allowed encoded characters (such as `%2F`) to pass through routed request URLs unvalidated. The new property inverts this validation behavior: when `enableStrictUrlValidation` is `true` (the new default), the Gateway validates request URLs strictly and rejects encoded slashes, backslashes, and semicolons in routed traffic. Gateway-internal endpoints are always validated strictly regardless of this setting.
 
 **Required Actions:**  
 1. Remove the deprecated `apiml.service.allowEncodedSlashes` property from your `zowe.yaml` (This property will be ignored).
@@ -40,7 +40,7 @@ Without this change, routed requests containing encoded slashes, backslashes, or
 
 ## Discovery Service enforces domain allowlist for service registration
 
-In Zowe versions up to v3.5.0, the Discovery Service accepted any service registration without validating the hostnames or URLs the service advertised. The Discovery Service now strictly validates all URLs provided by registering services against an allowlist of domains, including:  
+In Zowe versions up to v3.5.0, the Discovery Service accepted any service registration without validating the hostnames or URLs the service advertised. The Discovery Service now validates strictly all URLs provided by registering services against an allowlist of domains, including:  
 * hostname
 * IP address
 * home page URL
@@ -117,7 +117,7 @@ To allow the API Catalog to retrieve API documents from any URL, without validat
 **Operational Impact:**  
 The Gateway now inspects the `Sec-Fetch-Site`, `Sec-Fetch-Mode`, and `Sec-Fetch-Dest` request headers that browsers send, to protect against cross-site request forgery. A request whose `Sec-Fetch-Site` is `same-site` or `cross-site` is rejected with HTTP `403` unless the origin is validated by the CORS layer, or the request is a safe top-level navigation (a `GET` or `HEAD` the user navigated to). Requests without the `Sec-Fetch-Site` header, such as those from non-browser and legacy clients, and requests with `same-origin` or `none`, are unaffected.
 
-This validation applies to the whole Gateway edge, including WebSocket handshakes. A cross-site WebSocket handshake is rejected by default.
+This validation applies to all incoming Gateway traffic, including WebSocket handshakes. A cross-site WebSocket handshake is rejected by default.
 
 **Required action:**  
 No action is required for API clients or for browser-based clients served from the Gateway's own origin. If you host a browser application on a different origin that calls the Gateway, either enable and configure CORS so that the origin is validated (see *CORS: default allowed origin for routed services narrowed*), or disable the check:
