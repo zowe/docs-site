@@ -58,7 +58,6 @@ Use the `zos.sysplex.name` and `zos.smf.id` attributes to aggregate and compare 
 * **Security and Audit Forensics**  
  Correlate log records with traces to investigate failed security audits. If a request is rejected by the Gateway, the trace can show the origin of the call, while the associated logs (linked via the same `traceId`) provide the technical reason for the rejection, such as an expired token or insufficient SAF permissions.
 
-
 ## Next Steps
 
 * For a quick-start to configure API ML to collect observability data through OpenTelemetry, see [Quick-start Configuration of API ML Observability](../quick-start-configuration-of-apiml-observability.md).
