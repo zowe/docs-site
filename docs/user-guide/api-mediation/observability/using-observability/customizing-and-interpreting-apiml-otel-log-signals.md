@@ -82,7 +82,7 @@ Due to the batch nature of the API ML implementation, each entry in the `logReco
 API ML automatically collects specific data points including request paths, HTTP methods, user IDs, and authentication status to enable customized filtering within your monitoring backend. The following attributes are found within the JSON of the `body` field and represent API ML specific logic:
 
 * **auth.service.auth.method**  
-The specific authentication credential required by the target backend service from the API ML Gateway (for example, `passticket` or `jwt`). This attribute identifies the mechanism used to ensure the Gateway can successfully authenticate with the microservice on behalf of the user.
+The specific authentication credential required by the target backend service from the API ML Gateway (for example, `passticket` or `zowejwt`). This attribute identifies the mechanism used to ensure the Gateway can successfully authenticate with the microservice on behalf of the user.
 
 * **user.distributed.id**  
 The original remote identity provided during OIDC-based authentication. While the standard `user.id` attribute contains the identity as mapped to the local z/OS environment, `user.distributed.id` applies the unique identifier from the external distributed identity provider.

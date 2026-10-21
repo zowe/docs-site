@@ -19,13 +19,13 @@ Once the configuration is active, API ML exports OTLP-compliant packets to your 
                     {
                         "key": "host.name",
                         "value": {
-                            "stringValue": "MVSDE66"
+                            "stringValue": "mvs1.example.com"
                         }
                     },
                     {
                         "key": "mainframe.lpar.name",
                         "value": {
-                            "stringValue": "DE66"
+                            "stringValue": "LPAR1"
                         }
                     },
                     {
@@ -50,19 +50,19 @@ Once the configuration is active, API ML exports OTLP-compliant packets to your 
                     {
                         "key": "process.command_line",
                         "value": {
-                            "stringValue": "/u/sys/java64bt/v17r0m0/usr/lpp/java/J17.0_64/bin/java -Xoptionsfile=/u/sys/java64bt/v17r0m0/usr/lpp/java/J17.0_64/lib/options.default -jar /u/users/zowe/zowe-vnightly-v3/runtime/components/apiml/bin/apiml-lite.jar"
+                            "stringValue": "<java-home>/bin/java -Xoptionsfile=<java-home>/lib/options.default -jar <zowe-runtime-dir>/components/apiml/bin/apiml-lite.jar"
                         }
                     },
                     {
                         "key": "process.executable.path",
                         "value": {
-                            "stringValue": "/u/sys/java64bt/v17r0m0/usr/lpp/java/J17.0_64/bin/java"
+                            "stringValue": "<java-home>/bin/java"
                         }
                     },
                     {
                         "key": "process.pid",
                         "value": {
-                            "intValue": "33620070"
+                            "intValue": "12345678"
                         }
                     },
                     {
@@ -99,19 +99,19 @@ Once the configuration is active, API ML exports OTLP-compliant packets to your 
                     {
                         "key": "service.instance.id",
                         "value": {
-                            "stringValue": "hostname:gateway:10010"
+                            "stringValue": "mvs1.example.com:gateway:10010"
                         }
                     },
                     {
                         "key": "service.name",
                         "value": {
-                            "stringValue": "apiml:MINIPLEX:10010"
+                            "stringValue": "apiml:SYSPLEX1:10010"
                         }
                     },
                     {
                         "key": "service.namespace",
                         "value": {
-                            "stringValue": "MINIPLEX_IT"
+                            "stringValue": "SYSPLEX1_PROD"
                         }
                     },
                     {
@@ -135,20 +135,21 @@ Once the configuration is active, API ML exports OTLP-compliant packets to your 
                     {
                         "key": "zos.smf.id",
                         "value": {
-                            "stringValue": "DE66"
+                            "stringValue": "SYS1"
                         }
                     },
                     {
                         "key": "zos.sysplex.name",
                         "value": {
-                            "stringValue": "MINIPLEX"
+                            "stringValue": "SYSPLEX1"
                         }
                     }
                 ]
-            },
+            }
         }
     ]
 }
+
 ```
 
 API ML exports OTLP-compliant telemetry signals where each payload is enriched with namespaced resource attributes. These attributes are transmitted as a flat-map structure, and adhere to OpenTelemetry Semantic Conventions—using dot-notation prefixes to establish logical hierarchies. These hierarchies facilitate analysis, filtering, and aggregation within an observability backend.

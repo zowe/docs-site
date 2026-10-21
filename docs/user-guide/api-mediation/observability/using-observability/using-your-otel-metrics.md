@@ -10,10 +10,16 @@ Review the following examples of how to to query and visualize the OpenTelemetry
 
 You can query the OpenTelemetry log-signal body attributes to audit active users or track service adoption. For example, to find the distinct authenticated users interacting with a specific service within a specified time period, you can use the following LogQL query in Grafana/Loki:
 
-```
-{job="zowe-apiml"} | json | service_id="<your-service>" | auth_status="OK" | line_format "{{ .user_id }}"
+​```
+{service_name="<your-service-name>"} | json | service_id="<your-service>" | auth_status="OK" | line_format "{{ .user_id }}"
+​```
 
-```
+Replace `<your-service-name>` with the `service.name` value that you configured for API ML (for example, `zowe-apiml`).
+
+:::note
+The stream selector label (`service_name` in this example) is assigned by your collector or exporter, not by API ML. Some setups map `service.name` to a `job` label instead. Use the label that your Loki instance exposes.
+:::
+
 This query parses the JSON log body, filters for successful authentication requests to your target service, and outputs the `user.id`. Combined with `timeUnixNano`, your backend can aggregate this information into a time-series graph of unique users over time.
 
 :::caution Security Restriction

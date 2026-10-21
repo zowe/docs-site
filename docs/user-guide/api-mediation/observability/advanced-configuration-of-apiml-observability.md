@@ -19,28 +19,33 @@ Review the following attributes and their corresponding definitions in the full 
 
 ## Configuring core attributes
 
-Configuration of the following core attributes is required:
+Configuration of the following core attributes is required:  
 
-* **enabled**  
+:::tip
+To review the zowe.yaml structure, see [Full zowe.yaml configuration for API ML Observability](#full-zoweyaml-configuration-for-api-ml-observability) later in this article.  
+For a full list of attributes that apply to telemetry, see [Configure component apiml](../../../appendix/zowe-yaml-configuration.md#configure-component-apiml) in the _Zowe YAML server configuration file reference_.
+:::
+
+* **components.apiml.telemetry.enabled**  
 A flag that initializes the OpenTelemetry SDK. Must be set to `true` to generate and export observability data.  
 **Default:** `false` (OpenTelemetry is disabled unless explicitly enabled)
 
-* **exporter.endpoint**  
+* **components.apiml.telemetry.exporter.endpoint**  
 The destination URL for your OTLP (OpenTelemetry Protocol) collector.
 **Default:** `http://localhost:4318`
 
-* **exporter.protocol**  
+* **components.apiml.telemetry.exporter.protocol**  
 Specifies the transport protocol for the exporter. Valid values are `http/protobuf` or `grpc`.
 
-* **traces.exporter**  
+* **components.apiml.telemetry.traces.exporter**  
 Specifies the exporter for trace signals.  
 **Default:** `otlp`
 
-* **metrics.exporter**
+* **components.apiml.telemetry.metrics.exporter**
 Specifies the exporter for metric signals.  
 **Default:** `otlp`
 
-* **logs.exporter**  
+* **components.apiml.telemetry.logs.exporter**  
 Specifies the exporter for log signals.  
 **Default:** `otlp`
 
