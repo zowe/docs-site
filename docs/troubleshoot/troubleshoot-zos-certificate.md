@@ -4,7 +4,7 @@ As an API Mediation Layer user, you may encounter problems when configuring cert
 
 - [Troubleshooting certificate configuration](#troubleshooting-certificate-configuration)
   - [PKCS12 server keystore generation fails in Java 8 SR7FP15, SR7 FP16, and SR7 FP20](#pkcs12-server-keystore-generation-fails-in-java-8-sr7fp15-sr7-fp16-and-sr7-fp20)
-  - [Eureka request failed when using entrusted signed z/OSMF certificate](#eureka-request-failed-when-using-entrusted-signed-zosmf-certificate)
+  - [Discovery service request failed when using entrusted signed z/OSMF certificate](#Discovery-service-request-failed-when-using-entrusted-signed-zosmf-certificate)
   - [Zowe startup fails with empty password field in the keyring setup](#zowe-startup-fails-with-empty-password-field-in-the-keyring-setup)
   - [Certificate error when using both an external certificate and Single Sign-On to deploy Zowe](#certificate-error-when-using-both-an-external-certificate-and-single-sign-on-to-deploy-zowe)
   - [Browser unable to connect due to a CIPHER error](#browser-unable-to-connect-due-to-a-cipher-error)
@@ -43,11 +43,11 @@ Try one of the following options if you are affected by this error:
 * If you do not plan to use Zowe Desktop, you can disable the ZSS component to avoid receiving ZSS component errors in the log.
 :::
 
-## Eureka request failed when using entrusted signed z/OSMF certificate
+## Discovery service request failed when using entrusted signed z/OSMF certificate
 
 **Symptoms**
 
-A problem may occur when using the entrusted signed z/OSMF certificate, whereby the ZLUX AppServer cannot register with Eureka. Logs indicate that the cause is the self-signed certificate:
+A problem may occur when using the entrusted signed z/OSMF certificate, whereby the ZLUX AppServer cannot register with Discovery service. Logs indicate that the cause is the self-signed certificate:
 
 ```log
 <ZWED:198725> ZWESVUSR WARN (_zsf.bootstrap,webserver.js:156) ZWED0148E - Exception thrown when reading SAF keyring, e= Error: R_datalib call failed: function code: 01, SAF rc: 8, RACF rc: 8, RACF rsn: 44
