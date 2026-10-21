@@ -98,7 +98,7 @@ Identify any monitoring probes, readiness checks, and automation that call the f
 
     Update the identified clients to send credentials (Basic authentication or a Bearer JWT). Alternatively, if you choose to accept the exposure, set `components.gateway.apiml.health.protected` to `false`.
 
-5. **Add registration metadata hosts to the allow-list.**  
+5. **Add registration metadata hosts to the allowlist.**  
 Zowe v3.6 validates the hosts in service registration metadata against `zowe.network.allowedDomains`. The defaults cover `externalDomains` and high availability (HA) hostnames only. Add services that register URL metadata (such as `instanceBaseUrls`, API documentation or Swagger URLs, or `corsAllowedOrigins`) from other hosts to `zowe.network.allowedDomains` before you upgrade.
 <!-- TODO: perhaps add a link here for guidance -->
 
@@ -351,7 +351,7 @@ After Zowe v3.6 starts, use the following checklist to confirm that the upgrade 
     - `zwe validate zosmf jwt`
   
 - Confirm that unauthenticated requests to `/application/info` return HTTP 401. The same requests with credentials return HTTP 200.
-- Confirm that onboarded services successfully. Any rejected registration metadata should be explained by the allow-list and not be an error.
+- Confirm that onboarded services successfully. Any rejected registration metadata should be explained by the allowlist and not be an error.
 - Confirm z/OSMF is reachable through the API Gateway by the `/ibmzosmf` route, not `/zosmf`.
 - (HA installations only) Confirm that on startup, Zowe creates `.zowe-<haInstance>-merged.yaml` in the workspace `.env` directory, and that `ZWE_HA_INSTANCE_CONFIG` points to that file.
 <!-- TODO: perhaps add a link here for guidance -->
