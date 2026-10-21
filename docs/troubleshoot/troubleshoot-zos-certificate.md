@@ -4,7 +4,7 @@ As an API Mediation Layer user, you may encounter problems when configuring cert
 
 - [Troubleshooting certificate configuration](#troubleshooting-certificate-configuration)
   - [PKCS12 server keystore generation fails in Java 8 SR7FP15, SR7 FP16, and SR7 FP20](#pkcs12-server-keystore-generation-fails-in-java-8-sr7fp15-sr7-fp16-and-sr7-fp20)
-  - [Discovery service request failed when using entrusted signed z/OSMF certificate](#Discovery-service-request-failed-when-using-entrusted-signed-zosmf-certificate)
+  - [Discovery service request failed when using entrusted signed z/OSMF certificate](#discovery-service-request-failed-when-using-entrusted-signed-zosmf-certificate)
   - [Zowe startup fails with empty password field in the keyring setup](#zowe-startup-fails-with-empty-password-field-in-the-keyring-setup)
   - [Certificate error when using both an external certificate and Single Sign-On to deploy Zowe](#certificate-error-when-using-both-an-external-certificate-and-single-sign-on-to-deploy-zowe)
   - [Browser unable to connect due to a CIPHER error](#browser-unable-to-connect-due-to-a-cipher-error)
