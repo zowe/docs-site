@@ -26,7 +26,7 @@ In Zowe versions up to 3.5, `allowEncodedSlashes` defaulted to `true`. This defa
 
 **Required Actions:**  
 1. Remove the deprecated `apiml.service.allowEncodedSlashes` property from your `zowe.yaml` (This property will be ignored).
-2. Opt-out (if needed). If you route traffic to APIs that require encoded slashes or semicolons in the URL path, you must explicitly disable strict validation for the Gateway:
+2. Opt-out (if needed). If you route traffic to APIs that require encoded slashes or semicolons in the URL path, you must disable strict validation for the Gateway explicitly :
 
 ```yaml
 components:

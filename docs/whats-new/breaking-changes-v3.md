@@ -36,7 +36,7 @@ Zowe v3.6.0 introduces several updates to the API Mediation Layer to strengthen 
 For detailed configuration instructions and mitigation steps introduced to API ML in Zowe v3.6, see [API ML V3.6 upgrade and security enhancements](./api-ml-v3.6-upgrade-and-security-enhancements).
 :::
 
-Zowe v 3.6 introduces the following key security enhancements and breaking changes:
+Zowe v3.6 introduces the following key security enhancements and breaking changes:
 
 * **Strict URL Validation**  
 The Gateway now rejects encoded slashes, backslashes, and semicolons in routed traffic by default, replacing the deprecated allowEncodedSlashes property.  
