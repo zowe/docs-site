@@ -2,7 +2,7 @@
 
 Zowe v3 brings a range of major changes in Zowe functionality, including *breaking changes*, or modifications that require updates to avoid disruptions in your applications.
 
-Review this article for details about changes to various Zowe components introduced in Zowe V3, and any required actions you need to take.
+Review this article for details about changes to various Zowe components that are introduced in Zowe V3, and any required actions you need to take.
 
 ## API Mediation Layer (API ML)
 
@@ -84,18 +84,30 @@ For details, see [Spring profile `https` removed](./api-ml-v3.6-upgrade-and-secu
 
 ### Breaking changes
 
-* Updated Angular to Version 18 from Version 12. Apps built upon Angular, excluding iframe apps, need to be updated to be compatible with the V3 Desktop.
+* Updated Angular to Version 18 from Version 12. Apps built upon Angular, excluding iframe apps, will need to be updated to be compatible with the V3 Desktop.
 
 
 ## CLI
 
 ### Breaking changes
 
-| Change in Zowe V3 | Required action|
-|-|-|
-|Introduced a new format for error messages to improve clarity|Adjust Zowe CLI scripts that parse error messages to handle the new error format|
-|Removed V1 profile support|Implement a team configuration or use Zowe CLI's built-in V1 profile conversion command: `zowe config convert`|
-|Removed deprecated items - [CLI](https://github.com/zowe/zowe-cli/issues/1694) and [Imperative](https://github.com/zowe/zowe-cli/issues/1873)|Zowe CLI extenders or users of the Zowe Client Node.js SDK need to review the breaking changes and adjust their code to account for removed/changed classes, functions, and constants|
+| From version | Change | Required action|
+|-|-|-|
+|Zowe CLI v3.0|Introducing a new format for error messages to improve clarity|Adjust Zowe CLI scripts that parse error messages to handle the new error format|
+|Zowe CLI v3.0|Removing V1 profile support|Implement a team configuration or use Zowe CLI's built-in V1 profile conversion command: `zowe config convert`|
+|Zowe CLI v3.0|Removing deprecated items - [CLI](https://github.com/zowe/zowe-cli/issues/1694) and [Imperative](https://github.com/zowe/zowe-cli/issues/1873)|Zowe CLI extenders or users of the Zowe Client Node.js SDK will need to review the breaking changes and adjust their code to account for removed/changed classes, functions, and constants|
+|Zowe CLI v3.6|`zowe zos-uss` (ssh) commands verify the z/OS SSH server's host key before sending credentials| On first connect, confirm the fingerprint. The key is saved to your ssh profile and a changed key is rejected. Use `--insecure` to skip verification or `--host-key` to pin a key.|
+|Zowe CLI v3.6|The `zowe zos-files (ds/uss) edit` command prompts the user to trust custom editors|Confirm that you trust the specified editor|
+|MQ Plug-in for Zowe CLI v3.6|Default value of the `reject-unauthorized` option is `true` so that TLS certificates presented by the IBM MQ REST API are validated by default. This prevents credentials from being sent over an unverified connection.|Profiles or commands relying on the previous insecure default must now explicitly pass `--reject-unauthorized false`|
+
+
+
+
+
+ 
+
+
+
 
 ### Pre-release availability
 
@@ -105,19 +117,19 @@ For details, see [Spring profile `https` removed](./api-ml-v3.6-upgrade-and-secu
 
 ### Breaking changes
 
-* Updated Angular to Version 16 from Version 12
-* Removed the core-js dependency
-* Updated Webpack to version 5
-* Updated Typescript to 4.9
+* Updating Angular to Version 16 from Version 12
+* Removing the core-js dependency
+* Updating Webpack to version 5
+* Updating Typescript to 4.9
 
 ## Explorer for Intellij IDEA
 
 ### Important updates
 
-* Explorer for IntelliJ IDEA is now part of the Zowe Core
-* Works with USS Files
-* Works with Data Sets
-* Works with JES Working Sets
+* Explorer for IntelliJ IDEA will be part of the Zowe Core
+* Working with USS Files
+* Working with Data Sets
+* Working with JES Working Sets
 * Interactive TSO Console
 
 ## Explorer for Visual Studio Code
@@ -126,14 +138,14 @@ For details, see [Spring profile `https` removed](./api-ml-v3.6-upgrade-and-secu
 
 | Change in Zowe V3 | Required action|
 |-|-|
-|Removed V1 profile support|Implement a team configuration or use Zowe Explorer's built-in V1 profile conversion functionality|
-|Removed deprecated items - [Explorer for VSCode](https://github.com/zowe/zowe-explorer-vscode/issues/2238)|Zowe Explorer extenders or users of the Zowe Explorer APIs need to review the breaking changes and adjust their code to account for removed/changed classes, functions, and constants|
-|Stored extension settings in local storage|Settings and history previously stored in the .vscode settings folder are no longer available. Users have to adjust their Zowe Explorer settings after updating to V3|
+|Removing V1 profile support|Implement a team configuration or use Zowe Explorer's built-in V1 profile conversion functionality|
+|Removing deprecated items - [Explorer for VSCode](https://github.com/zowe/zowe-explorer-vscode/issues/2238)|Zowe Explorer extenders or users of the Zowe Explorer APIs will need to review the breaking changes and adjust their code to account for removed/changed classes, functions, and constants|
+|Storing extension settings in local storage|Settings and history previously stored in the .vscode settings folder will no longer be available. Users will have to adjust their Zowe Explorer settings after updating to V3|
 
 ### Important updates
 
-* Stored persistent settings in local storage
-* Compared files in MVS view, the USS view, and across the two views
+* Storing persistent settings in local storage
+* Comparing files in MVS view, the USS view, and across the two views
 
 ### Pre-release availability
 
@@ -143,12 +155,12 @@ For details, see [Spring profile `https` removed](./api-ml-v3.6-upgrade-and-secu
 
 ### Breaking changes
 
-* Dropped the original V2 configuration management, `zowe.useConfigmgr=false`. (The Configuration Manager remains as the only supported method for configuring Zowe)
+* Dropping the original V2 configuration management, `zowe.useConfigmgr=false`. (The Configuration Manager remains as the only supported method for configuring Zowe)
 
 ### Important updates
 
-* Removed the dependency on Node.js for configuration
-* Introduced the Zowe Server Install Wizard, a wizard to simplify configuration via the UI
+* Removing the dependency on Node.js for configuration
+* Introducing _ZEN_, a wizard to simplify configuration via the UI
 
 ## ZSS
 

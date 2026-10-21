@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ZosFilesUtils | Zowe Node.js SDK - v3.4.1</title>
-	<meta name="description" content="Documentation for Zowe Node.js SDK - v3.4.1">
+	<title>ZosFilesUtils | Zowe Node.js SDK - v3.6.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v3.6.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">Zowe Node.js SDK - v3.4.1</a>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v3.6.0</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -98,6 +98,7 @@
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_zos_files_for_zowe_sdk.zosfilesutils.html#dfsmshsmcommand" class="tsd-kind-icon">dfsms<wbr>Hsm<wbr>Command</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_zos_files_for_zowe_sdk.zosfilesutils.html#ensuresafetempdir" class="tsd-kind-icon">ensure<wbr>Safe<wbr>Temp<wbr>Dir</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_zos_files_for_zowe_sdk.zosfilesutils.html#formatunixfilepath" class="tsd-kind-icon">format<wbr>Unix<wbr>Filepath</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="_zowe_zos_files_for_zowe_sdk.zosfilesutils.html#generateheadersbasedonoptions" class="tsd-kind-icon">generate<wbr>Headers<wbr>Based<wbr>OnOptions</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_zos_files_for_zowe_sdk.zosfilesutils.html#generatemembername" class="tsd-kind-icon">generate<wbr>Member<wbr>Name</a></li>
@@ -105,6 +106,7 @@
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_zos_files_for_zowe_sdk.zosfilesutils.html#getdirsfromdataset" class="tsd-kind-icon">get<wbr>Dirs<wbr>From<wbr>Data<wbr>Set</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_zos_files_for_zowe_sdk.zosfilesutils.html#getfilelistfrompath" class="tsd-kind-icon">get<wbr>File<wbr>List<wbr>From<wbr>Path</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_zos_files_for_zowe_sdk.zosfilesutils.html#getfullpath" class="tsd-kind-icon">get<wbr>Full<wbr>Path</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_zos_files_for_zowe_sdk.zosfilesutils.html#getusertemptoken" class="tsd-kind-icon">get<wbr>User<wbr>Temp<wbr>Token</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_zos_files_for_zowe_sdk.zosfilesutils.html#isdatasetnamecontainmasking" class="tsd-kind-icon">is<wbr>Data<wbr>Set<wbr>Name<wbr>Contain<wbr>Masking</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_zos_files_for_zowe_sdk.zosfilesutils.html#normalizenewline" class="tsd-kind-icon">normalize<wbr>Newline</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_zos_files_for_zowe_sdk.zosfilesutils.html#sanitizeusspathforrestcall" class="tsd-kind-icon">sanitize<wbr>Uss<wbr>Path<wbr>For<wbr>Rest<wbr>Call</a></li>
@@ -121,7 +123,7 @@
 					<div class="tsd-signature tsd-kind-icon">DEFAULT_<wbr>FILE_<wbr>EXTENSION<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;txt&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/zosfiles/src/utils/ZosFilesUtils.ts#L37">@zowe/zos-files-for-zowe-sdk/src/utils/ZosFilesUtils.ts:37</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/zosfiles/src/utils/ZosFilesUtils.ts#L39">@zowe/zos-files-for-zowe-sdk/src/utils/ZosFilesUtils.ts:39</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -136,7 +138,7 @@
 					<div class="tsd-signature tsd-kind-icon">DSN_<wbr>SEP<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;.&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/zosfiles/src/utils/ZosFilesUtils.ts#L31">@zowe/zos-files-for-zowe-sdk/src/utils/ZosFilesUtils.ts:31</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/zosfiles/src/utils/ZosFilesUtils.ts#L33">@zowe/zos-files-for-zowe-sdk/src/utils/ZosFilesUtils.ts:33</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -151,7 +153,7 @@
 					<div class="tsd-signature tsd-kind-icon">MAX_<wbr>MEMBER_<wbr>LENGTH<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 8</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/zosfiles/src/utils/ZosFilesUtils.ts#L39">@zowe/zos-files-for-zowe-sdk/src/utils/ZosFilesUtils.ts:39</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/zosfiles/src/utils/ZosFilesUtils.ts#L41">@zowe/zos-files-for-zowe-sdk/src/utils/ZosFilesUtils.ts:41</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -168,7 +170,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/zosfiles/src/utils/ZosFilesUtils.ts#L233">@zowe/zos-files-for-zowe-sdk/src/utils/ZosFilesUtils.ts:233</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/zosfiles/src/utils/ZosFilesUtils.ts#L294">@zowe/zos-files-for-zowe-sdk/src/utils/ZosFilesUtils.ts:294</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -216,6 +218,45 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="ensuresafetempdir" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> ensure<wbr>Safe<wbr>Temp<wbr>Dir</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">ensure<wbr>Safe<wbr>Temp<wbr>Dir<span class="tsd-signature-symbol">(</span>dir<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/zosfiles/src/utils/ZosFilesUtils.ts#L97">@zowe/zos-files-for-zowe-sdk/src/utils/ZosFilesUtils.ts:97</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Ensures a temp directory exists and is safe to use, creating it if necessary.
+										Ownership and permissions are always verified after the creation attempt, whether or not the
+										directory already existed, so a directory planted by another local user sharing the same tmp
+									location is rejected.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>throws</dt>
+									<dd><p>{ImperativeError} - when the directory exists but is not safe to use</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>dir: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the temp directory to validate or create</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
 					<a name="formatunixfilepath" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> format<wbr>Unix<wbr>Filepath</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
@@ -225,13 +266,20 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/zosfiles/src/utils/ZosFilesUtils.ts#L217">@zowe/zos-files-for-zowe-sdk/src/utils/ZosFilesUtils.ts:217</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/zosfiles/src/utils/ZosFilesUtils.ts#L278">@zowe/zos-files-for-zowe-sdk/src/utils/ZosFilesUtils.ts:278</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Format USS filepaths in the way that the APIs expect (no leading /)</p>
 								</div>
+								<dl class="tsd-comment-tags">
+									<dt>deprecated</dt>
+									<dd><ul>
+											<li>EncodeUri.encodeUriPathForUss should eliminate the need for this function.</li>
+										</ul>
+									</dd>
+								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -256,7 +304,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/zosfiles/src/utils/ZosFilesUtils.ts#L124">@zowe/zos-files-for-zowe-sdk/src/utils/ZosFilesUtils.ts:124</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/zosfiles/src/utils/ZosFilesUtils.ts#L180">@zowe/zos-files-for-zowe-sdk/src/utils/ZosFilesUtils.ts:180</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -294,7 +342,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/zosfiles/src/utils/ZosFilesUtils.ts#L161">@zowe/zos-files-for-zowe-sdk/src/utils/ZosFilesUtils.ts:161</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/zosfiles/src/utils/ZosFilesUtils.ts#L217">@zowe/zos-files-for-zowe-sdk/src/utils/ZosFilesUtils.ts:217</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -326,7 +374,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/zosfiles/src/utils/ZosFilesUtils.ts#L284">@zowe/zos-files-for-zowe-sdk/src/utils/ZosFilesUtils.ts:284</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/zosfiles/src/utils/ZosFilesUtils.ts#L347">@zowe/zos-files-for-zowe-sdk/src/utils/ZosFilesUtils.ts:347</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -357,7 +405,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/zosfiles/src/utils/ZosFilesUtils.ts#L48">@zowe/zos-files-for-zowe-sdk/src/utils/ZosFilesUtils.ts:48</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/zosfiles/src/utils/ZosFilesUtils.ts#L51">@zowe/zos-files-for-zowe-sdk/src/utils/ZosFilesUtils.ts:51</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -367,6 +415,11 @@
 										Or:
 									USER.WORK.PS to user/work/ps</p>
 								</div>
+								<dl class="tsd-comment-tags">
+									<dt>throws</dt>
+									<dd><p>{ImperativeError} - when a generated directory structure contains backtracking characters</p>
+									</dd>
+								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -391,7 +444,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/zosfiles/src/utils/ZosFilesUtils.ts#L83">@zowe/zos-files-for-zowe-sdk/src/utils/ZosFilesUtils.ts:83</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/zosfiles/src/utils/ZosFilesUtils.ts#L139">@zowe/zos-files-for-zowe-sdk/src/utils/ZosFilesUtils.ts:139</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -430,7 +483,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/zosfiles/src/utils/ZosFilesUtils.ts#L63">@zowe/zos-files-for-zowe-sdk/src/utils/ZosFilesUtils.ts:63</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/zosfiles/src/utils/ZosFilesUtils.ts#L119">@zowe/zos-files-for-zowe-sdk/src/utils/ZosFilesUtils.ts:119</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -453,6 +506,36 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="getusertemptoken" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> get<wbr>User<wbr>Temp<wbr>Token</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>User<wbr>Temp<wbr>Token<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/zosfiles/src/utils/ZosFilesUtils.ts#L75">@zowe/zos-files-for-zowe-sdk/src/utils/ZosFilesUtils.ts:75</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns a short, filesystem-safe token that is unique per OS user, for building per-user
+										temp directory names. Deriving the name from the user (rather than a random per-run value)
+										keeps the path stable across invocations - so features like edit stash-resume still work -
+										while ensuring co-tenants on a shared temp location get separate directories. The username
+										is hashed so the token is path-safe for any username and works on every platform (numeric
+									uids aren&#39;t available on Windows).</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<ul>
+								<li>a hex token derived from the current OS user</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
 					<a name="isdatasetnamecontainmasking" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> is<wbr>Data<wbr>Set<wbr>Name<wbr>Contain<wbr>Masking</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
@@ -462,7 +545,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/zosfiles/src/utils/ZosFilesUtils.ts#L184">@zowe/zos-files-for-zowe-sdk/src/utils/ZosFilesUtils.ts:184</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/zosfiles/src/utils/ZosFilesUtils.ts#L240">@zowe/zos-files-for-zowe-sdk/src/utils/ZosFilesUtils.ts:240</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -494,7 +577,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/zosfiles/src/utils/ZosFilesUtils.ts#L199">@zowe/zos-files-for-zowe-sdk/src/utils/ZosFilesUtils.ts:199</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/zosfiles/src/utils/ZosFilesUtils.ts#L255">@zowe/zos-files-for-zowe-sdk/src/utils/ZosFilesUtils.ts:255</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -526,13 +609,20 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/zosfiles/src/utils/ZosFilesUtils.ts#L207">@zowe/zos-files-for-zowe-sdk/src/utils/ZosFilesUtils.ts:207</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/zosfiles/src/utils/ZosFilesUtils.ts#L264">@zowe/zos-files-for-zowe-sdk/src/utils/ZosFilesUtils.ts:264</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Normanize and URL-encode a USS path to be passed to z/OSMF</p>
+									<p>Normalize and URL-encode a USS path to be passed to z/OSMF</p>
 								</div>
+								<dl class="tsd-comment-tags">
+									<dt>deprecated</dt>
+									<dd><ul>
+											<li>Use EncodeUri.encodeUriQueryForUss or EncodeUri.encodeUriPathForUss as appropriate.</li>
+										</ul>
+									</dd>
+								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -625,6 +715,9 @@
 										<a href="_zowe_zos_files_for_zowe_sdk.zosfilesutils.html#dfsmshsmcommand" class="tsd-kind-icon">dfsms<wbr>Hsm<wbr>Command</a>
 									</li>
 									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_zos_files_for_zowe_sdk.zosfilesutils.html#ensuresafetempdir" class="tsd-kind-icon">ensure<wbr>Safe<wbr>Temp<wbr>Dir</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
 										<a href="_zowe_zos_files_for_zowe_sdk.zosfilesutils.html#formatunixfilepath" class="tsd-kind-icon">format<wbr>Unix<wbr>Filepath</a>
 									</li>
 									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
@@ -644,6 +737,9 @@
 									</li>
 									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
 										<a href="_zowe_zos_files_for_zowe_sdk.zosfilesutils.html#getfullpath" class="tsd-kind-icon">get<wbr>Full<wbr>Path</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_zos_files_for_zowe_sdk.zosfilesutils.html#getusertemptoken" class="tsd-kind-icon">get<wbr>User<wbr>Temp<wbr>Token</a>
 									</li>
 									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
 										<a href="_zowe_zos_files_for_zowe_sdk.zosfilesutils.html#isdatasetnamecontainmasking" class="tsd-kind-icon">is<wbr>Data<wbr>Set<wbr>Name<wbr>Contain<wbr>Masking</a>

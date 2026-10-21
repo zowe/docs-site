@@ -51,6 +51,10 @@ To use multiple sets of credentials:
 
 In the following example, the configuration uses the `ZOWE_OPT_USER` and `ZOWE_OPT_PASSWORD` environment variables for one set of credentials.
 
+:::warning
+Replace the placeholder values (such as `my.company.com`) in the following snippet with your actual configuration details before using the code.
+:::
+
 ```
 {
     "$schema": "./zowe.schema.json",
@@ -90,6 +94,9 @@ The following examples of configurations use environment variables for multiple 
 - This includes the `host` and `rejectUnauthorized` properties in both service profiles.
 - Environment variables are used for [multiple credentials](#multiple-sets-of-credentials) in Lines 10-11 and Line 23.
 
+:::warning
+Replace the placeholder values (such as `my.company.com`) in the following snippet with your actual configuration details before using the code.
+:::
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
