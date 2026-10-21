@@ -17,7 +17,7 @@ The default value `zosmf` fails because z/OSMF cannot validate users that are on
 
 - Set `components.gateway.apiml.security.auth.zosmf.jwtAutoconfiguration` to `ltpa`. 
 :::note
-The default `jwt` value requires z/OSMF to register itself in the Zowe API Mediation Layer's Eureka registry, which does not happen when z/OSMF runs on a separate LPAR.
+The default `jwt` value requires z/OSMF to register itself in the Zowe API Mediation Layer's Discovery service, which does not happen when z/OSMF runs on a separate LPAR.
 :::
 
 - Define the passticket configuration (`PTKTDATA` profile for `IZUDFLT`) on both LPARs with the identical session key. Authorize `ZWESVUSR` to generate passtickets on the Zowe LPAR so that JES and MVS Explorer can call z/OSMF on behalf of the logged-in user.
