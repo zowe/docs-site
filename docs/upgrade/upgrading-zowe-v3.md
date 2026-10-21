@@ -7,7 +7,7 @@ Follow the procedure outlined in this article to upgrade from Zowe v2 to Zowe v3
 
 While the major version upgrading process is similar to a Zowe v2 minor release upgrade, there are several new and updated configuration parameters to consider. 
 
-Follow the steps described in this article to ensure a smooth upgrade to Zowe v3.6. The procedure is written for installations running Zowe v2.18.6 or a later v2.18.x release, and has three phases:
+Follow the steps described in this article to ensure a smooth upgrade to Zowe v3.6. The procedure is written for installations running Zowe v2.18.6 and has three phases:
 
 1. [**Preparing your current Zowe instance**](#preparing-your-current-zowe-instance).
 2. [**Upgrade the runtime**](#upgrade-the-runtime) to Zowe v3.6.
@@ -24,7 +24,7 @@ Before starting the upgrade, ensure the following base system requirements are m
 *   **z/OSMF**  
     Version V2R5 or V3R1 is required. JWT support for z/OSMF is highly recommended. For more information, see [Enabling JSON Web Token support](https://www.ibm.com/docs/en/zos/3.1.0?topic=configurations-enabling-json-web-token-support) in the IBM documentation. If you do not have JWT support in z/OSMF, make sure to set `components.gateway.apiml.security.auth.zosmf.jwtAutoconfiguration` to `ltpa`.
 *   **Java**  
-    Java 17 or higher (21 supported, 17–21 enforced) is required. The Zowe YAML parameter `java.home` value should be a **Java 17** or **Java 21** home location. If an administrator uses `zwe init` to set up Zowe, ensure the `java` for that user is v17 or higher by including it in the `PATH` environment variable.
+    Java 17 or higher (21 and 25 supported, 17–21 enforced) is required. The Zowe YAML parameter `java.home` value should be a **Java 17**, **Java 21**, or **Java 25** home location. If an administrator uses `zwe init` to set up Zowe, ensure the `java` for that user is v17 or higher by including it in the `PATH` environment variable.
 *   **Node.js**  
     Ensure that the Zowe YAML parameter `node.home` value is a **Node.js 18 - 24** home location. Node 16 and earlier versions are not supported.
 
@@ -35,11 +35,11 @@ Before starting the upgrade, ensure the following base system requirements are m
 To ensure a smooth transition to Zowe v3.6, you must first resolve any configuration changes required by your current version. **Expand the section below that matches your current Zowe version** and apply the necessary configurations before proceeding with the v3.6 upgrade. 
 
 :::note
-Before upgrading to Zowe v3.6, All v2.x installations must first upgrade to v2.18.x before upgrading to v3.6.
+All v2.x installations must first upgrade to v2.18.x before upgrading to v3.6.
 :::
 
 <details>
-<summary><strong>Upgrading from Zowe v2.18.6</strong></summary>
+<summary><strong>Upgrading from Zowe v2.18.x</strong></summary>
 <br />
 <!-- This whole dropdown section is new -->
 To upgrade from Zowe v2.18.x, perform the following procedure before you install Zowe v3.6.
@@ -61,7 +61,7 @@ Set `components.gateway.apiml.security.auth.provider` explicitly to `zosmf` or `
     ```
 
 2. **Verify runtime levels.**  
-Confirm that the Java and Node.js versions meet the [prerequisites](#prerequisites-for-zowe-v36). If the installation runs older or newer levels, update `java.home` and `node.home` in `zowe.yaml`.
+Confirm that the Java and Node.js versions meet the [prerequisites](#prerequisites-for-zowe-v36). Update `java.home` and `node.home` in `zowe.yaml` if the versions have changed from those in your 2.18.x installation. 
 
 3. **Verify z/OSMF JWT support.**  
 Confirm that z/OSMF JWT support is available, as described in the [prerequisites](#prerequisites-for-zowe-v36). If z/OSMF JWT support is not available, choose one of the following actions:
@@ -96,8 +96,7 @@ Identify any monitoring probes, readiness checks, and automation that call the f
     * `/gateway/version`
     * `/gateway/api/v1/version`
 
-    Update the endpoints to send credentials (Basic authentication or a Bearer JWT). Alternatively, if you choose to accept the exposure, set `components.gateway.apiml.health.protected` to `false`.
-<!-- TODO: perhaps add a link here for guidance -->
+    Update the identified clients to send credentials (Basic authentication or a Bearer JWT). Alternatively, if you choose to accept the exposure, set `components.gateway.apiml.health.protected` to `false`.
 
 5. **Add registration metadata hosts to the allow-list.**  
 Zowe v3.6 validates the hosts in service registration metadata against `zowe.network.allowedDomains`. The defaults cover `externalDomains` and high availability (HA) hostnames only. Add services that register URL metadata (such as `instanceBaseUrls`, API documentation or Swagger URLs, or `corsAllowedOrigins`) from other hosts to `zowe.network.allowedDomains` before you upgrade.
@@ -106,7 +105,7 @@ Zowe v3.6 validates the hosts in service registration metadata against `zowe.net
 6. **Apply the v2 to v3 breaking changes.**  
 Review the [System and Security Changes](#system-and-security-changes) and [Configuration changes](#configuration-changes) sections of this article. The following breaking changes affect the upgrade:
     * The authentication route `/api/v1/gateway` is now `/gateway/api/v1`.
-    * `zaas` is a separate component that uses port 7558.
+    * `zaas` is a separate component that uses port 7558 unless `apiml.enabled=true`.
     * `jobs-api`, `files-api`, `metrics-service`, and `cloud-gateway` are removed. `metrics-service` is replaced by the OpenTelemetry implementation. <!-- TODO: perhaps add a link here for guidance -->
     * Keyring URIs use exactly two slashes (`safkeyring://`).
     * Keyring `keystore` and `truststore` passwords use the literal value `password`.
@@ -123,7 +122,7 @@ Review the [System and Security Changes](#system-and-security-changes) and [Conf
 
 If you are on v2.17.x, first upgrade to v2.18.x. 
 <!-- how does a user do this -->
-Your configuration is already up-to-date with the necessary v2 prerequisites. You may proceed directly to the **System and Architecture Changes** and **V3 Configuration Changes** sections below to complete your upgrade to v3. <!-- This text may need to change for v 3.6 -->
+Your configuration is up-to-date with the necessary v2 prerequisites. You may proceed directly to the **System and Architecture Changes** and **V3 Configuration Changes** sections below to complete your upgrade to v3. <!-- This text may need to change for v 3.6 -->
 
 </details>
 
@@ -375,7 +374,7 @@ The following network changes are needed for added or removed servers:
 | files-api | Removed | 7559 | ZWE1EF | This component was deprecated in Zowe v2 and is now removed. Ensure that you switch to using equivalent z/OSMF endpoints |
 | cloud-gateway | Removed | 7563 | ZWE1CG | The cloud-gateway has been removed as a standalone component and merged into the gateway |
 
-## V3 Configuration changes
+## V3.6 Configuration changes
 <!-- Need to update t v 3.6 changes -->
 
 Review the following changes to configuration and updated configuration parameters.
@@ -399,7 +398,7 @@ components:
 
 If you use keyrings, verify that Zowe YAML references to `safkeyring`. Use two forward slashes (`safkeyring://`). Do not use four forward slashes (`safkeyring:////`).
 
-Zowe v2 accepts an empty value for `zowe.certificate.keystore.password` and `zowe.certificate.truststore.password` when using keyring-based certificates. Zowe v3 requires both of these parameters to be set to the literal value `password`.
+Zowe v2 accepts an empty value for `zowe.certificate.keystore.password` and `zowe.certificate.truststore.password` when using keyring-based certificates. Zowe v3.6 requires both of these parameters to be set to the literal value `password`.
 
 **Example:**
 
@@ -471,7 +470,7 @@ components:
       64bit: true
 ```
 
-### Deprecated Settings in Zowe v3
+### Deprecated Settings in Zowe v3.6
 
 The following configuration parameters have been deprecated in Zowe v3. Ensure that these parameters are removed from your configuration.
 
