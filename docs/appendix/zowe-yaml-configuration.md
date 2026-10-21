@@ -674,6 +674,38 @@ These configurations can be used under the `components.caching-service` section:
   This property is used only when `storage.mode` is set to `vsam` or `inMemory`. Note that `vsam` is deprecated.
   :::
 
+#### Configure component apiml
+
+The following configurations can be used under the `components.apiml` section to configure shared API Mediation Layer properties such as telemetry:
+
+- **telemetry.enabled**  
+Specifies whether OpenTelemetry data collection and exporting is active for the API Mediation Layer (API ML).
+
+- **telemetry.exporter.endpoint**  
+Specifies the URL endpoint of your OpenTelemetry collector where the metrics/traces will be sent.
+
+- **telemetry.exporter.protocol**  
+Specifies the transport protocol used to send data to the collector (e.g., http/protobuf or grpc).
+
+- **telemetry.service.name**  
+Specifies the logical name identifying this service in your telemetry backend.
+
+- **telemetry.service.namespace**  
+Specifies the namespace or environment boundary for the service.
+
+- **telemetry.attributes.deployment.environment.name**  
+Specifies a custom attribute for the deployment environment name (e.g., production or test).
+
+- **telemetry.attributes.zos.sysplex.name**  
+Specifies a custom attribute identifying the z/OS Sysplex where Zowe is running.
+
+- **telemetry.attributes.zos.smf.id**  
+Specifies a custom attribute identifying the System Management Facilities (SMF) ID of the z/OS system.
+
+- **telemetry.attributes.mainframe.lpar.name**  
+Specifies a custom attribute identifying the mainframe Logical Partition (LPAR) name. 
+
+
 ##### VSAM specific configuration (deprecated)
 
 - **storage.vsam.name**  
