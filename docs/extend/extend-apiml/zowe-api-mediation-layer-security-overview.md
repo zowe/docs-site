@@ -112,7 +112,7 @@ You can override ciphers that are used by the HTTPS servers in API ML services b
 
 **Note:** You do not need to rebuild `.jar` files when you override the default values in shell scripts.
 
-The default value for each service can be found in the [application.yml](https://github.com/zowe/api-layer/blob/master/gateway-service/src/main/resources/application.yml) file. The default configuration is packed in `.jar` files. 
+The default value for each service can be found in the [application.yml](https://github.com/zowe/api-layer/blob/v3.x.x/gateway-service/src/main/resources/application.yml) file. The default configuration is packed in `.jar` files. 
 
 ### Overriding Ciphers on z/OS
 Modify the component launch parameters in the shell script located at  
