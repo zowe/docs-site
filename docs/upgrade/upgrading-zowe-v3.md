@@ -316,7 +316,7 @@ After you prepare your current Zowe instance, upgrade the Zowe runtime to v3.6.
           user: exit           # superuser (UID 0) check for ZWESVUSR
           certificate: exit    # keystore/truststore validation (zwe validate certificate)
           components: warn     # YAML component existence check
-        # javaMin/javaMax and nodeMin/nodeMax govern the dependency checks
+          # javaMin/javaMax and nodeMin/nodeMax govern the dependency checks
     ```
 
      :::note
