@@ -69,7 +69,7 @@ The certificate appears to be correct, but the Gateway and the Discovery Service
 
 **Solution**
 
-The password is only used for USS PKCS12 certificate files. The keyring is protected by SAF permissions. Note that in some configurations, Zowe does not work if the password value is empty in the keyring configuration. We recommended that you assign a value to `password` as shown in the following example:
+The password is only used for `USS PKCS12` certificate files. The keyring is protected by `SAF` permissions. Note that in some configurations, Zowe does not work if the password value is empty in the keyring configuration. We recommended that you assign a value to `password` as shown in the following example:
 
 **Example:**
 
@@ -110,7 +110,7 @@ You used an external certificate and Single Sign-On to deploy Zowe. When you log
 
 **Solution:**
 
-This issue might occur when you use a Zowe version of 1.12.0 or later. To resolve the issue, you can download your external root certificate and intermediate certificates in PEM format. Then, add the following parameter in the `zowe.yaml` file.
+This issue might occur when you use a Zowe version of 1.12.0 or later. To resolve the issue, you can download your external root certificate and intermediate certificates in `PEM` format. Then, add the following parameter in the `zowe.yaml` file.
 
 ```environments.ZWED_node_https_certificateAuthorities: "/path/to/zowe/keystore/local_ca/localca.cer-ebcdic","/path/to/carootcert.pem","/path/to/caintermediatecert.pem"```
 
