@@ -310,12 +310,12 @@ After you prepare your current Zowe instance, upgrade the Zowe runtime to v3.6.
 
     ```yaml
     zowe:
-    launchScript:
-      startupChecks:
-        zosmfjwt: exit       # exit (default) | warn | disabled
-        user: exit           # superuser (UID 0) check for ZWESVUSR
-        certificate: exit    # keystore/truststore validation (zwe validate certificate)
-        components: warn     # YAML component existence check
+      launchScript:
+        startupChecks:
+          zosmfjwt: exit       # exit (default) | warn | disabled
+          user: exit           # superuser (UID 0) check for ZWESVUSR
+          certificate: exit    # keystore/truststore validation (zwe validate certificate)
+          components: warn     # YAML component existence check
         # javaMin/javaMax and nodeMin/nodeMax govern the dependency checks
     ```
 
