@@ -39,7 +39,7 @@ All v2.x installations must first upgrade to v2.18.x before upgrading to v3.6.
 :::
 
 <details>
-<summary><strong>Upgrading from Zowe v2.18.x</strong></summary>
+<summary><strong>Upgrading from Zowe v2.18.x to v3.6</strong></summary>
 <br />
 <!-- This whole dropdown section is new -->
 To upgrade from Zowe v2.18.x, perform the following procedure before you install Zowe v3.6.
@@ -100,7 +100,10 @@ Identify any monitoring probes, readiness checks, and automation that call the f
 
 5. **Add registration metadata hosts to the allowlist.**  
 Zowe v3.6 validates the hosts in service registration metadata against `zowe.network.allowedDomains`. The defaults cover `externalDomains` and high availability (HA) hostnames only. Add services that register URL metadata (such as `instanceBaseUrls`, API documentation or Swagger URLs, or `corsAllowedOrigins`) from other hosts to `zowe.network.allowedDomains` before you upgrade.
-<!-- TODO: perhaps add a link here for guidance -->
+
+  :::note
+  For users who install using SMP/E, be aware that there is a HOLD(ACTION) setting regarding `zowe.network.allowedDomains` in the v3.6 PTF.
+  :::
 
 6. **Apply the v2 to v3 breaking changes.**  
 Review the [System and Security Changes](#system-and-security-changes) and [Configuration changes](#configuration-changes) sections of this article. The following breaking changes affect the upgrade:
@@ -120,8 +123,8 @@ Review the [System and Security Changes](#system-and-security-changes) and [Conf
 <summary><strong>Upgrading from Zowe v2.17.x</strong></summary>
 <br />
 
-If you are on v2.17.x, first upgrade to v2.18.x. 
-<!-- how does a user do this -->
+If you are on v2.17.x, first do a standard upgrade to v2.18.x. For more information, see [Upgrading Zowe](../upgrade/upgrading-zowe.md).
+
 Your configuration is up-to-date with the necessary v2 prerequisites. You may proceed directly to the **System and Architecture Changes** and **V3 Configuration Changes** sections below to complete your upgrade to v3. <!-- This text may need to change for v 3.6 -->
 
 </details>
@@ -282,7 +285,7 @@ zowe:
 
 </details>
 
-## Upgrade the runtime
+## Upgrading the runtime
 
 After you prepare your current Zowe instance, upgrade the Zowe runtime to v3.6.
 <!-- Standard upgrade flow ?? this should be reworded -->
@@ -340,7 +343,7 @@ After you prepare your current Zowe instance, upgrade the Zowe runtime to v3.6.
     On Java 21 and later, virtual threads are automatically disabled on z/OS. To control this behavior explicitly, use the `storage.infinispan.useVirtualThreads` property of the Caching Service.
     :::
 
-## Verify the upgrade
+## Verifying the upgrade
 
 After Zowe v3.6 starts, use the following checklist to confirm that the upgrade is successful.
 
@@ -382,7 +385,7 @@ Review the following changes to configuration and updated configuration paramete
 ### New Configuration
 
 * **components.zaas**  
-Previously part of the `components.gateway` component, `zaas` in Zowe v3 is a separate component responsible for authentication. If you do not explicitly configure this section, `zaas` will still be enabled by default and will use **port 7558** unless you use single-service deployment mode.
+Previously part of the `components.gateway` component, `zaas` in Zowe v3 is a separate component responsible for authentication. If you do not explicitly configure this section, `zaas` will still be enabled by default and will use **port 7558** unless you use single-service deployment mode. For more information, see [Upgrading to single-service API ML deployment](../upgrade/upgrade-to-single-service-apiml-deployment.md). 
 
 ```yaml
 components:
