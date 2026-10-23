@@ -8,8 +8,8 @@ To enable observability in the Zowe API Mediation Layer (API ML), you must confi
 ## Prerequisites
 
 * Administrative access to your `zowe.yaml` configuration file.
-* Access to an OTLP-collector to visualize the observability data. Common examples of OTLP-collectors include
-[Prometheus](https://prometheus.io/), [Grafana](https://grafana.io/), or [Jaeger](https://www.jaegertracing.io/).
+* Access to an OTLP collector. An OTLP Collector is a vendor-agnostic proxy that receives, processes, and exports your telemetry data to an observability backend or visualization tool. Common examples of OTLP collectors include: [Prometheus](https://prometheus.io/), [Grafana](https://grafana.io/), or [Jaeger](https://www.jaegertracing.io/).  
+For more information about OTLP collectors, see [Collector](https://opentelemetry.io/docs/collector/) in the _OpenTelemetry_ documentation.
 
 ## Quick-start Configuration of API ML Observability Overview
 
@@ -82,11 +82,11 @@ API ML observability is enabled.
 
 To ensure your configuration is working as expected, perform the following checks:
 
-1. Monitor the OTel Collector.  
-   Access your OTLP-collector (such as Prometheus, Grafana, or Jaeger) to confirm that telemetry signals from the API ML components are being received, parsed, and visualized correctly.
+1. **Monitor your observability backend.**   
+   AAccess your visualization tool (such as Prometheus, Grafana, or Jaeger) to confirm that telemetry signals from the API ML components are being received, parsed, and visualized correctly.
 
-2. Review API ML Error Logs.  
-  If telemetry data does not appear in your collector, review the API ML service logs. These logs provide details regarding connectivity issues, incorrect endpoints, or authentication errors between Zowe and the OpenTelemetry backend.
+2. **Review API ML Error Logs.**    
+  If telemetry signals are not flowing through your collector, review the API ML service logs. These logs provide details regarding connectivity issues, incorrect endpoints, or authentication errors between Zowe and the OpenTelemetry collector.
 
 ## Next steps
 

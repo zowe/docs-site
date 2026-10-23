@@ -1,18 +1,20 @@
 # Configuring API ML observability 
 
-Enable system observability of Zowe API Mediation Layer (API ML) through integration with [OpenTelemetry (OTel)](https://opentelemetry.io/). This integration enables API ML to produce observability data that describes runtime behavior, request processing, and service interactions.
+Enable system observability of Zowe API Mediation Layer (API ML) through integration with [OpenTelemetry (OTel)](https://opentelemetry.io/). 
 
 :::info Required role: System administrator
 :::
 
-By adopting the OpenTelemetry standard, API ML provides a vendor-neutral framework to monitor performance and diagnose issues. System administrators can export telemetry data to an industry-standard OpenTelemetry (OTel) Collector to gain insights into resource utilization and latency within the mainframe environment. This integration utilizes the OpenTelemetry Protocol (OTLP), which standardizes how traces, metrics, and logs are encoded and transmitted. By leveraging OTLP, API ML ensures that telemetry data output is fully compatible with the broader observability ecosystem, regardless of the specific analysis tool used.
+By adopting the OpenTelemetry standard, API ML provides a vendor-neutral framework to monitor performance and diagnose issues. System administrators can export telemetry data to an industry-standard OpenTelemetry (OTel) Collector to gain insights into resource utilization and latency within the mainframe environment. This integration primarily focuses on using telemetry data to track service usage, audit active users, and measure API adoption across your environment. System administrators can export these log signals to an industry-standard OpenTelemetry (OTel) Collector to analyze authentication trends and service interactions over time.
+
+By adhering to the OpenTelemetry Protocol (OTLP), API ML ensures that this telemetry output can be routed to analytics and visualization tools of your choice (such as Grafana or Loki) without having to use a specific observability vendor.
 
 :::caution Important
 API ML system observability is available exclusively for the API ML single-service deployment. The Observability feature is not supported in the legacy microservice-based architecture of API ML.
 :::
 
 :::note Notes:
-* Observability integration is available beginning with Zowe v3.4.0, with the complete log-signal set available since Zowe v3.5.0. API ML integrates OpenTelemetry following current OTel semantics, defaults from the OTel project, and select z/OS-specific features.
+* Beginning with Zowe v3.6.0, the observability integration feature is available as a Technical Preview. API ML integrates OpenTelemetry following current OTel semantics, defaults from the OTel project, and select z/OS-specific features.
   
 * API ML supports both z/OS and non-z/OS deployments. 
 :::
