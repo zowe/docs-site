@@ -123,7 +123,7 @@ Review the [System and Security Changes](#system-and-security-changes) and [Conf
 <summary><strong>Upgrading from Zowe v2.17.x</strong></summary>
 <br />
 
-If you are on v2.17.x, first do a standard upgrade to v2.18.x. For more information, see [Upgrading Zowe](../upgrade/upgrading-zowe.md).
+If you are on v2.17.x, do a standard upgrade to v2.18.x. For more information, see [Upgrading Zowe](../upgrade/upgrading-zowe.md).
 
 Your configuration is up-to-date with the necessary v2 prerequisites. You may proceed directly to the **System and Architecture Changes** and **V3 Configuration Changes** sections below to complete your upgrade to v3. <!-- This text may need to change for v 3.6 -->
 
