@@ -61,11 +61,88 @@ On that web page, you can search for `example-zowe.yaml` and `defaults.yaml` to 
 
 ## Version-Specific upgrade procedures
 
-Major version upgrades, or upgrades from older legacy versions, require specific prerequisite checks, architectural changes, and configuration updates. For detailed instructions on upgrading from specific releases, refer to the follwoing dedicated upgrade procedures:
+Major version upgrades, or upgrades from older legacy versions, require specific prerequisite checks, architectural changes, and configuration updates. For detailed instructions on upgrading from specific releases, refer to the following dedicated upgrade procedures:
 
 :::warning Important Note on Extension Compatibility
 Any extensions or products built upon Zowe v1 are unlikely to work in v2 or v3 without upgrading such extensions or products. Refer to your product documentation on actions to take, and ensure you have obtained v2/v3 compatible versions of your third-party extensions from their vendors before proceeding with a clean installation.
 :::
+
+### Upgrading from 3.5.x to 3.6.x
+
+:::info Required roles: system programmer, system administrator
+:::
+
+Upgrading from Zowe v3.5.x to v3.6.x follows the standard upgrade flow described in this article. Complete the **Installing** tasks, then review the changes in this section before you restart Zowe.
+
+#### Review the configuration changes
+
+To see the changes between the two releases, compare the `zowe-install-packaging` repository and search for `example-zowe.yaml` and `defaults.yaml`:
+
+[https://github.com/zowe/zowe-install-packaging/compare/v3.5.0...v3.6.0](https://github.com/zowe/zowe-install-packaging/compare/v3.5.0...v3.6.0)
+
+#### New and changed YAML properties
+
+Review the following properties in your `zowe.yaml` file and decide whether to adopt each of them:
+
+```yaml
+zowe:
+  network:
+    allowedDomains:          # Domains permitted in service registration metadata.
+      - "example.com"        # Defaults already include externalDomains and
+      - "*.another.com"      # haInstances hostnames.
+  launchScript:
+    startupChecks:
+      zosmfjwt: exit         # exit | warn | disabled
+components:
+  apiml:
+    logging:
+      level: info            # quiet | info | debug
+storage:
+  infinispan:
+    useVirtualThreads: false
+```
+
+| Property | Upgrade decision |
+| :--- | :--- |
+| `zowe.network.allowedDomains` | Add any domain, IP address, or CIDR range outside your `zowe.network.server.externalDomains` and `haInstances` hostnames from which services register with the API Discovery Service. Otherwise, registrations from those hosts can be rejected or produce warnings. See [Configuring allowed domains and IP addresses for service registration](../user-guide/api-mediation/config-allowed-domains-for-service-reg.md) and the [Zowe YAML configuration file reference](../appendix/zowe-yaml-configuration.md). |
+| `components.apiml.logging.level` (and the per-component variant `components.<component>.logging.level`) | Optional. Set the API ML log level to `quiet`, `info`, or `debug`. Legacy `debug` parameters still take precedence. See [Configuring API ML logging](../user-guide/api-mediation/configuration-logging.md) and the [Zowe YAML configuration file reference](../appendix/zowe-yaml-configuration.md). |
+| `zowe.launchScript.startupChecks.zosmfjwt` | Applies when Zowe uses z/OSMF JWT authentication. The default `exit` stops startup if the z/OSMF JWT check fails. Set `warn` to continue startup with a warning, or `disabled` to skip the check. You can run the same check manually with `zwe validate zosmf jwt`. See the [Zowe YAML configuration file reference](../appendix/zowe-yaml-configuration.md). |
+| `storage.infinispan.useVirtualThreads` | Optional. Enables Infinispan virtual threads, which require Java 21 or later. The default is `false`. See the [Zowe YAML configuration file reference](../appendix/zowe-yaml-configuration.md). |
+
+#### Actuator endpoint authentication
+
+After you upgrade, unauthenticated requests to the API Gateway `/application/info` and `/application/version` endpoints return HTTP 401. Monitoring probes and automation scripts that call these endpoints without credentials must be updated.
+
+```
+curl -k https://<gateway>:7554/application/info                    → HTTP 401 after upgrade (was 200 unauthenticated)
+curl -k -u <user>:<pass> https://<gateway>:7554/application/info   → HTTP 200 with credentials
+```
+
+Update your probes to authenticate. For the full endpoint list, credential options, and the `components.gateway.apiml.health.protected` setting, see [Configuring health check, information, and version endpoint protection](../user-guide/api-mediation/configuration-health-endpoint-protection.md).
+
+:::warning
+Setting `components.gateway.apiml.health.protected: false` exposes health, information, and version metadata without authentication. Use an authenticated client whenever possible. If unauthenticated access is required, restrict access through another trusted control, such as network-level controls.
+:::
+
+#### Behavior changes to be aware of
+
+* **Certificate initialization:** `zwe init certificate` now generates a random password when `zowe.setup.certificate.pkcs12.password` or `zowe.setup.certificate.pkcs12.caPassword` is left at the default value. This applies to keystore scenarios only; keyring scenarios are unaffected. Update any automation that relies on the literal default password before you re-run certificate initialization. See [zwe init certificate](../appendix/zwe_server_command_reference/zwe/init/zwe-init-certificate.md).
+* **High availability:** At startup in HA mode, Zowe writes a merged configuration file for each HA instance to the workspace `.env` directory. See [Upgrading Zowe in HA for zero downtime](./upgrade-zowe-no-downtime.md).
+
+#### Post-upgrade verification checklist
+
+1. Review `zowe.yaml` for `zowe.network.allowedDomains` and confirm that all hosts that register services are allowed.
+2. If Zowe uses z/OSMF JWT authentication, run `zwe validate zosmf jwt` and confirm that it succeeds.
+3. Confirm that unauthenticated requests to `/application/info` return HTTP 401, and that authenticated requests return HTTP 200 with the same payload as before the upgrade.
+4. Update monitoring probes and scripts that call `/application/info` and `/application/version`.
+5. If you run in HA mode, confirm that `.zowe-<haInstance>-merged.yaml` exists in the workspace `.env` directory.
+6. Revert any temporary diagnostic settings, such as `zosmfjwt: warn` or test entries in `allowedDomains`.
+
+:::note
+For the new `zwe validate zosmf jwt` command, see [zwe validate zosmf jwt](../appendix/zwe_server_command_reference/zwe/validate/zwe-validate-zosmf-jwt.md).
+:::
+
+### Upgrading from older releases
 
 * **[Upgrading from Zowe Vx to Zowe V3](./upgrade-zowe-v3.md)**  
 Follow this procedure to upgrade from Zowe v2 to Zowe v3, or from Zowe v1 to Zowe v3. This article details V3 prerequisites (including Java 17, Node.js 18 or 20, and z/OSMF JWT support), new component configurations such as `zaas` and Infinispan caching, and handles migration exceptions for older v2.x releases.

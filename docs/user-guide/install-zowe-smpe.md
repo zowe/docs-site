@@ -589,6 +589,28 @@ You will receive a return code of `0` if this job runs correctly.
 You will receive a return code of `0` if the job runs correctly.
 :::
 
+#### Review HOLD ACTION for Zowe v3.6.0
+
+Zowe v3.6.0 includes an SMP/E `HOLD` with `REASON(ACTION)` for the affected function **Zowe Configuration**. The timing of this action is **post-APPLY**. After the APPLY completes, review your `zowe.yaml` file and add the new property `zowe.network.allowedDomains` if necessary.
+
+This property is an array of domains that are permitted in the metadata of services that register to the API Mediation Layer Discovery Service.
+
+* Subdomains are supported by using an asterisk wildcard, for example, `*.example.com`.
+* Without a wildcard, the domain must be a strict match.
+* By default, the list includes the `externalDomains` already listed in `zowe.yaml` and the hostnames in the optional high availability configuration. You do not need to add these default values manually.
+
+**Example:**
+
+```yaml
+zowe:
+  network:
+    allowedDomains:
+      - "example.com"
+      - "*.another-domain.com"
+```
+
+For more information, see [Configuring allowed domains and IP addresses for service registration](./api-mediation/config-allowed-domains-for-service-reg.md) and [Upgrading from 3.5.x to 3.6.x](../upgrade/upgrading-zowe.md#upgrading-from-35x-to-36x).
+
 ### Perform SMP/E ACCEPT
 
 Edit and submit sample job ZWE8ACPT to perform an SMP/E ACCEPT CHECK for Zowe. Consult the instructions in the sample job for more information.
