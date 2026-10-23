@@ -5,7 +5,7 @@ Enable system observability of Zowe API Mediation Layer (API ML) through integra
 :::info Required role: System administrator
 :::
 
-By adopting the OpenTelemetry standard, API ML provides a vendor-neutral framework to monitor performance and diagnose issues. System administrators can export telemetry data to an industry-standard OpenTelemetry (OTel) Collector to gain insights into resource utilization and latency within the mainframe environment. This integration primarily focuses on using telemetry data to track service usage, audit active users, and measure API adoption across your environment. System administrators can export these log signals to an industry-standard OpenTelemetry (OTel) Collector to analyze authentication trends and service interactions over time.
+By adopting the OpenTelemetry standard, API ML provides a vendor-neutral framework to monitor performance and diagnose issues. System administrators can export telemetry data to an industry-standard OpenTelemetry (OTel) Collector to gain insights into resource utilization and latency within the mainframe environment. This integration primarily focuses on using telemetry data to track service usage, audit active users, and measure API adoption across your environment. System administrators can export these log signals to an industry-standard [OTel Collector](https://opentelemetry.io/docs/collector/) to analyze authentication trends and service interactions over time.
 
 By adhering to the OpenTelemetry Protocol (OTLP), API ML ensures that this telemetry output can be routed to analytics and visualization tools of your choice (such as Grafana or Loki) without having to use a specific observability vendor.
 
