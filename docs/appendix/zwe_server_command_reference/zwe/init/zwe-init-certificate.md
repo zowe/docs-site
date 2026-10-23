@@ -13,7 +13,7 @@ be written back to your Zowe YAML configuration file:
 
 - `zowe.certificate` based on your `zowe.setup.certificate` configuration.
 - `zowe.setup.security.product` based on the detected External Security Manager
-- `zowe.setup.certificate.pkcs12.password` and `zowe.setup.certificate.pkcs12.caPassword`. If these parameters are left at their default values, the command generates random passwords and saves them to the file.
+- `zowe.setup.certificate.pkcs12.password` and `zowe.setup.certificate.pkcs12.caPassword`. If these parameters are left at their default values (`password` and `local_ca_password`), the command generates random passwords and saves them to the file. This applies to keystore (`PKCS12`) scenarios only. Keyring scenarios are not affected.
 
  :::note
  If you do not use `--update-config`, any randomly generated PKCS12 passwords are only displayed in the command output and must be saved manually.
@@ -125,8 +125,19 @@ zOSMF:
   be the default owner of keystore directory.
 - You can also define `name`, `password`, `caAlias` and `caPassword` under
   `zowe.setup.certificate.pkcs12` to customized keystore and truststore. These
-  configurations are optional, but it is recommended to update them from
-  default values.
+  configurations are optional. If `password` or `caPassword` is left at its
+  default value (`password` and `local_ca_password`), a random password is
+  generated for the keystore instead. With `--update-config` the generated
+  password is written to your Zowe YAML configuration file; without it, the
+  password is only shown in the command output and must be saved manually.
+  This applies to keystore (`PKCS12`) scenarios only. Keyring scenarios are not
+  affected.
+
+  :::caution
+  Automation that relies on the literal default password (`password` or
+  `local_ca_password`) to open the keystore must be updated, because the
+  generated keystore no longer uses the default values.
+  :::
 - Define `zowe.setup.certificate.pkcs12.import.keystore` if you already acquired
   certificate from other CA, stored them in PKCS12 format, and want to import
   into Zowe PKCS12 keystore.
@@ -220,6 +231,7 @@ ZWEL0174E|174|Failed to generate certificate in Zowe keyring "%s/%s".
 ZWEL0319E|319|zowe.setup.dataset.jcllib does not exist, cannot run. Run 'zwe init', 'zwe init generate', or submit JCL zowe.setup.dataset.prefix.SZWESAMP(ZWEGENER) before running this command.
 ZWEL0201E|201|File %s does not exist.
 ZWEL0326E|326|An error occurred while processing Zowe YAML config %s:
+ZWEL0362W||A random password was generated for the following settings and is shown above: %s. Save these values now, since without --update-config they are not written to zowe.yaml and the keystore they protect cannot be opened later.
 
 
 ### Inherited from parent command

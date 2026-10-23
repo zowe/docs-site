@@ -77,6 +77,12 @@ Use the following procedure to install a new Zowe instance:
 
 You configured your installation for the two instances.
 
+:::note Per-instance merged configuration file (available since Zowe v3.6.0)
+When Zowe starts in HA mode, the startup process writes a merged configuration file for each HA instance named `.zowe-<haInstance>-merged.yaml` to the workspace `.env` directory (`zowe.workspaceDirectory`). The location of the file is available in the `ZWE_HA_INSTANCE_CONFIG` environment variable. The file is regenerated at each startup, so do not edit it. Make configuration changes in your `zowe.yaml` file.
+
+After you start the upgraded instance, you can check that the file exists in that instance's workspace `.env` directory to confirm that Zowe started with the expected HA instance configuration.
+:::
+
 ### Switching traffic to the new instance
 
 Switching traffic without incurring downtime requires carefully routing traffic away from the old instance, swapping the instances, and restoring traffic.
