@@ -72,7 +72,7 @@ components:
 
 * To customize automatically discovered attributes, see the full zowe.yaml configuration for API ML observability in the article [Advanced configuration of API ML Observability](advanced-configuration-of-apiml-observability.md). Note that using the values generated through the automation is the preferred method.  
 
-* To configure a secure (HTTPS) connection to your collector, or to change exporter transport protocols, see [Collector connection](advanced-configuration-of-apiml-observability.md#collector-connection) in _Advanced configuration of API ML Observability_.
+* To configure a secure (HTTPS) connection to your collector, or to change exporter transport protocols, see [Configuring a collector](advanced-configuration-of-apiml-observability.md#configuring-a-collector) in _Advanced configuration of API ML Observability_.
 
 :::
 
