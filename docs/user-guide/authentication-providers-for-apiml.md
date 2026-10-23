@@ -13,6 +13,13 @@ Choose from the following providers to handle authentication for the API Gateway
 For development purposes, a dummy authentication provider is also available. This provider is not intend for production purposes. For more information, see [Dummy Authentication Provider](../extend/extend-apiml/api-mediation-layer-development-setup.md#dummy-authentication-provider) in _Deploy API Mediation Layer locally_.
 :::
 
+:::note
+The `components.gateway.apiml.security.auth.provider` property of the API Gateway default depends on the installation path.  
+- `zosmf` is preserved for upgraded configurations
+- `saf` is the default for new installations
+Set the property explicitly before upgrading.
+:::
+
 :::tip
 We recommend that you use SAF as your authentication provider when possible. With the SAF provider, the API Gateway acts as the authentication service. The provided credentials are validated directly by the API Gateway via SAF APIs.
 :::
