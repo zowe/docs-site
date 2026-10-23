@@ -676,7 +676,7 @@ These configurations can be used under the `components.caching-service` section:
 
 #### Configure component apiml
 
-The following configurations can be used under the `components.apiml` section to configure properties that apply to all API Mediation Layer services (Gateway, Discovery Service, API Catalog), such as telemetry:
+The following configurations can be used under the `components.apiml` section to configure properties that apply exclusively to single-service API Mediation Layer deployment:
 
 - **telemetry.enabled**  
 Specifies whether OpenTelemetry data collection and exporting is active for the API Mediation Layer (API ML).
