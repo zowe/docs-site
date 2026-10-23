@@ -65,28 +65,28 @@ Confirm that the Java and Node.js versions meet the [prerequisites](#prerequisit
 
 3. **Verify z/OSMF JWT support.**  
 Confirm that z/OSMF JWT support is available, as described in the [prerequisites](#prerequisites-for-zowe-v36). If z/OSMF JWT support is not available, choose one of the following actions:
-  - Apply or enable JWT support. For more information, see [Enabling JSON Web Token support](https://www.ibm.com/docs/en/zos/3.1.0?topic=configurations-enabling-json-web-token-support) in the IBM documentation.
-  - Set `jwtAutoconfiguration` to `ltpa` (not usable with hardware-accelerated ICSF keyrings).
+    - Apply or enable JWT support. For more information, see [Enabling JSON Web Token support](https://www.ibm.com/docs/en/zos/3.1.0?topic=configurations-enabling-json-web-token-support) in the IBM documentation.
+    - Set `jwtAutoconfiguration` to `ltpa` (not usable with hardware-accelerated ICSF keyrings).
 
-    ```yaml
-      components:
-        gateway:
-          apiml:
-            security:
-              auth:
-                zosmf:
-                  jwtAutoconfiguration: ltpa   # jwt (default) | ltpa
-      zowe:
-        launchScript:
-          startupChecks:
-            zosmfjwt: warn                     # exit (default) | warn | disabled
-    ``` 
+      ```yaml
+        components:
+          gateway:
+            apiml:
+              security:
+                auth:
+                  zosmf:
+                    jwtAutoconfiguration: ltpa   # jwt (default) | ltpa
+        zowe:
+          launchScript:
+            startupChecks:
+              zosmfjwt: warn                     # exit (default) | warn | disabled
+      ``` 
 
-  - Downgrade the `zosmfjwt` startup check to `warn` or `disabled`.
+    - Downgrade the `zosmfjwt` startup check to `warn` or `disabled`.
 
-  :::note
-  If z/OSMF is not used for login, no JWT setup is needed.
-  :::
+    :::note
+    If z/OSMF is not used for login, no JWT setup is needed.
+    :::
 
 4. **Identify consumers of unauthenticated operational endpoints.**  
 Identify any monitoring probes, readiness checks, and automation that call the following endpoints without credentials:
@@ -306,7 +306,8 @@ After you prepare your current Zowe instance, upgrade the Zowe runtime to v3.6.
     | Certificate | `exit` | `zowe.launchScript.startupChecks.certificate` |
     | User superuser check | `exit` | `zowe.launchScript.startupChecks.user` |
     | Components | `warn` | <!-- TODO: confirm property --> |
-    | Java and Node.js dependency checks | Enforce Java 17–21 and Node.js 18–24 | <!-- TODO: confirm property --> |
+    | Java dependency check | Enforce Java 17–25 |  Set `java.home` to the appropriate library if the version has changed from the one in your 2.18.x installation. |
+    | Node dependency check | Enforce Node 18-24  |  Set `node.home` to the appropriate library if the version has changed from the one in your 2.18.x installation. |
     | z/OSMF JWT (`zosmfjwt`) | `exit` | `zowe.launchScript.startupChecks.zosmfjwt` |
 
     A failing check defaulting to `exit` prevents Zowe from starting. Resolve the failing check<!-- maybe we need more guidance here? --> or set the matching `zowe.launchScript.startupChecks.*` property to `warn` or `disabled`:
