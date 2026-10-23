@@ -83,7 +83,7 @@ API ML observability is enabled.
 To ensure your configuration is working as expected, perform the following checks:
 
 1. **Monitor your observability backend.**   
-   AAccess your visualization tool (such as Prometheus, Grafana, or Jaeger) to confirm that telemetry signals from the API ML components are being received, parsed, and visualized correctly.
+   Access your visualization tool (such as Prometheus, Grafana, or Jaeger) to confirm that telemetry signals from the API ML components are being received, parsed, and visualized correctly.
 
 2. **Review API ML Error Logs.**    
   If telemetry signals are not flowing through your collector, review the API ML service logs. These logs provide details regarding connectivity issues, incorrect endpoints, or authentication errors between Zowe and the OpenTelemetry collector.
