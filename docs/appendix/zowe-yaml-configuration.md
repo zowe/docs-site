@@ -674,7 +674,7 @@ These configurations can be used under the `components.caching-service` section:
   This property is used only when `storage.mode` is set to `vsam` or `inMemory`. Note that `vsam` is deprecated.
   :::
 
-#### Configure component apiml
+#### Configure component apiml 
 
 The following configurations can be used under the `components.apiml` section to configure properties that apply exclusively to single-service API Mediation Layer deployment:
 
