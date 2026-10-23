@@ -9,7 +9,7 @@ To enable observability in the Zowe API Mediation Layer (API ML), you must confi
 
 * Administrative access to your `zowe.yaml` configuration file.
 * Access to an OTel Collector. An OTel Collector is a vendor-agnostic proxy that receives, processes, and exports your telemetry data to an observability backend or visualization tool (such as [Prometheus](https://prometheus.io/), [Grafana](https://grafana.io/), or [Jaeger](https://www.jaegertracing.io/)).  
-For more information about OTel collectors, see [Collector](https://opentelemetry.io/docs/collector/) in the _OpenTelemetry_ documentation.
+For more information about the OTel collector, see [Collector](https://opentelemetry.io/docs/collector/) in the _OpenTelemetry_ documentation.
 
 ## Quick-start configuration of API ML observability overview
 
