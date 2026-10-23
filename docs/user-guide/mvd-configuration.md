@@ -63,6 +63,24 @@ The file `_defaultVT.json` within the `vt-ng2` app folder `/config/storageDefaul
 }
 ```
 
+### Restrict TN3270 or VT connections
+```yaml
+components:
+  tn3270-ng2:
+    allowList:
+      - "test.example.com"
+      - "qa.example.com"
+      - "dev.example.com"
+    allowPorts:
+      - 23
+      - 992
+  vt-ng2:
+    allowList:
+      - "*.example.com"
+    allowPorts:
+      - "22-25"
+```
+
 ## Network configuration
 
 :::note
@@ -248,7 +266,7 @@ You can check if a ZSS plug-in supports 64 bit or 31 bit ZSS by reading the `plu
 In each component or extension you have, its manifest file states if there are `appFw` plug-in entries.
 In each folder referenced by the `appFw` section, you see a `pluginDefinition.json` file.
 Within that file, if you see a section that says `type: 'service'`, then you can check its ZSS mode support.
-If the service has the property `libraryName64`, then it supports 64 bit. If it says `libraryName31`, then it supports 31 bit. Both might exist if it supports both. If it instead only contains `libraryName`, this is ambigious and deprecated, and most likely that plug-in only supports 31 bit ZSS. A plug-in only supporting 31 bit ZSS must be recompiled for 64 bit support, so you must contact the developers to accomplish that.
+If the service has the property `libraryName64`, then it supports 64 bit. If it says `libraryName31`, then it supports 31 bit. Both might exist if it supports both. If it instead only contains `libraryName`, this is ambiguous and deprecated, and most likely that plug-in only supports 31 bit ZSS. A plug-in only supporting 31 bit ZSS must be recompiled for 64 bit support, so you must contact the developers to accomplish that.
 
 Example: [the sample angular app supports both 31 bit and 64 bit zss](https://github.com/zowe/sample-angular-app/blob/083855582e8a82cf48abc21e15fa20bd59bfe180/pluginDefinition.json#L50-L53)
 
@@ -504,4 +522,3 @@ When you `disable` cluster mode, you lose the following benefits:
 ### To turn the cluster mode off
 
 - Include `zowe.environments.ZLUX_NO_CLUSTER=1` in the `zowe.yaml` file.
-
