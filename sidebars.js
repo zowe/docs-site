@@ -557,13 +557,13 @@ module.exports = {
             },
                         {
               type: "category",
-              label: "Using your OpenTelemetry metrics",
-              link: { type: "doc", id: "user-guide/api-mediation/observability/using-observability/using-your-otel-metrics" },
+              label: "Using API ML Observability",
+              link: { type: "doc", id: "user-guide/api-mediation/observability/using-observability/using-apiml-observability" },
               items: [
             "user-guide/api-mediation/observability/using-observability/understanding-apiml-telemetry-signals",
+            "user-guide/api-mediation/observability/using-observability/apiml-observability-use-cases",
             "user-guide/api-mediation/observability/using-observability/customizing-and-interpreting-apiml-otel-log-signals",
             "user-guide/api-mediation/observability/using-observability/log-signal-examples-and-attribute-mapping",
-            "user-guide/api-mediation/observability/using-observability/apiml-observability-use-cases",
               ],
             },
             {
