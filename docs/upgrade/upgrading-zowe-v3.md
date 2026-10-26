@@ -24,7 +24,7 @@ Before starting the upgrade, ensure the following base system requirements are m
 *   **z/OSMF**  
     Version V2R5 or V3R1 is required. JWT support for z/OSMF is highly recommended. For more information, see [Enabling JSON Web Token support](https://www.ibm.com/docs/en/zos/3.1.0?topic=configurations-enabling-json-web-token-support) in the IBM documentation. If you do not have JWT support in z/OSMF, make sure to set `components.gateway.apiml.security.auth.zosmf.jwtAutoconfiguration` to `ltpa`.
 *   **Java**  
-    Java 17 or higher (21 and 25 supported, 17–21 enforced) is required. The Zowe YAML parameter `java.home` value should be a **Java 17**, **Java 21**, or **Java 25** home location. If an administrator uses `zwe init` to set up Zowe, ensure the `java` for that user is v17 or higher by including it in the `PATH` environment variable.
+    Java 17 or higher (21 and 25 supported, 17, 21 or 25 enforced) is required. The Zowe YAML parameter `java.home` value should be a **Java 17**, **Java 21**, or **Java 25** home location. If an administrator uses `zwe init` to set up Zowe, ensure the `java` for that user is v17, v21 or v25 by including it in the `PATH` environment variable.
 *   **Node.js**  
     Ensure that the Zowe YAML parameter `node.home` value is a **Node.js 18, 20, 22 or 24** home location. Node 16 and earlier versions are not supported.
 
@@ -125,7 +125,7 @@ Review the [System and Security Changes](#system-and-security-changes) and [Conf
 
 If you are on v2.17.x, do a standard upgrade to v2.18.x. For more information, see [Upgrading Zowe](../upgrade/upgrading-zowe.md).
 
-Your configuration is up-to-date with the necessary v2 prerequisites. You may proceed directly to the **System and Architecture Changes** and **V3 Configuration Changes** sections below to complete your upgrade to v3. <!-- This text may need to change for v 3.6 -->
+Your configuration is up-to-date with the necessary v2 prerequisites. You may proceed directly to the **Upgrading the runtime** and **v3.6 Configuration Changes** sections below to complete your upgrade to v3.6. 
 
 </details>
 
