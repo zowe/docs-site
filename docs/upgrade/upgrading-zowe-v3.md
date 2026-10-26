@@ -125,7 +125,7 @@ Review the [System and Security Changes](#system-and-security-changes) and [Conf
 
 If you are on v2.17.x, do a standard upgrade to v2.18.x. For more information, see [Upgrading Zowe](../upgrade/upgrading-zowe.md).
 
-Your configuration is up-to-date with the necessary v2 prerequisites. You may proceed directly to the and [Upgrading the runtime](#upgrading-the-runtime) and [Configuration changes](#configuration-changes) sections to complete your upgrade to v3.6. 
+Your configuration is up-to-date with the necessary v2 prerequisites. You may proceed directly to the [Upgrading the runtime](#upgrading-the-runtime) and [Configuration changes](#configuration-changes) sections to complete your upgrade to v3.6. 
 
 </details>
 
