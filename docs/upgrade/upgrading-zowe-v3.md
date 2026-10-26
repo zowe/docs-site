@@ -125,7 +125,7 @@ Review the [System and Security Changes](#system-and-security-changes) and [Conf
 
 If you are on v2.17.x, do a standard upgrade to v2.18.x. For more information, see [Upgrading Zowe](../upgrade/upgrading-zowe.md).
 
-Your configuration is up-to-date with the necessary v2 prerequisites. You may proceed directly to the **Upgrading the runtime** and **v3.6 Configuration Changes** sections below to complete your upgrade to v3.6. 
+Your configuration is up-to-date with the necessary v2 prerequisites. You may proceed directly to the and [Upgrading the runtime](#upgrading-the-runtime) and [Configuration changes](#configuration-changes) sections to complete your upgrade to v3.6. 
 
 </details>
 
@@ -378,8 +378,7 @@ The following network changes are needed for added or removed servers:
 | files-api | Removed | 7559 | ZWE1EF | This component was deprecated in Zowe v2 and is now removed. Ensure that you switch to using equivalent z/OSMF endpoints. |
 | cloud-gateway | Removed | 7563 | ZWE1CG | The cloud-gateway has been removed as a standalone component and merged into the gateway. |
 
-## V3.6 Configuration changes
-<!-- Need to update t v 3.6 changes -->
+## Configuration changes
 
 Review the following changes to configuration and updated configuration parameters.
 
