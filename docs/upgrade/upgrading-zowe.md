@@ -67,12 +67,12 @@ Major version upgrades, or upgrades from older legacy versions, require specific
 Any extensions or products built upon Zowe v1 are unlikely to work in v2 or v3 without upgrading such extensions or products. Refer to your product documentation on actions to take, and ensure you have obtained v2/v3 compatible versions of your third-party extensions from their vendors before proceeding with a clean installation.
 :::
 
-### Upgrading from 3.5.x to 3.6.x
+### Upgrading from Zowe v3.5.x to v3.6.x
 
 :::info Required roles: system programmer, system administrator
 :::
 
-Upgrading from Zowe v3.5.x to v3.6.x follows the standard upgrade flow described in this article. Complete the **Installing** tasks, then review the changes in this section before you restart Zowe.
+Upgrading from Zowe v3.5.x to v3.6.x follows the standard upgrade flow described in this article. Ensure that steps detailed in [Zowe z/OS components installation checklist](../user-guide/zos-components-installation-checklist.md) are satisfied and then review the changes in this section before you restart Zowe.
 
 #### Review the configuration changes
 
@@ -124,10 +124,13 @@ Update your probes to authenticate. For the full endpoint list, credential optio
 Setting `components.gateway.apiml.health.protected: false` exposes health, information, and version metadata without authentication. Use an authenticated client whenever possible. If unauthenticated access is required, restrict access through another trusted control, such as network-level controls.
 :::
 
-#### Behavior changes to be aware of
-
-* **Certificate initialization:** `zwe init certificate` now generates a random password when `zowe.setup.certificate.pkcs12.password` or `zowe.setup.certificate.pkcs12.caPassword` is left at the default value. This applies to keystore scenarios only; keyring scenarios are unaffected. Update any automation that relies on the literal default password before you re-run certificate initialization. See [zwe init certificate](../appendix/zwe_server_command_reference/zwe/init/zwe-init-certificate.md).
-* **High availability:** At startup in HA mode, Zowe writes a merged configuration file for each HA instance to the workspace `.env` directory. See [Upgrading Zowe in HA for zero downtime](./upgrade-zowe-no-downtime.md).
+:::info
+* **Certificate initialization:**  
+`zwe init certificate` now generates a random password when `zowe.setup.certificate.pkcs12.password` or `zowe.setup.certificate.pkcs12.caPassword` is left at the default value. This applies to keystore scenarios only; keyring scenarios are unaffected. Update any automation that relies on the literal default password before you re-run certificate initialization. See [zwe init certificate](../appendix/zwe_server_command_reference/zwe/init/zwe-init-certificate.md).
+  
+* **High availability:**  
+At startup in HA mode, Zowe writes a merged configuration file for each HA instance to the workspace `.env` directory. See [Upgrading Zowe in HA for zero downtime](./upgrade-zowe-no-downtime.md).
+:::
 
 #### Post-upgrade verification checklist
 
