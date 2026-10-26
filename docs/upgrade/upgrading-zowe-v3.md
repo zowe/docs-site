@@ -26,7 +26,7 @@ Before starting the upgrade, ensure the following base system requirements are m
 *   **Java**  
     Java 17 or higher (21 and 25 supported, 17–21 enforced) is required. The Zowe YAML parameter `java.home` value should be a **Java 17**, **Java 21**, or **Java 25** home location. If an administrator uses `zwe init` to set up Zowe, ensure the `java` for that user is v17 or higher by including it in the `PATH` environment variable.
 *   **Node.js**  
-    Ensure that the Zowe YAML parameter `node.home` value is a **Node.js 18 - 24** home location. Node 16 and earlier versions are not supported.
+    Ensure that the Zowe YAML parameter `node.home` value is a **Node.js 18, 20, 22 or 24** home location. Node 16 and earlier versions are not supported.
 
 ---
 
