@@ -11,8 +11,8 @@ Discover how API ML utilizes core observability signals to provide a complete, h
 Review how to use data for various operational and security scenarios, including user and service activity reporting, sysplex-wide traffic analysis, proactive resource management, and cross-platform troubleshooting.
 
 * **[Customizing and interpreting API ML OpenTelemetry log signals](customizing-and-interpreting-apiml-otel-log-signals.md)**  
-Learn how to monitor and assess the security and routing activity of your Gateway. This article covers the functional classification of signals, resource contexts, standard log records, and custom API ML JSON body attributes.
-
+Learn how to monitor and assess the security and routing activity of your Gateway. This article covers the functional classification of signals, resource contexts, standard log records, and custom API ML JSON body attributes. 
+ 
 * **[Log signal examples and attribute mapping](log-signal-examples-and-attribute-mapping.md)**  
 Review JSON payload examples of common log signals emitted by API ML. Scenarios include service registrations, heartbeats, successful login attempts, and both valid and invalid authentication routing.
 
