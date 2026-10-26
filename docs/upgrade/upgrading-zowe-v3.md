@@ -306,7 +306,7 @@ After you prepare your current Zowe instance, upgrade the Zowe runtime to v3.6.
     | Certificate | `exit` | `zowe.launchScript.startupChecks.certificate` |
     | User superuser check | `exit` | `zowe.launchScript.startupChecks.user` |
     | Components | `warn` | <!-- TODO: confirm property --> |
-    | Java dependency check | Enforce Java 17–25 |  Set `java.home` to the appropriate library if the version has changed from the one in your 2.18.x installation. |
+    | Java dependency check | Enforce Java 17 or 21 |  Set `java.home` to the appropriate library if the version has changed from the one in your 2.18.x installation. |
     | Node dependency check | Enforce Node 18-24  |  Set `node.home` to the appropriate library if the version has changed from the one in your 2.18.x installation. |
     | z/OSMF JWT (`zosmfjwt`) | `exit` | `zowe.launchScript.startupChecks.zosmfjwt` |
 
