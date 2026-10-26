@@ -324,6 +324,10 @@ By default, RBAC is disabled and all authenticated Zowe users can access all dat
 
 1. To enable RBAC, set the `components.zss.dataserviceAuthentication.rbac` and `components.app-server.dataserviceAuthentication.rbac` variables to `true` in the Zowe configuration file.
 
+:::note
+A dataservice can declare `requiresRbac: true` in its `pluginDefinition.json`. While `components.app-server.dataserviceAuthentication.rbac` is `false`, requests to such a dataservice are rejected with HTTP status 403 and message `ZWED0315E`. For more information, see [Requiring RBAC for a dataservice](../extend/extend-desktop/mvd-dataservices.md#requiring-rbac-for-a-dataservice).
+:::
+
 ### Controlling app access for all users
 
 :::note

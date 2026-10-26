@@ -137,6 +137,30 @@ Users must have READ access to the following profile:
 
 `ZLUX.DEFAULT.SVC.ORG_ZOWE_FOO.BAZ.POST.USERS.FRED`
 
+### Requiring RBAC for a dataservice
+
+By default, when RBAC is disabled, every authenticated user can call every dataservice. If a dataservice must never run without the SAF profile check, set `requiresRbac` to `true` in its entry in the `dataServices` array of `pluginDefinition.json`, for example:
+
+```
+  "dataServices": [
+    {
+      "type": "router",
+      "name": "hello",
+      "fileName": "helloWorld.js",
+      "routerFactory": "helloWorldRouter",
+      "requiresRbac": true
+    }
+  ]
+```
+
+While `components.app-server.dataserviceAuthentication.rbac` is `false`, the Zowe Application Server rejects every request to that dataservice with HTTP status 403 and message `ZWED0315E`, instead of allowing it. To use the dataservice, set `components.app-server.dataserviceAuthentication.rbac` to `true`. For information on enabling RBAC, see [Enabling RBAC](../../user-guide/mvd-configuration.md#enabling-rbac).
+
+- Only the boolean value `true` enables the restriction. Any other value, such as the string `"true"`, has no effect.
+- If the user is not authenticated, the authentication check still responds first, before the RBAC requirement is applied.
+- Dataservices that do not set `requiresRbac` are not affected.
+
+### SAF profile length
+
 Profiles cannot contain more than 246 characters. If the path section of an endpoint URL makes the profile name exceed limit, the path is trimmed to only include elements that do not exceed the limit. For example, imagine that each path section in this endpoint URL contains 64 characters:
 
 `/ZLUX/plugins/org.zowe.zossystem.subsystems/services/data/_current/aa..a/bb..b/cc..c/dd..d`
