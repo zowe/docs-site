@@ -139,7 +139,9 @@ Users must have READ access to the following profile:
 
 ### Requiring RBAC for a dataservice
 
-By default, when RBAC is disabled, every authenticated user can call every dataservice. If a dataservice must never run without the SAF profile check, set `requiresRbac` to `true` in its entry in the `dataServices` array of `pluginDefinition.json`, for example:
+By default, when RBAC is disabled, every authenticated user can call every dataservice. If a dataservice must never run without the SAF profile check, set `requiresRbac` to `true` in that dataservice's entry in the `dataServices` array of `pluginDefinition.json`.
+
+**Example:**
 
 ```
   "dataServices": [
@@ -153,11 +155,13 @@ By default, when RBAC is disabled, every authenticated user can call every datas
   ]
 ```
 
-While `components.app-server.dataserviceAuthentication.rbac` is `false`, the Zowe Application Server rejects every request to that dataservice with HTTP status 403 and message `ZWED0315E`, instead of allowing it. To use the dataservice, set `components.app-server.dataserviceAuthentication.rbac` to `true`. For information on enabling RBAC, see [Enabling RBAC](../../user-guide/mvd-configuration.md#enabling-rbac).
+While `components.app-server.dataserviceAuthentication.rbac` is `false`, the Zowe Application Server rejects every request to that dataservice with HTTP status `403` and message `ZWED0315E`. To use the dataservice, set `components.app-server.dataserviceAuthentication.rbac` to `true`. For information on enabling RBAC, see [Enabling RBAC](../../user-guide/mvd-configuration.md#enabling-rbac).
 
+:::note Notes:
 - Only the boolean value `true` enables the restriction. Any other value, such as the string `"true"`, has no effect.
 - If the user is not authenticated, the authentication check still responds first, before the RBAC requirement is applied.
 - Dataservices that do not set `requiresRbac` are not affected.
+:::
 
 ### SAF profile length
 
