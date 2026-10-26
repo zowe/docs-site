@@ -72,7 +72,7 @@ components:
 
 * To customize automatically discovered attributes, see the full zowe.yaml configuration for API ML observability in the article [Advanced configuration of API ML Observability](advanced-configuration-of-apiml-observability.md). Note that using the values generated through the automation is the preferred method.  
 
-* To configure a secure (HTTPS) connection to your collector, or to change exporter transport protocols, see [Configuring a collector](advanced-configuration-of-apiml-observability.md#configuring-a-collector) in _Advanced configuration of API ML Observability_.
+* To configure a secure (HTTPS) connection to your collector, or to change exporter transport protocols, see [Configuring a collector](advanced-configuration-of-apiml-observability.md#configuring-an-otel-collector) in _Advanced configuration of API ML Observability_.
 
 :::
 
@@ -94,7 +94,7 @@ To ensure your configuration is working as expected, perform the following check
 To verify that telemetry is flowing, configure an exporter in your OTel Collector to route the signals to an observability backend (such as Grafana, Jaeger, or Prometheus). For details on how to route this data, see the heading _Exporters_ in the [OpenTelemetry documentation](https://opentelemetry.io/docs/concepts/components/).
 
 * **Using your OpenTelemetry metrics**  
-For details about API ML telemetry signals and how to use API ML OTel signals to monitor and assess security and routing activity of your z/OS-based service-based infrastructure, see the articles in the section [Using your OpenTelemetry metrics](./using-observability/using-your-otel-metrics.md).
+For details about API ML telemetry signals and how to use API ML OTel signals to monitor and assess security and routing activity of your z/OS-based service-based infrastructure, see the articles in the section [Using API ML observability ](./using-observability/using-apiml-observability.md).
 
 * **Review Sample Output**   
 To review sample output for API ML OpenTelemetry, see [Sample Output from API ML OpenTelemetry](sample-output-from-apiml-otel.md).

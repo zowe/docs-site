@@ -30,9 +30,10 @@ You can aggregate these records in your observability backend to answer question
 
 API ML does not create metrics for every combination of service, URL path, and user ID, because the number of unique combinations can grow without limit and overwhelm your metrics backend. Instead, API ML records this detail as semi-structured log attributes, so you can derive the information on demand with a log query. For example, you can count distinct `user.id` values per `service.id` per week for a management report, or group requests by `auth.method` to see whether users are moving from Basic authentication to tokens. 
   
-::info
-* For a sample query, see [Using your OpenTelemetry metrics](./using-your-otel-metrics.md). 
+:::info
+* For details on the functional classification of these records and definitions of custom JSON attributes, see [Customizing and interpreting API ML OpenTelemetry log signals](./customizing-and-interpreting-api-ml-opentelemetry-log-signals.md)
 * For the full list of attributes, see [Log signal examples and attribute mapping](./log-signal-examples-and-attribute-mapping.md).
+* To learn more about how logs interact with metrics and traces in your backend, see [Understanding API ML telemetry signals](./understanding-api-ml-telemetry-signals.md).
 :::
 
 :::caution Important:
