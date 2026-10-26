@@ -11,7 +11,7 @@ Review the following examples of how to to query and visualize the OpenTelemetry
 
 ### Logs: Monitoring service usage over time (Grafana/Loki)
 
-You can query the OpenTelemetry log-signal body attributes to audit active users or track service adoption. For example, to extract the user IDs of authenticated users interacting with a specific service within a specified time period, you can use the following LogQL query in Grafana/Loki:
+You can query the OpenTelemetry log-signal body attributes to generate a list of active users interacting with your services. For example, to extract and list the user IDs of authenticated users interacting with a specific service, you can use the following LogQL query in a Grafana Logs panel:
 
 ​```
 {service_name="<your-service-name>"} | json | service_id="<your-service>" | auth_status="OK" | line_format "{{ .user_id }}"
@@ -19,11 +19,7 @@ You can query the OpenTelemetry log-signal body attributes to audit active users
 
 Replace `<your-service-name>` with the `service.name` value that you configured for API ML (for example, `zowe-apiml`).
 
-:::note
-The stream selector label (`service_name` in this example) is assigned by your collector or exporter, not by API ML. Some setups map `service.name` to a `job` label instead. Use the label that your Loki instance exposes.
-:::
-
-This query parses the JSON log body, filters for successful authentication requests to your target service, and outputs the `user.id`. Combined with `timeUnixNano`, your backend can aggregate this information into a time-series graph of unique users over time. You can now use your visualization tool (such as a Grafana dashboard panel) to aggregate these extracted IDs to calculate and graph the distinct number of unique users over time.
+This query parses the JSON log body, filters for successful authentication requests to your target service, and outputs the `user.id`s, allowing system administrators to audit exactly who is accessing the target service. 
 
 :::caution Security Restriction
 Because these log signals contain `user.id` values in the JSON body, these logs are essentially audit records. Backends receiving these signals must apply the same strict access controls used for your standard audit and compliance records (such as SMF records or centralized security logs). Do not route these signals to general-purpose dashboards that expose these signals to a broader audience than your organizational security policy permits.

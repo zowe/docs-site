@@ -58,7 +58,7 @@ The API ML service itself produces a range of telemetry data referred to as _sig
 
 ## Telemetry signals and observability
 
-By default, the OpenTelemetry integration captures performance, health, and interaction signals, which are enriched with the resource attributes configured in your zowe.yaml to provide environmental context. You can also specify where data is exported. Observability is achieved through the combination of telemetry signals, which quantify the real-time state and activity of the system, and resource attributes, which provide the structural labels necessary to organize and interpret those signals.
+By default, the OpenTelemetry integration captures performance, health, and interaction signals, which are enriched with the resource attributes configured in your `zowe.yaml` to provide environmental context. You can also specify where data is exported. Observability is achieved through the combination of telemetry signals, which quantify the real-time state and activity of the system, and resource attributes, which provide the structural labels necessary to organize and interpret those signals.
 
 Signals can be any of the following signal types:
 
@@ -75,7 +75,7 @@ While these signals are enriched with mainframe-aware context when running on z/
 To better understand the relationship between signals and resources, it is useful to consider the analogy of a postal package and the label on the package:
 
 * The **Signal** is the contents of the package. It contains the actual "goods" — the specific data about an event, such as a log message, a trace of a request, or a performance metric.
-* The **Resource Attributes** are the shipping label fixed to the outside of the package. The label does not change the contents, but tells you exactly where the package originated (e.g., the specific LPAR, Sysplex, or Service Name).
+* The **Resource Attributes** are the shipping label fixed to the outside of the package. The label does not change the contents, but tells you exactly where the package originated (for example, the specific LPAR, Sysplex, or Service Name).
 
 Taken together, the Signal provides the evidence of what happened (the "what"), while the Resource Attributes provide the context of where it happened (the "where"). Without the label, the data is just a pile of anonymous packages; with the label, you can immediately sort and filter your data to isolate issues in specific parts of your infrastructure.
 :::
@@ -98,7 +98,7 @@ Tools like Grafana, Jaeger, or Prometheus where the data is stored and visualize
 To activate observability, you must:
 
 1. Define the identity of the API ML instance by setting the name (`service.name`) and the environment (`service.namespace`).
-2. Enable the telemetry stream and define your OpenTelemetry Protocol (OTLP) collector URL in the zowe.yaml.
+2. Enable the telemetry stream and define your OTel Collector URL in the `zowe.yaml`.
 
 For detailed instructions of how to configure these settings, see [Quick-start configuration of API ML Observability](quick-start-configuration-of-apiml-observability.md).
 
@@ -112,7 +112,7 @@ By default, API ML automatically discovers your environment name using the `&ENV
 
 * You are deploying in a non-z/OS environment (such as Kubernetes).
 * The `&ENVIRON.` system symbol is missing from your system configuration.
-* You want to use a custom label to isolate development data from production dashboards (e.g., using `SANDBOX` instead of the system default).
+* You want to use a custom label to isolate development data from production dashboards (for example, using `SANDBOX` instead of the system default).
 
 For details about how to override the deployment environment variable, see [Advanced configuration of API ML Observability](advanced-configuration-of-apiml-observability.md).
 

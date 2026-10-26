@@ -9,9 +9,9 @@ Review the complete configuration structure for OpenTelemetry (OTel) integration
 For a simplified setup that relies on automatic system discovery, see [Quick-start configuration of API ML Observability](quick-start-configuration-of-apiml-observability.md).
 :::
 
-## Configuring a collector 
+## Configuring an OTel Collector 
 
-When defining your exporter endpoint, ensure that the chosen protocol matches your collector's configuration. The exporter protocol (`telemetry.exporter.protocol`) can be set to either `http/protobuf` (typically port `4318`) or `grpc` (typically port `4317`). If you do not specify an endpoint, the exporter defaults to `http://localhost:4318` using `http/protobuf`.
+When defining your exporter endpoint, ensure that the chosen protocol matches your OTel Collector's configuration. The exporter protocol (`telemetry.exporter.protocol`) can be set to either `http/protobuf` (typically port `4318`) or `grpc` (typically port `4317`). If you do not specify an endpoint, the exporter defaults to `http://localhost:4318` using `http/protobuf`.
 
 If you configure a secure HTTPS collector endpoint (for example, `https://otel-collector.your.domain:4318`), the OTLP exporter automatically reuses the API ML SSLContext. By using the API ML SSLContext, the exporter uses the same key and trust stores as the rest of API ML. Note the requirement that the collector must trust the API ML certificate chain and vice versa.
 
@@ -31,7 +31,7 @@ A flag that initializes the OpenTelemetry SDK. Must be set to `true` to generate
 **Default:** `false` (OpenTelemetry is disabled unless explicitly enabled)
 
 * **components.apiml.telemetry.exporter.endpoint**  
-The destination URL for your OTLP (OpenTelemetry Protocol) collector.
+The destination URL for your OTel Collector.
 **Default:** `http://localhost:4318`
 
 * **components.apiml.telemetry.exporter.protocol**  
@@ -136,7 +136,7 @@ The most definitive validation is to confirm that data is appearing in your chos
 Select a trace or metric and verify that the Resource Attributes (such as `zos.smf.id` or `mainframe.lpar.name`) are correctly attached.
 
 4. **Use the Collector's Logging (Optional).**  
-If data is not appearing in the backend, check the logs of your OpenTelemetry Collector. If the collector is configured with the logging or debug exporter, raw incoming export requests from the API ML's IP address are generated.
+If data is not appearing in the backend, check the logs of your OTel Collector. If the collector is configured with the logging or debug exporter, raw incoming export requests from the API ML's IP address are generated.
 
-You can now review your OTLP-collector output.  
+You can now review your OTel Collector output.  
 To review sample output for API ML OpenTelemetry, see [Sample Output from API ML OpenTelemetry](sample-output-from-apiml-otel.md).
