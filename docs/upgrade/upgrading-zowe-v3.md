@@ -358,7 +358,7 @@ After Zowe v3.6 starts, use the following checklist to confirm that the upgrade 
 - Confirm that onboarded services successfully. Any rejected registration metadata should be explained by the allowlist and not be an error.
 - Confirm z/OSMF is reachable through the API Gateway by the `/ibmzosmf` route, not `/zosmf`.
 - (HA installations only) Confirm that on startup, Zowe creates `.zowe-<haInstance>-merged.yaml` in the workspace `.env` directory, and that `ZWE_HA_INSTANCE_CONFIG` points to that file.
-<!-- TODO: perhaps add a link here for guidance -->
+
 <!-- All these System and Configuration changes come after Verifying the Upgrad ?? Should probably be a separate topic -->
 ## System and Security Changes
 
