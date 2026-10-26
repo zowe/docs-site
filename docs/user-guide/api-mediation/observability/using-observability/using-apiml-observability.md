@@ -2,7 +2,7 @@
 
 The implementation of the OpenTelemetry standard provides a vendor-neutral way to observe the API Mediation Layer (API ML). By combining environment-aware resource attributes, including mainframe support, with real-time signals, administrators can monitor performance, validate request routing, and pinpoint issue troubleshooting across their z/OS-based service infrastructure.
 
-Review the following articles to learn more about implementing and utilizing API ML observability:
+Review the following articles to learn more about implementing and utilizing API ML observability: 
 
 * **[Understanding API ML telemetry signals](understanding-apiml-telemetry-signals.md)**  
 Discover how API ML utilizes core observability signals to provide a complete, high-level picture of your mainframe gateway’s health and performance.
