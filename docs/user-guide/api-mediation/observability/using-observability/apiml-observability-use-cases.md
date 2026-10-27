@@ -48,7 +48,7 @@ The collection of API ML OpenTelemetry data could also apply to the following us
 Use the `zos.sysplex.name` and `zos.smf.id` attributes to aggregate and compare API traffic across your entire mainframe footprint. This traffic analysis allows you to identify if a performance spike is isolated to a single LPAR or if the spike is caused by a systemic issue affecting the entire Sysplex.
 
 * **Latency Bottleneck Identification**  
- Analyze distributed traces to visualize the internal processing stages of the API ML. You can pinpoint exactly where delays occur — whether during SAF authentication, service ID resolution in the Discovery Service, or during southbound routing to a backend provider.
+ Analyze distributed traces to compare the time spent in the API ML Gateway with the time spent in the backend service. You can determine whether a delay occurs in the Gateway's handling of the request or in southbound routing to and response from a backend provider.
 
 * **Cross-Platform Troubleshooting**
  When a distributed application, such as a cloud-based web app, experiences a failure, you can use a shared `traceId` to follow the request as the request enters the mainframe. This links the "front-end" error directly to a specific Service ID or ASID on z/OS, thereby reducing the Mean Time to Repair (MTTR).

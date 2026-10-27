@@ -15,10 +15,10 @@ Metrics are numerical representations of data measured over intervals of time. I
 Traces record the end-to-end path of a request as it moves through the API ML. They provide a "big picture" view of how the gateway interacts with discovery services and backend providers.
 
   * **Span Intervals**  
-  Captures discrete segments of work (called Spans), such as the time required for SAF authentication, service ID resolution, or the physical routing of a request to a provider. 
+  Captures discrete segments of work (called Spans). API ML relies on the framework instrumentation that the OpenTelemetry Spring Boot starter provides, such as inbound and outbound HTTP request spans. API ML does not currently add custom spans for internal operations such as SAF authentication or service ID resolution, so these operations do not appear as separate timings in a trace. 
 
   * **Latency Analysis**  
-  Identifies specific bottlenecks in the request lifecycle, allowing you to see exactly which stage of processing is causing delays.
+  Identifies where time is spent across the request path, such as the duration of the inbound request to the gateway and of the outbound call to the backend service. Use these timings to determine whether a delay occurs in the gateway or in the backend service.
 
 * **Logs (The "What" and "Why")**  
 Logs are timestamped text records of discrete events. They provide the deep technical context necessary to understand why a specific error occurred or how the state of the API ML has changed.

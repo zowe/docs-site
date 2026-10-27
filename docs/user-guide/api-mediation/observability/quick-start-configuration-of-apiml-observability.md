@@ -76,9 +76,14 @@ components:
 
 :::
 
-API ML observability is enabled.
+After you save zowe.yaml, the configuration is not active yet. API ML reads these telemetry settings in start.sh and initializes the OpenTelemetry SDK only during startup. An API ML instance that is already running continues with telemetry disabled until you restart it.
 
-### 3. Verify your configuration
+### 3. Restart Zowe
+Restart Zowe so that API ML picks up the telemetry settings.
+
+After the restart, API ML initializes the OpenTelemetry SDK with the settings from `zowe.yaml`, and API ML observability is enabled.
+
+### 4. Verify your configuration
 
 To ensure your configuration is working as expected, perform the following checks:
 
