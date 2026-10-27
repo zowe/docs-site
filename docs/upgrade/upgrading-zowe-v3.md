@@ -10,7 +10,7 @@ While the major version upgrading process is similar to a Zowe v2 minor release 
 Follow the steps described in this article to ensure a smooth upgrade to Zowe v3.6. The procedure is written for installations running Zowe v2.18.6 and has three phases:
 
 1. [**Preparing your current Zowe instance**](#preparing-your-current-zowe-instance).
-2. [**Upgrade the runtime**](#upgrade-the-runtime) to Zowe v3.6.
+2. [**Upgrading the runtime**](#upgrading-the-runtime) to Zowe v3.6.
 3. [**Verify the upgrade**](#verify-the-upgrade) with the post-upgrade checklist.
 
 :::note
@@ -117,15 +117,15 @@ Review the [System and Security Changes](#system-and-security-changes) and [Conf
     For the complete list, see [Breaking changes in Zowe v3](../whats-new/breaking-changes-v3.md).
 <!-- TODO: confirm the exact article title of breaking-changes-v3.md -->
 
+You should proceed to the [**Upgrading the runtime**](#upgrading-the-runtime) and [**Configuration changes**](#configuration-changes) sections to complete your upgrade to v3.6.
+
 </details>
 
 <details>
 <summary><strong>Upgrading from Zowe v2.17.x</strong></summary>
 <br />
 
-If you are on v2.17.x, do a standard upgrade to v2.18.x. For more information, see [Upgrading Zowe](../upgrade/upgrading-zowe.md).
-
-Your configuration is up-to-date with the necessary v2 prerequisites. You may proceed directly to the [Upgrading the runtime](#upgrading-the-runtime) and [Configuration changes](#configuration-changes) sections to complete your upgrade to v3.6. 
+If you are on v2.17.x, do a standard upgrade to v2.18.x. For more information, see [Upgrading Zowe](../upgrade/upgrading-zowe.md). 
 
 </details>
 
