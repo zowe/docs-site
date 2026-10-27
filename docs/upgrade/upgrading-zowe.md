@@ -106,7 +106,7 @@ storage:
 | `zowe.launchScript.startupChecks.zosmfjwt` | Applies when Zowe uses z/OSMF JWT authentication. The default `exit` stops startup if the z/OSMF JWT check fails. Set `warn` to continue startup with a warning, or `disabled` to skip the check. You can run the same check manually with `zwe validate zosmf jwt`. See the [Zowe YAML configuration file reference](../appendix/zowe-yaml-configuration.md). |
 | `storage.infinispan.useVirtualThreads` | Optional. Enables Infinispan virtual threads, which require Java 21 or later. The default is `false`. See the [Zowe YAML configuration file reference](../appendix/zowe-yaml-configuration.md). |
 
-#### Actuator endpoint authentication
+#### Actuator endpoint authentication `/application/*`
 
 Actuator endpoints are REST APIs used to monitor and manage a running application. They expose operational data such as health status, metrics, configuration details, and version metadata.
 
