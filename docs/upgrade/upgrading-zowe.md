@@ -69,9 +69,6 @@ Any extensions or products built upon Zowe v1 are unlikely to work in v2 or v3 w
 
 ### Upgrading from Zowe v3.5.x to v3.6.x
 
-:::info Required roles: system programmer, system administrator
-:::
-
 Upgrading from Zowe v3.5.x to v3.6.x follows the standard upgrade flow described in this article. Ensure that steps detailed in [Zowe z/OS components installation checklist](../user-guide/zos-components-installation-checklist.md) are satisfied and then review the changes in this section before you restart Zowe.
 
 #### Review the configuration changes
