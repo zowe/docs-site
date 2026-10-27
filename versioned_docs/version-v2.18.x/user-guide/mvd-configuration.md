@@ -507,6 +507,7 @@ By default, RBAC is disabled and all authenticated Zowe users can access all dat
             "*"
           ]
         },
+      ]
     }
     ```
 

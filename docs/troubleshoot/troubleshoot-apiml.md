@@ -62,8 +62,12 @@ You can change the log level of a particular code component of the API ML intern
 
 **Follow these steps:**
 
-1. Enable API ML Debug Mode as described in [Enable API ML Debug Mode](#enable-api-ml-debug-mode).
-This activates the `/application/loggers` endpoints in each API ML internal service (Gateway, Discovery service, and Catalog).
+1. Enable `debug-control` as described in the section [Configuring `debug-control` for dynamic configuration control](#configuring-debug-control-for-dynamic-configuration-control).  
+**Note:**
+To enable `debug-control`, consider the following activation conditions per service:  
+   - For the API Gateway write path, set or append the property `components.gateway.spring.profiles.active` to `"debug-control"`.
+    - For the API Gateway read-only path and the Discovery/API Catalog paths, set the debug profile property `components.<component>.debug` to `true`.  
+Enablement activates the `/application/loggers` endpoint for the API ML Gateway.
 2. List the available loggers of a service by issuing the **GET** request for the given service URL. Use the direct service URL when accessing a specific API ML component, or the Gateway-routed URL when accessing through the API Gateway:
 
     ```
@@ -99,40 +103,40 @@ This activates the `/application/loggers` endpoints in each API ML internal serv
     GET [gateway-scheme]://[gateway-hostname]:[gateway-port]/apicatalog/api/v1/application/loggers
     ```
 
-:::tip
+   :::tip
 
-One way to issue REST calls is to use the http command in the free HTTPie tool: https://httpie.org/.
+    One way to issue REST calls is to use the http command in the free HTTPie tool: https://httpie.org/.
 
-**Example:**
+    **Example:**
 
-```bash
-# HTTPie (requires: pip install httpie)
-http GET https://<gateway-hostname>:7554/application/loggers
+    ```bash
+    # HTTPie (requires: pip install httpie)
+    http GET https://<gateway-hostname>:7554/application/loggers
 
-# curl
-curl -k https://<gateway-hostname>:7554/application/loggers | jq .
-```
-```
+    # curl
+    curl -k https://<gateway-hostname>:7554/application/loggers | jq .
+    ```
+    **Output:**
 
-    Output:
+    ```json
     {"levels":["OFF","ERROR","WARN","INFO","DEBUG","TRACE"],
      "loggers":{
-       "ROOT":{"configuredLevel":"INFO","effectiveLevel":"INFO"},
+     "ROOT":{"configuredLevel":"INFO""effectiveLevel":"INFO"},
        "com":{"configuredLevel":null,"effectiveLevel":"INFO"},
        "com.ca":{"configuredLevel":null,"effectiveLevel":"INFO"},
        ...
      }
     }
-```
+    ```
 
-Filter logger output with `grep` to narrow down specific packages, for example:
+    Filter logger output with `grep` to narrow down specific packages, for example:
 
-```bash
-http GET https://<gateway-hostname>:7554/application/loggers | grep -i "zowe"
-```
-:::
+    ```bash
+    http GET https://<gateway-hostname>:7554/application/loggers | grep -i "zowe"
+    ```
+      :::
 
-1. Alternatively, extract the configuration of a specific logger using the extended **GET** request:
+3. Alternatively, extract the configuration of a specific logger using the extended **GET** request:
 
     ```
     GET scheme://hostname:port/application/loggers/{name}
@@ -142,7 +146,7 @@ http GET https://<gateway-hostname>:7554/application/loggers | grep -i "zowe"
 
          Specifies the logger name
 
-2. Change the log level of the given component of the API ML internal service. Use the **POST** request for the given service URL:
+4. Change the log level of the given component of the API ML internal service. Use the **POST** request for the given service URL:
 
     ```
     POST scheme://hostname:port/application/loggers/{name}
@@ -196,7 +200,18 @@ http GET https://<gateway-hostname>:7554/application/loggers | grep -i "zowe"
     | `reactor.netty` | Reactive Netty I/O operations |
 
     :::warning Runtime-only persistence
-    Log level changes made via the `/application/loggers` endpoint apply only for the current session. They are **not** persisted across restarts. To make permanent changes, set `components.<component>.debug: true` or configure logging in the component's `application.yml`.
+    Log level changes made via the `/application/loggers` endpoint apply only for the current session. They are **not** persisted across restarts. To make permanent changes, use the configuration method that matches your deployment mode:
+
+    **For Single-Service Deployments:**  
+    Define exact package levels in your `zowe.yaml` using the `components.apiml.logging.loggerLevels` array.
+
+    **For Microservice Deployments:**
+    
+      * **For select component control:**  
+      For more granular control over specific packages, point to a custom logback configuration file using the `components.<component>.logging.config` parameter in your `zowe.yaml`. 
+
+      * **For full microservice debugging:**  
+      Set `components.<component>.debug: true` in your `zowe.yaml` to force debug logging for all operations within that specific microservice (without affecting the rest of the API ML components).
     :::
 
 ## Gather atypical debug information
@@ -227,6 +242,15 @@ For more information, see [Spring Boot Profiles](https://docs.spring.io/spring-b
 :::note 
 
 When `debug: true` is set, you may not see the debug output immediately in the STC job log on z/OS or in the container logs. Check the component's application log file (for example, `$WORKSPACE_DIR/.logs/gateway/`) for the detailed debug messages. On z/OS, the debug output is written to the job log of the started task.
+:::
+
+:::info Targeted Debugging (Single-Service Deployment)
+
+Because the `debug: true` toggle generates a large volume of log output that can overwhelm your spool or create excessively large files, it is recommended to use granular debugging options in single-service deployment. You can route debug logs exclusively to a file to keep your spool clean, and target specific features instead of the entire application.
+
+To target specific features (like `gateway`, `authentication`, or `discovery`), keep `components.apiml.debug` set to `false`, and enable the specific feature under `components.apiml.logging.debug.<feature>` in your `zowe.yaml`.
+
+For detailed instructions on managing log output destinations (such as separating debug messages from standard spool output), and feature-level debugging, see [Customizing Zowe API Mediation Layer logging](../user-guide/api-mediation/configuration-logging.md).
 :::
 
 

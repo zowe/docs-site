@@ -324,6 +324,10 @@ By default, RBAC is disabled and all authenticated Zowe users can access all dat
 
 1. To enable RBAC, set the `components.zss.dataserviceAuthentication.rbac` and `components.app-server.dataserviceAuthentication.rbac` variables to `true` in the Zowe configuration file.
 
+:::note
+A dataservice can declare `requiresRbac: true` in its `pluginDefinition.json`. If `components.app-server.dataserviceAuthentication.rbac` is set to `false`, requests to this dataservice are rejected with HTTP status `403` and message `ZWED0315E`. For more information, see [Requiring RBAC for a dataservice](../extend/extend-desktop/mvd-dataservices.md#requiring-rbac-for-a-dataservice).
+:::
+
 ### Controlling app access for all users
 
 :::note
@@ -386,7 +390,7 @@ By default, RBAC is disabled and all authenticated Zowe users can access all dat
 ## Controlling access to dataservices
 To apply role-based access control (RBAC) to dataservice endpoints, you must enable RBAC for Zowe, and then use a z/OS security product such as RACF to map roles and authorities to the endpoints. After you apply RBAC, Zowe checks authorities before allowing access to the endpoints.
 
-You can apply access control to Zowe endpoints and to your app endpoints. Zowe provides endpoints for a set of configuration dataservices and a set of core dataservices. Apps can use [configuration endpoints](../extend/extend-desktop/mvd-configdataservice.md#configuration-dataservice) to store and their own configuration and other data. Administrators can use core endpoints to [get status information](mvd-configuration.md#administering-the-servers-and-plugins-using-an-api) from the App Framework and ZSS servers. Any dataservice added as part of an app plug-in is a service dataservice.
+You can apply access control to Zowe endpoints and to your app endpoints. Zowe provides endpoints for a set of configuration dataservices and a set of core dataservices. Apps can use [configuration endpoints](../extend/extend-desktop/mvd-configdataservice.md#configuration-dataservice) to store and their own configuration and other data. Administrators can use core endpoints to [get status information](#administering-the-servers-and-plug-ins-using-an-api) from the App Framework and ZSS servers. Any dataservice added as part of an app plug-in is a service dataservice.
 
 ### Creating authorization profiles
 For users to access endpoints after you enable RBAC, in the ZOWE class you must create System Authorization Facility (SAF) profiles for each endpoint and give users READ access to those profiles.

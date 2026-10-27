@@ -130,7 +130,7 @@ As an example, https://verdaccio.org/ is such a webserver that you can set up to
 You can find out more about verdaccio and [how to set up a verdaccio-based npm registry on their website](https://verdaccio.org/docs/what-is-verdaccio/)
 
 Another example is jfrog artifactory. Artifactory can store packages to serve through an npm registry, a docker registry, and much more.
-You can find out more about artifactory and [how to set up an artifactory-based npm registry on their website](https://www.jfrog.com/confluence/display/JFROG/npm+Registry)
+For more information about how to set up an artifactory-based npm registry, see _Setting up an npm registry with JFrog Artifactory in less than one minute_ on the [JFrog website](https://jfrog.com/).
 
 ## Making your own handler
 

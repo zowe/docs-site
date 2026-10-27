@@ -13,7 +13,6 @@ To ensure a successful Zowe server-side installation on z/OS, certain components
 | **API Mediation Layer (API ML) v3** | Java | IBM Java SDK 17 or 21| **IBM Semeru Runtime Certified Edition for z/OS, Version 17** (or OpenJDK 17) <br /> Java 21 is supported in Zowe v3.2 and later releases.  | The API Mediation Layer, as a core Zowe component, requires a 64-bit Java Runtime Environment (JRE) or Java Development Kit (JDK) for z/OS. **The API Mediation Layer v3 itself does not directly require Node.js if running API ML without the app-server enabled.** |
 | **General Zowe Setup & Integration** | z/OSMF | Highly Recommended | Highly Recommended | While Zowe can operate in limited scenarios without z/OSMF, it is **highly recommended** for full functionality, robust security integrations (SAF roles, certificates), simplified certificate management, and leveraging many underlying z/OS services. Zowe is architected for seamless integration with z/OSMF across all its components. | 
  
-
  
 ## Server prerequisite details
 
@@ -39,7 +38,9 @@ The app-server component requires one of the following Node.js versions:
 <details>
 <summary> Click here for details about the node.js versions supported by Zowe. </summary>
 
-The following Node.js versions are supported to run Zowe. See the [Node.js hardware and software prerequisites for Zowe](#nodejs-hardware-and-software-prerequisites-for-zowe) section for the prerequisites that are required by Zowe.
+The following Node.js versions are supported to run Zowe. Node.js version `20.19.0` and version `22.19.0` are the minimum versions which are supported to run Zowe 3.6 and higher versions.
+
+See the [Node.js hardware and software prerequisites for Zowe](#nodejs-hardware-and-software-prerequisites-for-zowe) section for the prerequisites that are required by Zowe.
 
 The corresponding [IBM SDK for Node.js - z/OS documentation](https://www.ibm.com/docs/en/sdk-nodejs-zos) lists all the prerequisites for Node.js. Some software packages, which might be listed as prerequisites there, are **NOT** required by Zowe. Specifically, you do **NOT** need to install Python, Make, Perl, or C/C++ runtime or compiler.  If you can run `node --version` successfully, you have installed the prerequisites required by Zowe.
 
@@ -64,9 +65,6 @@ You can obtain IBM SDK for Node.js - z/OS for free in one of the following ways:
 - Download PAX file format at [ibm.com/products/sdk-nodejs-compiler-zos](https://www.ibm.com/products/sdk-nodejs-compiler-zos). IBM defect Support is not available for this format.
 
 For more information, see the blog ["Options on how to obtain IBM Open Enterprise SDK for Node.js"](https://community.ibm.com/community/user/ibmz-and-linuxone/blogs/bruce-armstrong/2022/07/27/options-on-how-to-obtain-ibm-open-enterprise-sdk-f).
-
-
----
 
 ### Node.js Hardware and Software Prerequisites for Zowe
 

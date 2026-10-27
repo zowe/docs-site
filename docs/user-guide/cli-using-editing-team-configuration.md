@@ -14,6 +14,10 @@ To define additional mainframe services and other profiles in an existing global
 
     Each profile contains connection and other frequently needed information for accessing various mainframe services, as in the following example:
 
+    :::warning
+    Replace the placeholder values (such as `123`) in the following snippet with your actual configuration details before using the code.
+    :::
+
     ```
     {
         "$schema": "./zowe.schema.json",
