@@ -109,12 +109,12 @@ Zowe v3.6 validates the hosts in service registration metadata against `zowe.net
 Review the [System and Security Changes](#system-and-security-changes) and [Configuration changes](#configuration-changes) sections of this article. The following breaking changes affect the upgrade:
     * The authentication route `/api/v1/gateway` is now `/gateway/api/v1`.
     * `zaas` is a separate component that uses port 7558 unless `apiml.enabled=true`.
-    * `jobs-api`, `files-api`, `metrics-service`, and `cloud-gateway` are removed. `metrics-service` is replaced by the OpenTelemetry implementation. <!-- TODO: perhaps add a link here for guidance -->
+    * `jobs-api`, `files-api`, `metrics-service`, and `cloud-gateway` are removed. `metrics-service` is replaced by the [OpenTelemetry implementation](../user-guide/api-mediation/observability/configuring-apiml-observability.md). 
     * Keyring URIs use exactly two slashes (`safkeyring://`).
     * Keyring `keystore` and `truststore` passwords use the literal value `password`.
     * `zowe.useConfigmgr=false` and the gateway internal server are no longer supported.
 
-    For the complete list, see [Breaking changes in Zowe v3](../whats-new/breaking-changes-v3.md).
+    For the complete list of changes, see [Important API ML updates in Zowe v3](../whats-new/breaking-changes-v3.md#important-api-ml-updates-in-zowe-v3).
 <!-- TODO: confirm the exact article title of breaking-changes-v3.md -->
 
 You should proceed to the [**Upgrading the runtime**](#upgrading-the-runtime) and [**Configuration changes**](#configuration-changes) sections to complete your upgrade to v3.6.
@@ -150,9 +150,9 @@ Ensure the following `zowe.network` section is added to your `zowe.yaml` file:
           tls:
             attls: false
     ```
-2. **Update PROCLIB entries.**  
+1. **Update PROCLIB entries.**  
 Enhancements and default parameters have changed throughout Zowe v2. This can be performed with the unix command `zwe init stc`, by running the job `ZWEISTC`, or by copying the `SZWESAMP` members `ZWESLSTC`, `ZWESISTC`, and `ZWESASTC` into your desired PROCLIB.
-3. **Verify keyring slashes.**  
+1. **Verify keyring slashes.**  
 If you use keyrings, verify that Zowe YAML references to `safkeyring`. Use two forward slashes (`safkeyring://`). Do not use four forward slashes (`safkeyring:////`).
 
 </details>
