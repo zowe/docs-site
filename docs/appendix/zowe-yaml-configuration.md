@@ -579,7 +579,8 @@ Specifies if the component should be started in this Zowe instance, thereby prov
 #### Configure API Mediation Layer Global Logging
 
 - **components.apiml.logging.level**  
-Configures the logging verbosity for the API ML when running in **single-service deployment** mode.
+Configures the logging verbosity for the API ML when running in **single-service deployment** mode. (Options are `quiet`, `info`, or `debug`)  
+**Default:** `info`
   
 - **components._component_.logging.level**  
 Configures the logging verbosity for individual API Mediation Layer microservices when running in **microservice deployment** mode.  
@@ -603,6 +604,23 @@ Configures the logging verbosity for individual API Mediation Layer microservice
   * **Microservice Deployment:** Individual service parameters such as `components.gateway.debug: true` take precedence and force a resolution to `debug` for that specific microservice, overriding settings like `components.gateway.logging.level`.
   :::
 
+* **components.apiml.logging.debug._feature_**  
+Enables targeted debug logging for specific API ML features in single-service deployment mode. Ensure that `components.apiml.debug` is set to `false` when using this parameter.  
+**Default:** `false` (disables targeted debug logging for the specific API ML feature)
+
+  Supported features:  
+  * **Core routing and registry:** `gateway`, `discovery`, `catalog`, and `caching`
+  * **Security operations:** `authentication`
+ 
+* **components.apiml.logging.toFile.enabled**  
+When set to `true`, routes API ML logs to a dedicated file. Note that if any debug feature is enabled, this is automatically forced to `true`.  
+**Default:** `false` (file routing, wherein logs go only to your standard output stream (stdout/spool), is disabled)
+
+* **components.apiml.logging.toFile.debugOnly**  
+When set to `true`,`DEBUG` and `TRACE` level messages are written to the log file. This reduces the amount of logging statements going to your standard output stream (stdout/spool). Note that enabling debug also triggers additional `INFO` level messages that will continue to be routed to your standard output stream (stdout/spool).
+**Default:** `false` (all standard logs are written to both your standard output stream (stdout/spool) and the log file (if `toFile.enabled` is `true`)) 
+**Note:** `components.apiml.logging.toFile.enabled` must also be `true`, otherwise this setting is ignored.
+
 #### Configure component gateway
 
 These configurations can be used under the `components.gateway` section:
@@ -611,8 +629,9 @@ These configurations can be used under the `components.gateway` section:
  Specifies the port which the Gateway should start on. This value must be a valid port number.
 
 - **debug**  
- Specifies the enablement of debug mode for the Gateway.
-
+Specifies whether standard debug logging is enabled for the Gateway component. Set to `true` to enable verbose internal logging without enabling modification capabilities.
+- **spring.profiles.active**  
+Specifies the active Spring profiles for the Gateway component. Set to `"debug-control"` to enable debug mode with **modify-with-SAF access**, which allows you to dynamically alter configurations (such as changing log levels). Proper SAF authorization to the `APIML.DEBUG` resource in ZOWE class is required.
 - **apiml.connectionTimeout**  
   Specifies the value in milliseconds which corresponds to the period in which API ML should establish a single, non-managed connection with the service. If omitted, the default value specified in the API ML Gateway service configuration is used.
 
@@ -707,8 +726,16 @@ User authorization is required to use the `IRR.RUSERMAP` resource within the `FA
  Specifies if API ML is used to verify certificates of services in non-strict mode. Setting the value to `true` enables the `non-strict` mode where API ML validates if the certificate is trusted in the truststore, but ignores the certificate Common Name or Subject Alternate Name (SAN) check. Zowe ignores this configuration when `strict` mode is enabled with `apiml.security.ssl.verifySslCertificatesOfServices`.
 
 - **apiml.service.corsEnabled**  
- Specifies if CORS are enabled in the API Gateway for Gateway routes `gateway/api/v1/**`. Set to `true` to enable CORS.
-
+ Specifies if CORS are enabled in the API Gateway for Gateway routes `gateway/**`. Set to `true` to enable CORS.
+- **apiml.service.corsDefaultAllowedOrigins**  
+  Specifies the default origins accepted by the Gateway during CORS handling when a per-service configuration is not specified  
+  **Default:** `https://${hostname}:${port}`
+- **apiml.service.corsDefaultAllowedHeaders**  
+  Specifies the default HTTP headers allowed by the Gateway during a CORS request across all services when not explicitly overridden.
+  **Default:** `*`
+- **apiml.service.corsAllowedMethods**  
+  Specifies the default HTTP methods allowed by the Gateway when accessing services via CORS if no per-service methods are explicitly specified.  
+  **Default:** `GET,HEAD,POST,PATCH,DELETE,PUT,OPTIONS`   
 - **server.maxConnectionsPerRoute**  
   Specifies the maximum connections for each service.
 
@@ -737,10 +764,8 @@ These configurations can be applied to the `components.discovery` section:
 
 - **port**  
  Specifies the port which discovery is to be started on. This value may be a valid port number or an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
-
 - **debug**  
- Specifies the enablement of debug mode for the Discovery Service.
-
+Specifies whether standard debug logging is enabled for the Discovery component. Set to `true` to enable verbose internal logging without enabling modification capabilities.
 - **apiml.health.protected**  
   Specifies if the health check endpoint is accessible with or without authentication. 
   The default value is `true`.
@@ -772,8 +797,7 @@ The following configurations can be used under the `components.api-catalog` sect
  Specifies the port which API Catalog is to be started on.
 
 - **debug**  
- Specifies the enablement of debug mode for the API Catalog. This value is equivalent to the `APIML_DEBUG_MODE_ENABLED` variable but with a higher granular level.
-
+Specifies whether standard debug logging is enabled for the API Catalog component. Set to `true` to enable verbose internal logging without enabling modification capabilities.
 - **apiml.health.protected**  
   Specifies if the health check endpoint is accessible with or without authentication. The default value is `true`.
 
@@ -848,6 +872,38 @@ These configurations can be used under the `components.caching-service` section:
   :::note
   This property is used only when `storage.mode` is set to `vsam` or `inMemory`. Note that `vsam` is deprecated.
   :::
+
+#### Configure component apiml 
+
+The following configurations can be used under the `components.apiml` section to configure properties that apply exclusively to single-service API Mediation Layer deployment:
+
+- **telemetry.enabled**  
+Specifies whether OpenTelemetry data collection and exporting is active for the API Mediation Layer (API ML).
+
+- **telemetry.exporter.endpoint**  
+Specifies the URL endpoint of your OpenTelemetry collector where the metrics/traces will be sent.
+
+- **telemetry.exporter.protocol**  
+Specifies the transport protocol used to send data to the collector (for example, `http/protobuf` or `grpc`).
+
+- **telemetry.service.name**  
+Specifies the logical name identifying this service in your telemetry backend.
+
+- **telemetry.service.namespace**  
+Specifies the namespace or environment boundary for the service.
+
+- **telemetry.attributes.deployment.environment.name**  
+Specifies the deployment environment name (for example, `production` or `test`).
+
+- **telemetry.attributes.zos.sysplex.name**  
+Specifies the z/OS Sysplex where Zowe is running.
+
+- **telemetry.attributes.zos.smf.id**  
+Specifies the System Management Facilities (SMF) ID of the z/OS system.
+
+- **telemetry.attributes.mainframe.lpar.name**  
+Specifies the mainframe Logical Partition (LPAR) name. 
+
 
 ##### VSAM specific configuration (deprecated)
 

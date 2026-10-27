@@ -241,6 +241,10 @@ A scenario might exist where you log in to API ML with SSO, but you also want to
 
 In this case, your `zowe.config.json` file might look like the following client configuration:
 
+:::warning
+If using this code, replace the placeholder values (such as `123`) in the following snippet with your actual configuration details.
+:::
+
 ```json showLineNumbers title="zowe.config.json"
 {
     "$schema": "./zowe.schema.json",
@@ -255,24 +259,24 @@ In this case, your `zowe.config.json` file might look like the following client 
         "my_one_base_profile": {  // Base profile connection properties are used unless overriden
             "type": "base",
             "properties": {
-                "host": "example.com",  // Both of my services are on this host
-                "port": 12345,                        // Place APIML port in the base profile
+                "host": "example.com",  // Both of the services are on this host
+                "port": 12345, // Place APIML port in the base profile
             }
         },
-        "zosmf_thru_apiml": {                   // A profile for connecting to z/OSMF through APIML
+        "zosmf_thru_apiml": { // A profile for connecting to z/OSMF through APIML
             "type": "zosmf",
             "properties": {
-                "basePath": "ibmzosmf/api/v1"   // APIML connections require a basePath (partial URL)
+                "basePath": "ibmzosmf/api/v1" // APIML connections require a basePath (partial URL)
             },
             "secure": []
         },
-        "zosmf_direct": {       // A profile for connecting directly to z/OSMF
+        "zosmf_direct": { // A profile for connecting directly to z/OSMF
             "type": "zosmf",
             "properties": {
-                "port": 1234    // Override the APIML port with the direct z/OSMF port
+                "port": 1234 // Override the APIML port with the direct z/OSMF port
             },
             "secure": [
-                "user",         // The user and password for the direct connection to z/OSMF
+                "user", // The user and password for the direct connection to z/OSMF
                 "password"
             ]
         },
