@@ -248,10 +248,10 @@ If using keyrings, ensure Zowe YAML references use exactly two forward slashes (
 </details>
 
 <details>
-<summary><strong>Upgrading from Zowe v2.3.x or earlier</strong></summary>
+<summary><strong>Upgrading from Zowe v2.0.0 through v2.3.x</strong></summary>
 <br />
 
-If your current version is v2.3.x or earlier, a clean install of Zowe v3.6 is highly recommended to avoid potential issues during the upgrade process, rather than attempting to manually patch the configuration forward.
+To upgrade from any version between v2.0.0 and v2.3.x, a clean install of Zowe v3.6 is highly recommended to avoid potential issues during the upgrade process, rather than attempting to manually patch the configuration forward.
 
 Please proceed with a fresh installation of Zowe v3.6.
 
