@@ -11,7 +11,7 @@ Follow the steps described in this article to ensure a smooth upgrade to Zowe v3
 
 1. [**Preparing your current Zowe instance**](#preparing-your-current-zowe-instance).
 2. [**Upgrading the runtime**](#upgrading-the-runtime) to Zowe v3.6.
-3. [**Verify the upgrade**](#verify-the-upgrade) with the post-upgrade checklist.
+3. [**Verify the upgrade**](#verifying-the-upgrade) with the post-upgrade checklist.
 
 :::note
 The workspace directory should be re-created only if you are using the app-server component.
