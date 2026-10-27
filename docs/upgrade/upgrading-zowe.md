@@ -111,12 +111,14 @@ storage:
 
 #### Actuator endpoint authentication
 
+Actuator endpoints are REST APIs used to monitor and manage a running application. They expose operational data such as health status, metrics, configuration details, and version metadata.
+
 After you upgrade, unauthenticated requests to the API Gateway `/application/info` and `/application/version` endpoints return HTTP 401. Monitoring probes and automation scripts that call these endpoints without credentials must be updated.
 
-```
-curl -k https://<gateway>:7554/application/info                    → HTTP 401 after upgrade (was 200 unauthenticated)
-curl -k -u <user>:<pass> https://<gateway>:7554/application/info   → HTTP 200 with credentials
-```
+| Authentication State | Example Command | Before Upgrade | After Upgrade |
+| :--- | :--- | :--- | :--- |
+| **Unauthenticated** | `curl -k https://<gateway>:7554/application/info` | HTTP 200 | HTTP 401 |
+| **Authenticated** | `curl -k -u <user>:<pass> https://<gateway>:7554/application/info` | HTTP 200 | HTTP 200 |
 
 Update your probes to authenticate. For the full endpoint list, credential options, and the `components.gateway.apiml.health.protected` setting, see [Configuring health check, information, and version endpoint protection](../user-guide/api-mediation/configuration-health-endpoint-protection.md).
 
@@ -128,7 +130,7 @@ Setting `components.gateway.apiml.health.protected: false` exposes health, infor
 * **Certificate initialization:**  
 `zwe init certificate` now generates a random password when `zowe.setup.certificate.pkcs12.password` or `zowe.setup.certificate.pkcs12.caPassword` is left at the default value. This applies to keystore scenarios only; keyring scenarios are unaffected. Update any automation that relies on the literal default password before you re-run certificate initialization. See [zwe init certificate](../appendix/zwe_server_command_reference/zwe/init/zwe-init-certificate.md).
   
-* **High availability:**  
+* **High availability (HA):**  
 At startup in HA mode, Zowe writes a merged configuration file for each HA instance to the workspace `.env` directory. See [Upgrading Zowe in HA for zero downtime](./upgrade-zowe-no-downtime.md).
 :::
 
