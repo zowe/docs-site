@@ -363,7 +363,7 @@ module.exports = {
                 },
                 {
                   "type": "category",
-                  "label": "Configuring API ML Observability",
+                  "label": "Configuring API ML observability",
                   "link": { "type": "doc", "id": "user-guide/api-mediation/observability/configuring-apiml-observability" },
                   "items": [
                     "user-guide/api-mediation/observability/quick-start-configuration-of-apiml-observability",
@@ -591,7 +591,7 @@ module.exports = {
             },
                         {
               type: "category",
-              label: "Using API ML Observability",
+              label: "Using API ML observability",
               link: { type: "doc", id: "user-guide/api-mediation/observability/using-observability/using-apiml-observability" },
               items: [
             "user-guide/api-mediation/observability/using-observability/understanding-apiml-telemetry-signals",
