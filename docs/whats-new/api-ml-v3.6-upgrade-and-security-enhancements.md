@@ -225,7 +225,7 @@ When these properties are not set, they default to the `apiml.discovery.userid` 
 ## Modifiable actuator endpoints require SAF authorization
 
 **Operational Impact:**  
-This change extends the protection of operational endpoints described in [Breaking changes](#breaking-changes). In addition to requiring authentication, the actuator endpoints that change the running configuration, `/application/loggers` and `/application/gateway`, are now read-only by default and require the authenticated user to have `CONTROL` access to the `APIML.DEBUG` profile in the `ZOWE` class. Endpoints that only read state continue to require authentication alone.
+This change extends the protection of operational endpoints. In addition to requiring authentication, the actuator endpoints that change the running configuration, `/application/loggers` and `/application/gateway`, are now read-only by default and require the authenticated user to have `CONTROL` access to the `APIML.DEBUG` profile in the `ZOWE` class. Read-only endpoints still require only standard authentication.
 
 Also note that, prior to Zowe v3.6.0, `/application/info` and `/application/version` remained unauthenticated even when `apiml.health.protected` was `true`. These two endpoints, and `/gateway/version` and `/gateway/api/v1/version`, are now covered by that setting.
 
