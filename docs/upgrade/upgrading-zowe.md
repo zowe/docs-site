@@ -101,7 +101,7 @@ storage:
 
 | Property | Upgrade decision |
 | :--- | :--- |
-| `zowe.network.allowedDomains` | Add any domain, IP address, or CIDR range outside your `zowe.network.server.externalDomains` and `haInstances` hostnames from which services register with the API Discovery Service. Otherwise, registrations from those hosts can be rejected or produce warnings. See [Configuring allowed domains and IP addresses for service registration](../user-guide/api-mediation/config-allowed-domains-for-service-reg.md) and the [Zowe YAML configuration file reference](../appendix/zowe-yaml-configuration.md). |
+| `zowe.network.allowedDomains` | Add any domain, IP address, or CIDR range outside your `zowe.externalDomains` and `haInstances` hostnames from which services register with the API Discovery Service. Otherwise, registrations from those hosts can be rejected or produce warnings. See [Configuring allowed domains and IP addresses for service registration](../user-guide/api-mediation/config-allowed-domains-for-service-reg.md) and the [Zowe YAML configuration file reference](../appendix/zowe-yaml-configuration.md). |
 | `components.apiml.logging.level` (and the per-component variant `components.<component>.logging.level`) | Optional. Set the API ML log level to `quiet`, `info`, or `debug`. Legacy `debug` parameters still take precedence. See [Configuring API ML logging](../user-guide/api-mediation/configuration-logging.md) and the [Zowe YAML configuration file reference](../appendix/zowe-yaml-configuration.md). |
 | `zowe.launchScript.startupChecks.zosmfjwt` | Applies when Zowe uses z/OSMF JWT authentication. The default `exit` stops startup if the z/OSMF JWT check fails. Set `warn` to continue startup with a warning, or `disabled` to skip the check. You can run the same check manually with `zwe validate zosmf jwt`. See the [Zowe YAML configuration file reference](../appendix/zowe-yaml-configuration.md). |
 | `storage.infinispan.useVirtualThreads` | Optional. Enables Infinispan virtual threads, which require Java 21 or later. The default is `false`. See the [Zowe YAML configuration file reference](../appendix/zowe-yaml-configuration.md). |
@@ -124,6 +124,9 @@ Setting `components.gateway.apiml.health.protected: false` exposes health, infor
 :::
 
 :::info
+* **Strict URL validation:**  
+The API Gateway now rejects requests whose URL path contains encoded slashes (`%2F`), encoded double slashes (`%2F%2F`), backslashes (`%5C`), encoded percent signs (`%25`), encoded periods (`%2E`), or semicolons by default. The property `components.gateway.apiml.service.allowEncodedSlashes` was removed and replaced with `components.gateway.apiml.security.enableStrictUrlValidation`. If your services require these characters, set the new property to `false`. See [Using strict URL validation](../user-guide/api-mediation/configuration-using-strict-url-validation.md).
+
 * **Certificate initialization:**  
 `zwe init certificate` now generates a random password when `zowe.setup.certificate.pkcs12.password` or `zowe.setup.certificate.pkcs12.caPassword` is left at the default value. This applies to keystore scenarios only; keyring scenarios are unaffected. Update any automation that relies on the literal default password before you re-run certificate initialization. See [zwe init certificate](../appendix/zwe_server_command_reference/zwe/init/zwe-init-certificate.md).
   
@@ -139,6 +142,8 @@ At startup in HA mode, Zowe writes a merged configuration file for each HA insta
 4. Update monitoring probes and scripts that call `/application/info` and `/application/version`.
 5. If you run in HA mode, confirm that `.zowe-<haInstance>-merged.yaml` exists in the workspace `.env` directory.
 6. Revert any temporary diagnostic settings, such as `zosmfjwt: warn` or test entries in `allowedDomains`.
+7. If your services use URLs with encoded characters, confirm that requests to them still succeed, or set `components.gateway.apiml.security.enableStrictUrlValidation` to `false`.
+
 
 :::note
 For the new `zwe validate zosmf jwt` command, see [zwe validate zosmf jwt](../appendix/zwe_server_command_reference/zwe/validate/zwe-validate-zosmf-jwt.md).
@@ -146,8 +151,8 @@ For the new `zwe validate zosmf jwt` command, see [zwe validate zosmf jwt](../ap
 
 ### Upgrading from older releases
 
-* **[Upgrading from Zowe Vx to Zowe V3](./upgrade-zowe-v3.md)**  
-Follow this procedure to upgrade from Zowe v2 to Zowe v3, or from Zowe v1 to Zowe v3. This article details V3 prerequisites (including Java 17, Node.js 18 or 20, and z/OSMF JWT support), new component configurations such as `zaas` and Infinispan caching, and handles migration exceptions for older v2.x releases.
+* **[Upgrading from Zowe Vx to Zowe V3](./upgrading-zowe-v3.md)**  
+Follow this procedure to upgrade from Zowe v2 to Zowe v3, or from Zowe v1 to Zowe v3. This article details V3 prerequisites (including Java 17 to Java 21, Node.js 18 to 24, and z/OSMF JWT support), new component configurations such as `zaas` and Infinispan caching, and handles migration exceptions for older v2.x releases.
 
     :::caution Important
     If you are currently running on an earlier v2 version of Zowe, before upgrading to Zowe v3.x, first upgrade to Zowe v2.18.x.
