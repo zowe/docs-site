@@ -496,7 +496,7 @@ module.exports = {
     label: "Zowe server-side components",
     collapsed: false,
     items: [
-      "upgrade/upgrade-zowe-v3",
+      "upgrade/upgrading-zowe-v3",
       "upgrade/upgrade-zowe-v2",
       "upgrade/upgrade-zowe-no-downtime",
       "upgrade/upgrade-to-single-service-apiml-deployment",

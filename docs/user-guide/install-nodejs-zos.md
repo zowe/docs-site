@@ -9,8 +9,8 @@ To ensure a successful Zowe server-side installation on z/OS, certain components
 
 | Component | Prerequisite | Zowe v2.x (LTS) | Zowe v3.x (Current) | Notes |
 | :-------- | :----------- | :------------------------------------------------------ | :-------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Zowe Application Framework (ZLUX / Desktop)** | Node.js | Node.js 20, or 22 | **Node.js 20, or 22** | The Zowe Desktop and many of its web-based applications are built on Node.js and require a 64-bit z/OS port of Node.js to function. **The Zowe Application Framework itself does not directly require Java.** |
-| **API Mediation Layer (APIML)** | Java | v2: Java 8, 11, 17 (≥ 2.15), all community-tested <br /> **Note:** On Zowe version 2 with Java 11+, `zwe setup` cannot create PKCS12 keystores, and SAF key ring references must use two forward slashes (`safkeyring://`), not four. For details, see [Upgrading from Zowe Vx to Zowe V3](/docs/upgrade/upgrade-zowe-v3.md). | v3: Java 17 (all versions), Java 21 (≥ 3.3, tested by community member) | See the [Zowe compatibility matrix](https://www.zowe.org/compatibility) for the current status of each combination. |
+| **Zowe Application Framework (ZLUX / Desktop)** | Node.js | Node.js 18, 20, 22 or 24 | **Node.js 18, 20, 22 or 24** | The Zowe Desktop and many of its web-based applications are built on Node.js and require a 64-bit z/OS port of Node.js to function. **The Zowe Application Framework itself does not directly require Java.** |
+| **API Mediation Layer (API ML) v3** | Java | IBM Java SDK 17 or 21| **IBM Semeru Runtime Certified Edition for z/OS, Version 17** (or OpenJDK 17) <br /> Java 21 is supported in Zowe v3.2 and later releases.  | The API Mediation Layer, as a core Zowe component, requires a 64-bit Java Runtime Environment (JRE) or Java Development Kit (JDK) for z/OS. **The API Mediation Layer v3 itself does not directly require Node.js if running API ML without the app-server enabled.** |
 | **General Zowe Setup & Integration** | z/OSMF | Highly Recommended | Highly Recommended | While Zowe can operate in limited scenarios without z/OSMF, it is **highly recommended** for full functionality, robust security integrations (SAF roles, certificates), simplified certificate management, and leveraging many underlying z/OS services. Zowe is architected for seamless integration with z/OSMF across all its components. | 
  
 
@@ -29,8 +29,10 @@ Node.js is not required if using Docker instead of z/OS, or if running Zowe with
 #### Application server Node.js requirements
 
 The app-server component requires one of the following Node.js versions:
+  * v18.x
   * v20.x
-  * v22.x 
+  * v22.x
+  * v24.x
 
 #### Supported Node.js versions
 
@@ -64,8 +66,6 @@ You can obtain IBM SDK for Node.js - z/OS for free in one of the following ways:
 - Download PAX file format at [ibm.com/products/sdk-nodejs-compiler-zos](https://www.ibm.com/products/sdk-nodejs-compiler-zos). IBM defect Support is not available for this format.
 
 For more information, see the blog ["Options on how to obtain IBM Open Enterprise SDK for Node.js"](https://community.ibm.com/community/user/ibmz-and-linuxone/blogs/bruce-armstrong/2022/07/27/options-on-how-to-obtain-ibm-open-enterprise-sdk-f).
-
----
 
 ### Node.js Hardware and Software Prerequisites for Zowe
 
