@@ -46,7 +46,6 @@ Once the configuration is active, API ML exports OTLP-compliant packets to your 
                             "stringValue": "03.01.00"
                         }
                     },
-                    // Full command line used to launch Zowe
                     {
                         "key": "process.command_line",
                         "value": {
@@ -77,7 +76,6 @@ Once the configuration is active, API ML exports OTLP-compliant packets to your 
                             "stringValue": "IBM Semeru Runtime Certified Edition for z/OS"
                         }
                     },
-                    // For apiml, process.runtime.version is the version of the Java runtime
                     {
                         "key": "process.runtime.version",
                         "value": {

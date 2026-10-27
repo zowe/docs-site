@@ -1,6 +1,6 @@
 # Understanding API ML telemetry signals
 
-API Mediation Layer utilizes the three core OpenTelemetry signals to provide a complete picture of your mainframe gateway’s health and performance. By combining these signals, administrators can identify high-level symptoms, and also pinpoint root causes within a specific service or address space. The follow points describe how different signal types apply to API ML observability:
+API Mediation Layer utilizes the three core OpenTelemetry signals to provide a complete picture of the  health and performance of the Gateway. By combining these signals, administrators can identify high-level symptoms, and also pinpoint root causes within a specific service or address space. The follow points describe how different signal types apply to API ML observability:
 
 * **Metrics (The "How Much")**  
 Metrics are numerical representations of data measured over intervals of time. In the context of API ML, they are used to track system health, observe performance trends, and trigger automated alerts before issues impact end-users.
@@ -31,6 +31,6 @@ Logs are timestamped text records of discrete events. They provide the deep tech
 
 ## Next Steps
 
-* For a quick-start to configure API ML to collect observability data through OpenTelemetry, see [Quick-start configuration of API ML Observability](../quick-start-configuration-of-apiml-observability.md).
+* For a quick-start to configure API ML to collect observability data through OpenTelemetry, see [Quick-start configuration of API ML observability](../quick-start-configuration-of-apiml-observability.md).
 
-* For general information about configuration for  OpenTelemetry integration, automization of z/OS resource attribution, and architectural components for API ML observability, see [Configuring API ML Observability](../configuring-apiml-observability.md).
+* For general information about configuration for  OpenTelemetry integration, automization of z/OS resource attribution, and architectural components for API ML observability, see [Configuring API ML observability](../configuring-apiml-observability.md).
