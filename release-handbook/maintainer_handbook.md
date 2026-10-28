@@ -131,7 +131,7 @@ Homepage is composed of the following sections:
 - Components
   - Popular Resources
   - Explore Content
-  - Discover Your Path
+  - ~~Discover Your Path~~
   - Featured Topics
   - Downloadable Files
 - Footer
