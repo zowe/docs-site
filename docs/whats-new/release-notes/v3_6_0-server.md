@@ -10,6 +10,66 @@ See [New features and enhancements](#new-features-and-enhancements) for a full l
 
 Zowe Version 3.6.0 server components contain the enhancements that are described in the following topics.
 
+### Zowe installation and packaging
+
+- Expanded the example `zowe.yaml` configuration file with APIML modulith logging options, including feature-specific debug logging and file-only DEBUG/TRACE output, helping administrators troubleshoot APIML while reducing messages sent to the console or spool. ([#4913](https://github.com/zowe/zowe-install-packaging/pull/4913))
+- In high availability (HA) mode, Zowe now creates a merged YAML configuration file in the `workspace.env` directory for each instance, applies that instance’s overrides, and exposes the file path through `ZWE_HA_INSTANCE_CONFIG` so components can load the correct settings. ([#4759](https://github.com/zowe/zowe-install-packaging/pull/4759))
+- Added a property `zowe.network.allowedDomains` to control which domains are accepted in API URLs during Discovery Service onboarding. By default, the list includes external domains and HA LPAR hostnames but rejects URLs which use other domains. ([#4801](https://github.com/zowe/zowe-install-packaging/pull/4801))
+- Added a command `zwe validate zosmf jwt` to verify that z/OSMF JWT authentication works when Zowe is configured to use it. The check runs at startup by default and can be changed to a warning or disabled with `zowe.launchScript.startupChecks.zosmfjwt`. ([#4727](https://github.com/zowe/zowe-install-packaging/pull/4727))
+- Updated the example `zowe.yaml` file to document APIML logging levels (`quiet`, `info`, or `debug`), which let administrators control log verbosity globally or for individual APIML components. The default level is `info`. ([#4827](https://github.com/zowe/zowe-install-packaging/pull/4827))
+- Improved the handling of temporary files and directories to restrict unauthorized access. ([#4820](https://github.com/zowe/zowe-install-packaging/pull/4820))
+- Updated the sequence of workflows in PSWI. The reordered PSWI workflows now set up key rings and certificates then create and sign certificate requests and then load the signed certificate. ([#4854](https://github.com/zowe/zowe-install-packaging/pull/4854))
+- `zwe init certificate` now generates a random password when `password` or `caPassword` is at its default value. This enhancement is only for keystores. Keyring setup scenarios are unaffected. ([#4866](https://github.com/zowe/zowe-install-packaging/pull/4866))
+
+#### Zowe Launcher
+- Improved `CHANGELOG` automation to identify version headings with or without a leading `v` and generate Markdown links, making release notes easier to maintain. ([#231](https://github.com/zowe/launcher/pull/231))
+- Updated the `QuickJS` attribution and build example to reference `zowe/quickjs-portable`, keeping the source information in project notices accurate and consistent. ([#228](https://github.com/zowe/launcher/pull/228))
+- Updated the Launcher build to use the same `QuickJS` engine as `configmgr` from `zowe/quickjs-portable` and included its required `libbf` and `debugutil` sources, keeping the components aligned on the same version of the engine. ([#222](https://github.com/zowe/launcher/pull/222))
+- Replaced regex-based detection of the standard date prefix in the Launcher system messages with an internal routine, removing the regex library dependency while preserving message filtering. ([#206](https://github.com/zowe/launcher/pull/206))
+- Set the Launcher STC’s default umask to `0022`, so newly created files use `644` permissions and directories use `755`, restricting write access to their owner. ([#212](https://github.com/zowe/launcher/pull/212))
+
+### Zowe Application Framework
+
+#### Zlux Editor
+-	Added element IDs to all UI components (dialogs, menu bar, tabs, nav, file explorer) for Selenium test automation. ([#387](https://github.com/zowe/zlux-editor/pull/387))
+-	Added an enhancement so that the Editor now saves your open tabs and restores them after you reopen the Editor, so you can resume where you left off. ([#386](https://github.com/zowe/zlux-editor/pull/386))
+-	Enhanced the Session picker dialog on startup to let users choose which session to restore, create new sessions, or start empty. ([#386](https://github.com/zowe/zlux-editor/pull/386))
+-	Added support for multiple sessions. Users can now organize tabs by project or task and switch between them via Session menu. ([#386](https://github.com/zowe/zlux-editor/pull/386))
+-	Enhanced the editor to back up each session before saving, so your open tabs can be restored if the session file corrupts. ([#386](https://github.com/zowe/zlux-editor/pull/386))
+-	Enhanced the editor so that if a session file is corrupted, the editor can restore your open tabs from a backup file. ([#386](https://github.com/zowe/zlux-editor/pull/386))
+-	Added an enhancement so that you can quickly open file paths, datasets, and URLs from editor text with Ctrl+Click (Cmd+Click on macOS). ([#373](https://github.com/zowe/zlux-editor/pull/373))
+-	Added an enhancement so that AT-TLS files highlight automatically, with hover help for keywords and referenced rules. ([#380](https://github.com/zowe/zlux-editor/pull/380))
+-	Added an enhancement so that you can now navigate AT-TLS policies faster by going from a reference to its declaration or finding all its references. ([#380](https://github.com/zowe/zlux-editor/pull/380))
+
+
+### Zlux App Server
+-	Added the optional `requiresRbac` setting to dataservice definitions, so services can return `403` when `RBAC` is disabled. ([#419](https://github.com/zowe/zlux-app-server/pull/419))
+-	Added `components.app-server.node.mediationLayer.server.userid` and `.password`, which default to the Discovery service `apiml.discovery` credentials. These are required to register to the API Mediation Layer when `zowe.verifyCertificates` is `DISABLED`.
+-	Plug-in preferences are copied into instances without shell parsing, reducing command-injection risk. ([#378](https://github.com/zowe/zlux-app-server/pull/378))
+-	Plug-ins now provide launch-menu folders that appear automatically in the desktop, including in development environments. ([#695](https://github.com/zowe/zlux-app-manager/pull/695))
+- Administrators can now configure the server to register statically with API Mediation Layer instead of Eureka, supporting deployments that require static registration. To opt-in to this behavior, set YAML property `components.app-server.node.mediationLayer.static` to `true`. ([#358](https://github.com/zowe/zlux-app-server/pull/358))
+
+
+### Zlux Server Framework
+
+- Enhancement: RBAC can now be used on for WebSocket dataservices, which will use the 'GET' method for SAF profiles. ([#710](https://github.com/zowe/zlux-server-framework/pull/710))
+- Enhancement: Added RBAC support for WebSocket dataservices so that administrators can control who can access them. ([#704](https://github.com/zowe/zlux-server-framework/pull/704))
+- Enhancement: Added authenticated access to the agent hostname so administrators can securely configure plugins to connect to the correct host. ([#703](https://github.com/zowe/zlux-server-framework/pull/703))
+- Enhancement: Added optional per-component host allowlists in zowe.yaml so administrators can restrict TN3270 and VT connections to approved hosts. ([#702](https://github.com/zowe/zlux-server-framework/pull/702))
+
+
+### Zowe Common C
+
+- Bugfix: Fixed z/OS IPv4 host lookups to handle failures and empty address lists safely, preventing invalid memory access and improving socket trace diagnostics.
+-	Bugfix: Fixed dataset cleanup so callers can safely release entries early without risking memory corruption on z/OS or freeing those entries again.
+- Bugfix: `tlsInit()` now disables GSKit's session ID/ticket cache (`GSK_V3_SIDCACHE_SIZE=0`). Without this, a TLS 1.3 client on some z/OS releases sends a `ClientHello` that certain TLS 1.3 peers (e.g. api-layer on Java 17) mishandle, causing subsequent reads to fail with an SSL protocol violation. For example, `ZSS` used to fail to fetch the `JWKS` from the APIML Gateway.
+
+
+
+
+
+
+
 ### Zowe API Mediation Layer
 
 :::warning Breaking changes
@@ -45,6 +105,71 @@ For required configuration changes and mitigation steps, see [API ML v3.6 upgrad
 ## Bug fixes
 
 Zowe server Version 3.6.0 contains the bug fixes that are described in the following topics.
+
+### Zowe installation and packaging
+
+- Updated `zwe` to create command log files with `0640` permissions, allowing the owner to read and write and the group to read, while preventing access by others. ([#4807](https://github.com/zowe/zowe-install-packaging/pull/4807))
+- Updated `zwe validate certificate` to load the SAF keyring URL handlers on IBM Java 17 and 21, preventing `MalformedURLException: unknown protocol: safkeyring` when validating certificates stored in SAF keyrings. ([#4795](https://github.com/zowe/zowe-install-packaging/pull/4795))
+- Fixed the zwe certificate, migrate, and configuration commands to no longer expose passwords in process arguments, console output, or logs. ([#4883](https://github.com/zowe/zowe-install-packaging/pull/4883))
+- Improved RACF sample job security permissions to protect Zowe datasets from unauthorized access. ([#4879](https://github.com/zowe/zowe-install-packaging/pull/4879))
+
+#### Zowe Launcher
+- Fixed Launcher startup to load `zowe.sysMessages` only after configuration validation, so unvalidated message settings are not applied. ([#208](https://github.com/zowe/launcher/pull/208))
+- Added a bounds check when building the component list, preventing names from being truncated and displayed incorrectly after the list exceeds its buffer capacity. ([#195](https://github.com/zowe/launcher/pull/195))
+
+
+### Zowe Application Framework
+
+#### Zlux Editor
+-	Fixed Editor tabs to show the correct file content when you switch between them. ([#410](https://github.com/zowe/zlux-editor/pull/410))
+-	Improved editor security by removing runtime code evaluation from menu actions. ([#401](https://github.com/zowe/zlux-editor/pull/401))
+-	Fixed LSP settings to reject unencrypted WebSocket URLs, helping protect language-server traffic. ([#400](https://github.com/zowe/zlux-editor/pull/400))
+-	Fixed `Open in new tab` and `Copy permalink` to open the intended file or dataset, even when its name contains special characters. ([#396](https://github.com/zowe/zlux-editor/pull/396))
+-	Removed internal hostnames from the editor bundle, protecting details of the internal infrastructure from exposure. ([#398](https://github.com/zowe/zlux-editor/pull/398))
+-	Prevented editor URL formatting from disrupting other zLUX plugins. ([#397](https://github.com/zowe/zlux-editor/pull/397))
+-	Fixed overlapping dialog input labels, making fields easier to read. ([#387](https://github.com/zowe/zlux-editor/pull/387))
+
+#### Zlux App Manager
+
+##### Security
+-	Removed the vulnerable browser app to prevent its proxy from making unauthorized requests to internal services. ([#722](https://github.com/zowe/zlux-app-manager/pull/722))
+-	Fixed the iframe bridge to check each message’s sender and origin, blocking untrusted windows from accessing Zowe APIs. ([#727](https://github.com/zowe/zlux-app-manager/pull/727))
+-	Fixed iframe message checks to accept messages only from the desktop and send them only to its origin, protecting Zowe APIs from untrusted windows. ([#732](https://github.com/zowe/zlux-app-manager/pull/732))
+-	Fixed iframe mode checks so plugins hosted on another origin can load without browser errors. ([#732](https://github.com/zowe/zlux-app-manager/pull/732))
+- Fixed iframe applications to be framed with a restricted capability set. The applications cannot redirect the desktop or see its full URL but retain the capabilities they need. ([#733](https://github.com/zowe/zlux-app-manager/pull/733))
+- 
+##### Allowlists and registration validation
+- Security: The browser-preferences dataservice now only sets an allowlist of preference cookies (language and locale). Preference cookies are now set with `secure` (over HTTPS) and `sameSite=strict`, and oversized values are rejected. ([#729](https://github.com/zowe/zlux-app-manager/pull/729))
+
+
+### Zlux App Server
+-	Startup logs no longer reveal the names of sensitive environment variables. ([#390](https://github.com/zowe/zlux-app-server/pull/390))
+-	TN3270 terminals now default to port 992 with TLS, enabling secure connections without manual configuration. ([#387](https://github.com/zowe/zlux-app-server/pull/387))
+
+##### Security
+-	APIML registration values can no longer trigger unintended shell commands during substitution. ([#403](https://github.com/zowe/zlux-app-server/pull/403))
+-	Startup logs no longer expose passwords, passphrases, or secrets from configuration or sensitive command-line arguments. ([#399](https://github.com/zowe/zlux-app-server/pull/399))
+
+### Zlux Server Framework
+- Fixed an authentication gap that could allow unauthenticated access to external plugin services. ([#715](https://github.com/zowe/zlux-server-framework/pull/715))
+- Removed the unauthenticated `/server/proxies` endpoint, which has been replaced with the `/server/environment` values. This fixed an information exposure that allowed unauthenticated users to retrieve the ZSS hostname and port. ([#703](https://github.com/zowe/zlux-server-framework/pull/703))
+
+#### Security
+- Improved how the server derives its internal secrets, so that unpredictable values are always used. ([#718](https://github.com/zowe/zlux-server-framework/pull/718))
+- Kept insecure, development-only authentication plugins such as `trivial-auth` and `internal-auth` authentication  out of production distributions to reduce exposure to known vulnerabilities. ([#700](https://github.com/zowe/zlux-server-framework/pull/700))
+- Removed the obsolete encryption wrapper so users can migrate to supported `Node.js` crypto APIs and avoid compatibility issues with newer `Node.js` versions. ([#705](https://github.com/zowe/zlux-server-framework/pull/705))
+
+
+
+
+
+
+
+
+
+
+
+
 
 ### Zowe API Mediation Layer
 
