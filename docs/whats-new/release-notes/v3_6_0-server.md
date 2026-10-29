@@ -4,7 +4,7 @@ Welcome to the Zowe server 3.6.0 release!
 
 See [New features and enhancements](#new-features-and-enhancements) for a full list of changes to the functionality. See [Bug fixes](#bug-fixes) for a list of issues addressed in this release.
 
-For upgrade instructions, see [Upgrading from Zowe 3.5.x to 3.6.x](../../upgrade/upgrading-zowe.md#upgrading-from-zowe-v35x-to-v36x.
+For upgrade instructions, see [Upgrading from Zowe 3.5.x to 3.6.x](../../upgrade/upgrading-zowe.md#upgrading-from-zowe-v35x-to-v36x).
 
 **Download v3.6.0 build**: Want to try new features as soon as possible? You can download the v3.6.0 build from [Zowe.org](https://www.zowe.org/download.html).
 
