@@ -1,6 +1,6 @@
-# Zowe server 3.6.0 (October 2026)
+# Zowe server 3.6.0 (November 2026)
 
-Welcome to the Zowe server Version 3.6.0 release!
+Welcome to the Zowe server Version 3.6.0 release for server components!
 
 See [New features and enhancements](#new-features-and-enhancements) for a full list of changes to the functionality. See [Bug fixes](#bug-fixes) for a list of issues addressed in this release.
 
@@ -8,7 +8,7 @@ See [New features and enhancements](#new-features-and-enhancements) for a full l
 
 ## New features and enhancements
 
-Zowe server Version 3.6.0 contains the enhancements that are described in the following topics.
+Zowe Version 3.6.0 server components contain the enhancements that are described in the following topics.
 
 ### Zowe API Mediation Layer
 
