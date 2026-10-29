@@ -1,6 +1,6 @@
 # Sample output from API ML OpenTelemetry
 
-Once the configuration is active, API ML exports OTLP-compliant packets to your collector. The result is a context-aware telemetry stream where every signal (metric, trace, or log) is enriched with resource attributes. These attributes allow you to filter and group performance data by infrastructure, application identity, or specific process details.
+Once the configuration is active, API ML exports packets that comply with the OpenTelemetry Protocol (OTLP) to your collector. The result is a context-aware telemetry stream where every signal (metric, trace, or log) is enriched with resource attributes. These attributes allow you to filter and group performance data by infrastructure, application identity, or specific process details.
 
 **Sample Output:**
 
@@ -151,6 +151,22 @@ Once the configuration is active, API ML exports OTLP-compliant packets to your 
 ```
 
 API ML exports OTLP-compliant telemetry signals where each payload is enriched with namespaced resource attributes. These attributes are transmitted as a flat-map structure, and adhere to OpenTelemetry Semantic Conventions — using dot-notation prefixes to establish logical hierarchies. These hierarchies facilitate analysis, filtering, and aggregation within an observability backend.
+
+Each attribute name is a single string. The dot-separated prefix groups related attributes by theme, so the prefix before the first dot shows the category of an attribute.
+
+**Example:**
+```
+{
+  "service.name": "zowe-apiml",
+  "service.namespace": "sysplex-a",
+  "service.instance.id": "localhost:gateway:10010",
+  "host.name": "mylpar.your.domain",
+  "mainframe.lpar.name": "LPAR1",
+  "zos.smf.id": "SYS1",
+  "zos.sysplex.name": "SYSPLEXA"
+}
+```
+The attributes are not nested objects. Each name is one key, and the prefixes group them into `service.*`, `host.*`, `mainframe.*`, and `zos.*`. Because of this grouping, you can filter or aggregate in your observability backend by a prefix (for example, all `zos.*` attributes) or by a full attribute name (for example, `zos.sysplex.name`).
 
 :::note
 For a full list of OTel z/OS attributes for z/OS integration, see the _OpenTelemetry Semanic Conventions_ for [z/OS software](https://opentelemetry.io/docs/specs/semconv/resource/zos/).

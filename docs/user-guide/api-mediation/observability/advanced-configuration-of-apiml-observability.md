@@ -13,7 +13,7 @@ For a simplified setup that relies on automatic system discovery, see [Quick-sta
 
 When defining your exporter endpoint, ensure that the chosen protocol matches your OTel Collector's configuration. The exporter protocol (`telemetry.exporter.protocol`) can be set to either `http/protobuf` (typically port `4318`) or `grpc` (typically port `4317`). If you do not specify an endpoint, the exporter defaults to `http://localhost:4318` using `http/protobuf`.
 
-If you configure a secure HTTPS collector endpoint (for example, `https://otel-collector.your.domain:4318`), the OTLP exporter automatically reuses the API ML SSLContext. By using the API ML SSLContext, the exporter uses the same key and trust stores as the rest of API ML. Note the requirement that the collector must trust the API ML certificate chain and vice versa.
+If you configure a secure HTTPS collector endpoint (for example, `https://otel-collector.your.domain:4318`), the exporter for the OpenTelemetry Protocol (OTLP) automatically reuses the API ML SSLContext. By using the API ML SSLContext, the exporter uses the same key and trust stores as the rest of API ML. Note the requirement that the collector must trust the API ML certificate chain and vice versa.
 
 Review the following attributes and their corresponding definitions in the full zowe.yaml configuration for API ML observability.
 
