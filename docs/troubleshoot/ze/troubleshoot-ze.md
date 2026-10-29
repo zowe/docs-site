@@ -209,7 +209,7 @@ These troubleshooting commands are designed to provide users with tools to quick
 
 **Symptom**: Error message `RC 3: Permission denied` displays when deploying to the server.
 
-**Solution**: Specify a server path that the user has sufficient permissions for. See [System requirements](./getting-started/ze-configuring-zowe-remote-ssh.md#system-requirements) for more information on permissions.
+**Solution**: Specify a server path that the user has sufficient permissions for. See [System requirements](../../getting-started/ze-configuring-zowe-remote-ssh.md#system-requirements) for more information on permissions.
 
 ## Error message with extension schema files
 
