@@ -38,7 +38,7 @@ For required configuration changes and mitigation steps, see [API ML v3.6 upgrad
 * OIDC validation now returns the token claims. ([#4641](https://github.com/zowe/api-layer/issues/4641))
 * Added support for Java 25 in API ML v3.x.x. ([#4728](https://github.com/zowe/api-layer/issues/4728))
 * Allow both environment variables and zowe.yaml mapped properties to influence the domain allow list. ([#5006](https://github.com/zowe/api-layer/issues/5006))
-* Multiple public keys can now be used for signature verification. ([#5015](https://github.com/zowe/api-layer/issues/5015))
+* Multiple public keys can now be used for signature verification of PATs. ([#5015](https://github.com/zowe/api-layer/issues/5015))
 * Added a z/OSMF JWT preflight check. ([#4531](https://github.com/zowe/api-layer/issues/4531))
 * Added OpenTelemetry log signals for invalid authentication attempts. ([#4551](https://github.com/zowe/api-layer/issues/4551))
 
