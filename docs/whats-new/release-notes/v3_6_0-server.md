@@ -110,7 +110,6 @@ Zowe server Version 3.6.0 contains the bug fixes that are described in the follo
 * Stale client connections are now closed when the z/OS TCP/IP stack restarts. ([#4792](https://github.com/zowe/api-layer/issues/4792))
 * The Eureka wrapper now calls the correct method. ([#4952](https://github.com/zowe/api-layer/issues/4952))
 * Added a check for null entries in the Eureka properties. ([#4829](https://github.com/zowe/api-layer/issues/4829))
-* Added a default address constructor. ([#4912](https://github.com/zowe/api-layer/issues/4912))
 * The Eureka client now falls back to native IP address discovery when the IP address is not set. ([#4873](https://github.com/zowe/api-layer/issues/4873))
 * Fixed a deadlock that could occur during static registration of services. ([#4657](https://github.com/zowe/api-layer/issues/4657))
 * The shared connection manager is now used. ([#4883](https://github.com/zowe/api-layer/issues/4883))
