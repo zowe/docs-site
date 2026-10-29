@@ -21,6 +21,8 @@ The following changes in API ML 3.6.0 can affect existing deployments. Review ea
 * The `apiml.service.allowEncodedSlashes` property has been removed in favor of `enableStrictUrlValidation`. ([#4830](https://github.com/zowe/api-layer/issues/4830))
 * Strict URL validation is now kept as the default behavior. ([#4812](https://github.com/zowe/api-layer/issues/4812))
 
+For required configuration changes and mitigation steps, see [API ML v3.6 upgrade and security enhancements](../api-ml-v3.6-upgrade-and-security-enhancements.md). For all breaking changes in Zowe v3, see [Breaking changes](../breaking-changes-v3.md).
+
 :::
 
 #### New features
