@@ -359,3 +359,32 @@ This is quite a complex area and you should ask your systems programmer for advi
 
 class profile SDSF ISF.CONNECT.\*\* (G)
 
+## Corrupted data in the spool output of Zowe jobs with older Java 21 releases
+
+The console spool output from Zowe Java processes in `SYSPRINT of the Zowe jobs on z/OS shows garbled or unreadable characters when Zowe runs with Version 21.0.10.0 or older of the IBM Semeru Runtime Certified Edition for z/OS.
+
+**Cause:**
+
+Applications that write UTF-8 encoded bytes with `System.out.write()` or `System.err.write()` produce garbled terminal output on z/OS. This affects the console output of the Java-based Zowe components. IBM fixed this behavior in IBM Semeru Runtime Certified Edition for z/OS version 21.0.10.1 (APAR IJ57789). The fix adds character conversion to the output of `System.out` and `System.err`.
+
+**Solution:**
+
+Use Java 21 version 21.0.10.1 or later with Zowe 3.6.0 and later.
+
+**Workaround:**
+
+If you cannot update Java, set the console encoding in the Java command parameters in `zowe.yaml` by using the `zowe.environments.JAVA_OPTS` property:
+
+```yaml
+zowe:
+  environments:
+    JAVA_OPTS: "-Dlogging.charset.console=IBM-1047"
+```
+
+If `JAVA_OPTS` is already set in your configuration, append the `-Dconsole.encoding` option to the existing value instead of replacing it. Use another charset if the encoding of your job output is different from `IBM-1047`.
+
+After you update `zowe.yaml`, restart Zowe.
+
+:::caution Important:
+This workaround might stop working correctly after you update Java 21 to the latest release. The fix in version 21.0.10.1 changes how output is converted, and an explicitly set encoding can change the behavior of applications that write bytes encoded with a charset different from `System.out.charset()` or `System.err.charset()`. Remove the `-Dconsole.encoding` option when you update Java.
+:::
