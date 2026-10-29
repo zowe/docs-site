@@ -28,8 +28,6 @@ Before starting the upgrade, ensure the following base system requirements are m
 *   **Node.js**  
     Ensure that the Zowe YAML parameter `node.home` value is a **Node.js 18, 20, 22 or 24** home location. Node 16 and earlier versions are not supported.
 
----
-
 ## Preparing Your Current Zowe Instance
 
 To ensure a smooth transition to Zowe v3.6, you must first resolve any configuration changes required by your current version. If you are running an earlier v2 version of Zowe, you must follow all of the procedures that correspond to your current version, plus each of the later Zowe versions up to and including v2.18.x. Apply the necessary configurations before proceeding with the v3.6 upgrade. 
