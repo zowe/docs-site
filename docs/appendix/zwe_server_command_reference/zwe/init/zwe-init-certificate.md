@@ -13,11 +13,7 @@ be written back to your Zowe YAML configuration file:
 
 - `zowe.certificate` based on your `zowe.setup.certificate` configuration.
 - `zowe.setup.security.product` based on the detected External Security Manager
-- `zowe.setup.certificate.pkcs12.password` and `zowe.setup.certificate.pkcs12.caPassword`. If these parameters are left at their default values (`password` and `local_ca_password`), the command generates random passwords and saves them to the file. This applies to keystore (`PKCS12`) scenarios only. Keyring scenarios are not affected.
-
- :::note
- If you do not use `--update-config`, any randomly generated PKCS12 passwords are only displayed in the command output and must be saved manually.
- :::
+- `zowe.setup.certificate.pkcs12.password` and `zowe.setup.certificate.pkcs12.caPassword`. For keystore (`PKCS12`) scenarios only, if these parameters are left at their default values (`password` and `local_ca_password`), the command generates random passwords. Keyring scenarios are not affected. With `--update-config`, the command saves the generated passwords to the file. Without `--update-config`, the command displays the generated passwords once in its output, and the system programmer must save them. For details, see the PKCS12 certificate notes later in this topic.
 
 These Zowe YAML configurations showing with sample values are used:
 
@@ -125,19 +121,15 @@ zOSMF:
   be the default owner of keystore directory.
 - You can also define `name`, `password`, `caAlias` and `caPassword` under
   `zowe.setup.certificate.pkcs12` to customized keystore and truststore. These
-  configurations are optional. If `password` or `caPassword` is left at its
-  default value (`password` and `local_ca_password`), a random password is
-  generated for the keystore instead. With `--update-config` the generated
-  password is written to your Zowe YAML configuration file; without it, the
-  password is only shown in the command output and must be saved manually.
-  This applies to keystore (`PKCS12`) scenarios only. Keyring scenarios are not
-  affected.
+  configurations are optional. For keystore (`PKCS12`) scenarios only, if `password` or `caPassword` is left at its
+  default value (`password` and `local_ca_password`), the command generates a random password for the keystore instead.
+  - If you run the command with `--update-config`, the command writes the generated password to your `zowe.yaml` configuration file. No action is needed.
+  - If you run the command without `--update-config`, the command displays the generated password once in its output. As the system programmer, you must save the generated password and add the password to your `zowe.yaml` yourself, because the keystore cannot be opened without it.
 
-  :::caution
-  Automation that relies on the literal default password (`password` or
-  `local_ca_password`) to open the keystore must be updated, because the
-  generated keystore no longer uses the default values.
-  :::
+  **Warning:**   
+  If you have scripts or automation that use the literal default password (`password` or
+  `local_ca_password`) to open the keystore, the automation owner must update them to use the generated password.
+  
 - Define `zowe.setup.certificate.pkcs12.import.keystore` if you already acquired
   certificate from other CA, stored them in PKCS12 format, and want to import
   into Zowe PKCS12 keystore.
