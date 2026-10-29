@@ -126,7 +126,6 @@ Zowe server Version 3.6.0 contains the bug fixes that are described in the follo
 * Fixed the API Catalog Vite dev server and added HTTPS support. ([#4851](https://github.com/zowe/api-layer/issues/4851))
 * Ensured safe behavior when using `BASE` within Vite. ([#4788](https://github.com/zowe/api-layer/issues/4788))
 * Removed the tile fields from the onboarding wizard in the API Catalog UI. ([#4987](https://github.com/zowe/api-layer/issues/4987))
-* Fixed the validation during generation of the ESM command that defines a distributed identity mapping. ([#5026](https://github.com/zowe/api-layer/issues/5026))
 * Added support for wildcards in the SAN during certificate validation by the certificate analyzer. ([#4676](https://github.com/zowe/api-layer/issues/4676))
 * Added support for Java 21 by removing the encoding setting. ([#4659](https://github.com/zowe/api-layer/issues/4659))
 * Added a check for whether a directory exists. ([#4615](https://github.com/zowe/api-layer/issues/4615))
