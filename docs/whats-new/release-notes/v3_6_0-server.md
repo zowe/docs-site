@@ -76,7 +76,7 @@ Zowe Version 3.6.0 server components contain the enhancements that are described
 
 -	Bugfix: Fixed configmgr -script to report top-level script errors and exit with ZCFG_EVAL_FAILURE instead of 0, so automation can detect failed scripts rather than treating them as successful. ([#](https://github.com/zowe/zowe-common-c/issues/585)) ([#](https://github.com/zowe/zowe-install-packaging/issues/3639))
 - Chore:  the configmgr-rexx build (ZWERXCFG) now uses the same QuickJS as configmgr. ([#]())
-- 
+
 - Bugfix: Fixed character translation in Open XL builds to prevent crashes and unexpected behavior caused by incorrect register handling. ([#](https://github.com/zowe/zowe-common-c/issues/644))
 -	Bugfix: Fixed enum and const validation messages to show the correct expected type, helping users diagnose configuration errors instead of being misled by “integer.” ([#](https://github.com/zowe/zowe-common-c/issues/563))
 -	Bugfix: Fixed cfgSetConfigPath() so a new configuration path replaces the previous one, preventing stale settings from being merged and array values from being duplicated when configuration loads. ([#](https://github.com/zowe/zowe-common-c/issues/571))
