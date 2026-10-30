@@ -30,7 +30,7 @@ Zowe Version 3.6.0 server components contain the enhancements that are described
 
 ### Zowe Application Framework
 
-#### Zlux Editor
+### Zlux Editor
 -	Added element IDs to all UI components (dialogs, menu bar, tabs, nav, file explorer) for Selenium test automation. ([#387](https://github.com/zowe/zlux-editor/pull/387))
 -	Added an enhancement so that the Editor now saves your open tabs and restores them after you reopen the Editor, so you can resume where you left off. ([#386](https://github.com/zowe/zlux-editor/pull/386))
 -	Enhanced the Session picker dialog on startup to let users choose which session to restore, create new sessions, or start empty. ([#386](https://github.com/zowe/zlux-editor/pull/386))
@@ -60,60 +60,75 @@ Zowe Version 3.6.0 server components contain the enhancements that are described
 
 ### Zowe Common C
 
-- Bugfix: Fixed z/OS IPv4 host lookups to handle failures and empty address lists safely, preventing invalid memory access and improving socket trace diagnostics.
--	Bugfix: Fixed dataset cleanup so callers can safely release entries early without risking memory corruption on z/OS or freeing those entries again.
-- Bugfix: `tlsInit()` now disables GSKit's session ID/ticket cache (`GSK_V3_SIDCACHE_SIZE=0`). Without this, a TLS 1.3 client on some z/OS releases sends a `ClientHello` that certain TLS 1.3 peers (e.g. api-layer on Java 17) mishandle, causing subsequent reads to fail with an SSL protocol violation. For example, `ZSS` failed to fetch the `JWKS` from the APIML Gateway.
-- Bugfix: Fixed the overlong-key warning on z/OS so administrators can identify and correct the YAML key that exceeded the limit.
-- Bugfix: Fixed Base64 uploads to return an HTTP error when memory is unavailable, preventing memory corruption on z/OS and clearly reporting the failure.
-- Bugfix: Fixed script evaluation to report “cannot allocate the evaluation heap” when memory runs out, preventing crashes and memory corruption.
-- Bugfix: Fixed configmgr startup to report “cannot allocate the logging context” and exit cleanly when memory is unavailable, instead of crashing or corrupting memory.
-- Chore: configmgr and the REXX configmgr build take QuickJS from zowe/quickjs-portable staging, the Open Mainframe Project home of the z/OS port, instead of a personal fork; the configmgr build scripts now label the engine 2024-01-13, which is what they have built since March, instead of 2021-03-27.
--	Bugfix: Fixed ZSS startup diagnostics for ICSF random-number failures to report meaningful error codes and log the CSFRNG error details, helping administrators identify issues such as missing CSFRNG access or why the server failed to start.
--	Bugfix: Fixed Base64 uploads to correctly size decode buffers for large payloads, preventing buffer overruns that could corrupt memory or crash the server.
--	Bugfix: Fixed the Linux configmgr build so developers can compile and run the CLI again.
--	Bugfix: Fixed component-level logging on Linux so configured log levels affect only the intended component and its children, preventing unrelated Zowe components from producing excessive trace logs.
--	Bugfix: Fixed configmgr -script to report top-level script errors and exit with ZCFG_EVAL_FAILURE instead of 0, so automation can detect failed scripts rather than treating them as successful.
-- Chore:  the configmgr-rexx build (ZWERXCFG) now uses the same QuickJS as configmgr.
-- Bugfix: Fixed character translation in Open XL builds to prevent crashes and unexpected behavior caused by incorrect register handling.
--	Bugfix: Fixed enum and const validation messages to show the correct expected type, helping users diagnose configuration errors instead of being misled by “integer.”
--	Bugfix: Fixed cfgSetConfigPath() so a new configuration path replaces the previous one, preventing stale settings from being merged and array values from being duplicated when configuration loads.
--	Bugfix: Fixed embedded JavaScript startup on z/OS to require key 8 problem state and reject SRB, cross-memory, or lock-held callers, reporting setup failures instead of proceeding with an invalid runtime.
--	Bugfix: Fixed embedded JavaScript console.log() to print long messages without truncation, use less memory for typical short messages, and raise an out-of-memory error if a large-message buffer cannot be allocated.
--	Bugfix: Fixed SHA-256 hashing through ICSF so applications can generate SHA-256 digests instead of failing with an invalid rule-array error.
--	Bugfix: Fixed ICSF digest buffer sizing so SHA-384 and SHA-512 hashes can be generated without buffer overflows or memory corruption.
--	Enhancement: Added SHA-3 support to the ICSF digest wrapper, enabling applications to calculate SHA3-224, SHA3-256, SHA3-384, and SHA3-512 digests.
--	Bugfix: Fixed logging component-ID traversal to prevent an out-of-bounds memory read on every call on little-endian systems, avoiding undefined behavior.
--	Bugfix: Fixed this non-z/OS linking failure by implementing the missing POSIX inode and device-ID accessors and the Windows device-ID accessor, allowing file-identity operations such as ETag generation to link successfully.
-- Bugfix: directoryMakeDirectoryRecursive() now publishes the required size of its path-out buffer as USS_MKDIR_PATH_BUFFER_SIZE and rejects a messageLength below it, returning -1 before anything is created.
--	Bugfix: Fixed recursive directory creation to support valid USS paths up to 1,023 characters and reject only longer paths, preventing the buffer overrun and 0C4 ABEND that occurred above 255 characters.
--	Enhancement: utils.c gains bounded string helpers strcpySafe, strncpySafe, strcatSafe, strncatSafe and strlenSafe. They follow the argument shape of the C11 Annex K _s functions, so each buffer is followed immediately by its own size, treat that size as the size of the buffer, always null-terminate, and return -1 when the destination was too small to hold the whole result. They are deliberately not named _s: Annex K is optional, z/OS does not provide it, those identifiers are reserved for it, and these do not implement its semantics (constraint handlers, errno_t, rsize_t).
--	Bugfix: Previously, during recursive directory copying or deletion, the program would follow symbolic links to operate on the actual files they pointed to; this has been changed so that only the symbolic links themselves are copied or deleted.
--	Bugfix: Fixed a buffer overflow issue in directory-related APIs that, in rare cases, caused incorrect directory listing.
--	Bugfix: Fixed duplicate YAML key handling so configmgr and the launcher use the same configuration: the first value is kept with a warning, preventing silent value changes or template-evaluation failures.
--	Bugfix: Fixed configmgr to run pending JavaScript signal handlers, timers, and Promise jobs after script evaluation, enabling graceful SIGTERM shutdown without changing synchronous scripts.
--	Bugfix: Fixed URI parsing to return HTTP 414 for oversized requests, preventing buffer overflows and giving clients a clear error.
--	Bugfix: Fixed XML parsing and error reporting to safely handle long messages, excessive nesting, and EOF in comments, preventing buffer overflows, out-of-bounds access, and crashes.
--	Enhancement: made zowe-common-c compatible with clang/llvm on z/OS and Linux.
--	Enhancement: Kept configmgr validate output concise by showing JSON debug details only when tracing is enabled.
--	Bugfix: Fixed configmgr checks for schema and configuration paths so missing, empty, or invalid inputs report errors instead of causing an ABEND.
--	Enhancement: Added active PC caller tracking so termination rejects new calls, waits for existing callers before freeing server resources, and reports the caller count to prevent ABENDs during shutdown.
--	Bugfix: Fixed zosResolveSymbol() to read only the specified symbol-name length, preventing ABENDs caused by overreading.
--	Bugfix: Fixed 64-bit ZSS recovery so service-handler ABENDs are logged as averted, keeping the server process running instead of crashing.
--	Bugfix: Fixed z/OS /unixfile target-encoding selection to follow the caller-specified or file-tagged source CCSID, preserving non-Latin-1 characters by returning UTF-8 for multibyte sources while retaining ISO-8859-1 for single-byte sources.
--	Enhancement: Added isMultiByteCCSID() on z/OS, Linux, and AIX so file serving can detect multibyte CCSIDs and use UTF-8 for those files, preventing character corruption while preserving existing single-byte behavior.
--	Enhancement: Added parseEncodingValue() on z/OS, Linux, and AIX so callers can provide charset names or decimal CCSIDs, request raw-byte handling with the binary sentinel value, and detect unrecognized inputs.
--	Enhancement: Added IANA-listed IBM-NNNN codepages and the IBM1047 and IBM-819 (ISO-8859-1) aliases to charset lookup, and made auto valid for sourceEncoding and targetEncoding so callers can use more IBM encodings or explicitly select the existing automatic defaults.
-- Enhancement: Added independent sourceEncoding and targetEncoding options to /unixfile requests, so callers can override either value, use the tagged or native source CCSID and automatic web target by default or with auto, stream raw bytes with binary, and keep using legacy aliases.
--	Bugfix: Fixed /unixfile charset conversion so multibyte characters are handled across reads, unmappable characters are substituted instead of aborting, and ISO-8859-1 files no longer produce empty or truncated responses on z/OS.
--	Bugfix: Fixed /unixfile charset handling, including Open XL routing, so unsupported forced conversions return HTTP 400 before the response starts, unconvertible tagged files fall back to raw bytes with a warning, and supported streaming conversions return complete data without truncation.
--	Bugfix: Fixed Open XL (ibm-clang64) charset conversion so text- and mixed-conversion file downloads return complete, correct contents, including multibyte and streamed data, with checksums matching the source files.
--	Enhancement: Added a new function cmsTestAuth2 so core services can test any SAF authorization level in XMEM and corrected the ALTER level value so checks use the proper permission.
--	Enhancement: Added support for STRICT and NONSTRICT mode in TLS HTTP client.
--	Bugfix: Fixed this CSI memory leak and entry-buffer sizing issue so repeated dataset searches release allocated memory correctly and return entries without memory-management errors.
-- Bugfix: Fixed JSON responses being truncated by unmappable characters, allowing output to continue and keeping the response valid.
+- Bugfix: Fixed z/OS IPv4 host lookups to handle failures and empty address lists safely, preventing invalid memory access and improving socket trace diagnostics. ([#](https://github.com/zowe/zowe-common-c/pull/548))
+-	Bugfix: Fixed dataset cleanup so callers can safely release entries early without risking memory corruption on z/OS or freeing those entries again. ([#](https://github.com/zowe/zowe-common-c/issues/721))
+- Bugfix: `tlsInit()` now disables GSKit's session ID/ticket cache (`GSK_V3_SIDCACHE_SIZE=0`). Without this, a TLS 1.3 client on some z/OS releases sends a `ClientHello` that certain TLS 1.3 peers (e.g. api-layer on Java 17) mishandle, causing subsequent reads to fail with an SSL protocol violation. For example, `ZSS` failed to fetch the `JWKS` from the APIML Gateway. ([#]())
+- Bugfix: Fixed the overlong-key warning on z/OS so administrators can identify and correct the YAML key that exceeded the limit. ([#](https://github.com/zowe/zowe-common-c/issues/671))
+- Bugfix: Fixed Base64 uploads to return an HTTP error when memory is unavailable, preventing memory corruption on z/OS and clearly reporting the failure. ([#](https://github.com/zowe/zowe-common-c/issues/642))
+- Bugfix: Fixed script evaluation to report “cannot allocate the evaluation heap” when memory runs out, preventing crashes and memory corruption. ([#](https://github.com/zowe/zowe-common-c/issues/685))
+- Bugfix: Fixed configmgr startup to report “cannot allocate the logging context” and exit cleanly when memory is unavailable, instead of crashing or corrupting memory. ([#](https://github.com/zowe/zowe-common-c/issues/686))
+- Chore: configmgr and the REXX configmgr build take QuickJS from zowe/quickjs-portable staging, the Open Mainframe Project home of the z/OS port, instead of a personal fork; the configmgr build scripts now label the engine 2024-01-13, which is what they have built since March, instead of 2021-03-27. ([#]())
+-	Bugfix: Fixed ZSS startup diagnostics for ICSF random-number failures to report meaningful error codes and log the CSFRNG error details, helping administrators identify issues such as missing CSFRNG access or why the server failed to start. ([#](https://github.com/zowe/zss/issues/810))
+
+-	Bugfix: Fixed Base64 uploads to correctly size decode buffers for large payloads, preventing buffer overruns that could corrupt memory or crash the server. ([#](https://github.com/zowe/zowe-common-c/issues/641))
+-	Bugfix: Fixed the Linux configmgr build so developers can compile and run the CLI again. ([#](https://github.com/zowe/zowe-common-c/issues/694))
+-	Bugfix: Fixed component-level logging on Linux so configured log levels affect only the intended component and its children, preventing unrelated Zowe components from producing excessive trace logs. ([#](https://github.com/zowe/zowe-common-c/issues/668))
+
+-	Bugfix: Fixed configmgr -script to report top-level script errors and exit with ZCFG_EVAL_FAILURE instead of 0, so automation can detect failed scripts rather than treating them as successful. ([#](https://github.com/zowe/zowe-common-c/issues/585)) ([#](https://github.com/zowe/zowe-install-packaging/issues/3639))
+- Chore:  the configmgr-rexx build (ZWERXCFG) now uses the same QuickJS as configmgr. ([#]())
+- 
+- Bugfix: Fixed character translation in Open XL builds to prevent crashes and unexpected behavior caused by incorrect register handling. ([#](https://github.com/zowe/zowe-common-c/issues/644))
+-	Bugfix: Fixed enum and const validation messages to show the correct expected type, helping users diagnose configuration errors instead of being misled by “integer.” ([#](https://github.com/zowe/zowe-common-c/issues/563))
+-	Bugfix: Fixed cfgSetConfigPath() so a new configuration path replaces the previous one, preventing stale settings from being merged and array values from being duplicated when configuration loads. ([#](https://github.com/zowe/zowe-common-c/issues/571))
+-	Bugfix: Fixed embedded JavaScript startup on z/OS to require key 8 problem state and reject SRB, cross-memory, or lock-held callers, reporting setup failures instead of proceeding with an invalid runtime. ([#](https://github.com/zowe/zowe-common-c/pull/674))
+-	Bugfix: Fixed embedded JavaScript console.log() to print long messages without truncation, use less memory for typical short messages, and raise an out-of-memory error if a large-message buffer cannot be allocated. ([#](https://github.com/zowe/zowe-common-c/issues/716))
+
+-	Bugfix: Fixed SHA-256 hashing through ICSF so applications can generate SHA-256 digests instead of failing with an invalid rule-array error. ([#](https://github.com/zowe/zowe-common-c/issues/594))
+-	Bugfix: Fixed ICSF digest buffer sizing so SHA-384 and SHA-512 hashes can be generated without buffer overflows or memory corruption. ([#](https://github.com/zowe/zowe-common-c/issues/594))
+
+-	Enhancement: Added SHA-3 support to the ICSF digest wrapper, enabling applications to calculate SHA3-224, SHA3-256, SHA3-384, and SHA3-512 digests. ([#](https://github.com/zowe/zowe-common-c/issues/594))
+-	Bugfix: Fixed logging component-ID traversal to prevent an out-of-bounds memory read on every call on little-endian systems, avoiding undefined behavior. ([#](https://github.com/zowe/zowe-common-c/pull/667))
+-	Bugfix: Fixed this non-z/OS linking failure by implementing the missing POSIX inode and device-ID accessors and the Windows device-ID accessor, allowing file-identity operations such as ETag generation to link successfully. ([#](https://github.com/zowe/zowe-common-c/pull/666))
 
 
+- Bugfix: directoryMakeDirectoryRecursive() now publishes the required size of its path-out buffer as USS_MKDIR_PATH_BUFFER_SIZE and rejects a messageLength below it, returning -1 before anything is created. ([#]())
+-	Bugfix: Fixed recursive directory creation to support valid USS paths up to 1,023 characters and reject only longer paths, preventing the buffer overrun and 0C4 ABEND that occurred above 255 characters. ([#](https://github.com/zowe/zss/issues/2094))
 
+-	Enhancement: utils.c gains bounded string helpers strcpySafe, strncpySafe, strcatSafe, strncatSafe and strlenSafe. They follow the argument shape of the C11 Annex K _s functions, so each buffer is followed immediately by its own size, treat that size as the size of the buffer, always null-terminate, and return -1 when the destination was too small to hold the whole result. They are deliberately not named _s: Annex K is optional, z/OS does not provide it, those identifiers are reserved for it, and these do not implement its semantics (constraint handlers, errno_t, rsize_t). ([#]())
+
+-	Bugfix: Previously, during recursive directory copying or deletion, the program would follow symbolic links to operate on the actual files they pointed to; this has been changed so that only the symbolic links themselves are copied or deleted. ([#]())
+-	Bugfix: Fixed a buffer overflow issue in directory-related APIs that, in rare cases, caused incorrect directory listing. ([#]())
+
+-	Bugfix: Fixed duplicate YAML key handling so configmgr and the launcher use the same configuration: the first value is kept with a warning, preventing silent value changes or template-evaluation failures. ([#](https://github.com/zowe/zowe-common-c/issues/581))
+
+-	Bugfix: Fixed configmgr to run pending JavaScript signal handlers, timers, and Promise jobs after script evaluation, enabling graceful SIGTERM shutdown without changing synchronous scripts. ([#](https://github.com/zowe/zowe-common-c/pull/631))
+-	Bugfix: Fixed URI parsing to return HTTP 414 for oversized requests, preventing buffer overflows and giving clients a clear error. ([#](https://github.com/zowe/zowe-common-c/issues/597))
+-	Bugfix: Fixed XML parsing and error reporting to safely handle long messages, excessive nesting, and EOF in comments, preventing buffer overflows, out-of-bounds access, and crashes. ([#](https://github.com/zowe/zowe-common-c/pull/598))
+
+-	Enhancement: made zowe-common-c compatible with clang/llvm on z/OS and Linux. ([#](https://github.com/zowe/zowe-common-c/pull/596))
+-	Enhancement: Kept configmgr validate output concise by showing JSON debug details only when tracing is enabled. ([#](https://github.com/zowe/zowe-common-c/pull/553))
+-	Bugfix: Fixed configmgr checks for schema and configuration paths so missing, empty, or invalid inputs report errors instead of causing an ABEND. ([#](https://github.com/zowe/zowe-common-c/pull/553))
+
+
+-	Enhancement: Added active PC caller tracking so termination rejects new calls, waits for existing callers before freeing server resources, and reports the caller count to prevent ABENDs during shutdown. ([#](https://github.com/zowe/zowe-common-c/pull/569))
+-	Bugfix: Fixed zosResolveSymbol() to read only the specified symbol-name length, preventing ABENDs caused by overreading. ([#](https://github.com/zowe/zowe-common-c/pull/626))
+
+-	Bugfix: Fixed 64-bit ZSS recovery so service-handler ABENDs are logged as averted, keeping the server process running instead of crashing. ([#](https://github.com/zowe/zowe-common-c/issues/622))
+-	Bugfix: Fixed z/OS /unixfile target-encoding selection to follow the caller-specified or file-tagged source CCSID, preserving non-Latin-1 characters by returning UTF-8 for multibyte sources while retaining ISO-8859-1 for single-byte sources. ([#](https://github.com/zowe/zowe-common-c/issues/592))
+-	Enhancement: Added isMultiByteCCSID() on z/OS, Linux, and AIX so file serving can detect multibyte CCSIDs and use UTF-8 for those files, preventing character corruption while preserving existing single-byte behavior. ([#](https://github.com/zowe/zowe-common-c/issues/592))
+
+-	Enhancement: Added parseEncodingValue() on z/OS, Linux, and AIX so callers can provide charset names or decimal CCSIDs, request raw-byte handling with the binary sentinel value, and detect unrecognized inputs. ([#](https://github.com/zowe/zowe-common-c/issues/593))
+-	Enhancement: Added IANA-listed IBM-NNNN codepages and the IBM1047 and IBM-819 (ISO-8859-1) aliases to charset lookup, and made auto valid for sourceEncoding and targetEncoding so callers can use more IBM encodings or explicitly select the existing automatic defaults. ([#](https://github.com/zowe/zowe-common-c/issues/593))
+- Enhancement: Added independent sourceEncoding and targetEncoding options to /unixfile requests, so callers can override either value, use the tagged or native source CCSID and automatic web target by default or with auto, stream raw bytes with binary, and keep using legacy aliases. ([#](https://github.com/zowe/zowe-common-c/issues/593))
+
+
+-	Bugfix: Fixed /unixfile charset conversion so multibyte characters are handled across reads, unmappable characters are substituted instead of aborting, and ISO-8859-1 files no longer produce empty or truncated responses on z/OS. ([#](https://github.com/zowe/zss/issues/828))
+-	Bugfix: Fixed /unixfile charset handling, including Open XL routing, so unsupported forced conversions return HTTP 400 before the response starts, unconvertible tagged files fall back to raw bytes with a warning, and supported streaming conversions return complete data without truncation. ([#](https://github.com/zowe/zowe-common-c/pull/630))
+-	Bugfix: Fixed Open XL (ibm-clang64) charset conversion so text- and mixed-conversion file downloads return complete, correct contents, including multibyte and streamed data, with checksums matching the source files. ([#](https://github.com/zowe/zss/issues/828))
+-	Enhancement: Added a new function cmsTestAuth2 so core services can test any SAF authorization level in XMEM and corrected the ALTER level value so checks use the proper permission. ([#](https://github.com/zowe/zowe-common-c/issues/635))
+-	Enhancement: Added support for STRICT and NONSTRICT mode in TLS HTTP client. ([#](https://github.com/zowe/zowe-common-c/pull/616))
+-	Bugfix: Fixed this CSI memory leak and entry-buffer sizing issue so repeated dataset searches release allocated memory correctly and return entries without memory-management errors. ([#](https://github.com/zowe/zowe-common-c/pull/711)) ([#](https://github.com/zowe/zowe-common-c/pull/712))
+- Bugfix: Fixed JSON responses being truncated by unmappable characters, allowing output to continue and keeping the response valid. ([#](https://github.com/zowe/zowe-common-c/pull/675))
 
 
 
@@ -172,7 +187,7 @@ Zowe server Version 3.6.0 contains the bug fixes that are described in the follo
 
 ### Zowe Application Framework
 
-#### Zlux Editor
+### Zlux Editor
 -	Fixed Editor tabs to show the correct file content when you switch between them. ([#410](https://github.com/zowe/zlux-editor/pull/410))
 -	Improved editor security by removing runtime code evaluation from menu actions. ([#401](https://github.com/zowe/zlux-editor/pull/401))
 -	Fixed LSP settings to reject unencrypted WebSocket URLs, helping protect language-server traffic. ([#400](https://github.com/zowe/zlux-editor/pull/400))
@@ -189,10 +204,9 @@ Zowe server Version 3.6.0 contains the bug fixes that are described in the follo
 -	Fixed iframe message checks to accept messages only from the desktop and send them only to its origin, protecting Zowe APIs from untrusted windows. ([#732](https://github.com/zowe/zlux-app-manager/pull/732))
 -	Fixed iframe mode checks so plugins hosted on another origin can load without browser errors. ([#732](https://github.com/zowe/zlux-app-manager/pull/732))
 - Fixed iframe applications to be framed with a restricted capability set. The applications cannot redirect the desktop or see its full URL but retain the capabilities they need. ([#733](https://github.com/zowe/zlux-app-manager/pull/733))
-- 
+
 ##### Allowlists and registration validation
 - Security: The browser-preferences dataservice now only sets an allowlist of preference cookies (language and locale). Preference cookies are now set with `secure` (over HTTPS) and `sameSite=strict`, and oversized values are rejected. ([#729](https://github.com/zowe/zlux-app-manager/pull/729))
-
 
 ### Zlux App Server
 -	Startup logs no longer reveal the names of sensitive environment variables. ([#390](https://github.com/zowe/zlux-app-server/pull/390))
@@ -213,7 +227,7 @@ Zowe server Version 3.6.0 contains the bug fixes that are described in the follo
 
 
 
-
+### Zowe Common C
 
 
 
