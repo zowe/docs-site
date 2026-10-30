@@ -1,4 +1,4 @@
-# Advanced configuration of API ML Observability
+# Advanced configuration of API ML observability
 
 Review the complete configuration structure for OpenTelemetry (OTel) integration within the Zowe API Mediation Layer (API ML). Use this advanced configuration to manually define or override system-discovered attributes to align with specific organizational reporting requirements.
 
@@ -13,7 +13,7 @@ For a simplified setup that relies on automatic system discovery, see [Quick-sta
 
 When defining your exporter endpoint, ensure that the chosen protocol matches your OTel Collector's configuration. The exporter protocol (`telemetry.exporter.protocol`) can be set to either `http/protobuf` (typically port `4318`) or `grpc` (typically port `4317`). If you do not specify an endpoint, the exporter defaults to `http://localhost:4318` using `http/protobuf`.
 
-If you configure a secure HTTPS collector endpoint (for example, `https://otel-collector.your.domain:4318`), the OTLP exporter automatically reuses the API ML SSLContext. By using the API ML SSLContext, the exporter uses the same key and trust stores as the rest of API ML. Note the requirement that the collector must trust the API ML certificate chain and vice versa.
+If you configure a secure HTTPS collector endpoint (for example, `https://otel-collector.your.domain:4318`), the exporter for the OpenTelemetry Protocol (OTLP) automatically reuses the API ML SSLContext. By using the API ML SSLContext, the exporter uses the same key and trust stores as the rest of API ML. Note the requirement that the collector must trust the API ML certificate chain and vice versa.
 
 Review the following attributes and their corresponding definitions in the full zowe.yaml configuration for API ML observability.
 
@@ -55,7 +55,7 @@ Specifies the exporter for log signals.
 The logical name of the application. All instances of API ML in a high-availability (HA) cluster should share this name to be grouped correctly in your backend (for example, `zowe-apiml`). The `service.name` value is expected to be globally unique if `namespace` is not defined. Configuration of this attribute is optional. If this attribute is omitted, a default name is generated automatically in the format `apiml:<sysplex|hostname>:<port>`.
 
 * **service.namespace**  
-The assigned value used to distinguish a group of services, such as the LPAR, or owner team. `service.name` is expected to be unique within the same `namespace`. Configuration of this attribute is required.
+The assigned value used to distinguish a group of services, such as the LPAR, or owner team. `service.name` is expected to be unique within the same `namespace`. Configuration of this attribute is optional.
 
 * **service.instance.id** (The Unique Instance)    
 Identifies a specific running process or Address Space. This attribute is  generated automatically via `hostname:serviceId:port`. This value must be globally unique for every instance. As multiple z/OS systems can run identical job names, if customizing this attribute, ensure that you combine the job name with a unique identifier (such as the LPAR name or a UUID) to ensure the instance can be isolated during troubleshooting.
