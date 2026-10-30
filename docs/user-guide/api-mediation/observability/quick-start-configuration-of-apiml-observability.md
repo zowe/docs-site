@@ -24,7 +24,7 @@ Quick-start configuration of API ML observability consists of the following step
 
 Establish the logical identity of your API ML instance. This step ensures that your monitoring tool can group high-availability instances together while still allowing you to pinpoint specific address spaces.
 
-Services are identified via the `service.name`, `service.namespace`, and `service.instance.id` properties. Together, these attributes create a unique identity for API ML instances across your enterprise. Note that `service.instance.id` is automatically generated via `hostname:serviceId:port` and is not customizable.
+Services are identified via the `service.name`, `service.namespace`, and `service.instance.id` properties. Together, these attributes create a unique identity for API ML instances across your enterprise. You define `service.name` and `service.namespace` in `zowe.yaml`, as described in [2. Configure zowe.yaml](#2-configure-zoweyaml). Note that `service.instance.id` is automatically generated via `hostname:serviceId:port` and is not customizable.
 
 In complex mainframe environments, you may have multiple API ML installations across different Sysplexes or data centers. To monitor these effectively, you must balance Logical Grouping (viewing all API ML traffic as one functional unit) with Instance Differentiation (identifying exactly which specific Address Space is experiencing an issue).
 
@@ -51,7 +51,7 @@ Decide on a `service.namespace` value for each logical boundary, such as a data 
 iii. **Confirm attribute requirements.**  
 Ensure these identifiers align with the grouping and filtering logic of your backend.
 
-In the next step, set these values in `zowe.yaml`. In `zowe.yaml`, `service.name` and `service.namespace` are the properties `telemetry.service.name` and `telemetry.service.namespace` under `components.apiml`.
+In [step 2](#2-configure-zoweyaml), set these values in `zowe.yaml`. In `zowe.yaml`, `service.name` and `service.namespace` are the properties `telemetry.service.name` and `telemetry.service.namespace` under `components.apiml`.
 
 ### 2. Configure zowe.yaml
 
