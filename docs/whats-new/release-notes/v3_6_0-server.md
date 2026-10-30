@@ -161,7 +161,9 @@ Zowe server Version 3.6.0 contains the bug fixes that are described in the follo
 - Updated `zwe` to create command log files with `0640` permissions, allowing the owner to read and write and the group to read, while preventing access by others. ([#4807](https://github.com/zowe/zowe-install-packaging/pull/4807))
 - Updated `zwe validate certificate` to load the SAF keyring URL handlers on IBM Java 17 and 21, preventing `MalformedURLException: unknown protocol: safkeyring` when validating certificates stored in SAF keyrings. ([#4795](https://github.com/zowe/zowe-install-packaging/pull/4795))
 - Fixed the zwe certificate, migrate, and configuration commands to no longer expose passwords in process arguments, console output, or logs. ([#4883](https://github.com/zowe/zowe-install-packaging/pull/4883))
-- Improved RACF sample job security permissions to protect Zowe datasets from unauthorized access. ([#4879](https://github.com/zowe/zowe-install-packaging/pull/4879))
+- Improved RACF sample job security permissions to protect Zowe data sets from unauthorized access. ([#4879](https://github.com/zowe/zowe-install-packaging/pull/4879))
+- Corrected the `cli.js` script path in the ZIS register `index.sh` files (`zis`, `zis/loadlib`, `zis/parmlib`) so each points to its own command directory instead of the non-existent `install/zis-plugin/cli.js`. ([#4917](https://github.com/zowe/zowe-install-packaging/pull/4917))
+- Allow dynamic zFS expansion for STC group in RACF, TSS and ACF2 ([#4916](https://github.com/zowe/zowe-install-packaging/pull/4916)), ([#4882](https://github.com/zowe/zowe-install-packaging/pull/4882)), ([#4886](https://github.com/zowe/zowe-install-packaging/pull/4886))
 
 #### Zowe Launcher
 - Fixed Launcher startup to load `zowe.sysMessages` only after configuration validation, so unvalidated message settings are not applied. ([#208](https://github.com/zowe/launcher/pull/208))
