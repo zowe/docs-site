@@ -87,14 +87,9 @@ Zowe Version 3.6.0 server components contain the enhancements that are described
 -	Added support for `STRICT` and `NONSTRICT` `zowe.verifyCertificates` modes in `ZSS`. `STRICT` verifies certificate trust and hostname, while `NONSTRICT` verifies trust only; unsupported `DISABLED` falls back to `NONSTRICT` with a log message. ([#](https://github.com/zowe/zss/pull/873))
 
 
+### Basic TN3270 Display Emulator
 
-
-
-
-
-
-
-
+-	Updated the terminal status bar to show `Connection forbidden` when the server blocks a host via an allowlist, so users can distinguish an access restriction from a generic WebSocket error. ([#](https://github.com/zowe/tn3270-ng2/pull/113))
 
 
 ### Zowe API Mediation Layer
@@ -230,6 +225,7 @@ Zowe server Version 3.6.0 contains the bug fixes that are described in the follo
 -	Fixed this CSI memory leak and entry-buffer sizing issue so repeated dataset searches release allocated memory correctly and return entries without memory-management errors. ([#711](https://github.com/zowe/zowe-common-c/pull/711)) ([#712](https://github.com/zowe/zowe-common-c/pull/712))
 - Fixed `JSON` responses being truncated by unmappable characters, allowing output to continue and keeping the response valid. ([#675](https://github.com/zowe/zowe-common-c/pull/675))
 
+
 ### ZSS
 
 -	Fixed `ZSS` startup to stop with a `SEVERE` error when the configuration manager cannot be created, preventing startup from continuing in an invalid state and failing unpredictably later. ([#](https://github.com/zowe/zss/issues/868))
@@ -240,9 +236,11 @@ Zowe server Version 3.6.0 contains the bug fixes that are described in the follo
 -	Fixed dataset streaming so records with unmappable characters are blanked and later records still appear in the response, while 100 consecutive conversion failures stop the stream with a warning instead of consuming CPU indefinitely. ([#](https://github.com/zowe/zss/pull/867))
 
 
+### Basic TN3270 Display Emulator
 
-
-
+-	Fixed `security-option` handling so only explicit telnet selects an unencrypted connection; unknown or invalid values now default to TLS, preventing accidental plaintext connections. ([#](https://github.com/zowe/tn3270-ng2/pull/109))
+-	Fixed `debug` logging to record only prompt lengths, keeping potentially sensitive prompt values out of logs while retaining length information for troubleshooting. ([#](https://github.com/zowe/tn3270-ng2/pull/107))
+-	Fixed the default `TN3270` connection settings to use TLS on port `992` instead of unencrypted Telnet on port `23`, so users connect securely without manual configuration. ([#](https://github.com/zowe/tn3270-ng2/pull/111))
 
 
 ### Zowe API Mediation Layer
