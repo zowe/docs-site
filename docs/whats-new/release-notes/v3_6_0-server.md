@@ -12,8 +12,8 @@ Zowe Version 3.6.0 server components contain the enhancements that are described
 
 ### Zowe installation and packaging
 
-- Expanded the example `zowe.yaml` configuration file with APIML modulith logging options, including feature-specific debug logging and file-only DEBUG/TRACE output, helping administrators troubleshoot APIML while reducing messages sent to the console or spool. ([#4913](https://github.com/zowe/zowe-install-packaging/pull/4913))
-- In high availability (HA) mode, Zowe now creates a merged YAML configuration file in the `workspace.env` directory for each instance, applies that instance’s overrides, and exposes the file path through `ZWE_HA_INSTANCE_CONFIG` so components can load the correct settings. ([#4759](https://github.com/zowe/zowe-install-packaging/pull/4759))
+- Expanded the `example-zowe.yaml` configuration file with APIML modulith logging options, including feature-specific debug logging and file-only DEBUG/TRACE output, helping administrators troubleshoot APIML while reducing messages sent to the console or spool. ([#4913](https://github.com/zowe/zowe-install-packaging/pull/4913))
+- In high availability (HA) mode, Zowe now creates a merged YAML configuration file in the workspace `.env` directory for each instance, applies that instance’s overrides, and exposes the file path through `ZWE_HA_INSTANCE_CONFIG` so components can load the correct settings. ([#4759](https://github.com/zowe/zowe-install-packaging/pull/4759))
 - Added a property `zowe.network.allowedDomains` to control which domains are accepted in API URLs during Discovery Service onboarding. By default, the list includes external domains and HA LPAR hostnames but rejects URLs which use other domains. ([#4801](https://github.com/zowe/zowe-install-packaging/pull/4801))
 - Added a command `zwe validate zosmf jwt` to verify that z/OSMF JWT authentication works when Zowe is configured to use it. The check runs at startup by default and can be changed to a warning or disabled with `zowe.launchScript.startupChecks.zosmfjwt`. ([#4727](https://github.com/zowe/zowe-install-packaging/pull/4727))
 - Updated the example `example-zowe.yaml` file to document APIML logging levels (`quiet`, `info`, or `debug`), which let administrators control log verbosity globally or for individual APIML components. The default level is `info`. ([#4827](https://github.com/zowe/zowe-install-packaging/pull/4827))
@@ -52,10 +52,10 @@ Zowe Version 3.6.0 server components contain the enhancements that are described
 
 ### Zlux Server Framework
 
-- Enhancement: RBAC can now be used on for WebSocket dataservices, which will use the 'GET' method for SAF profiles. ([#710](https://github.com/zowe/zlux-server-framework/pull/710))
-- Enhancement: Added RBAC support for WebSocket dataservices so that administrators can control who can access them. ([#704](https://github.com/zowe/zlux-server-framework/pull/704))
-- Enhancement: Added authenticated access to the agent hostname so administrators can securely configure plugins to connect to the correct host. ([#703](https://github.com/zowe/zlux-server-framework/pull/703))
-- Enhancement: Added optional per-component host allowlists in zowe.yaml so administrators can restrict TN3270 and VT connections to approved hosts. ([#702](https://github.com/zowe/zlux-server-framework/pull/702))
+- RBAC can now be used on for WebSocket dataservices, which will use the 'GET' method for SAF profiles. ([#710](https://github.com/zowe/zlux-server-framework/pull/710))
+- Added RBAC support for WebSocket dataservices so that administrators can control who can access them. ([#704](https://github.com/zowe/zlux-server-framework/pull/704))
+- Added authenticated access to the agent hostname so administrators can securely configure plugins to connect to the correct host. ([#703](https://github.com/zowe/zlux-server-framework/pull/703))
+- Added optional per-component host allowlists in zowe.yaml so administrators can restrict TN3270 and VT connections to approved hosts. ([#702](https://github.com/zowe/zlux-server-framework/pull/702))
 
 
 ### Zowe Common C
