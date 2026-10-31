@@ -76,6 +76,27 @@ Zowe Version 3.6.0 server components contain the enhancements that are described
 - `configmgr` and the `REXX configmgr` build take `QuickJS` from `zowe/quickjs-portable` staging, the Open Mainframe Project home of the `z/OS` port, instead of a personal fork; the `configmgr` build scripts now label the engine `2024-01-13`, which is what they have built since March, instead of 2021-03-27. ([#]())
 
 
+### ZSS
+
+- ZSS is now built with the same `QuickJS` engine as `configmgr`, from `zowe/quickjs-portable` staging (the 2024-01-13 port), instead of the 2021-03-27 engine from `joenemo/quickjs-portable`; `build_zss.sh` and `build_zss64.sh` add the `libbf` big-number sources that engine needs. ([#]())
+-	Updated ZSS startup to use the HA instance’s merged configuration, so instance-specific settings such as ports are honored while non-HA startup continues using the global configuration. ([#](https://github.com/zowe/zss/pull/826))
+-	Added active PC caller tracking so shutdown returns RC 30 to new callers, waits for in-flight callers before freeing resources, and reports the caller count, preventing `ABENDs` during termination. ([#](https://github.com/zowe/zowe-common-c/pull/569))
+-	Added per-service `READ/UPDATE SAF` checks for built-in ZIS services, letting administrators grant only the required access; checks default to ON except for `AUTH` and can be disabled individually through `PARMLIB`. ([#](https://github.com/zowe/zss/pull/852))
+- `test-support/` now adds shared infrastructure for testing ZSS server behaviour: a standalone test `ZSS` and a private test `ZIS` that a developer can build, start, drive and tear down under their own userid, with no APIML, app-server, launcher or systems programmer involved, plus a comparison driver that runs any test against two builds and proves which one answered. It is TypeScript with a single shell bootstrap that finds node and builds it. ZIS matters for any authenticated test and not only privileged services, because `safAuthenticate()` in an `APF_AUTHORIZED=0` build verifies passwords through `zisCheckUsernameAndPassword`. Nothing here is compiled into or shipped with ZSS. ([#]())
+-	Added `charset-name` support for `sourceEncoding` and `targetEncoding` on `/unixfile/contents PUT`, so callers can specify encodings by name or decimal `CCSID` when uploading files. ([#](https://github.com/zowe/zss/issues/593))
+-	Added support for `STRICT` and `NONSTRICT` `zowe.verifyCertificates` modes in `ZSS`. `STRICT` verifies certificate trust and hostname, while `NONSTRICT` verifies trust only; unsupported `DISABLED` falls back to `NONSTRICT` with a log message. ([#](https://github.com/zowe/zss/pull/873))
+
+
+
+
+
+
+
+
+
+
+
+
 ### Zowe API Mediation Layer
 
 :::warning Breaking changes
@@ -200,8 +221,6 @@ Zowe server Version 3.6.0 contains the bug fixes that are described in the follo
 -	Fixed URI parsing to return HTTP 414 for oversized requests, preventing buffer overflows and giving clients a clear error. ([#597](https://github.com/zowe/zowe-common-c/issues/597))
 -	Fixed XML parsing and error reporting to safely handle long messages, excessive nesting, and EOF in comments, preventing buffer overflows, out-of-bounds access, and crashes. ([#598](https://github.com/zowe/zowe-common-c/pull/598))
 -	Fixed `configmgr` checks for schema and configuration paths so missing, empty, or invalid inputs report errors instead of causing an `ABEND`. ([#553](https://github.com/zowe/zowe-common-c/pull/553))
-
-
 -	Fixed `zosResolveSymbol()` to read only the specified symbol-name length, preventing ABENDs caused by overreading. ([#626](https://github.com/zowe/zowe-common-c/pull/626))
 -	Fixed 64-bit ZSS recovery so service-handler `ABENDs` are logged as averted, keeping the server process running instead of crashing. ([#622](https://github.com/zowe/zowe-common-c/issues/622))
 -	Fixed `z/OS /unixfile` target-encoding selection to follow the caller-specified or file-tagged source CCSID, preserving non-Latin-1 characters by returning UTF-8 for multibyte sources while retaining ISO-8859-1 for single-byte sources. ([#592](https://github.com/zowe/zowe-common-c/issues/592))
@@ -210,6 +229,19 @@ Zowe server Version 3.6.0 contains the bug fixes that are described in the follo
 -	Fixed Open XL (`ibm-clang64`) charset conversion so text- and mixed-conversion file downloads return complete, correct contents, including multibyte and streamed data, with `checksums` matching the source files. ([#828](https://github.com/zowe/zss/issues/828))
 -	Fixed this CSI memory leak and entry-buffer sizing issue so repeated dataset searches release allocated memory correctly and return entries without memory-management errors. ([#711](https://github.com/zowe/zowe-common-c/pull/711)) ([#712](https://github.com/zowe/zowe-common-c/pull/712))
 - Fixed `JSON` responses being truncated by unmappable characters, allowing output to continue and keeping the response valid. ([#675](https://github.com/zowe/zowe-common-c/pull/675))
+
+### ZSS
+
+-	Fixed `ZSS` startup to stop with a `SEVERE` error when the configuration manager cannot be created, preventing startup from continuing in an invalid state and failing unpredictably later. ([#](https://github.com/zowe/zss/issues/868))
+-	Added `null`, `length`, and `JSON-object` checks across `ZSS` services so empty or invalid authentication requests return `HTTP 400`, while other services reject missing request bodies instead of parsing them unsafely. ([#](https://github.com/zowe/zss/pull/836))
+-	Fixed `/ras/traceLevel` to return `HTTP 400` (Bad Request) when a component name has no registered plugin data service, preventing crashes or misleading invalid-ID errors. ([#](https://github.com/zowe/zss/issues/890))
+-	Secured `/ras/traceLevel` with `app-server-compatible`, per-method `SAF READ` checks so only authorized users can view or change server log levels, preventing unauthorized `FINEST` logging that could expose sensitive data or degrade performance; requests return `HTTP 400` when `RBAC` is off, `HTTP 403` when access is denied or no profile permits it, and `HTTP 500` when authorization cannot be determined. ([#](https://github.com/zowe/zss/issues/855))
+-	Fixed memory leaks in data set operations by releasing CSI result sets and parameter blocks after use, preventing memory from accumulating across requests. ([#](https://github.com/zowe/zss/pull/888))
+-	Fixed dataset streaming so records with unmappable characters are blanked and later records still appear in the response, while 100 consecutive conversion failures stop the stream with a warning instead of consuming CPU indefinitely. ([#](https://github.com/zowe/zss/pull/867))
+
+
+
+
 
 
 
