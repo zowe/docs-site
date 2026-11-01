@@ -153,23 +153,23 @@ Zowe server Version 3.6.0 contains the bug fixes that are described in the follo
 -	Prevented editor URL formatting from disrupting other zLUX plugins. ([#397](https://github.com/zowe/zlux-editor/pull/397))
 -	Fixed overlapping dialog input labels, making fields easier to read. ([#387](https://github.com/zowe/zlux-editor/pull/387))
 
-#### Zlux App Manager
+### Zlux App Manager
 
-##### Security
+#### Security
 -	Removed the vulnerable browser app to prevent its proxy from making unauthorized requests to internal services. ([#722](https://github.com/zowe/zlux-app-manager/pull/722))
 -	Fixed the iframe bridge to check each message’s sender and origin, blocking untrusted windows from accessing Zowe APIs. ([#727](https://github.com/zowe/zlux-app-manager/pull/727))
 -	Fixed iframe message checks to accept messages only from the desktop and send them only to its origin, protecting Zowe APIs from untrusted windows. ([#732](https://github.com/zowe/zlux-app-manager/pull/732))
 -	Fixed iframe mode checks so plugins hosted on another origin can load without browser errors. ([#732](https://github.com/zowe/zlux-app-manager/pull/732))
 - Fixed iframe applications to be framed with a restricted capability set. The applications cannot redirect the desktop or see its full URL but retain the capabilities they need. ([#733](https://github.com/zowe/zlux-app-manager/pull/733))
 
-##### Allowlists and registration validation
+#### Allowlists and registration validation
 - Security: The browser-preferences dataservice now only sets an allowlist of preference cookies (language and locale). Preference cookies are now set with `secure` (over HTTPS) and `sameSite=strict`, and oversized values are rejected. ([#729](https://github.com/zowe/zlux-app-manager/pull/729))
 
 ### Zlux App Server
 -	Startup logs no longer reveal the names of sensitive environment variables. ([#390](https://github.com/zowe/zlux-app-server/pull/390))
 -	TN3270 terminals now default to port 992 with TLS, enabling secure connections without manual configuration. ([#387](https://github.com/zowe/zlux-app-server/pull/387))
 
-##### Security
+#### Security
 -	APIML registration values can no longer trigger unintended shell commands during substitution. ([#403](https://github.com/zowe/zlux-app-server/pull/403))
 -	Startup logs no longer expose passwords, passphrases, or secrets from configuration or sensitive command-line arguments. ([#399](https://github.com/zowe/zlux-app-server/pull/399))
 
