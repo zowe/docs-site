@@ -32,7 +32,7 @@ A flag that initializes the OpenTelemetry SDK. Must be set to `true` to generate
 **Default:** `false` (OpenTelemetry is disabled unless explicitly enabled)
 
 * **components.apiml.telemetry.exporter.endpoint**  
-The destination URL for your OTel Collector.
+The destination URL to your OTel Collector.
 **Default:** `http://localhost:4318`
 
 * **components.apiml.telemetry.exporter.protocol**  
