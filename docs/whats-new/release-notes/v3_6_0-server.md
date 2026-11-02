@@ -11,7 +11,7 @@ See [New features and enhancements](#new-features-and-enhancements) for a full l
 Zowe Version 3.6.0 server components contain the enhancements that are described in the following topics.
 
 
-### Zowe API Mediation Layer (API ML)
+### Zowe API Mediation Layer (API ML) 
 
 :::warning Breaking changes
 
