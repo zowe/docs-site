@@ -78,7 +78,7 @@ The following example shows these properties in `zowe.yaml`:
 
 #### Specify the OTel Collector URL
 
-API ML can export telemetry data only to a collector whose URL is specified in your `zowe.yaml` file. FOllow these steps to specify the OTel Collector URL:
+API ML can export telemetry data only to a Collector whose URL is specified in your `zowe.yaml` file. Follow these steps to specify the OTel Collector URL:
 
 1. Obtain the OTel Collector host name and the port that matches your export protocol from the OTel Collector administrator. By default, the OTLP/HTTP protocol uses port `4318` and the gRPC protocol uses port `4317`.
 2. In your `zowe.yaml` file, set `components.apiml.telemetry.exporter.endpoint` to the OTel Collector URL, and set `components.apiml.telemetry.exporter.protocol` to the matching protocol, together with the service identity that you defined in [1. Define service identity](#1-define-service-identity):
