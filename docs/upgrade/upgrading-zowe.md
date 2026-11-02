@@ -94,9 +94,10 @@ components:
   apiml:
     logging:
       level: info            # quiet | info | debug
-storage:
-  infinispan:
-    useVirtualThreads: false
+  caching-service:
+    storage:
+      infinispan:
+        useVirtualThreads: false
 ```
 
 | Property | Upgrade decision |
