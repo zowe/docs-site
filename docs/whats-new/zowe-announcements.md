@@ -2,7 +2,9 @@
 
 ## Upcoming Zowe releases will have breaking changes
 
-To address security risks, upcoming Zowe releases, including Zowe V3 minor releases and Zowe V2 maintenance releases, will have breaking changes. Read more in [Breaking Changes in Zowe V2 and Zowe V3](../appendix/security-breaking-changes.md).
+:::warning
+To address security risks, some Zowe releases, including Zowe V3 minor releases and Zowe V2 maintenance releases, will have breaking changes. Read more in [Breaking Changes in Zowe V2 and Zowe V3](../appendix/security-breaking-changes.md).
+:::
 
 ## Hello Zowe V3!
 
