@@ -12,6 +12,17 @@ Normally, the Zowe community makes breaking changes only at major release bounda
 This page discusses breaking changes made to address security risks in Zowe V2 and V3 minor and maintenance releases. For the changes introduced with the Zowe V3 major release, see [Important updates in Zowe V3](../whats-new/breaking-changes-v3.md).
 :::
 
+## Where to find information on breaking changes
+
+Breaking changes were first introduced in the Zowe client 3.6.0 release in September 2026, and later Zowe V2 and Zowe V3 releases will include more. Before you upgrade, review the [Zowe release notes](../whats-new/release-notes/release-notes-overview.md) for the release you are upgrading to. Breaking changes are marked with a **breaking change** label.
+
+Releases with breaking changes include:
+
+- Zowe client 3.6.0
+- Zowe server 3.6.0
+- Zowe client 3.7.0
+- Zowe 2.18.7
+
 ## Why breaking changes are necessary
 
 The Zowe community is responding to a growing number of new security reports produced with the help of frontier AI models. Those same models can also be used by capable attackers to find and exploit weaknesses.
@@ -37,14 +48,3 @@ If you use an opt-out, we recommend that you:
 1. Record where and why the opt-out is set.
 2. Plan the changes needed in your environment to adopt the new behavior.
 3. Remove the opt-out as soon as your environment is ready.
-
-## Where to find information on breaking changes
-
-Breaking changes were first introduced in the Zowe client 3.6.0 release in September 2026, and later Zowe V2 and Zowe V3 releases will include more. Before you upgrade, review the [Zowe release notes](../whats-new/release-notes/release-notes-overview.md) for the release you are upgrading to. Breaking changes are marked with a **breaking change** label.
-
-Releases with breaking changes include:
-
-- Zowe client 3.6.0
-- Zowe server 3.6.0
-- Zowe client 3.7.0
-- Zowe 2.18.7
