@@ -638,7 +638,7 @@ User authorization is required to use the `IRR.RUSERMAP` resource within the `FA
 These configurations can be applied to the `components.discovery` section:
 
 - **port**  
- Specifies the port which discovery is to be started on. This value might be a valid port number or an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
+ Specifies the port which discovery is to be started on. This value must be defined as a valid port number.
 - **debug.**  
 Specifies whether standard debug logging is enabled for the Discovery component. Set to `true` to enable verbose internal logging without enabling modification capabilities.
 - **apiml.health.protected**  
@@ -662,7 +662,7 @@ Specifies whether standard debug logging is enabled for the Discovery component.
 The following configurations can be used under the `components.api-catalog` section:
 
 - **port**  
- Specifies the port which API Catalog is to be started on.
+ Specifies the port which API Catalog is to be started on. This value must be defined as a valid port number.
 - **debug**  
 Specifies whether standard debug logging is enabled for the API Catalog component. Set to `true` to enable verbose internal logging without enabling modification capabilities.
 - **apiml.health.protected**  
@@ -691,7 +691,7 @@ Specifies whether standard debug logging is enabled for the API Catalog componen
 These configurations can be used under the `components.caching-service` section:
 
 - **port**  
-  Specifies the port which Caching Service should be started on. This might be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
+  Specifies the port which Caching Service should be started on. This value must be defined as a valid port number.
 - **debug**  
   Specifies if debug mode is enabled for the Caching Service.
 - **apiml.security.ssl.verifySslCertificatesOfServices**  
@@ -787,7 +787,6 @@ These configurations can be used under the `components.caching-service` section:
 The following configurations can be used under the `components.app-server` section:
 
 - **port**
-
 Specifies the port which App Server is to be started on. This value must be defined as a valid port number.
 
 #### Configure component zss
@@ -795,7 +794,6 @@ Specifies the port which App Server is to be started on. This value must be defi
 The following configurations can be used under the `components.zss` section:
 
 - **port**
-
 Specifies the port which ZSS is to be started on. This value must be defined as a valid port number.
 
 :::note
