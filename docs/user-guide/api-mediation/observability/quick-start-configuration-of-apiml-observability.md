@@ -49,7 +49,7 @@ ii. **Define the service namespace.**
 Use `service.namespace` to group instances by logical boundaries, such as a specific data center, sysplex, or business unit. `service.name` is expected to be unique within the same `namespace`. 
 
 iii. **Confirm attribute requirements.**  
-Ensure these identifiers align with the grouping and filtering logic of your backend.
+Ensure these identifiers align with the grouping and filtering logic of your OTel backend.
 
 ### 2. Configure zowe.yaml
 
