@@ -14,7 +14,15 @@ For a simplified setup that relies on automatic system discovery, see [Quick-sta
 
 When defining your exporter endpoint, ensure that the chosen protocol matches your OTel Collector's configuration. The exporter protocol (`telemetry.exporter.protocol`) can be set to either `http/protobuf` (typically port `4318`) or `grpc` (typically port `4317`). If you do not specify an endpoint, the exporter defaults to `http://localhost:4318` using `http/protobuf`.
 
-If you configure a secure HTTPS collector endpoint (for example, `https://otel-collector.your.domain:4318`), the exporter for the OpenTelemetry Protocol (OTLP) automatically reuses the API ML SSLContext. By using the API ML SSLContext, the exporter uses the same key and trust stores as the rest of API ML. Note the requirement that the collector must trust the API ML certificate chain and vice versa.
+:::caution Action required: add the OTel Collector CA certificate chain to the Zowe truststore  
+
+If you configure a secure HTTPS collector endpoint (for example, `https://otel-collector.your.domain:4318`), the OpenTelemetry Protocol (OTLP) exporter automatically reuses the API ML SSLContext. The exporter therefore uses the same keystore and truststore as the rest of API ML.
+
+**It is necessary to add the CA certificate chain that the OTel Collector uses to the Zowe truststore.** Otherwise, API ML cannot establish a trusted connection to the collector and telemetry export fails.
+
+- API ML must trust the collector's certificate chain (the Zowe truststore contains the collector's CA chain).
+- The collector must trust the API ML certificate chain.
+:::
 
 Review the following attributes and their corresponding definitions in the full zowe.yaml configuration for API ML observability.
 
@@ -38,6 +46,8 @@ The destination URL to your OTel Collector.
 * **components.apiml.telemetry.exporter.protocol**  
 Specifies the transport protocol for the exporter. Valid values are `http/protobuf` or `grpc`.
 
+<!-- Propose to remove these as changing the value without changing start.sh will cause API ML to fail to start:
+
 * **components.apiml.telemetry.traces.exporter**  
 Specifies the exporter for trace signals.  
 **Default:** `otlp`
@@ -49,7 +59,7 @@ Specifies the exporter for metric signals.
 * **components.apiml.telemetry.logs.exporter**  
 Specifies the exporter for log signals.  
 **Default:** `otlp`
-
+-->
 ## Configuring service identity attributes
 
 * **service.name**  
