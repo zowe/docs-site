@@ -1,3 +1,7 @@
+---
+sidebar_label: "Breaking Changes in Zowe V2 and Zowe\u00A0V3"
+---
+
 # Breaking Changes in Zowe V2 and Zowe V3
 
 Upcoming Zowe releases will have breaking changes. Normally, the Zowe community makes breaking changes only at major release boundaries, so you can upgrade to the latest minor or patch version of Zowe without disrupting a stable environment. To address security risks, we are making an exception to that practice in Zowe V2 and Zowe V3.
