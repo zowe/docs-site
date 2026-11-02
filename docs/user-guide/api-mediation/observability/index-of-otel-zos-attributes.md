@@ -21,7 +21,7 @@ Configuration Source: System discovery
 :::note
 The attributes `zos.smf.id`, `zos.sysplex.name`, and `mainframe.lpar.name` are automatically assigned through system discovery. These values can be overridden manually if required. 
 * For details about automated system discovery, see [Configuring API ML Observability](configuring-apiml-observability.md).
-* For details about overriding these attributes, see [Resource Attributes (Manual Overrides)](advanced-configuration-of-apiml-observability.md#configuring-resource-attributes-manual-overrides) in the article _Advanced Configuration of API ML Observability_.
+* For details about overriding these attributes, see [Resource Attributes (Manual Overrides)](configuring-apiml-to-use-an-otel-collectpr.md#configuring-resource-attributes-manual-overrides) in the article _Configuring API ML to use an OTel Collector_.
 :::
 
 * **os.type**  
