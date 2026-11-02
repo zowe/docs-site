@@ -4,7 +4,7 @@ As an API Mediation Layer user, you may encounter problems when configuring cert
 
 - [Troubleshooting certificate configuration](#troubleshooting-certificate-configuration)
   - [PKCS12 server keystore generation fails in Java 8 SR7FP15, SR7 FP16, and SR7 FP20](#pkcs12-server-keystore-generation-fails-in-java-8-sr7fp15-sr7-fp16-and-sr7-fp20)
-  - [Eureka request failed when using entrusted signed z/OSMF certificate](#eureka-request-failed-when-using-entrusted-signed-zosmf-certificate)
+  - [Discovery Service request failed when using entrusted signed z/OSMF certificate](#discovery-service-request-failed-when-using-entrusted-signed-zosmf-certificate)
   - [Zowe startup fails with empty password field in the keyring setup](#zowe-startup-fails-with-empty-password-field-in-the-keyring-setup)
   - [Certificate error when using both an external certificate and Single Sign-On to deploy Zowe](#certificate-error-when-using-both-an-external-certificate-and-single-sign-on-to-deploy-zowe)
   - [Browser unable to connect due to a CIPHER error](#browser-unable-to-connect-due-to-a-cipher-error)
@@ -43,11 +43,11 @@ Try one of the following options if you are affected by this error:
 * If you do not plan to use Zowe Desktop, you can disable the ZSS component to avoid receiving ZSS component errors in the log.
 :::
 
-## Eureka request failed when using entrusted signed z/OSMF certificate
+## Discovery Service request failed when using entrusted signed z/OSMF certificate
 
 **Symptoms**
 
-A problem may occur when using the entrusted signed z/OSMF certificate, whereby the ZLUX AppServer cannot register with Eureka. Logs indicate that the cause is the self-signed certificate:
+A problem may occur when using the entrusted signed z/OSMF certificate, whereby the ZLUX AppServer cannot register with Discovery Service. Logs indicate that the cause is the self-signed certificate:
 
 ```log
 <ZWED:198725> ZWESVUSR WARN (_zsf.bootstrap,webserver.js:156) ZWED0148E - Exception thrown when reading SAF keyring, e= Error: R_datalib call failed: function code: 01, SAF rc: 8, RACF rc: 8, RACF rsn: 44
@@ -69,7 +69,7 @@ The certificate appears to be correct, but the Gateway and the Discovery Service
 
 **Solution**
 
-The password is only used for USS PKCS12 certificate files. The keyring is protected by SAF permissions. Note that in some configurations, Zowe does not work if the password value is empty in the keyring configuration. We recommended that you assign a value to `password` as shown in the following example:
+The password is only used for `USS PKCS12` certificate files. The keyring is protected by `SAF` permissions. Note that in some configurations, Zowe does not work if the password value is empty in the keyring configuration. We recommended that you assign a value to `password` as shown in the following example:
 
 **Example:**
 
@@ -110,7 +110,7 @@ You used an external certificate and Single Sign-On to deploy Zowe. When you log
 
 **Solution:**
 
-This issue might occur when you use a Zowe version of 1.12.0 or later. To resolve the issue, you can download your external root certificate and intermediate certificates in PEM format. Then, add the following parameter in the `zowe.yaml` file.
+This issue might occur when you use a Zowe version of 1.12.0 or later. To resolve the issue, you can download your external root certificate and intermediate certificates in `PEM` format. Then, add the following parameter in the `zowe.yaml` file.
 
 ```environments.ZWED_node_https_certificateAuthorities: "/path/to/zowe/keystore/local_ca/localca.cer-ebcdic","/path/to/carootcert.pem","/path/to/caintermediatecert.pem"```
 
@@ -187,7 +187,7 @@ Externally, the status of the API Gateway homepage displays **!** icons against 
 
 The Zowe desktop is able to start but logon fails.
 
-The log contains messages to indicate that connections are being reset. For example, the following message shows that the API Gateway `ZWEAG` is unable to connect to the API Discovery service, by default 7553.
+The log contains messages to indicate that connections are being reset. For example, the following message shows that the API Gateway `ZWEAG` is unable to connect to the API Discovery Service, by default 7553.
 
 ```log
 <ZWEAGW1:DiscoveryClient-InstanceInfoReplicator-0:16843005> ZWESVUSR INFO  (o.a.h.i.c.DefaultHttpClient) I/O exception (java.net.SocketException) caught when connecting to {s}->https://<host>:<disovery_server_port>: Connection reset
@@ -390,7 +390,7 @@ The Zowe log contains the following ERROR message:
 
 This error occurs when the `Java Cryptography Extension` (JCE) provider cannot access the `RSA` key dataset defined for Zowe.
 In ACF2, access to RSA key resources is controlled through the `CSFKEYS` resource class,
-which governs permissions to use or read private keys stored in the security database.
+which governs permissions to use or read private keys stored in the security data base.
 If the Zowe started task ID (`ZWESVUSR`) lacks the appropriate `READ` access to the RSA key resource, all configured JCE providers
 fail to initialize, resulting in this failover error.
 
@@ -446,3 +446,43 @@ F ACF2,REBUILD(FAC)
 
 * **`ZWESVUSR`**  
 Specifies the Zowe started task user ID.
+
+## PKIX path validation failed: signature check failed Unable to find valid certification path.
+
+**Symptom**
+
+The Zowe log contains either of the following error messages:
+- PKIX path validation failed: signature check failed
+- Unable to find valid certification path. 
+
+**Issue**
+The personal certificate (`IZUSVR.CERT01` / `DefaultzOSMFCert.IZUDFLT`) of the z/OSMF server connects to `ZOWEKeyring`. Therefore, Java selects wrong certificate while establishing outbound TLS connections.
+
+**Explanation**
+
+The z/OSMF CA certificate that adds to the `ZOWEKeyring` is the wrong certificate. Its fingerprint does not match the Certificate Authority (CA) that had signed the z/OSMF server certificate on MVSA.
+
+**Solution**
+
+When Zowe runs on a different LPAR than z/OSMF, you must add the CA certificate that signed the z/OSMF server certificate to `ZOWEKeyring` on the Zowe LPAR.
+Verify the correct z/OSMF CA certificate to establish trust for cross-LPAR.
+Do the following to confirm you have the correct CA:
+1. On the z/OSMF LPAR, run: 
+```
+RACDCERT CHKCERT ID(IZUSVR) LABEL('your-zosmf-cert') CHAIN
+
+```
+In the output, locate the issuing CA and record its `SHA-256` fingerprint.
+2. On the Zowe LPAR, run: 
+```
+RACDCERT CHKCERT CERTAUTH LABEL('your-zosmf-ca-label')
+
+```
+Record its SHA-256 fingerprint.
+3. The fingerprints must match. If they do not, the certificate in `ZOWEKeyring` is not the correct CA. Export the actual issuing CA from the z/OSMF LPAR security data base and re-import the CA.
+:::Important
+Connect CA certificates to `ZOWEKeyring` with `USAGE(CERTAUTH)` only.
+
+Do not connect the personal certificate (typically owned by `IZUSVR`, `label DefaultzOSMFCert.IZUDFLT`) of the z/OSMF server to ZOWEKeyring.
+If this certificate is present in ZOWEKeyring as `PERSONAL`, remove the certificate. The presence of the certificate can cause Java's TLS stack to select the wrong certificate while establishing outbound TLS connections.
+:::
