@@ -10,6 +10,7 @@ To enable observability in the Zowe API Mediation Layer (API ML), you must confi
 * Administrative access to your `zowe.yaml` configuration file.
 * Access to an OTel Collector. An OTel Collector is a vendor-agnostic proxy that receives, processes, and exports your telemetry data to an observability backend or visualization tool (such as [Prometheus](https://prometheus.io/), [Grafana](https://grafana.io/), or [Jaeger](https://www.jaegertracing.io/)).  
 For more information about the OTel collector, see [Collector](https://opentelemetry.io/docs/collector/) in the _OpenTelemetry_ documentation.
+* The URL of your OTel Collector. API ML can export telemetry data to the OTel Collector only when the collector URL (host and port) is specified in the API ML configuration. For procedural details, see [Specify the OTel Collector URL](#specify-the-otel-collector-url).
 
 ## Quick-start configuration of API ML observability overview
 
@@ -75,18 +76,25 @@ The logical group that the service belongs to, such as a sysplex or data center 
 
 The following example shows these properties in `zowe.yaml`:
 
-```yaml
-components:
-  apiml:
-    telemetry:
-      enabled: true
-      exporter:
-        endpoint: "https://otel-collector.your.domain:4318"
-        protocol: "http/protobuf" # or "grpc" with port 4317
-      service:
-        name: "<your-service-name>"           # example: "zowe-apiml"
-        namespace: "<your-service-namespace>" # example: "sysplex-a" 
-```
+#### Specify the OTel Collector URL
+
+API ML can export telemetry data only to a collector whose URL is specified in your `zowe.yaml` file. FOllow these steps to specify the OTel Collector URL:
+
+1. Obtain the OTel Collector host name and the port that matches your export protocol from the OTel Collector administrator. By default, the OTLP/HTTP protocol uses port `4318` and the gRPC protocol uses port `4317`.
+2. In your `zowe.yaml` file, set `components.apiml.telemetry.exporter.endpoint` to the OTel Collector URL, and set `components.apiml.telemetry.exporter.protocol` to the matching protocol, together with the service identity that you defined in [1. Define service identity](#1-define-service-identity):
+
+   ```yaml
+   components:
+     apiml:
+       telemetry:
+         enabled: true
+         exporter:
+           endpoint: "https://otel-collector.your.domain:4318"
+           protocol: "http/protobuf" # or "grpc" with port 4317
+         service:
+           name: "<your-service-name>"           # example: "zowe-apiml"
+           namespace: "<your-service-namespace>" # example: "sysplex-a" 
+   ```
 
 :::note **Notes:**
 * If your collector is working and you have defined the service identity and correctly configured the zowe.yaml file, the integration is fully functional. API ML  automatically discovers the `service.instance.id` and existing z/OS system attributes defined in `zowe.yaml`.
