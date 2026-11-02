@@ -102,7 +102,7 @@ API ML can export telemetry data only to a Collector whose URL is specified in y
 
 * If your collector is working and you have defined the service identity and correctly configured the zowe.yaml file, the integration is fully functional. API Mediation Layer automatically discovers the `service.instance.id` and existing z/OS system attributes defined in zowe.yaml. If you choose to manually override these automated values or define custom environment labels, you can perform the remaining optional steps in this procedure.  
   
-* See [Advanced configuration of API ML Observability with an OpenTelemetry Collector](advanced-configuration-of-apiml-observability-with-an-otel-collector.md) to perform the following configurations:
+* See [Advanced configuration of API ML Observability with an OTel Collector](advanced-configuration-of-apiml-observability-with-an-otel-collector.md) to perform the following configurations:
 
   * Customize automatically discovered attributes with an example of full zowe.yaml configuration for API ML observability. Note that using the values generated through the automation is the preferred method.  
   * Configure a secure (HTTPS) connection to your collector, or to change exporter transport protocols.
