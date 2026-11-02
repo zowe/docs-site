@@ -114,7 +114,7 @@ By default, API ML automatically discovers your environment name using the `&ENV
 * The `&ENVIRON.` system symbol is missing from your system configuration.
 * You want to use a custom label to isolate development data from production dashboards (for example, using `SANDBOX` instead of the system default).
 
-For details about how to override the deployment environment variable, see [Advanced configuration of API ML Observability with an OpenTelemetry Collector](configuring-api-ml-to-use-an-otel-collector.md).
+For details about how to override the deployment environment variable, see [Advanced configuration of API ML Observability with an OpenTelemetry Collector](advanced-configuration-of-apiml-observability-with-an-otel-collector.md).
 
 ### z/OS contextual metadata
 
@@ -128,7 +128,7 @@ API ML automatically queries z/OS control blocks to identify the SMF ID, Sysplex
 
 This contextual automation ensures that telemetry data remains traceable to the LPAR where the service is running.
 
-For details about how to override the values of these z/OS attributes, see [Advanced configuration of API ML Observability with an OpenTelemetry Collector](configuring-api-ml-to-use-an-otel-collector.md).
+For details about how to override the values of these z/OS attributes, see [Advanced configuration of API ML Observability with an OpenTelemetry Collector](advanced-configuration-of-apiml-observability-with-an-otel-collector.md).
 
 ## Next step
 
