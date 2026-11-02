@@ -21,7 +21,7 @@ Configuration Source: System discovery
 :::note
 The attributes `zos.smf.id`, `zos.sysplex.name`, and `mainframe.lpar.name` are automatically assigned through system discovery. These values can be overridden manually if required. 
 * For details about automated system discovery, see [Configuring API ML Observability](configuring-apiml-observability.md).
-* For details about overriding these attributes, see [Resource Attributes (Manual Overrides)](advanced-configuration-of-apiml-observability-with-an-otel-collector.md#configuring-resource-attributes-manual-overrides) in the article _Advanced configuration of API ML Observability with an OpenTelemetry Collector_.
+* For details about overriding these attributes, see [Resource Attributes (Manual Overrides)](advanced-configuration-of-apiml-observability-with-an-otel-collector.md#configuring-resource-attributes-manual-overrides) in the article _Advanced configuration of API ML observability with an OTel Collector_.
 :::
 
 * **os.type**  
@@ -45,5 +45,5 @@ The Process Identifier. For details about this property, see [Process Attributes
 Configuration Source: System discovery
 
 :::note
-While the discovery process handles most identifiers automatically, you have the option to provide a manual override (for example, in shared environments where you wish to report a custom logical LPAR name). For details about overriding discovered attributes, see [Advanced configuration of API ML Observability with an OpenTelemetry Collector](advanced-configuration-of-apiml-observability-with-an-otel-collector.md). 
+While the discovery process handles most identifiers automatically, you have the option to provide a manual override (for example, in shared environments where you wish to report a custom logical LPAR name). For details about overriding discovered attributes, see [Advanced configuration of API ML observability with an OTel Collector](advanced-configuration-of-apiml-observability-with-an-otel-collector.md). 
 :::
