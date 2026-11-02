@@ -55,7 +55,7 @@ For required configuration changes and mitigation steps, see [API ML v3.6 upgrad
 - `zwe init certificate` now generates a random password when `password` or `caPassword` is at its default value. This enhancement is only for `PKCS12` based certificate. Key ring setup scenarios are unaffected. ([#4866](https://github.com/zowe/zowe-install-packaging/pull/4866))
 
 #### Zowe Launcher
-- Improved `CHANGELOG` automation to identify version headings with or without a leading `v` and generate Markdown links, making release notes easier to maintain. ([#231](https://github.com/zowe/launcher/pull/231))
+
 - Updated the `QuickJS` attribution and build example to reference `zowe/quickjs-portable`, keeping the source information in project notices accurate and consistent. ([#228](https://github.com/zowe/launcher/pull/228))
 - Updated the Launcher build to use the same `QuickJS` engine as `configmgr` from `zowe/quickjs-portable` and included its required `libbf` and `debugutil` sources, keeping the components aligned on the same version of the engine. ([#222](https://github.com/zowe/launcher/pull/222))
 - Replaced regex-based detection of the standard date prefix in the Launcher system messages with an internal routine, removing the regex library dependency while preserving message filtering. ([#206](https://github.com/zowe/launcher/pull/206))
