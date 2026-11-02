@@ -1,5 +1,5 @@
 
-# Configuring API ML to use an OTel Collector
+# Advanced configuration of API ML Observability with an OpenTelemetry Collector
 
 Review the complete configuration structure for OpenTelemetry (OTel) integration within the Zowe API Mediation Layer (API ML). Use this advanced configuration to manually define or override system-discovered attributes to align with specific organizational reporting requirements.
 
