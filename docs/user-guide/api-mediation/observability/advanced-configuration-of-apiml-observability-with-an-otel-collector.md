@@ -1,5 +1,5 @@
 
-# Advanced configuration of API ML Observability with an OpenTelemetry Collector
+# Advanced configuration of API ML observability with an OTel Collector
 
 Review the complete configuration structure for OpenTelemetry (OTel) integration within the Zowe API Mediation Layer (API ML). Use this advanced configuration to manually define or override system-discovered attributes to align with specific organizational reporting requirements.
 
@@ -9,6 +9,8 @@ Review the complete configuration structure for OpenTelemetry (OTel) integration
 :::note
 For a simplified setup that relies on automatic system discovery, see [Quick-start configuration of API ML Observability](quick-start-configuration-of-apiml-observability.md).
 :::
+
+## Configuring API ML to use an OTel Collector
 
 When defining your exporter endpoint, ensure that the chosen protocol matches your OTel Collector's configuration. The exporter protocol (`telemetry.exporter.protocol`) can be set to either `http/protobuf` (typically port `4318`) or `grpc` (typically port `4317`). If you do not specify an endpoint, the exporter defaults to `http://localhost:4318` using `http/protobuf`.
 
