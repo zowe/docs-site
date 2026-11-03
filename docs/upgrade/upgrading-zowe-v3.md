@@ -346,8 +346,8 @@ After you prepare your current Zowe instance, upgrade the Zowe runtime to v3.6.
     | Certificate | `exit` | `zowe.launchScript.startupChecks.certificate` |
     | User superuser check | `exit` | `zowe.launchScript.startupChecks.user` |
     | Components | `warn` | <!-- TODO: confirm property --> |
-    | Java dependency check | Enforce Java 17 or 21 |  Set `java.home` to the appropriate library if the version has changed from the one in your 2.18.x installation. |
-    | Node dependency check | Enforce Node 18-24  |  Set `node.home` to the appropriate library if the version has changed from the one in your 2.18.x installation. |
+    | Java dependency check | Enforce Java 17 or 21 |  Set `java.home` to the appropriate library if the version has changed from the one in your previous installation. |
+    | Node dependency check | Enforce Node 18-24  |  Set `node.home` to the appropriate library if the version has changed from the one in your previous installation. |
     | z/OSMF JWT (`zosmfjwt`) | `exit` | `zowe.launchScript.startupChecks.zosmfjwt` |
 
     A failing check defaulting to `exit` prevents Zowe from starting. Resolve the failing check<!-- maybe we need more guidance here? --> or set the matching `zowe.launchScript.startupChecks.*` property to `warn` or `disabled`:
@@ -402,6 +402,10 @@ After Zowe v3.6 starts, use the following checklist to confirm that the upgrade 
 <!-- All these System and Configuration changes come after Verifying the Upgrad ?? Should probably be a separate topic -->
 ## System and Security Changes
 
+:::note
+These changes apply to upgrades from Zowe v2 and v1. If you are upgrading from Zowe v3.5 or an earlier v3.x version, you can skip this section.
+:::
+
 * **SAF Settings**  
 Existing SAF settings for Zowe do not need to be changed for v3. Install steps such as zwe init security, the job or workflow `ZWESECUR`, and the jobs `ZWEIRAC`, `ZWEITSS`, and `ZWEIACF` are not required to be re-run.
 
@@ -419,6 +423,10 @@ The following network changes are needed for added or removed servers:
 | cloud-gateway | Removed | 7563 | ZWE1CG | The cloud-gateway has been removed as a standalone component and merged into the gateway. |
 
 ## Configuration changes
+
+:::note
+These changes apply to upgrades from Zowe v2 and v1. If you are upgrading from Zowe v3.5 or an earlier v3.x version, you can skip this section. For v3.5 configuration changes, see [Upgrading from Zowe v3.5 (or earlier v3.x) to v3.6](#preparing-your-current-zowe-instance).
+:::
 
 Review the following changes to configuration and updated configuration parameters.
 
@@ -513,7 +521,7 @@ components:
       64bit: true
 ```
 
-### Deprecated Settings in Zowe v3.6
+### Deprecated Settings in Zowe v3
 
 The following configuration parameters have been deprecated in Zowe v3. Ensure that these parameters are removed from your configuration.
 
