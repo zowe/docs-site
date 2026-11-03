@@ -385,7 +385,7 @@ If you cannot update Java, set the console encoding in the Zowe API Mediation La
 ```yaml
 zowe:
   environments:
-    CONSOLE_LOG_CHARSET: IBM-1047
+    LOGGING_CHARSET_CONSOLE: IBM-1047
 ```
 
 After you update `zowe.yaml`, restart Zowe.
