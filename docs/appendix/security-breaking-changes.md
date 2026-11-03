@@ -34,7 +34,6 @@ For this reason, we have determined that keeping insecure behavior in place to a
 We aim to make every breaking change as easy to adopt as possible:
 
 - **Every breaking change is listed in Zowe release notes** on docs.zowe.org. For more information, see [Where to find information on breaking changes](#where-to-find-information-on-breaking-changes).
-- **Some breaking changes include additional documentation** that describes the change and how to adapt to it.
 - **Opt-outs are available where possible.** We provide opt-out feature flags and configuration settings that keep the prior behavior, letting you enable breaking changes in smaller, manageable steps.
 
 ## Adapting to the change instead of opting out
