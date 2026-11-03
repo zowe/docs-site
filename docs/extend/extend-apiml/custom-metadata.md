@@ -15,32 +15,21 @@ When this parameter is set to `true`, the Gateway allows encoded characters to b
   :::
 
 * **customMetadata.apiml.connectTimeout**   
-The value in milliseconds that specifies a period in which API ML should establish a single, non-managed connection with this service. If omitted, the default value specified in the API ML Gateway service configuration is used.   
+The value in milliseconds that specifies a period in which API ML should establish a single, non-managed connection with this service. The period is separate from the response timeout. If omitted, the default value specified in the API ML Gateway service configuration is used.   
   :::note
   If you use the Spring enabler, use the following parameter name:
   `apiml.service.customMetadata.apiml.connectTimeout` 
   :::
 
-* **customMetadata.apiml.readTimeout**  
-The value in milliseconds that specifies the time of inactivity between two packets in response from this service to API ML. If omitted, the default value specified in the API ML Gateway service configuration is used.  
+* **customMetadata.apiml.responseTimeout**  
+The value in milliseconds that specifies the maximum time to wait for the response from this service. If omitted, the default value specified in the API ML Gateway service configuration is used.  
   :::note
   If you use the Spring enabler, use the following parameter name:  
-  `apiml.service.customMetadata.apiml.readTimeout`
-  :::
-
-* **customMetadata.apiml.connectionManagerTimeout**  
-HttpClient employs the HTTP connection manager to manage access to HTTP connections. The purpose of an HTTP connection manager is to create new HTTP connections, to manage the life cycle of persistent connections, and to synchronize access to persistent connections. Internally, the HTTP connection manager works with managed connections which serve as proxies for real connections. `connectionManagerTimeout` specifies a period in which managed connections with API ML are to be established. The value is in milliseconds. If omitted, the default value specified in the API ML Gateway service configuration is used.  
-  :::note
-  If you use the Spring enabler, use the following parameter name:  
-  `apiml.service.customMetadata.apiml.connectionManagerTimeout`
+  `apiml.service.customMetadata.apiml.responseTimeout`
   :::
 
 * **customMetadata.apiml.okToRetryOnAllOperations**  
-Specifies whether all operations can be retried for this service. The default value is `false`. The `false` value allows retries for only `GET` requests if a response code of `503` is returned. Setting this value to `true` enables retry requests for all methods, which return a `503` response code. Enabling retry can impact server resources resulting from buffering of the request body.    
-  :::note
-  If you use the Spring enabler, use the following parameter name:  
-  `apiml.service.customMetadata.apiml.okToRetryOnAllOperations`
-  :::
+In API ML v3, this parameter is **no longer supported**. The API Gateway uses a fixed retry policy. It retries GET requests that end with status 503 up to 5 times. The v2 parameter `apiml.okToRetryOnAllOperations` is no longer read, so a service cannot change which operations are retried.
 
 * **customMetadata.apiml.corsEnabled**  
 When this parameter is set to `true`, CORS handling by the Gateway is enabled on the service level for all service routes. 
