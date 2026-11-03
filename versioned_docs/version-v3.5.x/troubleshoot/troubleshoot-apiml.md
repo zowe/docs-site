@@ -418,3 +418,5 @@ zowe:
 ```
 
 After you update `zowe.yaml`, restart Zowe.
+
+Note this workaround applies during initialization of the API ML components. A few lines before initialization may still show corrupted using this workaround.

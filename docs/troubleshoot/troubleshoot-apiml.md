@@ -390,6 +390,8 @@ zowe:
 
 After you update `zowe.yaml`, restart Zowe.
 
+Note this workaround applies during initialization of the API ML components. A few lines before initialization may still show corrupted using this workaround.
+
 :::caution Important:
 This workaround might stop working correctly after you update Java 21 to the latest release. The fix in version 21.0.10.1 changes how output is converted, and an explicitly set encoding can change the behavior of applications that write bytes encoded with a charset different from `System.out.charset()` or `System.err.charset()`. Remove the properties set above when you update Java.
 :::
