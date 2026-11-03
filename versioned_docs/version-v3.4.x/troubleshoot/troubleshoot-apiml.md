@@ -243,7 +243,7 @@ class profile SDSF ISF.CONNECT.\*\* (G)
 
 ## Corrupted data in the spool output of Zowe jobs with newer Java 21 releases
 
-The console spool output from Zowe Java processes in `SYSPRINT` of the Zowe jobs on z/OS shows garbled or unreadable characters when Zowe 3.5.x runs with Version 21.0.10.1 or newer of the IBM Semeru Runtime Certified Edition for z/OS.
+The console spool output from Zowe Java processes in `SYSPRINT` of the Zowe jobs on z/OS shows garbled or unreadable characters when Zowe 3.4.x runs with Version 21.0.10.1 or newer of the IBM Semeru Runtime Certified Edition for z/OS.
 
 **Cause:**
 
