@@ -29,7 +29,7 @@ The value in milliseconds that specifies the maximum time to wait for the respon
   :::
 
 * **customMetadata.apiml.okToRetryOnAllOperations**  
-In API ML v3, this parameter is **no longer supported**. The API Gateway uses a fixed retry policy. It retries GET requests that end with status 503 up to 5 times. The v2 parameter `apiml.okToRetryOnAllOperations` is no longer read, so a service cannot change which operations are retried.
+In API ML v3, this parameter is **no longer supported**.<!-- Not sure how to add this. Could it be a bulletpoint without a parameter name? --> The API Gateway uses a fixed retry policy. It retries GET requests that end with status 503 up to 5 times. The v2 parameter `apiml.okToRetryOnAllOperations` is no longer read, so a service cannot change which operations are retried.
 
 * **customMetadata.apiml.corsEnabled**  
 When this parameter is set to `true`, CORS handling by the Gateway is enabled on the service level for all service routes. 
@@ -87,10 +87,10 @@ Specifies the Gateway port used by the ZAAS Client configuration. The default va
   :::
   
 * **customMetadata.apiml.lb.type**  
- This parameter is part of the load balancing configuration for the Deterministic Routing capability. Through this parameter, the service can specify which load balancing schema the service requires. If this parameter is not specified, the service is routed using the basic round robin schema. This parameter can be set to the following values:
+ This parameter is part of the load balancing configuration for the Deterministic Routing capability. Through this parameter, the service can specify which load balancing schema the service requires. If this parameter is not specified, the service is routed using the basic round robin schema. Sticky session routing is handled by the Caching Service. This parameter can be set to the following values:
    
   * **`headerRequest`**  
-  This value applies the Header Request load balancing schema. Clients can call the API Gateway and provide a special header with the value of the requested instanceId. The Gateway understands this as a request from the client for routing to a specific instance. Clients have several possibilities for understanding the topology of service instances, such as via the `/eureka/apps` endpoint on the Discovery service, or the `/gateway/services` endpoint on the Gateway.  In either case, the information is provided. The client can then request a specific instance by using the special header described below.
+  This value applies the Header Request load balancing schema. Clients can call the API Gateway and provide a special header with the value of the requested instanceId. The Gateway understands this as a request from the client for routing to a specific instance. Clients have several possibilities for understanding the topology of service instances, such as via the `/eureka/apps` endpoint on the Discovery service, or the `/gateway/services` endpoint on the Gateway. In either case, the information is provided. The client can then request a specific instance by using the special header described below.
 
 * **customMetadata.apiml.lb.type**   
   This parameter is part of the load balancing configuration for the Deterministic Routing capability. Through this parameter, the `authentication` load balancing schema can be applied to the service. If this parameter is not specified, the service is routed using the basic round robin schema. 
