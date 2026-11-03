@@ -442,6 +442,16 @@ html[data-theme="light"] .darkTheme {
   font-size: 1.5em;
   padding: 0.5rem 0;
   height: auto !important;
+  background: repeating-linear-gradient(35deg,#faebf3,#faebf3 20px,#f2c4db 10px, #f2c4db 40px) !important;
+}
+
+/* Red banner text: slightly larger than the default 85% set in src/theme/AnnouncementBar/styles.module.css */
+[class^='theme-announcement-bar'].announcementBar-2 > div:nth-child(2) {
+  font-size: 100%;
+}
+
+/* Per-banner background: each bar gets its config id as a class (see src/theme/AnnouncementBar) */
+[class^='theme-announcement-bar'].announcementBar-1 {
   background: repeating-linear-gradient(35deg,#fefae9,#fefae9 20px,#fdf0be 10px, #fdf0be 40px) !important;
 }
 
