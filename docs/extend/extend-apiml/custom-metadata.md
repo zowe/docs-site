@@ -28,9 +28,6 @@ The value in milliseconds that specifies the maximum time to wait for the respon
   `apiml.service.customMetadata.apiml.responseTimeout`
   :::
 
-* **customMetadata.apiml.okToRetryOnAllOperations**  
-In API ML v3, this parameter is **no longer supported**.<!-- Not sure how to add this. Could it be a bulletpoint without a parameter name? --> The API Gateway uses a fixed retry policy. It retries GET requests that end with status 503 up to 5 times. The v2 parameter `apiml.okToRetryOnAllOperations` is no longer read, so a service cannot change which operations are retried.
-
 * **customMetadata.apiml.corsEnabled**  
 When this parameter is set to `true`, CORS handling by the Gateway is enabled on the service level for all service routes. 
 
@@ -90,24 +87,21 @@ Specifies the Gateway port used by the ZAAS Client configuration. The default va
  This parameter is part of the load balancing configuration for the Deterministic Routing capability. Through this parameter, the service can specify which load balancing schema the service requires. If this parameter is not specified, the service is routed using the basic round robin schema. Sticky session routing is handled by the Caching Service. This parameter can be set to the following values:
    
   * **`headerRequest`**  
-  This value applies the Header Request load balancing schema. Clients can call the API Gateway and provide a special header with the value of the requested instanceId. The Gateway understands this as a request from the client for routing to a specific instance. Clients have several possibilities for understanding the topology of service instances, such as via the `/eureka/apps` endpoint on the Discovery service, or the `/gateway/services` endpoint on the Gateway. In either case, the information is provided. The client can then request a specific instance by using the special header described below.
-
-* **customMetadata.apiml.lb.type**   
-  This parameter is part of the load balancing configuration for the Deterministic Routing capability. Through this parameter, the `authentication` load balancing schema can be applied to the service. If this parameter is not specified, the service is routed using the basic round robin schema. 
+  This value applies the Header Request load balancing schema. Clients can call the API Gateway and provide a special header with the value of the requested instanceId. The Gateway understands this as a request from the client for routing to a specific instance. Clients have several possibilities for understanding the topology of service instances, such as via the `/eureka/apps` endpoint on the Discovery service, or the `/gateway/services` endpoint on the Gateway. In either case, the information is provided. The client can then request a specific instance by using Direct instance targeting with `X-InstanceId` described below.
 
   * **`authentication`**   
-    This value applies the Authentication load balancing schema. This is a sticky session functionality based on the ID of the user. The user ID is understood from the Zowe SSO token on the client's request. Requests without the token are routed in a round-robin fashion. The user is first routed in a round robin fashion, and then the routed instance Id is cached. The instance information is used for subsequent requests to route the client to the cached target service instance. This session's default expiration time is 8 hours. After the session expires, the process initiates again.
+    This value applies the Authentication load balancing schema. This is a sticky session functionality based on the ID of the user. The user ID is understood from the Zowe SSO token on the client's request. Requests without the token are routed in a round-robin fashion. The user is first routed in a round robin fashion, and then the routed instance Id is cached. The instance information is used for subsequent requests to route the client to the cached target service instance. This session's default expiration time is a global value defined in the Gateway. After the session expires, the process initiates again.
 
-    **Direct instance targeting with `X-InstanceId`**
+   **Direct instance targeting with `X-InstanceId`**
 
     When a client knows the exact Eureka `instanceId` of a service instance, the client can bypass the default load balancing (such as round-robin) and route a request directly to that specific instance.
 
     The direct instance targeting feature works completely independently of the sticky session flow and is highly useful to perform the following functions:
-    - **Debugging:** Directing traffic to a specific instance to isolate issues.
-    - **Operational testing:** Verifying a particular instance's behavior.
-    - **Stateful interactions:** When a client maintains its own session affinity without relying on Gateway-side sticky sessions.
+   - **Debugging:** Directing traffic to a specific instance to isolate issues.
+  - **Operational testing:** Verifying a particular instance's behavior.
+  - **Stateful interactions:** When a client maintains its own session affinity without relying on Gateway-side sticky sessions.
 
-    To target a specific instance, provide the instance ID in the request header:
+   To target a specific instance, provide the instance ID in the request header:
     - **Header name:** `X-InstanceId`
     - **Value format:** `hostname:serviceId:port` (This is identical to the instanceId property in the registration of the Discovery service).
     
@@ -138,9 +132,12 @@ Specifies the Gateway port used by the ZAAS Client configuration. The default va
     }
     ``` 
    
+   :::note
+   The response `X-InstanceId` is only present when the client sent `X-InstanceId` in the request, and it echoes that value. It is not a general routed-instance report. For more information, see [Retrieving a specific service within your environment](../../user-guide/api-mediation/configuration-access-specific-instance-of-service.md).
+   :::
 
 * **customMetadata.apiml.lb.cacheRecordExpirationTimeInHours**  
-When the property `customMetadata.apiml.lb.type` is set to `authentication`, the user can also define the expiration time for the selected instance information that is cached. This property aims to prevent any discrepancy which might occur if the required target server is no longer available. The default value is 8 hours.   
+When the property `customMetadata.apiml.lb.type` is set to `authentication`, the user can also define the expiration time for the selected instance information that is cached. The setting is a global value defined in the Gateway, not per-service, so applying it in `customMetadata` has no effect. This property aims to prevent any discrepancy which might occur if the required target server is no longer available. The default value is 8 hours.   
 
 * **customMetadata.apiml.gateway.applyRateLimiterFilter**  
   When this parameter is set to `true`, the rate limiter is applied to the request for this service. When enabling this filter, you can also define the following properties:
@@ -154,38 +151,18 @@ When the property `customMetadata.apiml.lb.type` is set to `authentication`, the
   When no values are provided, global values defined in the Gateway are applied. For more information about the default configuration, see [Customizing gateway rate limiter filter](../../user-guide/api-mediation/customizing-gateway-rate-limiter.md).
 
 
-* **customMetadata.apiml.response.compress**  
-When this parameter is set to `true`, API ML compresses content for all responses from this services using GZIP. API ML also adds the `Content-Encoding` header with value `gzip` to responses.
+## Removed parameters
 
-* **customMetadata.apiml.response.compressRoutes**  
-When the `customMetadata.apiml.response.compress` parameter is set to `true`, this parameter allows services to further limit the compressed routes. The parameter accepts [ant style](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/util/AntPathMatcher.html) routes deliminated by `,` . The expectation is to provide the absolute paths. 
-    
-  If relative paths are provided, the starting `/` is added. If the beginning of the pattern does not need to be specifically defined, use `**/{pathYouAreInterestedIn}`
+When migrating from API ML v2, in v3 the following parameters have been removed and are no longer supported:  
+- `apiml.readTimeout`
+- `apiml.connectionManagerTimeout`
+- `apiml.okToRetryOnAllOperations`
+- `ribbon.*`
+- `apiml.headersToIgnore`
+- `apiml.response.compress`
+- `apiml.response.compressRoutes`
+- `apiml.response.headers`
 
-  **Examples:** 
-
-  * `/service/**`  
-  Compresses all paths starting with /service/
-
-  * `/service/api/v1/compress,/service/api/v1/custom-compress`  
-  Compresses the specific two routes
-
-  * `/**/compress/**`  
-  Compresses all paths that contain `compress` as a specific path
-
-* **customMetadata.apiml.response.headers**  
-(Optional) A service can specify headers that are added to the response by the Gateway. When this parameter is not set or is empty, no headers are added. Header names and header values are separated by `:`. Multiple headers can be added, delimited by `,`. If a header with the same name already exists in the response, the Gateway overwrites the value of the header. 
-
-  **Examples:**
-
-  * `Strict-Transport-Security:max-age=1234; includeSubDomains`  
-  Sets a header with name `Strict-Transport-Security` and value `max-age=1234; includeSubDomains`.
-    
-  * `Strict-Transport-Security:max-age=1234; includeSubDomains, X-Frame-Options:SAMEORIGIN`  
-  Sets two headers:
-
-    1) Header with name `Strict-Transport-Security` and value `max-age=1234; includeSubDomains`.
-    2) Header with name `X-Frame-Options` and value `SAMEORIGIN`.
-
-* **customMetadata.apiml.headersToIgnore**  
-(Optional) A service can specify headers that are removed from the request to the southbound service by the Gateway. When this parameter is not set or is empty, no headers are removed. Multiple headers can be removed, delimited by `,`.
+:::note
+In API ML v3, `customMetadata.apiml.okToRetryOnAllOperations` is **no longer supported**. The API Gateway uses a fixed retry policy. It retries GET requests that end with status 503 up to 5 times. The v2 parameter `apiml.okToRetryOnAllOperations` is no longer read, so a service cannot change which operations are retried. For more information, see [Customizing Gateway Retry Policy](../../user-guide/api-mediation/configuration-gateway-retry-policy.md)
+:::
