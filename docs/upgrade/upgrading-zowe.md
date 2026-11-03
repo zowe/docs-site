@@ -11,7 +11,7 @@ Performing an upgrade of Zowe involves following a subset of the first-time inst
 * If you need to revert an upgrade later, follow the recovery procedure in [Downgrading to a previous Zowe version](./downgrade-to-a-previous-zowe-version.md).
 :::
 
-## Installation and configuration tasks
+## Installation and configuration tasks 
 
 To complete an upgrade, perform all tasks listed in the **Installing** section. However, you only need to complete selected tasks within the **Configuration** sections.
 
