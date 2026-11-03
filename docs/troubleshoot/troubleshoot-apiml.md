@@ -366,7 +366,7 @@ This is quite a complex area and you should ask your systems programmer for advi
 
 class profile SDSF ISF.CONNECT.\*\* (G)
 
-## Corrupted data in the spool output of Zowe jobs with older Java 21 releases
+## Corrupted data in the spool output of Zowe jobs with Java versions without APAR IJ57789
 
 The console spool output from Zowe Java processes in `SYSPRINT` of the Zowe jobs on z/OS shows garbled or unreadable characters when Zowe runs with Version 21.0.10.0 or older of the IBM Semeru Runtime Certified Edition for z/OS.
 
@@ -382,33 +382,10 @@ Use Java 21 version 21.0.10.1 or later with Zowe 3.6.0 and later.
 
 If you cannot update Java, set the console encoding in the Zowe API Mediation Layer components:
 
-If using the single-service deployment mode (`components.apiml.enabled` is `true`):
-
 ```yaml
-components:
-  apiml:
-    jvm:
-      Dlogging.charset.console: IBM-1047
-```
-
-If using the multi-service deployment mode (`components.apiml.enabled` is `false` or not defined):
-
-Set it to each of the java components:
-
-```yaml
-  components:
-    gateway:
-      jvm:
-        Dlogging.charset.console: IBM-1047
-    discovery:
-      jvm:
-        Dlogging.charset.console: IBM-1047
-    api-catalog:
-      jvm:
-        Dlogging.charset.console: IBM-1047
-    caching-service:
-      jvm:
-        Dlogging.charset.console: IBM-1047
+zowe:
+  environments:
+    CONSOLE_LOG_CHARSET: IBM-1047
 ```
 
 After you update `zowe.yaml`, restart Zowe.

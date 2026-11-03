@@ -412,10 +412,9 @@ Upgrade to Zowe 3.6.0 or later when using Java 21 vesion 21.0.10.1 or newer.
 If you cannot update Zowe, set the console encoding in the Zowe API Mediation Layer components:
 
 ```yaml
-components:
-  apiml:
-    jvm:
-      Dlogging.charset.console: UTF-8
+zowe:
+  environments:
+    CONSOLE_LOG_CHARSET: UTF-8
 ```
 
 After you update `zowe.yaml`, restart Zowe.
