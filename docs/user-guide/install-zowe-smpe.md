@@ -597,6 +597,7 @@ This property is an array of domains that are permitted in the metadata of servi
 
 * Subdomains are supported by using an asterisk wildcard, for example, `*.example.com`.
 * Without a wildcard, the domain must be a strict match.
+* Wildcards can be applied by using the `org` domain: `*.example.org` permits any subdomain of `example.org`.
 * By default, the list includes the `externalDomains` already listed in `zowe.yaml` and the hostnames in the optional high availability configuration. You do not need to add these default values manually.
 
 **Example:**
@@ -606,7 +607,7 @@ zowe:
   network:
     allowedDomains:
       - "example.com"
-      - "*.another-domain.com"
+      - "*.example.org"
 ```
 For more information, see [Configuring allowed domains and IP addresses for service registration](./api-mediation/config-allowed-domains-for-service-reg.md) and [Upgrading from Zowe 3.5.x to 3.6.x](../upgrade/upgrading-zowe.md#upgrading-from-zowe-v35x-to-v36x).
 

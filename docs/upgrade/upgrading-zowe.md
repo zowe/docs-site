@@ -86,7 +86,7 @@ zowe:
   network:
     allowedDomains:          # Domains permitted in service registration metadata.
       - "example.com"        # Defaults already include externalDomains and
-      - "*.another.com"      # haInstances hostnames.
+      - "*.example.org"      # haInstances hostnames.
   launchScript:
     startupChecks:
       zosmfjwt: exit         # exit | warn | disabled
