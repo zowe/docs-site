@@ -1,6 +1,6 @@
 # Understanding Zowe release versions
 
-:::warning Change to the breaking changes policy
+:::warning Breaking changes policy exception
 To address recent security findings, some Zowe V2 and Zowe V3 minor and maintenance releases include breaking changes. This is an exception to the major release policy described in this article. For details, see [Breaking changes in Zowe V2 and Zowe V3](../appendix/security-breaking-changes.md).
 :::
 
