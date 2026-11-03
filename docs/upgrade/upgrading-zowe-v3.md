@@ -1,13 +1,13 @@
 # Upgrading from Zowe Vx to Zowe V3.6
 
-Follow the procedure outlined in this article to upgrade from Zowe v2 to Zowe v3.6, or from Zowe v1 to Zowe v3.6.
+Follow the procedure outlined in this article to upgrade from Zowe v3.5 (or an earlier v3.x version) to Zowe v3.6, from Zowe v2 to Zowe v3.6, or from Zowe v1 to Zowe v3.6.
 
 :::info Required roles: system administrator, system programmer
 :::
 
 While the major version upgrading process is similar to a Zowe v2 minor release upgrade, there are several new and updated configuration parameters to consider. 
 
-Follow the steps described in this article to ensure a smooth upgrade to Zowe v3.6. The procedure is written for installations running Zowe v2.18.6 and has three phases:
+Follow the steps described in this article to ensure a smooth upgrade to Zowe v3.6. The procedure is written primarily for installations running Zowe v2.18.6, with a separate section for v3.5 users, and has three phases:
 
 1. [**Preparing your current Zowe instance**](#preparing-your-current-zowe-instance).
 2. [**Upgrading the runtime**](#upgrading-the-runtime) to Zowe v3.6.
@@ -35,6 +35,48 @@ To ensure a smooth transition to Zowe v3.6, you must first resolve any configura
 :::note
 All v2.x installations must first upgrade to v2.18.x before upgrading to v3.6.
 :::
+
+<details>
+<summary><strong>Upgrading from Zowe v3.5 (or earlier v3.x) to v3.6</strong></summary>
+<br />
+To upgrade from Zowe v3.5 or an earlier v3.x version, perform the following procedure before you install Zowe v3.6. Because this is a minor-version upgrade within Zowe v3, the v2 to v3 breaking changes do not apply.
+
+1. **Verify runtime levels.**  
+Confirm that the Java and Node.js versions meet the [prerequisites](#prerequisites-for-zowe-v36). Update `java.home` and `node.home` in `zowe.yaml` if needed.
+
+2. **Review strict URL validation.**  
+In Zowe v3.6, the API ML Gateway enables strict URL validation by default. The Gateway rejects requests that contain any of the following encoded characters in the URL path:
+
+     * encoded slashes (`%2F`)
+     * encoded double slashes (`%2F%2F`)
+     * backslashes (`%5C`)
+     * encoded percent signs (`%25`)
+     * encoded periods (`%2E`)
+     * semicolons (`;`)
+
+   If your onboarded services or clients depend on these characters, requests are rejected after the upgrade unless you update your configuration.
+
+1. **Update the configuration property.**  
+The property `components.gateway.apiml.service.allowEncodedSlashes` is removed. If your services require encoded characters, add the new property `components.gateway.apiml.security.enableStrictUrlValidation` to `zowe.yaml` and set the property to `false`:
+
+    ```yaml
+    components:
+      gateway:
+        apiml:
+          security:
+            enableStrictUrlValidation: false
+    ```
+
+    :::note Behavior change in Zowe v3.6: Strict URL Validation  
+
+    Before Zowe v3.6, `allowEncodedSlashes` was set to `true` by default, so encoded characters were allowed. Strict validation is now **enabled** by default, so requests with encoded characters that were previously accepted are rejected. Setting `enableStrictUrlValidation` to `false` restores the earlier behavior.
+
+    Regardless of this setting, Gateway-internal endpoints (such as `/gateway`, `/application`, `/images`, and `/v3/api-docs`) always enforce strict validation.
+    :::
+
+Proceed to the [**Upgrading the runtime**](#upgrading-the-runtime) section to complete your upgrade to v3.6.
+
+</details>
 
 <details>
 <summary><strong>Upgrading from Zowe v2.18.x to v3.6</strong></summary>
