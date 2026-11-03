@@ -240,3 +240,28 @@ Users must belong to a group that has READ access to these profiles.
 This is quite a complex area and you should ask your systems programmer for advice. On most systems, the GROUP.\* profiles are not required and it is sufficient to have the following ISF profile defined:
 
 class profile SDSF ISF.CONNECT.\*\* (G)
+
+## Corrupted data in the spool output of Zowe jobs with newer Java 21 releases
+
+The console spool output from Zowe Java processes in `SYSPRINT` of the Zowe jobs on z/OS shows garbled or unreadable characters when Zowe 3.5.x runs with Version 21.0.10.1 or newer of the IBM Semeru Runtime Certified Edition for z/OS.
+
+**Cause:**
+
+Applications that write UTF-8 encoded bytes with `System.out.write()` or `System.err.write()` are autoconverted to UTF-8 on z/OS with Java version 21.0.10.1 (APAR IJ57789).
+
+**Solution:**
+
+Upgrade to Zowe 3.6.0 or later when using Java 21 vesion 21.0.10.1 or newer.
+
+**Workaround:**
+
+If you cannot update Zowe, set the console encoding in the Zowe API Mediation Layer components:
+
+```yaml
+components:
+  apiml:
+    jvm:
+      Dlogging.charset.console: UTF-8
+```
+
+After you update `zowe.yaml`, restart Zowe.
