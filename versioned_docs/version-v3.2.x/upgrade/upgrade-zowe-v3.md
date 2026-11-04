@@ -126,9 +126,9 @@ Before starting the migration, ensure the following system requirements are met:
 - **z/OSMF**  
 Version V2R5 or V3R1 is required. JWT support for z/OSMF is highly recommended. For more information, see [Enabling JSON Web Token support](https://www.ibm.com/docs/en/zos/3.1.0?topic=configurations-enabling-json-web-token-support) in the IBM documentation. If you do not have JWT support in z/OSMF, make sure to set `components.gateway.apiml.security.auth.zosmf.jwtAutoconfiguration` to `ltpa`.
 - **Java**  
-Java 17 is required. The Zowe YAML parameter `java.home` value should be a **Java 17** home location. If an administrator uses `zwe init` to set up Zowe, ensure the `java` for that user is v17 by including it in the `PATH` environment variable.
+Java 17 is required. Java 21 is also supported. The Zowe YAML parameter `java.home` value should be a **Java 17** (or **Java 21**) home location. If an administrator uses `zwe init` to set up Zowe, ensure the `java` for that user is v17 (or v21) by including it in the `PATH` environment variable.
 - **Node.js**  
-Ensure that the Zowe YAML parameter `node.home` value is a **Node.js 20 or 22** home location. For details, see [Addressing Node.js requirements](../user-guide/install-nodejs-zos.md).
+Ensure that the Zowe YAML parameter `node.home` value is a **Node.js 18, 20, 22 or 24** home location. Node 16 and earlier versions are not supported. For details, see [Addressing Node.js requirements](../user-guide/install-nodejs-zos.md).
 
 
 ## System and Security Changes
