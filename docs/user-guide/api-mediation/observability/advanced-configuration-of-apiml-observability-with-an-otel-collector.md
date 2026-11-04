@@ -154,10 +154,10 @@ After you apply the changes to zowe.yaml and restart the Zowe task, verify that 
 Review the job logs for the API ML service. Upon successful initialization with observability enabled, look for messages indicating the OpenTelemetry Spring Boot starter (`<version>`) has been started.
 
     :::note  
-    API ML logs connection errors, but does not log a message when the OTLP exporter successfully connects to the collector. If the endpoint is unreachable or the protocol is mismatched, the logs typically show `Exporting failed` or `Connection refused` messages from the OTel SDK. The absence of such errors does not confirm a successful connection. To confirm that data reaches the collector, complete the remaining validation steps.
+    If the endpoint is unreachable or the protocol is mismatched, the logs typically show `Exporting failed` or `Connection refused` messages from the OTel SDK. 
     :::
 
-2. **Verify Signal Reception in your Observability Tool.**  
+1. **Verify Signal Reception in your Observability Tool.**  
 The most definitive validation is to confirm that data is appearing in your chosen observability backend. Use either of the following options:
 
    * **Search by Service Name**  
@@ -166,10 +166,10 @@ The most definitive validation is to confirm that data is appearing in your chos
    * **Filter by Namespace**  
     If you have multiple installations, use the `service.namespace` filter to isolate data from this specific instance.
 
-3. **Confirm Attributes.**  
+1. **Confirm Attributes.**  
 Select a trace or metric and verify that the Resource Attributes (such as `zos.smf.id` or `mainframe.lpar.name`) are correctly attached.
 
-4. **Use the Collector's Logging (Optional).**  
+1. **Use the Collector's Logging (Optional).**  
 If data is not appearing in the backend, check the logs of your OTel Collector. If the collector is configured with the logging or debug exporter, raw incoming export requests from the API ML's IP address are generated.
 
 You can now review your OTel Collector output.  
