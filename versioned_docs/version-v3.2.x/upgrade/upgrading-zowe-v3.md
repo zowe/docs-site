@@ -1,7 +1,7 @@
 # Upgrading from Zowe Vx to Zowe V3
 
 :::tip Upgrading to the latest Zowe version
-This article describes upgrading to Zowe v3.2. To upgrade to the latest Zowe version (v3.6), see [Upgrading from Zowe Vx to Zowe V3.6](https://docs.zowe.org/stable/upgrade/upgrading-zowe-v3/).
+This article covers upgrading to Zowe v3.2. To continue to the latest Zowe version (v3.6), follow [Upgrading from Zowe v3.5 (or earlier v3.x) to v3.6](https://docs.zowe.org/stable/upgrade/upgrading-zowe/#upgrading-from-zowe-v35-or-earlier-v3x-to-v36) in the Upgrading Zowe article. If you are upgrading from Zowe v2 or v1 directly to v3.6, see [Upgrading from Zowe Vx to Zowe V3.6](https://docs.zowe.org/stable/upgrade/upgrading-zowe-v3/).
 :::
 
 Follow the procedure outlined in this article to upgrade from Zowe v2 to Zowe v3, or Zowe v1 to Zowe v3. While the upgrade process is similar to a Zowe v2 minor release upgrade, there are several new and updated configuration parameters to consider. The workspace directory should be re-created only if you are using the app-server component.
