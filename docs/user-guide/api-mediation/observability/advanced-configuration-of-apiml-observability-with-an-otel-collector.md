@@ -81,17 +81,7 @@ API ML is designed to automatically detect your environment name, and the z/OS e
 
 For details about how resource attributes are automatically detected, see [Automated Resource Attribution](configuring-apiml-observability.md#automated-resource-attribution) in _Configuring API ML Observability_.
 :::
-
-* **deployment.environment.name**  
-Specifies the lifecycle stage of the service. Common values include `production`, `staging`, `test`, or `dev`.
-
-* **zos.sysplex.name**  
-Specifies the name of the z/OS Sysplex where the Zowe instance is executing. Specify this attribute to aggregate performance data across a cluster of systems.
-
-* **zos.smf.id**  
-The System Management Facilities identifier. This value is a one to four character ID that uniquely identifies the specific z/OS image within a complex.
-
-* **mainframe.lpar.name**  
+ 
 * **attributes.deployment.environment.name**  
 Specifies the lifecycle stage of the service. Common values include `production`, `staging`, `test`, or `dev`.
 
@@ -100,16 +90,6 @@ Specifies the name of the z/OS Sysplex where the Zowe instance is executing. Spe
 
 * **attributes.zos.smf.id**  
 The System Management Facilities identifier. This value is a one to four character ID that uniquely identifies the specific z/OS image within a complex. 
-
-* **attributes.mainframe.lpar.name**  
-* **attributes.deployment.environment.name**  
-Specifies the lifecycle stage of the service. Common values include `production`, `staging`, `test`, or `dev`.
-
-* **attributes.zos.sysplex.name**  
-Specifies the name of the z/OS Sysplex where the Zowe instance is executing. Specify this attribute to aggregate performance data across a cluster of systems.
-
-* **attributes.zos.smf.id**  
-The System Management Facilities identifier. This value is a one to four character ID that uniquely identifies the specific z/OS image within a complex.
 
 * **attributes.mainframe.lpar.name**  
 The name of the Logical Partition (LPAR).
@@ -154,7 +134,7 @@ After you apply the changes to zowe.yaml and restart the Zowe task, verify that 
 Review the job logs for the API ML service. Upon successful initialization with observability enabled, look for messages indicating the OpenTelemetry Spring Boot starter (`<version>`) has been started.
 
     :::note  
-    If the endpoint is unreachable or the protocol is mismatched, the logs typically show `Exporting failed` or `Connection refused` messages from the OTel SDK. 
+    If the endpoint is unreachable or the protocol is mismatched, the logs typically show `Exporting failed` or `Connection refused` messages from the OTel SDK. No messages are displayed upon a successful connection.
     :::
 
 1. **Verify Signal Reception in your Observability Tool.**  
