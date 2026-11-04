@@ -12,7 +12,7 @@ For a simplified setup that relies on automatic system discovery, see [Quick-sta
 
 ## Configuring API ML to use an OTel Collector
 
-When defining your exporter endpoint, ensure that the chosen protocol matches your OTel Collector's configuration. The exporter protocol (`telemetry.exporter.protocol`) can be set to either `http/protobuf` (typically port `4318`) or `grpc` (typically port `4317`). If you do not specify an endpoint, the exporter defaults to `http://localhost:4318` using `http/protobuf`.
+When defining your exporter endpoint, ensure that the chosen protocol matches your OTel Collector's configuration. Ensure that the exporter protocol (`telemetry.exporter.protocol`) is set to `http/protobuf` (typically port `4318`). If you do not specify an endpoint, the exporter defaults to `http://localhost:4318` using `http/protobuf`.
 
 :::caution Action required: add the OTel Collector CA certificate chain to the Zowe truststore  
 
@@ -44,7 +44,8 @@ The destination URL to your OTel Collector.
 **Default:** `http://localhost:4318`
 
 * **components.apiml.telemetry.exporter.protocol**  
-Specifies the transport protocol for the exporter. Valid values are `http/protobuf` or `grpc`.
+Specifies the transport protocol for the exporter.  
+**Default:** `http/protobuf`
 
 <!-- Propose to remove these as changing the value without changing start.sh will cause API ML to fail to start:
 
@@ -116,7 +117,7 @@ components:
       enabled: true
       exporter:
         endpoint: "https://otel-collector.your.domain:4318"
-        protocol: "http/protobuf"  # or "grpc" with port 4317
+        protocol: "http/protobuf"
       service:
         name: "zowe-apiml"
         namespace: "production"
