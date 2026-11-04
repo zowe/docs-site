@@ -155,7 +155,7 @@ API ML exports OTLP-compliant telemetry signals where each payload is enriched w
 Each attribute name is a single string. The dot-separated prefix groups related attributes by theme, so the prefix before the first dot shows the category of an attribute.
 
 **Example:**
-```
+```json
 {
   "service.name": "zowe-apiml",
   "service.namespace": "sysplex-a",
@@ -163,13 +163,13 @@ Each attribute name is a single string. The dot-separated prefix groups related 
   "host.name": "mylpar.your.domain",
   "mainframe.lpar.name": "LPAR1",
   "zos.smf.id": "SYS1",
-  "zos.sysplex.name": "SYSPLEXA"
+  "zos.sysplex.name": "SYSPLEX1"
 }
 ```
 The attributes are not nested objects. Each name is one key, and the prefixes group them into `service.*`, `host.*`, `mainframe.*`, and `zos.*`. Because of this grouping, you can filter or aggregate in your observability backend by a prefix (for example, all `zos.*` attributes) or by a full attribute name (for example, `zos.sysplex.name`).
 
 :::note
-For a full list of OTel z/OS attributes for z/OS integration, see the _OpenTelemetry Semanic Conventions_ for [z/OS software](https://opentelemetry.io/docs/specs/semconv/resource/zos/).
+For a full list of OTel z/OS attributes for z/OS integration, see the _OpenTelemetry Semantic Conventions_ for [z/OS software](https://opentelemetry.io/docs/specs/semconv/resource/zos/).
 :::
 
 ## Service & Metadata (`service`) 
