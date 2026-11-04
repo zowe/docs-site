@@ -102,6 +102,16 @@ Specifies the name of the z/OS Sysplex where the Zowe instance is executing. Spe
 The System Management Facilities identifier. This value is a one to four character ID that uniquely identifies the specific z/OS image within a complex. 
 
 * **attributes.mainframe.lpar.name**  
+* **attributes.deployment.environment.name**  
+Specifies the lifecycle stage of the service. Common values include `production`, `staging`, `test`, or `dev`.
+
+* **attributes.zos.sysplex.name**  
+Specifies the name of the z/OS Sysplex where the Zowe instance is executing. Specify this attribute to aggregate performance data across a cluster of systems.
+
+* **attributes.zos.smf.id**  
+The System Management Facilities identifier. This value is a one to four character ID that uniquely identifies the specific z/OS image within a complex.
+
+* **attributes.mainframe.lpar.name**  
 The name of the Logical Partition (LPAR).
 
 ## Full zowe.yaml configuration for API ML Observability
