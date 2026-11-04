@@ -248,7 +248,7 @@ You can check if a ZSS plug-in supports 64 bit or 31 bit ZSS by reading the `plu
 In each component or extension you have, its manifest file states if there are `appFw` plug-in entries.
 In each folder referenced by the `appFw` section, you see a `pluginDefinition.json` file.
 Within that file, if you see a section that says `type: 'service'`, then you can check its ZSS mode support.
-If the service has the property `libraryName64`, then it supports 64 bit. If it says `libraryName31`, then it supports 31 bit. Both might exist if it supports both. If it instead only contains `libraryName`, this is ambigious and deprecated, and most likely that plug-in only supports 31 bit ZSS. A plug-in only supporting 31 bit ZSS must be recompiled for 64 bit support, so you must contact the developers to accomplish that.
+If the service has the property `libraryName64`, then it supports 64 bit. If it says `libraryName31`, then it supports 31 bit. Both might exist if it supports both. If it instead only contains `libraryName`, this is ambiguous and deprecated, and most likely that plug-in only supports 31 bit ZSS. A plug-in only supporting 31 bit ZSS must be recompiled for 64 bit support, so you must contact the developers to accomplish that.
 
 Example: [the sample angular app supports both 31 bit and 64 bit zss](https://github.com/zowe/sample-angular-app/blob/083855582e8a82cf48abc21e15fa20bd59bfe180/pluginDefinition.json#L50-L53)
 
