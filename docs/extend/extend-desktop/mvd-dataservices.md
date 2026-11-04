@@ -245,7 +245,7 @@ HttpService *httpService = makeHttpDataService(dataService, server);
 
 Then you must assign properties to the dataservice, such as
 
-* authType: What type of authentication and authorization checks should be done before calling this service. values such as `SERVICE_AUTH_NONE` when the service does not need securty or `SERVICE_AUTH_NATIVE_WITH_SESSION_TOKEN` when the service should be protected by ZSS's cookie are valid.
+* authType: What type of authentication and authorization checks should be done before calling this service. values such as `SERVICE_AUTH_NONE` when the service does not need security or `SERVICE_AUTH_NATIVE_WITH_SESSION_TOKEN` when the service should be protected by ZSS's cookie are valid.
 * serviceFunction: The function within this dataservice that will be called whenever a request is received.
 * runInSubtask: (TRUE/FALSE) Whether to run the service function in a subtask or not whenever a request is received.
 * doImpersonation: (TRUE/FALSE) When true, the service function will be ran as the authenticated user, rather than the server user. This is recommended whenever possible to keep permissions management in line with the users own permissions.
