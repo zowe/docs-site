@@ -248,7 +248,7 @@ You can check if a ZSS plug-in supports 64 bit or 31 bit ZSS by reading the `plu
 In each component or extension you have, its manifest file states if there are `appFw` plug-in entries.
 In each folder referenced by the `appFw` section, you see a `pluginDefinition.json` file.
 Within that file, if you see a section that says `type: 'service'`, then you can check its ZSS mode support.
-If the service has the property `libraryName64`, then it supports 64 bit. If it says `libraryName31`, then it supports 31 bit. Both might exist if it supports both. If it instead only contains `libraryName`, this is ambigious and deprecated, and most likely that plug-in only supports 31 bit ZSS. A plug-in only supporting 31 bit ZSS must be recompiled for 64 bit support, so you must contact the developers to accomplish that.
+If the service has the property `libraryName64`, then it supports 64 bit. If it says `libraryName31`, then it supports 31 bit. Both might exist if it supports both. If it instead only contains `libraryName`, this is ambiguous and deprecated, and most likely that plug-in only supports 31 bit ZSS. A plug-in only supporting 31 bit ZSS must be recompiled for 64 bit support, so you must contact the developers to accomplish that.
 
 Example: [the sample angular app supports both 31 bit and 64 bit zss](https://github.com/zowe/sample-angular-app/blob/083855582e8a82cf48abc21e15fa20bd59bfe180/pluginDefinition.json#L50-L53)
 
@@ -411,6 +411,8 @@ For example, to issue a POST request to the dataservice endpoint documented abov
 
 For configuration dataservice endpoint profiles use the service code `CFG`. For core dataservice endpoints use `COR`. For all other dataservice endpoints use `SVC`.
 
+Periods within the path are kept, so they also separate qualifiers of the profile name. For example, `/users/fred.smith` and `/users/fred/smith` both map to `ZLUX.1.SVC.ORG_ZOWE_FOO.BAZ.POST.USERS.FRED.SMITH`, and a generic profile such as `ZLUX.1.SVC.ORG_ZOWE_FOO.BAZ.POST.USERS.FRED.**` applies to both. Take this into account when the path of an endpoint can contain periods, such as data set or file names.
+
 ### Creating generic authorization profiles
 Some endpoints can generate an unlimited number of URIs. For example, an endpoint that performs a DELETE action on any file would generate a different URI for each file, and users can create an unlimited number of files. To apply RBAC to this type of endpoint you must create a generic profile, for example:
 
@@ -429,7 +431,7 @@ The following are recommended for basic authorization:
 
 
 ### Endpoint URL length limitations
-SAF profiles cannot contain more than 246 characters. If the path section of an endpoint URL is long enough that the profile name exceeds the limit, the path is trimmed to only include elements that do not exceed the limit. To avoid this issue, we recommend that application developers maintain relatively short endpoint URL paths.
+SAF profiles cannot contain more than 246 characters. If the path section of an endpoint URL is long enough that the profile name exceeds the limit, the request is denied. To avoid this issue, we recommend that application developers maintain relatively short endpoint URL paths.
 
 For information on endpoint URLs, see [Using dataservices with RBAC](../extend/extend-desktop/mvd-dataservices.md#using-dataservices-with-rbac).
 
