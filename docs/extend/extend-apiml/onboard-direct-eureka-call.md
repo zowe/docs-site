@@ -120,7 +120,7 @@ a current limitation in Spring Cloud Netflix, routes are created only for instan
 ### API Mediation Layer service onboarding metadata
 
 At registration time, provide metadata in the following format. Metadata parameters contained in this code block are described in the following section.
-
+<!-- Perhaps apiml.connectTimeout / apiml.responseTimeout should be added to the XML? -->
 ```xml
 <instance>
   <metadata>
@@ -195,16 +195,10 @@ When this parameter is set to `true`, the Gateway allows encoded characters to b
 **Important!**  When the expected encoded character is an encoded slash or backslash (`%2F`, `%5C`), make sure the Gateway is also configured to allow encoded slashes. For more info see [Installing the Zowe runtime on z/OS](../../user-guide/install-zos.md).
 
 * **apiml.connectTimeout**  
-The value in milliseconds that specifies a period in which API ML should establish a single, non-managed connection with this service. If omitted, the default value specified in the API ML Gateway service configuration is used.
+The value in milliseconds that specifies a period in which API ML should establish a single, non-managed connection with this service. The period is separate from the response timeout. If omitted, the default value specified in the API ML Gateway service configuration is used.
 
-* **apiml.readTimeout**   
-The value in milliseconds that specifies maximum time of inactivity between two packets in response from this service to API ML. If omitted, the default value specified in the API ML Gateway service configuration is used.
-    
-* **apiml.connectionManagerTimeout**  
-HttpClient employs a special entity to manage access to HTTP connections called by HTTP connection manager. The purpose of an HTTP connection manager is to serve as a factory for new HTTP connections, to manage the life cycle of persistent connections, and to synchronize access to persistent connections. Internally, an HTTP connection manager works with managed connections, which serve as proxies for real connections. `ConnectionManagerTimeout` specifies a period in which managed connections with API ML should be established. The value is in milliseconds. If omitted, the default value specified in the API ML Gateway service configuration is used.
-
-* **apiml.okToRetryOnAllOperations**  
-Specifies whether all operations can be retried for this service. The default value is `false`. The `false` value allows retries for only GET requests if a response code of `503` is returned. Setting this value to `true` enables retry requests for all methods, which return a `503` response code. Enabling retry can impact server resources resulting from buffering of the request body.
+* **apiml.responseTimeout**   
+The value in milliseconds that specifies the maximum time to wait for the response from this service. If omitted, the default value specified in the API ML Gateway service configuration is used.
 
 * **apiml.service.corsEnabled**   
   When this parameter is set to `true`, CORS is enabled on the service level for all service routes. The same parameter can also be set on the service level by providing the parameter as `customMetadata` as shown in [Custom Metadata](./custom-metadata.md).
@@ -224,20 +218,21 @@ Specifies whether all operations can be retried for this service. The default va
 * **apiml.response.compress**  
 When this parameter is set to `true`, API ML compresses content for all responses from these services using GZIP. API ML also adds the `Content-Encoding` header with the value `gzip` to responses.
 
-* **customMetadata.apiml.response.compressRoutes**  
-When the `customMetadata.apiml.response.compress` parameter is set to `true`, this parameter allows the services to further limit the compressed routes. The parameter accepts [ant style](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/util/AntPathMatcher.html) routes deliminated by `,` . The expectation is to provide the absolute paths. If relative paths are provided, the starting `/` is added. If the beginning of the pattern does not require specification, use `**/{pathYouAreInterestedIn}`
+#### Removed parameters
 
-    **Examples:** 
+When migrating from API ML v2, in v3 the following parameters have been removed and are no longer supported:  
+- `apiml.readTimeout`
+- `apiml.connectionManagerTimeout`
+- `apiml.okToRetryOnAllOperations`
+- `ribbon.*`
+- `apiml.headersToIgnore`
+- `apiml.response.compress`
+- `apiml.response.compressRoutes`
+- `apiml.response.headers`
 
-    * `/service/**`  
-    Compresses all paths starting with `/service/`
-
-    * `/service/api/v1/compress,/service/api/v1/custom-compress`  
-    Compresses the specific two routes
-
-    * `/\*\*/compress/\*\*`  
-    Compresses all paths that contain `compress` as a specific path
-
+:::note
+In API ML v3, `customMetadata.apiml.okToRetryOnAllOperations` is **no longer supported**. The API Gateway uses a fixed retry policy. It retries GET requests that end with status 503 up to 5 times. The v2 parameter `apiml.okToRetryOnAllOperations` is no longer read, so a service cannot change which operations are retried. For more information, see [Customizing Gateway Retry Policy](../../user-guide/api-mediation/configuration-gateway-retry-policy.md)
+:::
       
 #### Routing parameters
 Routing parameters are grouped under the prefix: `apiml.routes`
