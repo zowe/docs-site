@@ -8,7 +8,7 @@ Enable the single-service deployment of API ML for an existing multi-service API
 Single-service deployment reduces the Zowe footprint by running the Gateway, Discovery Service, API Catalog, Caching Service, and ZAAS within a single address space.
 
 :::note
-For comprehensive information about single-service deployment, performance improvements, and internal service consolidation, see [Enabling single-service deployment of API Mediation Layer](../api-mediation/api-mediation-modulith.md).
+For comprehensive information about single-service deployment, performance improvements, and internal service consolidation, see [Enabling single-service deployment of API Mediation Layer](../user-guide/api-mediation/api-mediation-modulith.md).
 :::
 
 ## System requirements and prerequisites
@@ -87,7 +87,7 @@ To use z/OSMF as authentication provider, set `auth.provider` to `zosmf`, and `j
               serviceId: ibmzosmf
 ```
 
-For details about using JWT and the token lifecycle, see [Authenticating with a JWT token](../authenticating-with-jwt-token.md).
+For details about using JWT and the token lifecycle, see [Authenticating with a JWT token](../user-guide/authenticating-with-jwt-token.md).
   
 </details>
 
@@ -111,7 +111,7 @@ If you are using ZIS, start this component first. This server provides the autho
 ```
 /S ZWESISTC 
 ```
-For details about ZIS configuration, see [Configuring the Zowe cross memory server (ZIS)](../configure-xmem-server.md).
+For details about ZIS configuration, see [Configuring the Zowe cross memory server (ZIS)](../user-guide/configure-xmem-server.md).
 :::
 
 Start the main Zowe task. 
