@@ -24,7 +24,7 @@ The SSH daemon (`sshd`) that is used on the mainframe server to accept client co
 
 :::
 
-To use SSH with Zowe Explorer (v3.6 and above), see the [Zowe Remote SSH](ze-configuring-zowe-remote-ssh.md) documentation. To keep track of updates to functionality as ZRS develops, see the [Zowe Remote SSH functionality](../user-guide/zowe-remote-ssh.md) documentation.
+To use SSH with Zowe Explorer (v3.6 and above), see the [Zowe Remote SSH](zowe-remote-ssh.md) documentation. To keep track of updates to functionality as ZRS develops, see the [Zowe Remote SSH functionality](zowe-remote-ssh.md) documentation.
 
 ### z/OSMF
 
