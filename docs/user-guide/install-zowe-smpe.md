@@ -609,7 +609,7 @@ zowe:
       - "example.com"
       - "*.example.org"
 ```
-For more information, see [Configuring allowed domains and IP addresses for service registration](./api-mediation/config-allowed-domains-for-service-reg.md) and [Upgrading from Zowe 3.5.x to 3.6.x](../upgrade/upgrading-zowe.md#upgrading-from-zowe-v35x-to-v36x).
+For more information, see [Configuring allowed domains and IP addresses for service registration](./api-mediation/config-allowed-domains-for-service-reg.md) and [Upgrading from Zowe v3.5 (or earlier v3.x) to v3.6](../upgrade/upgrading-zowe.md#upgrading-from-zowe-v35-or-earlier-v3x-to-v36).
 
 ### Perform SMP/E ACCEPT
 

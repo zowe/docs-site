@@ -56,7 +56,7 @@ In Zowe v3.6, the API ML Gateway enables strict URL validation by default. The G
 
    If your onboarded services or clients depend on these characters, requests are rejected after the upgrade unless you update your configuration.
 
-1. **Update the configuration property.**  
+3. **Update the configuration property.**  
 The property `components.gateway.apiml.service.allowEncodedSlashes` is removed. If your services require encoded characters, add the new property `components.gateway.apiml.security.enableStrictUrlValidation` to `zowe.yaml` and set the property to `false`:
 
     ```yaml
