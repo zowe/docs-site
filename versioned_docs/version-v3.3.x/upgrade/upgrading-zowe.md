@@ -34,7 +34,7 @@ Unless you are explicitly adding or removing servers, network changes are unnece
 | Task | Description | Sample JCL | `zwe` Command |
 | :--- | :--- | :--- | :--- |
 | **APF Authorize Privileged Content** | **Purpose:** Zowe contains one privileged component, ZIS, which enables the security model by which the majority of Zowe is unprivileged and in key 8. The load library for the ZIS component and its extension library must be set APF authorized and run in key 4 to use ZIS and components that depend upon it.<br /><br />**Action:**<br />1. APF authorize the data sets defined at `zowe.setup.dataset.authLoadlib` and `zowe.setup.dataset.authPluginLib`.<br />2. Define PPT entries for the members `ZWESIS01` and `ZWESAUX` as Key 4, NOSWAP in the `SCHEDxx` member of the system PARMLIB. | [ZWEIAPF](https://github.com/zowe/zowe-install-packaging/tree/v3.x/master/files/SZWESAMP/ZWEIAPF)  | `zwe init apfauth`  |
-| **Copy STC JCL to PROCLIB** | **Purpose**: `ZWESLSTC` is the job for running Zowe's webservers, and `ZWESISTC` is for running the APF authorized cross-memory server. The `ZWESASTC` job is started by `ZWESISTC` on an as-needed basis.<br /><br />**Action**: Copy the members `ZWESLSTC`, `ZWESISTC`, and `ZWESASTC` into your desired PROCLIB. If the job names are customized, also modify the YAML values of them in `zowe.setup.security.stcs`. | [ZWEISTC](https://github.com/zowe/zowe-install-packaging/tree/v3.x/master/files/SZWESAMP/ZWEISTC)  | `zwe init stc`  |
+| **Copy STC JCL to PROCLIB** | **Purpose**: `ZWESLSTC` is the job for running Zowe's webservers, and `ZWESISTC` is for running the APF authorized cross-memory server. The `ZWESASTC` job is started by `ZWESISTC` on an as-needed basis.<br /><br />**Action**: Copy the members `ZWESLSTC`, `ZWESISTC`, and `ZWESASTC` into your desired PROCLIB. If the job names are customized, also modify the YAML values of them in `zowe.setup.security.stcs`. | [ZWEISTC](https://github.com/zowe/zowe-install-packaging/blob/v2.x/staging/files/SZWESAMP/ZWEISTC)  | `zwe init stc`  |
 
 
 
@@ -54,8 +54,8 @@ If you have two versions of Zowe, you can compare the `zowe-install-packaging` r
 
 `https://github.com/zowe/zowe-install-packaging/compare/{from-version}...{to-version}`
 
-*Example (Comparing v3.3.0 to v3.4.0):*
-[https://github.com/zowe/zowe-install-packaging/compare/v3.3.0...v3.4.0](https://github.com/zowe/zowe-install-packaging/compare/v3.3.0...v3.4.0)
+*Example (Comparing v3.2.0 to v3.3.0):*
+[https://github.com/zowe/zowe-install-packaging/compare/v3.2.0...v3.3.0](https://github.com/zowe/zowe-install-packaging/compare/v3.2.0...v3.3.0)
 
 On that web page, you can search for `example-zowe.yaml` and `defaults.yaml` to see their changes.
 
