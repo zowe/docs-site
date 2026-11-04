@@ -1,7 +1,7 @@
-# Migrating from Zowe Vx to Zowe V3
+# Upgrading from Zowe Vx to Zowe V3
 
-Follow the procedure outlined in this article to migrate from Zowe v2 to Zowe v3, or Zowe v1 to Zowe v3. While the migration process is similar to a Zowe v2 minor release upgrade, there are several new and updated configuration parameters to consider. The workspace directory should be re-created only if you are using the app-server component.
-Follow the steps described in this article to ensure a smooth migration.
+Follow the procedure outlined in this article to upgrade from Zowe v2 to Zowe v3, or Zowe v1 to Zowe v3. While the upgrade process is similar to a Zowe v2 minor release upgrade, there are several new and updated configuration parameters to consider. The workspace directory should be re-created only if you are using the app-server component.
+Follow the steps described in this article to ensure a smooth upgrade.
 
 
 ## Upgrading to the latest version of Zowe v2 (v2.18)
