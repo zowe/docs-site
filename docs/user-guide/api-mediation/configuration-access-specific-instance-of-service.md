@@ -3,7 +3,7 @@
 :::info Roles: system programmer, system administrator
 :::
 
-When working with multiple service instances behind an API Gateway, clients can bypass default round-robin load balancing and route requests directly to a specific instance by setting the `X-InstanceId` header with the target's `instanceId`. Review this article for details about how to use the `X-InstanceId` HTTP header to interact with specific service instances to enable the following functions:  
+When working with multiple service instances behind an API Gateway, clients can route requests directly to a specific instance by setting the `X-InstanceId` header with the target's `instanceId`. The incoming `X-InstanceId` request header selects a target. The `X-InstanceId` response header only reports the routed instance. Review this article for details about how to use the `X-InstanceId` HTTP header to interact with specific service instances to enable the following functions:  
 
 * **Output a routed instance header**  
 Configure the Gateway to output the `X-InstanceId` HTTP header in responses for visibility.
@@ -14,7 +14,7 @@ Provide the `X-InstanceId` HTTP header in client requests to bypass default load
 
 The API Gateway can output a special header that contains the value of the instance ID of the API service that the request has been routed to. The routed instance header is useful for understanding which service instance is being called.
 
-The header name is `X-InstanceId`, and the sample value is `discoverable-client:discoverableclient:10012`. The header value is identical to the `instanceId` property in the registration of the Discovery service.
+The header name is `X-InstanceId`, and the sample value is `discoverable-client:discoverableclient:10012`. `X-InstanceId` is only present when the client sends `X-InstanceId` in the request, and it echoes that value. The header value is identical to the `instanceId` property in the registration of the Discovery service.
 
 Use the following procedure to output a special header that contains the value of the instance ID of the API service.
 
