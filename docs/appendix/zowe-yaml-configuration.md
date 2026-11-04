@@ -955,8 +955,7 @@ Specifies whether OpenTelemetry data collection and exporting is active for the 
 Specifies the URL endpoint of your OpenTelemetry collector where the metrics/traces will be sent.
 
 - **telemetry.exporter.protocol**  
-Specifies the transport protocol used to send data to the collector.  
-**Default:** `http/protobuf` 
+Specifies the transport protocol used to send data to the collector (for example, `http/protobuf` or `grpc`).
 
 - **telemetry.service.name**  
 Specifies the logical name identifying this service in your telemetry backend.
