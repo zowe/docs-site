@@ -128,7 +128,7 @@ Version V2R5 or V3R1 is required. JWT support for z/OSMF is highly recommended. 
 - **Java**  
 Java 17 is required. Java 21 is also supported. The Zowe YAML parameter `java.home` value should be a **Java 17** (or **Java 21**) home location. If an administrator uses `zwe init` to set up Zowe, ensure the `java` for that user is v17 (or v21) by including it in the `PATH` environment variable.
 - **Node.js**  
-Ensure that the Zowe YAML parameter `node.home` value is a **Node.js 18, 20, or 22** home location. Node 16 and earlier versions are not supported. For details, see [Addressing Node.js requirements](../user-guide/install-nodejs-zos.md).
+Ensure that the Zowe YAML parameter `node.home` value is a **Node.js 20, 22, or 24** home location. Earlier Node.js versions are no longer supported. For details, see [Addressing Node.js requirements](../user-guide/install-nodejs-zos.md).
 
 
 ## System and Security Changes
