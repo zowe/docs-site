@@ -68,7 +68,7 @@ Any extensions or products built upon Zowe v1 are unlikely to work in v2 or v3 w
 :::
 
 * **[Upgrading from Zowe Vx to Zowe V3](./upgrade-zowe-v3.md)**  
-Follow this procedure to upgrade from Zowe v2.18.x (the last Zowe v2 release) or earlier to Zowe v3. This article details the v3 prerequisites (Java 17, Node.js 18 or 20, and z/OSMF JWT support), the configuration changes required for each earlier v2 version, and new, updated, and deprecated configuration parameters.
+Follow this procedure to upgrade from Zowe v2.18.x (the last Zowe v2 release) or earlier to Zowe v3. This article details the v3 prerequisites (Java 17 or 21, supported Node.js versions for the target v3 release, and z/OSMF JWT support), the configuration changes required for each earlier v2 version, and new, updated, and deprecated configuration parameters.
 
     :::caution Important
     If you are currently running on an earlier v2 version of Zowe, before upgrading to Zowe v3.x, first upgrade to Zowe v2.18.x.
