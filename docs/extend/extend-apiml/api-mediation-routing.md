@@ -26,13 +26,13 @@ The following diagram shows a request for a specific job from a customer and the
 - **Instance Routing**  
   Routes requests based on service instances
 - **Versioning**  
-  Supports routing to specific service versions
+  Supports routing to specific path-based service versions
 
 ## Basic Routing
 
 In basic routing, requests are routed using the service ID and optionally, the service version:
-
-**Example:** `https://gateway-url/api/v1/service-id`
+<!-- Not sure this usrl is right. Do we still need /api/? -->
+**Example:** `https://gateway-url/{serviceId}/{gatewayUrl}`
 
 **Routing Mechanism**
 Routing can be configured for either single or multiple API ML instances
@@ -68,14 +68,14 @@ The following shows service URL tansformations if the downstream (southbound) se
 - The request `https://apiml/zosmf/ws/v1/desktop` from the user is transformed to `https://service/zosmf/ws/desktop`
 
 **Instance Routing**  
-API ML supports routing to multiple instances of the same service, thereby distributing requests based on load balancing policies. Ensure each service instance registers with a unique instance ID in Eureka.
+API ML supports routing to multiple instances of the same service, thereby distributing requests based on load balancing policies. By default, the service is routed using the basic round robin schema. Sticky session routing is handled by the Caching Service. Ensure each service instance registers with a unique instance ID in Eureka. For more information, see [Customizing metadata](custom-metadata.md).
 
 **Versioning**  
-API ML makes it possible to specify the version of a service in the route. If a version is not specified, the latest version is used by default. Version specified routing provides flexibility in deploying and updating services without affecting existing clients.
+API ML uses path-based routing to provide flexibility in deploying and updating services without affecting existing clients.
 
 **Example Usage**  
-The following URL is an example of routing to a specific version of a service:
-
+The version is part of the Gateway route defined by `apiml.routes.*.gatewayUrl`. The following URL is an example of routing to a specific path:
+<!-- We need new examples for the following URLs -->
 ```http
 https://gateway-url/service-id/api/v1?version=1.2
 ```
@@ -142,6 +142,6 @@ Refer to the detailed configuration guide for more advanced settings and example
 
 By default, routing through the API Mediation Layer selects the instance to route to in Round-robin fashion for each
 specific request. It is possible to change this behavior to assign a specific user to a specific instance or to change 
-the behavior by providing the option to go to a specific instance of a service.
+the behavior by providing the option to go to a specific instance of a service. This is a sticky session functionality based on the ID of the user. For more information on the `authentication` value of the `customMetadata.apiml.lb.type` parameter, see see [Customizing metadata](custom-metadata.md). 
 
 For details about how to route a client request to a specific instance using the `X-InstanceId` header, see [Retrieving a specific service within your environment](../../user-guide/api-mediation/configuration-access-specific-instance-of-service.md).
