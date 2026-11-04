@@ -74,7 +74,7 @@ Follow this procedure to upgrade from Zowe v2.18.x (the last Zowe v2 release) or
     If you are currently running on an earlier v2 version of Zowe, before upgrading to Zowe v3.x, first upgrade to Zowe v2.18.x.
     :::
 
-    To upgrade to the latest Zowe version (v3.6), see [Upgrading from Zowe Vx to Zowe V3.6](https://docs.zowe.org/stable/upgrade/upgrading-zowe-v3/).
+    To upgrade to the latest Zowe version (v3.6), follow the section "Upgrading from Zowe v2.18.x to v3.6" in [Upgrading from Zowe Vx to Zowe V3.6](https://docs.zowe.org/stable/upgrade/upgrading-zowe-v3/#preparing-your-current-zowe-instance).
 
 * **[Upgrading from Zowe V1 to Zowe V2](./upgrade-zowe-v2.md)**  
 Follow this procedure to upgrade an existing Zowe server component from version 1 to version 2. Because there is no clear upgrade path from v1 to v2 or v3, you must perform a clean installation of Zowe. This article provides a detailed map for updating component manifests, lifecycle scripts, and environment variables to achieve compatibility with Zowe version 2.
