@@ -10,7 +10,7 @@
         "id": "whats-new/release-notes/release-notes-overview"
       },
       "items": [
-        "whats-new/release-notes/v2_18_6",        
+        "whats-new/release-notes/v2_18_6",
         "whats-new/release-notes/v2_18_5",
         "whats-new/release-notes/v2_18_4",
         "whats-new/release-notes/v2_18_3",
@@ -157,7 +157,7 @@
             "user-guide/address-browser-requirements"
           ]
         },
-                {
+        {
           "type": "category",
           "label": "Installing Zowe via Zowe Server Install Wizard",
           "link": {
@@ -430,7 +430,6 @@
               ]
             },
             "user-guide/install-cli-via-proxy",
-            "user-guide/cli-updatingcli",
             "user-guide/cli-uninstall",
             {
               "type": "category",
@@ -1277,6 +1276,29 @@
       "type": "link",
       "label": "Third Party Software Requirements",
       "href": "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.18.5.md"
+    }
+  ],
+  "upgrade": [
+    "upgrade/upgrading-zowe",
+    {
+      "type": "category",
+      "label": "Zowe server-side components",
+      "collapsed": false,
+      "items": [
+        "upgrade/upgrade-zowe-v3",
+        "upgrade/upgrade-zowe-v2",
+        "upgrade/upgrade-zowe-no-downtime",
+        "upgrade/downgrade-to-a-previous-zowe-version"
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Zowe client-side components",
+      "collapsed": false,
+      "items": [
+        "upgrade/cli-updatingcli",
+        "upgrade/ze-updatingze"
+      ]
     }
   ]
 }
