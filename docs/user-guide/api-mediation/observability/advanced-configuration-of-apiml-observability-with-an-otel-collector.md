@@ -144,7 +144,7 @@ After you apply the changes to zowe.yaml and restart the Zowe task, verify that 
 Review the job logs for the API ML service. Upon successful initialization with observability enabled, look for messages indicating the OpenTelemetry Spring Boot starter (`<version>`) has been started.
 
     :::note  
-    API ML does not log a message when the OTLP exporter connects to the collector, so the absence of errors is the expected result. If the endpoint is unreachable or the protocol is mismatched, the logs typically show `Exporting failed` or `Connection refused` messages from the OTel SDK.
+    API ML logs connection errors, but does not log a message when the OTLP exporter successfully connects to the collector. If the endpoint is unreachable or the protocol is mismatched, the logs typically show `Exporting failed` or `Connection refused` messages from the OTel SDK. The absence of such errors does not confirm a successful connection. To confirm that data reaches the collector, complete the remaining validation steps.
     :::
 
 2. **Verify Signal Reception in your Observability Tool.**  
