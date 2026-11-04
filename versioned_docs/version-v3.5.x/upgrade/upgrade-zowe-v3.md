@@ -7,46 +7,11 @@ Follow the procedure outlined in this article to upgrade from Zowe v2 to Zowe v3
 
 While the major version upgrading process is similar to a Zowe v2 minor release upgrade, there are several new and updated configuration parameters to consider depending on your current version. 
 
-Follow the steps described in this article to ensure a smooth upgrade to the latest Zowe version.
+Follow the steps described in this article to ensure a smooth upgrade to Zowe v3.5.
 
 :::note
 The workspace directory should be re-created only if you are using the app-server component.
 :::
-
-## Upgrading from Zowe v3.5 and previous Zowe v3 versions
-
-<details>
-<summary>Click here for configuration details.</summary>  
-
-In Zowe v3.6, the API ML Gateway introduces a breaking change by enabling strict URL validation by default. The Gateway now automatically rejects requests that contain any of the following encoded characters in the URL path: 
-
-* encoded slashes (`%2F`)
-* encoded double slashes (`%2F%2F`)
-* backslashes (`%5C`)
-* encoded percent signs (`%25`)
-* encoded periods (`%2E`)
-* semicolons (`;`).
-
-If you onboarded services that expect these encoded characters, you will encounter rejected requests after upgrading unless you update your configuration.
-
-* The previous configuration property `components.gateway.apiml.service.allowEncodedSlashes` has been removed.
-* Add the new property `components.gateway.apiml.security.enableStrictUrlValidation` to your `zowe.yaml` file and set this attribute to `false`.
-
-  :::note Behavior change in Zowe v3.6: Strict URL Validation
-  Prior to Zowe v3.6, API ML allowed encoded slashes by default. The property that controlled this (`components.gateway.apiml.service.allowEncodedSlashes`) was removed and replaced with `components.gateway.apiml.security.enableStrictUrlValidation`.
-
-  Because strict validation is now **enabled** by default, requests with encoded characters that were previously accepted will now be rejected.
-
-  **Restoring pre-v3.6 behavior:**  
-  Previously, the property `components.gateway.apiml.service.allowEncodedSlashes` was set to `true` by default, thereby allowing for encoded characters. Now, if your southbound services require them, you must explicitly set the `enableStrictUrlValidation` property to `false` to bypass the block and restore the older behavior.
-
-  **Exceptions for Gateway-internal endpoints:**  
-  Regardless of how you configure the `enableStrictUrlValidation` property, gateway-internal endpoints (such as `/gateway`, `/application`, `/images`, and `/v3/api-docs`) will always enforce strict validation.
-  :::
-
-</details>
-<br />
-
 
 ## Upgrading from Zowe v1 or v2 to Zowe v3
 
@@ -66,7 +31,7 @@ Please follow the instructions from the version of Zowe you have and newer in or
 
 ### Preparing Your Current Zowe Instance
 
-To ensure a smooth transition to the latest Zowe version, you must first resolve any configuration changes required by your current version. Configuration updates are cumulative. If you are running an earlier v2 version of Zowe, you must follow all of the procedures that correspond to your current version, plus each of the later Zowe versions up to and including v2.18.x. Apply the necessary configurations before proceeding with the v3 upgrade. 
+To ensure a smooth transition to Zowe v3.5, you must first resolve any configuration changes required by your current version. Configuration updates are cumulative. If you are running an earlier v2 version of Zowe, you must follow all of the procedures that correspond to your current version, plus each of the later Zowe versions up to and including v2.18.x. Apply the necessary configurations before proceeding with the v3 upgrade. 
 
 ### Upgrading from Zowe v2.16.x and previous Zowe versions
 

@@ -54,7 +54,7 @@ To identify the resources most relevant for you, use the following definitions o
 
    Explains how to configure Zowe CLI environment variables, such as changing log levels, setting the home directory location, and daemon mode.
 
-- [**Updating Zowe CLI**](../user-guide/cli-updatingcli.md)
+- [**Updating Zowe CLI**](../upgrade/cli-updatingcli.md)
 
    Learn how to update Zowe CLI to a more recent version using different methods. 
 
