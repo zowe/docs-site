@@ -5,6 +5,10 @@ Follow the procedure outlined in this article to upgrade from Zowe v2 to Zowe v3
 :::info Required roles: system administrator, system programmer
 :::
 
+:::tip Upgrading to the latest Zowe version
+This article describes upgrading to Zowe v3.5. To upgrade to the latest Zowe version (v3.6), see [Upgrading from Zowe Vx to Zowe V3.6](https://docs.zowe.org/stable/upgrade/upgrading-zowe-v3/).
+:::
+
 While the major version upgrading process is similar to a Zowe v2 minor release upgrade, there are several new and updated configuration parameters to consider depending on your current version. 
 
 Follow the steps described in this article to ensure a smooth upgrade to Zowe v3.5.

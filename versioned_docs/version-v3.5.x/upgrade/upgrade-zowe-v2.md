@@ -6,7 +6,7 @@ Follow the procedure in this article to upgrade an existing Zowe server componen
 :::
 
 :::tip
-After you have updated to the last supported v2 version of Zowe (v2.18.x), we recommend you upgrade to the latest version of Zowe for highest performance and available features. For more information, see [Upgrading from Zowe Vx to Zowe V3](./upgrade-zowe-v3.md).
+After you have updated to the last supported v2 version of Zowe (v2.18.x), we recommend you upgrade to the latest version of Zowe for highest performance and available features. For more information, see [Upgrading from Zowe Vx to Zowe V3](./upgrading-zowe-v3.md).
 :::
 
 To make a Zowe server component compatible with Zowe version 2, update the following configurations:
