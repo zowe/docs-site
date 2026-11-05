@@ -138,6 +138,10 @@ Additional plugins can be added to the Desktop, and are packaged and installed a
 
 Developers can create application plug-ins to put into extensions, and developers should [read the extending guide for more information](../extend/extend-desktop/mvd-extendingzlux.md).
 
+### TN3270 Terminal
+
+See [Using the 3270 Terminal](mvd-3270.md) for more details.
+
 ### VT Terminal 
 The VT Terminal plugin provides a user interface that emulates the basic functions of DEC VT family terminals. On the "back end," the plugin and the Zowe Application Server connect to VT compatible hosts, such as z/OS UNIX System Services (USS), using SSH or Telnet.
 
