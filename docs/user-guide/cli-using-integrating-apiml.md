@@ -28,7 +28,7 @@ Provide your username and password to generate a token and log in to API ML:
     zowe auth login apiml
     ```
     
-    This creates a [base profile](../appendix/zowe-glossary#base-profile) if there is not already one and updates the profile with a new token and it modifies the `authOrder` property on the default z/OSFM profile, if one exists, to use tokens. If none exists, provides instructions on how to configure your own z/OSMF profile.
+    This creates a [base profile](../appendix/zowe-glossary#base-profile) if there is not already one and updates the profile with a new token and it modifies the `authOrder` property on the default z/OSMF profile, if one exists, to use tokens. If none exists, provides instructions on how to configure your own z/OSMF profile.
     
 2. When prompted, enter the following information:
     - Username
@@ -45,7 +45,7 @@ Provide your username and password to generate a token and log in to API ML:
 3. If you do not have a profile for the service, respond to Zowe CLI prompts for connection information to create a profile for the service.
 
     :::tip
-    - To enable API ML for a service, establish a base path. See instructions for [Zowe V2 and V3 profiles](#specifying-a-base-path-with-zowe-team-configuration) or [Zowe V1 profiles](#specifying-a-base-path-with-zowe-v1-profiles).
+    - To enable API ML for a service, establish a base path. See instructions for [team configuration](#specifying-a-base-path-with-zowe-team-configuration) or [Zowe V1 profiles](#specifying-a-base-path-with-zowe-v1-profiles).
     :::
 
     If you already have a profile in your configuration for the service you want to connect to, use a text editor to open the applicable configuration file and replace the `port` property with a `basePath` property to enable the use of API ML.
@@ -190,7 +190,7 @@ However, you might need to use a different base profile. To do so, add the `--ba
 
 To access mainframe services through API ML using the token in your base profile, use the `basePath` property in your service profile to indicate the base path of the API on the API ML instance that you want to access.
 
-To establish a base path, see instructions for [Zowe V2 and V3 profiles](#specifying-a-base-path-with-zowe-team-configuration).
+To establish a base path, see instructions for [team configuration](#specifying-a-base-path-with-zowe-team-configuration).
 
 :::note
 
@@ -245,7 +245,7 @@ A scenario might exist where you log in to API ML with SSO, but you also want to
 In this case, your `zowe.config.json` file might look like the following client configuration:
 
 :::warning
-If using this code, replace the placeholder values (such as `123`) in the following snippet with your actual configuration details.
+If using this code, replace the placeholder values (such as `example.com`) in the following snippet with your actual configuration details.
 :::
 
 ```json showLineNumbers title="zowe.config.json"
@@ -263,7 +263,7 @@ If using this code, replace the placeholder values (such as `123`) in the follow
             "type": "base",
             "properties": {
                 "host": "example.com",  // Both of the services are on this host
-                "port": 12345, // Place APIML port in the base profile
+                "port": 7554, // Place APIML port in the base profile
             }
         },
         "zosmf_thru_apiml": { // A profile for connecting to z/OSMF through APIML
@@ -276,7 +276,7 @@ If using this code, replace the placeholder values (such as `123`) in the follow
         "zosmf_direct": { // A profile for connecting directly to z/OSMF
             "type": "zosmf",
             "properties": {
-                "port": 1234 // Override the APIML port with the direct z/OSMF port
+                "port": 443 // Override the APIML port with the direct z/OSMF port
             },
             "secure": [
                 "user", // The user and password for the direct connection to z/OSMF
@@ -296,7 +296,7 @@ If using this code, replace the placeholder values (such as `123`) in the follow
         "ssh": {
             "type": "ssh",
             "properties": {
-                "port": 5678
+                "port": 22
             },
             "secure": [
                 "user",
