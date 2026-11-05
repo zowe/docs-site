@@ -599,7 +599,7 @@ This property is an array of domains that are permitted in the metadata of servi
 * Without a wildcard, the domain must be a strict match.
 * By default, the list includes the `zowe.externalDomains` already listed in `zowe.yaml` and the hostnames in the optional high availability configuration. You do not need to add these default values manually.
 
-**Example:**
+**Example:** 
 
 ```yaml
 zowe:
