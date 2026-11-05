@@ -84,7 +84,7 @@ Specifies the Gateway port used by the ZAAS Client configuration. The default va
   :::
   
 * **customMetadata.apiml.lb.type**  
- This parameter is part of the load balancing configuration for the Deterministic Routing capability. Through this parameter, the service can specify which load balancing schema the service requires. If this parameter is not specified, the service is routed using the basic round robin schema. Sticky session routing is handled by the Caching Service. This parameter can be set to the following values:
+ This parameter is part of the load balancing configuration for the Deterministic Routing capability. Through this parameter, the service can specify which load balancing schema the service requires. If this parameter is not specified, the service is routed using the basic round robin schema. Sticky session routing is managed by the API ML cache. This parameter can be set to the following values:
    
   * **`headerRequest`**  
   This value applies the Header Request load balancing schema. Clients can call the API Gateway and provide a special header with the value of the requested instanceId. The Gateway understands this as a request from the client for routing to a specific instance. Clients have several possibilities for understanding the topology of service instances, such as via the `/eureka/apps` endpoint on the Discovery service, or the `/gateway/services` endpoint on the Gateway. In either case, the information is provided. The client can then request a specific instance by using Direct instance targeting with `X-InstanceId` described below.
