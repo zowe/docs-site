@@ -21,6 +21,7 @@ This article outlines a process to make an API service available in the API Medi
     - [API Mediation Layer service onboarding metadata](#api-mediation-layer-service-onboarding-metadata)
       - [Catalog parameters](#catalog-parameters)
       - [Service parameters](#service-parameters)
+      - [Removed parameters](#removed-parameters)
       - [Routing parameters](#routing-parameters)
       - [Authentication parameters](#authentication-parameters)
       - [API Info parameters](#api-info-parameters)
@@ -215,20 +216,17 @@ The value in milliseconds that specifies the maximum time to wait for the respon
 * **customMetadata.apiml.corsAllowedMethods**  
   (Optional) Specify a comma-separated list of HTTP methods (e.g., `GET`, `POST`, `PUT`, `DELETE`) that are allowed when accessing the service via CORS.
 
-* **apiml.response.compress**  
-When this parameter is set to `true`, API ML compresses content for all responses from these services using GZIP. API ML also adds the `Content-Encoding` header with the value `gzip` to responses.
-
 #### Removed parameters
 
 When migrating from API ML v2, in v3 the following parameters have been removed and are no longer supported:  
-- `apiml.readTimeout`
-- `apiml.connectionManagerTimeout`
-- `apiml.okToRetryOnAllOperations`
-- `ribbon.*`
-- `apiml.headersToIgnore`
-- `apiml.response.compress`
-- `apiml.response.compressRoutes`
-- `apiml.response.headers`
+- `customMetadata.apiml.readTimeout`
+- `customMetadata.apiml.connectionManagerTimeout`
+- `customMetadata.apiml.okToRetryOnAllOperations`
+- `customMetadata.ribbon.*`
+- `customMetadata.apiml.headersToIgnore`
+- `customMetadata.apiml.response.compress`
+- `customMetadata.apiml.response.compressRoutes`
+- `customMetadata.apiml.response.headers`
 
 :::note
 In API ML v3, `customMetadata.apiml.okToRetryOnAllOperations` is **no longer supported**. The API Gateway uses a fixed retry policy. It retries `GET` requests that end with status `503` up to 5 times. The v2 parameter `apiml.okToRetryOnAllOperations` is no longer read, so a service cannot change which operations are retried. For more information, see [Customizing Gateway Retry Policy](../../user-guide/api-mediation/configuration-gateway-retry-policy.md)

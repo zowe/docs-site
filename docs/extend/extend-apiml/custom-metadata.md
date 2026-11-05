@@ -154,15 +154,15 @@ When the property `customMetadata.apiml.lb.type` is set to `authentication`, the
 ## Removed parameters
 
 When migrating from API ML v2, in v3 the following parameters have been removed and are no longer supported:  
-- `apiml.readTimeout`
-- `apiml.connectionManagerTimeout`
-- `apiml.okToRetryOnAllOperations`
-- `ribbon.*`
-- `apiml.headersToIgnore`
-- `apiml.response.compress`
-- `apiml.response.compressRoutes`
-- `apiml.response.headers`
+- `customMetadata.apiml.readTimeout`
+- `customMetadata.apiml.connectionManagerTimeout`
+- `customMetadata.apiml.okToRetryOnAllOperations`
+- `customMetadata.ribbon.*`
+- `customMetadata.apiml.headersToIgnore`
+- `customMetadata.apiml.response.compress`
+- `customMetadata.apiml.response.compressRoutes`
+- `customMetadata.apiml.response.headers`
 
 :::note
-In API ML v3, `customMetadata.apiml.okToRetryOnAllOperations` is **no longer supported**. The API Gateway uses a fixed retry policy. It retries GET requests that end with status 503 up to 5 times. The v2 parameter `apiml.okToRetryOnAllOperations` is no longer read, so a service cannot change which operations are retried. For more information, see [Customizing Gateway Retry Policy](../../user-guide/api-mediation/configuration-gateway-retry-policy.md)
+In API ML v3, `customMetadata.apiml.okToRetryOnAllOperations` is **no longer supported**. The API Gateway uses a fixed retry policy. It retries `GET` requests that end with status `503` up to 5 times. The v2 parameter `apiml.okToRetryOnAllOperations` is no longer read, so a service cannot change which operations are retried. For more information, see [Customizing Gateway Retry Policy](../../user-guide/api-mediation/configuration-gateway-retry-policy.md)
 :::

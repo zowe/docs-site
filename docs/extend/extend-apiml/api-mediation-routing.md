@@ -26,13 +26,17 @@ The following diagram shows a request for a specific job from a customer and the
 - **Instance Routing**  
   Routes requests based on service instances
 - **Versioning**  
-  Supports routing to specific path-based service versions
+  Supports routing by the version segment in the Gateway path, for example `/api/v1`.
 
 ## Basic Routing
 
-In basic routing, requests are routed using the service ID and optionally, the service version:
-<!-- Not sure this usrl is right. Do we still need /api/? -->
-**Example:** `https://gateway-url/{serviceId}/{gatewayUrl}`
+In basic routing, requests are routed using the service ID and the Gateway path:
+
+**Example:** `https://gateway-url/{serviceId}/{gatewayUrl}` 
+
+:::note
+`{gatewayUrl}` is a Gateway path such as `api/v1`.
+:::
 
 **Routing Mechanism**
 Routing can be configured for either single or multiple API ML instances
@@ -44,7 +48,7 @@ Uses Eureka metadata for direct routing to a service based on the service ID
 Uses Eureka metadata for service discovery and load balancing
 
 **Implementation Details**  
-Routing configuration is defined in Eureka metadata.
+Routing configuration is defined in service routes, which are registered as Eureka metadata.
 Ensure proper setup for accurate routing. The following yaml file is an example of Eureka metadata configuration:
 
 ```yaml
@@ -74,17 +78,13 @@ API ML supports routing to multiple instances of the same service, thereby distr
 API ML uses path-based routing to provide flexibility in deploying and updating services without affecting existing clients.
 
 **Example Usage**  
-The version is part of the Gateway route defined by `apiml.routes.*.gatewayUrl`. The following URL is an example of routing to a specific path:
-<!-- We need new examples for the following URLs -->
+The version is part of the path and is matched by the route's `gatewayUrl` (for example, `api/v1` or `api/v2`). Routes are matched on the base path `/{serviceId}/{gatewayUrl}`. To make several major versions available, define a route for each version.
 ```http
-https://gateway-url/service-id/api/v1?version=1.2
+https://gateway-url/service-id/api/v1/resource
+https://gateway-url/service-id/api/v2/resource
 ```
 
-Note that if no version is specified, as in the following example, the request defaults to the latest service version:
-
-```http
-https://gateway-url/service-id/api/v1
-```
+Note that the `?version=` query parameter has no effect. If you used it in API ML v2, replace it with the path-based route.
 
 ## Deployments
 
@@ -93,7 +93,7 @@ Deployment can be for single or multiple instances.
 - **A single instance** of the API Mediation Layer with one or more instances of the services onboarded
 - **Multiple instances** of the API Mediation Layer in High Availability setup with one or more instances of the services onboarded
 
-The onboarded services may be onboarded in one or more instances and the APIs that the services provide may be versioned. API Mediation Layer supports distinction on the major version boundary. 
+The onboarded services may be onboarded in one or more instances and the APIs that the services provide may be versioned. API Mediation Layer supports distinction on the major version boundary by path, as defined in the service routes. 
 
 ### Making a GET call to a service through single instance of API ML
 
