@@ -251,7 +251,7 @@ Applications that write UTF-8 encoded bytes with `System.out.write()` or `System
 
 **Solution:**
 
-Upgrade to Zowe 3.6.0 or later when using Java 21 vesion 21.0.10.1 or newer.
+Upgrade to Zowe 3.6.0 or later when using Java 21 version 21.0.10.1 or newer.
 
 **Workaround:**
 
