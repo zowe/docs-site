@@ -72,7 +72,7 @@ The following shows service URL tansformations if the downstream (southbound) se
 - The request `https://apiml/zosmf/ws/v1/desktop` from the user is transformed to `https://service/zosmf/ws/desktop`
 
 **Instance Routing**  
-API ML supports routing to multiple instances of the same service, thereby distributing requests based on load balancing policies. By default, the service is routed using the basic round robin schema. Sticky session routing is handled by the Caching Service. Ensure each service instance registers with a unique instance ID in Eureka. For more information, see [Customizing metadata](custom-metadata.md).
+API ML supports routing to multiple instances of the same service, thereby distributing requests based on load balancing policies. By default, the service is routed using the basic round robin schema. Sticky session routing is managed by the API ML cache. Ensure each service instance registers with a unique instance ID in Eureka. For more information, see [Customizing metadata](custom-metadata.md).
 
 **Versioning**  
 API ML uses path-based routing to provide flexibility in deploying and updating services without affecting existing clients.
