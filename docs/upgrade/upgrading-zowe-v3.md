@@ -54,7 +54,7 @@ In Zowe v3.6, the API ML Gateway enables strict URL validation by default. The G
      * encoded periods (`%2E`)
      * semicolons (`;`)
 
-   If your onboarded services or clients depend on these characters, requests are rejected after the upgrade unless you update your configuration.
+   If your onboarded services or clients depend on these characters, requests are rejected after the upgrade unless you update your configuration. For details about routing traffic to APIs that require encoded characters, see [Strict URL validation replaces allowEncodedSlashes](../whats-new/api-ml-v3.6-upgrade-and-security-enhancements.md#strict-url-validation-replaces-allowencodedslashes) in the article _API ML V3.6 upgrade and security enhancements_.
 
 3. **Update the configuration property.**  
 The property `components.gateway.apiml.service.allowEncodedSlashes` is removed. If your services require encoded characters, add the new property `components.gateway.apiml.security.enableStrictUrlValidation` to `zowe.yaml` and set the property to `false`:
@@ -399,7 +399,6 @@ After Zowe v3.6 starts, use the following checklist to confirm that the upgrade 
 - Confirm z/OSMF is reachable through the API Gateway by the `/ibmzosmf` route, not `/zosmf`.
 - (HA installations only) Confirm that on startup, Zowe creates `.zowe-<haInstance>-merged.yaml` in the workspace `.env` directory, and that `ZWE_HA_INSTANCE_CONFIG` points to that file.
 
-<!-- All these System and Configuration changes come after Verifying the Upgrad ?? Should probably be a separate topic -->
 ## System and Security Changes
 
 :::note
