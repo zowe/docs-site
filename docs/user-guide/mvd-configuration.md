@@ -64,22 +64,14 @@ The file `_defaultVT.json` within the `vt-ng2` app folder `/config/storageDefaul
 ```
 
 ### Restrict TN3270 or VT connections
-```yaml
-components:
-  tn3270-ng2:
-    allowList:
-      - "test.example.com"
-      - "qa.example.com"
-      - "dev.example.com"
-    allowPorts:
-      - 23
-      - 992
-  vt-ng2:
-    allowList:
-      - "*.example.com"
-    allowPorts:
-      - "22-25"
-```
+
+Use the following settings to restrict terminal connections:
+- `components.<terminal>.allowList` - allowed hostnames, IP addresses, or CIDR subnets.
+- `components.<terminal>.allowPorts` - allowed ports or port ranges.
+
+Replace `<terminal>` with the component name `tn3270-ng2` or `vt-ng2`.
+
+See [terminal](https://github.com/zowe/zowe-install-packaging/blob/v3.x/staging/files/examples/components/terminals.yaml) and [HA terminal](https://github.com/zowe/zowe-install-packaging/blob/v3.x/staging/files/examples/components/terminals-ha.yaml) examples for more details.
 
 ## Network configuration
 
