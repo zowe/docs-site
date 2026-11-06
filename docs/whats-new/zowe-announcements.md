@@ -1,5 +1,11 @@
 # Zowe announcements
 
+## Upcoming Zowe releases will have breaking changes
+
+:::warning
+To address security risks, some Zowe releases, including Zowe V3 minor releases and Zowe V2 maintenance releases, will have breaking changes. Read more in [Breaking Changes in Zowe V2 and Zowe V3](../appendix/security-breaking-changes.md).
+:::
+
 ## Hello Zowe V3!
 
 **Zowe Version 3.x is live**. Find out what is included in Zowe 3.x with the new [Zowe V3 Office Hours](../whats-new/zowe-v3-office-hours.md).
