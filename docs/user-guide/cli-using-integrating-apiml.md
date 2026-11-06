@@ -207,7 +207,7 @@ Use the following steps to specify a base path with Zowe [team configuration](..
     For example:
 
     ```
-    https://<myapilayerhost>:<APIML port>/ibmzosmf/api/v1
+    https://<myapilayerhost>:<myAPIML port>/ibmzosmf/api/v1
     ```
 
     The format of base paths can vary based on how API ML is configured at your site. In this example, the base path is `ibmzosmf/api/v1`.
@@ -216,11 +216,11 @@ Use the following steps to specify a base path with Zowe [team configuration](..
 
 3. To make this persistent and avoid adding this to commands, create or update a [service profile](../user-guide/cli-using-using-team-profiles.md#zowe-cli-profile-types) with the preceding base path in a **project** team configuration file. 
 
-    Your service profile uses the token and credentials stored in your default base profile or the `--base-profile` option specified in the command.
-
         ```
         zowe config set profiles.zosmf.properties.basePath <basePath> 
         ```
+
+    Your service profile uses the token and credentials stored in your default base profile or the `--base-profile` option specified in the command.
 
     If you are using a **global** team configuration file (located in your home directory), add `--global-config` to the end of the command.
 
