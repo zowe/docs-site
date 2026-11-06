@@ -109,7 +109,7 @@ Enablement activates the `/application/loggers` endpoint for the API ML Gateway.
 
    :::tip
 
-    One way to issue REST calls is to use the http command in the free HTTPie tool: `<https://httpie.org/>`.
+    One way to issue REST calls is to use the http command in the free HTTPie tool: `https://httpie.org/`.
 
     **Example:**
 
