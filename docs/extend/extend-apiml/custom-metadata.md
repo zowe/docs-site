@@ -3,10 +3,10 @@
 Additional metadata can be added to the instance information that is registered in the Discovery Service in the `customMetadata` section. This information is propagated from the Discovery Service to the onboarded services (clients). In general, additional metadata do not change the behavior of the client. Some specific metadata can configure the functionality of API Mediation Layer (API ML). Such metadata are generally prefixed with the `apiml.` qualifier. We recommend you define your own qualifier, and group all metadata you wish to publish under this qualifier. If you use the Spring enabler, ensure that you include the prefix `apiml.service` before the parameter name.
 
 * **customMetadata.apiml.enableUrlEncodedCharacters**  
-When this parameter is set to `true`, the Gateway allows encoded characters to be part of URL requests redirected through the Gateway. The default setting of `true` is the recommended setting. Change this setting to `false` only if you do not want certain encoded characters in your application's requests.
+When this parameter is set to `true`, the API Gateway allows encoded characters to be part of URL requests redirected through the API Gateway. The default setting of `true` is the recommended setting. Change this setting to `false` only if you do not want certain encoded characters in your application's requests.
           
   :::info Important
-  When the expected encoded character is an encoded slash or backslash (`%2F`, `%5C`), make sure the Gateway is also configured to allow encoded slashes. For  more information, see [Zowe runtime](../../user-guide/install-zos.md#zowe-runtime) in Zowe server-side installation overview.
+  When the expected encoded character is an encoded slash or backslash (`%2F`, `%5C`), make sure the API Gateway is also configured to allow encoded slashes. For  more information, see [Zowe runtime](../../user-guide/install-zos.md#zowe-runtime) in Zowe server-side installation overview.
   :::
 
   :::note
@@ -29,9 +29,9 @@ The value in milliseconds that specifies the maximum time to wait for the respon
   :::
 
 * **customMetadata.apiml.corsEnabled**  
-When this parameter is set to `true`, CORS handling by the Gateway is enabled on the service level for all service routes. 
+When this parameter is set to `true`, CORS handling by the API Gateway is enabled on the service level for all service routes. 
 
-  For more information, refer to enabling CORS with Custom Metadata on the Gateway: [Customizing Cross-Origin Resource Sharing (CORS)](../../user-guide/api-mediation/configuration-cors.md).
+  For more information, refer to enabling CORS with Custom Metadata on the API Gateway: [Customizing Cross-Origin Resource Sharing (CORS)](../../user-guide/api-mediation/configuration-cors.md).
 Additional information can be found in this article about [Cross-Origin Resource Sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS).    
   :::note
   If you use the Spring enabler, use the following parameter name:
@@ -39,7 +39,7 @@ Additional information can be found in this article about [Cross-Origin Resource
   :::
 
 * **customMetadata.apiml.gatewayAuthEndpoint**  
-Specifies the Gateway authentication endpoint used by the ZAAS Client configuration. The default value is `/api/v1/gateway/auth`. For more information about ZAAS Client, see [ZAAS Client](zaas-client.md).  
+Specifies the API Gateway authentication endpoint used by the ZAAS Client configuration. The default value is `/api/v1/gateway/auth`. For more information about ZAAS Client, see [ZAAS Client](zaas-client.md).  
   :::note
   If you use the Spring enabler, use the following parameter name:
   `apiml.service.customMetadata.apiml.gatewayAuthEndpoint`
@@ -53,14 +53,14 @@ Specifies the Gateway port used by the ZAAS Client configuration. The default va
   :::
 
 * **customMetadata.apiml.corsAllowedOrigins**  
-(Optional) A service can specify which origins are to be accepted by the Gateway during CORS handling.  
-**Default:** If not set, this parameter value falls back to the Gateway’s `corsDefaultAllowedOrigins` (`https://${hostname}:${port}`). You can optionally provide a comma-separated list of values, which is additive and does not replace the Gateway's default origins.     
+(Optional) A service can specify which origins are to be accepted by the API Gateway during CORS handling.  
+**Default:** If not set, this parameter value falls back to the API Gateway’s `corsDefaultAllowedOrigins` (`https://${hostname}:${port}`). You can optionally provide a comma-separated list of values, which is additive and does not replace the API Gateway's default origins.     
   :::note
   If you use the Spring enabler, use the following parameter name:
   `apiml.service.customMetadata.apiml.corsAllowedOrigins`
   :::
 
-  For more information, refer to enabling CORS with Custom Metadata on the Gateway: [Customizing Cross-Origin Resource Sharing (CORS)](../../user-guide/api-mediation/configuration-cors.md).
+  For more information, refer to enabling CORS with Custom Metadata on the API Gateway: [Customizing Cross-Origin Resource Sharing (CORS)](../../user-guide/api-mediation/configuration-cors.md).
 
 * **customMetadata.apiml.corsAllowedHeaders**  
 (Optional) Specify a comma-separated list of HTTP headers that are allowed during a CORS request to this service.    
@@ -70,7 +70,7 @@ Specifies the Gateway port used by the ZAAS Client configuration. The default va
   :::
 
 * **customMetadata.apiml.corsAllowCredentials**  
-(Optional) Configure whether the browser should include credentials (such as cookies, authorization headers, or TLS client certificates) in CORS requests. The Gateway-level default and the per-service default are set to `true`.  
+(Optional) Configure whether the browser should include credentials (such as cookies, authorization headers, or TLS client certificates) in CORS requests. The API Gateway-level default and the per-service default are set to `true`.  
   :::note
   If you use the Spring enabler, use the following parameter name:
   `apiml.service.customMetadata.apiml.corsAllowCredentials`
@@ -87,10 +87,10 @@ Specifies the Gateway port used by the ZAAS Client configuration. The default va
  This parameter is part of the load balancing configuration for the Deterministic Routing capability. Through this parameter, the service can specify which load balancing schema the service requires. If this parameter is not specified, the service is routed using the basic round robin schema. Sticky session routing is managed by the API ML cache. This parameter can be set to the following values:
    
   * **`headerRequest`**  
-  This value applies the Header Request load balancing schema. Clients can call the API Gateway and provide a special header with the value of the requested instanceId. The Gateway understands this as a request from the client for routing to a specific instance. Clients have several possibilities for understanding the topology of service instances, such as via the `/eureka/apps` endpoint on the Discovery service, or the `/gateway/services` endpoint on the Gateway. In either case, the information is provided. The client can then request a specific instance by using Direct instance targeting with `X-InstanceId` described below.
+  This value applies the Header Request load balancing schema. Clients can call the API Gateway and provide a special header with the value of the requested instanceId. The API Gateway understands this as a request from the client for routing to a specific instance. Clients have several possibilities for understanding the topology of service instances, such as via the `/eureka/apps` endpoint on the Discovery service, or the `/gateway/services` endpoint on the API Gateway. In either case, the information is provided. The client can then request a specific instance by using Direct instance targeting with `X-InstanceId` described below.
 
   * **`authentication`**   
-    This value applies the Authentication load balancing schema. This is a sticky session functionality based on the ID of the user. The user ID is understood from the Zowe SSO token on the client's request. Requests without the token are routed in a round-robin fashion. The user is first routed in a round robin fashion, and then the routed instance Id is cached. The instance information is used for subsequent requests to route the client to the cached target service instance. This session's default expiration time is a global value defined in the Gateway. After the session expires, the process initiates again.
+    This value applies the Authentication load balancing schema. This is a sticky session functionality based on the ID of the user. The user ID is understood from the Zowe SSO token on the client's request. Requests without the token are routed in a round-robin fashion. The user is first routed in a round robin fashion, and then the routed instance Id is cached. The instance information is used for subsequent requests to route the client to the cached target service instance. This session's default expiration time is a global value defined in the API Gateway. After the session expires, the process initiates again.
 
    **Direct instance targeting with `X-InstanceId`**
 
@@ -99,7 +99,7 @@ Specifies the Gateway port used by the ZAAS Client configuration. The default va
     The direct instance targeting feature works completely independently of the sticky session flow and is highly useful to perform the following functions:
    - **Debugging:** Directing traffic to a specific instance to isolate issues.
   - **Operational testing:** Verifying a particular instance's behavior.
-  - **Stateful interactions:** When a client maintains its own session affinity without relying on Gateway-side sticky sessions.
+  - **Stateful interactions:** When a client maintains its own session affinity without relying on API Gateway-side sticky sessions.
 
    To target a specific instance, provide the instance ID in the request header:
     - **Header name:** `X-InstanceId`
@@ -122,7 +122,7 @@ Specifies the Gateway port used by the ZAAS Client configuration. The default va
     ```
 
     **Error behavior:**  
-    If the requested instance is not found or is unregistered, the Gateway rejects the request and returns a 404 error response:
+    If the requested instance is not found or is unregistered, the API Gateway rejects the request and returns a 404 error response:
 
     ```json
     {
@@ -145,7 +145,7 @@ Specifies the Gateway port used by the ZAAS Client configuration. The default va
   * `customMetadata.apiml.gateway.rateLimiterRefillDuration`  
   Sets the time interval (in minutes) at which new requests (or tokens) are added.
 
-  When no values are provided, global values defined in the Gateway are applied. For more information about the default configuration, see [Customizing gateway rate limiter filter](../../user-guide/api-mediation/customizing-gateway-rate-limiter.md).
+  When no values are provided, global values defined in the API Gateway are applied. For more information about the default configuration, see [Customizing gateway rate limiter filter](../../user-guide/api-mediation/customizing-gateway-rate-limiter.md).
 
 
 ## Removed parameters

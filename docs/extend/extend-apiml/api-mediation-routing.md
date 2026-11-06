@@ -26,16 +26,16 @@ The following diagram shows a request for a specific job from a customer and the
 - **Instance Routing**  
   Routes requests based on service instances
 - **Versioning**  
-  Supports routing by the version segment in the Gateway path, for example `/api/v1`.
+  Supports routing by the version segment in the API Gateway path, for example `/api/v1`.
 
 ## Basic Routing
 
-In basic routing, requests are routed using the service ID and the Gateway path:
+In basic routing, requests are routed using the service ID and the API Gateway path:
 
 **Example:** `https://gateway-url/{serviceId}/{gatewayUrl}` 
 
 :::note
-`{gatewayUrl}` is a Gateway path such as `api/v1`.
+`{gatewayUrl}` is an API Gateway path such as `api/v1`.
 :::
 
 **Routing Mechanism**

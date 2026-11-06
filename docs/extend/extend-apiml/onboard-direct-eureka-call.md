@@ -191,8 +191,8 @@ This parameter specifies a short description of the API service.
 This value is displayed in the API Catalog when a specific API service instance is selected.
 
 * **apiml.enableUrlEncodedCharacters**  
-When this parameter is set to `true`, the Gateway allows encoded characters to be part of URL requests redirected through the Gateway. The default setting of `true` is the recommended setting. Change this setting to `false` only if you do not want certain encoded characters in your application's requests.  
-**Important!**  When the expected encoded character is an encoded slash or backslash (`%2F`, `%5C`), make sure the Gateway is also configured to allow encoded slashes. For more info see [Installing the Zowe runtime on z/OS](../../user-guide/install-zos.md).
+When this parameter is set to `true`, the API Gateway allows encoded characters to be part of URL requests redirected through the API Gateway. The default setting of `true` is the recommended setting. Change this setting to `false` only if you do not want certain encoded characters in your application's requests.  
+**Important!**  When the expected encoded character is an encoded slash or backslash (`%2F`, `%5C`), make sure the API Gateway is also configured to allow encoded slashes. For more info see [Installing the Zowe runtime on z/OS](../../user-guide/install-zos.md).
 
 * **apiml.connectTimeout**  
 The value in milliseconds that specifies a period in which API ML should establish a single, non-managed connection with this service. The period is separate from the response timeout. If omitted, the default value specified in the API ML Gateway service configuration is used.
@@ -204,13 +204,13 @@ The value in milliseconds that specifies the maximum time to wait for the respon
   When this parameter is set to `true`, CORS is enabled on the service level for all service routes. The same parameter can also be set on the service level by providing the parameter as `customMetadata` as shown in [Custom Metadata](./custom-metadata.md).
 
 * **customMetadata.apiml.corsAllowedOrigins**  
-  (Optional) Specify which origins are accepted by the Gateway during CORS handling for this service. If not set, this value falls back to the Gateway's global `corsDefaultAllowedOrigins` default (`https://${hostname}:${port}`). Inclusion of other allowed origins is additive to the Gateway defaults rather than replacing these defaults.
+  (Optional) Specify which origins are accepted by the Gateway during CORS handling for this service. If not set, this value falls back to the API Gateway's global `corsDefaultAllowedOrigins` default (`https://${hostname}:${port}`). Inclusion of other allowed origins is additive to the API Gateway defaults rather than replacing these defaults.
 
 * **customMetadata.apiml.corsAllowedHeaders**    
   (Optional) Specify a comma-separated list of HTTP headers that are allowed during a CORS request to this service.
 
 * **customMetadata.apiml.corsAllowCredentials**  
-  (Optional) Configure whether the browser should include credentials (such as cookies, authorization headers, or TLS client certificates) in CORS requests. The Gateway-level default and the per-service default are set to `true`.  
+  (Optional) Configure whether the browser should include credentials (such as cookies, authorization headers, or TLS client certificates) in CORS requests. The API Gateway-level default and the per-service default are set to `true`.  
 
 * **customMetadata.apiml.corsAllowedMethods**  
   (Optional) Specify a comma-separated list of HTTP methods (e.g., `GET`, `POST`, `PUT`, `DELETE`) that are allowed when accessing the service via CORS.
@@ -235,8 +235,7 @@ In API ML v3, `customMetadata.apiml.okToRetryOnAllOperations` is **no longer sup
 Routing parameters are grouped under the prefix: `apiml.routes`
 
 The API routing group provides necessary routing information used by the API ML Gateway when routing incoming requests to the corresponding service.
-A single route can be used to make direct REST calls to multiple resources or API endpoints. The route definition provides rules used by the API ML Gateway to rewrite the URL
-in the Gateway address space.
+A single route can be used to make direct REST calls to multiple resources or API endpoints. The route definition provides rules used by the API ML Gateway to rewrite the URL in the API Gateway address space.
 
 Routing information consists of two parameters per route:
 
@@ -256,7 +255,7 @@ The following snippet is an example of the API routing information properties.
 where:
 
 * **apiml.routes.\{route-prefix\}.gatewayUrl**  
-The `gatewayUrl` parameter specifies the portion of the gateway URL which is replaced by the `serviceUrl` path.
+The `gatewayUrl` parameter specifies the portion of the API Gateway URL which is replaced by the `serviceUrl` path.
 
 * **apiml.routes.\{route-prefix\}.serviceUrl**  
 The `serviceUrl` parameter provides a portion of the service instance URL path which replaces the `gatewayUrl` part.  
@@ -292,7 +291,7 @@ This parameter specifies a service authentication scheme. The following schemes 
     This value specifies that the application recognizes the SAF IDT scheme and fills the `X-SAF-Token` header with the token produced by the Saf IDT provider implementation. For more information, see [Implement a New SAF IDT provider](./implement-new-saf-provider.md)
 
     * **x509**  
-    This value specifies that a service accepts client certificates forwarded in the HTTP header only. The Gateway service extracts information from a valid client certificate. For validation, the certificate needs to be trusted by API Mediation Layer. Extended Key Usage must either be empty or needs to contain a Client Authentication (1.3.6.1.5.5.7.3.2) entry. To use this scheme, it is also necessary to specify which headers to include. Specify these parameters in `headers`. This scheme does not relate to the certificate used in the TLS handshake between API ML and the southbound service, but rather the certificate that is forwarded in the header that authenticates the user.
+    This value specifies that a service accepts client certificates forwarded in the HTTP header only. The API Gateway service extracts information from a valid client certificate. For validation, the certificate needs to be trusted by API Mediation Layer. Extended Key Usage must either be empty or needs to contain a Client Authentication (1.3.6.1.5.5.7.3.2) entry. To use this scheme, it is also necessary to specify which headers to include. Specify these parameters in `headers`. This scheme does not relate to the certificate used in the TLS handshake between API ML and the southbound service, but rather the certificate that is forwarded in the header that authenticates the user.
 
 
 * **authentication.headers**
@@ -370,7 +369,7 @@ Ensure that you successfully onboarded a service with the API Mediation Layer.
  
   2. Check that you can access your API service endpoints through the Gateway.
 
-  3. (Optional) Check that you can access your API service endpoints directly outside of the Gateway.
+  3. (Optional) Check that you can access your API service endpoints directly outside of the API Gateway.
 
 ## External resources
 
