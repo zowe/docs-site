@@ -26,13 +26,17 @@ The following diagram shows a request for a specific job from a customer and the
 - **Instance Routing**  
   Routes requests based on service instances
 - **Versioning**  
-  Supports routing to specific service versions
+  Supports routing by the version segment in the API Gateway path, for example `/api/v1`.
 
 ## Basic Routing
 
-In basic routing, requests are routed using the service ID and optionally, the service version:
+In basic routing, requests are routed using the service ID and the API Gateway path:
 
-**Example:** `https://gateway-url/api/v1/service-id`
+**Example:** `https://gateway-url/{serviceId}/{gatewayUrl}` 
+
+:::note
+`{gatewayUrl}` is an API Gateway path such as `api/v1`.
+:::
 
 **Routing Mechanism**
 Routing can be configured for either single or multiple API ML instances
@@ -44,7 +48,7 @@ Uses Eureka metadata for direct routing to a service based on the service ID
 Uses Eureka metadata for service discovery and load balancing
 
 **Implementation Details**  
-Routing configuration is defined in Eureka metadata.
+Routing configuration is defined in service routes, which are registered as Eureka metadata.
 Ensure proper setup for accurate routing. The following yaml file is an example of Eureka metadata configuration:
 
 ```yaml
@@ -68,23 +72,19 @@ The following shows service URL tansformations if the downstream (southbound) se
 - The request `https://apiml/zosmf/ws/v1/desktop` from the user is transformed to `https://service/zosmf/ws/desktop`
 
 **Instance Routing**  
-API ML supports routing to multiple instances of the same service, thereby distributing requests based on load balancing policies. Ensure each service instance registers with a unique instance ID in Eureka.
+API ML supports routing to multiple instances of the same service, thereby distributing requests based on load balancing policies. By default, the service is routed using the basic round robin schema. Sticky session routing is managed by the API ML cache. Ensure each service instance registers with a unique instance ID in Eureka. For more information, see [Customizing metadata](custom-metadata.md).
 
 **Versioning**  
-API ML makes it possible to specify the version of a service in the route. If a version is not specified, the latest version is used by default. Version specified routing provides flexibility in deploying and updating services without affecting existing clients.
+API ML uses path-based routing to provide flexibility in deploying and updating services without affecting existing clients.
 
 **Example Usage**  
-The following URL is an example of routing to a specific version of a service:
-
+The version is part of the path and is matched by the route's `gatewayUrl` (for example, `api/v1` or `api/v2`). Routes are matched on the base path `/{serviceId}/{gatewayUrl}`. To make several major versions available, define a route for each version.
 ```http
-https://gateway-url/service-id/api/v1?version=1.2
+https://gateway-url/service-id/api/v1/resource
+https://gateway-url/service-id/api/v2/resource
 ```
 
-Note that if no version is specified, as in the following example, the request defaults to the latest service version:
-
-```http
-https://gateway-url/service-id/api/v1
-```
+Note that the `?version=` query parameter has no effect. If you used it in API ML v2, replace it with the path-based route.
 
 ## Deployments
 
@@ -93,7 +93,7 @@ Deployment can be for single or multiple instances.
 - **A single instance** of the API Mediation Layer with one or more instances of the services onboarded
 - **Multiple instances** of the API Mediation Layer in High Availability setup with one or more instances of the services onboarded
 
-The onboarded services may be onboarded in one or more instances and the APIs that the services provide may be versioned. API Mediation Layer supports distinction on the major version boundary. 
+The onboarded services may be onboarded in one or more instances and the APIs that the services provide may be versioned. API Mediation Layer supports distinction on the major version boundary by path, as defined in the service routes. 
 
 ### Making a GET call to a service through single instance of API ML
 
@@ -142,6 +142,6 @@ Refer to the detailed configuration guide for more advanced settings and example
 
 By default, routing through the API Mediation Layer selects the instance to route to in Round-robin fashion for each
 specific request. It is possible to change this behavior to assign a specific user to a specific instance or to change 
-the behavior by providing the option to go to a specific instance of a service.
+the behavior by providing the option to go to a specific instance of a service. This is a sticky session functionality based on the ID of the user. For more information on the `authentication` value of the `customMetadata.apiml.lb.type` parameter, see [Customizing metadata](custom-metadata.md). 
 
 For details about how to route a client request to a specific instance using the `X-InstanceId` header, see [Retrieving a specific service within your environment](../../user-guide/api-mediation/configuration-access-specific-instance-of-service.md).
