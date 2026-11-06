@@ -121,7 +121,6 @@ a current limitation in Spring Cloud Netflix, routes are created only for instan
 ### API Mediation Layer service onboarding metadata
 
 At registration time, provide metadata in the following format. Metadata parameters contained in this code block are described in the following section.
-<!-- Perhaps apiml.connectTimeout / apiml.responseTimeout should be added to the XML? -->
 ```xml
 <instance>
   <metadata>

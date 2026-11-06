@@ -10,7 +10,6 @@ Clients can route requests directly to a specific instance by sending the `X-Ins
 - No header reports the load-balanced instance for requests that omit `X-InstanceId`.
 
 ## Output a routed instance header
-<!-- Please suggest relevant changes for this section -->
 The API Gateway can output a special header that contains the value of the instance ID of the API service that the request has been routed to. The routed instance header is useful for understanding which service instance is being called.
 
 The header name is `X-InstanceId`, and the sample value is `discoverable-client:discoverableclient:10012`. `X-InstanceId` is only present when the client sends `X-InstanceId` in the request, and it echoes that value. The header value is identical to the `instanceId` property in the registration of the Discovery service.

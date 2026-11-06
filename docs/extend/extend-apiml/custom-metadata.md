@@ -134,10 +134,7 @@ Specifies the Gateway port used by the ZAAS Client configuration. The default va
    
    :::note
    The response `X-InstanceId` is only present when the client sent `X-InstanceId` in the request, and it echoes that value. It is not a general routed-instance report. For more information, see [Retrieving a specific service within your environment](../../user-guide/api-mediation/configuration-access-specific-instance-of-service.md).
-   :::
-
-* **customMetadata.apiml.lb.cacheRecordExpirationTimeInHours**  
-When the property `customMetadata.apiml.lb.type` is set to `authentication`, the user can also define the expiration time for the selected instance information that is cached. The setting is a global value defined in the Gateway, not per-service, so applying it in `customMetadata` has no effect. This property aims to prevent any discrepancy which might occur if the required target server is no longer available. The default value is 8 hours.   
+   :::  
 
 * **customMetadata.apiml.gateway.applyRateLimiterFilter**  
   When this parameter is set to `true`, the rate limiter is applied to the request for this service. When enabling this filter, you can also define the following properties:
@@ -159,6 +156,7 @@ When migrating from API ML v2, in v3 the following parameters have been removed 
 - `customMetadata.apiml.okToRetryOnAllOperations`
 - `customMetadata.ribbon.*`
 - `customMetadata.apiml.headersToIgnore`
+- `customMetadata.apiml.lb.cacheRecordExpirationTimeInHours`
 - `customMetadata.apiml.response.compress`
 - `customMetadata.apiml.response.compressRoutes`
 - `customMetadata.apiml.response.headers`
