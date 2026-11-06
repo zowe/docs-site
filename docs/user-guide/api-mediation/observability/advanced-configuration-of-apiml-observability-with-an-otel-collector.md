@@ -1,4 +1,5 @@
-# Advanced configuration of API ML Observability
+
+# Advanced configuration of API ML observability with an OTel Collector
 
 Review the complete configuration structure for OpenTelemetry (OTel) integration within the Zowe API Mediation Layer (API ML). Use this advanced configuration to manually define or override system-discovered attributes to align with specific organizational reporting requirements.
 
@@ -9,11 +10,19 @@ Review the complete configuration structure for OpenTelemetry (OTel) integration
 For a simplified setup that relies on automatic system discovery, see [Quick-start configuration of API ML Observability](quick-start-configuration-of-apiml-observability.md).
 :::
 
-## Configuring an OTel Collector 
+## Configuring API ML to use an OTel Collector
 
-When defining your exporter endpoint, ensure that the chosen protocol matches your OTel Collector's configuration. The exporter protocol (`telemetry.exporter.protocol`) can be set to either `http/protobuf` (typically port `4318`) or `grpc` (typically port `4317`). If you do not specify an endpoint, the exporter defaults to `http://localhost:4318` using `http/protobuf`.
+When defining your exporter endpoint, ensure that the chosen protocol matches your OTel Collector's configuration. Ensure that the exporter protocol (`telemetry.exporter.protocol`) is set to `http/protobuf` (typically port `4318`). If you do not specify an endpoint, the exporter defaults to `http://localhost:4318` using `http/protobuf`.
 
-If you configure a secure HTTPS collector endpoint (for example, `https://otel-collector.your.domain:4318`), the OTLP exporter automatically reuses the API ML SSLContext. By using the API ML SSLContext, the exporter uses the same key and trust stores as the rest of API ML. Note the requirement that the collector must trust the API ML certificate chain and vice versa.
+:::caution Action required: add the OTel Collector CA certificate chain to the Zowe truststore  
+
+If you configure a secure HTTPS collector endpoint (for example, `https://otel-collector.your.domain:4318`), the OpenTelemetry Protocol (OTLP) exporter automatically reuses the API ML SSLContext. The exporter therefore uses the same keystore and truststore as the rest of API ML.
+
+**It is necessary to add the CA certificate chain that the OTel Collector uses to the Zowe truststore.** Otherwise, API ML cannot establish a trusted connection to the collector and telemetry export fails.
+
+- API ML must trust the collector's certificate chain (the Zowe truststore contains the collector's CA chain).
+- The collector must trust the API ML certificate chain.
+:::
 
 Review the following attributes and their corresponding definitions in the full zowe.yaml configuration for API ML observability.
 
@@ -31,11 +40,14 @@ A flag that initializes the OpenTelemetry SDK. Must be set to `true` to generate
 **Default:** `false` (OpenTelemetry is disabled unless explicitly enabled)
 
 * **components.apiml.telemetry.exporter.endpoint**  
-The destination URL for your OTel Collector.
+The destination URL to your OTel Collector.
 **Default:** `http://localhost:4318`
 
 * **components.apiml.telemetry.exporter.protocol**  
-Specifies the transport protocol for the exporter. Valid values are `http/protobuf` or `grpc`.
+Specifies the transport protocol for the exporter.  
+**Default:** `http/protobuf`
+
+<!-- Propose to remove these as changing the value without changing start.sh will cause API ML to fail to start:
 
 * **components.apiml.telemetry.traces.exporter**  
 Specifies the exporter for trace signals.  
@@ -48,14 +60,14 @@ Specifies the exporter for metric signals.
 * **components.apiml.telemetry.logs.exporter**  
 Specifies the exporter for log signals.  
 **Default:** `otlp`
-
+-->
 ## Configuring service identity attributes
 
 * **service.name**  
 The logical name of the application. All instances of API ML in a high-availability (HA) cluster should share this name to be grouped correctly in your backend (for example, `zowe-apiml`). The `service.name` value is expected to be globally unique if `namespace` is not defined. Configuration of this attribute is optional. If this attribute is omitted, a default name is generated automatically in the format `apiml:<sysplex|hostname>:<port>`.
 
 * **service.namespace**  
-The assigned value used to distinguish a group of services, such as the LPAR, or owner team. `service.name` is expected to be unique within the same `namespace`. Configuration of this attribute is required.
+The assigned value used to distinguish a group of services, such as the LPAR, or owner team. `service.name` is expected to be unique within the same `namespace`. Configuration of this attribute is optional.
 
 * **service.instance.id** (The Unique Instance)    
 Identifies a specific running process or Address Space. This attribute is  generated automatically via `hostname:serviceId:port`. This value must be globally unique for every instance. As multiple z/OS systems can run identical job names, if customizing this attribute, ensure that you combine the job name with a unique identifier (such as the LPAR name or a UUID) to ensure the instance can be isolated during troubleshooting.
@@ -69,17 +81,17 @@ API ML is designed to automatically detect your environment name, and the z/OS e
 
 For details about how resource attributes are automatically detected, see [Automated Resource Attribution](configuring-apiml-observability.md#automated-resource-attribution) in _Configuring API ML Observability_.
 :::
-
-* **deployment.environment.name**  
+ 
+* **attributes.deployment.environment.name**  
 Specifies the lifecycle stage of the service. Common values include `production`, `staging`, `test`, or `dev`.
 
-* **zos.sysplex.name**  
+* **attributes.zos.sysplex.name**  
 Specifies the name of the z/OS Sysplex where the Zowe instance is executing. Specify this attribute to aggregate performance data across a cluster of systems.
 
-* **zos.smf.id**  
-The System Management Facilities identifier. This value is a one to four character ID that uniquely identifies the specific z/OS image within a complex.
+* **attributes.zos.smf.id**  
+The System Management Facilities identifier. This value is a one to four character ID that uniquely identifies the specific z/OS image within a complex. 
 
-* **mainframe.lpar.name**  
+* **attributes.mainframe.lpar.name**  
 The name of the Logical Partition (LPAR).
 
 ## Full zowe.yaml configuration for API ML Observability
@@ -95,7 +107,7 @@ components:
       enabled: true
       exporter:
         endpoint: "https://otel-collector.your.domain:4318"
-        protocol: "http/protobuf"  # or "grpc" with port 4317
+        protocol: "http/protobuf"
       service:
         name: "zowe-apiml"
         namespace: "production"
@@ -119,11 +131,13 @@ components:
 After you apply the changes to zowe.yaml and restart the Zowe task, verify that the OpenTelemetry integration is active and communicating with your collector.
 
 1. **Check the API ML Startup Logs.**  
-Review the job logs for the API ML service. Upon successful initialization with observability enabled, look for messages indicating the OpenTelemetry SDK has started.
+Review the job logs for the API ML service. Upon successful initialization with observability enabled, look for messages indicating the OpenTelemetry Spring Boot starter (`<version>`) has been started.
 
-    To confirm successful initialization, review the log entries which confirm that the OTLP exporter has initialized and is attempting to connect to the specified endpoint. If the endpoint is unreachable or the protocol is mismatched, the logs typically show Exporting failed or Connection refused messages from the OTel SDK.
+    :::note  
+    If the endpoint is unreachable or the protocol is mismatched, the logs typically show `Exporting failed` or `Connection refused` messages from the OTel SDK. No messages are displayed upon a successful connection.
+    :::
 
-2. **Verify Signal Reception in your Observability Tool.**  
+1. **Verify Signal Reception in your Observability Tool.**  
 The most definitive validation is to confirm that data is appearing in your chosen observability backend. Use either of the following options:
 
    * **Search by Service Name**  
@@ -132,10 +146,10 @@ The most definitive validation is to confirm that data is appearing in your chos
    * **Filter by Namespace**  
     If you have multiple installations, use the `service.namespace` filter to isolate data from this specific instance.
 
-3. **Confirm Attributes.**  
+1. **Confirm Attributes.**  
 Select a trace or metric and verify that the Resource Attributes (such as `zos.smf.id` or `mainframe.lpar.name`) are correctly attached.
 
-4. **Use the Collector's Logging (Optional).**  
+1. **Use the Collector's Logging (Optional).**  
 If data is not appearing in the backend, check the logs of your OTel Collector. If the collector is configured with the logging or debug exporter, raw incoming export requests from the API ML's IP address are generated.
 
 You can now review your OTel Collector output.  
