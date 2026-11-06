@@ -90,7 +90,7 @@ This activates the application/loggers endpoints in each API ML internal service
     GET [gateway-scheme]://[gateway-hostname]:[gateway-port]/apicatalog/api/v1/application/loggers
     ```
 
-    **Tip:** One way to issue REST calls is to use the http command in the free HTTPie tool: <https://httpie.org/>.
+    **Tip:** One way to issue REST calls is to use the http command in the free HTTPie tool: `<https://httpie.org/>`.
 
     **Example:**
 
