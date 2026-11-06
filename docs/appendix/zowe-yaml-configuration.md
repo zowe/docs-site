@@ -289,6 +289,20 @@ Launcher is the program behind the `ZWESLSTC` started task.
 - **zowe.launchScript.logLevel**  
  Set to `debug` or `trace` to enable different levels of debug messages from Zowe launch scripts. This setting may help troubleshoot issues during Zowe start.
 
+- **zowe.launchScript.startupChecks.zosmfjwt**  
+ Specifies the behavior of the startup check that validates whether z/OSMF JWT support is usable when Zowe is configured to use z/OSMF JWT authentication. This check is available since Zowe v3.6.0. You can run the same check manually with the `zwe validate zosmf jwt` command.  
+ **Possible values:**
+  * `exit`: This is the default value. If the check fails, Zowe startup stops.
+  * `warn`: If the check fails, Zowe logs a warning and continues to start.
+  * `disabled`: Zowe does not run the check.
+
+ ```yaml
+ zowe:
+   launchScript:
+     startupChecks:
+       zosmfjwt: exit
+ ```
+
 #### System messages
 
 Duplicate the log messages into the SYSLOG according to `zowe.sysMessages` items.
@@ -464,8 +478,14 @@ Specifies a boolean configuration to indicate if the PKCS12 keystore directory i
   These parameters customize the keystore and truststore. These configurations are optional.
 - **zowe.setup.certificate.pkcs12.password** and **zowe.setup.certificate.pkcs12.caPassword**  
 These parameters specify the passwords that protect the keystore and the self-signed certificate authority keystore. These configurations are optional.  
-  **Note:**  
-  If either password is left at its default value, `zwe init certificate` generates a random password instead. With `--update-config`, the generated password is written to your `zowe.yaml` configuration file. Without `--update-config`, the password is shown only in the command output and must be saved manually.
+  For keystore (`PKCS12`) scenarios only, if either password is left at its default value (`password` or `local_ca_password`), `zwe init certificate` generates a random password instead. Keyring scenarios are not affected.
+  - If you run the command with `--update-config`, the command writes the generated password to your `zowe.yaml` configuration file. No action is needed.
+  - If you run the command without `--update-config`, the command displays the generated password once in its output. As the system programmer, you must save the generated password and add it to your `zowe.yaml` yourself, because the keystore cannot be opened without it.
+
+  :::caution  
+  If you have scripts or automation that use the literal default password to open the keystore, the automation owner must update them to use the generated password.
+  :::
+
 - **zowe.setup.certificate.pkcs12.import.keystore**  
  Specify this parameter if you already acquired certificates from another CA, stored them in PKCS12 format, and want to import into Zowe PKCS12 keystore.
 - **zowe.setup.certificate.pkcs12.import.password**  

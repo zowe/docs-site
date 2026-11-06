@@ -29,7 +29,7 @@ In Zowe v3.6, the API ML Gateway introduces a breaking change by enabling strict
 * encoded periods (`%2E`)
 * semicolons (`;`).
 
-If you onboarded services that expect these encoded characters, you will encounter rejected requests after upgrading unless you update your configuration.
+If you onboarded services that expect these encoded characters, you will encounter rejected requests after upgrading unless you update your configuration. For details about routing traffic to APIs that require encoded characters, see [Strict URL validation replaces allowEncodedSlashes](../whats-new/api-ml-v3.6-upgrade-and-security-enhancements.md#strict-url-validation-replaces-allowencodedslashes) in the article _API ML V3.6 upgrade and security enhancements_.
 
 * The previous configuration property `components.gateway.apiml.service.allowEncodedSlashes` has been removed.
 * Add the new property `components.gateway.apiml.security.enableStrictUrlValidation` to your `zowe.yaml` file and set this attribute to `false`.

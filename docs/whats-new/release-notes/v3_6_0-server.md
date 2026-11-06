@@ -42,12 +42,12 @@ For required configuration changes and mitigation steps, see [API ML v3.6 upgrad
 * Multiple public keys can now be used for signature verification of PATs. ([#5015](https://github.com/zowe/api-layer/issues/5015))
 * Added a z/OSMF JWT preflight check. ([#4531](https://github.com/zowe/api-layer/issues/4531))
 * Added OpenTelemetry log signals for invalid authentication attempts. ([#4551](https://github.com/zowe/api-layer/issues/4551))
+* Added the property `zowe.network.allowedDomains` to control which domains are accepted in API URLs during Discovery Service onboarding. By default, the list includes external domains and HA LPAR hostnames but rejects URLs which use other domains. ([#4801](https://github.com/zowe/zowe-install-packaging/pull/4801))
 
 ### Zowe installation and packaging
 
 - Expanded the `example-zowe.yaml` configuration file with APIML modulith logging options, including feature-specific debug logging and file-only DEBUG/TRACE output, helping administrators troubleshoot APIML while reducing messages sent to the console or spool. ([#4913](https://github.com/zowe/zowe-install-packaging/pull/4913))
 - In high availability (HA) mode, Zowe now creates a merged YAML configuration file in the workspace `.env` directory for each instance, applies that instance’s overrides, and exposes the file path through `ZWE_HA_INSTANCE_CONFIG` so components can load the correct settings. ([#4759](https://github.com/zowe/zowe-install-packaging/pull/4759))
-- Added a property `zowe.network.allowedDomains` to control which domains are accepted in API URLs during Discovery Service onboarding. By default, the list includes external domains and HA LPAR hostnames but rejects URLs which use other domains. ([#4801](https://github.com/zowe/zowe-install-packaging/pull/4801))
 - Added a command `zwe validate zosmf jwt` to verify that z/OSMF JWT authentication works when Zowe is configured to use it. The check runs at startup by default and can be changed to a warning or disabled with `zowe.launchScript.startupChecks.zosmfjwt`. ([#4727](https://github.com/zowe/zowe-install-packaging/pull/4727))
 - Updated the example `example-zowe.yaml` file to document APIML logging levels (`quiet`, `info`, or `debug`), which let administrators control log verbosity globally or for individual APIML components. The default level is `info`. ([#4827](https://github.com/zowe/zowe-install-packaging/pull/4827))
 - Improved the handling of temporary files and directories to restrict unauthorized access. ([#4820](https://github.com/zowe/zowe-install-packaging/pull/4820))
@@ -328,5 +328,4 @@ Zowe server Version 3.6.0 contains the bug fixes that are described in the follo
 -	Fixed `security-option` handling so only explicit telnet selects an unencrypted connection; unknown or invalid values now default to TLS, preventing accidental plaintext connections. ([#109](https://github.com/zowe/tn3270-ng2/pull/109))
 -	Fixed `debug` logging to record only prompt lengths, keeping potentially sensitive prompt values out of logs while retaining length information for troubleshooting. ([#107](https://github.com/zowe/tn3270-ng2/pull/107))
 -	Fixed the default `TN3270` connection settings to use TLS on port `992` instead of unencrypted Telnet on port `23`, so users connect securely without manual configuration. ([#111](https://github.com/zowe/tn3270-ng2/pull/111))
-
 

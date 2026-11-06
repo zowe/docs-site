@@ -589,6 +589,10 @@ You will receive a return code of `0` if this job runs correctly.
 You will receive a return code of `0` if the job runs correctly.
 :::
 
+#### Review HOLD ACTION for Zowe v3.6.0
+
+Zowe v3.6.0 includes breaking changes that require action after you APPLY the SMP/E SYSMODs. They affect `zowe.yaml` configuration, security permissions for Zowe data sets, and USS file permissions. Some actions apply only to existing installs or to z/OSMF PSWI installs. Review the [Zowe v3.6.0 HOLD ACTION](https://github.com/zowe/zowe-install-packaging/blob/v3.6.0/smpe/bld/service/current-hold-ACTION.txt) for the full list and instructions before you start Zowe.
+
 ### Perform SMP/E ACCEPT
 
 Edit and submit sample job ZWE8ACPT to perform an SMP/E ACCEPT CHECK for Zowe. Consult the instructions in the sample job for more information.

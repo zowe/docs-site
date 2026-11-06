@@ -1,13 +1,13 @@
 # Upgrading from Zowe Vx to Zowe V3.6
 
-Follow the procedure outlined in this article to upgrade from Zowe v2 to Zowe v3.6, or from Zowe v1 to Zowe v3.6.
+Follow the procedure outlined in this article to upgrade from Zowe v3.5 (or an earlier v3.x version) to Zowe v3.6, from Zowe v2 to Zowe v3.6, or from Zowe v1 to Zowe v3.6.
 
 :::info Required roles: system administrator, system programmer
 :::
 
 While the major version upgrading process is similar to a Zowe v2 minor release upgrade, there are several new and updated configuration parameters to consider. 
 
-Follow the steps described in this article to ensure a smooth upgrade to Zowe v3.6. The procedure is written for installations running Zowe v2.18.6 and has three phases:
+Follow the steps described in this article to ensure a smooth upgrade to Zowe v3.6. The procedure is written primarily for installations running Zowe v2.18.6, with a separate section for v3.5 users, and has three phases:
 
 1. [**Preparing your current Zowe instance**](#preparing-your-current-zowe-instance).
 2. [**Upgrading the runtime**](#upgrading-the-runtime) to Zowe v3.6.
@@ -28,8 +28,6 @@ Before starting the upgrade, ensure the following base system requirements are m
 *   **Node.js**  
     Ensure that the Zowe YAML parameter `node.home` value is a **Node.js 18, 20, 22 or 24** home location. Node 16 and earlier versions are not supported.
 
----
-
 ## Preparing Your Current Zowe Instance
 
 To ensure a smooth transition to Zowe v3.6, you must first resolve any configuration changes required by your current version. If you are running an earlier v2 version of Zowe, you must follow all of the procedures that correspond to your current version, plus each of the later Zowe versions up to and including v2.18.x. Apply the necessary configurations before proceeding with the v3.6 upgrade. 
@@ -37,6 +35,48 @@ To ensure a smooth transition to Zowe v3.6, you must first resolve any configura
 :::note
 All v2.x installations must first upgrade to v2.18.x before upgrading to v3.6.
 :::
+
+<details>
+<summary><strong>Upgrading from Zowe v3.5 (or earlier v3.x) to v3.6</strong></summary>
+<br />
+To upgrade from Zowe v3.5 or an earlier v3.x version, perform the following procedure before you install Zowe v3.6. Because this is a minor-version upgrade within Zowe v3, the v2 to v3 breaking changes do not apply.
+
+1. **Verify runtime levels.**  
+Confirm that the Java and Node.js versions meet the [prerequisites](#prerequisites-for-zowe-v36). Update `java.home` and `node.home` in `zowe.yaml` if needed.
+
+2. **Review strict URL validation.**  
+In Zowe v3.6, the API ML Gateway enables strict URL validation by default. The Gateway rejects requests that contain any of the following encoded characters in the URL path:
+
+     * encoded slashes (`%2F`)
+     * encoded double slashes (`%2F%2F`)
+     * backslashes (`%5C`)
+     * encoded percent signs (`%25`)
+     * encoded periods (`%2E`)
+     * semicolons (`;`)
+
+   If your onboarded services or clients depend on these characters, requests are rejected after the upgrade unless you update your configuration. For details about routing traffic to APIs that require encoded characters, see [Strict URL validation replaces allowEncodedSlashes](../whats-new/api-ml-v3.6-upgrade-and-security-enhancements.md#strict-url-validation-replaces-allowencodedslashes) in the article _API ML V3.6 upgrade and security enhancements_.
+
+3. **Update the configuration property.**  
+The property `components.gateway.apiml.service.allowEncodedSlashes` is removed. If your services require encoded characters, add the new property `components.gateway.apiml.security.enableStrictUrlValidation` to `zowe.yaml` and set the property to `false`:
+
+    ```yaml
+    components:
+      gateway:
+        apiml:
+          security:
+            enableStrictUrlValidation: false
+    ```
+
+    :::note Behavior change in Zowe v3.6: Strict URL Validation  
+
+    Before Zowe v3.6, `allowEncodedSlashes` was set to `true` by default, so encoded characters were allowed. Strict validation is now **enabled** by default, so requests with encoded characters that were previously accepted are rejected. Setting `enableStrictUrlValidation` to `false` restores the earlier behavior.
+
+    Regardless of this setting, Gateway-internal endpoints (such as `/gateway`, `/application`, `/images`, and `/v3/api-docs`) always enforce strict validation.
+    :::
+
+Proceed to the [**Upgrading the runtime**](#upgrading-the-runtime) section to complete your upgrade to v3.6.
+
+</details>
 
 <details>
 <summary><strong>Upgrading from Zowe v2.18.x to v3.6</strong></summary>
@@ -306,8 +346,8 @@ After you prepare your current Zowe instance, upgrade the Zowe runtime to v3.6.
     | Certificate | `exit` | `zowe.launchScript.startupChecks.certificate` |
     | User superuser check | `exit` | `zowe.launchScript.startupChecks.user` |
     | Components | `warn` | <!-- TODO: confirm property --> |
-    | Java dependency check | Enforce Java 17 or 21 |  Set `java.home` to the appropriate library if the version has changed from the one in your 2.18.x installation. |
-    | Node dependency check | Enforce Node 18-24  |  Set `node.home` to the appropriate library if the version has changed from the one in your 2.18.x installation. |
+    | Java dependency check | Enforce Java 17 or 21 |  Set `java.home` to the appropriate library if the version has changed from the one in your previous installation. |
+    | Node dependency check | Enforce Node 18-24  |  Set `node.home` to the appropriate library if the version has changed from the one in your previous installation. |
     | z/OSMF JWT (`zosmfjwt`) | `exit` | `zowe.launchScript.startupChecks.zosmfjwt` |
 
     A failing check defaulting to `exit` prevents Zowe from starting. Resolve the failing check<!-- maybe we need more guidance here? --> or set the matching `zowe.launchScript.startupChecks.*` property to `warn` or `disabled`:
@@ -359,8 +399,11 @@ After Zowe v3.6 starts, use the following checklist to confirm that the upgrade 
 - Confirm z/OSMF is reachable through the API Gateway by the `/ibmzosmf` route, not `/zosmf`.
 - (HA installations only) Confirm that on startup, Zowe creates `.zowe-<haInstance>-merged.yaml` in the workspace `.env` directory, and that `ZWE_HA_INSTANCE_CONFIG` points to that file.
 
-<!-- All these System and Configuration changes come after Verifying the Upgrad ?? Should probably be a separate topic -->
 ## System and Security Changes
+
+:::note
+These changes apply to upgrades from Zowe v2 and v1. If you are upgrading from Zowe v3.5 or an earlier v3.x version, you can skip this section.
+:::
 
 * **SAF Settings**  
 Existing SAF settings for Zowe do not need to be changed for v3. Install steps such as zwe init security, the job or workflow `ZWESECUR`, and the jobs `ZWEIRAC`, `ZWEITSS`, and `ZWEIACF` are not required to be re-run.
@@ -379,6 +422,10 @@ The following network changes are needed for added or removed servers:
 | cloud-gateway | Removed | 7563 | ZWE1CG | The cloud-gateway has been removed as a standalone component and merged into the gateway. |
 
 ## Configuration changes
+
+:::note
+These changes apply to upgrades from Zowe v2 and v1. If you are upgrading from Zowe v3.5 or an earlier v3.x version, you can skip this section. For v3.5 configuration changes, see [Upgrading from Zowe v3.5 (or earlier v3.x) to v3.6](#preparing-your-current-zowe-instance).
+:::
 
 Review the following changes to configuration and updated configuration parameters.
 
@@ -473,7 +520,7 @@ components:
       64bit: true
 ```
 
-### Deprecated Settings in Zowe v3.6
+### Deprecated Settings in Zowe v3
 
 The following configuration parameters have been deprecated in Zowe v3. Ensure that these parameters are removed from your configuration.
 
