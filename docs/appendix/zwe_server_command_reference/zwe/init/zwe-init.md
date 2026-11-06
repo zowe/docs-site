@@ -23,14 +23,12 @@ You can find an `example-zowe.yaml` in Zowe runtime directory folder.
 This command can initialize Zowe using either pure JCL or shell scripts and utilities.
 If you want to use pure JCL, set `zowe.setup.jcl.enable` to `true` or run commands with the `--jcl` parameter.
 
-This command will run these sub-commands in sequence:
+By default this command will run these sub-commands in sequence:
 
 - (Pure JCL only) `zwe init generate`
 - `zwe init mvs`
-- `zwe init vsam`
 - `zwe init apfauth`
 - `zwe init security`
-- `zwe init certificate`
 - `zwe init stc`
 
 If you pass `--dry-run` with this command, each subcommand will print out the
@@ -80,7 +78,20 @@ If you are using the pure JCL option, the following are the JCL submitted by eac
     - (If `--allow-overwrite` specified and old members exist) ZWERSTC
 
 
-These Zowe YAML configurations showing with sample values are used:
+If you pass `--create-certificate`, the command `zwe init certificate`
+will be run, which requires a `zowe.setup.certificate` section to be defined
+with which type of certificate and storage should be created.
+You can use `<zowe.runtimeDirectory>/files/examples/setup/certificate`
+for examples of possible values for `zowe.setup.certificate`.
+For further details on this option, check `zwe init certificate --help`.
+
+The subcommand `zwe init vsam` will be run, but only if you have
+`components.caching-service.storage.mode` set to "VSAM"
+and have `zowe.setup.vsam` defined, otherwise that step is not needed.
+For further details on this option, check `zwe init vsam --help`.
+
+If you pass `--update-config` with this command, these configurations could
+be written back to your Zowe YAML configuration file:
 
 If you want to use JCL, include this in the Zowe YAML snippet:
 
@@ -117,65 +128,8 @@ zowe:
         zowe: ZWESLSTC
         zis: ZWESISTC
         aux: ZWESASTC
-    certificate:
-      type: PKCS12
-      dname:
-        caCommonName:
-        commonName:
-        orgUnit:
-        org:
-        locality:
-        state:
-        country:
-      validity: 3650
-      pkcs12:
-        directory: /global/zowe/keystore
-        lock: true
-        name: localhost
-        password: password
-        caAlias: local_ca
-        caPassword: local_ca_password
-        import:
-          keystore:
-          password:
-          alias:
-      keyring:
-        owner:
-        name: ZoweKeyring
-        label: localhost
-        caLabel: localca
-        import:
-          dsName:
-          password:
-        connect:
-          user:
-          label:
-        zOSMF:
-          ca:
-          user: IZUSVR
-      san:
-        - zos.example.com
-        - internal-lpar1.zos.example.com
-        - internal-lpar2.zos.example.com
-        - internal-lpar3.zos.example.com
-      importCertificateAuthorities:
-        - 
-    vsam:
-      mode: NONRLS
-      volume: VOL123
-      storageClass:
   externalDomains:
    - zos.example.com
-  verifyCertificates: STRICT
-zOSMF:
-  host: zosmf.example.com
-  port: 443
-components:
-  caching-service:
-    storage:
-      mode: VSAM
-      vsam:
-        name: IBMUSER.ZWE.CUST.CACHE2
 ```
 
 - `zowe.setup.dataset.prefix` shows where the `SZWEAUTH` data set is installed.
@@ -210,106 +164,6 @@ components:
 - `zowe.setup.security.stcs.aux` is ZIS auxiliary started task name.
   This configuration is optional. Default value is `ZWESASTC`.
 
-- `zowe.setup.certificate.type` is the type of certificate. Valid values are
-  "PKCS12" (USS keystore) or "JCEKS", "JCECCAKS", "JCERACFKS", "JCECCARACFKS",
-  and "JCEHYBRIDRACFKS (z/OS keyring).
-- `zowe.setup.certificate.dname` is the distinguished name of the certificate.
-  You can define `caCommonName`, `commonName`, `orgUnit`, `org`, `locality`,
-  `state`, and / or `country`. These configurations are optional.
-- `zowe.setup.certificate.validity` is the validity days of the certificate.
-  This is optional.
-- `zowe.setup.certificate.san` is the `Subject Alternative Name`(s) of the
-  certificate if they are different from `zowe.externalDomains`. Please note,
-  for `JCEKS`, `JCECCAKS`, `JCERACFKS`, `JCECCARACFKS`, and `JCEHYBRIDRACFKS`
-  type, with limitation of RACDCERT command, this should contain exact one
-  hostname (domain) and one IP address.
-- `zowe.setup.certificate.importCertificateAuthorities` is the list of
-  certificate authorities will be imported to Zowe PKCS12 keystore or
-  keyring. Please note, for keyring type, only maximum 2 CAs are supported.
-  If you are using `PKCS12` certificate, this should be USS files in PEM format.
-  If you are using `JCEKS`, `JCECCAKS`, `JCERACFKS`, `JCECCARACFKS`, or
-  `JCEHYBRIDRACFKS` certificate, this should be certificate labels
-  on the z/OS system.
-
-**For `PKCS12` certificate users,**
-
-- `zowe.setup.certificate.pkcs12.directory` is the directory where you plan to
-  store the PKCS12 keystore and truststore. This is required if
-  `zowe.setup.certificate.type` is `PKCS12`.
-- `zowe.setup.certificate.pkcs12.lock` is a boolean configuration to tell if we
-  should lock the PKCS12 keystore directory only for Zowe runtime user and group.
-  Default value is true.
-- You can also define `name`, `password`, `caAlias` and `caPassword` under
-  `zowe.setup.certificate.pkcs12` to customized keystore and truststore. These
-  configurations are optional, but it is recommended to update them from
-  default values.
-- Define `zowe.setup.certificate.pkcs12.import.keystore` if you already acquired
-  certificate from other CA, stored them in PKCS12 format, and want to import
-  into Zowe PKCS12 keystore.
-- `zowe.setup.certificate.pkcs12.import.password` is the password for keystore
-  defined in `zowe.setup.certificate.pkcs12.import.keystore`.
-- `zowe.setup.certificate.pkcs12.import.alias` is the original certificate alias
-  defined in `zowe.setup.certificate.pkcs12.import.keystore`. After imported,
-  the certificate will be saved as alias specified in
-  `zowe.setup.certificate.pkcs12.name`.
-
-**For keyring certificate users,**
-
-- `zowe.setup.certificate.keyring.owner` is the keyring owner. It's optional and
-  default value is `zowe.setup.security.users.zowe`. If it's also not defined,
-  the default value is `ZWESVUSR`.
-- `zowe.setup.certificate.keyring.name` is the keyring name will be created
-  on z/OS. This is required if `zowe.setup.certificate.type` is one of `JCEKS`,
-  `JCECCAKS`, `JCERACFKS`, `JCECCARACFKS`, or `JCEHYBRIDRACFKS`.
-- If you want to let Zowe to generate new certificate,
-  * You can also customize `label` and `caLabel` under
-    `zowe.setup.certificate.keyring` if you want to generate new certificate.
-    Default value of `label` is `localhost` and default value of `caLabel` is
-    `localca`.
-- If you want to import certificate stored in MVS data set into Zowe keyring,
-  * `zowe.setup.certificate.keyring.connect.dsName` is required in this case. It
-    tells Zowe the data set where the certificate is stored.
-  * `zowe.setup.certificate.keyring.connect.password` is the password when
-    importing the certificate.
-  * The certificate will be imported with label defined in
-    `zowe.setup.certificate.keyring.label`.
-- If you want to connect existing certificate into Zowe keyring,
-  * `zowe.setup.certificate.keyring.connect.user` is required and tells Zowe
-    the owner of existing certificate. This field can have value of `SITE`.
-  * `zowe.setup.certificate.keyring.connect.label` is also required and tells
-    Zowe the label of existing certificate.
-- If `zowe.verifyCertificates` is not `DISABLED`, and z/OSMF host (`zOSMF.host`)
-  is provided, Zowe will try to trust z/OSMF certificate.
-  * If you are using `RACF` or `TSS` security manager, Zowe will try to 
-    automatically detect the z/OSMF CA based on certificate owner specified by
-    `zowe.setup.certificate.keyring.zOSMF.user`. Default value of this field is
-    `IZUSVR`. If the automatic detection failed, you will need to define
-    `zowe.setup.certificate.keyring.zOSMF.ca` indicates what is the label of
-    z/OSMF root certificate authority.
-  * If you are using `ACF2` security manager,
-    `zowe.setup.certificate.keyring.zOSMF.ca` is required to indicate what is
-    the label of z/OSMF root certificate authority.
-
-- `zowe.setup.vsam.mode` indicates whether the VSAM will utilize Record Level
-  Sharing (RLS) services or not. Valid value is `RLS` or `NONRLS`.
-- `zowe.setup.vsam.volume` indicates the name of volume.
-  This field is required if VSAM mode is `NONRLS`.
-- `zowe.setup.vsam.storageClass` indicates the name of RLS storage class.
-  This field is required if VSAM mode is `RLS`.
-
-- `zowe.verifyCertificates` indicates how Zowe should validate the certificate
-  of services registered under Zowe APIML. Valid values are "STRICT",
-  "NONSTRICT" or "DISABLED". If this is "STRICT", this command will try to
-  validate the z/OSMF service certificate if z/OSMF is defined.
-
-- `zOSMF.host` and `zOSMF.port` is the z/OSMF service information. This is
-  required if you are using z/OSMF as authentication service.
-
-- `components.caching-service.storage.mode` indicates what storage Zowe Caching
-  Service will be used. Only if this value is `VSAM`, this command will try to
-  create VSAM data set.
-- `components.caching-service.storage.vsam.name` defines the VSAM data set name.
-
 
 ## Examples
 
@@ -319,6 +173,8 @@ zwe init --allow-overwrite -c /path/to/zowe.yaml
 zwe init apfauth -v -c /path/to/zowe.yaml
 
 zwe init certificate -v -c /path/to/zowe.yaml
+
+zwe init --config /path/to/zowe.yaml --create-certificate
 
 zwe init --config "PARMLIB(ZOWE.PARMS(MAIN)):PARMLIB(ZOWE.PARMS(DEBUGMOD))" --jcl
 
@@ -333,6 +189,7 @@ Full name|Alias|Type|Required|Help message
 --security-dry-run,--dry-run||boolean|no|Generates JCL or displays actions to be taken on the system without modifying the system.
 --ignore-security-failures||boolean|no|Whether to ignore security setup job failures.
 --update-config||boolean|no|Whether to update YAML configuration file with initialization result.
+--create-certificate||boolean|no|Whether to use the contents of zowe.setup.certificate to create Zowe's TLS certificates.
 --jcl||boolean|no|Generates and submits JCL to drive the init command, rather than using USS utilities.
 
 
@@ -390,6 +247,7 @@ ZWEL0139E|139|Failed to create directory %s.
 ZWEL0140E|140|Failed to translate Zowe configuration (%s).
 ZWEL0142E|142|Failed to refresh APIML static registrations.
 ZWEL0144E|144|Cannot generate JCL with a header line greater than 80 characters. Line in error: %s. Please adjust this line in 'zowe.setup.jcl.header'.
+ZWEL0150E|150|Failed to find file %s. Zowe runtimeDirectory is invalid.
 ZWEL0151E|151|Failed to create temporary file %s. Please check permission or volume free space.
 ZWEL0157E|157|%s (%s) is not defined in Zowe YAML configuration file.
 ZWEL0158W||Failed to find job %s result.
@@ -402,6 +260,7 @@ ZWEL0163E|163|Job %s ends with code %s.
 ZWEL0164W||Job %s(%s) ends with code %s (%s).
 ZWEL0172E||Component %s has %s defined but the file is missing.
 ZWEL0173E|173|Please enter an IP address in either the subject alternative name (zowe.setup.certificate.san) or external domain (zowe.externalDomains) in the Zowe YAML configuration file.
+ZWEL0180E|180|Zowe property %s is not defined in Zowe YAML configuration file.
 ZWEL0200E||Failed to copy USS file %s to MVS data set %s.
 ZWEL0201E||File %s does not exist.
 ZWEL0202E||Unable to find samplib key for %s.
@@ -410,4 +269,24 @@ ZWEL0300W||%s already exists. This %s will be overwritten.
 ZWEL0301W||%s already exists and will not be overwritten. For upgrades, you must use --allow-overwrite.
 ZWEL0316E|316|Invalid PARMLIB format %s.
 ZWEL0322E|322|%s is not a valid directory.
+ZWEL0323E|323|Certificate validation failed. Fix errors listed before starting Zowe.
 ZWEL0326E|326|An error occurred while processing Zowe YAML config %s:
+ZWEL0327E|327|Failed to read %s - %s.
+ZWEL0328E|328|The following component(s) are missing a valid manifest file and cannot be started: %s
+ZWEL0328W||The following component(s) are missing a valid manifest file and cannot be started: %s
+ZWEL0329E|329|No components are defined in zowe.yaml. Zowe cannot start without at least one component.
+ZWEL0329W||No components are defined in zowe.yaml. Zowe cannot start without at least one component.
+ZWEL0330E|330|Component '%s' directory was not found in the runtime or extension directories.
+ZWEL0331E|331|The following requested component(s) are not defined in zowe.yaml: %s
+ZWEL0331W||The following requested component(s) are not defined in zowe.yaml: %s
+ZWEL0332E|332|Zowe YAML property zowe.runtimeDirectory is not defined. Zowe cannot validate component existence without knowing the runtime location.
+ZWEL0332W||Zowe YAML property zowe.runtimeDirectory is not defined. Zowe cannot validate component existence without knowing the runtime location.
+ZWEL0333E|333|Component '%s' is missing a valid manifest file (manifest.yaml, manifest.yml, or manifest.json) in %s.
+ZWEL0334W||%d Zowe port ATTLS validation(s) failed, review output for action items.
+ZWEL0334E||%d Zowe port ATTLS validation(s) failed, review output for action items before running Zowe.
+ZWEL0335W||%s: No AT-TLS rule identified at %s:%d for jobname %s
+ZWEL0336W||%s: AT-TLS rule found but ATTLS not requested at %s:%d for jobname %s
+ZWEL0337E|337|z/OSMF host (zosmf.host) or port (zosmf.port) is not configured in the Zowe YAML. Cannot validate z/OSMF JWT support without a z/OSMF destination.
+ZWEL0338E|338|Neither components.discovery.enabled nor components.apiml.enabled is set to true. The required APIML servers are not enabled for z/OSMF access.
+ZWEL0339W||z/OSMF JWT check failed (rc=%s) but jwtAutoconfiguration is 'ltpa', so JWT support is not required for this Zowe configuration.
+ZWEL0340E|340|z/OSMF JWT check failed (rc=%s). Zowe requires z/OSMF JWT support (jwtAutoconfiguration is 'jwt') but it is not working.
