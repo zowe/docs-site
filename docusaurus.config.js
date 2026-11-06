@@ -31,7 +31,7 @@ module.exports = {
     announcementBar2: {
       id: 'announcementBar-2', // increment on change
       content:
-          '⚠️ <b>Breaking changes in Zowe releases.</b> Learn more <a href="https://docs.zowe.org/stable/appendix/security-breaking-changes" target="_blank">here</a>.',
+          '⚠️ <b>Breaking changes in Zowe releases.</b> Read more <a href="https://docs.zowe.org/stable/appendix/security-breaking-changes" target="_blank">here</a>.',
       textColor: '#000',
     },
     announcementBar1: {

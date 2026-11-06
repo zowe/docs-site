@@ -6,7 +6,8 @@ import AnnouncementBarCloseButton from '@theme/AnnouncementBar/CloseButton';
 import styles from './styles.module.css';
 
 // Renders themeConfig.announcementBar1 and themeConfig.announcementBar2 (docusaurus.config.js).
-// announcementBar2 (red) is shown above the navbar; announcementBar1 (yellow) is rendered under the navbar by src/theme/Navbar.
+// Both bars are shown at the top of the page, above the navbar: announcementBar2 (red, breaking changes) first,
+// then announcementBar1 (yellow, pinned Zowe v2 end of life) directly beneath it.
 // Each bar is dismissed independently; change its `id` to show it again to users who closed it.
 export function Bar({ id, content, textColor }) {
   const storageKey = `zowe.${id}.dismiss`;
@@ -47,7 +48,7 @@ export function Bar({ id, content, textColor }) {
 
 export default function AnnouncementBar() {
   const { themeConfig } = useDocusaurusContext().siteConfig;
-  const bars = [themeConfig.announcementBar2].filter(Boolean);
+  const bars = [themeConfig.announcementBar2, themeConfig.announcementBar1].filter(Boolean);
   return (
     <>
       {bars.map((bar) => (
