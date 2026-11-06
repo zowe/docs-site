@@ -25,7 +25,6 @@ Use debug mode to activate the following functions:
 
 * Display additional debug messages for API ML
 * Enable changing log level for individual code components
-* Gather atypical debug information
 
 When on z/OS, API ML log messages are written to the STC job log.
 
@@ -179,7 +178,7 @@ This message is expected behavior of the Discovery service. If a service is inco
 Use one of the following options to exit self preservation mode:
 
 * **Restart the services that appear to be running**  
-Relaunch the services that appear to be registered. After the message disappears, close each of the services one at a time. Allow for a 3-minute period between closing each service. The procedure for restarting services that are not part of Zowe is specific to the services and is documented in the service documentation.
+Relaunch the services that appear to be registered. After the message disappears, close each of the services one at a time. Allow for a three minute period between closing each service. The procedure for restarting services that are not part of Zowe is specific to the services and is documented in the service documentation.
 
 * **Restart the Discovery service**  
 Manually restart the Discovery service. The new instance will not be in self preservation mode. In a few minutes, the running services re-register.
