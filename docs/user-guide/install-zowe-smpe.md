@@ -591,24 +591,7 @@ You will receive a return code of `0` if the job runs correctly.
 
 #### Review HOLD ACTION for Zowe v3.6.0
 
-Zowe v3.6.0 includes an SMP/E `HOLD` with `REASON(ACTION)` for the affected function **Zowe Configuration**. The timing of this action is **post-APPLY**. After the APPLY completes, review your `zowe.yaml` file and add the new property `zowe.network.allowedDomains` if necessary.
-
-This property is an array of domains that are permitted in the metadata of services that register to the API Mediation Layer Discovery Service.
-
-* Subdomains are supported using an asterisk wildcard (for example, `*.example.org`).
-* Without a wildcard, the domain must be a strict match.
-* By default, the list includes the `zowe.externalDomains` already listed in `zowe.yaml` and the hostnames in the optional high availability configuration. You do not need to add these default values manually.
-
-**Example:** 
-
-```yaml
-zowe:
-  network:
-    allowedDomains:
-      - "example.com"
-      - "*.example.org"
-```
-For more information, see [Configuring allowed domains and IP addresses for service registration](./api-mediation/config-allowed-domains-for-service-reg.md) and [Upgrading from Zowe v3.5 (or earlier v3.x) to v3.6](../upgrade/upgrading-zowe.md#upgrading-from-zowe-v35-or-earlier-v3x-to-v36).
+Zowe v3.6.0 includes breaking changes that require action after you APPLY the SMP/E SYSMODs. They affect `zowe.yaml` configuration, security permissions for Zowe data sets, and USS file permissions. Some actions apply only to existing installs or to z/OSMF PSWI installs. Review the [Zowe v3.6.0 HOLD ACTION](https://github.com/zowe/zowe-install-packaging/blob/v3.6.0/smpe/bld/service/current-hold-ACTION.txt) for the full list and instructions before you start Zowe.
 
 ### Perform SMP/E ACCEPT
 
