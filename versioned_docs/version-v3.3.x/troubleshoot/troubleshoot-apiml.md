@@ -259,7 +259,7 @@ If you cannot update Zowe, set the console encoding in the Zowe API Mediation La
 ```yaml
 zowe:
   environments:
-    LOGGING_CHARSET_CONSOLE: IBM-1047
+    LOGGING_CHARSET_CONSOLE: UTF-8
 ```
 
 After you update `zowe.yaml`, restart Zowe.
