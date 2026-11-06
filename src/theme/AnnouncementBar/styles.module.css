@@ -1,0 +1,41 @@
+/* Mirrors the layout of the theme-classic AnnouncementBar */
+.bar {
+  display: flex;
+  align-items: center;
+  color: #000;
+  border-bottom: 1px solid var(--ifm-color-emphasis-100);
+}
+
+.placeholder {
+  flex: 0 0 10px;
+}
+
+.close {
+  flex: 0 0 30px;
+  align-self: stretch;
+}
+
+.content {
+  flex: 1 1 auto;
+  font-size: 85%;
+  text-align: center;
+  padding: 5px 0;
+}
+
+.content a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+@media print {
+  .bar {
+    display: none;
+  }
+}
+
+@media (min-width: 997px) {
+  .placeholder,
+  .close {
+    flex-basis: 50px;
+  }
+}
