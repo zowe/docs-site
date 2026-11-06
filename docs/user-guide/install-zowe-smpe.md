@@ -595,7 +595,7 @@ Zowe v3.6.0 includes an SMP/E `HOLD` with `REASON(ACTION)` for the affected func
 
 This property is an array of domains that are permitted in the metadata of services that register to the API Mediation Layer Discovery Service.
 
-* Subdomains are supported using an asterisk wildcard (for example, `*.example.com`).
+* Subdomains are supported using an asterisk wildcard (for example, `*.example.org`).
 * Without a wildcard, the domain must be a strict match.
 * By default, the list includes the `zowe.externalDomains` already listed in `zowe.yaml` and the hostnames in the optional high availability configuration. You do not need to add these default values manually.
 
@@ -606,7 +606,7 @@ zowe:
   network:
     allowedDomains:
       - "example.com"
-      - "*.example.com"
+      - "*.example.org"
 ```
 For more information, see [Configuring allowed domains and IP addresses for service registration](./api-mediation/config-allowed-domains-for-service-reg.md) and [Upgrading from Zowe v3.5 (or earlier v3.x) to v3.6](../upgrade/upgrading-zowe.md#upgrading-from-zowe-v35-or-earlier-v3x-to-v36).
 
