@@ -289,6 +289,20 @@ Launcher is the program behind the `ZWESLSTC` started task.
 - **zowe.launchScript.logLevel**  
  Set to `debug` or `trace` to enable different levels of debug messages from Zowe launch scripts. This setting may help troubleshoot issues during Zowe start.
 
+- **zowe.launchScript.startupChecks.zosmfjwt**  
+ Specifies the behavior of the startup check that validates whether z/OSMF JWT support is usable when Zowe is configured to use z/OSMF JWT authentication. This check is available since Zowe v3.6.0. You can run the same check manually with the `zwe validate zosmf jwt` command.  
+ **Possible values:**
+  * `exit`: This is the default value. If the check fails, Zowe startup stops.
+  * `warn`: If the check fails, Zowe logs a warning and continues to start.
+  * `disabled`: Zowe does not run the check.
+
+ ```yaml
+ zowe:
+   launchScript:
+     startupChecks:
+       zosmfjwt: exit
+ ```
+
 #### System messages
 
 Duplicate the log messages into the SYSLOG according to `zowe.sysMessages` items.
@@ -464,8 +478,14 @@ Specifies a boolean configuration to indicate if the PKCS12 keystore directory i
   These parameters customize the keystore and truststore. These configurations are optional.
 - **zowe.setup.certificate.pkcs12.password** and **zowe.setup.certificate.pkcs12.caPassword**  
 These parameters specify the passwords that protect the keystore and the self-signed certificate authority keystore. These configurations are optional.  
-  **Note:**  
-  If either password is left at its default value, `zwe init certificate` generates a random password instead. With `--update-config`, the generated password is written to your `zowe.yaml` configuration file. Without `--update-config`, the password is shown only in the command output and must be saved manually.
+  For keystore (`PKCS12`) scenarios only, if either password is left at its default value (`password` or `local_ca_password`), `zwe init certificate` generates a random password instead. Keyring scenarios are not affected.
+  - If you run the command with `--update-config`, the command writes the generated password to your `zowe.yaml` configuration file. No action is needed.
+  - If you run the command without `--update-config`, the command displays the generated password once in its output. As the system programmer, you must save the generated password and add it to your `zowe.yaml` yourself, because the keystore cannot be opened without it.
+
+  :::caution  
+  If you have scripts or automation that use the literal default password to open the keystore, the automation owner must update them to use the generated password.
+  :::
+
 - **zowe.setup.certificate.pkcs12.import.keystore**  
  Specify this parameter if you already acquired certificates from another CA, stored them in PKCS12 format, and want to import into Zowe PKCS12 keystore.
 - **zowe.setup.certificate.pkcs12.import.password**  
@@ -873,37 +893,6 @@ These configurations can be used under the `components.caching-service` section:
   This property is used only when `storage.mode` is set to `vsam` or `inMemory`. Note that `vsam` is deprecated.
   :::
 
-#### Configure component apiml 
-
-The following configurations can be used under the `components.apiml` section to configure properties that apply exclusively to single-service API Mediation Layer deployment:
-
-- **telemetry.enabled**  
-Specifies whether OpenTelemetry data collection and exporting is active for the API Mediation Layer (API ML).
-
-- **telemetry.exporter.endpoint**  
-Specifies the URL endpoint of your OpenTelemetry collector where the metrics/traces will be sent.
-
-- **telemetry.exporter.protocol**  
-Specifies the transport protocol used to send data to the collector (for example, `http/protobuf` or `grpc`).
-
-- **telemetry.service.name**  
-Specifies the logical name identifying this service in your telemetry backend.
-
-- **telemetry.service.namespace**  
-Specifies the namespace or environment boundary for the service.
-
-- **telemetry.attributes.deployment.environment.name**  
-Specifies the deployment environment name (for example, `production` or `test`).
-
-- **telemetry.attributes.zos.sysplex.name**  
-Specifies the z/OS Sysplex where Zowe is running.
-
-- **telemetry.attributes.zos.smf.id**  
-Specifies the System Management Facilities (SMF) ID of the z/OS system.
-
-- **telemetry.attributes.mainframe.lpar.name**  
-Specifies the mainframe Logical Partition (LPAR) name. 
-
 
 ##### VSAM specific configuration (deprecated)
 
@@ -974,6 +963,38 @@ Specifies the mainframe Logical Partition (LPAR) name.
 
 - **storage.redis.ssl.truststorePassword**  
  Specifies the password used to unlock the truststore.
+
+#### Configure component apiml 
+
+The following configurations can be used under the `components.apiml` section to configure properties that apply exclusively to single-service API Mediation Layer deployment:
+
+- **telemetry.enabled**  
+Specifies whether OpenTelemetry data collection and exporting is active for the API Mediation Layer (API ML).
+
+- **telemetry.exporter.endpoint**  
+Specifies the URL endpoint of your OpenTelemetry collector where the metrics/traces will be sent.
+
+- **telemetry.exporter.protocol**  
+Specifies the transport protocol used to send data to the collector.  
+**Default:** `http/protobuf` 
+
+- **telemetry.service.name**  
+Specifies the logical name identifying this service in your telemetry backend.
+
+- **telemetry.service.namespace**  
+Specifies the namespace or environment boundary for the service.
+
+- **telemetry.attributes.deployment.environment.name**  
+Specifies the deployment environment name (for example, `production` or `test`).
+
+- **telemetry.attributes.zos.sysplex.name**  
+Specifies the z/OS Sysplex where Zowe is running.
+
+- **telemetry.attributes.zos.smf.id**  
+Specifies the System Management Facilities (SMF) ID of the z/OS system.
+
+- **telemetry.attributes.mainframe.lpar.name**  
+Specifies the mainframe Logical Partition (LPAR) name. 
 
 #### Configure component app-server
 

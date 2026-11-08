@@ -42,12 +42,12 @@ For required configuration changes and mitigation steps, see [API ML v3.6 upgrad
 * Multiple public keys can now be used for signature verification of PATs. ([#5015](https://github.com/zowe/api-layer/issues/5015))
 * Added a z/OSMF JWT preflight check. ([#4531](https://github.com/zowe/api-layer/issues/4531))
 * Added OpenTelemetry log signals for invalid authentication attempts. ([#4551](https://github.com/zowe/api-layer/issues/4551))
+* Added the property `zowe.network.allowedDomains` to control which domains are accepted in API URLs during Discovery Service onboarding. By default, the list includes external domains and HA LPAR hostnames but rejects URLs which use other domains. ([#4801](https://github.com/zowe/zowe-install-packaging/pull/4801))
 
 ### Zowe installation and packaging
 
 - Expanded the `example-zowe.yaml` configuration file with APIML modulith logging options, including feature-specific debug logging and file-only DEBUG/TRACE output, helping administrators troubleshoot APIML while reducing messages sent to the console or spool. ([#4913](https://github.com/zowe/zowe-install-packaging/pull/4913))
 - In high availability (HA) mode, Zowe now creates a merged YAML configuration file in the workspace `.env` directory for each instance, applies that instance’s overrides, and exposes the file path through `ZWE_HA_INSTANCE_CONFIG` so components can load the correct settings. ([#4759](https://github.com/zowe/zowe-install-packaging/pull/4759))
-- Added a property `zowe.network.allowedDomains` to control which domains are accepted in API URLs during Discovery Service onboarding. By default, the list includes external domains and HA LPAR hostnames but rejects URLs which use other domains. ([#4801](https://github.com/zowe/zowe-install-packaging/pull/4801))
 - Added a command `zwe validate zosmf jwt` to verify that z/OSMF JWT authentication works when Zowe is configured to use it. The check runs at startup by default and can be changed to a warning or disabled with `zowe.launchScript.startupChecks.zosmfjwt`. ([#4727](https://github.com/zowe/zowe-install-packaging/pull/4727))
 - Updated the example `example-zowe.yaml` file to document APIML logging levels (`quiet`, `info`, or `debug`), which let administrators control log verbosity globally or for individual APIML components. The default level is `info`. ([#4827](https://github.com/zowe/zowe-install-packaging/pull/4827))
 - Improved the handling of temporary files and directories to restrict unauthorized access. ([#4820](https://github.com/zowe/zowe-install-packaging/pull/4820))
@@ -77,7 +77,7 @@ For required configuration changes and mitigation steps, see [API ML v3.6 upgrad
 
 ### Zlux App Server
 -	Added the optional `requiresRbac` setting to dataservice definitions, so services can return `403` when `RBAC` is disabled. ([#419](https://github.com/zowe/zlux-app-server/pull/419))
--	Added `components.app-server.node.mediationLayer.server.userid` and `.password`, which default to the Discovery service `apiml.discovery` credentials. These are required to register to the API Mediation Layer when `zowe.verifyCertificates` is `DISABLED`.
+-	Added `components.app-server.node.mediationLayer.server.userid` and `.password`, which default to the Discovery service `apiml.discovery` credentials. These are required to register to the API Mediation Layer when `zowe.verifyCertificates` is `DISABLED`. ([#]())
 -	Plug-in preferences are copied into instances without shell parsing, reducing command-injection risk. ([#378](https://github.com/zowe/zlux-app-server/pull/378))
 -	Plug-ins now provide launch-menu folders that appear automatically in the desktop, including in development environments. ([#695](https://github.com/zowe/zlux-app-manager/pull/695))
 - Administrators can now configure the server to register statically with API Mediation Layer instead of Eureka, supporting deployments that require static registration. To opt-in to this behavior, set YAML property `components.app-server.node.mediationLayer.static` to `true`. ([#358](https://github.com/zowe/zlux-app-server/pull/358))
@@ -112,17 +112,17 @@ For required configuration changes and mitigation steps, see [API ML v3.6 upgrad
 ### ZSS
 
 - ZSS is now built with the same `QuickJS` engine as `configmgr`, from `zowe/quickjs-portable` staging (the 2024-01-13 port), instead of the 2021-03-27 engine from `joenemo/quickjs-portable`; `build_zss.sh` and `build_zss64.sh` add the `libbf` big-number sources that engine needs. ([#]())
--	Updated ZSS startup to use the HA instance’s merged configuration, so instance-specific settings such as ports are honored while non-HA startup continues using the global configuration. ([#](https://github.com/zowe/zss/pull/826))
--	Added active PC caller tracking so shutdown returns RC 30 to new callers, waits for in-flight callers before freeing resources, and reports the caller count, preventing `ABENDs` during termination. ([#](https://github.com/zowe/zowe-common-c/pull/569))
--	Added per-service `READ/UPDATE SAF` checks for built-in ZIS services, letting administrators grant only the required access; checks default to ON except for `AUTH` and can be disabled individually through `PARMLIB`. ([#](https://github.com/zowe/zss/pull/852))
+-	Updated ZSS startup to use the HA instance’s merged configuration, so instance-specific settings such as ports are honored while non-HA startup continues using the global configuration. ([#826](https://github.com/zowe/zss/pull/826))
+-	Added active PC caller tracking so shutdown returns RC 30 to new callers, waits for in-flight callers before freeing resources, and reports the caller count, preventing `ABENDs` during termination. ([#569](https://github.com/zowe/zowe-common-c/pull/569))
+-	Added per-service `READ/UPDATE SAF` checks for built-in ZIS services, letting administrators grant only the required access; checks default to ON except for `AUTH` and can be disabled individually through `PARMLIB`. ([#852](https://github.com/zowe/zss/pull/852))
 - `test-support/` now adds shared infrastructure for testing ZSS server behaviour: a standalone test `ZSS` and a private test `ZIS` that a developer can build, start, drive and tear down under their own userid, with no APIML, app-server, launcher or systems programmer involved, plus a comparison driver that runs any test against two builds and proves which one answered. It is TypeScript with a single shell bootstrap that finds node and builds it. ZIS matters for any authenticated test and not only privileged services, because `safAuthenticate()` in an `APF_AUTHORIZED=0` build verifies passwords through `zisCheckUsernameAndPassword`. Nothing here is compiled into or shipped with ZSS. ([#]())
--	Added `charset-name` support for `sourceEncoding` and `targetEncoding` on `/unixfile/contents PUT`, so callers can specify encodings by name or decimal `CCSID` when uploading files. ([#](https://github.com/zowe/zss/issues/593))
--	Added support for `STRICT` and `NONSTRICT` `zowe.verifyCertificates` modes in `ZSS`. `STRICT` verifies certificate trust and hostname, while `NONSTRICT` verifies trust only; unsupported `DISABLED` falls back to `NONSTRICT` with a log message. ([#](https://github.com/zowe/zss/pull/873))
+-	Added `charset-name` support for `sourceEncoding` and `targetEncoding` on `/unixfile/contents PUT`, so callers can specify encodings by name or decimal `CCSID` when uploading files. ([#593](https://github.com/zowe/zss/issues/593))
+-	Added support for `STRICT` and `NONSTRICT` `zowe.verifyCertificates` modes in `ZSS`. `STRICT` verifies certificate trust and hostname, while `NONSTRICT` verifies trust only; unsupported `DISABLED` falls back to `NONSTRICT` with a log message. ([#873](https://github.com/zowe/zss/pull/873))
 
 
 ### Basic TN3270 Display Emulator
 
--	Updated the terminal status bar to show `Connection forbidden` when the server blocks a host via an allowlist, so users can distinguish an access restriction from a generic WebSocket error. ([#](https://github.com/zowe/tn3270-ng2/pull/113))
+-	Updated the terminal status bar to show `Connection forbidden` when the server blocks a host via an allowlist, so users can distinguish an access restriction from a generic WebSocket error. ([#113](https://github.com/zowe/tn3270-ng2/pull/113))
 
 
 
@@ -296,7 +296,7 @@ Zowe server Version 3.6.0 contains the bug fixes that are described in the follo
 -	Fixed this non-z/OS linking failure by implementing the missing `POSIX` inode and device-ID accessors and the Windows device-ID accessor, allowing file-identity operations such as `ETag` generation to link successfully. ([#666](https://github.com/zowe/zowe-common-c/pull/666))
 - Fixed `directoryMakeDirectoryRecursive()` so that it now publishes the required size of its path-out buffer as `USS_MKDIR_PATH_BUFFER_SIZE` and rejects a `messageLength` below it, returning `-1` before anything is created. ([]())
 -	Fixed recursive directory creation to support valid USS paths up to 1,023 characters and reject only longer paths, preventing the buffer overrun and `0C4 ABEND` that occurred above 255 characters. ([]())
--	Previously, during recursive directory copying or deletion, the program would follow symbolic links to operate on the actual files they pointed to; this has been changed so that only the symbolic links themselves are copied or deleted. ([#]())
+-	Fixed recursive directory copying and deletion to now operate on symbolic links themselves instead of following them. Now, the symbolic links themselves are copied or deleted. Previously, during recursive directory copying or deletion, the program followed symbolic links to operate on the actual files they pointed to. ([#]())
 -	Fixed a buffer overflow issue in directory-related APIs that, in rare cases, caused incorrect directory listing. ([#]())
 -	Fixed duplicate `YAML` key handling so configmgr and the launcher use the same configuration: the first value is kept with a warning, preventing silent value changes or template-evaluation failures. ([#581](https://github.com/zowe/zowe-common-c/issues/581))
 -	Fixed `configmgr` to run pending JavaScript signal handlers, timers, and Promise jobs after script evaluation, enabling graceful `SIGTERM` shutdown without changing synchronous scripts. ([#631](https://github.com/zowe/zowe-common-c/pull/631))
@@ -315,18 +315,17 @@ Zowe server Version 3.6.0 contains the bug fixes that are described in the follo
 
 ### ZSS
 
--	Fixed `ZSS` startup to stop with a `SEVERE` error when the configuration manager cannot be created, preventing startup from continuing in an invalid state and failing unpredictably later. ([#](https://github.com/zowe/zss/issues/868))
--	Added `null`, `length`, and `JSON-object` checks across `ZSS` services so empty or invalid authentication requests return `HTTP 400`, while other services reject missing request bodies instead of parsing them unsafely. ([#](https://github.com/zowe/zss/pull/836))
--	Fixed `/ras/traceLevel` to return `HTTP 400` (Bad Request) when a component name has no registered plugin data service, preventing crashes or misleading invalid-ID errors. ([#](https://github.com/zowe/zss/issues/890))
--	Secured `/ras/traceLevel` with `app-server-compatible`, per-method `SAF READ` checks so only authorized users can view or change server log levels, preventing unauthorized `FINEST` logging that could expose sensitive data or degrade performance; requests return `HTTP 400` when `RBAC` is off, `HTTP 403` when access is denied or no profile permits it, and `HTTP 500` when authorization cannot be determined. ([#](https://github.com/zowe/zss/issues/855))
--	Fixed memory leaks in data set operations by releasing CSI result sets and parameter blocks after use, preventing memory from accumulating across requests. ([#](https://github.com/zowe/zss/pull/888))
--	Fixed dataset streaming so records with unmappable characters are blanked and later records still appear in the response, while 100 consecutive conversion failures stop the stream with a warning instead of consuming CPU indefinitely. ([#](https://github.com/zowe/zss/pull/867))
+-	Fixed `ZSS` startup to stop with a `SEVERE` error when the configuration manager cannot be created, preventing startup from continuing in an invalid state and failing unpredictably later. ([#868](https://github.com/zowe/zss/issues/868))
+-	Added `null`, `length`, and `JSON-object` checks across `ZSS` services so empty or invalid authentication requests return `HTTP 400`, while other services reject missing request bodies instead of parsing them unsafely. ([#836](https://github.com/zowe/zss/pull/836))
+-	Fixed `/ras/traceLevel` to return `HTTP 400` (Bad Request) when a component name has no registered plugin data service, preventing crashes or misleading invalid-ID errors. ([#890](https://github.com/zowe/zss/issues/890))
+-	Secured `/ras/traceLevel` with `app-server-compatible`, per-method `SAF READ` checks so only authorized users can view or change server log levels, preventing unauthorized `FINEST` logging that could expose sensitive data or degrade performance; requests return `HTTP 400` when `RBAC` is off, `HTTP 403` when access is denied or no profile permits it, and `HTTP 500` when authorization cannot be determined. ([#855](https://github.com/zowe/zss/issues/855))
+-	Fixed memory leaks in data set operations by releasing CSI result sets and parameter blocks after use, preventing memory from accumulating across requests. ([#888](https://github.com/zowe/zss/pull/888))
+-	Fixed dataset streaming so records with unmappable characters are blanked and later records still appear in the response, while 100 consecutive conversion failures stop the stream with a warning instead of consuming CPU indefinitely. ([#867](https://github.com/zowe/zss/pull/867))
 
 
 ### Basic TN3270 Display Emulator
 
--	Fixed `security-option` handling so only explicit telnet selects an unencrypted connection; unknown or invalid values now default to TLS, preventing accidental plaintext connections. ([#](https://github.com/zowe/tn3270-ng2/pull/109))
--	Fixed `debug` logging to record only prompt lengths, keeping potentially sensitive prompt values out of logs while retaining length information for troubleshooting. ([#](https://github.com/zowe/tn3270-ng2/pull/107))
--	Fixed the default `TN3270` connection settings to use TLS on port `992` instead of unencrypted Telnet on port `23`, so users connect securely without manual configuration. ([#](https://github.com/zowe/tn3270-ng2/pull/111))
-
+-	Fixed `security-option` handling so only explicit telnet selects an unencrypted connection; unknown or invalid values now default to TLS, preventing accidental plaintext connections. ([#109](https://github.com/zowe/tn3270-ng2/pull/109))
+-	Fixed `debug` logging to record only prompt lengths, keeping potentially sensitive prompt values out of logs while retaining length information for troubleshooting. ([#107](https://github.com/zowe/tn3270-ng2/pull/107))
+-	Fixed the default `TN3270` connection settings to use TLS on port `992` instead of unencrypted Telnet on port `23`, so users connect securely without manual configuration. ([#111](https://github.com/zowe/tn3270-ng2/pull/111))
 

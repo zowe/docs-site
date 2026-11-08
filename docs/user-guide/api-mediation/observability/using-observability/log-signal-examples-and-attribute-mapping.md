@@ -40,16 +40,16 @@ This signal indicates that an active service instance has successfully renewed i
 The HTTP verb (`PUT`).
 
 * **service.id**  
-The logical ID of the target service.
+The ID of the service that recorded the request (`discovery`). The ID of the service that sent the heartbeat is in `url.path`.
 
 * **service.instance.id**  
-The specific instance sending the heartbeat.
+The Discovery Service instance that received the heartbeat. The sending instance is identified in `url.path`.
 
 * **service.response_code**  
 The status of the heartbeat renewal (`200`).
 
 * **url.path**  
-The specific Eureka instance lease renewal path.
+The Eureka lease renewal path in the form `/eureka/apps/<service Id>/<instance ID>`. The path identifies the service and the instance that sent the heartbeat.
 
 * **url.scheme**  
 The communication protocol (`https`).
@@ -65,7 +65,11 @@ The communication protocol (`https`).
 }
 ```
 
-This signal confirms the Discovery Service received the health information from the service (`service Id`)
+This signal confirms `discovery` received the health information from the service (`service Id`).
+
+:::note
+To aggregate heartbeat activity by sending service instance, group by the instance ID segment of url.path. Grouping by `service.instance.id` instead groups by the receiving Discovery instance.
+:::
 
 ## A successful login attempt
 
@@ -101,9 +105,9 @@ The communication protocol (`https`).
 
 This signal confirms that the Gateway has successfully validated the inbound client credentials, establishing the active session required to authorize subsequent routed API requests.
 
-## A successful request to API ML (authenticated but not populating information)
+## A successful request to API ML Catalog (HTTP `200`)
 
-This signal represents a successful, authenticated request to the API Catalog service, typically used for retrieving container or service metadata. While the status indicates a successful transaction, this signal is frequently used to troubleshoot scenarios where the request is valid but the resulting response contains an empty data set.
+This signal represents a request to the API Catalog service that returned HTTP `200`. This signal is typically used for retrieving container or service metadata. The record contains only request metadata and the response status code.
 
 * **http.request.method**  
 The HTTP verb (`GET`).
@@ -132,7 +136,9 @@ The communication protocol (`https`).
   "url.scheme": "https"
 }
 ```
-This signal confirms that the API Catalog communication layer and authentication are working correctly, and that the empty response is due to an empty service registry rather than a system connectivity failure.
+This signal confirms that the request reached the API Catalog and that the API Catalog returned HTTP `200`. Neither response contents, nor the size of the service registry are included. As such, you cannot use this signal to determine if the response is populated or empty.
+
+This record also contains no authentication attributes (such as `auth.method` or `auth.status`), so the record does not show whether or how the request was authenticated. For an example of a record that includes authentication details, see [Valid authentication when routing to an onboarded service (Zowe JWT)](#valid-authentication-when-routing-to-an-onboarded-service-zowe-jwt).
 
 ## Valid authentication when routing to an onboarded service (Zowe JWT)
 

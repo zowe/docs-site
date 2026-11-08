@@ -10,6 +10,7 @@ To troubleshoot errors or warnings that can occur when configuring certificates,
 
 :::caution Important:
 For production environments, certificates are required. Ensure that certificates for each of the following services are issued by the Certificate Authority (CA) and that all keyrings contain the public part of the certificate for the relevant CA:
+
 * z/OSMF
 * Zowe
 * The service that is onboarded to Zowe
@@ -20,9 +21,8 @@ For production environments, certificates are required. Ensure that certificates
 
 Use debug mode to activate the following functions:
 
-- Display additional debug messages for API ML
-- Enable changing log level for individual code components
-- Gather atypical debug information
+* Display additional debug messages for API ML
+* Enable changing log level for individual code components
 
 When on z/OS, API ML log messages are written to the STC job log.
 
@@ -38,7 +38,8 @@ its performance and create large log files that consume a large volume of disk s
 
 2. Each API ML component has its own `components.<component>.debug` parameter. Set the value to `true` for **each** component you want to debug. Note that there is no single setting that enables debug mode for all components at once.
 
-   **Example yaml to enable debug for all three core services:** 
+   **Example yaml to enable debug for all three core services:**
+
    ```yaml
    components:
      gateway:
@@ -48,13 +49,14 @@ its performance and create large log files that consume a large volume of disk s
      catalog:
        debug: true
    ```
+
    By default, debug mode is disabled, and the `components.*.debug` is set to `false`.
-   
+
 3. Restart Zowe&trade;.
 
    You enabled debug mode for API ML core services (API Catalog, API Gateway and Discovery service).
 
-4. (Optional) Reproduce a bug that causes issues and review debug messages. If you are unable to resolve the issue, create an issue [here](https://github.com/zowe/api-layer/issues/).     
+4. (Optional) Reproduce a bug that causes issues and review debug messages. If you are unable to resolve the issue, create an issue [here](https://github.com/zowe/api-layer/issues/).
 
 ## Change the Log Level of Individual Code Components
 
@@ -65,21 +67,22 @@ You can change the log level of a particular code component of the API ML intern
 1. Enable `debug-control` as described in the section [Enable API ML debug mode](#enable-api-ml-debug-mode).  
 **Note:**
 To enable `debug-control`, consider the following activation conditions per service:  
-   - For the API Gateway write path, set or append the property `components.gateway.spring.profiles.active` to `"debug-control"`.
-    - For the API Gateway read-only path and the Discovery/API Catalog paths, set the debug profile property `components.<component>.debug` to `true`.  
+   * For the API Gateway write path, set or append the property `components.gateway.spring.profiles.active` to `"debug-control"`.
+    * For the API Gateway read-only path and the Discovery/API Catalog paths, set the debug profile property `components.<component>.debug` to `true`.  
 Enablement activates the `/application/loggers` endpoint for the API ML Gateway.
 1. List the available loggers of a service by issuing the **GET** request for the given service URL. Use the direct service URL when accessing a specific API ML component, or the Gateway-routed URL when accessing through the API Gateway:
 
     ```
     GET scheme://hostname:port/application/loggers
     ```
-    - **scheme**  
+
+    * **scheme**  
     Specifies the API ML service scheme (http or https)
 
-    - **hostname**  
+    * **hostname**  
     Specifies the API ML service hostname
 
-    - **port**  
+    * **port**  
     Specifies the TCP port where API ML service listens on. The port is defined by the configuration parameter `components.gateway.port` for the Gateway,
     `components.discovery.port` for the Discovery service (by default, set to gateway port + 1), and `components.catalog.port` for the Catalog
     (by default, set to gateway port + 2).
@@ -99,13 +102,14 @@ Enablement activates the `/application/loggers` endpoint for the API ML Gateway.
     **List loggers for API Catalog**
 
     To list the available loggers, issue a **GET** request for the given service URL in the following format:
+
     ```
     GET [gateway-scheme]://[gateway-hostname]:[gateway-port]/apicatalog/api/v1/application/loggers
     ```
 
    :::tip
 
-    One way to issue REST calls is to use the http command in the free HTTPie tool: https://httpie.org/.
+    One way to issue REST calls is to use the http command in the free HTTPie tool: `https://httpie.org/`.
 
     **Example:**
 
@@ -116,6 +120,7 @@ Enablement activates the `/application/loggers` endpoint for the API ML Gateway.
     # curl
     curl -k https://<gateway-hostname>:7554/application/loggers | jq .
     ```
+
     **Output:**
 
     ```json
@@ -134,24 +139,27 @@ Enablement activates the `/application/loggers` endpoint for the API ML Gateway.
     ```bash
     http GET https://<gateway-hostname>:7554/application/loggers | grep -i "zowe"
     ```
+
       :::
 
-2. Alternatively, extract the configuration of a specific logger using the extended **GET** request:
+1. Alternatively, extract the configuration of a specific logger using the extended **GET** request:
 
     ```
     GET scheme://hostname:port/application/loggers/{name}
     ```
 
-    - **\{name\}**
+    * **\{name\}**
 
          Specifies the logger name
 
-3. Change the log level of the given component of the API ML internal service. Use the **POST** request for the given service URL:
+1. Change the log level of the given component of the API ML internal service. Use the **POST** request for the given service URL:
 
     ```
     POST scheme://hostname:port/application/loggers/{name}
     ```
+
     The **POST** request requires a new log level parameter value that is provided in the request body:
+
     ```
     {
 
@@ -160,7 +168,7 @@ Enablement activates the `/application/loggers` endpoint for the API ML Gateway.
     }
     ```
 
-    - **level**
+    * **level**
 
         Specifies the new log level: **OFF**, **ERROR**, **WARN**, **INFO**, **DEBUG**, **TRACE**
 
@@ -179,7 +187,7 @@ Enablement activates the `/application/loggers` endpoint for the API ML Gateway.
     **HTTPie vs curl comparison:**
 
     | Tool | Installation | Command syntax | Use case |
-    |------|-------------|----------------|----------|
+    | ------ | ------------- | ---------------- | ---------- |
     | HTTPie | `pip install httpie` | `http POST <url> key=value` | Human-friendly, auto-formatted output |
     | curl | Pre-installed on most systems | `curl -X POST <url> -H ... -d '...'` | Universal, scriptable, no extra dependencies |
 
@@ -190,7 +198,7 @@ Enablement activates the `/application/loggers` endpoint for the API ML Gateway.
     **Common loggers:**
 
     | Logger | Description |
-    |--------|-------------|
+    | -------- | ------------- |
     | `org.zowe.apiml` | All API ML components (Gateway, Discovery, Catalog) |
     | `org.zowe.apiml.gateway` | Gateway-specific components |
     | `org.zowe.apiml.security` | Security and authentication components |
@@ -206,9 +214,9 @@ Enablement activates the `/application/loggers` endpoint for the API ML Gateway.
     Define exact package levels in your `zowe.yaml` using the `components.apiml.logging.loggerLevels` array.
 
     **For Microservice Deployments:**
-    
+
       * **For select component control:**  
-      For more granular control over specific packages, point to a custom logback configuration file using the `components.<component>.logging.config` parameter in your `zowe.yaml`. 
+      For more granular control over specific packages, point to a custom logback configuration file using the `components.<component>.logging.config` parameter in your `zowe.yaml`.
 
       * **For full microservice debugging:**  
       Set `components.<component>.debug: true` in your `zowe.yaml` to force debug logging for all operations within that specific microservice (without affecting the rest of the API ML components).
@@ -239,7 +247,7 @@ components:
 
 For more information, see [Spring Boot Profiles](https://docs.spring.io/spring-boot/reference/features/profiles.html) in the Spring documentation.
 
-:::note 
+:::note
 
 When `debug: true` is set, you may not see the debug output immediately in the STC job log on z/OS or in the container logs. Check the component's application log file (for example, `$WORKSPACE_DIR/.logs/gateway/`) for the detailed debug messages. On z/OS, the debug output is written to the job log of the started task.
 :::
@@ -252,7 +260,6 @@ To target specific features (like `gateway`, `authentication`, or `discovery`), 
 
 For detailed instructions on managing log output destinations (such as separating debug messages from standard spool output), and feature-level debugging, see [Customizing Zowe API Mediation Layer logging](../user-guide/api-mediation/configuration-logging.md).
 :::
-
 
 * **sslDebug**  
 This property enables SSL/TLS debug logging and can assist with determining what is happening at the SSL layer. This property maps directly to the `-Djavax.net.debug` Java system property.
@@ -281,13 +288,12 @@ For more information, see the article **_Debugging Utilities_** in the IBM docum
 The `sslDebug` property can also be enabled for other API ML components.
 :::
 
-
 ## Services that are not running appear to be running
 
 Services that are not running appear to be running. The following message is displayed in the Discovery service:
 
    **EMERGENCY! EUREKA MAY BE INCORRECTLY CLAIMING INSTANCES ARE UP WHEN THEY'RE NOT. RENEWALS ARE LESSER THAN THRESHOLD AND HENCE THE INSTANCES ARE NOT BEING EXPIRED JUST TO BE SAFE.**
-    
+
 **Cause:**
 
 This message is expected behavior of the Discovery service. If a service is incorrectly terminated without properly unregistering from Eureka, the service initially enters _eviction status_ for a brief timeframe before the service is deregistered. Failure to properly terminate occurs when a service fails to respond to three consecutive heartbeat renewals. After the three heartbeat renewals are returned without a response, the Eureka Discovery service keeps the service in _eviction status_ for one additional minute. If the service does not respond within this minute, the Eureka service unregisters this unresponsive service. When more than 15 percent of currently registered services are in _eviction status_, _self preservation mode_ is enabled. In _self preservation mode_, no services in eviction status are deregistered. As a result, these services continue to appear to be running even though they are not running.
@@ -296,17 +302,17 @@ This message is expected behavior of the Discovery service. If a service is inco
 
 Use one of the following options to exit self preservation mode:
 
-- **Restart the services that appear to be running**  
-Relaunch the services that appear to be registered. After the message disappears, close each of the services one at a time. Allow for a 3-minute period between closing each service. The procedure for restarting services that are not part of Zowe is specific to the services and is documented in the service documentation. 
+* **Restart the services that appear to be running**  
+Relaunch the services that appear to be registered. After the message disappears, close each of the services one at a time. Allow for a three minute period between closing each service. The procedure for restarting services that are not part of Zowe is specific to the services and is documented in the service documentation.
 
-- **Restart the Discovery service**  
+* **Restart the Discovery service**  
 Manually restart the Discovery service. The new instance will not be in self preservation mode. In a few minutes, the running services re-register.
-   
-    **Note:** 
-    
+
+    **Note:**
+
     The Discovery service can be stopped with the following command:  
     ```F <instance-job-name>,APPL=STOP(<component_name>)```
-    
+
     The Discovery service can be started again with the following command:  
     ```F <instance-job-name>,APPL=START(<component_name>)```
 
@@ -317,19 +323,19 @@ Manually restart the Discovery service. The new instance will not be in self pre
     F ZWESLSTC,APPL=START(discovery-service)
     ```
 
-- **Adjust the threshold of services in eviction status**  
-Change the frequency of the Discovery service from entering self preservation mode by adjusting the threshold of services in eviction status. 
+* **Adjust the threshold of services in eviction status**  
+Change the frequency of the Discovery service from entering self preservation mode by adjusting the threshold of services in eviction status.
 
     **Note:** The default threshold is .85. This results in the Discovery service entering self preservation mode when 15 percent of currently registered services are in _eviction status_.
-       
+
     **Example:**
-   
+
     ```
     eureka.renewalPercentThreshold=0.3
     ```
-   
+
     This threshold limit causes the Discovery service to enter self preservation mode when less than 30 percent of services are not responding.
-   
+
 ## Debug and Fix Common Problems with SSL/TLS Setup
 
 Review tips described in the blog post [Troubleshooting SSL/TLS setup with Zowe Certificate Analyzer](https://medium.com/zowe/troubleshooting-ssl-tls-setup-with-zowe-certificate-analyser-31aeec9e1144) to find out how you can use the Zowe Certificate Analyzer to address the following common issues with SSL/TLS setup:
@@ -349,9 +355,9 @@ Search for jobs using SDSF failed for prefix {} and owner {}: exc.sdsf_invocatio
 
 You must be authorized to use SDSF with REXX on your z/OS system. For authorization, activate the SDSF RACF class and add the following 3 profiles to your system:
 
-- `GROUP.ISFSORIG`
-- `GROUP.ISFSPROG.SDSF`
-- `ISF.CONNECT.`
+* `GROUP.ISFSORIG`
+* `GROUP.ISFSPROG.SDSF`
+* `ISF.CONNECT.`
 
 Users must belong to a group that has READ access to these profiles.
 
@@ -359,3 +365,32 @@ This is quite a complex area and you should ask your systems programmer for advi
 
 class profile SDSF ISF.CONNECT.\*\* (G)
 
+## Corrupted data in the spool output of Zowe jobs with Java versions without APAR IJ57789
+
+The console spool output from Zowe Java processes in `SYSPRINT` of the Zowe jobs on z/OS shows garbled or unreadable characters when Zowe runs with Version 21.0.10.0 or older of the IBM Semeru Runtime Certified Edition for z/OS.
+
+**Cause:**
+
+Applications that write UTF-8 encoded bytes with `System.out.write()` or `System.err.write()` produce garbled terminal output on z/OS. This affects the console output of the Java-based Zowe components. IBM fixed this behavior in IBM Semeru Runtime Certified Edition for z/OS version 21.0.10.1 (APAR IJ57789). The fix adds character conversion to the output of `System.out` and `System.err`.
+
+**Solution:**
+
+Use Java 21 version 21.0.10.1 or later with Zowe 3.6.0 and later.
+
+**Workaround:**
+
+If you cannot update Java, set the console encoding in the Zowe API Mediation Layer components:
+
+```yaml
+zowe:
+  environments:
+    LOGGING_CHARSET_CONSOLE: IBM-1047
+```
+
+After you update `zowe.yaml`, restart Zowe.
+
+Note this workaround applies during initialization of the API ML components. A few lines before initialization may still show corrupted using this workaround.
+
+:::caution Important:
+This workaround might stop working correctly after you update Java 21 to the latest release. The fix in version 21.0.10.1 changes how output is converted, and an explicitly set encoding can change the behavior of applications that write bytes encoded with a charset different from `System.out.charset()` or `System.err.charset()`. Remove the properties set above when you update Java.
+:::
