@@ -17,7 +17,7 @@ Follow the steps described in this article to ensure a smooth upgrade to Zowe v3
 The workspace directory should be re-created only if you are using the app-server component.
 :::
 
-## Prerequisites for Zowe v3.6
+## Prerequisites for Zowe v3.6 
 
 Before starting the upgrade, ensure the following base system requirements are met:
 
