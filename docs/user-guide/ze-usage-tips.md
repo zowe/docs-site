@@ -44,7 +44,7 @@ In the **Data Sets** or **Unix System Services (USS)** tree, click on a profile 
 
 Sometimes your system may contain data sets and USS files that some users may have edit permissions for, but generally do not want to be editing. By default, opening a data set or file in Zowe Explorer opens it in edit mode, and, when combined with VS Code's [autosave setting](https://code.visualstudio.com/docs/editing/codebasics#_save-auto-save) (which is disabled by default), can lead to accidental edits to a file without you realising.
 
-In VS Code, to toggle the currently opened file to read-only mode, press `F1` to open the command palette, then enter `File: Set Active Editor Read-only in Session`. As the name suggests, it sets the opened file as read-only only for that session. 
+In VS Code, to toggle the currently opened file to read-only mode, press `F1` to open the command palette, then enter `File: Set Active Editor Read-only in Session`. As the name suggests, it sets the opened file as read-only only for that session. However, this does not cover all bases, so Zowe Explorer implements its own solution.
 
 If you want to set groups of data sets or USS files as read-only by default, you can configure the setting `zowe.readOnly.rules`:
 - Supports pattern negation for data sets and Unix path globs.
@@ -54,8 +54,8 @@ If you want to set groups of data sets or USS files as read-only by default, you
 
 Rule types:
 - `profile`: Apply to the whole profile.
-- `ds`: Data set mask, where % matches one character, * matches within a qualifier and ** matches any qualifiers (standard z/OS mask rules).
-- `uss`: Unix path glob, where ? matches one character, * matches within a qualifier and ** matches any qualifiers (standard Unix path glob rules).
+- `ds`: Data set mask, where % matches one character, * matches within a qualifier and ** matches any qualifiers (standard z/OS data set mask rules).
+- `uss`: Unix path glob, where ? matches one character, * matches within a directory or file name and ** matches any number of directories (standard Unix path glob rules).
 
 For example:
 
@@ -73,15 +73,39 @@ For example:
 2. For profile `lpar2`, makes any qualifier after `Z%P` (e.g. ZAP, ZBP etc.) read-only, except any qualifier after `Z%P.PUBLIC`.
 3. For all profiles, makes all USS files read-only, except for `myuser`'s homedir. Since rules are checked in order and the last matching rule wins, the USS rule in the first row for profile `lpar1` is effectively redundant.
 
-### Temporarily override rules
+An example use case is to make all data sets, USS files and directories read-only by default, then only allow editing a file once you want to. Set the rules as follows:
 
-As mentioned, VS Code provides temporary override commands. This also applies for making a read-only file writable - but instead enter `File: Set Active Editor Writeable in Session`. These commands are compatible with the read-only rules above.
+```json
+"zowe.readOnly.rules": [
+    { "ds": "*.**" },
+    { "uss": "**" },
+],
+```
 
-However, for ease of use, Zowe Explorer also adds some additional functionality for overriding the default rules for a whole profile, a data set, a USS directory or a USS file. 
+Then use the unlock icon 🔓 to edit the currently opened file (described in more detail below).
 
-If you right click a profile, and select **Make Writable**, that overrides all nodes in that profile to be writable, for that tree type - so if you click it on a data set tree, it won't apply for the same profile type on the USS tree. For example, using the example rules above, if you wanted to modify `/etc/profile`, you could navigate to that in the USS tree, right click it and select **Make Writable**.
+### Toggle read-only mode temporarily
 
-You can also do the other way around to **Make Read-Only** on a data set or USS file not in the read-only rule criteria.
+You can override your `zowe.readOnly.rules` for a profile, data set, member, USS directory or USS file. Overrides only last until you close VS Code. After that, your rules decide what is read-only again.
+
+For a file open in the editor, use the button on the editor toolbar (top right of the editor, next to the tabs):
+
+- A lock icon 🔒 means the file is writable. Click it to make the file read-only.
+- An unlock icon 🔓 means the file is read-only. Click it to make the file writable.
+
+You can also right-click an item in the **Data Sets** or **Unix System Services** tree and select **Make Read-Only** or **Make Writable**. Only the option that changes the item's current state is shown.
+
+| Action type | Applies to | What it affects |
+| --- | --- | --- |
+| Editor toolbar 🔒 / 🔓 | The open file | That data set, member or USS file only |
+| Command palette (`F1`): Zowe Explorer: **Make Read-Only** / **Make Writable** | The open file | That data set, member or USS file only |
+| Tree right-click | Profile in the **Data Sets** tree | Every data set and member in that profile, in the **Data Sets** tree only |
+| Tree right-click | Profile in the **Unix System Services** tree | Every file and directory in that profile, in the **Unix System Services** tree only. If the profile is filtered to a directory (for example `/u/myuser`), only that directory and everything in it |
+| Tree right-click | PDS | The PDS and all of its members |
+| Tree right-click | Sequential data set | That data set only |
+| Tree right-click | PDS member | That member only |
+| Tree right-click | USS directory | The directory and everything in it, including subdirectories |
+| Tree right-click | USS file | That file only |
 
 ### Blocked actions from read-only rules
 
@@ -91,11 +115,16 @@ The rules you have set may cause a block any of these actions and makes the resp
 - Saving a file in the editor
 - Overwriting a file in the editor if there's a conflict detected
 - Creating a member in a PDS that's read-only
-- Creating a data set/allocate-like if the new data set URI would fall under the read-only rule or if the whole profile is read-only
-- Creating a USS file or dir if the new file or dir URI would fall under the read-only rule or if the whole profile is read-only
-- Uploading a USS file or data set if the target PDS, data set or folder URI would fall under the read-only rule
+- Creating a data set/allocate-like if the new data set would fall under the read-only rule or if the whole profile is read-only
+- Creating a USS file or directory if the new file or directory would fall under the read-only rule or if the whole profile is read-only
+- Uploading a USS file or data set if the target PDS, data set or folder would fall under the read-only rule
 - Deleting a USS file or data set or member if it or its parent would fall under the read-only rule
-- Renaming a data set or file if it or its destination URI would fall under the read-only rule
-- Drag'n'drop across profiles if the source or destination URIs would fall under the read-only rule
-- Pasting a file or data set if the target destination URI would fall under the read-only rule
+- Renaming a data set or file if it or its destination would fall under the read-only rule
+- Drag and drop across profiles if the source or destination would fall under the read-only rule
+- Pasting a file or data set if the target destination would fall under the read-only rule
 - USS edit attributes 
+
+Some actions are not blocked by read-only rules when they could be, because of technical complexity and performance on the client. Some examples of these are:
+
+- Deleting, renaming or moving a PDS but a member inside of it falls under a read-only rule
+- Deleting, renaming or moving a z/OS Unix directory but a file or directory inside of it falls under a read-only rule
