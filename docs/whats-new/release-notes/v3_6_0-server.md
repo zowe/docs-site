@@ -93,7 +93,7 @@ For required configuration changes and mitigation steps, see [API ML v3.6 upgrad
 
 ### Zowe Common C
 -	Added `SHA-3` support to the `ICSF` digest wrapper, enabling applications to calculate `SHA3-224`, `SHA3-256`, `SHA3-384`, and `SHA3-512` digests. ([#594](https://github.com/zowe/zowe-common-c/issues/594))
--	`utils.c` gains bounded string helpers `strcpySafe`, `strncpySafe`, `strcatSafe`, `strncatSafe`, and `strlenSafe`. They follow the argument shape of the `C11 Annex K _s` functions, so each buffer is followed immediately by its own size, treat that size as the size of the buffer, always null-terminate, and return -1 when the destination was too small to hold the whole result. They are deliberately not named `_s: Annex K` is optional, z/OS does not provide it, those identifiers are reserved for it, and these do not implement its semantics (constraint handlers, `errno_t`, `rsize_t`). ([#]())
+-	`utils.c` gains bounded string helpers `strcpySafe`, `strncpySafe`, `strcatSafe`, `strncatSafe`, and `strlenSafe`. They follow the argument shape of the `C11 Annex K _s` functions, so each buffer is followed immediately by its own size, treat that size as the size of the buffer, always null-terminate, and return -1 when the destination was too small to hold the whole result. They are deliberately not named `_s: Annex K` is optional, z/OS does not provide it, those identifiers are reserved for it, and these do not implement its semantics (constraint handlers, `errno_t`, `rsize_t`). [(#655)](https://github.com/zowe/zowe-common-c/pull/655)
 -	Made `zowe-common-c` compatible with `clang/llvm` on z/OS and Linux. ([#596](https://github.com/zowe/zowe-common-c/pull/596))
 -	Kept `configmgr` validate output concise by showing JSON debug details only when tracing is enabled. ([#553](https://github.com/zowe/zowe-common-c/pull/553))
 -	Added active PC caller tracking so termination rejects new calls, waits for existing callers before freeing server resources, and reports the caller count to prevent `ABENDs` during shutdown. ([#569](https://github.com/zowe/zowe-common-c/pull/569))
@@ -105,7 +105,7 @@ For required configuration changes and mitigation steps, see [API ML v3.6 upgrad
 -	Added support for `STRICT` and `NONSTRICT` mode in `TLS HTTP` client. ([#616](https://github.com/zowe/zowe-common-c/pull/616))
 
 #### Chore
-- The `configmgr-rexx` build (`ZWERXCFG`) now uses the same `QuickJS` as `configmgr`. ([#]())
+- The `configmgr-rexx` build (`ZWERXCFG`) now uses the same `QuickJS` as `configmgr`. ([#695](https://github.com/zowe/zowe-common-c/pull/695))
 - `configmgr` and the `REXX configmgr` build take `QuickJS` from `zowe/quickjs-portable` staging, the Open Mainframe Project home of the `z/OS` port, instead of a personal fork; the `configmgr` build scripts now label the engine `2024-01-13`, which is what they have built since March, instead of 2021-03-27. ([#]())
 
 
