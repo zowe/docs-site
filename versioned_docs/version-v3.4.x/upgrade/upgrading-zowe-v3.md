@@ -5,7 +5,7 @@ Follow the procedure outlined in this article to upgrade from Zowe v3.5 (or an e
 :::info Required roles: system administrator, system programmer
 :::
 
-Upgrading from Zowe v2 or v1 is a major-version upgrade. The process is similar to a Zowe v2 minor release upgrade, but there are several new and updated configuration parameters to consider. Upgrading from Zowe v3.5 (or an earlier v3.x version) is a minor-version upgrade.
+Upgrading from Zowe v2 or v1 is a major-version upgrade. The process is similar to a Zowe v2 minor release upgrade, but there are several new and updated configuration parameters to consider. Upgrading from Zowe v3.4 (or an earlier v3.x version) is a minor-version upgrade.
 
 Follow the steps described in this article to ensure a smooth upgrade to Zowe v3.6. The procedure applies to upgrades from previous supported Zowe versions and has three phases:
 
