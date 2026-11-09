@@ -5,9 +5,9 @@ Follow the procedure outlined in this article to upgrade from Zowe v3.5 (or an e
 :::info Required roles: system administrator, system programmer
 :::
 
-While the major version upgrading process is similar to a Zowe v2 minor release upgrade, there are several new and updated configuration parameters to consider. 
+Upgrading from Zowe v2 or v1 is a major-version upgrade. The process is similar to a Zowe v2 minor release upgrade, but there are several new and updated configuration parameters to consider. Upgrading from Zowe v3.5 (or an earlier v3.x version) is a minor-version upgrade.
 
-Follow the steps described in this article to ensure a smooth upgrade to Zowe v3.6. The procedure is written primarily for installations running Zowe v2.18.6, with a separate section for v3.5 users, and has three phases:
+Follow the steps described in this article to ensure a smooth upgrade to Zowe v3.6. The procedure applies to upgrades from previous supported Zowe versions and has three phases:
 
 1. [**Preparing your current Zowe instance**](#preparing-your-current-zowe-instance).
 2. [**Upgrading the runtime**](#upgrading-the-runtime) to Zowe v3.6.
@@ -73,6 +73,8 @@ The property `components.gateway.apiml.service.allowEncodedSlashes` is removed. 
 
     Regardless of this setting, Gateway-internal endpoints (such as `/gateway`, `/application`, `/images`, and `/v3/api-docs`) always enforce strict validation.
     :::
+
+For other Zowe v3.6 changes that can affect your environment, such as authenticated actuator endpoints, the service registration domain allowlist, and the z/OSMF JWT startup check, see [Upgrading from Zowe v3.5 (or earlier v3.x) to v3.6](https://docs.zowe.org/stable/upgrade/upgrading-zowe/#upgrading-from-zowe-v35-or-earlier-v3x-to-v36).
 
 Proceed to the [**Upgrading the runtime**](#upgrading-the-runtime) section to complete your upgrade to v3.6.
 
