@@ -7,6 +7,10 @@ Follow the procedure outlined in this article to upgrade from Zowe v2 to Zowe v3
 
 Upgrading from Zowe v2 or v1 is a major-version upgrade. The process is similar to a Zowe v2 minor release upgrade, but there are several new and updated configuration parameters to consider.
 
+:::warning Breaking changes in Zowe v3.6
+Zowe v3.6 includes breaking changes made to address security risks. Review them before you upgrade. For background and guidance, see [Breaking Changes in Zowe V2 and Zowe V3](https://docs.zowe.org/stable/appendix/security-breaking-changes/).
+:::
+
 Follow the steps described in this article to ensure a smooth upgrade to Zowe v3.6. The procedure applies to upgrades from previous supported Zowe versions and has three phases:
 
 1. [**Preparing your current Zowe instance**](#preparing-your-current-zowe-instance).
@@ -39,7 +43,7 @@ All v2.x installations must first upgrade to v2.18.x before upgrading to v3.6.
 <details>
 <summary><strong>Upgrading from Zowe v2.18.x to v3.6</strong></summary>
 <br />
-<!-- This whole dropdown section is new -->
+
 To upgrade from Zowe v2.18.x, perform the following procedure before you install Zowe v3.6.
 
 :::note  
@@ -58,10 +62,10 @@ Set `components.gateway.apiml.security.auth.provider` explicitly to `zosmf` or `
               provider: zosmf # or saf
     ```
 
-2. **Verify runtime levels.**  
+1. **Verify runtime levels.**  
 Confirm that the Java and Node.js versions meet the [prerequisites](#prerequisites-for-zowe-v36). Update `java.home` and `node.home` in `zowe.yaml` if the versions have changed from those in your 2.18.x installation. 
 
-3. **Verify z/OSMF JWT support.**  
+1. **Verify z/OSMF JWT support.**  
 Confirm that z/OSMF JWT support is available, as described in the [prerequisites](#prerequisites-for-zowe-v36). If z/OSMF JWT support is not available, choose one of the following actions:
     - Apply or enable JWT support. For more information, see [Enabling JSON Web Token support](https://www.ibm.com/docs/en/zos/3.1.0?topic=configurations-enabling-json-web-token-support) in the IBM documentation.
     - Set `jwtAutoconfiguration` to `ltpa` (not usable with hardware-accelerated ICSF keyrings).
@@ -86,7 +90,7 @@ Confirm that z/OSMF JWT support is available, as described in the [prerequisites
     If z/OSMF is not used for login, no JWT setup is needed.
     :::
 
-4. **Identify consumers of unauthenticated operational endpoints.**  
+1. **Identify consumers of unauthenticated operational endpoints.**  
 Identify any monitoring probes, readiness checks, and automation that call the following endpoints without credentials:
     * `/application/info`
     * `/application/version`
@@ -96,7 +100,7 @@ Identify any monitoring probes, readiness checks, and automation that call the f
 
     Update the identified clients to send credentials (Basic authentication or a Bearer JWT). Alternatively, if you choose to accept the exposure, set `components.gateway.apiml.health.protected` to `false`.
 
-5. **Add registration metadata hosts to the allowlist.**  
+1. **Add registration metadata hosts to the allowlist.**  
 Zowe v3.6 validates the hosts in service registration metadata against `zowe.network.allowedDomains`. The defaults cover `externalDomains` and high availability (HA) hostnames only. Add services that register URL metadata (such as `instanceBaseUrls`, API documentation or Swagger URLs, or `corsAllowedOrigins`) from other hosts to `zowe.network.allowedDomains` before you upgrade.
 
   :::note
@@ -112,8 +116,6 @@ Review the [System and Security Changes](#system-and-security-changes) and [Conf
     * Keyring `keystore` and `truststore` passwords use the literal value `password`.
     * `zowe.useConfigmgr=false` and the gateway internal server are no longer supported.
 
-    For the complete list of changes, see [Important API ML updates in Zowe v3](../whats-new/breaking-changes-v3.md#important-api-ml-updates-in-zowe-v3).
-<!-- TODO: confirm the exact article title of breaking-changes-v3.md -->
 
 You should proceed to the [**Upgrading the runtime**](#upgrading-the-runtime) and [**Configuration changes**](#configuration-changes) sections to complete your upgrade to v3.6.
 
