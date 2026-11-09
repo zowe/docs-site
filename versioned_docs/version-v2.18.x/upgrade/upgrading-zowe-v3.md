@@ -1,5 +1,8 @@
 # Upgrading from Zowe Vx to Zowe V3
 
+:::info Required roles: system administrator, system programmer
+:::
+
 :::tip Upgrading to the latest Zowe version
 This article covers upgrading to Zowe v3. To upgrade to the latest Zowe version (v3.6), follow the section "Upgrading from Zowe v2.18.x to v3.6" in [Upgrading from Zowe Vx to Zowe V3.6](https://docs.zowe.org/stable/upgrade/upgrading-zowe-v3/#preparing-your-current-zowe-instance).
 :::
@@ -203,10 +206,10 @@ Ensure that the Zowe YAML parameter `node.home` value is a **Node.js 18, 20, 22 
 | Component name | Change | Default Port | Default Jobname | Details |
 |----------------|--------|--------------|-----------------|---------|
 | zaas | Added | 7558 | ZWE1AZ | This component is responsible for authentication and is now required when using the API Mediation Layer |
-| metrics-service | Removed | 7551 | ZWE1MS | This service has been deprecated and removed. Currently, no replacement is available. The Open Telemetry standard will be implemented later, which will serve as a replacement |
-| jobs-api | Removed | 7558 | ZWE1EJ | This component was deprecated in Zowe v2 and is now removed. Ensure that you switch to using equivalent z/OSMF endpoints |
-| files-api | Removed | 7559 | ZWE1EF | This component was deprecated in Zowe v2 and is now removed. Ensure that you switch to using equivalent z/OSMF endpoints |
-| cloud-gateway | Removed | 7563 | ZWE1CG | The cloud-gateway has been removed as a standalone component and merged into the gateway |
+| metrics-service | Removed | 7551 | ZWE1MS | This service has been deprecated and removed. The Open Telemetry standard serves as a replacement. |
+| jobs-api | Removed | 7558 | ZWE1EJ | This component was deprecated in Zowe v2 and is now removed. Ensure that you switch to using equivalent z/OSMF endpoints. |
+| files-api | Removed | 7559 | ZWE1EF | This component was deprecated in Zowe v2 and is now removed. Ensure that you switch to using equivalent z/OSMF endpoints. |
+| cloud-gateway | Removed | 7563 | ZWE1CG | The cloud-gateway has been removed as a standalone component and merged into the gateway. |
 
 
 ## Configuration changes
