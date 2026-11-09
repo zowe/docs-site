@@ -43,7 +43,7 @@ All v2.x installations must first upgrade to v2.18.x before upgrading to v3.6.
 <details>
 <summary><strong>Upgrading from Zowe v3.5 (or earlier v3.x) to v3.6</strong></summary>
 <br />
-To upgrade from Zowe v3.5 or an earlier v3.x version, perform the following procedure before you install Zowe v3.6. Because this is a minor-version upgrade within Zowe v3, the v2 to v3 breaking changes do not apply. However, Zowe v3.6 introduces its own breaking changes, which are described in the following steps and in [Breaking Changes in Zowe V2 and Zowe V3](https://docs.zowe.org/stable/appendix/security-breaking-changes/).
+To upgrade from Zowe v3.5 or an earlier v3.x version, perform the following procedure before you install Zowe v3.6. Because this is a minor-version upgrade within Zowe v3, the v2 to v3 breaking changes do not apply. For details about breaking changes in Zowe v3.6, see [Important updates in Zowe v3](https://docs.zowe.org/stable/whats-new/breaking-changes-v3).
 
 1. **Verify runtime levels.**  
 Confirm that the Java and Node.js versions meet the [prerequisites](#prerequisites-for-zowe-v36). Update `java.home` and `node.home` in `zowe.yaml` if needed.
