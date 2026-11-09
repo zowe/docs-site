@@ -67,7 +67,7 @@ Major version upgrades, or upgrades from older legacy versions, require specific
 Any extensions or products built upon Zowe v1 are unlikely to work in v2 or v3 without upgrading such extensions or products. Refer to your product documentation on actions to take, and ensure you have obtained v2/v3 compatible versions of your third-party extensions from their vendors before proceeding with a clean installation.
 :::
 
-### Upgrading from Zowe v3.5 (or earlier v3.x) to v3.6
+### Upgrading to Zowe v3.6 from all 3.x versions
 
 Upgrading from Zowe v3.5 (or an earlier v3.x version) to v3.6 follows the standard upgrade flow described in this article. Ensure that steps detailed in [Zowe z/OS components installation checklist](../user-guide/zos-components-installation-checklist.md) are satisfied and then review the changes in this section before you restart Zowe.
 

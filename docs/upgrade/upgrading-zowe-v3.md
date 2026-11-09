@@ -74,7 +74,7 @@ The property `components.gateway.apiml.service.allowEncodedSlashes` is removed. 
     Regardless of this setting, Gateway-internal endpoints (such as `/gateway`, `/application`, `/images`, and `/v3/api-docs`) always enforce strict validation.
     :::
 
-For other Zowe v3.6 changes that can affect your environment, such as authenticated actuator endpoints, the service registration domain allowlist, and the z/OSMF JWT startup check, see [Upgrading from Zowe v3.5 (or earlier v3.x) to v3.6](./upgrading-zowe.md#upgrading-from-zowe-v35-or-earlier-v3x-to-v36).
+For other Zowe v3.6 changes that can affect your environment, such as authenticated actuator endpoints, the service registration domain allowlist, and the z/OSMF JWT startup check, see [Upgrading to Zowe v3.6 from all 3.x versions](./upgrading-zowe.md#upgrading-to-zowe-v36-from-all-3x-versions).
 
 Proceed to the [**Upgrading the runtime**](#upgrading-the-runtime) section to complete your upgrade to v3.6.
 
