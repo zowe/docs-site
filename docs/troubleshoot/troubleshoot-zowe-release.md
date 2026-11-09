@@ -1,4 +1,9 @@
 # Understanding Zowe release versions
+
+:::warning Breaking changes policy exception
+To address recent security findings, some Zowe V2 and Zowe V3 minor and maintenance releases include breaking changes. This is an exception to the major release policy described in this article. For details, see [Breaking changes in Zowe V2 and Zowe V3](../appendix/security-breaking-changes.md).
+:::
+
 ## Zowe releases
 
 Zowe uses *semantic versioning* for its releases, also known as SemVer.  In semantic versioning, each release has a unique ID made up of three numbers that are separated by periods:
