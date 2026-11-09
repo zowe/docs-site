@@ -105,8 +105,8 @@ For required configuration changes and mitigation steps, see [API ML v3.6 upgrad
 -	Added support for `STRICT` and `NONSTRICT` mode in `TLS HTTP` client. ([#616](https://github.com/zowe/zowe-common-c/pull/616))
 
 #### Chore
-- The `configmgr-rexx` build (`ZWERXCFG`) now uses the same `QuickJS` as `configmgr`. ([#695](https://github.com/zowe/zowe-common-c/pull/695))
-- `configmgr` and the `REXX configmgr` build take `QuickJS` from `zowe/quickjs-portable` staging, the Open Mainframe Project home of the `z/OS` port, instead of a personal fork; the `configmgr` build scripts now label the engine `2024-01-13`, which is what they have built since March, instead of 2021-03-27. ([#]())
+- The `configmgr-rexx` build (`ZWERXCFG`) now uses the same `QuickJS` as `configmgr`. ([#684](https://github.com/zowe/zowe-common-c/pull/684))
+- `configmgr` and the `REXX configmgr` build take `QuickJS` from `zowe/quickjs-portable` staging, the Open Mainframe Project home of the `z/OS` port, instead of a personal fork; the `configmgr` build scripts now label the engine `2024-01-13`, which is what they have built since March, instead of 2021-03-27. ([#695](https://github.com/zowe/zowe-common-c/pull/695))
 
 
 ### ZSS
