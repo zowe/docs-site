@@ -77,7 +77,7 @@ For required configuration changes and mitigation steps, see [API ML v3.6 upgrad
 
 ### Zlux App Server
 -	Added the optional `requiresRbac` setting to dataservice definitions, so services can return `403` when `RBAC` is disabled. ([#419](https://github.com/zowe/zlux-app-server/pull/419))
--	Added `components.app-server.node.mediationLayer.server.userid` and `.password`, which default to the Discovery service `apiml.discovery` credentials. These are required to register to the API Mediation Layer when `zowe.verifyCertificates` is `DISABLED`. ([#]())
+-	Added `components.app-server.node.mediationLayer.server.userid` and `.password`, which default to the Discovery service `apiml.discovery` credentials. These are required to register to the API Mediation Layer when `zowe.verifyCertificates` is `DISABLED`. [(#416)](https://github.com/zowe/zlux-app-server/pull/416)
 -	Plug-in preferences are copied into instances without shell parsing, reducing command-injection risk. ([#378](https://github.com/zowe/zlux-app-server/pull/378))
 -	Plug-ins now provide launch-menu folders that appear automatically in the desktop, including in development environments. ([#695](https://github.com/zowe/zlux-app-manager/pull/695))
 - Administrators can now configure the server to register statically with API Mediation Layer instead of Eureka, supporting deployments that require static registration. To opt-in to this behavior, set YAML property `components.app-server.node.mediationLayer.static` to `true`. ([#358](https://github.com/zowe/zlux-app-server/pull/358))
