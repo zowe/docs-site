@@ -1,6 +1,6 @@
 # Upgrading from Zowe Vx to Zowe V3.6
 
-Follow the procedure outlined in this article to upgrade from Zowe v3.5 (or an earlier v3.x version) to Zowe v3.6, from Zowe v2 to Zowe v3.6, or from Zowe v1 to Zowe v3.6.
+Follow the procedure outlined in this article to upgrade to Zowe v3.6 from any earlier v3.x version, from Zowe v2, or from Zowe v1.
 
 :::info Required roles: system administrator, system programmer
 :::
