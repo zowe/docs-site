@@ -61,14 +61,14 @@ On that web page, you can search for `example-zowe.yaml` and `defaults.yaml` to 
 
 ## Version-Specific upgrade procedures
 
-Major version upgrades, or upgrades from older legacy versions, require specific prerequisite checks, architectural changes, and configuration updates. For detailed instructions on upgrading from specific releases, refer to the following dedicated upgrade procedures:
+Zowe v3.6 introduces security patches and breaking changes that affect upgrades from any earlier version. Select the procedure that matches your current version.
 
 :::warning Important Note on Extension Compatibility
 Any extensions or products built upon Zowe v1 are unlikely to work in v2 or v3 without upgrading such extensions or products. Refer to your product documentation on actions to take, and ensure you have obtained v2/v3 compatible versions of your third-party extensions from their vendors before proceeding with a clean installation.
 :::
 
 * **[Upgrading from Zowe Vx to Zowe V3.6](./upgrading-zowe-v3.md)**  
-Follow this procedure to upgrade from Zowe v2 to Zowe v3.6, or from Zowe v1 to Zowe v3.6. This article details V3.6 prerequisites (including Java versions 17-21, Node.js versions 18-24, and z/OSMF JWT support), new component configurations such as `zaas` and Infinispan caching, the actuator endpoint authentication requirements, the registration metadata validation impact for extenders, and handles migration exceptions for older v2.x releases.
+Follow this procedure to upgrade from Zowe v2 to Zowe v3.6. This is a major-version upgrade that covers prerequisites, configuration changes, and breaking changes.
 
    :::caution Important
    If you are currently running on an earlier v2 version of Zowe, before upgrading to Zowe v3.x, first upgrade to Zowe v2.18.x.
