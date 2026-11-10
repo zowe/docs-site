@@ -470,8 +470,8 @@ TTLSRule                            ZLUXApimlClientRule
   LocalAddr                         All
   RemoteAddr                        All
   LocalPortRange                    1024-65535
-  RemotePortRange                   7554 # Gateway port
-  Jobname                           # Jobname under which APP Server (ZWE1DS & ZWE1SV) and ZSS (ZWE1SZ) are running
+  RemotePortRange                   7554  # Gateway port
+  Jobname                           ZWE1* # Jobname under which APP Server (ZWE1DS & ZWE1SV) and ZSS (ZWE1SZ) are running
   Direction                         Outbound
   TTLSGroupActionRef                ClientGroupAction
   TTLSEnvironmentActionRef          ZoweNoX509ClientEnvAction # No X.509 authentication
