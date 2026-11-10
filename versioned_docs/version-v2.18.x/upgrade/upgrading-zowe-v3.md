@@ -46,10 +46,6 @@ All v2.x installations must first upgrade to v2.18.x before upgrading to v3.6.
 
 To upgrade from Zowe v2.18.x, perform the following procedure before you install Zowe v3.6.
 
-:::note  
-v2.18.6 does not contain registration metadata validation filters. v3.6 meets the actuator endpoint authentication requirements and contains registration metadata validation filters.
-:::
-
 1. **Set the authentication provider.**  
 Set `components.gateway.apiml.security.auth.provider` explicitly to `zosmf` or `saf` in `zowe.yaml`, so that the behavior does not depend on version-dependent defaults. The provider default is not changed when you upgrade: `zosmf` is preserved for upgraded configurations, while `saf` is the default in `example-zowe.yaml` for new installations.
 
@@ -115,7 +111,6 @@ Review the [System and Security Changes](#system-and-security-changes) and [Conf
     * Keyring URIs use exactly two slashes (`safkeyring://`).
     * Keyring `keystore` and `truststore` passwords use the literal value `password`.
     * `zowe.useConfigmgr=false` and the gateway internal server are no longer supported.
-
 
 You should proceed to the [**Upgrading the runtime**](#upgrading-the-runtime) and [**Configuration changes**](#configuration-changes) sections to complete your upgrade to v3.6.
 
