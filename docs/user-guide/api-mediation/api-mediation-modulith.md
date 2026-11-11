@@ -1,7 +1,7 @@
 # Enabling single-service deployment of API Mediation Layer
 
 Zowe version 3.3.0 introduced the option to switch the execution mode for API Mediation Layer (API ML) 
-configuration from the previous multiple-service option to a single-service option based on "[modulith](https://medium.com/@harsard/understanding-monolith-modulith-and-microservices-f96555545c0c)" architecture. 
+configuration from the previous multiple-service option to a single-service option based on "[modulith](https://medium.com/zowe/from-microservices-to-modulith-how-zowe-api-ml-evolved-for-simplicity-and-performance-aaf3a8c501a7)" architecture. 
 
 From Zowe version 3.4.0 onwards, we recommend the single-service option. The workflow for new installations 
 will set the single-service deployment option in `zowe.yaml`. 
@@ -33,6 +33,10 @@ Review the following architecture of API ML single-service deployment mode.
 
 Kubernetes is not supported in Zowe 3.4 single-service deployment mode.
 
+### System Requirements 
+
+Single-service deployment mode requires a **minimum of 1024 MB (1 GB)** of Java heap memory. Ensure that your z/OS address space has sufficient memory available. For details about configuring heap size for the single-service deployment, see [Customizing Java Heap Sizes](./configuration-customizing-java-heap-sizes.md).
+
 ## Breaking Changes
 
 :::note
@@ -59,7 +63,7 @@ Update the network permissions to reflect this change. Ensure that both ports ar
 The remaining ports described under the `API Mediation Layer` category in the multi-service deployment section of article [Address Network Requirements](../address-network-requirements.md#component-ports) (defaults 7552, 7555, and 7558) are no longer used in single-service deployment mode. 
 
 :::note
-The Caching Service is enabled in single-service deployment mode and the default is `infinispan`. Note that the  `infinispan` storage solution requires additional ports. For more information, see [Caching Service Infinispan ports](../address-network-requirements.md#caching-service-infinispan-ports).
+In single-service deployment mode, the Caching Service is enabled by default, and **`infinispan` is the required storage option**. Other storage modes are not supported in single-service deployment mode. Note that the `infinispan` storage solution requires additional ports. For more information, see [Caching Service Infinispan ports](../address-network-requirements.md#caching-service-infinispan-ports).
 :::
 
 ### Update log prefix
@@ -120,7 +124,11 @@ To enable single-service deployment mode for API ML, perform the following chang
         enabled: true
     ```
 
-    **Note:** If the Caching Service is not configured on your system, follow the steps described in [Using the Caching Service](./api-mediation-caching-service.md) to configure the Caching Service. The Caching Service is enabled by default in the single-service deployment of API Mediation Layer.
+    :::note Notes:  
+    * If the Caching Service is not configured on your system, follow the steps described in [Using the Caching Service](./api-mediation-caching-service.md) to configure the Caching Service. The Caching Service is enabled by default in the single-service deployment of API Mediation Layer.
+
+    * To enable the debug mode in the single-service deployment mode, find the `components.apiml.debug` parameter and set the value to `true`.
+    ```
 
 2. Start the Zowe started task.
 
@@ -129,7 +137,7 @@ To enable single-service deployment mode for API ML, perform the following chang
 It is possible to revert to the original multi-service deployment mode by reverting changes in the `zowe.yaml` file:
 
 1. Disable the `apiml` component:
-    Set `components.apiml.enabled` to `false`.
+   Set `components.apiml.enabled` to `false`.
 
 2. Start the Zowe started task.
 

@@ -39,8 +39,6 @@ X.509 Digital certificates are primarly used to implement the following function
 Zowe uses digital certificates as a foundational element for both communication and for identity security.
 Additionally, Zowe provides a client identity validation functionality based on the ownership of the provided x.509 client certificate and the mainframe security authentication mechanism.
 
-For more information about how Zowe leverages certificates, see [Zowe certificate usage](../user-guide/use-certificates.md).
-
 To review the various Zowe certificate configuration options, see the [Zowe certificate configuration overview](../user-guide/configure-certificates.md).
 
 ## Public key infrastructure
@@ -101,7 +99,7 @@ For example, Java servers can use JKS and JCEKS keystores, which are specific fo
 Zowe supports:
 * **file-based PKCS12**  
   PKCS12 certificates are the most general and widely deployed certificate format.
-* **z/OS keyring-based keystore (JKS/JCEKS)**  
+* **z/OS key ring-based keystore (JKS/JCEKS)**  
   JKS/JCEKS certificates are specific types of certificates that depend on the Java environment.
 
 :::note

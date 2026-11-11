@@ -1,6 +1,6 @@
 # Zowe z/OS components installation checklist
 
-Use this checklist to guide you through the installation and configuration of Zowe server-side components for z/OS. 
+Use this checklist to guide you through the installation and configuration of Zowe server-side components for z/OS.
 
 
 ## Preparing for installation
@@ -9,6 +9,8 @@ Use this checklist to guide you through the installation and configuration of Zo
 | [Review the Zowe server-side installation overview](../user-guide/install-zos.md) | Knowledge about  the basic installation stages and the roles and responsibilities to perform the installation |    25 minutes   |                        
 | [Prepare for installation](./installandconfig.md)| Knowledge about the key-concepts in server-side installation |  25 minutes                    | 
 | Address pre-installation requirements | The following pre-installation requirements are addressed: <br /> &nbsp;&nbsp;&nbsp;&nbsp;* [z/OS](./systemrequirements-zos.md)   <br />&nbsp;&nbsp;&nbsp;&nbsp;* [Node.js](./install-nodejs-zos.md)   <br />&nbsp;&nbsp;&nbsp;&nbsp;* [security](./address-security-requirements.md) <br />&nbsp;&nbsp;&nbsp;&nbsp;* [USS](./configure-uss.md) <br />&nbsp;&nbsp;&nbsp;&nbsp;* [storage](./address-storage-requirements.md) <br />&nbsp;&nbsp;&nbsp;&nbsp;* [network](./address-network-requirements.md)  <br /> &nbsp;&nbsp;&nbsp;&nbsp;* [z/OSMF](../user-guide/install-nodejs-zos.md#addressing-zosmf-requirements) <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(recommended for full functionality)<br />&nbsp;&nbsp;&nbsp;&nbsp;* [z/OSMF HA](../user-guide/zowe-ha-overview.md)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(required for production)            |  1 day                     | 
+| [Cross-LPAR Deployment Considerations](../user-guide/cross-LPAR-deployment-considerations.md) | Knowledge about additional configuration steps that are not in the standard single-LPAR installation               |   30 minutes   |
+
 
 ## Installing the Zowe z/OS runtime
 
@@ -45,7 +47,7 @@ Zowe is able to use PKCS12 certificates or certificates held in a z/OS Keyring.
 
 | Task | Results | Time Estimate |  
 |--------------------|----|------|
-| Read the article [Zowe certificate configuration overview](../user-guide/configure-certificates.md). Then use one of the following options:<br /><br /> **Option 1: Choose the [certificate configuration scenario](../user-guide/certificate-configuration-scenarios.md)** that best applies to your use case, and follow the configuration procedure and scenario template. <br /> <br /> **Option 2: [Set up Zowe certificates using workflows](../user-guide/certificates-setup.md)** | Your certificates are configured and stored securely. |2 hours  
+| Read the article [Zowe certificate configuration overview](../user-guide/configure-certificates.md). Then use one of the following options:<br /><br /> **Option 1: Choose the [certificate configuration scenario](../user-guide/certificates-configuration-scenarios.md)** that best applies to your use case, and follow the configuration procedure and scenario template. <br /> <br /> **Option 2: [Set up Zowe certificates using workflows](../user-guide/certificates-workflow-setup.md)** | Your certificates are configured and stored securely. |2 hours  
 
 ## Configuring the Zowe cross memory server (ZIS)
 

@@ -94,6 +94,7 @@ One of the following Java versions:
 
 - IBM SDK for Java Technology Edition V8
 - IBM Semeru Runtime Certified Edition for z/OS V11.0.0
+- IBM Semeru Runtime Certified Edition for z/OS V17 (≥ 2.15)
 
 ### z/OSMF (Optional) 
 

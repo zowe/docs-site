@@ -28,6 +28,7 @@ Before performing configuration steps specific to your use case, ensure that you
 | Required to configure the cross memory server for SAF to guard against access by non-privileged clients. Tasks are performed as part of [Zowe runtime configuration](./configure-zowe-runtime.md).| Application Framework | [Configure the cross memory server for SAF](#configure-the-cross-memory-server-for-saf) |
 | To use Zowe desktop. This step generates random numbers for zssServer that the Zowe desktop uses. | Application Framework | [Configure an ICSF cryptographic services environment](#configure-an-icsf-cryptographic-services-environment) |
 | To use Single Sign-On (SSO) | All components | [Single Sign-On (SSO)](#single-sign-on-sso) |
+| Optional: Enable the Zowe cross-memory server to use 1 MB large page frames for improved performance. | Cross Memory Server | [Configure access to large memory pages](#configure-access-to-large-memory-pages) |
 
 
 ### Configure address space job naming
@@ -791,6 +792,16 @@ This configuration applies to all Zowe components.
 :::
 
 Zowe has an SSO scheme with the goal that each time you use multiple Zowe components you should only be prompted to login once. 
+**Cross-LPAR SSO requirement for JES Explorer and MVS Explorer:**
+JES Explorer and MVS Explorer fetch data through z/OSMF REST APIs, not through ZSS. When Zowe runs on an LPAR different than z/OSMF, the API Gateway generates a passticket on the Zowe LPAR and presents it to z/OSMF on the remote LPAR.
+
+**Ensure that both LPARs have the following configuration:**
+- Define the `PTKTDATA` profile for `IZUDFLT` (or your z/OSMF application name) with the SAME session key (SSIGN/KEYMASKED value) on both LPARs. If the keys differ, z/OSMF rejects the passticket even when generation succeeds.
+- Authorize `ZWESVUSR` to generate passtickets for `IZUDFLT` on the Zowe LPAR. 
+- Define the `PTKTDATA` profile on each LPAR and then rebuild the `ACF2/RACF` class: `F ACF2,PROFILE(PTKTDATA),REBUILD(SSIG)`.
+
+Additionally, each user who uses JES Explorer or MVS Explorer must have a valid login ID in the z/OSMF LPAR's security data base, with an OMVS segment (`UID` and `HOME` directory). The user's Zowe LPAR ID is used to generate the passticket, so z/OSMF must be able to recognize that same user ID."
+
 
 **Requirements:**
 
@@ -926,6 +937,21 @@ TSS PERMIT(user-acid) CSFSERV(profile-prefix.profile-suffix) ACCESS(READ)
 - Enable `FACILITY IRR.PROGRAM.SIGNATURE.VERIFICATION` and `RDEFINE CSFINPV2` if required.
 :::
 
+**Verifying CSFSERV class status:**
+
+If your security team reports `no rules defined` for the `CSFSERV` class, see the following to verify whether the class is active before you conclude that access is unrestricted:
+
+|--|--|
+| RACF: | SETROPTS LIST (look for CSFSERV in the ACTIVE CLASSES list) |
+| ACF2: | LIST CLASMAP (look for a CSFSERV entry; active status indicator) |
+| TSS:  | TSS LIST(SYS) CLASMAP (look for CSFSERV) |
+
+If the class is active with no rules, ALL access to `CSFSERV` resources is denied by default. In this case, `ZWESVUSR` cannot call ICSF functions including `CSFRNGL` (random number generation) and `CSFPSKE` (`PKCS#11 Secret Key Encrypt`), which are required for TLS operations of ZSS and Zowe Desktop cookies.
+If the class is not active, `CSFSERV` resource checks bypass and access is unrestricted.
+If access is denied, grant `ZWESVUSR` `READ` access to at minimum: `CSFRNGL`.
+For TLS 1.3 support, also grant: `CSFPSKE`, `CSFPSKD`, `CSFPGKP`.
+
+
 ### Configure the cross memory server for SAF
 
 :::info
@@ -1018,3 +1044,31 @@ If you use Top Secret, issue the following commands, where `owner-acid` can be I
 - The cross memory server treats "no decision" style SAF return codes as failures. If there is no covering profile for the `ZWES.IS` resource in the FACILITY class, the request will be denied.
 - Cross memory server clients other than Zowe might have additional SAF security requirements. For more information, see the documentation for the specific client.
 :::
+
+### Configure access to large memory pages
+
+If large page frames are configured and used on the system, the Zowe user ID requires `READ` access to the `IARRSM.LRGPAGES` resource in the `FACILITY` class.
+
+Large pages are a z/OS performance feature for memory objects that use 1 MB page frames. Programs with `READ` access to `IARRSM.LRGPAGES` can request large pages by specifying the `PAGEFRAMESIZE` parameter on `IARV64` requests.
+
+For more information, see _z/OS MVS Programming: Assembler Services Guide_ and _z/OS MVS Initialization and Tuning Reference_.
+
+1. Ensure that large page frames are configured. Configrm that the `LFAREA` parameter in `IEASYSxx` has a non-zero value for 1 MB pages (for example, `1M=value`), then review the existing ACF2 rule:
+
+```
+SET RESOURCE(FAC)
+LIST IARRSM
+```
+
+2. Grant `READ` access to `IARRSM.LRGPAGES`.
+
+Define the following ACF2 resource rule for the Zowe user ID:
+
+```
+SET RESOURCE(FAC)
+RECKEY IARRSM ADD(LRGPAGES UID(user_uid) SERVICE(READ) ALLOW)
+F ACF2,REBUILD(FAC)
+```
+
+**Note:** Replace `user_uid` with the UID for the Zowe STC user that needs access.
+

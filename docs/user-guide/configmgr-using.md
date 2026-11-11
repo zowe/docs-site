@@ -75,7 +75,7 @@ Zowe now publishes these schema files so that you can see all the configuration 
 | Base | server-common | Common structures reusable by other schemas | [link](https://github.com/zowe/zowe-install-packaging/blob/v3.x/staging/schemas/server-common.json) |
 | Base | server-component-manifest | Validates each components' manifest.yaml | [link](https://github.com/zowe/zowe-install-packaging/blob/v3.x/staging/schemas/manifest-schema.json) |
 | Base | trivial-component-schema | For copying as a starting point for developers | [link](https://github.com/zowe/zowe-install-packaging/blob/v3.x/staging/schemas/trivial-component-schema.json) |
-| app-server | appfw-plugin-definition | Validates any components' pluginDefinition.json for `zwe components install` | [link](https://github.com/zowe/zlux-app-server/blob/v3.x/staging/schemas/plugindefinition-schema.json) |
+| app-server | appfw-plugin-definition | Validates any components' `pluginDefinition.json` for `zwe components install` | See the app-server schema files in the `zlux-app-server` repository. |
 | app-server | component | Validates `components.app-server` | [link](https://github.com/zowe/zlux-app-server/blob/v3.x/staging/schemas/app-server-config.json) |
 | discovery | component | Validates `components.discovery` | [link](https://github.com/zowe/api-layer/blob/v3.x.x/discovery-package/src/main/resources/schemas/discovery-config.json) |
 | gateway | component | Validates `components.gateway` | [link](https://github.com/zowe/api-layer/blob/v3.x.x/gateway-package/src/main/resources/schemas/gateway-config.json) |
@@ -116,6 +116,10 @@ CONFIG=FILE(/home/me/zowe-customizations.yaml)\
 ```
 
 When you use multiple storage types, Zowe constructs the unified configuration by having the storage types listed on the left override the values of storage types to their right in the list. This means the left-most storage type's values take priority, and the right-most storage type should be treated as a set of defaults. Here is an example of splitting configuration into multiple files:
+
+:::warning
+Replace the placeholder values (such as `1234`) in the following snippet with your actual configuration details before using the code.
+:::
 
 ```yaml
 # /home/me/zowe-customizations.yaml

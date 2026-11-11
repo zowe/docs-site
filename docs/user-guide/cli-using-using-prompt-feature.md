@@ -38,6 +38,10 @@ To always prompt for a particular option:
 
 2. In the profile, save `prompt*` as the plain-text value for the profile properties for which you want to be prompted:
 
+    :::warning
+    Replace the placeholder values (such as `1234`) in the following snippet with your actual configuration details before using the code.
+    :::
+
     ```
     "zosmf": {
         "type": "zosmf",

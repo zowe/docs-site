@@ -13,11 +13,25 @@ To change the default settings, set `components.<component>.heap.init` and `comp
 
 * `component`  
 Specifies one of the following services:
+  - `apiml`
   - `gateway`
   - `discovery`
   - `caching-service`
   - `api-catalog` 
   - `zaas`
+
+:::note
+**Single-service deployment (modulith):** When using the single-service `apiml` component, the initial heap size is 32 MB and the maximum heap size is 512 MB by default. We recommend a **minimum of 1024 MB (1 GB)** for production use.
+
+**Example with `apiml` Heap Configuration:**
+
+```yaml
+components:
+  apiml:
+    heap:
+      init: 1024
+      max: 1024
+```
 
 **Example with Gateway Service:**
 

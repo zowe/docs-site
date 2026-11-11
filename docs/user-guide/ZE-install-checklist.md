@@ -2,7 +2,7 @@
 
 This checklist outlines the required steps for a first-time installation of Zowe Explorer.
 
-:::info Required roles: systems administrator, devops architect, security administrator, systems programmer
+:::info Required roles: system administrator, devops architect, security administrator, systems programmer
 :::
 
 The checklist includes a brief description of the steps  required for installation of Zowe Explorer. The checklist also identifies the roles that are typically required to complete the step, which enables the pre-installation planning team to focus on the tasks for which they are responsible.
@@ -23,7 +23,7 @@ For a printable version of this checklist, <a href="/stable/Zowe_CLI_Installatio
 | Step        | Description | Role       | Time Estimate |
 | ----------- | ----------- | ---------- | ------------- |
 | [Installing Zowe Explorer](../user-guide/ze-install.md#installing-zowe-explorer) and [Zowe Explorer extensions](../user-guide/ze-install.md#installing-zowe-explorer-extensions) | Install Zowe Explorer and Zowe Explorer extensions from the Visual Studio Marketplace or with a `VSIX` file. | Systems administrator and/or developer | 10 min. |
-| [Updating Zowe Explorer and Zowe Explorer extensions](../user-guide/ze-install.md#updating-zowe-explorer-and-zowe-explorer-extensions) | Updates are done automatically unless otherwise specified. | Systems administrator and/or developer | 10 min. |
+| [Updating Zowe Explorer and Zowe Explorer extensions](../upgrade/ze-updatingze.md) | Updates are done automatically unless otherwise specified. | Systems administrator and/or developer | 10 min. |
 
 ## Configuring Zowe Explorer
 

@@ -137,7 +137,7 @@ Zowe uses digital certificates for secure, encrypted network communication over 
 
 Zowe supports using either file-based (PKCS12) or z/OS key ring-based (when on z/OS) keystores and truststores, and can reuse compatible stores. You can use the `zwe init certificate` command to create keystores and truststores by either generating certificates or by allowing users to import their own compatible certificates.
 
-For more information, see [Configuring certificates](./configure-certificates).
+For more information, see [Configuring certificates](./configure-certificates.md).
 
 ## Creating VSAM caching service datasets (`zwe init vsam`)
 

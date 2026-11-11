@@ -36,11 +36,23 @@ The current API Gateway contains the Authentication and Authorization Service. T
 
 ### Breaking changes
 
-| Change in Zowe V3 | Required action|
-|-|-|
-|Introducing a new format for error messages to improve clarity|Adjust Zowe CLI scripts that parse error messages to handle the new error format|
-|Removing V1 profile support|Implement a team configuration or use Zowe CLI's built-in V1 profile conversion command: `zowe config convert`|
-|Removing deprecated items - [CLI](https://github.com/zowe/zowe-cli/issues/1694) and [Imperative](https://github.com/zowe/zowe-cli/issues/1873)|Zowe CLI extenders or users of the Zowe Client Node.js SDK will need to review the breaking changes and adjust their code to account for removed/changed classes, functions, and constants|
+| From version | Change | Required action|
+|-|-|-|
+|Zowe CLI v3.0|Introducing a new format for error messages to improve clarity|Adjust Zowe CLI scripts that parse error messages to handle the new error format|
+|Zowe CLI v3.0|Removing V1 profile support|Implement a team configuration or use Zowe CLI's built-in V1 profile conversion command: `zowe config convert`|
+|Zowe CLI v3.0|Removing deprecated items - [CLI](https://github.com/zowe/zowe-cli/issues/1694) and [Imperative](https://github.com/zowe/zowe-cli/issues/1873)|Zowe CLI extenders or users of the Zowe Client Node.js SDK will need to review the breaking changes and adjust their code to account for removed/changed classes, functions, and constants|
+|Zowe CLI v3.6|`zowe zos-uss` (ssh) commands verify the z/OS SSH server's host key before sending credentials| On first connect, confirm the fingerprint. The key is saved to your ssh profile and a changed key is rejected. Use `--insecure` to skip verification or `--host-key` to pin a key.|
+|Zowe CLI v3.6|The `zowe zos-files (ds/uss) edit` command prompts the user to trust custom editors|Confirm that you trust the specified editor|
+|MQ Plug-in for Zowe CLI v3.6|Default value of the `reject-unauthorized` option is `true` so that TLS certificates presented by the IBM MQ REST API are validated by default. This prevents credentials from being sent over an unverified connection.|Profiles or commands relying on the previous insecure default must now explicitly pass `--reject-unauthorized false`|
+
+
+
+
+
+ 
+
+
+
 
 ### Pre-release availability
 

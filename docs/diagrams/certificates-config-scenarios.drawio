@@ -128,10 +128,10 @@
         <mxCell id="bi-3GEvjXEP-DX2mGwIE-31" value="&lt;u&gt;Scenario 1&lt;/u&gt;&lt;br&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Use a file-based pkcs12 keystore with zowe-generated certificates&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1" vertex="1" parent="1">
           <mxGeometry x="10" y="7571" width="160" height="71" as="geometry" />
         </mxCell>
-        <mxCell id="bi-3GEvjXEP-DX2mGwIE-32" value="&lt;u&gt;Scenario 3&lt;/u&gt;&lt;br&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Use a zos keyring-based keystore with zowe-generated certificates&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1" vertex="1" parent="1">
+        <mxCell id="bi-3GEvjXEP-DX2mGwIE-32" value="&lt;u&gt;Scenario 3&lt;/u&gt;&lt;br&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Use a zos key ring-based keystore with zowe-generated certificates&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1" vertex="1" parent="1">
           <mxGeometry x="230" y="7571" width="164" height="71" as="geometry" />
         </mxCell>
-        <mxCell id="bi-3GEvjXEP-DX2mGwIE-33" value="&lt;u&gt;Scenario 4&lt;/u&gt;&lt;br&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Use a zos keyring-based keystore and connect to an existing certificate&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1" vertex="1" parent="1">
+        <mxCell id="bi-3GEvjXEP-DX2mGwIE-33" value="&lt;u&gt;Scenario 4&lt;/u&gt;&lt;br&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Use a zos key ring-based keystore and connect to an existing certificate&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1" vertex="1" parent="1">
           <mxGeometry x="630" y="7571" width="160" height="71" as="geometry" />
         </mxCell>
         <mxCell id="bi-3GEvjXEP-DX2mGwIE-34" value="Another keyring" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="bi-3GEvjXEP-DX2mGwIE-29" target="bi-3GEvjXEP-DX2mGwIE-33">
@@ -144,7 +144,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="bi-3GEvjXEP-DX2mGwIE-35" value="&lt;u&gt;Scenario 5&lt;/u&gt;&lt;br&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Use a zos keyring-based keystore and import a certificate-stored in a dataset&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1" vertex="1" parent="1">
+        <mxCell id="bi-3GEvjXEP-DX2mGwIE-35" value="&lt;u&gt;Scenario 5&lt;/u&gt;&lt;br&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Use a zos key ring-based keystore and import a certificate-stored in a dataset&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1" vertex="1" parent="1">
           <mxGeometry x="830" y="7570" width="158" height="71" as="geometry" />
         </mxCell>
         <mxCell id="bi-3GEvjXEP-DX2mGwIE-36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="bi-3GEvjXEP-DX2mGwIE-29" target="bi-3GEvjXEP-DX2mGwIE-35">
@@ -155,7 +155,7 @@
             <mxPoint x="-9" y="-35" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="bi-3GEvjXEP-DX2mGwIE-38" value="&lt;u&gt;Scenario 3&lt;/u&gt;&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;&lt;div style=&quot;border-color: var(--border-color); text-align: left;&quot;&gt;Use a zos keyring-based keystore with zowe-generated certificates&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1" vertex="1" parent="1">
+        <mxCell id="bi-3GEvjXEP-DX2mGwIE-38" value="&lt;u&gt;Scenario 3&lt;/u&gt;&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;&lt;div style=&quot;border-color: var(--border-color); text-align: left;&quot;&gt;Use a zos key ring-based keystore with zowe-generated certificates&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1" vertex="1" parent="1">
           <mxGeometry x="1020" y="7571" width="158" height="71" as="geometry" />
         </mxCell>
         <mxCell id="bi-3GEvjXEP-DX2mGwIE-39" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="bi-3GEvjXEP-DX2mGwIE-14" target="bi-3GEvjXEP-DX2mGwIE-38">

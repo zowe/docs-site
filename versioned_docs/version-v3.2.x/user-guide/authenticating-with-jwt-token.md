@@ -131,7 +131,7 @@ curl -k --cookie "apimlAuthenticationToken={token to query}" -X GET "https://zow
 The following output describes the status of the JWT:  
 
 ```http
-GET /gateawy/api/v1/auth/query HTTP/1.1
+GET /gateway/api/v1/auth/query HTTP/1.1
 Connection: keep-alive
 Cookie: apimlAuthenticationToken=eyJhbGciOiJSUzI1NiJ9...
 

@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ISshSession | Zowe Node.js SDK - v3.4.1</title>
-	<meta name="description" content="Documentation for Zowe Node.js SDK - v3.4.1">
+	<title>ISshSession | Zowe Node.js SDK - v3.6.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v3.6.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">Zowe Node.js SDK - v3.4.1</a>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v3.6.0</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -97,7 +97,9 @@
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_uss_for_zowe_sdk.isshsession.html#handshaketimeout" class="tsd-kind-icon">handshake<wbr>Timeout</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_uss_for_zowe_sdk.isshsession.html#hostkey" class="tsd-kind-icon">host<wbr>Key</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_uss_for_zowe_sdk.isshsession.html#hostname" class="tsd-kind-icon">hostname</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_uss_for_zowe_sdk.isshsession.html#insecure" class="tsd-kind-icon">insecure</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_uss_for_zowe_sdk.isshsession.html#keypassphrase" class="tsd-kind-icon">key<wbr>Passphrase</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_uss_for_zowe_sdk.isshsession.html#password" class="tsd-kind-icon">password</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_uss_for_zowe_sdk.isshsession.html#port" class="tsd-kind-icon">port</a></li>
@@ -116,7 +118,7 @@
 					<div class="tsd-signature tsd-kind-icon">handshake<wbr>Timeout<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/zosuss/src/doc/ISshSession.ts#L67">@zowe/zos-uss-for-zowe-sdk/src/doc/ISshSession.ts:67</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/zosuss/src/doc/ISshSession.ts#L67">@zowe/zos-uss-for-zowe-sdk/src/doc/ISshSession.ts:67</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -125,7 +127,30 @@
 						</div>
 						<dl class="tsd-comment-tags">
 							<dt>memberof</dt>
-							<dd><p>ISession</p>
+							<dd><p>ISshSession</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="hostkey" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> host<wbr>Key</h3>
+					<div class="tsd-signature tsd-kind-icon">host<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/zosuss/src/doc/ISshSession.ts#L77">@zowe/zos-uss-for-zowe-sdk/src/doc/ISshSession.ts:77</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Trusted host key of the z/OS SSH server, stored as the base64-encoded key blob presented by the
+								server during the handshake. When set, the server&#39;s key is verified against this value before any
+								credentials are sent. Populated automatically on first connect after the user accepts the key
+							(trust on first use), or configured manually to pin a known key.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>ISshSession</p>
 							</dd>
 						</dl>
 					</div>
@@ -136,7 +161,7 @@
 					<div class="tsd-signature tsd-kind-icon">hostname<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/zosuss/src/doc/ISshSession.ts#L24">@zowe/zos-uss-for-zowe-sdk/src/doc/ISshSession.ts:24</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/zosuss/src/doc/ISshSession.ts#L24">@zowe/zos-uss-for-zowe-sdk/src/doc/ISshSession.ts:24</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -145,7 +170,29 @@
 						</div>
 						<dl class="tsd-comment-tags">
 							<dt>memberof</dt>
-							<dd><p>ISession</p>
+							<dd><p>ISshSession</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="insecure" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> insecure</h3>
+					<div class="tsd-signature tsd-kind-icon">insecure<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/zosuss/src/doc/ISshSession.ts#L86">@zowe/zos-uss-for-zowe-sdk/src/doc/ISshSession.ts:86</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Skip verification of the SSH server&#39;s host key. Defaults to false, meaning the server&#39;s identity
+								is verified before any credentials are sent. When true, host key verification is skipped entirely
+							and credentials are sent without confirming the server&#39;s identity.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>ISshSession</p>
 							</dd>
 						</dl>
 					</div>
@@ -156,7 +203,7 @@
 					<div class="tsd-signature tsd-kind-icon">key<wbr>Passphrase<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/zosuss/src/doc/ISshSession.ts#L60">@zowe/zos-uss-for-zowe-sdk/src/doc/ISshSession.ts:60</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/zosuss/src/doc/ISshSession.ts#L60">@zowe/zos-uss-for-zowe-sdk/src/doc/ISshSession.ts:60</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -165,7 +212,7 @@
 						</div>
 						<dl class="tsd-comment-tags">
 							<dt>memberof</dt>
-							<dd><p>ISession</p>
+							<dd><p>ISshSession</p>
 							</dd>
 						</dl>
 					</div>
@@ -176,7 +223,7 @@
 					<div class="tsd-signature tsd-kind-icon">password<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/zosuss/src/doc/ISshSession.ts#L46">@zowe/zos-uss-for-zowe-sdk/src/doc/ISshSession.ts:46</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/zosuss/src/doc/ISshSession.ts#L46">@zowe/zos-uss-for-zowe-sdk/src/doc/ISshSession.ts:46</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -185,7 +232,7 @@
 						</div>
 						<dl class="tsd-comment-tags">
 							<dt>memberof</dt>
-							<dd><p>ISession</p>
+							<dd><p>ISshSession</p>
 							</dd>
 						</dl>
 					</div>
@@ -196,7 +243,7 @@
 					<div class="tsd-signature tsd-kind-icon">port<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/zosuss/src/doc/ISshSession.ts#L32">@zowe/zos-uss-for-zowe-sdk/src/doc/ISshSession.ts:32</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/zosuss/src/doc/ISshSession.ts#L32">@zowe/zos-uss-for-zowe-sdk/src/doc/ISshSession.ts:32</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -206,7 +253,7 @@
 						</div>
 						<dl class="tsd-comment-tags">
 							<dt>memberof</dt>
-							<dd><p>ISession</p>
+							<dd><p>ISshSession</p>
 							</dd>
 						</dl>
 					</div>
@@ -217,7 +264,7 @@
 					<div class="tsd-signature tsd-kind-icon">private<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/zosuss/src/doc/ISshSession.ts#L53">@zowe/zos-uss-for-zowe-sdk/src/doc/ISshSession.ts:53</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/zosuss/src/doc/ISshSession.ts#L53">@zowe/zos-uss-for-zowe-sdk/src/doc/ISshSession.ts:53</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -226,7 +273,7 @@
 						</div>
 						<dl class="tsd-comment-tags">
 							<dt>memberof</dt>
-							<dd><p>ISession</p>
+							<dd><p>ISshSession</p>
 							</dd>
 						</dl>
 					</div>
@@ -237,7 +284,7 @@
 					<div class="tsd-signature tsd-kind-icon">user<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/zosuss/src/doc/ISshSession.ts#L39">@zowe/zos-uss-for-zowe-sdk/src/doc/ISshSession.ts:39</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.36.0/packages/zosuss/src/doc/ISshSession.ts#L39">@zowe/zos-uss-for-zowe-sdk/src/doc/ISshSession.ts:39</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -246,7 +293,7 @@
 						</div>
 						<dl class="tsd-comment-tags">
 							<dt>memberof</dt>
-							<dd><p>ISession</p>
+							<dd><p>ISshSession</p>
 							</dd>
 						</dl>
 					</div>
@@ -341,7 +388,13 @@
 										<a href="_zowe_zos_uss_for_zowe_sdk.isshsession.html#handshaketimeout" class="tsd-kind-icon">handshake<wbr>Timeout</a>
 									</li>
 									<li class=" tsd-kind-property tsd-parent-kind-interface">
+										<a href="_zowe_zos_uss_for_zowe_sdk.isshsession.html#hostkey" class="tsd-kind-icon">host<wbr>Key</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-interface">
 										<a href="_zowe_zos_uss_for_zowe_sdk.isshsession.html#hostname" class="tsd-kind-icon">hostname</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-interface">
+										<a href="_zowe_zos_uss_for_zowe_sdk.isshsession.html#insecure" class="tsd-kind-icon">insecure</a>
 									</li>
 									<li class=" tsd-kind-property tsd-parent-kind-interface">
 										<a href="_zowe_zos_uss_for_zowe_sdk.isshsession.html#keypassphrase" class="tsd-kind-icon">key<wbr>Passphrase</a>

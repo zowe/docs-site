@@ -1,4 +1,4 @@
-const LATEST_VERSION = "v3.4.x";
+const LATEST_VERSION = "v3.6.x";
 const versionsArray = require("./versions.json");
 
 module.exports = {
@@ -7,30 +7,39 @@ module.exports = {
   url: "https://docs.zowe.org/",
   baseUrl: "/",
   onBrokenLinks: "warn",
-  onBrokenMarkdownLinks: "warn",
   onDuplicateRoutes: "ignore",
   favicon: "img/zowe-icon.png",
   organizationName: "zowe",
   projectName: "docs-site",
   markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: "warn",
+    },
     mdx1Compat: {
-      comments: true
-    }
+      comments: true,
+    },
   },
   future: {
     // https://docusaurus.io/blog/releases/3.6#docusaurus-faster
-    experimental_faster: true,
+    experimental_vcs: "default-v1",
+    faster: true,
     v4: {
       removeLegacyPostBuildHeadAttribute: true
     }
   },
   themeConfig: {
-        announcementBar: {
+    announcementBar2: {
+      id: 'announcementBar-2', // increment on change
+      content:
+          '⚠️ <b>Breaking changes in Zowe releases.</b> Read more <a href="https://docs.zowe.org/stable/appendix/security-breaking-changes" target="_blank">here</a>.',
+      textColor: '#000',
+    },
+    announcementBar1: {
       id: 'announcementBar-1', // increment on change
       content:
-          '📌  <b>Support for Zowe Version 2 ends March 30, 2027</b>. Use <a href="https://docs.zowe.org/stable/whats-new/zowe-v3-migration/" target="_blank">this guide</a> to migrate to Zowe Version 3, which transitions to maintenance on March 1, 2027.',
+          '📌  <b>Support for Zowe Version 2 ends March 30, 2027</b>. Use <a href="https://docs.zowe.org/stable/upgrade/upgrade-zowe-v3/" target="_blank">this guide</a> to upgrade to Zowe Version 3, which transitions to maintenance on March 1, 2027.',
       textColor: '#000',
-      },
+    },
     docs: {
       sidebar: {
         hideable: true
@@ -63,6 +72,12 @@ module.exports = {
           type: "doc",
           label: "Install",
           docId: "user-guide/install-overview",
+          position: "left",
+        },
+        {
+          type: "doc",
+          label: "Upgrade",
+          docId: "upgrade/upgrading-zowe",
           position: "left",
         },
         {
@@ -211,7 +226,7 @@ module.exports = {
           remarkPlugins: [() => {
             // https://github.com/facebook/docusaurus/issues/9789
             return async (root) => {
-              const {visit} = await import('unist-util-visit');
+              const { visit } = await import('unist-util-visit');
               visit(root, 'mdxJsxFlowElement', (node) => {
                 if (node.name === 'img') {
                   node.name = 'Img';
@@ -224,17 +239,17 @@ module.exports = {
               path: "stable",
               label: `${LATEST_VERSION}` + " LTS",
             },
+            "v3.5.x": {
+              label: "v3.5.x LTS",              
+            },
+            "v3.4.x": {
+              label: "v3.4.x LTS",              
+            },
             "v3.3.x": {
               label: "v3.3.x LTS",
             },
             "v3.2.x": {
               label: "v3.2.x LTS",
-            },
-            "v3.1.x": {
-              label: "v3.1.x LTS",
-            },
-            "v3.0.x": {
-              label: "v3.0.x LTS",
             },
             "v2.18.x": {
               label: "v2.18.x LTS",

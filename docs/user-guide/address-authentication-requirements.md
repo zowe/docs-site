@@ -40,3 +40,7 @@ Requirements:
 Zowe requires **ACF2 APAR LU01316** to be applied when using the ACF2 security manager.
 
 For more information about OIDC authentication, see [Zowe API Mediation Layer OIDC Authentication](../extend/extend-apiml/api-mediation-oidc-authentication.md).
+
+## Client certificates and password requirements
+
+When using client certificate authentication, password requirements differ depending on whether you use the z/OSMF or SAF authentication provider. For details, see [Authenticating with client certificates](./authenticating-with-client-certificates.md#configure-your-zos-system-to-support-client-certificate-authentication-for-specific-users) and [Addressing UNIX System Services (USS) Requirements](./configure-uss.md#baseline-user-id-requirements).

@@ -99,4 +99,4 @@ REST APIs are a way how to access and manipulate textual
  - The **Patch version** is not specified in the URI. The API in this case remains the same. This version is used only when the API
  documentation is patched or a bug was fixed.
 
- ![API Versioning](../../images/api-mediation/API-Versioning.png)
+ ![API Versioning](../../images/api-mediation/api-versioning1.png)

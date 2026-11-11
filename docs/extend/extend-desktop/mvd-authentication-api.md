@@ -52,7 +52,7 @@ The capabilities object should include:
 * canRefresh: (true/false) If the refreshStatus(request, sessionState) function exists, which is used to renew a session that has an expiration limit.
 * canAuthenticate: (true/false) If the authenticate(request, sessionState):Promise function exists (Required, assumed)
 * canAuthorized: (true/false) If the *authorized(request, sessionState, options) function exists (Required, assumed)
-* haCompatible: (true/false) Used to be sure that a plugin has no state that would be lost in a high availibility environment.
+* haCompatible: (true/false) Used to be sure that a plugin has no state that would be lost in a high availability environment.
 * canGenerateHaSessionId: (true/false) If generateHaSessionId(request) exists, which is used to set the value used for an app-server session for a user. When not in a high availability environment, the app-server generates its own session ID.
 * canResetPassword: (true/false) If passwordRest(request, sessionState) exists
 * proxyAuthorizations: (true/false) If the addProxyAuthorizations(req1, req2Options, sessionState) function exists

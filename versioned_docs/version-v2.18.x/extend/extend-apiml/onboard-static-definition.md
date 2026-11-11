@@ -8,14 +8,15 @@ When developing a new service, it is not recommended to onboard a REST service u
 
 The following procedure outlines the steps to onboard an API service through the API Gateway in the API Mediation Layer without requiring code changes.
 
-* [Identify the APIs that you want to expose](#identify-the-apis-that-you-want-to-expose)
-* [Define your service and API in YAML format](#define-your-service-and-api-in-yaml-format)
-* [Route your API](#route-your-api)
-* [Customize configuration parameters](#customize-configuration-parameters)
-* [Add and validate the definition in the API Mediation Layer running on your machine](#add-and-validate-the-definition-in-the-api-mediation-layer-running-on-your-machine)
-* [Add a definition in the API Mediation Layer in the Zowe runtime](#add-a-definition-in-the-api-mediation-layer-in-the-zowe-runtime)
-* [(Optional) Check the log of the API Mediation Layer](#optional-check-the-log-of-the-api-mediation-layer)
-* [(Optional) Reload the services definition after the update when the API Mediation Layer is already started](#optional-reload-the-services-definition-after-the-update-when-the-api-mediation-layer-is-already-started)
+- [Onboarding a REST API without code changes required](#onboarding-a-rest-api-without-code-changes-required)
+  - [Identify the APIs that you want to expose](#identify-the-apis-that-you-want-to-expose)
+  - [Define your service and API in YAML format](#define-your-service-and-api-in-yaml-format)
+  - [Route your API](#route-your-api)
+  - [Customize configuration parameters](#customize-configuration-parameters)
+  - [Add and validate the definition in the API Mediation Layer running on your machine](#add-and-validate-the-definition-in-the-api-mediation-layer-running-on-your-machine)
+  - [Add a definition in the API Mediation Layer in the Zowe runtime](#add-a-definition-in-the-api-mediation-layer-in-the-zowe-runtime)
+  - [(Optional) Check the log of the API Mediation Layer](#optional-check-the-log-of-the-api-mediation-layer)
+  - [(Optional) Reload the services definition after the update when the API Mediation Layer is already started](#optional-reload-the-services-definition-after-the-update-when-the-api-mediation-layer-is-already-started)
 
 :::tip
 For more information about the structure of APIs and which APIs to expose in the Zowe API Mediation Layer, see the [Onboarding Overview](onboard-overview.md).
@@ -528,20 +529,14 @@ The following procedure enables you to refresh the API definitions after you cha
 
 1. Use a REST API client to issue a `POST` request to the Discovery Service (port 10011):
 
-    `http://localhost:10011/discovery/api/v1/staticApi`
+    `https://localhost:10011/discovery/api/v1/staticApi`
 
-    The Discovery Service requires authentication by a client certificate. If the API Mediation Layer is running on your local machine, the certificate is stored at `keystore/localhost/localhost.pem`.
+    The Discovery Service requires authentication by a client certificate. If the API Mediation Layer is running on your local machine, the generated certificates are stored in the keystore/service and keystore/ca directories. Because service.pem contains only the certificate chain and not the private key, you must provide both the certificate chain and the private key separately.
 
-    This example uses the [HTTPie command-line HTTP client](https://httpie.org) and is run with Python 3 installed:
+    Use curl to issue the POST call:
 
     ```
-    httpie --cert=keystore/localhost/localhost.pem --verify=keystore/local_ca/localca.cer -j POST     https://localhost:10011/discovery/api/v1/staticApi
-    ```
-   
-    Alternatively, it is possible to use curl to issue the POST call if it is installed on your system:
-    
-    ```
-    curl -X POST --cert keystore/localhost/localhost.pem --cacert keystore/localhost/localhost.keystore.cer https://localhost:10011/discovery/api/v1/staticApi
+    curl -X POST --cert keystore/service/service.pem --key keystore/service/service.key --cacert keystore/ca/service-ca.cer https://localhost:10011/discovery/api/v1/staticApi
     ```
 
 2. Check if your updated definition is effective.

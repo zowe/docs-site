@@ -663,7 +663,7 @@ TLS/SSL configuration consists of the following parameters:
 
   This parameter makes it possible to prevent server certificate validation.
 
-  :::info[Important]
+  :::caution[Important]
   Ensure that this parameter is set to `true` in production environments. Setting this parameter to `false` in production environments significantly degrades the overall security of the system.
   :::
 
@@ -687,9 +687,6 @@ TLS/SSL configuration consists of the following parameters:
 
   Specifies the keystore file used to store the private key. When using keyring, the value should be set to the SAF keyring location. For information about required certificates, see [Zowe API ML TLS requirements](https://github.com/zowe/api-layer/blob/v3.x.x/docs/api-ml-security-overview.md#zowe-api-ml-tls-requirements).
 
-
-If you have an issue with loading the keystore file in your environment, try to provide the absolute path to the keystore file. The sample keystore file for local deployment is in [api-layer repository](https://github.com/zowe/api-layer/tree/master/keystore/localhost)
-
 * **keyStorePassword**
 
   Specifies the password used to unlock the keystore.
@@ -702,7 +699,11 @@ If you have an issue with loading the keystore file in your environment, try to 
 
   Specifies the truststore file used to keep other parties public keys and certificates. When using keyring, this value should be set to the SAF keyring location. For information about required certificates, see [Zowe API ML TLS requirements](https://github.com/zowe/api-layer/blob/v3.x.x/docs/api-ml-security-overview.md#zowe-api-ml-tls-requirements).
 
-  If you have an issue with loading the truststore file in your environment, try to provide the absolute path to the truststore file. The sample truststore file for local deployment is in [api-layer repository](https://github.com/zowe/api-layer/tree/master/keystore/localhost)
+  If you have an issue with loading the truststore file in your environment, try to provide the absolute path to the truststore file. 
+
+  :::note
+  For local development, sample keystores and truststores are no longer checked into the API ML repository. Instead, Zowe generates these files dynamically on your local machine. When you clone the `zowe/api-layer` repository, you can generate the new by-purpose directory structure (the `ca/`, `service/`, `client/`, `public_ca/`, and `negative/` folders) by running the `./gradlew generateCertificates` Gradle task at the root of the project. The generated default truststore for API ML components will be located at `<KEYSTORE_DIRECTORY>/service/service.truststore.p12`.
+  :::
 
 * **trustStorePassword: password**
 
@@ -713,7 +714,7 @@ If you have an issue with loading the keystore file in your environment, try to 
   Specifies the truststore type. The default for this parameter is PKCS12.
 
 :::note
-Ensure that you define both the keystore and the truststore even if your server is not using an Https port.
+Ensure that you define both the keystore and the truststore even if your server is not using an https port.
 :::
 
 ### SAF Keyring configuration

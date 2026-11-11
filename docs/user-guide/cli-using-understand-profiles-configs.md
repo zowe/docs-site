@@ -4,6 +4,10 @@ When you run a command, Zowe CLI needs specific information, or *properties*, in
 
 There are two common ways that properties and their values can be provided to Zowe CLI. One method is to manually include this information with each command when it is issued, as in the example command below:
 
+:::warning
+Replace the placeholder values (such as `1234`) in the following snippet with your actual configuration details before using the code.
+:::
+
 ```
 zowe zos-files list data-set "SYS1.PARMLIB*" --host YourHostName --port 1234 --user YourUserName --password YourPassword
 ```

@@ -16,7 +16,7 @@ Some of the following `zwe init` subcommands require elevated permissions. See t
 
 ## Initializing Zowe custom data sets (`zwe init mvs`)
 
-Use the `zwe init mvs` command to intialize Zowe custom MVS data sets. 
+Use the `zwe init mvs` command to initialize Zowe custom MVS data sets. 
 
 :::info Required role: system programmer
 :::

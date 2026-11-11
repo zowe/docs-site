@@ -81,6 +81,9 @@ Ensuring quality in Zowe is a collective effort. By reporting bugs or suggesting
   * [Zowe Client Python SDK](https://github.com/zowe/zowe-client-python-sdk/issues/)
   * [CICS for Zowe Client](https://github.com/zowe/cics-for-zowe-client/issues/)
   * [Zowe CLI DB2 Plug-in](https://github.com/zowe/zowe-cli-db2-plugin/issues/)
+  * [IBM® MQ Plug-in for Zowe CLI](https://github.com/zowe/zowe-cli-mq-plugin)
+  * [IBM® z/OS® FTP Plug-in for Zowe™ CLI](https://github.com/zowe/zowe-cli-ftp-plugin)
+  * [Zowe® Explorer for IBM® z/OS® FTP](https://github.com/zowe/zowe-explorer-vscode)
 
 * **Open a community related issue**
 

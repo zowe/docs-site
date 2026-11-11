@@ -10,6 +10,7 @@
         "id": "whats-new/release-notes/release-notes-overview"
       },
       "items": [
+        "whats-new/release-notes/v2_18_6",        
         "whats-new/release-notes/v2_18_5",
         "whats-new/release-notes/v2_18_4",
         "whats-new/release-notes/v2_18_3",
@@ -121,7 +122,7 @@
     "whats-new/zowe-compatibility-statement-v2",
     {
       "type": "doc",
-      "label": "Zowe learning resources",
+      "label": "Learning, Connecting, and Extending Zowe",
       "className": "ToCitemcolor",
       "id": "getting-started/zowe-resources"
     }

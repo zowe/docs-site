@@ -31,7 +31,7 @@ The YAML configuration file has few high-level sections:
 - **zOSMF**  
  Tells Zowe your z/OSMF configurations.
 - **components**  
- Defines detailed configurations for each Zowe component or extension. Each component or extension may have a key entry under this section. For example, `components.gateway` is the configuration for the API Mediation Layer Gateway service.
+ Defines detailed configurations for each Zowe component or extension. Each component or extension might have a key entry under this section. For example, `components.gateway` is the configuration for the API Mediation Layer Gateway service.
 - **haInstances**  
  Defines customized configurations for each High Availability (HA) instance. You should predefine all Zowe HA instances you want to start within your Sysplex.
 
@@ -144,7 +144,7 @@ In the `zowe.yaml`, you can define default values which can be overridden in mor
 
 ### YAML configurations - certificate
 
-In Zowe YAML configuration, the certificate definition shares the same format which can be used in several configuration entries. For example, `zowe.certificate`, `components.<component>.certificate`, and `haInstances.<ha-instance>.components.<component>.certificate`. The certificate definition may include the following entries:
+In Zowe YAML configuration, the certificate definition shares the same format which can be used in several configuration entries. For example, `zowe.certificate`, `components.<component>.certificate`, and `haInstances.<ha-instance>.components.<component>.certificate`. The certificate definition might include the following entries:
 
 - **keystore.type**  
  Specifies the type of the keystore. If you are using keystore, this value usually should be `PKCS12`. If you are using z/OS keyring, this value should be one of `JCEHYBRIDRACFKS`, `JCECCARACFKS`, `JCERACFKS`.
@@ -250,7 +250,38 @@ Launcher is the program behind the `ZWESLSTC` started task.
 - **zowe.launcher.shareAs**  
  Specifies if the launcher should start components in the same address space. See documentation for [_BPX_SHAREAS](https://www.ibm.com/docs/en/zos/2.4.0?topic=shell-setting-bpx-shareas-bpx-spawn-script) for details.
 - **zowe.launchScript.logLevel**  
- Set to `debug` or `trace` to enable different levels of debug messages from Zowe launch scripts. This setting may help troubleshoot issues during Zowe start.
+ Set to `debug` or `trace` to enable different levels of debug messages from Zowe launch scripts. This setting might help troubleshoot issues during Zowe start.
+
+#### System messages
+
+Duplicate the log messages into the SYSLOG according to `zowe.sysMessages` items.
+
+- **zowe.sysMessages**  
+ The array of message IDs or any text. Wildcards are not supported.
+- **zowe.sysMessageTrim**  
+  Specifies to trim SYSLOG message and print only from the matching message ID or text.
+
+```yaml
+zowe:
+  sysMessageTrim: true
+  sysMessages:
+  #   # API ML components ready
+    - "ZWEAM001I"
+```
+:::note
+For example, when the `ZWEAM001I` is issued, `zowe.sysMessageTrim` controls the start of the SYSLOG message:
+- `zowe.sysMessageTrim=false`   
+The SYSLOG message contains the timestamp and other text:
+```
+2026-06-06 01:02:03.045 <ZWEAGW1:main:12345678> ZWESVUSR INFO ZWEAM001I Mediation Layer started 
+```
+
+- `zowe.sysMessageTrim=true`  
+The SYSLOG message starts at matching ID `ZWEAM001I`:
+```
+ZWEAM001I Mediation Layer started
+```
+:::
 
 #### Setup
 
@@ -329,9 +360,9 @@ zowe:
 - **zowe.setup.dataset.prefix**  
 Specifies where the `SZWEAUTH` data set is installed.
 - **zowe.setup.dataset.parmlib**  
-Specifies the user custom parameter library. The Zowe server command may generate sample PARMLIB members and stores in this library.
+Specifies the user custom parameter library. The Zowe server command might generate sample PARMLIB members and stores in this library.
 - **zowe.setup.dataset.jcllib**  
-Specifies the custom JCL library. The Zowe server command may generate sample JCLs and put into this data set.
+Specifies the custom JCL library. The Zowe server command might generate sample JCLs and put into this data set.
 - **zowe.setup.dataset.authLoadlib**  
 Specifies the user custom APF LOADLIB. This field is optional. If this parameter is defined, members of `SZWEAUTH` are copied over to this data set to be APF authorized. If this parameter is not defined, `SZWEAUTH` from `zowe.setup.dataset.prefix` is APF authorized.
 - **zowe.setup.dataset.authPluginLib**  
@@ -490,7 +521,9 @@ These configurations can be used under the `components.gateway` section:
 - **port**  
  Specifies the port which the Gateway should start on. This value must be a valid port number.
 - **debug**  
- Specifies the enablement of debug mode for the Gateway.
+Specifies whether standard debug logging is enabled for the Gateway component. Set to `true` to enable verbose internal logging without enabling modification capabilities.
+- **spring.profiles.active**  
+Specifies the active Spring profiles for the Gateway component. Set to `"debug-control"` to enable debug mode with **modify-with-SAF access**, which allows you to dynamically alter configurations (such as changing log levels). Proper SAF authorization to the `APIML.DEBUG` resource in ZOWE class is required.
 - **apiml.connectionTimeout**  
   Specifies the value in milliseconds which corresponds to the period in which API ML should establish a single, non-managed connection with the service. If omitted, the default value specified in the API ML Gateway service configuration is used.
 - **apiml.connection.idleConnectionTimeoutSeconds**  
@@ -513,10 +546,24 @@ These configurations can be used under the `components.gateway` section:
  Provides User Info when a PassTicket is provided in the custom header. A valid value is any valid name for an HTTP header.
 - **apiml.security.auth.provider**  
  Specifies the authentication provider used by the API Gateway. Valid options are `saf` or `zosmf`.
+ :::caution
+If Zowe and z/OSMF run on different LPARs with separate, unshared security data bases (`RACF`, `ACF2`, or `TSS`), make the following configuration changes:
+1. Change `auth.provider` to `saf`: By default (`zosmf`), Zowe authenticates via z/OSMF, which returns a 401 failure if the user only exists in the Zowe LPAR's data base. Setting auth.provider to saf authenticates users directly against the local LPAR's security manager, removing the z/OSMF dependency.
+2. Remove `jwtAutoconfiguration`: Do not configure this property (for example, `ltpa` or `jwt`) when using the `saf` provider. Those token settings are exclusive to the `zosmf` provider and are ignored when Zowe bypasses z/OSMF.
+:::
 - **apiml.security.auth.zosmf.serviceId**  
  Allows customization of the service id in case `zosmf` is specified as an authentication provider. The default value is `ibmzosmf`
 - **apiml.security.auth.zosmf.jwtAutoconfiguration**  
- Customizes the behavior of the Gateway with respect to how JWTs are produced. Valid options are `jwt` and `ltpa`.  `jwt` is the default option. `ltpa` allows API ML to produce JWTs instead of the z/OSMF service. `jwt` is the default and recommended option. 
+ Customizes the behavior of the Gateway with respect to how JWTs are produced. Valid options are `jwt` and `ltpa`. `jwt` is the default and recommended option. `ltpa` allows API ML to produce JWTs instead of the z/OSMF service.  
+ The two types are:
+ - jwtAutoconfiguration: `jwt` (default)
+  - Use this setting when you install z/OSMF on the same LPAR as the Zowe API Gateway. z/OSMF auto-registers with the API Mediation Layer's Discovery service. If z/OSMF is on a separate LPAR or does not register in Discovery service (which is common in cross-LPAR deployments), the Gateway startup fails and displays a message `z/OSMF service ibmzosmf is either not registered or not online yet` and the authentication returns a value of 401.
+ - jwtAutoconfiguration: `ltpa`
+  - Use this setting when z/OSMF is on a separate LPAR that does not register in the local Discovery service's instance, or when z/OSMF cannot be reached via service discovery. `LTPA` mode contacts z/OSMF directly over HTTP using the configured z/OSMF host and port. This is the required setting for cross-LPAR deployments with separate security data bases.
+  :::note
+  Do not use `ltpa` with hardware-accelerated ICSF keyrings.
+  Also see apiml.security.auth.provider in the [Configure component gateway](/docs/appendix/zowe-yaml-configuration.md#configure-component-gateway) section for more information to configure component gateway.
+  :::
 - **apiml.security.authorization.endpoint.url**  
   Specifies the URL to the authorization endpoint. This endpoint informs the Gateway if a user has a particular permission on SAF profile, such as permission to the `APIML.SERVICES` profile of the `ZOWE` class.
 - **apiml.security.personalAccessToken.enabled**  
@@ -560,7 +607,16 @@ User authorization is required to use the `IRR.RUSERMAP` resource within the `FA
 - **apiml.service.allowEncodedSlashes**  
  Specifies if the Gateway allows encoded characters to be part of URL requests redirected through the Gateway. Set to `true` to allow encoded characters to be part of URL requests. 
 - **apiml.service.corsEnabled**  
- Specifies if CORS are enabled in the API Gateway for Gateway routes `gateway/api/v1/**`. Set to `true` to enable CORS.
+ Specifies if CORS are enabled in the API Gateway for Gateway routes `gateway/**`. Set to `true` to enable CORS.
+- **apiml.service.corsDefaultAllowedOrigins**  
+  Specifies the default origins accepted by the Gateway during CORS handling when a per-service configuration is not specified  
+  **Default:** `https://${hostname}:${port}`
+- **apiml.service.corsDefaultAllowedHeaders**  
+  Specifies the default HTTP headers allowed by the Gateway during a CORS request across all services when not explicitly overridden.
+  **Default:** `*`
+- **apiml.service.corsAllowedMethods**  
+  Specifies the default HTTP methods allowed by the Gateway when accessing services via CORS if no per-service methods are explicitly specified.  
+  **Default:** `GET,HEAD,POST,PATCH,DELETE,PUT,OPTIONS`   
 - **server.maxConnectionsPerRoute**  
   Specifies the maximum connections for each service.
 - **server.maxTotalConnections**  
@@ -582,10 +638,9 @@ User authorization is required to use the `IRR.RUSERMAP` resource within the `FA
 These configurations can be applied to the `components.discovery` section:
 
 - **port**  
- Specifies the port which discovery is to be started on. This value may be a valid port number or an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
-- **debug**  
- Specifies the enablement of debug mode for the Discovery Service.
-
+ Specifies the port which discovery is to be started on. This value must be defined as a valid port number.
+- **debug.**  
+Specifies whether standard debug logging is enabled for the Discovery component. Set to `true` to enable verbose internal logging without enabling modification capabilities.
 - **apiml.health.protected**  
   Specifies if the health check endpoint is accessible with or without authentication.
 - **apiml.security.ssl.verifySslCertificatesOfServices**  
@@ -607,9 +662,9 @@ These configurations can be applied to the `components.discovery` section:
 The following configurations can be used under the `components.api-catalog` section:
 
 - **port**  
- Specifies the port which API Catalog is to be started on.
+ Specifies the port which API Catalog is to be started on. This value must be defined as a valid port number.
 - **debug**  
- Specifies the enablement of debug mode for the API Catalog. This value is equivalent to the `APIML_DEBUG_MODE_ENABLED` variable but with a higher granular level.
+Specifies whether standard debug logging is enabled for the API Catalog component. Set to `true` to enable verbose internal logging without enabling modification capabilities.
 - **apiml.health.protected**  
   Specifies if the health check endpoint is accessible with or without authentication. The default value is `true`.
 - **apiml.security.authorization.provider**  
@@ -636,7 +691,7 @@ The following configurations can be used under the `components.api-catalog` sect
 These configurations can be used under the `components.caching-service` section:
 
 - **port**  
-  Specifies the port which Caching Service should be started on. This may be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
+  Specifies the port which Caching Service should be started on. This value must be defined as a valid port number.
 - **debug**  
   Specifies if debug mode is enabled for the Caching Service.
 - **apiml.security.ssl.verifySslCertificatesOfServices**  
@@ -731,15 +786,19 @@ These configurations can be used under the `components.caching-service` section:
 
 The following configurations can be used under the `components.app-server` section:
 
-- **port**  
-Specifies the port which App Server is to be started on. This value may be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
+- **port**
+Specifies the port which App Server is to be started on. This value must be defined as a valid port number.
 
 #### Configure component zss
 
 The following configurations can be used under the `components.zss` section:
 
-- **port**  
-Specifies the port which ZSS is to be started on. This value may be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
+- **port**
+Specifies the port which ZSS is to be started on. This value must be defined as a valid port number.
+
+:::note
+Set system SSL environment variables (`GSK_TRACE`, `GSK_TRACE_FILE`, `GSK_PROBE_FILE`) in the `STDENV DD` of the `ZWESLSTC JCL` procedure, not in `zowe.yaml`, because `configmgr` prefixes all variables in `components.<name>.environment` with `ZWE_` before passing them to the component.
+:::
 
 #### Configure external extension
 
@@ -792,7 +851,7 @@ Each line of Zowe YAML configuration has a matching environment variable during 
 
 **Examples:**
 
-- `ZWE_zowe_runtimeDirectory` is parent directory where `zwe` server command is located.
+- `ZWE_zowe_runtimeDirectory` is the parent directory where the `zwe` server command is located.
 - `ZWE_zowe_workspaceDirectory` is the path of the user customized workspace directory.
 - `ZWE_zowe_setup_dataset_prefix` is the high-level qualifier where Zowe MVS data sets are installed.
 - `ZWE_zowe_setup_dataset_parmlib` is the data set configured to store customized version of parameter library members.

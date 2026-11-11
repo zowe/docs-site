@@ -9,6 +9,17 @@ module.exports = {
       link: { type: "doc", id: "whats-new/release-notes/release-notes-overview" },
       collapsed: false,
       items: [
+        {
+          type: "category", // doc(default), 'link'(external links), 'ref'(page without without sidebar)
+          label: "Version 3.6.0",
+          className: "ToCheadercolor",
+          link: { type: "doc", id: "whats-new/release-notes/v3_6_0" },
+          items: [
+            "whats-new/release-notes/v3_6_0-client", 
+            "whats-new/release-notes/v3_6_0-server",             
+          ],        
+        },
+        "whats-new/release-notes/v3_5_0",        
         "whats-new/release-notes/v3_4_1",
         "whats-new/release-notes/v3_4_0",
         "whats-new/release-notes/v3_3_1",
@@ -25,6 +36,7 @@ module.exports = {
       className: "ToCheadercolor",
       collapsed: true,
       items: [  
+        "whats-new/release-notes/v2_18_6",          
         "whats-new/release-notes/v2_18_5",  
         "whats-new/release-notes/v2_18_4",  
         "whats-new/release-notes/v2_18_3",   
@@ -51,7 +63,7 @@ module.exports = {
         "whats-new/release-notes/v2_2_0",
         "whats-new/release-notes/v2_1_0",
         "whats-new/release-notes/v2_0_0",
-      ],
+      ]
     },
   ],
   "getting-started": [
@@ -88,9 +100,9 @@ module.exports = {
         "getting-started/zowe-high-availability"
       ],
     },
+    "getting-started/zowe-resources",
     "getting-started/zowe_faq",
     "appendix/zowe-glossary",
-    "getting-started/zowe-resources",
     {
       type: "category", // doc(default), 'link'(external links), 'ref'(page without without sidebar)
       label: "Zowe V3",
@@ -99,8 +111,6 @@ module.exports = {
         "whats-new/zowe-v3-frequently-asked-questions",
         "whats-new/zowe-v3-office-hours",
         "whats-new/zowe-v3-conformance-criteria",
-        "whats-new/zowe-v3-migration",
-        "whats-new/upgrade-from-convenience-build-to-pswi-smpe",
       ],
     },
     {
@@ -110,16 +120,10 @@ module.exports = {
       items: [
         "getting-started/zowe_v2_faq",
         "getting-started/zowe-office-hours",
-        {
-          type: "doc",
-          label: "Migrating from Zowe V1 to Zowe V2",
-          className: "ToCitemcolor",
-          id: "extend/migrate-extensions",
-        },
       ],
     },
     "whats-new/zowe-compatibility-statement-v3",
-  ],
+  ],  
   "setup": [
     "user-guide/install-overview",
     {
@@ -230,16 +234,27 @@ module.exports = {
               label: "Configuring certificates",
               link: { type: "doc", id: "user-guide/configure-certificates" },
               items: [
-                "user-guide/certificates-configuration-questionnaire",
-                "user-guide/certificate-configuration-scenarios",
-                "user-guide/import-certificates",
-                "user-guide/generate-certificates",
-                "user-guide/use-certificates",
-                "user-guide/certificates-setup",
-                "user-guide/tls-configuration",
-                "user-guide/configuring-at-tls-for-zowe-server-single-service",
-                "user-guide/configuring-at-tls-for-zowe-server",
-                "user-guide/using-icsf-hardware-private-keys",
+                {
+                  type: "category",
+                  label: "Zowe Assisted Certificate Setup",
+                  items: [
+                    "user-guide/certificates-configuration-questionnaire",
+                    "user-guide/certificates-configuration-scenarios",
+                    "user-guide/certificates-workflow-setup"
+                  ]
+                },
+                {
+                  type: "category",
+                  label: "Advanced Certificate Topics",
+                  items: [
+                    "user-guide/certificates-trust-off-platform",
+                    "user-guide/tls-configuration",
+                    "user-guide/configuring-at-tls-for-zowe-server-single-service",
+                    "user-guide/configuring-at-tls-for-zowe-server",
+                    "user-guide/using-icsf-hardware-private-keys",
+                  ]
+                },
+                "user-guide/certificates-finalize-configuration"
               ],
             },
             {
@@ -260,10 +275,15 @@ module.exports = {
             }
           ]
         },
-        "user-guide/start-zowe-zos",
+        { 
+          "type": "category", 
+          "label": "Starting and Stopping Zowe",
+          "link": { "type": "doc", "id": "user-guide/start-zowe-zos" },
+          "items": [
+            "user-guide/zos-preflight"
+          ]
+        },
         "user-guide/verify-zowe-runtime-install",
-        "user-guide/upgrade-zos",
-        "user-guide/backout-zos",
         {
           type: "category",
           label: "Advanced server-side configuration",
@@ -349,7 +369,6 @@ module.exports = {
             "user-guide/mvd-configuration",
           ],
         },
-        "user-guide/api-mediation/upgrade-to-single-service-apiml-deployment",
       ],
     },
     {
@@ -364,6 +383,7 @@ module.exports = {
           link: { type: "doc", id: "user-guide/cli-install-configure-zosmf" },
           items: [
             "user-guide/cli-install-configure-zosmf-security",
+            "user-guide/configure-workload-management",
           ],
         },
         {
@@ -390,7 +410,6 @@ module.exports = {
                 "user-guide/cli-configure-cli-on-os-where-scs-unavailable",
               ],
             },
-            "user-guide/cli-updatingcli",
             {
               type: "category",
               label: "Configuring Zowe CLI",
@@ -412,7 +431,6 @@ module.exports = {
             "user-guide/cli-uninstall",
           ],
         },
-
         {
           type: "category",
           label: "Zowe Explorer installation",
@@ -428,6 +446,14 @@ module.exports = {
               items: [
                 "user-guide/ze-install-zowe-explorer-cics-ext",
                 "user-guide/ze-ftp-install-ze-ftp-ext",
+              ],
+            },
+            {
+              type: "category",
+              label: "Configuring and deploying Zowe Remote SSH",
+              link: { type: "doc", id: "getting-started/ze-configuring-zowe-remote-ssh" },
+              items: [
+                "getting-started/ze-zrs-install-methods",
               ],
             },
             "user-guide/ze-profiles",
@@ -449,6 +475,31 @@ module.exports = {
       ],
     },
   ],
+ "upgrade": [
+  "upgrade/upgrading-zowe",
+  {
+    type: "category",
+    label: "Zowe server-side components",
+    collapsed: false,
+    items: [
+      "upgrade/upgrade-zowe-v3",
+      "upgrade/upgrade-zowe-v2",
+      "upgrade/upgrade-zowe-no-downtime",
+      "upgrade/upgrade-to-single-service-apiml-deployment",
+      "upgrade/migrate-from-convenience-build-to-pswi-smpe",
+      "upgrade/downgrade-to-a-previous-zowe-version",
+    ]
+  },
+  {
+    type: "category",
+    label: "Zowe client-side components",
+    collapsed: false,
+    items: [
+      "upgrade/cli-updatingcli",
+      "upgrade/ze-updatingze",
+    ]
+  }
+],
   "use": [
     "user-guide/zowe-getting-started-tutorial",
     {
@@ -543,6 +594,7 @@ module.exports = {
       label: "Zowe client-side components",
       collapsed: false,
       items: [
+          "user-guide/ways-to-connect-to-mainframe",        
         {
           type: "category",
           label: "Using Zowe CLI",
@@ -612,6 +664,7 @@ module.exports = {
           items: [
             "user-guide/ze-managing-profiles",
             "user-guide/ze-authentication-methods",
+            "user-guide/zowe-remote-ssh",
             "user-guide/ze-usage-tips",
             "user-guide/ze-using-using-environment-variables",
             "user-guide/ze-working-with-data-sets",
@@ -838,7 +891,7 @@ module.exports = {
         {
           type: "category",
           label: "Troubleshooting Zowe API Mediation Layer",
-          link: { type: "doc", id: "troubleshoot/troubleshoot-apiml", },
+          link: { type: "doc", id: "troubleshoot/troubleshoot-apiml" },
           items: [
             "troubleshoot/troubleshoot-apiml-error-codes",
             "troubleshoot/known-issues-with-apiml",
@@ -913,7 +966,6 @@ module.exports = {
     type: "category",
     label: "Troubleshooting z/OS Services",
     collapsed: false,
-    link: { type: "doc", id: "troubleshoot/troubleshooting" },
     items: [
       "troubleshoot/zOS_services/Unable-to-generate-unique-CeaTso-APPTAG",
           ],
@@ -953,6 +1005,7 @@ module.exports = {
 
     "appendix/zowe-cli-command-reference",
     "appendix/zowe-yaml-configuration",
+    "appendix/security-breaking-changes",
     {
       type: "category",
       label: "ZWE Server Command Reference",
@@ -968,7 +1021,7 @@ module.exports = {
     {
       type: "link",
       label: "Third Party Software Requirements",
-      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v3.4.1.md",
+      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v3.6.x.md",
     },
   ],
 }
