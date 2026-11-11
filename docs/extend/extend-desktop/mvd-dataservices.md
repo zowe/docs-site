@@ -137,15 +137,11 @@ Users must have READ access to the following profile:
 
 `ZLUX.DEFAULT.SVC.ORG_ZOWE_FOO.BAZ.POST.USERS.FRED`
 
-Profiles cannot contain more than 246 characters. If the path section of an endpoint URL makes the profile name exceed limit, the path is trimmed to only include elements that do not exceed the limit. For example, imagine that each path section in this endpoint URL contains 64 characters:
+Profiles cannot contain more than 246 characters. If the path section of an endpoint URL makes the profile name exceed the limit, the request is denied. For example, imagine that each path section in this endpoint URL contains 64 characters:
 
 `/ZLUX/plugins/org.zowe.zossystem.subsystems/services/data/_current/aa..a/bb..b/cc..c/dd..d`
 
-So `aa..a` is 64 "a" characters, `bb..b` is 64 "b" characters, and so on. The URL could then map to the following example profile:
-
-`ZLUX.DEFAULT.SVC.ORG_ZOWE_ZOSSYSTEM_SUBSYSTEMS.DATA.GET.AA..A.BB..B`
-
-The profile ends at the `BB..B` section because adding `CC..C` would put it over 246 characters. So in this example, all dataservice endpoints with paths that start with `AA..A.BB..B` are controlled by this one profile.
+So `aa..a` is 64 "a" characters, `bb..b` is 64 "b" characters, and so on. The full profile name, ending in `.AA..A.BB..B.CC..C.DD..D`, would be over 246 characters, so requests to this URL are denied for every user.
 
 To avoid this issue, we recommend that you maintain relatively short endpoint URL paths.
 
@@ -249,7 +245,7 @@ HttpService *httpService = makeHttpDataService(dataService, server);
 
 Then you must assign properties to the dataservice, such as
 
-* authType: What type of authentication and authorization checks should be done before calling this service. values such as `SERVICE_AUTH_NONE` when the service does not need securty or `SERVICE_AUTH_NATIVE_WITH_SESSION_TOKEN` when the service should be protected by ZSS's cookie are valid.
+* authType: What type of authentication and authorization checks should be done before calling this service. values such as `SERVICE_AUTH_NONE` when the service does not need security or `SERVICE_AUTH_NATIVE_WITH_SESSION_TOKEN` when the service should be protected by ZSS's cookie are valid.
 * serviceFunction: The function within this dataservice that will be called whenever a request is received.
 * runInSubtask: (TRUE/FALSE) Whether to run the service function in a subtask or not whenever a request is received.
 * doImpersonation: (TRUE/FALSE) When true, the service function will be ran as the authenticated user, rather than the server user. This is recommended whenever possible to keep permissions management in line with the users own permissions.
