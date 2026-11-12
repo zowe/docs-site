@@ -36,7 +36,7 @@ Before starting the upgrade, ensure the following base system requirements are m
 To ensure a smooth transition to Zowe v3.6, you must first resolve any configuration changes required by your current version. If you are running an earlier v2 version of Zowe, open the section for your version below. Each section lists all of the tasks required from that version up to v2.18.x, so you do not need to complete the sections for later v2 versions. After you complete these tasks and upgrade to v2.18.x, continue with [Upgrading from Zowe v2.18.x to v3.6](#upgrading-from-zowe-v218x-to-v36). Apply the necessary configurations before proceeding with the v3.6 upgrade. 
 
 :::note
-All v2.x installations must first upgrade to v2.18.x before upgrading to the latest Zowe v3  version (currently v3.6).
+All v2.x installations must first upgrade to v2.18.x before upgrading to the latest Zowe v3  version (currently v3.6). For v2.x versions, upgrade instructions up to v2.18 are provided within the following collapsable sections.
 :::
 
 <details>
@@ -54,10 +54,10 @@ While upgrading within Zowe v3 is a minor-version upgrade, Zowe v3.6 includes se
 
 To upgrade from Zowe v3.5 or an earlier v3.x version, perform the following procedure before you install Zowe v3.6. 
 
-1. **Verify runtime levels.**  
+1. **Verify runtime levels.**
 Confirm that the Java and Node.js versions meet the [prerequisites](#prerequisites-for-zowe-v36). Update `java.home` and `node.home` in `zowe.yaml` if needed.
 
-2. **Review strict URL validation.**  
+1. **Review strict URL validation.**
 In Zowe v3.6, the API ML Gateway enables strict URL validation by default. The Gateway rejects requests that contain any of the following encoded characters in the URL path:
 
      * encoded slashes (`%2F`)
@@ -69,7 +69,7 @@ In Zowe v3.6, the API ML Gateway enables strict URL validation by default. The G
 
    If your onboarded services or clients depend on these characters, requests are rejected after the upgrade unless you update your configuration. For details about routing traffic to APIs that require encoded characters, see [Strict URL validation replaces allowEncodedSlashes](../whats-new/api-ml-v3.6-upgrade-and-security-enhancements.md#strict-url-validation-replaces-allowencodedslashes) in the article _API ML V3.6 upgrade and security enhancements_.
 
-3. **Update the configuration property.**  
+1. **Update the configuration property.**
 The property `components.gateway.apiml.service.allowEncodedSlashes` is removed. If your services require encoded characters, add the new property `components.gateway.apiml.security.enableStrictUrlValidation` to `zowe.yaml` and set the property to `false`:
 
     ```yaml
@@ -87,7 +87,7 @@ The property `components.gateway.apiml.service.allowEncodedSlashes` is removed. 
     Regardless of this setting, Gateway-internal endpoints (such as `/gateway`, `/application`, `/images`, and `/v3/api-docs`) always enforce strict validation.
     :::
 
-4. **Review the new and changed YAML properties.**  
+1. **Review the new and changed YAML properties.**
 To see all changes between releases, compare the `zowe-install-packaging` repository and search for `example-zowe.yaml` and `defaults.yaml`: [https://github.com/zowe/zowe-install-packaging/compare/v3.5.0...v3.6.0](https://github.com/zowe/zowe-install-packaging/compare/v3.5.0...v3.6.0). Then review the following properties in your `zowe.yaml` file and decide whether to adopt each of them:
 
     | Property | Upgrade decision |
@@ -95,9 +95,9 @@ To see all changes between releases, compare the `zowe-install-packaging` reposi
     | `zowe.network.allowedDomains` | Add any domain, IP address, or CIDR range outside your `zowe.externalDomains` and `haInstances` hostnames from which services register with the API Discovery Service. Otherwise, registrations from those hosts can be rejected or produce warnings. See [Configuring allowed domains and IP addresses for service registration](../user-guide/api-mediation/config-allowed-domains-for-service-reg.md) and the [Zowe YAML configuration file reference](../appendix/zowe-yaml-configuration.md). |
     | `zowe.launchScript.startupChecks.zosmfjwt` | Applies when Zowe uses z/OSMF JWT authentication. The default `exit` stops startup if the z/OSMF JWT check fails. Set `warn` to continue startup with a warning, or `disabled` to skip the check. You can run the same check manually with `zwe validate zosmf jwt`. See [zwe validate zosmf jwt](../appendix/zwe_server_command_reference/zwe/validate/zwe-validate-zosmf-jwt.md). |
     | `components.apiml.logging.level` (and the per-component variant `components.<component>.logging.level`) | Optional. Set the API ML log level to `quiet`, `info`, or `debug`. Legacy `debug` parameters still take precedence. See [Configuring API ML logging](../user-guide/api-mediation/configuration-logging.md). |
-    | `components.caching-service.storage.infinispan.useVirtualThreads` | Optional. Enables Infinispan virtual threads, which require Java 21 or later. The default is `false`. See the [Zowe YAML configuration file reference](../appendix/zowe-yaml-configuration.md). |
+    | `storage.infinispan.useVirtualThreads` | Optional. Enables Infinispan virtual threads, which require Java 21 or later. The default is `false`. See the [Zowe YAML configuration file reference](../appendix/zowe-yaml-configuration.md). |
 
-5. **Update monitoring probes for actuator endpoint authentication.**  
+1. **Update monitoring probes for actuator endpoint authentication.**
 After you upgrade, unauthenticated requests to the API Gateway `/application/info` and `/application/version` endpoints return HTTP 401. Monitoring probes and automation scripts that call these endpoints without credentials must be updated.
 
     | Authentication State | Example Command | Before Upgrade | After Upgrade |
@@ -111,7 +111,7 @@ After you upgrade, unauthenticated requests to the API Gateway `/application/inf
     Setting `components.gateway.apiml.health.protected: false` exposes health, information, and version metadata without authentication. Use an authenticated client whenever possible. If unauthenticated access is required, restrict access through another trusted control, such as network-level controls.
     :::
 
-6. **Review certificate and HA notes.**  
+1. **Review certificate and HA notes.**
     * `zwe init certificate` now generates a random password when `zowe.setup.certificate.pkcs12.password` or `zowe.setup.certificate.pkcs12.caPassword` is left at the default value. This applies to keystore scenarios only; keyring scenarios are unaffected. Update any automation that relies on the literal default password before you re-run certificate initialization. See [zwe init certificate](../appendix/zwe_server_command_reference/zwe/init/zwe-init-certificate.md).
     * At startup in HA mode, Zowe writes a merged configuration file for each HA instance to the workspace `.env` directory. See [Upgrading Zowe in HA for zero downtime](./upgrade-zowe-no-downtime.md).
 
@@ -120,9 +120,8 @@ Proceed to the [**Upgrading the runtime**](#upgrading-the-runtime) section to co
 </details>
 
 <details>
-<summary id="upgrading-from-zowe-v218x-to-v36"><strong>Upgrading from Zowe v2.18.x to v3.6</strong></summary>
+<summary><strong>Upgrading from Zowe v2.18.x to v3.6</strong></summary>
 <br />
-<!-- This whole dropdown section is new -->
 To upgrade from Zowe v2.18.x, perform the following procedure before you install Zowe v3.6.
 
 :::note  
@@ -196,9 +195,8 @@ Review the [System and Security Changes](#system-and-security-changes) and [Conf
     * `zowe.useConfigmgr=false` and the gateway internal server are no longer supported.
 
     For the complete list of changes, see [Important API ML updates in Zowe v3](../whats-new/breaking-changes-v3.md#important-api-ml-updates-in-zowe-v3).
-<!-- TODO: confirm the exact article title of breaking-changes-v3.md -->
 
-You should proceed to the [**Upgrading the runtime**](#upgrading-the-runtime) and [**Configuration changes**](#configuration-changes) sections to complete your upgrade to v3.6.
+You can now proceed to the [**Upgrading the runtime**](#upgrading-the-runtime) and [**Configuration changes**](#configuration-changes) sections to complete your upgrade to v3.6.
 
 </details>
 
@@ -206,7 +204,7 @@ You should proceed to the [**Upgrading the runtime**](#upgrading-the-runtime) an
 <summary><strong>Upgrading from Zowe v2.17.x</strong></summary>
 <br />
 
-There are no version-specific configuration tasks for upgrading from Zowe v2.17.x. Perform a standard upgrade to v2.18.x, as described in [Upgrading Zowe](./upgrading-zowe.md), and then continue with [Upgrading from Zowe v2.18.x to v3.6](#upgrading-from-zowe-v218x-to-v36).
+There are no version-specific configuration tasks for upgrading from Zowe v2.17.x to v2.18.x. Perform a standard upgrade to v2.18.x, as described in [Upgrading Zowe](../upgrade/upgrading-zowe.md), and then complete **Upgrading from Zowe v2.18.x to v3.6**. 
 
 </details>
 
@@ -214,7 +212,7 @@ There are no version-specific configuration tasks for upgrading from Zowe v2.17.
 <summary><strong>Upgrading from Zowe v2.16.x</strong></summary>
 <br />
 
-To upgrade from Zowe v2.16.x, first upgrade to v2.18.x, and perform the following tasks before moving to v3.x:
+To upgrade from Zowe v2.16.x, perform the following tasks:
 
 1. **Update TLS configurations.**  
 Ensure the following `zowe.network` section is added to your `zowe.yaml` file:
@@ -231,12 +229,10 @@ Ensure the following `zowe.network` section is added to your `zowe.yaml` file:
           tls:
             attls: false
     ```
-1. **Update PROCLIB entries.**  
-Enhancements and default parameters have changed throughout Zowe v2. This can be performed with the unix command `zwe init stc`, by running the job `ZWEISTC`, or by copying the `SZWESAMP` members `ZWESLSTC`, `ZWESISTC`, and `ZWESASTC` into your desired PROCLIB.
-1. **Verify keyring slashes.**  
+2. **Update PROCLIB entries.**  
+Enhancements and default parameters have changed throughout Zowe v2. This can be performed with the UNIX command `zwe init stc`, by running the job `ZWEISTC`, or by copying the `SZWESAMP` members `ZWESLSTC`, `ZWESISTC`, and `ZWESASTC` into your desired PROCLIB.
+3. **Verify keyring slashes.**  
 If you use keyrings, verify that Zowe YAML references to `safkeyring`. Use two forward slashes (`safkeyring://`). Do not use four forward slashes (`safkeyring:////`).
-
-After you complete these tasks, continue with [Upgrading from Zowe v2.18.x to v3.6](#upgrading-from-zowe-v218x-to-v36).
 
 </details>
 
@@ -244,7 +240,7 @@ After you complete these tasks, continue with [Upgrading from Zowe v2.18.x to v3
 <summary><strong>Upgrading from Zowe v2.11.x through v2.15.x</strong></summary>
 <br />
 
-To upgrade from any version between v2.11.x and v2.15.x, first upgrade to v2.18.x, and perform the following tasks before moving to v3.x:
+To upgrade from any version between v2.11.x and v2.15.x, perform the following tasks:
 
 1. **Remove PEM references.**  
 Ensure that Zowe configurations using keyrings do not have the section `zowe.certificate.pem`. This section is no longer needed and can cause a start-up error in newer versions of Zowe.
@@ -261,12 +257,10 @@ Ensure the following `zowe.network` section is added to your `zowe.yaml` file:
           tls:
             attls: false
     ```
-2. **Update PROCLIB entries.**  
+1. **Update PROCLIB entries.**  
 Update your PROCLIB entries for Zowe using `zwe init stc`, the `ZWEISTC` job, or by copying the `SZWESAMP` members into your PROCLIB.
 1. **Verify keyring slashes.**  
 If using keyrings, ensure Zowe YAML references use exactly two forward slashes (`safkeyring://`).
-
-After you complete these tasks, continue with [Upgrading from Zowe v2.18.x to v3.6](#upgrading-from-zowe-v218x-to-v36).
 
 </details>
 
@@ -297,8 +291,6 @@ Add the following `zowe.network` section to your `zowe.yaml` file:
 Update your PROCLIB entries for Zowe using `zwe init stc`, the `ZWEISTC` job, or by copying the `SZWESAMP` members into your PROCLIB.
 5. **Verify keyring slashes.**  
 If using keyrings, ensure Zowe YAML references use exactly two forward slashes (`safkeyring://`).
-
-After you complete these tasks, continue with [Upgrading from Zowe v2.18.x to v3.6](#upgrading-from-zowe-v218x-to-v36).
 
 </details>
 
@@ -331,8 +323,6 @@ Add the following `zowe.network` section to your `zowe.yaml` file:
 Update your PROCLIB entries for Zowe using `zwe init stc`, the `ZWEISTC` job, or by copying the `SZWESAMP` members into your PROCLIB.
 6. **Verify keyring slashes.**  
 If using keyrings, ensure Zowe YAML references use exactly two forward slashes (`safkeyring://`).
-
-After you complete these tasks, continue with [Upgrading from Zowe v2.18.x to v3.6](#upgrading-from-zowe-v218x-to-v36).
 
 </details>
 
