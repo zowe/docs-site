@@ -120,7 +120,7 @@ Proceed to the [**Upgrading the runtime**](#upgrading-the-runtime) section to co
 </details>
 
 <details>
-<summary><strong>Upgrading from Zowe v2.18.x to v3.6</strong></summary>
+<summary id="upgrading-from-zowe-v218x-to-v36"><strong>Upgrading from Zowe v2.18.x to v3.6</strong></summary>
 <br />
 To upgrade from Zowe v2.18.x, perform the following procedure before you install Zowe v3.6.
 
@@ -204,7 +204,7 @@ You can now proceed to the [**Upgrading the runtime**](#upgrading-the-runtime) a
 <summary><strong>Upgrading from Zowe v2.17.x</strong></summary>
 <br />
 
-There are no version-specific configuration tasks for upgrading from Zowe v2.17.x to v2.18.x. Perform a standard upgrade to v2.18.x, as described in [Upgrading Zowe](../upgrade/upgrading-zowe.md), and then complete **Upgrading from Zowe v2.18.x to v3.6**. 
+There are no version-specific configuration tasks for upgrading from Zowe v2.17.x to v2.18.x. Perform a standard upgrade to v2.18.x, as described in [Upgrading Zowe](../upgrade/upgrading-zowe.md), and then proceed to [upgrading to Zowe v3.6](#upgrading-from-zowe-v218x-to-v36).
 
 </details>
 
@@ -212,7 +212,7 @@ There are no version-specific configuration tasks for upgrading from Zowe v2.17.
 <summary><strong>Upgrading from Zowe v2.16.x</strong></summary>
 <br />
 
-To upgrade from Zowe v2.16.x, perform the following tasks:
+To upgrade from Zowe v2.16.x to v2.18.x, perform the following tasks:
 
 1. **Update TLS configurations.**  
 Ensure the following `zowe.network` section is added to your `zowe.yaml` file:
@@ -234,13 +234,15 @@ Enhancements and default parameters have changed throughout Zowe v2. This can be
 3. **Verify keyring slashes.**  
 If you use keyrings, verify that Zowe YAML references to `safkeyring`. Use two forward slashes (`safkeyring://`). Do not use four forward slashes (`safkeyring:////`).
 
+You can now proceed to [upgrading to Zowe v3.6](#upgrading-from-zowe-v218x-to-v36).
+
 </details>
 
 <details>
 <summary><strong>Upgrading from Zowe v2.11.x through v2.15.x</strong></summary>
 <br />
 
-To upgrade from any version between v2.11.x and v2.15.x, perform the following tasks:
+To upgrade from any version between v2.11.x and v2.15.x to v2.18.x, perform the following tasks:
 
 1. **Remove PEM references.**  
 Ensure that Zowe configurations using keyrings do not have the section `zowe.certificate.pem`. This section is no longer needed and can cause a start-up error in newer versions of Zowe.
@@ -262,13 +264,15 @@ Update your PROCLIB entries for Zowe using `zwe init stc`, the `ZWEISTC` job, or
 1. **Verify keyring slashes.**  
 If using keyrings, ensure Zowe YAML references use exactly two forward slashes (`safkeyring://`).
 
+You can now proceed to [upgrading to Zowe v3.6](#upgrading-from-zowe-v218x-to-v36).
+
 </details>
 
 <details>
 <summary><strong>Upgrading from Zowe v2.10.x</strong></summary>
 <br />
 
-To upgrade from v2.10.x, first upgrade to v2.18.x, and perform the following tasks before moving to v3.x:
+To upgrade from Zowe v2.10.x to v2.18.x, perform the following tasks:
 
 1. **(Optional) Enable sysMessages duplication.**  
 You can now use the new array `zowe.sysMessages` to select messages that, when found by the launcher, are duplicated into the system's log.
@@ -292,13 +296,15 @@ Update your PROCLIB entries for Zowe using `zwe init stc`, the `ZWEISTC` job, or
 5. **Verify keyring slashes.**  
 If using keyrings, ensure Zowe YAML references use exactly two forward slashes (`safkeyring://`).
 
+You can now proceed to [upgrading to Zowe v3.6](#upgrading-from-zowe-v218x-to-v36).
+
 </details>
 
 <details>
 <summary><strong>Upgrading from Zowe v2.4.x through v2.9.x</strong></summary>
 <br />
 
-To upgrade from any version between v2.4.x and v2.9.x, first upgrade to v2.18.x, and perform the following tasks before moving to v3.x:
+To upgrade from any version between v2.4.x and v2.9.x to v2.18.x, perform the following tasks:
 
 1. **Clean up application framework plug-ins.**  
 Delete the `<zowe.workspaceDirectory>/app-server/plugins` directory so that it can be regenerated on the next run of Zowe. Old plug-ins left here will complicate logs with harmless errors.
@@ -323,6 +329,8 @@ Add the following `zowe.network` section to your `zowe.yaml` file:
 Update your PROCLIB entries for Zowe using `zwe init stc`, the `ZWEISTC` job, or by copying the `SZWESAMP` members into your PROCLIB.
 6. **Verify keyring slashes.**  
 If using keyrings, ensure Zowe YAML references use exactly two forward slashes (`safkeyring://`).
+
+You can now proceed to [upgrading to Zowe v3.6](#upgrading-from-zowe-v218x-to-v36).
 
 </details>
 
