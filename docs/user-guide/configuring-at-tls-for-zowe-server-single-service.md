@@ -364,8 +364,6 @@ TTLSRule ZoweClientRule1
   TTLSConnectionActionRef ZoweX509ClientConnAction # X.509 Client Certificate Authentication is required in cross-service API ML communication
 }
 
-# TODO: Note that in our testing environment we are testing this rule without x.509 certificate. Need double checking before publishing
-# TODO There is another rule with name ApimlZLUXClientRule and it uses ZoweNoX509ClientEnvAction and ZoweNoX509ClientConnAction
 TTLSRule ZoweClientRule2
 {
   LocalAddr All
@@ -464,7 +462,6 @@ Services running off-host cannot use AT-TLS to make transparent https calls thou
 
 ```bash
 
-<!-- TODO this rule should describe App Server or ZSS communication with API Gateway without X.509 certificate. Update accordingly -->
 TTLSRule                            ZLUXApimlClientRule
 { 
   LocalAddr                         All
@@ -479,7 +476,6 @@ TTLSRule                            ZLUXApimlClientRule
 }
 
 ```
-
 #### Outbound rule for z/OSMF
 
 This example rule covers the connection between the API Gateway and the z/OSMF instance. This connection is made to authenticate users in z/OS.
@@ -705,8 +701,6 @@ TLSRule ZoweClientRule1
   TTLSConnectionActionRef ZoweX509ClientConnAction # X.509 Client Certificate Authentication is required in cross-service API ML communication
 }
 
-# TODO: Note that in our testing environment we are testing this rule without x.509 certificate. Need double checking before publishing
-# TODO The rule we use in our testing environment is ApimlZLUXClientRule
 # Example outbound TTLS rule for Api Gateway calling App server and ZSS
 TTLSRule ZoweClientRule2
 {
