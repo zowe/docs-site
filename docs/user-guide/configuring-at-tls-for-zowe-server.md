@@ -387,21 +387,6 @@ TTLSRule                            ZoweTrustClientRule
   Priority                          50
 }
 
-# TODO: Updated to what we have in our testing environment. Need double checking with Jakub S. before publishing
-# Connections from Zowe components to App Server and ZSS
-TTLSRule ZoweClientRule1
-{
-  LocalAddr All
-  LocalPortRange 1024-65535
-  RemoteAddr All
-  RemotePortRange 7556-7557 # App server and ZSS
-  Jobname ZWE1* # Set according to zowe.job.prefix in zowe.yaml - this covers all servers within Zowe core.
-  Direction Outbound
-  TTLSGroupActionRef ClientGroupAction
-  TTLSEnvironmentActionRef ZoweNoX509ClientEnvAction
-  TTLSConnectionActionRef ZoweNoX509ClientConnAction
-}
-
 # Optional, set if enabling Caching Service with infinispan storage mode
 TTLSRule ZoweClientRule2
 {
@@ -487,7 +472,7 @@ Services running off-host cannot use AT-TLS to make transparent https calls thou
 Example:
 
 ```bash
-<!-- TODO this rule should describe App Server or ZSS communication with API Gateway without X.509 cert. Update accordingly -->
+
 TTLSRule                            ZLUXApimlClientRule
 { 
   LocalAddr                         All
@@ -769,8 +754,6 @@ TTLSRule                            ZoweTrustClientRule
 }
 
 # Connections from Zowe components to App Server and ZSS
-# TODO: Note that this rule has as default Priority = 1, therefore ZoweTrustClientRule will be the one really matching connections to App server and ZSS
-# TODO Therefore if we verify that x509 is needed, we should set some priority higher than 50. In our testing environment we do not send X.509 certificate
 TTLSRule ZoweClientRule1 
 {
   LocalAddr All
@@ -806,21 +789,6 @@ TTLSRule ApimlZosmfClientRule
   RemoteAddr All
   RemotePortRange 443 # z/OSMF Port
   Jobname ZWE1A*  # Set according to zowe.job.prefix in zowe.yaml. Zowe components *AG and *AZ are needed in this rule.
-  Direction Outbound
-  TTLSGroupActionRef ClientGroupAction
-  TTLSEnvironmentActionRef ZoweNoX509ClientEnvAction
-  TTLSConnectionActionRef ZoweNoX509ClientConnAction
-}
-
-# Example outbound rule from API Gateway to App server and ZSS.
-# TODO: This rule is a duplicate of ZoweClientRule1. If we verify that no X509 cert is needed, than communication is already covered by ZoweTrustClientRule which has a higher priority and takes precedence, therefore it can be removed.
-TTLSRule ApimlZLUXClientRule
-{
-  LocalAddr All
-  LocalPortRange 1024-65535
-  RemoteAddr All
-  RemotePortRange 7556-7557 
-  Jobname ZWE1AG* # Set according to zowe.job.prefix in zowe.yaml + AG (API Gateway)
   Direction Outbound
   TTLSGroupActionRef ClientGroupAction
   TTLSEnvironmentActionRef ZoweNoX509ClientEnvAction
