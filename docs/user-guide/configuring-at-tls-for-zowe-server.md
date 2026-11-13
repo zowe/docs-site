@@ -676,6 +676,21 @@ TTLSRule ZoweServerRule
   TTLSGroupActionRef ServerGroupAction
   TTLSEnvironmentActionRef ZoweServerEnvironmentAction
   TTLSConnectionActionRef ZoweServerConnectionAction
+  Priority                10
+}
+
+# Inbound rules for all App server and ZSS.
+TTLSRule ZoweServerRule
+{
+  LocalAddr All
+  RemoteAddr All
+  LocalPortRange 7556-7557 # Range covers all possible Zowe services
+  Jobname ZWE* # Set according to zowe.job.prefix in zowe.yaml - this covers App server(ZLUX) and ZSS.
+  Direction Inbound
+  TTLSGroupActionRef ServerGroupAction
+  TTLSEnvironmentActionRef ZoweServerEnvironmentAction
+  TTLSConnectionActionRef ZoweServerConnectionAction
+  Priority                5
 }
 
 # Connection from API Gateway to to ZAAS requires X.509 authentication
@@ -751,20 +766,6 @@ TTLSRule                            ZoweTrustClientRule
   TTLSEnvironmentActionRef          ZoweNoX509ClientEnvAction
   TTLSConnectionActionRef           ZoweNoX509ClientConnAction
   Priority                          50
-}
-
-# Connections from Zowe components to App Server and ZSS
-TTLSRule ZoweClientRule1 
-{
-  LocalAddr All
-  LocalPortRange 1024-65535
-  RemoteAddr All
-  RemotePortRange 7556-7557 # App server and ZSS
-  Jobname ZWE1* # Set according to zowe.job.prefix in zowe.yaml - this covers all servers within Zowe core.
-  Direction Outbound
-  TTLSGroupActionRef ClientGroupAction
-  TTLSEnvironmentActionRef ZoweX509ClientEnvAction
-  TTLSConnectionActionRef ZoweX509ClientConnAction # X.509 Client Certificate Authentication is required in cross-service API ML communication
 }
 
 # Optional, set if enabling Caching Service with infinispan storage mode
@@ -948,7 +949,8 @@ TTLSConnectionAdvancedParms ZoweNoX509ClientConnAdvParms
   TLSv1.3 On
 }
 
-# Example list of supported ciphers in handshake. Validate and filter this list based on local setup
+# Example list of supported ciphers in handshake.
+# Note: These ciphers are TLSv1.3-specific. Validate and filter this list based on your local setup; if supporting TLSv1.2, update the list with TLSv1.2-compatible ciphers.
 TTLSCipherParms                   CipherParms
 {
   V3CipherSuites                  TLS_AES_128_GCM_SHA256
