@@ -27,17 +27,16 @@ Provide your username and password to generate a token and log in to API ML:
     ```
     zowe auth login apiml
     ```
-    For users who do not have a base profile that has been used to log into API ML, this creates a new base profile that is set as the default base profile in your configuration file.
-
-    For users who have a default base profile already used to log into API ML, this updates the existing default base profile with a new token. 
- 
+    
+    This creates a [base profile](../appendix/zowe-glossary#base-profile) if there is not already one and updates the profile with a new token and it modifies the `authOrder` property on the default z/OSMF profile, if one exists, to use tokens. If none exists, provides instructions on how to configure your own z/OSMF profile.
+    
 2. When prompted, enter the following information:
     - Username
     - Password (can be a PIN concatenated with a second factor for MFA)
     - Host
     - Port for the API ML instance
 
-    <br/>A [base profile](../appendix/zowe-glossary.md#base-profile) is created or updated with your token, which is stored on your computer in place of a username and password. When you issue commands, you can omit your username, password, host, and port.
+    If prompted for the host and port, these values are stored in the base profile so that when you issue future commands, this information is used. The user name and password are not stored because they are used only once, and that is to obtain the token.
 
     If you do not want to store the token on your PC, append the `--show-token` option to the `login` command in Step 1. This returns the token value in your terminal for you to use on subsequent commands.
 
@@ -46,7 +45,7 @@ Provide your username and password to generate a token and log in to API ML:
 3. If you do not have a profile for the service, respond to Zowe CLI prompts for connection information to create a profile for the service.
 
     :::tip
-    - To establish a base path, see instructions for [Zowe V2 profiles](#specifying-a-base-path-with-zowe-team-configuration) or [Zowe V1 profiles](#specifying-a-base-path-with-zowe-v1-profiles).
+    - To enable API ML for a service, establish a base path. See instructions for [team configuration](#specifying-a-base-path-with-zowe-team-configuration) or [Zowe V1 profiles](#specifying-a-base-path-with-zowe-v1-profiles).
     :::
 
     If you already have a profile in your configuration for the service you want to connect to, use a text editor to open the applicable configuration file and replace the `port` property with a `basePath` property to enable the use of API ML.
@@ -88,7 +87,7 @@ Provide your username and password to generate a token and log in to API ML:
 :::note notes
 
 * Tokens expire after a period of time defined by your security administrator. When a token expires, you must log in to API ML again to get a new token.
-* If you omit connection details from a service profile, such as `zosmf` profile, the CLI uses the information from your base profile.
+* If you omit connection details from a service profile, such as a `zosmf` profile, the CLI uses the information from your base profile.
 * You can choose to specify all connection details on a service profile and connect directly to the service. Routing through API ML is not required.
 
 :::
@@ -116,9 +115,11 @@ zowe auth login apiml --host <APIML Host> --port <APIML Port> --cert-file <PEM P
 
 Zowe CLI procures a security token from API ML and adds that token to the base profile in the applicable configuration file.
 
-:::note
+:::note notes
 
-If you have multiple types of configuration files and base profiles, see [How configuration files and profiles work together](../user-guide/cli-using-understand-profiles-configs.md#how-configuration-files-and-profiles-work-together) to learn which configuration and profile would be used to store the API ML token.
+- If you have multiple types of configuration files and base profiles, see [How configuration files and profiles work together](../user-guide/cli-using-understand-profiles-configs.md#how-configuration-files-and-profiles-work-together) to learn which configuration and profile would be used to store the API ML token.
+
+- If you have a self-signed certificate, specify the `--reject-unauthorized false` option on the preceding command to bypass certificate validation. Otherwise, the command fails to connect.
 
 :::
 
@@ -147,20 +148,20 @@ However, you might need to use a different base profile. To do so, add the `--ba
     Logging in with a username and password for the first time:
 
     ```
-    zowe auth login apiml --host <APIML Host> --port <APIML Port> --base-profile <profile_name>
+    zowe auth login apiml --base-profile <profile_name> --host <APIML Host> --port <APIML Port> 
 
     ```
 
     Logging in with a client certificate for the first time:
 
     ```
-    zowe auth login apiml --host <APIML Host> --port <APIML Port> --cert-file <PEM Public Certificate Path> --cert-key-file <PEM Private Certificate Path> --base-profile <profile_name>
+    zowe auth login apiml --base-profile <profile_name> --host <APIML Host> --port <APIML Port> --cert-file <PEM Public Certificate Path> --cert-key-file <PEM Private Certificate Path> 
     ```
 
     Logging in with existing credentials saved elsewhere (for example, environment variables, in parent or nested profiles, base profiles, or other configuration files):
 
     ```
-    zowe auth login apiml --host <APIML Host> --port <APIML Port> --user <username> --password <user password> --base-profile <profile_name>
+    zowe auth login apiml --base-profile <profile_name> --host <APIML Host> --port <APIML Port> --user <username> --password <user password> 
     ```
 
     :::note
@@ -189,7 +190,7 @@ However, you might need to use a different base profile. To do so, add the `--ba
 
 To access mainframe services through API ML using the token in your base profile, use the `basePath` property in your service profile to indicate the base path of the API on the API ML instance that you want to access.
 
-To establish a base path, see instructions for [Zowe V2 profiles](#specifying-a-base-path-with-zowe-team-configuration).
+To establish a base path, see instructions for [team configuration](#specifying-a-base-path-with-zowe-team-configuration).
 
 :::note
 
@@ -206,18 +207,20 @@ Use the following steps to specify a base path with Zowe [team configuration](..
     For example:
 
     ```
-    https://myapilayerhost:port/ibmzosmf/api/v1
+    https://<myapilayerhost>:<myAPIML port>/ibmzosmf/api/v1
     ```
 
-    The format of base paths can vary based on how API ML is configured at your site.
+    The format of base paths can vary based on how API ML is configured at your site. In this example, the base path is `ibmzosmf/api/v1`.
 
-2. Using the example in Step 1, access the API ML instance by creating or updating a [service profile](../user-guide/cli-using-using-team-profiles.md#zowe-cli-profile-types), or issuing a command, with the base path value of `ibmzosmf/api/v1`. Your service profile uses the token and credentials stored in your default base profile.
+2. Using the example in Step 1, you can access z/OSMF through the APIML instance on commands by adding the `--base-path ibmzosmf/api/v1` option. 
 
-    To create or update a service profile with the preceding base path in a **project** team configuration file:
+3. To make this persistent and avoid adding this to commands, create or update a [service profile](../user-guide/cli-using-using-team-profiles.md#zowe-cli-profile-types) with the preceding base path in a **project** team configuration file. 
 
-    ```
-    zowe config set profiles.zosmf.properties.basePath <basePath> 
-    ```
+        ```
+        zowe config set profiles.zosmf.properties.basePath <basePath> 
+        ```
+
+    Your service profile uses the token and credentials stored in your default base profile or the `--base-profile` option specified in the command.
 
     If you are using a **global** team configuration file (located in your home directory), add `--global-config` to the end of the command.
 
@@ -242,7 +245,7 @@ A scenario might exist where you log in to API ML with SSO, but you also want to
 In this case, your `zowe.config.json` file might look like the following client configuration:
 
 :::warning
-If using this code, replace the placeholder values (such as `123`) in the following snippet with your actual configuration details.
+If using this code, replace the placeholder values (such as `example.com`) in the following snippet with your actual configuration details.
 :::
 
 ```json showLineNumbers title="zowe.config.json"
@@ -256,11 +259,11 @@ If using this code, replace the placeholder values (such as `123`) in the follow
     },
     "profiles": {
         // highlight-start
-        "my_one_base_profile": {  // Base profile connection properties are used unless overriden
+        "my_one_base_profile": {  // Base profile connection properties are used unless overridden
             "type": "base",
             "properties": {
                 "host": "example.com",  // Both of the services are on this host
-                "port": 12345, // Place APIML port in the base profile
+                "port": 7554, // Place APIML port in the base profile
             }
         },
         "zosmf_thru_apiml": { // A profile for connecting to z/OSMF through APIML
@@ -273,7 +276,7 @@ If using this code, replace the placeholder values (such as `123`) in the follow
         "zosmf_direct": { // A profile for connecting directly to z/OSMF
             "type": "zosmf",
             "properties": {
-                "port": 1234 // Override the APIML port with the direct z/OSMF port
+                "port": 443 // Override the APIML port with the direct z/OSMF port
             },
             "secure": [
                 "user", // The user and password for the direct connection to z/OSMF
@@ -293,12 +296,12 @@ If using this code, replace the placeholder values (such as `123`) in the follow
         "ssh": {
             "type": "ssh",
             "properties": {
-                "port": 5678
+                "port": 22
             },
             "secure": [
-    "user",
-    "password"
-]
+                "user",
+                "password"
+            ]
         }
     },
     "autoStore": true
@@ -318,6 +321,7 @@ Use the configuration example to connect with z/OSMF using API ML's SSO feature:
     - This creates an authentication token that is stored on your computer. The `tokenType` property is also added to your base profile.
 4. Issue commands.
     - If you have multiple base profiles in your configuration, use the `--base-profile` option to specify which base profile to use with API ML.
+    - Since the z/OSMF API ML profile is set as default, you do not need add the `--zosmf-profile` option on commands.
 
 Use the configuration example to connect to z/OSMF directly:
 
@@ -327,6 +331,7 @@ Use the configuration example to connect to z/OSMF directly:
     - This port number should match the port on the mainframe through which applications can access the z/OSMF REST services. This port number overrides the port in the base profile. 
 3. Issue commands.
     - If you have multiple base profiles in your configuration, use the `--base-profile` option to specify which base profile to use for the host.
+    - Since the z/OSMF direct profile is not set as default, you need to add `--zosmf-profile zosmf_direct` on commands to use/activate/choose this profile.
 
 ### Accessing services through SSO and a service through API ML but not SSO
 
