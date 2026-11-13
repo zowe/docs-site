@@ -372,6 +372,19 @@ TTLSRule ZoweClientRule2
   LocalAddr All
   LocalPortRange 1024-65535
   RemoteAddr All
+  RemotePortRange 7556-7557 # App server and ZSS
+  Jobname ZWE1AG* # Set according to zowe.job.prefix in zowe.yaml + AG (API Gateway)
+  Direction Outbound
+  TTLSGroupActionRef ClientGroupAction
+  TTLSEnvironmentActionRef ZoweX509ClientEnvAction
+  TTLSConnectionActionRef ZoweX509ClientConnAction # X.509 Client Certificate Authentication is required in cross-service API ML communication
+}
+
+TTLSRule ZoweClientRule3
+{
+  LocalAddr All
+  LocalPortRange 1024-65535
+  RemoteAddr All
   RemotePortRange 7600-7601 # Caching service infinispan storage
   Jobname ZWE1AG* # Set according to zowe.job.prefix in zowe.yaml + AG (API Gateway)
   Direction Outbound
@@ -452,7 +465,7 @@ Services running off-host cannot use AT-TLS to make transparent https calls thou
 
 ```bash
 
-TTLSRule                            ZLUXApimlClientRule
+TTLSRule                            ApimlClientRule
 { 
   LocalAddr                         All
   RemoteAddr                        All
@@ -720,7 +733,7 @@ TTLSRule ApimlZosmfClientRule
 }
 
 # Example outbound rule from API Gateway to App server and ZSS.
-TTLSRule ApimlZLUXClientRule
+TTLSRule ZoweClientRule2
 {
   LocalAddr All
   LocalPortRange 1024-65535
@@ -887,7 +900,7 @@ TTLSConnectionAdvancedParms ZoweNoX509ClientConnAdvParms
 }
 
 # Example list of supported ciphers in handshake.
-# Note: These ciphers are TLSv1.3-specific. Validate and filter this list based on your local setup; if supporting TLSv1.2, update the list with TLSv1.2-compatible ciphers.
+# Note: These ciphers are TLSv1.2-specific. Validate and filter this list based on your local setup; if supporting TLSv1.3, update the list with TLSv1.3-compatible ciphers.
 TTLSCipherParms                   CipherParms
 {
   V3CipherSuites                  TLS_AES_128_GCM_SHA256
