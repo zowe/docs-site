@@ -950,7 +950,7 @@ TTLSConnectionAdvancedParms ZoweNoX509ClientConnAdvParms
 }
 
 # Example list of supported ciphers in handshake.
-# Note: These ciphers are TLSv1.3-specific. Validate and filter this list based on your local setup; if supporting TLSv1.2, update the list with TLSv1.2-compatible ciphers.
+# Note: These ciphers are TLSv1.2-specific. Validate and filter this list based on your local setup; if supporting TLSv1.3, update the list with TLSv1.3-compatible ciphers.
 TTLSCipherParms                   CipherParms
 {
   V3CipherSuites                  TLS_AES_128_GCM_SHA256
