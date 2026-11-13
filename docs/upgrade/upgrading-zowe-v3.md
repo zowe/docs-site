@@ -378,7 +378,7 @@ After you prepare your current Zowe instance, upgrade the Zowe runtime to v3.6.
 
 1. **Run the standard upgrade flow**
   
-   a. Install the Zowe v3.6 build.<!-- add link to install section -->  
+   a. Install the Zowe v3.6 build. For information about the available installation methods, see [Installing Overview](../user-guide/installing.md).
 
    b. Run the `zwe init` steps that apply to your installation, such as `zwe init mvs`, `zwe init apfauth`, `zwe init stc`, and `zwe init security`.  For more information about the zwe init options, see [Configuring Zowe with zwe init](../user-guide/initialize-zos-system.md).
 
@@ -402,7 +402,7 @@ Zowe v3.6 runs the following checks automatically each time it starts. For more 
 A failing check defaulting to `exit` prevents Zowe from starting.
 :::
 
-2. **Resolve failing checks as required**  
+1. **Resolve failing checks as required**  
 Alternatively, you can set the matching `zowe.launchScript.startupChecks.*` property to `warn` or `disabled`:
 
     ```yaml
