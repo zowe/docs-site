@@ -243,6 +243,7 @@ TTLSRule ZoweServerRule1
   TTLSGroupActionRef ServerGroupAction
   TTLSEnvironmentActionRef ZoweServerEnvironmentAction
   TTLSConnectionActionRef ZoweServerConnectionAction
+  Priority 10
 }
 
 TTLSRule ZoweServerRule2
@@ -250,11 +251,12 @@ TTLSRule ZoweServerRule2
   LocalAddr All
   RemoteAddr All
   LocalPortRange 7556-7557 # App server and ZSS
-  Jobname ZWE1* # Jobname according to zowe.job.prefix in zowe.yaml
+  Jobname ZWE* # Jobname according to zowe.job.prefix in zowe.yaml
   Direction Inbound
   TTLSGroupActionRef ServerGroupAction
   TTLSEnvironmentActionRef ZoweServerEnvironmentAction
   TTLSConnectionActionRef ZoweServerConnectionAction
+  Priority 5
 }
 
 TTLSRule ZoweServerRule3
@@ -267,6 +269,7 @@ TTLSRule ZoweServerRule3
   TTLSGroupActionRef ServerGroupAction
   TTLSEnvironmentActionRef ZoweServerEnvironmentAction
   TTLSConnectionActionRef ZoweServerConnectionAction
+  Priority 10
 }
 
 ```
@@ -292,7 +295,7 @@ The bolded letters in the jobnames identify the specific functional area of the 
   The Zowe Application Server (ZLUX) process.
 
 * **SV** (Server)  
-The Zowe server task (often used in cluster/HA modes).
+  The main Zowe server task (often used in cluster/HA modes).
 
 * **SZ** (Secure Services)  
 Zowe Secure Services (ZSS), which handles low-level z/OS security and system calls.
@@ -365,19 +368,6 @@ TTLSRule ZoweClientRule1
 }
 
 TTLSRule ZoweClientRule2
-{
-  LocalAddr All
-  LocalPortRange 1024-65535
-  RemoteAddr All
-  RemotePortRange 7556-7557 # App server and ZSS
-  Jobname ZWE1AG* # Set according to zowe.job.prefix in zowe.yaml + AG (API Gateway)
-  Direction Outbound
-  TTLSGroupActionRef ClientGroupAction
-  TTLSEnvironmentActionRef ZoweX509ClientEnvAction
-  TTLSConnectionActionRef ZoweX509ClientConnAction # X.509 Client Certificate Authentication is required in cross-service API ML communication
-}
-
-TTLSRule ZoweClientRule3
 {
   LocalAddr All
   LocalPortRange 1024-65535
@@ -473,6 +463,7 @@ TTLSRule                            ZLUXApimlClientRule
   TTLSGroupActionRef                ClientGroupAction
   TTLSEnvironmentActionRef          ZoweNoX509ClientEnvAction # No X.509 authentication
   TTLSConnectionActionRef           ZoweNoX509ClientConnAction # No X.509 authentication
+  Priority                          150
 }
 
 ```
@@ -701,20 +692,6 @@ TLSRule ZoweClientRule1
   TTLSConnectionActionRef ZoweX509ClientConnAction # X.509 Client Certificate Authentication is required in cross-service API ML communication
 }
 
-# Example outbound TTLS rule for Api Gateway calling App server and ZSS
-TTLSRule ZoweClientRule2
-{
-  LocalAddr All
-  LocalPortRange 1024-65535
-  RemoteAddr All
-  RemotePortRange 7556-7557 # App server and ZSS
-  Jobname ZWE1AG* # Set according to zowe.job.prefix in zowe.yaml + AG (API Gateway)
-  Direction Outbound
-  TTLSGroupActionRef ClientGroupAction
-  TTLSEnvironmentActionRef ZoweX509ClientEnvAction
-  TTLSConnectionActionRef ZoweX509ClientConnAction # X.509 Client Certificate Authentication is required in cross-service API ML communication
-}
-
 TTLSRule ZoweClientRule3
 {
   LocalAddr All
@@ -909,7 +886,8 @@ TTLSConnectionAdvancedParms ZoweNoX509ClientConnAdvParms
   TLSv1.3 On
 }
 
-# Example list of supported ciphers in handshake. Validate and filter this list based on local setup
+# Example list of supported ciphers in handshake.
+# Note: These ciphers are TLSv1.3-specific. Validate and filter this list based on your local setup; if supporting TLSv1.2, update the list with TLSv1.2-compatible ciphers.
 TTLSCipherParms                   CipherParms
 {
   V3CipherSuites                  TLS_AES_128_GCM_SHA256
