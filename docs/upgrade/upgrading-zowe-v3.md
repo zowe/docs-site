@@ -379,12 +379,23 @@ After you prepare your current Zowe instance, upgrade the Zowe runtime to v3.6.
 1. **Run the standard upgrade flow**
   
    a. Install the Zowe v3.6 build. For information about the available installation methods, see [Installing Overview](../user-guide/installing.md).
+   Once your installation is complete, the MVS datasets are created and defined in your zowe.yaml under `zowe.setup.dataset.prefix`. <!--find this in appendix and link to it -->
 
-   b. Run the `zwe init` steps that apply to your installation, such as `zwe init mvs`, `zwe init apfauth`, `zwe init stc`, and `zwe init security`.  For more information about the zwe init options, see [Configuring Zowe with zwe init](../user-guide/initialize-zos-system.md).
+   b. Run the `zwe init` to initialize your instance. Use the `zwe init` substeps  that apply to your installation, such as `zwe init mvs`, `zwe init apfauth`, `zwe init stc`, and `zwe init security`.  For more information about the `zwe init` options, see [Configuring Zowe with zwe init](../user-guide/initialize-zos-system.md).
+
+   :::note  
+   The zowe.yaml file is the required configuration file for the installation and initialization of Zowe. Review the structure of the zowe.yaml in [Zowe YAML server configuration file reference](../appendix/zowe-yaml-configuration.md) and customize according to your requirements.
+   :::
 
    c. Refresh the PROCLIB members. For command details see [zwe init stc](../appendix/zwe_server_command_reference/zwe/init/zwe-init-stc.md) in the reference section. 
+   :::tip
+   An alternative to refreshing the PROCLIB memebrs is to use the `--allow-overwrite` option in both your `zwe install` and `zwe init` commands. Using this option allows the use of the existing MVS dataset.
+   :::
+   Review the output of the comand to ensure 
+   that your datasets are properly inialized.
 
-    Existing SAF permissions and keyrings or keystores do not need to be set up again. Unless an SMP/E HOLD statement states otherwise, your certificates and security rules carry over to the new version as well.
+
+2. **Start your Zowe instance.** 
 
 :::info Expect automatic startup checks on the first start  
 Zowe v3.6 runs the following checks automatically each time it starts. For more information, see [z/OS pre-flight checks](../user-guide/zos-preflight.md).
@@ -402,7 +413,11 @@ Zowe v3.6 runs the following checks automatically each time it starts. For more 
 A failing check defaulting to `exit` prevents Zowe from starting.
 :::
 
-1. **Resolve failing checks as required**  
+:::note  
+Existing SAF permissions and keyrings or keystores do not need to be set up again. Unless an SMP/E HOLD statement states otherwise, your certificates and security rules carry over to the new version as well.
+:::
+
+4. **Resolve failing checks as required**  
 Alternatively, you can set the matching `zowe.launchScript.startupChecks.*` property to `warn` or `disabled`:
 
     ```yaml
@@ -420,13 +435,13 @@ Alternatively, you can set the matching `zowe.launchScript.startupChecks.*` prop
 Setting a check to `warn` or `disabled` hides a real misconfiguration. Use these values as a temporary measure, and resolve the underlying finding.
 :::
 
-1. **(Optional) Clear Infinispan persistence data**  
+5. **(Optional) Clear Infinispan persistence data**  
 If the Caching Service uses Infinispan storage, persistence data written by the earlier Infinispan version can prevent the service from starting after the upgrade. If this occurs, use the following procedure:
 
-  a. Stop Zowe.  
-  b. Remove the Infinispan persistence directory. Delete the contents or the folder located at:
+    a. Stop Zowe.  
+    b. Remove the Infinispan persistence directory. Delete the contents or the folder located at:
    `<zowe.workspaceDirectory>/caching-service`.  
-  c. Restart Zowe.
+    c. Restart Zowe.
 
 :::warning
 Removing the persistence directory clears all stored Caching Service data, including revoked Personal Access Tokens (PATs) and revoked Zowe JWTs.
@@ -453,7 +468,7 @@ After Zowe v3.6 starts, use the following checklist to confirm that the upgrade 
 - Confirm z/OSMF is reachable through the API Gateway by the `/ibmzosmf` route, not `/zosmf`.
 - (HA installations only) Confirm that on startup, Zowe creates `.zowe-<haInstance>-merged.yaml` in the workspace `.env` directory, and that `ZWE_HA_INSTANCE_CONFIG` points to that file.
 
-## System and Security Changes
+## System and Security Changes from Zowe v2 and v1
 
 :::note
 These changes apply to upgrades from Zowe v2 and v1. If you are upgrading from Zowe v3.5 or an earlier v3.x version, you can skip this section.
@@ -475,7 +490,7 @@ The following network changes are needed for added or removed servers:
 | files-api | Removed | 7559 | ZWE1EF | This component was deprecated in Zowe v2 and is now removed. Ensure that you switch to using equivalent z/OSMF endpoints. |
 | cloud-gateway | Removed | 7563 | ZWE1CG | The cloud-gateway has been removed as a standalone component and merged into the gateway. |
 
-## Configuration changes
+## Configuration changes from Zowe v2 and v1
 
 :::note
 These changes apply to upgrades from Zowe v2 and v1. If you are upgrading from Zowe v3.5 or an earlier v3.x version, you can skip this section. For v3.5 configuration changes, see [Upgrading from Zowe v3.5 (or earlier v3.x) to v3.6](#preparing-your-current-zowe-instance).
