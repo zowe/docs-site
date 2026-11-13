@@ -1030,6 +1030,7 @@ module.exports = {
 
     "appendix/zowe-cli-command-reference",
     "appendix/zowe-yaml-configuration",
+    "appendix/security-breaking-changes",
     {
       type: "category",
       label: "ZWE Server Command Reference",
