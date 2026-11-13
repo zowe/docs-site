@@ -153,6 +153,7 @@ module.exports = {
         {
           type: "category",
           label: "Installing",
+          link: { type: "doc", id: "user-guide/installing" },
           items: [
            {
               type: "category",
