@@ -705,6 +705,20 @@ TLSRule ZoweClientRule1
   TTLSConnectionActionRef ZoweX509ClientConnAction # X.509 Client Certificate Authentication is required in cross-service API ML communication
 }
 
+# Example outbound rule from API Gateway to App server and ZSS.
+TTLSRule ZoweClientRule2
+{
+  LocalAddr All
+  LocalPortRange 1024-65535
+  RemoteAddr All
+  RemotePortRange 7556-7557 # App server and ZSS
+  Jobname ZWE1AG* # Set according to zowe.job.prefix in zowe.yaml + AG (API Gateway)
+  Direction Outbound
+  TTLSGroupActionRef ClientGroupAction
+  TTLSEnvironmentActionRef ZoweNoX509ClientEnvAction
+  TTLSConnectionActionRef ZoweNoX509ClientConnAction # Do not send X.509 Client Certificate
+}
+
 TTLSRule ZoweClientRule3
 {
   LocalAddr All
@@ -725,20 +739,6 @@ TTLSRule ApimlZosmfClientRule
   LocalPortRange 1024-65535
   RemoteAddr All
   RemotePortRange 443 # z/OSMF Port
-  Jobname ZWE1AG* # Set according to zowe.job.prefix in zowe.yaml + AG (API Gateway)
-  Direction Outbound
-  TTLSGroupActionRef ClientGroupAction
-  TTLSEnvironmentActionRef ZoweNoX509ClientEnvAction
-  TTLSConnectionActionRef ZoweNoX509ClientConnAction # Do not send X.509 Client Certificate
-}
-
-# Example outbound rule from API Gateway to App server and ZSS.
-TTLSRule ZoweClientRule2
-{
-  LocalAddr All
-  LocalPortRange 1024-65535
-  RemoteAddr All
-  RemotePortRange 7556-7557 # App server and ZSS
   Jobname ZWE1AG* # Set according to zowe.job.prefix in zowe.yaml + AG (API Gateway)
   Direction Outbound
   TTLSGroupActionRef ClientGroupAction
@@ -900,7 +900,7 @@ TTLSConnectionAdvancedParms ZoweNoX509ClientConnAdvParms
 }
 
 # Example list of supported ciphers in handshake.
-# Note: These ciphers are TLSv1.2-specific. Validate and filter this list based on your local setup; if supporting TLSv1.3, update the list with TLSv1.3-compatible ciphers.
+# Note: These ciphers are for both TLSv1.2 & TLSv1.3. Validate and filter this list based on your local setup; if supporting TLSv1.2 only, update the list with TLSv1.2-compatible ciphers and if supporting TLSv1.3 only, update the list with TLSv1.3-compatible ciphers 
 TTLSCipherParms                   CipherParms
 {
   V3CipherSuites                  TLS_AES_128_GCM_SHA256
