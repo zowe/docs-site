@@ -375,29 +375,35 @@ zowe:
 ## Upgrading the runtime
 
 After you prepare your current Zowe instance, upgrade the Zowe runtime to v3.6.
-<!-- Standard upgrade flow ?? this should be reworded -->
-1. **Run the standard upgrade flow**
 
-   a. Install the Zowe v3.6 build. <!-- Need to link somewhere to Installing -->  
-   b. Run the `zwe init` steps that apply to your installation, such as `zwe init mvs`, `zwe init apfauth`, `zwe init stc`, and `zwe init security`.  
-   c. Refresh the PROCLIB members. <!-- Need to link somewhere how to do this -->
+1. **Run the standard upgrade flow**
+  
+   a. Install the Zowe v3.6 build.<!-- add link to install section -->  
+
+   b. Run the `zwe init` steps that apply to your installation, such as `zwe init mvs`, `zwe init apfauth`, `zwe init stc`, and `zwe init security`.  For more information about the zwe init options, see [Configuring Zowe with zwe init](../user-guide/initialize-zos-system.md).
+
+   c. Refresh the PROCLIB members. For command details see [zwe init stc](../appendix/zwe_server_command_reference/zwe/init/zwe-init-stc.md) in the reference section. 
 
     Existing SAF permissions and keyrings or keystores do not need to be set up again. Unless an SMP/E HOLD statement states otherwise, your certificates and security rules carry over to the new version as well.
 
-2. **Expect automatic startup checks on the first start**
+:::info Expect automatic startup checks on the first start  
+Zowe v3.6 runs the following checks automatically each time it starts. For more information, see [z/OS pre-flight checks](../user-guide/zos-preflight.md).
 
-    Zowe v3.6 runs the following checks automatically each time it starts. For more information, see [z/OS pre-flight checks](../user-guide/zos-preflight.md).
+| Startup check | Default behavior | Override property |
+|---------------|------------------|-------------------|
+| Certificate | `exit` | `zowe.launchScript.startupChecks.certificate` |
+| User superuser check | `exit` | `zowe.launchScript.startupChecks.user` |
+| Components | `warn` | <!-- TODO: confirm property --> |
+| Java dependency check | Enforce Java 17 or 21 |  Set `java.home` to the appropriate library if the version has changed from the one in your previous installation. |
+| Node dependency check | Enforce Node 18-24  |  Set `node.home` to the appropriate library if the version has changed from the one in your previous installation. |
+| z/OSMF JWT (`zosmfjwt`) | `exit` | `zowe.launchScript.startupChecks.zosmfjwt` |
 
-    | Startup check | Default behavior | Override property |
-    |---------------|------------------|-------------------|
-    | Certificate | `exit` | `zowe.launchScript.startupChecks.certificate` |
-    | User superuser check | `exit` | `zowe.launchScript.startupChecks.user` |
-    | Components | `warn` | <!-- TODO: confirm property --> |
-    | Java dependency check | Enforce Java 17 or 21 |  Set `java.home` to the appropriate library if the version has changed from the one in your previous installation. |
-    | Node dependency check | Enforce Node 18-24  |  Set `node.home` to the appropriate library if the version has changed from the one in your previous installation. |
-    | z/OSMF JWT (`zosmfjwt`) | `exit` | `zowe.launchScript.startupChecks.zosmfjwt` |
 
-    A failing check defaulting to `exit` prevents Zowe from starting. Resolve the failing check<!-- maybe we need more guidance here? --> or set the matching `zowe.launchScript.startupChecks.*` property to `warn` or `disabled`:
+A failing check defaulting to `exit` prevents Zowe from starting.
+:::
+
+2. **Resolve failing checks as required**  
+Alternatively, you can set the matching `zowe.launchScript.startupChecks.*` property to `warn` or `disabled`:
 
     ```yaml
     zowe:
@@ -410,26 +416,25 @@ After you prepare your current Zowe instance, upgrade the Zowe runtime to v3.6.
           # javaMin/javaMax and nodeMin/nodeMax govern the dependency checks
     ```
 
-     :::note
-      Setting a check to `warn` or `disabled` hides a real misconfiguration. Use these values as a temporary measure, and resolve the underlying finding.
-      :::
+:::note
+Setting a check to `warn` or `disabled` hides a real misconfiguration. Use these values as a temporary measure, and resolve the underlying finding.
+:::
 
-3. **(Optional) Clear Infinispan persistence data**
+1. **(Optional) Clear Infinispan persistence data**  
+If the Caching Service uses Infinispan storage, persistence data written by the earlier Infinispan version can prevent the service from starting after the upgrade. If this occurs, use the following procedure:
 
-    If the Caching Service uses Infinispan storage, persistence data written by the earlier Infinispan version can prevent the service from starting after the upgrade. If this occurs, use the following procedure:
-
-      a. Stop Zowe.  
-      b. Remove the Infinispan persistence directory. Delete the contents or the folder located at:
+  a. Stop Zowe.  
+  b. Remove the Infinispan persistence directory. Delete the contents or the folder located at:
    `<zowe.workspaceDirectory>/caching-service`.  
-      c. Restart Zowe.
+  c. Restart Zowe.
 
-    :::warning
-    Removing the persistence directory clears all stored Caching Service data, including revoked Personal Access Tokens (PATs) and revoked Zowe JWTs.
-    :::
+:::warning
+Removing the persistence directory clears all stored Caching Service data, including revoked Personal Access Tokens (PATs) and revoked Zowe JWTs.
+:::
 
-    :::note
-    On Java 21 and later, virtual threads are automatically disabled on z/OS. To control this behavior explicitly, use the `storage.infinispan.useVirtualThreads` property of the Caching Service.
-    :::
+:::note  
+On Java 21 and later, virtual threads are automatically disabled on z/OS. To control this behavior explicitly, use the `storage.infinispan.useVirtualThreads` property of the Caching Service.
+:::
 
 ## Verifying the upgrade
 
