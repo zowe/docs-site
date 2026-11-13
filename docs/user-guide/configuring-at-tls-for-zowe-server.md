@@ -388,7 +388,7 @@ TTLSRule                            ZoweTrustClientRule
 }
 
 # Optional, set if enabling Caching Service with infinispan storage mode
-TTLSRule ZoweClientRule2
+TTLSRule ZoweClientRule
 {
   LocalAddr All
   LocalPortRange 1024-65535
@@ -414,7 +414,7 @@ Note the following conditions:
 #### Outbound rule for communication between API Gateway and southbound services
 
 In this example, the rule covers all outbound connections originating from the API Gateway and API Catalog to a server which is not part of Zowe, such as an extension's server, listening on port `8080`.
-Such a rule can apply to any remote destination, as seen in the `ZoweClientRule` for Zowe core servers in the section [Outbound rules for z/OSMF](./configuring-at-tls-for-zowe-server.md#outbound-rule-for-zosmf).
+Such a rule can apply to any remote destination, as seen in the `ApimlZosmfClientRule` for Zowe core servers in the section [Outbound rules for z/OSMF](./configuring-at-tls-for-zowe-server.md#outbound-rule-for-zosmf).
 
 <details>
 <summary>Click to view an example of a rule covering API Gateway to extension servers.</summary>
@@ -473,7 +473,7 @@ Example:
 
 ```bash
 
-TTLSRule                            ZLUXApimlClientRule
+TTLSRule                            ApimlClientRule
 { 
   LocalAddr                         All
   RemoteAddr                        All
@@ -680,7 +680,7 @@ TTLSRule ZoweServerRule
 }
 
 # Inbound rules for all App server and ZSS.
-TTLSRule ZoweServerRule
+TTLSRule ZoweServerRule2
 {
   LocalAddr All
   RemoteAddr All
@@ -769,7 +769,7 @@ TTLSRule                            ZoweTrustClientRule
 }
 
 # Optional, set if enabling Caching Service with infinispan storage mode
-TTLSRule ZoweClientRule2
+TTLSRule ZoweClientRule
 {
   LocalAddr All
   LocalPortRange 1024-65535
@@ -950,7 +950,7 @@ TTLSConnectionAdvancedParms ZoweNoX509ClientConnAdvParms
 }
 
 # Example list of supported ciphers in handshake.
-# Note: These ciphers are TLSv1.2-specific. Validate and filter this list based on your local setup; if supporting TLSv1.3, update the list with TLSv1.3-compatible ciphers.
+# Note: These ciphers are for both TLSv1.2 and TLSv1.3. Validate and filter this list based on your local setup; if supporting TLSv1.3 only, update the list with TLSv1.3-compatible ciphers. if supporting TLSv1.2 only, update the list with TLSv1.2-compatible ciphers.
 TTLSCipherParms                   CipherParms
 {
   V3CipherSuites                  TLS_AES_128_GCM_SHA256
