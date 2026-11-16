@@ -85,6 +85,14 @@ For required configuration changes and mitigation steps, see [API ML v3.6 upgrad
 
 ### Zlux Server Framework
 
+:::warning Breaking change
+
+The unauthenticated `/server/proxies` endpoint has been removed. ([#703](https://github.com/zowe/zlux-server-framework/pull/703))
+
+The endpoint exposed the ZSS hostname and port to unauthenticated users. Any script, plug-in, or monitoring that calls `/server/proxies` will no longer work. The agent hostname is now available through the authenticated `/server/environment` response (`agent.host`). Plug-ins can retrieve it with `ZoweZLUX.environment.getAgentHost()`.
+
+:::
+
 - RBAC can now be used on for WebSocket dataservices, which will use the 'GET' method for SAF profiles. ([#710](https://github.com/zowe/zlux-server-framework/pull/710))
 - Added RBAC support for WebSocket dataservices so that administrators can control who can access them. ([#704](https://github.com/zowe/zlux-server-framework/pull/704))
 - Added authenticated access to the agent hostname so administrators can securely configure plugins to connect to the correct host. ([#703](https://github.com/zowe/zlux-server-framework/pull/703))
@@ -111,6 +119,37 @@ For required configuration changes and mitigation steps, see [API ML v3.6 upgrad
 
 ### ZSS
 
+:::warning Breaking change
+
+The built-in ZIS services now perform SAF authorization checks by default. ([#852](https://github.com/zowe/zss/pull/852))
+
+With the exception of the authentication (`AUTH`) service, the following services now require access to a profile in the `FACILITY` class. Callers without access are refused, so features that depend on these services can stop working until you grant access.
+
+| Service | `FACILITY` profile | Access required | PARMLIB switch to disable |
+|-|-|-|-|
+| Network management | `ZWES.IS.SRV.NWM` | `READ` | `ZWES.SRV.NWM.SAF` |
+| Snarfer | `ZWES.IS.SRV.SNARFER` | `READ` | `ZWES.SRV.SNARFER.SAF` |
+| User profiles | `ZWES.IS.SRV.SM.USRPROF` | `READ` | `ZWES.SRV.SM.USRPROF.SAF` |
+| General resource profiles | `ZWES.IS.SRV.SM.GENPROF` | `READ` | `ZWES.SRV.SM.GENPROF.SAF` |
+| General resource access lists | `ZWES.IS.SRV.SM.GENACL` | `READ` | `ZWES.SRV.SM.GENACL.SAF` |
+| General resource profile administration | `ZWES.IS.SRV.SM.GENADM` | `UPDATE` | `ZWES.SRV.SM.GENADM.SAF` |
+| Group profiles | `ZWES.IS.SRV.SM.GRPPROF` | `READ` | `ZWES.SRV.SM.GRPPROF.SAF` |
+| Group access lists | `ZWES.IS.SRV.SM.GRPACL` | `READ` | `ZWES.SRV.SM.GRPACL.SAF` |
+| Group administration | `ZWES.IS.SRV.SM.GRPADM` | `UPDATE` | `ZWES.SRV.SM.GRPADM.SAF` |
+| Authentication (`AUTH`) | `ZWES.IS.SRV.AUTH` | `UPDATE` | `ZWES.SRV.AUTH.SAF` (the check is off by default; set to `ON` to enable) |
+
+**Required action:**
+
+Define the profiles and permit the appropriate users before you upgrade, or disable the check for individual services by setting the PARMLIB switch to `OFF`. For example:
+
+```
+RDEFINE FACILITY ZWES.IS.SRV.NWM UACC(NONE)
+PERMIT ZWES.IS.SRV.NWM CLASS(FACILITY) ID(<userid>) ACCESS(READ)
+SETROPTS RACLIST(FACILITY) REFRESH
+```
+
+:::
+
 - ZSS is now built with the same `QuickJS` engine as `configmgr`, from `zowe/quickjs-portable` staging (the 2024-01-13 port), instead of the 2021-03-27 engine from `joenemo/quickjs-portable`; `build_zss.sh` and `build_zss64.sh` add the `libbf` big-number sources that engine needs. ([#875](https://github.com/zowe/zss/pull/875))
 -	Updated ZSS startup to use the HA instance’s merged configuration, so instance-specific settings such as ports are honored while non-HA startup continues using the global configuration. ([#826](https://github.com/zowe/zss/pull/826))
 -	Added active PC caller tracking so shutdown returns RC 30 to new callers, waits for in-flight callers before freeing resources, and reports the caller count, preventing `ABENDs` during termination. ([#569](https://github.com/zowe/zowe-common-c/pull/569))
@@ -122,7 +161,25 @@ For required configuration changes and mitigation steps, see [API ML v3.6 upgrad
 
 ### Basic TN3270 Display Emulator
 
--	Updated the terminal status bar to show `Connection forbidden` when the server blocks a host via an allowlist, so users can distinguish an access restriction from a generic WebSocket error. ([#113](https://github.com/zowe/tn3270-ng2/pull/113))
+-	Updated the terminal status bar to show `Connection forbidden` when the server blocks a host via an allowlist, so users can distinguish an access restriction from a generic WebSocket error. ([#113](https://github.com/zowe/tn3270-ng2/pull/113), [#118](https://github.com/zowe/tn3270-ng2/pull/118))
+
+### Basic VT Terminal Emulator
+
+-	Updated the terminal status bar to show `Connection forbidden` when the server blocks a host or port via an allowlist, so users can distinguish an access restriction from a generic WebSocket error. ([#83](https://github.com/zowe/vt-ng2/pull/83), [#89](https://github.com/zowe/vt-ng2/pull/89))
+
+### IP Explorer
+
+:::warning Breaking change
+
+IP Explorer now runs network management (NWM) requests under the identity of the signed-in user instead of the Zowe server's identity. ([#56](https://github.com/zowe/explorer-ip/pull/56))
+
+Previously, every connection, listener, port, and TCP/IP stack query was issued as the Zowe server started task, so any authenticated Desktop user could view all TCP/IP network information regardless of their own authority. Now, z/OS Communications Server and the optional ZIS `ZWES.IS.SRV.NWM` check authorize each request against the individual user. Users who previously relied on the server's authority see errors or empty results in IP Explorer until they are permitted.
+
+**Required action:**
+
+Permit each user who needs IP Explorer to the `EZB.NETMGMT.<sysname>.<tcpname>.*` profiles in the `SERVAUTH` class for each TCP/IP stack they need to view. If the ZIS network management service SAF check is enabled, also permit the user to the `ZWES.IS.SRV.NWM` profile in the `FACILITY` class.
+
+:::
 
 
 
@@ -294,8 +351,8 @@ Zowe server Version 3.6.0 contains the bug fixes that are described in the follo
 -	Fixed `ICSF` digest buffer sizing so `SHA-384` and `SHA-512` hashes can be generated without buffer overflows or memory corruption. ([#594](https://github.com/zowe/zowe-common-c/issues/594))
 -	Fixed logging component-ID traversal to prevent an out-of-bounds memory read on every call on little-endian systems, avoiding undefined behavior. ([#667](https://github.com/zowe/zowe-common-c/pull/667))
 -	Fixed this non-z/OS linking failure by implementing the missing `POSIX` inode and device-ID accessors and the Windows device-ID accessor, allowing file-identity operations such as `ETag` generation to link successfully. ([#666](https://github.com/zowe/zowe-common-c/pull/666))
-- Fixed `directoryMakeDirectoryRecursive()` so that it now publishes the required size of its path-out buffer as `USS_MKDIR_PATH_BUFFER_SIZE` and rejects a `messageLength` below it, returning `-1` before anything is created. ([]())
--	Fixed recursive directory creation to support valid USS paths up to 1,023 characters and reject only longer paths, preventing the buffer overrun and `0C4 ABEND` that occurred above 255 characters. ([]())
+- Fixed `directoryMakeDirectoryRecursive()` so that it now publishes the required size of its path-out buffer as `USS_MKDIR_PATH_BUFFER_SIZE` and rejects a `messageLength` below it, returning `-1` before anything is created. ([#655](https://github.com/zowe/zowe-common-c/pull/655))
+-	Fixed recursive directory creation to support valid USS paths up to 1,023 characters and reject only longer paths, preventing the buffer overrun and `0C4 ABEND` that occurred above 255 characters. ([#655](https://github.com/zowe/zowe-common-c/pull/655))
 -	Fixed recursive directory copying and deletion to now operate on symbolic links themselves instead of following them. Now, the symbolic links themselves are copied or deleted. Previously, during recursive directory copying or deletion, the program followed symbolic links to operate on the actual files they pointed to. ([#643](https://github.com/zowe/zowe-common-c/pull/643))
 -	Fixed a buffer overflow issue in directory-related APIs that, in rare cases, caused incorrect directory listing. ([#643](https://github.com/zowe/zowe-common-c/pull/643))
 -	Fixed duplicate `YAML` key handling so configmgr and the launcher use the same configuration: the first value is kept with a warning, preventing silent value changes or template-evaluation failures. ([#581](https://github.com/zowe/zowe-common-c/issues/581))
@@ -329,3 +386,8 @@ Zowe server Version 3.6.0 contains the bug fixes that are described in the follo
 -	Fixed `debug` logging to record only prompt lengths, keeping potentially sensitive prompt values out of logs while retaining length information for troubleshooting. ([#107](https://github.com/zowe/tn3270-ng2/pull/107))
 -	Fixed the default `TN3270` connection settings to use TLS on port `992` instead of unencrypted Telnet on port `23`, so users connect securely without manual configuration. ([#111](https://github.com/zowe/tn3270-ng2/pull/111))
 
+
+### IP Explorer
+
+-	Fixed log injection in the IP Explorer data service by removing control characters from query-string filter values before they are written to the log, preventing crafted requests from forging log entries. ([#55](https://github.com/zowe/explorer-ip/pull/55))
+-	Fixed a NULL-pointer dereference in the ports query that occurred when the reserved name filter was not specified. ([#59](https://github.com/zowe/explorer-ip/pull/59))
