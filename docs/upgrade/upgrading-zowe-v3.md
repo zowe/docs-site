@@ -115,6 +115,10 @@ After you upgrade, unauthenticated requests to the API Gateway `/application/inf
     * `zwe init certificate` now generates a random password when `zowe.setup.certificate.pkcs12.password` or `zowe.setup.certificate.pkcs12.caPassword` is left at the default value. This applies to keystore scenarios only; keyring scenarios are unaffected. Update any automation that relies on the literal default password before you re-run certificate initialization. See [zwe init certificate](../appendix/zwe_server_command_reference/zwe/init/zwe-init-certificate.md).
     * At startup in HA mode, Zowe writes a merged configuration file for each HA instance to the workspace `.env` directory. See [Upgrading Zowe in HA for zero downtime](./upgrade-zowe-no-downtime.md).
 
+:::note Single-service deployment and Caching Service storage
+ If you already run API ML in single-service deployment mode, or plan to enable it (recommended from Zowe v3.4.0), the Caching Service must use Infinispan storage. Set `components.caching-service.storage.mode` to `infinispan`. Other storage modes, such as VSAM, are not supported in single-service deployment mode. Infinispan also requires additional ports. For details, see [Enabling single-service deployment of API Mediation Layer](../user-guide/api-mediation/api-mediation-modulith.md) and [Caching Service Infinispan ports](../user-guide/address-network-requirements.md#caching-service-infinispan-ports).
+:::
+
 Proceed to the [**Upgrading the runtime**](#upgrading-the-runtime) section to complete your upgrade to v3.6.
 
 </details>
@@ -140,10 +144,10 @@ Set `components.gateway.apiml.security.auth.provider` explicitly to `zosmf` or `
               provider: zosmf # or saf
     ```
 
-2. **Verify runtime levels.**  
+1. **Verify runtime levels.**  
 Confirm that the Java and Node.js versions meet the [prerequisites](#prerequisites-for-zowe-v36). Update `java.home` and `node.home` in `zowe.yaml` if the versions have changed from those in your 2.18.x installation. 
 
-3. **Verify z/OSMF JWT support.**  
+1. **Verify z/OSMF JWT support.**  
 Confirm that z/OSMF JWT support is available, as described in the [prerequisites](#prerequisites-for-zowe-v36). If z/OSMF JWT support is not available, choose one of the following actions:
     - Apply or enable JWT support. For more information, see [Enabling JSON Web Token support](https://www.ibm.com/docs/en/zos/3.1.0?topic=configurations-enabling-json-web-token-support) in the IBM documentation.
     - Set `jwtAutoconfiguration` to `ltpa` (not usable with hardware-accelerated ICSF keyrings).
@@ -168,7 +172,7 @@ Confirm that z/OSMF JWT support is available, as described in the [prerequisites
     If z/OSMF is not used for login, no JWT setup is needed.
     :::
 
-4. **Identify consumers of unauthenticated operational endpoints.**  
+1. **Identify consumers of unauthenticated operational endpoints.**  
 Identify any monitoring probes, readiness checks, and automation that call the following endpoints without credentials:
     * `/application/info`
     * `/application/version`
@@ -178,7 +182,7 @@ Identify any monitoring probes, readiness checks, and automation that call the f
 
     Update the identified clients to send credentials (Basic authentication or a Bearer JWT). Alternatively, if you choose to accept the exposure, set `components.gateway.apiml.health.protected` to `false`.
 
-5. **Add registration metadata hosts to the allowlist.**  
+1. **Add registration metadata hosts to the allowlist.**  
 Zowe v3.6 validates the hosts in service registration metadata against `zowe.network.allowedDomains`. The defaults cover `externalDomains` and high availability (HA) hostnames only. Add services that register URL metadata (such as `instanceBaseUrls`, API documentation or Swagger URLs, or `corsAllowedOrigins`) from other hosts to `zowe.network.allowedDomains` before you upgrade.
 
   :::note
@@ -195,6 +199,11 @@ Review the [System and Security Changes](#system-and-security-changes) and [Conf
     * `zowe.useConfigmgr=false` and the gateway internal server are no longer supported.
 
     For the complete list of changes, see [Important API ML updates in Zowe v3](../whats-new/breaking-changes-v3.md#important-api-ml-updates-in-zowe-v3).
+
+:::note Caching Service storage and single-service deployment
+In Zowe v3, the Caching Service defaults to Infinispan storage instead of VSAM. VSAM is still supported, but it is deprecated and not recommended. If you plan to enable single-service deployment of API ML (recommended from Zowe v3.4.0), you must use Infinispan, because single-service deployment does not support other storage modes. For details, see [Enabling single-service deployment of API Mediation Layer](../user-guide/api-mediation/api-mediation-modulith.md) and [Upgrading to single-service API ML deployment](./upgrade-to-single-service-apiml-deployment.md).
+:::
+
 
 You can now proceed to the [**Upgrading the runtime**](#upgrading-the-runtime) and [**Configuration changes**](#configuration-changes) sections to complete your upgrade to v3.6.
 
@@ -229,9 +238,9 @@ Ensure the following `zowe.network` section is added to your `zowe.yaml` file:
           tls:
             attls: false
     ```
-2. **Update PROCLIB entries.**  
+1. **Update PROCLIB entries.**  
 Enhancements and default parameters have changed throughout Zowe v2. This can be performed with the UNIX command `zwe init stc`, by running the job `ZWEISTC`, or by copying the `SZWESAMP` members `ZWESLSTC`, `ZWESISTC`, and `ZWESASTC` into your desired PROCLIB.
-3. **Verify keyring slashes.**  
+1. **Verify keyring slashes.**  
 If you use keyrings, verify that Zowe YAML references to `safkeyring`. Use two forward slashes (`safkeyring://`). Do not use four forward slashes (`safkeyring:////`).
 
 You can now proceed to [upgrading to Zowe v3.6](#upgrading-from-zowe-v218x-to-v36).
