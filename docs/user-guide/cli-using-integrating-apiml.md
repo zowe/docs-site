@@ -8,6 +8,12 @@ Tokens allow you to access services through API ML without reauthenticating ever
 
 Tokens can be obtained by logging into API ML with a username and password, or a client certificate.
 
+:::note
+
+The `allowedLoginMethod` property in your configuration file configures which prompts you see when logging onto API ML. To understand how this property works, or to change the setting, see [Configuring prompts for credentials](./cli-authentication-methods.md#configuring-prompts-for-credentials).
+
+:::
+
 ## How token management works
 
 When you log in with Zowe CLI, an API ML token is supplied and stored on your computer to be used in place of a username and password. The token provides a secure handshake with API ML when you issue commands so that you do not need to reauthenticate until the token expires.
