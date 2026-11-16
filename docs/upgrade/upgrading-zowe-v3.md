@@ -439,6 +439,10 @@ After you prepare your current Zowe instance, upgrade the Zowe runtime to v3.6. 
 4. **Review the automatic startup checks.**  
    Zowe v3.6 runs the following checks automatically each time it starts. For more information, see [z/OS pre-flight checks](../user-guide/zos-preflight.md).
 
+   :::tip
+   If failure occurs during startup validation, we reccommend you set `zowe.launchScript.logLevel` to `debug` (or `trace` for more detail) to write additional startup diagnostics to the Zowe log. 
+   :::
+
    | Startup check | Default behavior | Override property |
    |---------------|------------------|-------------------|
    | Certificate | `exit` | `zowe.launchScript.startupChecks.certificate` |
