@@ -69,9 +69,16 @@ If you are using certificates from the OS keychain, by default VS Code routes al
 To fix this, disable the VS Code **HTTP: Proxy** (`http:proxy`) setting by changing the value to either `fallback` (recommended) or `off` in order to use certificates from the OS keychain. Then close and reopen VS Code to activate the change.
 :::
 
-
 ## Multi-factor authentication (MFA) support
 
 Zowe Explorer supports multi-factor authentication used with basic authentication (using a username and password) and single-sign on when logging in with a username and password. 
 
 To learn how use MFA with Zowe Explorer, see [Using multi-factor authentication](../user-guide/cli-authentication-methods.md#using-multi-factor-authentication-mfa) in the Zowe CLI documentation.
+
+## Configuring prompts for credentials
+
+Use the `allowedLoginMethod` property in your configuration file to control which types of the preceding credentials (except MFA) a user is prompted for and whether Zowe Explorer uses API ML or contacts the service directly.
+
+For Zowe Explorer, the `allowedLoginMethod` property also controls which options display in the **Manage Profile** menu when you select a profile from a tree view. 
+
+To understand how this property works, or to change the setting, see [Configuring prompts for credentials](./cli-authentication-methods.md#configuring-prompts-for-credentials).

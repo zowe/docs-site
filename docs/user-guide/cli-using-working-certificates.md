@@ -1,7 +1,15 @@
 # Working with certificates
 
 Certificates authorize communication between a server and client, such as z/OSMF and Zowe CLI. The client CLI must "trust" the server to successfully issue commands. Use one of the following methods to let the CLI communicate with the server.
+
+:::note
+
+The `allowedLoginMethod` property in your configuration file configures which prompts you see when logging onto a mainframe service, including settings for logging in with certificates. To understand how this property works, or to change the setting, see [Configuring prompts for credentials](./cli-authentication-methods.md#configuring-prompts-for-credentials).
+
+:::
+
 ## Configure certificates signed by a Certificate Authority (CA)
+
 System administrators can configure the server with a certificate signed by a Certificate Authority (CA) trusted by Mozilla. When a CA trusted by Mozilla exists in the certificate chain, the CLI automatically recognizes the server and authorizes the connection.
 
 :::info find out more

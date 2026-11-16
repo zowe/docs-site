@@ -24,3 +24,9 @@ API Mediation Layer<br/><br/> **Note**: To avoid errors, update profiles for ser
 Db2, <br/> FTP,<br/> most other services | username, password
 SSH | 1. SSH key<br/> 2. username, password
  ZOSMF<br/> direct connection | 1. username, password<br/> 2. PEM certificate
+
+## Configuring prompts for credentials
+
+Use the `allowedLoginMethod` property in configuration files to control which types of credentials a user is prompted for and whether Zowe CLI or Zowe Explorer uses API ML or contacts the service directly.
+
+Learn how this property works in [Configuring prompts for credentials](../../user-guide/cli-authentication-methods.md#configuring-prompts-for-credentials).
