@@ -112,6 +112,10 @@ Review the [System and Security Changes](#system-and-security-changes) and [Conf
     * Keyring `keystore` and `truststore` passwords use the literal value `password`.
     * `zowe.useConfigmgr=false` and the gateway internal server are no longer supported.
 
+:::note Caching Service storage and single-service deployment
+In Zowe v3, the Caching Service defaults to Infinispan storage instead of VSAM. VSAM is still supported, but it is deprecated and not recommended. If you plan to enable single-service deployment of API ML (recommended from Zowe v3.4.0), you must use Infinispan, because single-service deployment does not support other storage modes. For details, see [Enabling single-service deployment of API Mediation Layer](https://docs.zowe.org/stable/user-guide/api-mediation/api-mediation-modulith/) and [Upgrading to single-service API ML deployment](https://docs.zowe.org/stable/upgrade/upgrade-to-single-service-apiml-deployment/).
+:::
+
 You should proceed to the [**Upgrading the runtime**](#upgrading-the-runtime) and [**Configuration changes**](#configuration-changes) sections to complete your upgrade to v3.6.
 
 </details>

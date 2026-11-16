@@ -80,6 +80,10 @@ The property `components.gateway.apiml.service.allowEncodedSlashes` is removed. 
 
 For other Zowe v3.6 changes that can affect your environment, such as authenticated actuator endpoints, the service registration domain allowlist, and the z/OSMF JWT startup check, see [Upgrading to Zowe v3.6 from all 3.x versions](https://docs.zowe.org/stable/upgrade/upgrading-zowe/#upgrading-to-zowe-v36-from-all-3x-versions).
 
+:::note Single-service deployment and Caching Service storage
+If you already run API ML in single-service deployment mode, or plan to enable it (recommended from Zowe v3.4.0), the Caching Service must use Infinispan storage. Set `components.caching-service.storage.mode` to `infinispan`. Other storage modes, such as VSAM, are not supported in single-service deployment mode. Infinispan also requires additional ports. For details, see [Enabling single-service deployment of API Mediation Layer](https://docs.zowe.org/stable/user-guide/api-mediation/api-mediation-modulith/) and [Caching Service Infinispan ports](../user-guide/address-network-requirements.md#caching-service-infinispan-ports).
+:::
+
 Proceed to the [**Upgrading the runtime**](#upgrading-the-runtime) section to complete your upgrade to v3.6.
 
 </details>
@@ -160,8 +164,12 @@ Review the [System and Security Changes](#system-and-security-changes) and [Conf
     * Keyring `keystore` and `truststore` passwords use the literal value `password`.
     * `zowe.useConfigmgr=false` and the gateway internal server are no longer supported.
 
-    For the complete list of changes, see [Important API ML updates in Zowe v3](../whats-new/breaking-changes-v3.md#important-api-ml-updates-in-zowe-v3).
+    For the complete list of changes, see [Important API ML updates in Zowe v3](../whats-new/breaking-changes-v3.md#important-api-ml-updates).
 <!-- TODO: confirm the exact article title of breaking-changes-v3.md -->
+
+:::note Caching Service storage and single-service deployment
+In Zowe v3, the Caching Service defaults to Infinispan storage instead of VSAM. VSAM is still supported, but it is deprecated and not recommended. If you plan to enable single-service deployment of API ML (recommended from Zowe v3.4.0), you must use Infinispan, because single-service deployment does not support other storage modes. For details, see [Enabling single-service deployment of API Mediation Layer](https://docs.zowe.org/stable/user-guide/api-mediation/api-mediation-modulith/) and [Upgrading to single-service API ML deployment](https://docs.zowe.org/stable/upgrade/upgrade-to-single-service-apiml-deployment/).
+:::
 
 You should proceed to the [**Upgrading the runtime**](#upgrading-the-runtime) and [**Configuration changes**](#configuration-changes) sections to complete your upgrade to v3.6.
 
