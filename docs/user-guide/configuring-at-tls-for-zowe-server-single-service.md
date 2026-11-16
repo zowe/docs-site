@@ -228,9 +228,11 @@ This parameter is used for outbound rules that do not require or prohibit X.509 
 
 ### Inbound rules
 
-1. Define a generic inbound rule that can be set for all Zowe services. Note that port 7555 is excluded intentionally in order to allow for compatibility with multi-service deployment mode. As such, the configuration is split into two inbound rules as presented in the following rules section:
+1. Define generic inbound rules that can be set for all Zowe services. Note that port 7555 is excluded intentionally in order to allow for compatibility with multi-service deployment mode. As such, the configuration is split into multiple inbound rules as presented in the following rules section:
 
-**Note:** Rules can be unified into one if they are using contiguous ports.
+:::note
+Rules can be combined into a single rule if their port ranges are contiguous.
+:::
 
 ```bash
 TTLSRule ZoweServerRule1
@@ -322,7 +324,7 @@ Zowe Secure Services (ZSS), which handles low-level z/OS security and system cal
 
     iii.  (Optional) Separate rules by certificate requirements.  
 
-    * For services that __require__ X.509 client certificate authentication (e.g., Discovery Service, API Gateway Service), keep `HandshakeRole` as `ServerWithClientAuth`.
+    * For services that __require__ X.509 client certificate authentication (for example, Discovery Service, API Gateway), keep `HandshakeRole` as `ServerWithClientAuth`.
     * For services that __do not require__ X.509 client certificates (e.g., App Server and ZSS), create separate TTLS rules with `HandshakeRole` as `Server`.
       
    :::note
@@ -629,9 +631,10 @@ Ensure you collect the logs and current configurations when contacting support.
 #### AT-TLS setup in ACF2 with TLSv1.3 or TLSv1.2 with Hardware Ciphers
 
 In an ACF2 environment, setting up AT-TLS with TLSv1.3 or TLSv1.2 using modern hardware ciphers like Elliptic Curve (ECC) can trigger a `CRYPTOZ` class violation for the `CLEARKEY.SYSTOK-SESSION-ONLY` resource.
-This occurs because negotiating these advanced cipher suites and key exchange algorithms requires cryptographic processing via ICSF PKCS#11 callable services.
+This violation occurs because negotiating these advanced cipher suites and key exchange algorithms requires cryptographic processing via ICSF PKCS#11 callable services.
 ICSF uses a temporary, in-memory "session-only" token to manage the clear keys during the handshake. By default, ACF2 secures this virtual token under the `CRYPTOZ` resource class.
-To resolve the violation and allow the Zowe user (ZWESVUSR) to read this "omnipresent" session token, you must grant `READ` access to `CLEARKEY.SYSTOK-SESSION-ONLY` with a rule such as:
+To resolve the violation and allow the Zowe user (ZWESVUSR) to read this "omnipresent" session token, you must grant `READ` access to `CLEARKEY.SYSTOK-SESSION-ONLY` with a rule such as in the follwoing example:
+**Example:**
 
 ```markup
 SET RESOURCE(CRY)
