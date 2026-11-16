@@ -431,7 +431,14 @@ The following are recommended for basic authorization:
 
 
 ### Endpoint URL length limitations
-SAF profiles cannot contain more than 246 characters. If the path section of an endpoint URL is long enough that the profile name exceeds the limit, the request is denied. To avoid this issue, we recommend that application developers maintain relatively short endpoint URL paths.
+SAF profile names cannot contain more than 246 characters. When the profile name for a request would be longer, Zowe does not reject the request. Instead, it shortens the profile name by keeping only the leading path segments that fit within the limit and dropping the remaining ones. Whole segments are kept or dropped, never cut in the middle.
+
+This lets you control access to endpoints with very long paths: the beginning of the path acts as the resource that you protect, and the permission you set on it applies to everything below it. For example, if the profile `ZLUX.1.SVC.ORG_ZOWE_FOO.BAZ.GET.AA..A.BB..B` is the longest prefix that fits, then a user with READ access to it can send GET requests to every path that starts with `/aa..a/bb..b`, however the path continues. Likewise, a user without access to it is denied for all of those paths.
+
+Because of this, keep the following in mind:
+- Permissions cannot distinguish between paths that differ only after the cut-off point. Place the segments that identify the protected resource near the start of the path.
+- If the profile name without any path (up to and including the HTTP method) is already longer than 246 characters, the request is denied.
+- To avoid relying on this behavior, we recommend that application developers keep endpoint URL paths relatively short.
 
 For information on endpoint URLs, see [Using dataservices with RBAC](../extend/extend-desktop/mvd-dataservices.md#using-dataservices-with-rbac).
 
