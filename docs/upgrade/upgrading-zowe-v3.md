@@ -376,12 +376,12 @@ zowe:
 
 After you prepare your current Zowe instance, upgrade the Zowe runtime to v3.6. Complete the following steps in order.
 
-1. **Install the Zowe v3.6 build.**
+1. **Install the Zowe v3.6 build.**  
    For information about the available installation methods, see [Installing Overview](../user-guide/install-overview.md). The installation places the `SZWESAMP` and `SZWEAUTH` data sets under the data set prefix that `zowe.setup.dataset.prefix` defines in your `zowe.yaml`. The next step creates or updates your custom data sets.
 
    <!-- TODO: confirm that SZWESAMP and SZWEAUTH are the data sets that every installation method (SMP/E, convenience build, zwe install) places under the prefix. -->
 
-2. **Initialize your Zowe instance with `zwe init`.**
+2. **Initialize your Zowe instance with `zwe init`.**  
    Run the `zwe init` substeps that apply to your upgrade:
 
    * `zwe init mvs --allow-overwrite` updates your custom data sets with the contents of the new build. For an upgrade, you must use `--allow-overwrite`. Without it, existing data sets are not updated, and the command issues message `ZWEL0301W`.
@@ -422,12 +422,12 @@ After you prepare your current Zowe instance, upgrade the Zowe runtime to v3.6. 
 
    Review the output of each `zwe init` substep to confirm that your data sets are properly initialized and that no `ZWEL0301W` message appears.
 
-3. **Refresh the PROCLIB members.**
+3. **Refresh the PROCLIB members.**  
    Copy the members `ZWESLSTC`, `ZWESISTC`, and `ZWESASTC` into your PROCLIB. You can do this with the `zwe init stc` command or by running the `ZWEISTC` job. If the members already exist, use the `--allow-overwrite` option. For command details, see [zwe init stc](../appendix/zwe_server_command_reference/zwe/init/zwe-init-stc.md) in the reference section.
 
    <!-- TODO: confirm that --allow-overwrite is the correct option for zwe init stc when the PROCLIB members already exist. -->
 
-4. **Review the automatic startup checks.**
+4. **Review the automatic startup checks.**  
    Zowe v3.6 runs the following checks automatically each time it starts. For more information, see [z/OS pre-flight checks](../user-guide/zos-preflight.md).
 
    | Startup check | Default behavior | Override property |
@@ -443,11 +443,11 @@ After you prepare your current Zowe instance, upgrade the Zowe runtime to v3.6. 
 
    <!-- TODO: confirm what the "User superuser check" verifies, and reword the check name if needed. -->
 
-5. **Start your Zowe instance.**
+5. **Start your Zowe instance.**  
    Start Zowe using your usual method.  
    For example, you can start Zowe by starting the `ZWESLSTC` started task. Check the startup log for messages at the `ERROR` level.
 
-6. **Resolve any startup failures.**
+6. **Resolve any startup failures.**  
    Review the startup log for `ERROR` messages, identify the check or component that failed, correct the cause (often a property in your `zowe.yaml`), and start Zowe again.
 
    :::tip
@@ -491,7 +491,7 @@ After you prepare your current Zowe instance, upgrade the Zowe runtime to v3.6. 
 
    </details>
 
-7. **If the Caching Service fails to start, clear the Infinispan persistence data.**
+7. **If the Caching Service fails to start, clear the Infinispan persistence data.**  
    If the Caching Service uses Infinispan storage, persistence data written by the earlier Infinispan version can prevent the service from starting after the upgrade. If this occurs, use the following procedure:
 
    a. Stop Zowe.  
