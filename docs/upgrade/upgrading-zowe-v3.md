@@ -87,7 +87,7 @@ The property `components.gateway.apiml.service.allowEncodedSlashes` is removed. 
     Regardless of this setting, Gateway-internal endpoints (such as `/gateway`, `/application`, `/images`, and `/v3/api-docs`) always enforce strict validation.
     :::
 
-1. **Review the new and changed YAML properties.**
+2. **Review the new and changed YAML properties.**
 To see all changes between releases, compare the `zowe-install-packaging` repository and search for `example-zowe.yaml` and `defaults.yaml`: [https://github.com/zowe/zowe-install-packaging/compare/v3.5.0...v3.6.0](https://github.com/zowe/zowe-install-packaging/compare/v3.5.0...v3.6.0). Then review the following properties in your `zowe.yaml` file and decide whether to adopt each of them:
 
     | Property | Upgrade decision |
@@ -97,7 +97,7 @@ To see all changes between releases, compare the `zowe-install-packaging` reposi
     | `components.apiml.logging.level` (and the per-component variant `components.<component>.logging.level`) | Optional. Set the API ML log level to `quiet`, `info`, or `debug`. Legacy `debug` parameters still take precedence. See [Configuring API ML logging](../user-guide/api-mediation/configuration-logging.md). |
     | `storage.infinispan.useVirtualThreads` | Optional. Enables Infinispan virtual threads, which require Java 21 or later. The default is `false`. See the [Zowe YAML configuration file reference](../appendix/zowe-yaml-configuration.md). |
 
-1. **Update monitoring probes for actuator endpoint authentication.**
+3. **Update monitoring probes for actuator endpoint authentication.**
 After you upgrade, unauthenticated requests to the API Gateway `/application/info` and `/application/version` endpoints return HTTP 401. Monitoring probes and automation scripts that call these endpoints without credentials must be updated.
 
     | Authentication State | Example Command | Before Upgrade | After Upgrade |
@@ -111,7 +111,7 @@ After you upgrade, unauthenticated requests to the API Gateway `/application/inf
     Setting `components.gateway.apiml.health.protected: false` exposes health, information, and version metadata without authentication. Use an authenticated client whenever possible. If unauthenticated access is required, restrict access through another trusted control, such as network-level controls.
     :::
 
-1. **Review certificate and HA notes.**
+4. **Review certificate and HA notes.**
     * `zwe init certificate` now generates a random password when `zowe.setup.certificate.pkcs12.password` or `zowe.setup.certificate.pkcs12.caPassword` is left at the default value. This applies to keystore scenarios only; keyring scenarios are unaffected. Update any automation that relies on the literal default password before you re-run certificate initialization. See [zwe init certificate](../appendix/zwe_server_command_reference/zwe/init/zwe-init-certificate.md).
     * At startup in HA mode, Zowe writes a merged configuration file for each HA instance to the workspace `.env` directory. See [Upgrading Zowe in HA for zero downtime](./upgrade-zowe-no-downtime.md).
 
@@ -246,7 +246,7 @@ To upgrade from any version between v2.11.x and v2.15.x to v2.18.x, perform the 
 
 1. **Remove PEM references.**  
 Ensure that Zowe configurations using keyrings do not have the section `zowe.certificate.pem`. This section is no longer needed and can cause a start-up error in newer versions of Zowe.
-1. **Update TLS configurations.**  
+2. **Update TLS configurations.**  
 Ensure the following `zowe.network` section is added to your `zowe.yaml` file:
     ```yaml
       network:
@@ -259,9 +259,9 @@ Ensure the following `zowe.network` section is added to your `zowe.yaml` file:
           tls:
             attls: false
     ```
-1. **Update PROCLIB entries.**  
+3. **Update PROCLIB entries.**  
 Update your PROCLIB entries for Zowe using `zwe init stc`, the `ZWEISTC` job, or by copying the `SZWESAMP` members into your PROCLIB.
-1. **Verify keyring slashes.**  
+4. **Verify keyring slashes.**  
 If using keyrings, ensure Zowe YAML references use exactly two forward slashes (`safkeyring://`).
 
 You can now proceed to [upgrading to Zowe v3.6](#upgrading-from-zowe-v218x-to-v36).
