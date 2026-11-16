@@ -244,7 +244,7 @@ Zowe server Version 3.6.0 contains the bug fixes that are described in the follo
 * Fixed an Infinispan issue in high availability on Java 21 and later, auto-constructed the initial hosts, and made Infinispan configurable. ([#4731](https://github.com/zowe/api-layer/issues/4731))
 * Added recovery from a corrupted Infinispan global state. ([#4827](https://github.com/zowe/api-layer/issues/4827))
 * Added a log message for when an Infinispan exception occurs because the cache is corrupted. ([#4867](https://github.com/zowe/api-layer/issues/4867))
-* Fixed the caching storage mode validation for the modulith and the Caching Service so that an empty keyring password is accepted. ([#4805](https://github.com/zowe/api-layer/issues/4805))
+* Fixed the caching storage mode validation for the modulith and the Caching Service so that an empty key ring password is accepted. ([#4805](https://github.com/zowe/api-layer/issues/4805))
 * Fixed an issue with Eureka replicas when using AT-TLS with high availability. ([#4628](https://github.com/zowe/api-layer/issues/4628))
 * Eureka peer communication now uses a host verifier based on the configuration. ([#4633](https://github.com/zowe/api-layer/issues/4633))
 * Peer read timeouts are now escalated after the maximum number of retries. ([#4780](https://github.com/zowe/api-layer/issues/4780))
@@ -275,7 +275,7 @@ Zowe server Version 3.6.0 contains the bug fixes that are described in the follo
 ### Zowe installation and packaging
 
 - Updated `zwe` to create command log files with `0640` permissions, allowing the owner to read and write and the group to read, while preventing access by others. ([#4807](https://github.com/zowe/zowe-install-packaging/pull/4807))
-- Updated `zwe validate certificate` to load the SAF keyring URL handlers on IBM Java 17 and 21, preventing `MalformedURLException: unknown protocol: safkeyring` when validating certificates stored in SAF keyrings. ([#4795](https://github.com/zowe/zowe-install-packaging/pull/4795))
+- Updated `zwe validate certificate` to load the SAF key ring URL handlers on IBM Java 17 and 21, preventing `MalformedURLException: unknown protocol: safkeyring` when validating certificates stored in SAF key rings. ([#4795](https://github.com/zowe/zowe-install-packaging/pull/4795))
 - Fixed the zwe certificate, migrate, and configuration commands to no longer expose passwords in process arguments, console output, or logs. ([#4883](https://github.com/zowe/zowe-install-packaging/pull/4883))
 - Improved RACF sample job security permissions to protect Zowe data sets from unauthorized access. ([#4879](https://github.com/zowe/zowe-install-packaging/pull/4879))
 - Corrected the `cli.js` script path in the ZIS register `index.sh` files (`zis`, `zis/loadlib`, `zis/parmlib`) so each points to its own command directory instead of the non-existent `install/zis-plugin/cli.js`. ([#4917](https://github.com/zowe/zowe-install-packaging/pull/4917))
