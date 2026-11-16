@@ -374,88 +374,146 @@ zowe:
 
 ## Upgrading the runtime
 
-After you prepare your current Zowe instance, upgrade the Zowe runtime to v3.6.
+After you prepare your current Zowe instance, upgrade the Zowe runtime to v3.6. Complete the following steps in order.
 
-1. **Run the standard upgrade flow**
-  
-   a. Install the Zowe v3.6 build. For information about the available installation methods, see [Installing Overview](../user-guide/installing.md).
-   Once your installation is complete, the MVS datasets are created and defined in your zowe.yaml under `zowe.setup.dataset.prefix`. <!--find this in appendix and link to it -->
+1. **Install the Zowe v3.6 build.**
+   For information about the available installation methods, see [Installing Overview](../user-guide/install-overview.md). The installation places the `SZWESAMP` and `SZWEAUTH` data sets under the data set prefix that `zowe.setup.dataset.prefix` defines in your `zowe.yaml`. The next step creates or updates your custom data sets.
 
-   b. Run the `zwe init` to initialize your instance. Use the `zwe init` substeps  that apply to your installation, such as `zwe init mvs`, `zwe init apfauth`, `zwe init stc`, and `zwe init security`.  For more information about the `zwe init` options, see [Configuring Zowe with zwe init](../user-guide/initialize-zos-system.md).
+   <!-- TODO: confirm that SZWESAMP and SZWEAUTH are the data sets that every installation method (SMP/E, convenience build, zwe install) places under the prefix. -->
+
+2. **Initialize your Zowe instance with `zwe init`.**
+   Run the `zwe init` substeps that apply to your upgrade:
+
+   * `zwe init mvs --allow-overwrite` updates your custom data sets with the contents of the new build. For an upgrade, you must use `--allow-overwrite`. Without it, existing data sets are not updated, and the command issues message `ZWEL0301W`.
+   * `zwe init apfauth` APF authorizes the Zowe load libraries.
+
+   You can skip `zwe init security` and `zwe init certificate`. Existing SAF permissions and keyrings or keystores carry over to the new version, unless an SMP/E HOLD statement states otherwise. For the full list of steps that an upgrade requires, see [Installation and configuration tasks](./upgrading-zowe.md#installation-and-configuration-tasks). For more information about the `zwe init` options, see [Configuring Zowe with zwe init](../user-guide/initialize-zos-system.md) and [zwe init mvs](../appendix/zwe_server_command_reference/zwe/init/zwe-init-mvs.md).
+
+   :::warning
+   Back up any customized members in your custom data sets, such as `<prefix>.CUST.PARMLIB` and `<prefix>.CUST.JCLLIB`, before you run `zwe init mvs --allow-overwrite`. The command can overwrite existing members, as message `ZWEL0300W` states.
+   :::
+
+   <!-- TODO: confirm which members of the custom data sets zwe init mvs --allow-overwrite replaces, so that the backup warning names them precisely. -->
+
+   :::note
+   The `zowe.yaml` file is the required configuration file for the installation and initialization of Zowe. Review the `zowe.yaml` structure in the [Zowe YAML server configuration file reference](../appendix/zowe-yaml-configuration.md) and customize it according to your requirements.
+   :::
+
+   In the following example, `<prefix>` is the value of `zowe.setup.dataset.prefix` in your `zowe.yaml`, for example `MY.ZOWE.V3`. The example shows the output of `zwe init mvs --allow-overwrite` when the custom data sets already exist. The `ZWEL0300W` warnings state that the existing data sets are overwritten. The final line confirms that initialization succeeded.
+
+  **Example:**
+   ```
+   >> Initialize Zowe custom data sets
+
+   Create data sets if they do not exist
+   Warning ZWEL0300W: <prefix>.CUST.PARMLIB already exists. This dataset will be overwritten.
+   Warning ZWEL0300W: <prefix>.CUST.JCLLIB already exists. This dataset will be overwritten.
+   Warning ZWEL0300W: <prefix>.SZWEAUTH already exists. This dataset will be overwritten.
+   Warning ZWEL0300W: <prefix>.CUST.ZWESAPL already exists. This dataset will be overwritten.
+
+   Copy <prefix>.SZWESAMP(ZWESIP00) to <prefix>.CUST.PARMLIB(ZWESIP00)
+   Copy components/zss/LOADLIB/ZWESIS01 to <prefix>.SZWEAUTH(ZWESIS01)
+   Copy components/zss/LOADLIB/ZWESAUX to <prefix>.SZWEAUTH(ZWESAUX)
+   Copy components/zss/LOADLIB/ZWESISDL to <prefix>.SZWEAUTH(ZWESISDL)
+   Copy components/launcher/bin/zowe_launcher to <prefix>.SZWEAUTH(ZWELNCH)
+
+   >> Zowe custom data sets are initialized successfully.
+   ```
+
+   Review the output of each `zwe init` substep to confirm that your data sets are properly initialized and that no `ZWEL0301W` message appears.
+
+3. **Refresh the PROCLIB members.**
+   Copy the members `ZWESLSTC`, `ZWESISTC`, and `ZWESASTC` into your PROCLIB. You can do this with the `zwe init stc` command or by running the `ZWEISTC` job. If the members already exist, use the `--allow-overwrite` option. For command details, see [zwe init stc](../appendix/zwe_server_command_reference/zwe/init/zwe-init-stc.md) in the reference section.
+
+   <!-- TODO: confirm that --allow-overwrite is the correct option for zwe init stc when the PROCLIB members already exist. -->
+
+4. **Review the automatic startup checks.**
+   Zowe v3.6 runs the following checks automatically each time it starts. For more information, see [z/OS pre-flight checks](../user-guide/zos-preflight.md).
+
+   | Startup check | Default behavior | Override property |
+   |---------------|------------------|-------------------|
+   | Certificate | `exit` | `zowe.launchScript.startupChecks.certificate` |
+   | User superuser check | `exit` | `zowe.launchScript.startupChecks.user` |
+   | Components | `warn` | <!-- TODO: confirm property --> |
+   | Java dependency check | Enforce Java 17 or 21 |  Set `java.home` to the appropriate library if the version has changed from the one in your previous installation. |
+   | Node dependency check | Enforce Node 18-24  |  Set `node.home` to the appropriate library if the version has changed from the one in your previous installation. |
+   | z/OSMF JWT (`zosmfjwt`) | `exit` | `zowe.launchScript.startupChecks.zosmfjwt` |
+
+   A failing check that defaults to `exit` prevents Zowe from starting.
+
+   <!-- TODO: confirm what the "User superuser check" verifies, and reword the check name if needed. -->
+
+5. **Start your Zowe instance.**
+   Start Zowe using your usual method.  
+   For example, you can start Zowe by starting the `ZWESLSTC` started task. Check the startup log for messages at the `ERROR` level.
+
+6. **Resolve any startup failures.**
+   Review the startup log for `ERROR` messages, identify the check or component that failed, correct the cause (often a property in your `zowe.yaml`), and start Zowe again.
+
+   :::tip
+   If your security requirements allow it, you can set the matching `zowe.launchScript.startupChecks.*` property to `warn` or `disabled`:
+
+   **Example:**
+   ```yaml
+   zowe:
+     launchScript:
+       startupChecks:
+         zosmfjwt: exit       # exit (default) | warn | disabled
+         user: exit           # superuser (UID 0) check for ZWESVUSR
+         certificate: exit    # keystore/truststore validation (zwe validate certificate)
+         components: warn     # YAML component existence check
+         # javaMin/javaMax and nodeMin/nodeMax govern the dependency checks
+   ```
+
+   Setting a check to `warn` or `disabled` hides a real misconfiguration. Use these values as a temporary measure, and resolve the underlying finding.
+   :::
+
+  <details>
+  <summary> Click for an example of a failed start. </summary>
+
+   The following example shows a failed start. The startup checks pass, and then the validation of the API ML component fails. This example shows a component validation error, separate from the startup checks in the previous step. Zowe does not start until you correct the reported problem and start Zowe again.
+
+   **Example:**
+   ```
+   <timestamp> <ZWELS:nnn> ZWESVUSR INFO (zwe-internal-start-prepare) Zowe version: v3.6.0
+   <timestamp> <ZWELS:nnn> ZWESVUSR INFO (validateJavaHome) Java version: 17.0.10
+   <timestamp> <ZWELS:nnn> ZWESVUSR INFO (zwe-validate-certificate) Certificate checks passed.
+   <timestamp> <ZWELS:nnn> ZWESVUSR INFO (zwe-internal-start-prepare,global_validate) global validations are successful
+   ERROR: <timestamp> <ZWELS:nnn> ZWESVUSR ERROR (zwe-internal-start-prepare,validate_components) Error: Component apiml ended with nonzero rc=1
+   <timestamp> <ZWELS:nnn> ZWESVUSR WARN (zwe-internal-start-prepare,validate_components) 1 errors were found during validation, please check the message, correct any properties required in <workspace>/.env/.zowe-merged.yaml and re-launch Zowe.
+   <timestamp> <ZWELNCH:nnn> ZWESVUSR WARN ZWEL0066W command '<runtime>/bin/utils/configmgr' ended with code 1
+   <timestamp> <ZWELNCH:nnn> ZWESVUSR ERROR ZWEL0030E failed to prepare Zowe instance
+   ```
+
+   In this example, the cause is in the API ML component output, not in the lines above the `ERROR` line. Correct the property that the component reports, and then start Zowe again.
+
+   <!-- TODO: confirm where a reader finds the cause of an API ML component validation failure (log location or message), and add that location. -->
+
+   </details>
+
+7. **If the Caching Service fails to start, clear the Infinispan persistence data.**
+   If the Caching Service uses Infinispan storage, persistence data written by the earlier Infinispan version can prevent the service from starting after the upgrade. If this occurs, use the following procedure:
+
+   a. Stop Zowe.  
+   b. Remove the Infinispan persistence directory. Delete the contents or the folder located at:
+      `<zowe.workspaceDirectory>/caching-service`.  
+   c. Restart Zowe.
+
+   :::warning  
+   Removing the persistence directory clears all stored Caching Service data, including revoked Personal Access Tokens (PATs) and revoked Zowe JWTs.
+   :::
 
    :::note  
-   The zowe.yaml file is the required configuration file for the installation and initialization of Zowe. Review the structure of the zowe.yaml in [Zowe YAML server configuration file reference](../appendix/zowe-yaml-configuration.md) and customize according to your requirements.
+   On Java 21 and later, virtual threads are automatically disabled on z/OS. To control this behavior explicitly, use the `components.caching-service.storage.infinispan.useVirtualThreads` property of the Caching Service.
    :::
 
-   c. Refresh the PROCLIB members. For command details see [zwe init stc](../appendix/zwe_server_command_reference/zwe/init/zwe-init-stc.md) in the reference section. 
-   :::tip
-   An alternative to refreshing the PROCLIB memebrs is to use the `--allow-overwrite` option in both your `zwe install` and `zwe init` commands. Using this option allows the use of the existing MVS dataset.
-   :::
-   Review the output of the comand to ensure 
-   that your datasets are properly inialized.
-
-
-2. **Start your Zowe instance.** 
-
-:::info Expect automatic startup checks on the first start  
-Zowe v3.6 runs the following checks automatically each time it starts. For more information, see [z/OS pre-flight checks](../user-guide/zos-preflight.md).
-
-| Startup check | Default behavior | Override property |
-|---------------|------------------|-------------------|
-| Certificate | `exit` | `zowe.launchScript.startupChecks.certificate` |
-| User superuser check | `exit` | `zowe.launchScript.startupChecks.user` |
-| Components | `warn` | <!-- TODO: confirm property --> |
-| Java dependency check | Enforce Java 17 or 21 |  Set `java.home` to the appropriate library if the version has changed from the one in your previous installation. |
-| Node dependency check | Enforce Node 18-24  |  Set `node.home` to the appropriate library if the version has changed from the one in your previous installation. |
-| z/OSMF JWT (`zosmfjwt`) | `exit` | `zowe.launchScript.startupChecks.zosmfjwt` |
-
-
-A failing check defaulting to `exit` prevents Zowe from starting.
-:::
-
-:::note  
-Existing SAF permissions and keyrings or keystores do not need to be set up again. Unless an SMP/E HOLD statement states otherwise, your certificates and security rules carry over to the new version as well.
-:::
-
-4. **Resolve failing checks as required**  
-Alternatively, you can set the matching `zowe.launchScript.startupChecks.*` property to `warn` or `disabled`:
-
-    ```yaml
-    zowe:
-      launchScript:
-        startupChecks:
-          zosmfjwt: exit       # exit (default) | warn | disabled
-          user: exit           # superuser (UID 0) check for ZWESVUSR
-          certificate: exit    # keystore/truststore validation (zwe validate certificate)
-          components: warn     # YAML component existence check
-          # javaMin/javaMax and nodeMin/nodeMax govern the dependency checks
-    ```
-
-:::note
-Setting a check to `warn` or `disabled` hides a real misconfiguration. Use these values as a temporary measure, and resolve the underlying finding.
-:::
-
-5. **(Optional) Clear Infinispan persistence data**  
-If the Caching Service uses Infinispan storage, persistence data written by the earlier Infinispan version can prevent the service from starting after the upgrade. If this occurs, use the following procedure:
-
-    a. Stop Zowe.  
-    b. Remove the Infinispan persistence directory. Delete the contents or the folder located at:
-   `<zowe.workspaceDirectory>/caching-service`.  
-    c. Restart Zowe.
-
-:::warning
-Removing the persistence directory clears all stored Caching Service data, including revoked Personal Access Tokens (PATs) and revoked Zowe JWTs.
-:::
-
-:::note  
-On Java 21 and later, virtual threads are automatically disabled on z/OS. To control this behavior explicitly, use the `storage.infinispan.useVirtualThreads` property of the Caching Service.
-:::
+   <!-- TODO: the virtual threads note conflicts with the useVirtualThreads row in the Zowe v3.6 dropdown ("Enables Infinispan virtual threads, which require Java 21 or later"). Confirm the behavior on z/OS. -->
 
 ## Verifying the upgrade
 
 After Zowe v3.6 starts, use the following checklist to confirm that the upgrade is successful.
 
-- The following commands pass at the intended levels:
+- The following commands complete without errors:
   
     - `zwe validate dependencies`
     - `zwe validate certificate`
@@ -463,9 +521,10 @@ After Zowe v3.6 starts, use the following checklist to confirm that the upgrade 
   
 - Confirm that unauthenticated requests to `/application/info` return HTTP 401. The same requests with credentials return HTTP 200.
 - Confirm that `zowe.network.allowedDomains` includes every domain, IP address, or CIDR range from which services register.
-- Confirm that onboarded services register successfully. Any rejected registration metadata should be explained by the allowlist and not be an error.
+- Confirm that onboarded services register successfully. If a registration is rejected, confirm that the cause is a host that is not in `zowe.network.allowedDomains`, and add the host if appropriate.
 - If your services use URLs with encoded characters (`%2F`, `%5C`, `%25`, `%2E`, or semicolons), confirm that requests to them still succeed, or that `components.gateway.apiml.security.enableStrictUrlValidation` is set to `false`.
 - Confirm z/OSMF is reachable through the API Gateway by the `/ibmzosmf` route, not `/zosmf`.
+<!-- TODO: confirm why the route changed, and add a half sentence of explanation for readers who still use /zosmf. -->
 - (HA installations only) Confirm that on startup, Zowe creates `.zowe-<haInstance>-merged.yaml` in the workspace `.env` directory, and that `ZWE_HA_INSTANCE_CONFIG` points to that file.
 
 ## System and Security Changes from Zowe v2 and v1
