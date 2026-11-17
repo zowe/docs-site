@@ -97,6 +97,7 @@ ZWEL0139E|139|Failed to create directory %s.
 ZWEL0140E|140|Failed to translate Zowe configuration (%s).
 ZWEL0142E|142|Failed to refresh APIML static registrations.
 ZWEL0144E|144|Cannot generate JCL with a header line greater than 80 characters. Line in error: %s. Please adjust this line in 'zowe.setup.jcl.header'.
+ZWEL0150E|150|Failed to find file %s. Zowe runtimeDirectory is invalid.
 ZWEL0151E|151|Failed to create temporary file %s. Please check permission or volume free space.
 ZWEL0157E|157|%s (%s) is not defined in Zowe YAML configuration file.
 ZWEL0158W||Failed to find job %s result.
@@ -109,6 +110,7 @@ ZWEL0163E|163|Job %s ends with code %s.
 ZWEL0164W||Job %s(%s) ends with code %s (%s).
 ZWEL0172E||Component %s has %s defined but the file is missing.
 ZWEL0173E|173|Please enter an IP address in either the subject alternative name (zowe.setup.certificate.san) or external domain (zowe.externalDomains) in the Zowe YAML configuration file.
+ZWEL0180E|180|Zowe property %s is not defined in Zowe YAML configuration file.
 ZWEL0200E||Failed to copy USS file %s to MVS data set %s.
 ZWEL0201E||File %s does not exist.
 ZWEL0202E||Unable to find samplib key for %s.
@@ -117,4 +119,24 @@ ZWEL0300W||%s already exists. This %s will be overwritten.
 ZWEL0301W||%s already exists and will not be overwritten. For upgrades, you must use --allow-overwrite.
 ZWEL0316E|316|Invalid PARMLIB format %s.
 ZWEL0322E|322|%s is not a valid directory.
+ZWEL0323E|323|Certificate validation failed. Fix errors listed before starting Zowe.
 ZWEL0326E|326|An error occurred while processing Zowe YAML config %s:
+ZWEL0327E|327|Failed to read %s - %s.
+ZWEL0328E|328|The following component(s) are missing a valid manifest file and cannot be started: %s
+ZWEL0328W||The following component(s) are missing a valid manifest file and cannot be started: %s
+ZWEL0329E|329|No components are defined in zowe.yaml. Zowe cannot start without at least one component.
+ZWEL0329W||No components are defined in zowe.yaml. Zowe cannot start without at least one component.
+ZWEL0330E|330|Component '%s' directory was not found in the runtime or extension directories.
+ZWEL0331E|331|The following requested component(s) are not defined in zowe.yaml: %s
+ZWEL0331W||The following requested component(s) are not defined in zowe.yaml: %s
+ZWEL0332E|332|Zowe YAML property zowe.runtimeDirectory is not defined. Zowe cannot validate component existence without knowing the runtime location.
+ZWEL0332W||Zowe YAML property zowe.runtimeDirectory is not defined. Zowe cannot validate component existence without knowing the runtime location.
+ZWEL0333E|333|Component '%s' is missing a valid manifest file (manifest.yaml, manifest.yml, or manifest.json) in %s.
+ZWEL0334W||%d Zowe port ATTLS validation(s) failed, review output for action items.
+ZWEL0334E||%d Zowe port ATTLS validation(s) failed, review output for action items before running Zowe.
+ZWEL0335W||%s: No AT-TLS rule identified at %s:%d for jobname %s
+ZWEL0336W||%s: AT-TLS rule found but ATTLS not requested at %s:%d for jobname %s
+ZWEL0337E|337|z/OSMF host (zosmf.host) or port (zosmf.port) is not configured in the Zowe YAML. Cannot validate z/OSMF JWT support without a z/OSMF destination.
+ZWEL0338E|338|Neither components.discovery.enabled nor components.apiml.enabled is set to true. The required APIML servers are not enabled for z/OSMF access.
+ZWEL0339W||z/OSMF JWT check failed (rc=%s) but jwtAutoconfiguration is 'ltpa', so JWT support is not required for this Zowe configuration.
+ZWEL0340E|340|z/OSMF JWT check failed (rc=%s). Zowe requires z/OSMF JWT support (jwtAutoconfiguration is 'jwt') but it is not working.
