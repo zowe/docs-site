@@ -10,7 +10,7 @@ Tokens can be obtained by logging into API ML with a username and password, or a
 
 :::note
 
-The `allowedLoginMethod` property in your configuration file configures which prompts you see when logging onto API ML. To understand how this property works, or to change the setting, see [Configuring prompts for credentials](./cli-authentication-methods.md#configuring-prompts-for-credentials).
+The `allowedLoginMethod` property in your configuration file configures which prompts you see when logging onto API ML. When the property is set with an API ML value, it also indicates to your client application that you are using API ML. To understand how this property works, or to change the setting, see [Configuring prompts for credentials](./cli-authentication-methods.md#configuring-prompts-for-credentials).
 
 :::
 
