@@ -388,13 +388,13 @@ In the following code block, the `allowedLoginMethod` property is defined direct
 
 ```json
 "system1_basic" : {
-"properties": {
-    "host": ... ,
-    "port": ... ,
-    "rejectUnauthorized": ... ,
-    "authOrder": "...",
-    "allowedLoginMethod": "direct-basic"
-} 
+    "properties": {
+        "host": ... ,
+        "port": ... ,
+        "rejectUnauthorized": ... ,
+        "authOrder": "...",
+        "allowedLoginMethod": "direct-basic"
+    } 
 }
 ```
 
@@ -409,11 +409,11 @@ In the following code block, the nested profile `system2.apiml-cert-pem` inherit
         "port": ... ,
         "rejectUnauthorized": ... ,
         "authOrder": "...",
-    }  
+    },  
     "profiles": { 
         "apiml-cert-pem":  { 
             "properties": { 
-                    "allowedLoginMethod": "apiml-cert-pem"
+                "allowedLoginMethod": "apiml-cert-pem"
             }
        }
   } 
@@ -428,7 +428,7 @@ An `allowedLoginMethod` property specified in a nested profile overrides the sam
 
 #### SSO services
 
-In the following code block, the nested profiles `sos.service1` and `sos.service2` inherit all properties from the `sos` parent profile, which sets the `allowedLoginMethod` property to `apiml-basic`:
+In the following code block, the nested profiles `sso.service1` and `sso.service2` inherit all properties from the `sso` parent profile, which sets the `allowedLoginMethod` property to `apiml-basic`:
 
 ```
 "sso" : {
@@ -436,21 +436,21 @@ In the following code block, the nested profiles `sos.service1` and `sos.service
         "host": ... ,
         "port": ... ,
         "allowedLoginMethod": "apiml-basic"
-    }  
+    },  
     "profiles": { 
         "service1":  { 
             "properties": { 
-                    "basePath": "/example/service1"
-                }
+                "basePath": "/example/service1"
+            }
         },
         
         "service2":  { 
             "properties": { 
-                    "basePath": "/example/service2"
-                }
+               "basePath": "/example/service2"
+            }
         }
     } 
-    }
+}
 ```
 
 ## Order of precedence
@@ -495,7 +495,7 @@ This means that if basic authentication is set up, Zowe CLI uses the user ID and
 
 Although both the `authOrder` and the `allowedLoginMethod` properties in your client configuration refer to authentication, they serve separate, distinct functions. 
 
-The `authOrder` property sets the order that Zowe CLI or Zowe Explorer follow to apply authentication mechanisms, while `allowedLoginMethod` defines the prompts a user is given to provide their credentials to access mainframe services.
+The `authOrder` property sets the order that Zowe CLI or Zowe Explorer follows to apply authentication mechanisms, while `allowedLoginMethod` defines the prompts a user is given to provide their credentials to access mainframe services.
 
 Additionally, `allowedLoginMethod` values with an `apiml-` prefix refer to credentials used to receive a token from APIML, which can then be used by `authOrder` with `token, bearer`.
 
