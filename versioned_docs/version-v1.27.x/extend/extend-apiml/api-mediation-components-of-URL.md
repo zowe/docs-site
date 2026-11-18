@@ -44,7 +44,7 @@ The base URL is the parameter the can be set in Zowe CLI in order to access the 
 ### URL to a service endpoint without API gateway
 
 ```markup
-http://ca11.ca.com:19876/fileMasterPlus/api/v1/mvs/dataSets/test/ping
+http://sys3.lpar.example.com:19876/fileMasterPlus/api/v1/mvs/dataSets/test/ping
 \_____/\_______________/\____________________/\_____________________/
 scheme       host             basePath             endpointPath
 \____________________________________________/
@@ -54,7 +54,7 @@ scheme       host             basePath             endpointPath
 ### URL with empty basePath
 
 ```markup
-https://ca32.ca.com:1443/zosmf/info
+https://sys2.lpar.example.com:1443/zosmf/info
 \_____/\_______________/\_________/
 scheme       host        endpointPath
 \______________________/
@@ -64,7 +64,7 @@ scheme       host        endpointPath
 ### URL to a service endpoint via API gateway
 
 ```markup
-https://ca3x.ca.com:10310/api/v1/cafilemasterplus/mvs/dataSets/test/ping
+https://sysx.lpar.example.com:10310/api/v1/cafilemasterplus/mvs/dataSets/test/ping
 \______/\_______________/\______________________/\_____________________/
 scheme       host             basePath                  endpointPath
                           \_/ \/\______________/
@@ -78,7 +78,7 @@ scheme       host             basePath                  endpointPath
 Or, alternatively:
 
 ```markup
-https://ca3x.ca.com:10310/cafilemasterplus/api/v1/mvs/dataSets/test/ping
+https://sysx.lpar.example.com:10310/cafilemasterplus/api/v1/mvs/dataSets/test/ping
 \______/\_______________/\______________________/\_____________________/
 scheme       host             basePath                  endpointPath
                           \______________/\__/\/
@@ -92,7 +92,7 @@ scheme       host             basePath                  endpointPath
 ### URL to a service endpoint via API gateway without version
 
 ```markup
-https://ca3x.ca.com:10310/api/zosmfca32/zosmf/info
+https://sysx.lpar.example.com:10310/api/zosmfca32/zosmf/info
 \_____/\________________/\____________/\_________/
 scheme        host          basePath    endpointPath
                           \_/\________/
@@ -105,7 +105,7 @@ scheme        host          basePath    endpointPath
 Or, alternatively:
 
 ```markup
-https://ca3x.ca.com:10310/zosmfca32/api/zosmf/info
+https://sysx.lpar.example.com:10310/zosmfca32/api/zosmf/info
 \_____/\________________/\____________/\_________/
 scheme        host          basePath    endpointPath
                           \________/\_/

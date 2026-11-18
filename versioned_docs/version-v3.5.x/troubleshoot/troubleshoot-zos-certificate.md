@@ -199,7 +199,7 @@ The Zowe desktop is able to be displayed in a browser but fails to logon.
 
 **Solution:**
 
-Check that the Zowe certificate has been configured as a client certificate, and not just as a server certificate. For more informtion, see More detail can be found in [Configuring certificates overview](../user-guide/configure-certificates).
+Check that the Zowe certificate has been configured as a client certificate, and not just as a server certificate. For more information, see More detail can be found in [Configuring certificates overview](../user-guide/configure-certificates).
 
 ## Java z/OS components of Zowe unable to read certificates from keyring
 
