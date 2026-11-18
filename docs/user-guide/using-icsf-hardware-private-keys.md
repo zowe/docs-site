@@ -15,7 +15,7 @@ Native support for ICSF-backed private keys (`JCEHYBRIDRACFKS`) is available onl
 
 Component|ICSF-backed private key support
 ---|---
-API Mediation Layer (Gateway, Discovery, API Catalog, ZAAS, Caching Service)|Supported natively from Zowe 3.4.0
+API Mediation Layer (API Gateway, Discovery, API Catalog, ZAAS, Caching Service)|Supported natively from Zowe 3.4.0
 App Server (Zowe Desktop)|Not supported natively. Requires AT-TLS.
 
 ## Configuring the z/OS system
