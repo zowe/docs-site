@@ -34,6 +34,7 @@ zwe start
        │    ├─ Java validity (if APIML / Gateway components are enabled)
        │    ├─ Node validity (if app-server is enabled)
        |    ├─ Certificate validity [zowe.launchScript.startupChecks.certificate]
+       |    ├─ Root user ID [zowe.launchScript.startupChecks.user]
        │    └─ z/OSMF
        |         ├─ Server reachability [zowe.launchScript.startupChecks.zosmf]
        |         └─ JWT connectivity [zowe.launchScript.startupChecks.zosmfjwt]
