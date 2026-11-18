@@ -116,7 +116,9 @@ After you upgrade, unauthenticated requests to the API Gateway `/application/inf
     * At startup in HA mode, Zowe writes a merged configuration file for each HA instance to the workspace `.env` directory. See [Upgrading Zowe in HA for zero downtime](./upgrade-zowe-no-downtime.md).
 
 :::note Single-service deployment and Caching Service storage
- If you already run API ML in single-service deployment mode, or plan to enable it (recommended from Zowe v3.4.0), the Caching Service must use Infinispan storage. Set `components.caching-service.storage.mode` to `infinispan`. Other storage modes, such as VSAM, are not supported in single-service deployment mode. Infinispan also requires additional ports. For details, see [Enabling single-service deployment of API Mediation Layer](../user-guide/api-mediation/api-mediation-modulith.md) and [Caching Service Infinispan ports](../user-guide/address-network-requirements.md#caching-service-infinispan-ports).
+ If you already run API ML in single-service deployment mode, or plan to enable it (recommended from Zowe v3.4.0), the Caching Service must use Infinispan storage. Set `components.caching-service.storage.mode` to `infinispan`. Other storage modes, such as VSAM, are not supported in single-service deployment mode. Infinispan also requires additional ports. For mre inforamtion, see the following articles:  
+ * [Enabling single-service deployment of API Mediation Layer](../user-guide/api-mediation/api-mediation-modulith.md)
+ * [Caching Service Infinispan ports](../user-guide/address-network-requirements.md#caching-service-infinispan-ports).
 :::
 
 Proceed to the [**Upgrading the runtime**](#upgrading-the-runtime) section to complete your upgrade to v3.6.
@@ -438,8 +440,6 @@ Stop your running Zowe instance before you replace the runtime files, data sets,
    Back up any customized members in your custom data sets, such as `<prefix>.CUST.PARMLIB` and `<prefix>.CUST.JCLLIB`, before you run `zwe init mvs --allow-overwrite`. The command can overwrite existing members, as message `ZWEL0300W` states.
    :::
 
-   <!-- TODO: confirm which members of the custom data sets zwe init mvs --allow-overwrite replaces, so that the backup warning names them precisely. -->
-
    :::note
    The `zowe.yaml` file is the required configuration file for the installation and initialization of Zowe. Review the `zowe.yaml` structure in the [Zowe YAML server configuration file reference](../appendix/zowe-yaml-configuration.md) and customize it according to your requirements.
    :::
@@ -467,13 +467,13 @@ Stop your running Zowe instance before you replace the runtime files, data sets,
 
     Review the output of each `zwe init` substep to confirm that your data sets are properly initialized and that no `ZWEL0301W` message appears.
 
-3. **Refresh the PROCLIB members.**  
+1. **Refresh the PROCLIB members.**  
    Copy the members `ZWESLSTC`, `ZWESISTC`, and `ZWESASTC` into your PROCLIB. You can do this with the `zwe init stc` command or by running the `ZWEISTC` job. If the members already exist, use the `--allow-overwrite` option.  
    For command details, see [zwe init stc](../appendix/zwe_server_command_reference/zwe/init/zwe-init-stc.md) in the reference section.
 
    <!-- TODO: confirm that --allow-overwrite is the correct option for zwe init stc when the PROCLIB members already exist. Confirm whether zwe init stc applies only to installations that run Zowe as a started task. -->
 
-4. **Review the automatic startup checks.**  
+2. **Review the automatic startup checks.**  
    Zowe v3.6 runs the following checks automatically each time it starts.  
    For more information, see [z/OS pre-flight checks](../user-guide/zos-preflight.md).
 
@@ -494,7 +494,7 @@ Stop your running Zowe instance before you replace the runtime files, data sets,
 
    <!-- TODO: confirm what the "User superuser check" verifies, and reword the check name if needed. -->
 
-5. **Start your Zowe instance.**  
+3. **Start your Zowe instance.**  
    Start Zowe using your usual method.  
    For example, you can start Zowe by starting the `ZWESLSTC` started task. Alternatively, run `<runtime-directory>/bin/zwe start -c /path/to/zowe.yaml` in a USS shell. Check the startup log for messages at the `ERROR` level. To view the log, open the job output in SDSF, or in the **Jobs** view of Zowe Explorer.
 
@@ -502,7 +502,7 @@ Stop your running Zowe instance before you replace the runtime files, data sets,
 
    After you validate the upgrade, as described in [Verifying the upgrade](#verifying-the-upgrade), you can stop Zowe the same way that you started it. For example, stop the `ZWESLSTC` started task, or run `<runtime-directory>/bin/zwe stop -c /path/to/zowe.yaml`.
 
-6. **Resolve any startup failures.**  
+4. **Resolve any startup failures.**  
    Review the startup log for `ERROR` messages, identify the check or component that failed, correct the cause (often a property in your `zowe.yaml`), and start Zowe again.
 
    :::tip
@@ -546,7 +546,7 @@ Stop your running Zowe instance before you replace the runtime files, data sets,
 
     </details>
 
-7. **If the Caching Service fails to start, clear the Infinispan persistence data.**  
+5. **If the Caching Service fails to start, clear the Infinispan persistence data.**  
    If the Caching Service uses Infinispan storage, persistence data written by the earlier Infinispan version can prevent the service from starting after the upgrade. If this occurs, use the following procedure:
 
    a. Stop Zowe.  
@@ -669,7 +669,6 @@ components:
 #### Caching Service
 
 The Caching service now defaults to **Infinispan** mode instead of **VSAM**.
-While **VSAM** is still supported, this storage method is being deprecated and is not recommended.
 A new parameter for the key exchange port has been added to the default configuration.
 
 ```yaml

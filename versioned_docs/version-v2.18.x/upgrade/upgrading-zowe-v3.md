@@ -113,7 +113,9 @@ Review the [System and Security Changes](#system-and-security-changes) and [Conf
     * `zowe.useConfigmgr=false` and the gateway internal server are no longer supported.
 
 :::note Caching Service storage and single-service deployment
-In Zowe v3, the Caching Service defaults to Infinispan storage instead of VSAM. VSAM is still supported, but it is deprecated and not recommended. If you plan to enable single-service deployment of API ML (recommended from Zowe v3.4.0), you must use Infinispan, because single-service deployment does not support other storage modes. For details, see [Enabling single-service deployment of API Mediation Layer](https://docs.zowe.org/stable/user-guide/api-mediation/api-mediation-modulith/) and [Upgrading to single-service API ML deployment](https://docs.zowe.org/stable/upgrade/upgrade-to-single-service-apiml-deployment/).
+In Zowe v3, the Caching Service defaults to Infinispan storage instead of VSAM. If you plan to enable single-service deployment of API ML (recommended from Zowe v3.4.0), you must use Infinispan. The single-service deployment of API ML does not support other storage modes. For more information, see:  
+* [Enabling single-service deployment of API Mediation Layer](https://docs.zowe.org/stable/user-guide/api-mediation/api-mediation-modulith/)
+* [Upgrading to single-service API ML deployment](https://docs.zowe.org/stable/upgrade/upgrade-to-single-service-apiml-deployment/).
 :::
 
 You should proceed to the [**Upgrading the runtime**](#upgrading-the-runtime) and [**Configuration changes**](#configuration-changes) sections to complete your upgrade to v3.6.
@@ -437,7 +439,6 @@ components:
 #### Caching Service
 
 The Caching service now defaults to **Infinispan** mode instead of **VSAM**.
-While **VSAM** is still supported, this storage method is being deprecated and is not recommended.
 A new parameter for the key exchange port has been added to the default configuration.
 
 ```yaml
