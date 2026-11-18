@@ -385,16 +385,42 @@ zowe:
 
 After you prepare your current Zowe instance, upgrade the Zowe runtime to v3.6. Complete the following steps in order.
 
+:::note
+Stop your running Zowe instance before you replace the runtime files, data sets, or PROCLIB members.
+:::
+
+<!-- TODO: confirm that stopping Zowe first is required for every installation method, and how to stop it (for example, stop the ZWESLSTC started task, or run zwe stop -c /path/to/zowe.yaml). The dev notes do not state this. -->
+
 1. **Install the Zowe v3.6 build.**  
    For information about the available installation methods, see [Installing Overview](../user-guide/installing.md). The installation places the `SZWESAMP` and `SZWEAUTH` data sets under the data set prefix that `zowe.setup.dataset.prefix` defines in your `zowe.yaml`. The next step creates or updates your custom data sets.
 
+  :::info
+  <details>
+  <summary>Click here for an example of how to install from the convenience build (PAX file). </summary>
+
+   If you install from the convenience build (PAX file), follow [Installing the z/OS build via Convenience Build (PAX file)](../user-guide/install-zowe-zos-convenience-build.md). In summary:
+
+   a. Download the Zowe v3.6 PAX file and upload it to USS in binary mode.  
+   b. Expand the PAX file with `pax -ppx -rf <zowe-V.v.p>.pax`.  
+   c. Run `zwe install` with the `zowe.yaml` file that you prepared in the previous section and the `--allow-overwrite` option, for example: `<runtime-directory>/bin/zwe install -c /path/to/zowe.yaml --allow-overwrite`. Without `--allow-overwrite`, existing data sets are not updated, and the command issues message `ZWEL0301W`.
+
+   <!-- TODO: decide whether to recommend expanding the PAX file into a new runtime directory (and updating zowe.runtimeDirectory) instead of over the existing one, so that the previous runtime stays available for a downgrade. The dev notes expand into the existing runtime directory. -->
+
+   </details>
+
+  :::
    <!-- TODO: confirm that SZWESAMP and SZWEAUTH are the data sets that every installation method (SMP/E, convenience build, zwe install) places under the prefix. -->
 
 2. **Initialize your Zowe instance with `zwe init`.**  
-   Run the `zwe init` substeps that apply to your upgrade:
+   In a USS shell, run the `zwe init` substeps that apply to your upgrade. Point themthese commands at your `zowe.yaml` file with the `-c` option, for example:
+
+   ```
+   <runtime-directory>/bin/zwe init mvs -c /path/to/zowe.yaml --allow-overwrite
+   <runtime-directory>/bin/zwe init apfauth -c /path/to/zowe.yaml
+   ```
 
    * `zwe init mvs --allow-overwrite` updates your custom data sets with the contents of the new build. For an upgrade, you must use `--allow-overwrite`. Without it, existing data sets are not updated, and the command issues message `ZWEL0301W`.
-   * `zwe init apfauth` APF authorizes the Zowe load libraries.
+   * `zwe init apfauth` APF authorizes the Zowe load libraries. Note that running `zwe init apfauth`, requires elevated authority. If you do not have the required authority, ask your system programmer to run these commands.
 
    You can skip `zwe init security` and `zwe init certificate`. Existing SAF permissions and keyrings or keystores carry over to the new version, unless an SMP/E HOLD statement states otherwise. For the full list of steps that an upgrade requires, see [Installation and configuration tasks](./upgrading-zowe.md#installation-and-configuration-tasks). For more information about the `zwe init` options, see [Configuring Zowe with zwe init](../user-guide/initialize-zos-system.md) and [zwe init mvs](../appendix/zwe_server_command_reference/zwe/init/zwe-init-mvs.md).
 
@@ -434,7 +460,7 @@ After you prepare your current Zowe instance, upgrade the Zowe runtime to v3.6. 
 3. **Refresh the PROCLIB members.**  
    Copy the members `ZWESLSTC`, `ZWESISTC`, and `ZWESASTC` into your PROCLIB. You can do this with the `zwe init stc` command or by running the `ZWEISTC` job. If the members already exist, use the `--allow-overwrite` option. For command details, see [zwe init stc](../appendix/zwe_server_command_reference/zwe/init/zwe-init-stc.md) in the reference section.
 
-   <!-- TODO: confirm that --allow-overwrite is the correct option for zwe init stc when the PROCLIB members already exist. -->
+   <!-- TODO: confirm that --allow-overwrite is the correct option for zwe init stc when the PROCLIB members already exist. Confirm whether zwe init stc applies only to installations that run Zowe as a started task. -->
 
 4. **Review the automatic startup checks.**  
    Zowe v3.6 runs the following checks automatically each time it starts. For more information, see [z/OS pre-flight checks](../user-guide/zos-preflight.md).
@@ -458,7 +484,11 @@ After you prepare your current Zowe instance, upgrade the Zowe runtime to v3.6. 
 
 5. **Start your Zowe instance.**  
    Start Zowe using your usual method.  
-   For example, you can start Zowe by starting the `ZWESLSTC` started task. Check the startup log for messages at the `ERROR` level.
+   For example, you can start Zowe by starting the `ZWESLSTC` started task. Alternatively, run `<runtime-directory>/bin/zwe start -c /path/to/zowe.yaml` in a USS shell. Check the startup log for messages at the `ERROR` level. To view the log, open the job output in SDSF, or in the **Jobs** view of Zowe Explorer.
+
+   <!-- TODO: confirm the job name and spool file that hold the startup log, and name them here. -->
+
+   After you validate the upgrade, as described in [Verifying the upgrade](#verifying-the-upgrade), you can stop Zowe the same way that you started it. For example, stop the `ZWESLSTC` started task, or run `<runtime-directory>/bin/zwe stop -c /path/to/zowe.yaml`.
 
 6. **Resolve any startup failures.**  
    Review the startup log for `ERROR` messages, identify the check or component that failed, correct the cause (often a property in your `zowe.yaml`), and start Zowe again.
