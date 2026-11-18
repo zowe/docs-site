@@ -34,7 +34,9 @@ zwe start
        │    ├─ Java validity (if APIML / Gateway components are enabled)
        │    ├─ Node validity (if app-server is enabled)
        |    ├─ Certificate validity [zowe.launchScript.startupChecks.certificate]
-       │    ├─ z/OSMF reachability  [zowe.launchScript.startupChecks.zosmf]
+       │    └─ z/OSMF
+       |         ├─ Server reachability [zowe.launchScript.startupChecks.zosmf]
+       |         └─ JWT connectivity [zowe.launchScript.startupChecks.zosmfjwt]
        └─ Component validations (one pass per enabled component)
             ├─ Port bind check  (Is each server's port available) [zowe.launchScript.startupChecks.ports]
             ├─ Schema validation via the component's commands.validate script
@@ -64,8 +66,18 @@ zowe:
       certificate: exit
 ```
 
-If a per-check key is absent, `default` is used. If `default` is also absent, `exit` is
-assumed.
+If a per-check key is absent, `default` is used. If `default` is also absent, `exit` is assumed except the following checks:
+```yaml
+zowe:
+  launchScript:
+    startupChecks:
+      certificate: warn   # The following checks default to warn.
+      components: warn    # If a check detects an unexpected condition,
+      javaMax: warn       # it prints a warning and allows Zowe startup to continue.
+      nodeMax: warn       # For example, the javaMax check does not prevent Zowe from starting
+      attls: warn         # when testing a Java version newer than the officially supported maximum.
+      zosmfjwt: warn
+```
 
 > **Note:** Not every startup check is individually controllable. Some, such as the workspace
 > writability check, are unconditional and always stop startup on failure. Named checks are those
@@ -85,19 +97,19 @@ Some have a corresponding `zwe validate` command that can be run manually at any
 | Java validity | *(unconditional when APIML/Gateway enabled)* | always exits | A usable JVM is available. | `java -version` | — |
 | Node validity | *(unconditional when app-server enabled)* | always exits | A usable Node.js is available. | `node --version` | — |
 | z/OSMF reachability | `zosmf` | `exit` | z/OSMF at `zOSMF.host:zOSMF.port` accepts HTTPS connections. | HTTP(S) probe via Gateway jobname | `zwe validate` *(no dedicated subcommand; logic is inline)* |
+| z/OSMF JWT connectivity | `zosmfjwt` | `warn` | Verifies connectivity to the z/OSMF JWK endpoint (`/jwt/ibm/api/zOSMFBuilder/jwk`) | [`certificate-analyser.jar`](#certificate-analyserjar) | `zwe validate zosmf jwt` |
 | Port availability | `ports` | `exit` | Each enabled component can bind to its configured TCP port. | [`bind-test`](#bind-test) | [`zwe validate port bind`](#zwe-validate-port-bind) |
-| Certificates | `certificate` | `exit` | Keystore and truststore are valid and meet Zowe requirements. | [`certificate-analyser.jar`](#certificate-analyserjar) | [`zwe validate certificate`](#zwe-validate-certificate) |
+| Certificates | `certificate` | `warn` | Keystore and truststore are valid and meet Zowe requirements. | [`certificate-analyser.jar`](#certificate-analyserjar) | [`zwe validate certificate`](#zwe-validate-certificate) |
 
-### z/OSMF reachability check
+### z/OSMF reachability and JWT connectivity check
 
 Runs when all three conditions are true:
 - `zOSMF.host` and `zOSMF.port` are set in the Zowe YAML
 - `components.discovery.enabled: true` or `components.apiml.enabled: true`
-- `zowe.launchScript.startupChecks.zosmf` is not `disabled`
+- `zowe.launchScript.startupChecks.zosmf` or `zowe.launchScript.startupChecks.zosmfjwt` is not `disabled`
 
 The check makes an HTTPS connection (or HTTP if AT-TLS is active) to z/OSMF using the
 Gateway's jobname so that TCP/IP permissions are evaluated correctly.
-
 
 ### Port availability check
 
@@ -236,7 +248,8 @@ other software that runs on z/OS.
 |---|---|---|---|
 | `bind-test` | C | TCP port availability for each component | `zwe validate port bind` |
 | `zis-test` | C | ZIS (cross-memory server) reachability check by ZSS | — (component-driven) |
-| `certificate-analyser.jar` | Java | Keystore/truststore and TLS connectivity validation | `zwe validate certificate` |
+| `certificate-analyser.jar` | Java | Keystore/truststore and TLS connectivity validation| `zwe validate certificate` |
+| `certificate-analyser.jar` | Java | Verifies connectivity to the z/OSMF JWK endpoint | `zwe validate zosmf jwt` |
 | `configmgr` | C | YAML merging, schema validation, template evaluation | `zwe validate config` |
 
 ---
