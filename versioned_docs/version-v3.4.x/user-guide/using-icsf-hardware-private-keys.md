@@ -75,7 +75,7 @@ To use ICSF Keyrings, update the `zowe.certificate` section in your `zowe.yaml` 
 
 2. Set `zowe.certificate.truststore.type` to `JCEHYBRIDRACFKS`
 
-3. Verify that the protocols `safkeyring://` or `safkeyringhybridjce://` are used for the following files:  
+3. Verify that the protocols `safkeyring://` or `safkeyringjcehybrid://` are used for the following files:  
 * `zowe.certificate.trustore.file`
 * `zowe.certificate.keystore.file` 
 
