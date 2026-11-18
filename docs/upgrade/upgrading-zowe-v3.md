@@ -58,7 +58,7 @@ To upgrade from Zowe v3.5 or an earlier v3.x version, perform the following proc
 Confirm that the Java and Node.js versions meet the [prerequisites](#prerequisites-for-zowe-v36). Update `java.home` and `node.home` in `zowe.yaml` if needed.
 
 1. **Review strict URL validation.**
-In Zowe v3.6, the API ML Gateway enables strict URL validation by default. The Gateway rejects requests that contain any of the following encoded characters in the URL path:
+In Zowe v3.6, the API Gateway enables strict URL validation by default. The API Gateway rejects requests that contain any of the following encoded characters in the URL path:
 
      * encoded slashes (`%2F`)
      * encoded double slashes (`%2F%2F`)
@@ -386,7 +386,7 @@ zowe:
 After you prepare your current Zowe instance, upgrade the Zowe runtime to v3.6. Complete the following steps in order.
 
 1. **Install the Zowe v3.6 build.**  
-   For information about the available installation methods, see [Installing Overview](../user-guide/install-overview.md). The installation places the `SZWESAMP` and `SZWEAUTH` data sets under the data set prefix that `zowe.setup.dataset.prefix` defines in your `zowe.yaml`. The next step creates or updates your custom data sets.
+   For information about the available installation methods, see [Installing Overview](../user-guide/installing.md). The installation places the `SZWESAMP` and `SZWEAUTH` data sets under the data set prefix that `zowe.setup.dataset.prefix` defines in your `zowe.yaml`. The next step creates or updates your custom data sets.
 
    <!-- TODO: confirm that SZWESAMP and SZWEAUTH are the data sets that every installation method (SMP/E, convenience build, zwe install) places under the prefix. -->
 
@@ -410,26 +410,26 @@ After you prepare your current Zowe instance, upgrade the Zowe runtime to v3.6. 
 
    In the following example, `<prefix>` is the value of `zowe.setup.dataset.prefix` in your `zowe.yaml`, for example `MY.ZOWE.V3`. The example shows the output of `zwe init mvs --allow-overwrite` when the custom data sets already exist. The `ZWEL0300W` warnings state that the existing data sets are overwritten. The final line confirms that initialization succeeded.
 
-  **Example:**
-   ```
-   >> Initialize Zowe custom data sets
+    **Example:**
+    ```
+    >> Initialize Zowe custom data sets
 
-   Create data sets if they do not exist
-   Warning ZWEL0300W: <prefix>.CUST.PARMLIB already exists. This dataset will be overwritten.
-   Warning ZWEL0300W: <prefix>.CUST.JCLLIB already exists. This dataset will be overwritten.
-   Warning ZWEL0300W: <prefix>.SZWEAUTH already exists. This dataset will be overwritten.
-   Warning ZWEL0300W: <prefix>.CUST.ZWESAPL already exists. This dataset will be overwritten.
+    Create data sets if they do not exist
+    Warning ZWEL0300W: <prefix>.CUST.PARMLIB already exists. This dataset will be overwritten.
+    Warning ZWEL0300W: <prefix>.CUST.JCLLIB already exists. This dataset will be overwritten.
+    Warning ZWEL0300W: <prefix>.SZWEAUTH already exists. This dataset will be overwritten.
+    Warning ZWEL0300W: <prefix>.CUST.ZWESAPL already exists. This dataset will be overwritten.
 
-   Copy <prefix>.SZWESAMP(ZWESIP00) to <prefix>.CUST.PARMLIB(ZWESIP00)
-   Copy components/zss/LOADLIB/ZWESIS01 to <prefix>.SZWEAUTH(ZWESIS01)
-   Copy components/zss/LOADLIB/ZWESAUX to <prefix>.SZWEAUTH(ZWESAUX)
-   Copy components/zss/LOADLIB/ZWESISDL to <prefix>.SZWEAUTH(ZWESISDL)
-   Copy components/launcher/bin/zowe_launcher to <prefix>.SZWEAUTH(ZWELNCH)
+    Copy <prefix>.SZWESAMP(ZWESIP00) to <prefix>.CUST.PARMLIB(ZWESIP00)
+    Copy components/zss/LOADLIB/ZWESIS01 to <prefix>.SZWEAUTH(ZWESIS01)
+    Copy components/zss/LOADLIB/ZWESAUX to <prefix>.SZWEAUTH(ZWESAUX)
+    Copy components/zss/LOADLIB/ZWESISDL to <prefix>.SZWEAUTH(ZWESISDL)
+    Copy components/launcher/bin/zowe_launcher to <prefix>.SZWEAUTH(ZWELNCH)
 
-   >> Zowe custom data sets are initialized successfully.
-   ```
+    >> Zowe custom data sets are initialized successfully.
+    ```
 
-   Review the output of each `zwe init` substep to confirm that your data sets are properly initialized and that no `ZWEL0301W` message appears.
+    Review the output of each `zwe init` substep to confirm that your data sets are properly initialized and that no `ZWEL0301W` message appears.
 
 3. **Refresh the PROCLIB members.**  
    Copy the members `ZWESLSTC`, `ZWESISTC`, and `ZWESASTC` into your PROCLIB. You can do this with the `zwe init stc` command or by running the `ZWEISTC` job. If the members already exist, use the `--allow-overwrite` option. For command details, see [zwe init stc](../appendix/zwe_server_command_reference/zwe/init/zwe-init-stc.md) in the reference section.
@@ -481,8 +481,8 @@ After you prepare your current Zowe instance, upgrade the Zowe runtime to v3.6. 
    Setting a check to `warn` or `disabled` hides a real misconfiguration. Use these values as a temporary measure, and resolve the underlying finding.
    :::
 
-  <details>
-  <summary> Click for an example of a failed start. </summary>
+    <details>
+    <summary> Click for an example of a failed start. </summary>
 
    The following example shows a failed start. The startup checks pass, and then the validation of the API ML component fails. This example shows a component validation error, separate from the startup checks in the previous step. Zowe does not start until you correct the reported problem and start Zowe again.
 
@@ -502,7 +502,7 @@ After you prepare your current Zowe instance, upgrade the Zowe runtime to v3.6. 
 
    <!-- TODO: confirm where a reader finds the cause of an API ML component validation failure (log location or message), and add that location. -->
 
-   </details>
+    </details>
 
 7. **If the Caching Service fails to start, clear the Infinispan persistence data.**  
    If the Caching Service uses Infinispan storage, persistence data written by the earlier Infinispan version can prevent the service from starting after the upgrade. If this occurs, use the following procedure:
@@ -648,7 +648,7 @@ If you enable single-service deployment mode, **Infinispan is the required stora
 
 #### Single-service deployment mode
 
-Starting from Zowe v3.4.0, we recommend using the single-service deployment of API Mediation Layer. API ML single-service deployment mode runs the Gateway, Discovery Service, API Catalog, and Caching Service in a single JVM process, which improves performance and simplifies configuration. For more information about enabling this mode and requirements for single-service deployment, see [Enabling single-service deployment of API Mediation Layer](../user-guide/api-mediation/api-mediation-modulith.md).
+Starting from Zowe v3.4.0, we recommend using the single-service deployment of API Mediation Layer. API ML single-service deployment mode runs the API Gateway, Discovery Service, API Catalog, and Caching Service in a single JVM process, which improves performance and simplifies configuration. For more information about enabling this mode and requirements for single-service deployment, see [Enabling single-service deployment of API Mediation Layer](../user-guide/api-mediation/api-mediation-modulith.md).
 
 #### ZSS Server
 
