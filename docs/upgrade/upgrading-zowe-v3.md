@@ -190,7 +190,7 @@ Zowe v3.6 validates the hosts in service registration metadata against `zowe.net
   :::
 
 6. **Apply the v2 to v3 breaking changes.**  
-Review the [System and Security Changes](#system-and-security-changes) and [Configuration changes](#configuration-changes) sections of this article. The following breaking changes affect the upgrade:
+Review the [System and Security Changes](#system-and-security-changes-from-zowe-v2-and-v1) and [Configuration changes](#configuration-changes-from-zowe-v2-and-v1) sections of this article. The following breaking changes affect the upgrade:
     * The authentication route `/api/v1/gateway` is now `/gateway/api/v1`.
     * `zaas` is a separate component that uses port 7558 unless `apiml.enabled=true`.
     * `jobs-api`, `files-api`, `metrics-service`, and `cloud-gateway` are removed. `metrics-service` is replaced by the [OpenTelemetry implementation](../user-guide/api-mediation/observability/configuring-apiml-observability.md). 
@@ -205,7 +205,7 @@ In Zowe v3, the Caching Service defaults to Infinispan storage instead of VSAM. 
 :::
 
 
-You can now proceed to the [**Upgrading the runtime**](#upgrading-the-runtime) and [**Configuration changes**](#configuration-changes) sections to complete your upgrade to v3.6.
+You can now proceed to the [**Upgrading the runtime**](#upgrading-the-runtime) and [**Configuration changes**](#configuration-changes-from-zowe-v2-and-v1) sections to complete your upgrade to v3.6.
 
 </details>
 
@@ -607,7 +607,7 @@ The following network changes are needed for added or removed servers:
 ## Configuration changes from Zowe v2 and v1
 
 :::note
-These changes apply to upgrades from Zowe v2 and v1. If you are upgrading from Zowe v3.5 or an earlier v3.x version, you can skip this section. For v3.5 configuration changes, see [Upgrading from Zowe v3.5 (or earlier v3.x) to v3.6](#preparing-your-current-zowe-instance).
+These changes apply to upgrades from Zowe v2 and v1. If you are upgrading from Zowe v3.5 or an earlier v3.x version, you can skip this section. For v3.5 configuration changes, see **Upgrading from Zowe v3.x to v3.6** in [Preparing Your Current Zowe Instance](#preparing-your-current-zowe-instance).
 :::
 
 Review the following changes to configuration and updated configuration parameters.
