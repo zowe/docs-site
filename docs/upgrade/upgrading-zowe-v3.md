@@ -398,11 +398,16 @@ Stop your running Zowe instance before you replace the runtime files, data sets,
   <details>
   <summary>Click here for an example of how to install from the convenience build (PAX file). </summary>
 
-   If you install from the convenience build (PAX file), follow [Installing the z/OS build via Convenience Build (PAX file)](../user-guide/install-zowe-zos-convenience-build.md). In summary:
+   If you install from the convenience build (PAX file).  
 
-   a. Download the Zowe v3.6 PAX file and upload it to USS in binary mode.  
-   b. Expand the PAX file with `pax -ppx -rf <zowe-V.v.p>.pax`.  
-   c. Run `zwe install` with the `zowe.yaml` file that you prepared in the previous section and the `--allow-overwrite` option, for example: `<runtime-directory>/bin/zwe install -c /path/to/zowe.yaml --allow-overwrite`. Without `--allow-overwrite`, existing data sets are not updated, and the command issues message `ZWEL0301W`.
+   1. Download the Zowe v3.6 PAX file and upload it to USS in binary mode.  
+   2. Expand the PAX file with `pax -ppx -rf <zowe-V.v.p>.pax`.  
+   3. Run `zwe install` with the `zowe.yaml` file that you prepared in the previous section and the `--allow-overwrite` option.  
+   **Example:**  
+   `<runtime-directory>/bin/zwe install -c /path/to/zowe.yaml --allow-overwrite`.  
+   Without `--allow-overwrite`, existing data sets are not updated, and the command issues message `ZWEL0301W`.
+
+   For more information, see [Installing the z/OS build via Convenience Build (PAX file)](../user-guide/install-zowe-zos-convenience-build.md). 
 
    <!-- TODO: decide whether to recommend expanding the PAX file into a new runtime directory (and updating zowe.runtimeDirectory) instead of over the existing one, so that the previous runtime stays available for a downgrade. The dev notes expand into the existing runtime directory. -->
 
@@ -412,7 +417,9 @@ Stop your running Zowe instance before you replace the runtime files, data sets,
    <!-- TODO: confirm that SZWESAMP and SZWEAUTH are the data sets that every installation method (SMP/E, convenience build, zwe install) places under the prefix. -->
 
 2. **Initialize your Zowe instance with `zwe init`.**  
-   In a USS shell, run the `zwe init` substeps that apply to your upgrade. Point themthese commands at your `zowe.yaml` file with the `-c` option, for example:
+   In a USS shell, run the `zwe init` substeps that apply to your upgrade. Point these commands at your `zowe.yaml` file with the `-c` option.  
+
+  **Example:**  
 
    ```
    <runtime-directory>/bin/zwe init mvs -c /path/to/zowe.yaml --allow-overwrite
@@ -422,7 +429,10 @@ Stop your running Zowe instance before you replace the runtime files, data sets,
    * `zwe init mvs --allow-overwrite` updates your custom data sets with the contents of the new build. For an upgrade, you must use `--allow-overwrite`. Without it, existing data sets are not updated, and the command issues message `ZWEL0301W`.
    * `zwe init apfauth` APF authorizes the Zowe load libraries. Note that running `zwe init apfauth`, requires elevated authority. If you do not have the required authority, ask your system programmer to run these commands.
 
-   You can skip `zwe init security` and `zwe init certificate`. Existing SAF permissions and keyrings or keystores carry over to the new version, unless an SMP/E HOLD statement states otherwise. For the full list of steps that an upgrade requires, see [Installation and configuration tasks](./upgrading-zowe.md#installation-and-configuration-tasks). For more information about the `zwe init` options, see [Configuring Zowe with zwe init](../user-guide/initialize-zos-system.md) and [zwe init mvs](../appendix/zwe_server_command_reference/zwe/init/zwe-init-mvs.md).
+   You can skip `zwe init security` and `zwe init certificate`. Existing SAF permissions and keyrings or keystores carry over to the new version, unless an SMP/E HOLD statement states otherwise.  
+
+   For the full list of steps that an upgrade requires, see [Installation and configuration tasks](./upgrading-zowe.md#installation-and-configuration-tasks).  
+   For more information about the `zwe init` options, see [Configuring Zowe with zwe init](../user-guide/initialize-zos-system.md) and [zwe init mvs](../appendix/zwe_server_command_reference/zwe/init/zwe-init-mvs.md).
 
    :::warning
    Back up any customized members in your custom data sets, such as `<prefix>.CUST.PARMLIB` and `<prefix>.CUST.JCLLIB`, before you run `zwe init mvs --allow-overwrite`. The command can overwrite existing members, as message `ZWEL0300W` states.
@@ -434,7 +444,7 @@ Stop your running Zowe instance before you replace the runtime files, data sets,
    The `zowe.yaml` file is the required configuration file for the installation and initialization of Zowe. Review the `zowe.yaml` structure in the [Zowe YAML server configuration file reference](../appendix/zowe-yaml-configuration.md) and customize it according to your requirements.
    :::
 
-   In the following example, `<prefix>` is the value of `zowe.setup.dataset.prefix` in your `zowe.yaml`, for example `MY.ZOWE.V3`. The example shows the output of `zwe init mvs --allow-overwrite` when the custom data sets already exist. The `ZWEL0300W` warnings state that the existing data sets are overwritten. The final line confirms that initialization succeeded.
+   The following example shows the output that `zwe init mvs --allow-overwrite` displays in your USS shell during an upgrade, when the custom data sets from your previous installation already exist. In the example, `<prefix>` is the value of `zowe.setup.dataset.prefix` in your `zowe.yaml`, for example `MY.ZOWE.V3`. The `ZWEL0300W` warnings are expected during an upgrade: they state that the existing data sets are overwritten with the contents of the new build. The final line confirms that initialization succeeded.
 
     **Example:**
     ```
@@ -458,12 +468,14 @@ Stop your running Zowe instance before you replace the runtime files, data sets,
     Review the output of each `zwe init` substep to confirm that your data sets are properly initialized and that no `ZWEL0301W` message appears.
 
 3. **Refresh the PROCLIB members.**  
-   Copy the members `ZWESLSTC`, `ZWESISTC`, and `ZWESASTC` into your PROCLIB. You can do this with the `zwe init stc` command or by running the `ZWEISTC` job. If the members already exist, use the `--allow-overwrite` option. For command details, see [zwe init stc](../appendix/zwe_server_command_reference/zwe/init/zwe-init-stc.md) in the reference section.
+   Copy the members `ZWESLSTC`, `ZWESISTC`, and `ZWESASTC` into your PROCLIB. You can do this with the `zwe init stc` command or by running the `ZWEISTC` job. If the members already exist, use the `--allow-overwrite` option.  
+   For command details, see [zwe init stc](../appendix/zwe_server_command_reference/zwe/init/zwe-init-stc.md) in the reference section.
 
    <!-- TODO: confirm that --allow-overwrite is the correct option for zwe init stc when the PROCLIB members already exist. Confirm whether zwe init stc applies only to installations that run Zowe as a started task. -->
 
 4. **Review the automatic startup checks.**  
-   Zowe v3.6 runs the following checks automatically each time it starts. For more information, see [z/OS pre-flight checks](../user-guide/zos-preflight.md).
+   Zowe v3.6 runs the following checks automatically each time it starts.  
+   For more information, see [z/OS pre-flight checks](../user-guide/zos-preflight.md).
 
    :::tip
    If failure occurs during startup validation, we reccommend you set `zowe.launchScript.logLevel` to `debug` (or `trace` for more detail) to write additional startup diagnostics to the Zowe log. 
