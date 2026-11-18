@@ -5,9 +5,18 @@ Previously, ICSF-backed private keys were supported only via [AT-TLS](../user-gu
 
 :::tip
 
-We recommend enabling AT-TLS when relying on ICSF Hardware Private Keys since AT-TLS enablement provides TLS support for all Zowe components.
+If you use ICSF hardware private keys, we recommend enabling AT-TLS for all Zowe components. AT-TLS is required for components that do not natively support ICSF-backed keys, such as the App Server.
 
 :::
+
+## Component support
+
+Native support for ICSF-backed private keys (`JCEHYBRIDRACFKS`) is available only in the API Mediation Layer.
+
+Component|ICSF-backed private key support
+---|---
+API Mediation Layer (Gateway, Discovery, API Catalog, ZAAS, Caching Service)|Supported natively from Zowe 3.4.0
+App Server (Zowe Desktop)|Not supported natively. Requires AT-TLS.
 
 ## Configuring the z/OS system
 
