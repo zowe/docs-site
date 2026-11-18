@@ -633,7 +633,7 @@ Ensure you collect the logs and current configurations when contacting support.
 In an ACF2 environment, setting up AT-TLS with TLSv1.3 or TLSv1.2 using modern hardware ciphers like Elliptic Curve (ECC) can trigger a `CRYPTOZ` class violation for the `CLEARKEY.SYSTOK-SESSION-ONLY` resource.
 This violation occurs because negotiating these advanced cipher suites and key exchange algorithms requires cryptographic processing via ICSF PKCS#11 callable services.
 ICSF uses a temporary, in-memory "session-only" token to manage the clear keys during the handshake. By default, ACF2 secures this virtual token under the `CRYPTOZ` resource class.
-To resolve the violation and allow the Zowe user (ZWESVUSR) to read this "omnipresent" session token, you must grant `READ` access to `CLEARKEY.SYSTOK-SESSION-ONLY` with a rule such as in the follwoing example:
+To resolve the violation and allow the Zowe user (ZWESVUSR) to read this "omnipresent" session token, you must grant `READ` access to `CLEARKEY.SYSTOK-SESSION-ONLY` with a rule such as in the following example:
 **Example:**
 
 ```markup
