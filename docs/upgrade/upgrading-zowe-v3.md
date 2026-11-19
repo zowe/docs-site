@@ -480,7 +480,7 @@ Stop your running Zowe instance before you replace the runtime files, data sets,
    |---------------|------------------|-------------------|
    | Certificate | `exit` | `zowe.launchScript.startupChecks.certificate` |
    | Superuser (UID 0) check | `exit`. Zowe does not start if it runs as the USS superuser (UID 0), because running as UID 0 is strongly discouraged. | `zowe.launchScript.startupChecks.user` |
-   | Components | `warn` | <!-- TODO: confirm property --> |
+   | Components | `warn` | `zowe.launchScript.startupChecks.components` <!-- TODO: request validation that this property name and the default `warn` are correct for v3.6. The name comes from the zwe validate components reference page. --> |
    | Java dependency check | Zowe requires Java 17, 21, or 25. | `java.home` |
    | Node dependency check | Zowe requires Node.js 18, 20, 22, or 24. | `node.home` |
    | z/OSMF JWT (`zosmfjwt`) | <!-- confirm default --> | `zowe.launchScript.startupChecks.zosmfjwt` |
