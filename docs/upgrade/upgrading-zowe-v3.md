@@ -606,7 +606,7 @@ The following network changes are needed for added or removed servers:
 ## Configuration changes from Zowe v2 and v1
 
 :::note
-These changes apply to upgrades from Zowe v2 and v1. If you are upgrading from Zowe v3.5 or an earlier v3.x version, you can skip this section. For v3.5 configuration changes, see **Upgrading from Zowe v3.x to v3.6** in [Preparing Your Current Zowe Instance](#preparing-your-current-zowe-instance).
+These changes apply to upgrades from Zowe v2 and v1. If you are upgrading from Zowe v3.5 or an earlier v3.x version, you can skip this section. For Zowe v3.5 configuration changes, see **Upgrading from Zowe v3.x to v3.6** in [Preparing Your Current Zowe Instance](#preparing-your-current-zowe-instance).
 :::
 
 Review the following changes to configuration and updated configuration parameters.
