@@ -27,9 +27,9 @@ Before starting the upgrade, ensure the following base system requirements are m
 *   **z/OSMF**  
     Version V2R5 or V3R1 is required. JWT support for z/OSMF is highly recommended. For more information, see [Enabling JSON Web Token support](https://www.ibm.com/docs/en/zos/3.1.0?topic=configurations-enabling-json-web-token-support) in the IBM documentation. If you do not have JWT support in z/OSMF, make sure to set `components.gateway.apiml.security.auth.zosmf.jwtAutoconfiguration` to `ltpa`.
 *   **Java**  
-    Java 17 or higher (21 and 25 supported, 17, 21 or 25 enforced) is required. The Zowe YAML parameter `java.home` value should be a **Java 17**, **Java 21**, or **Java 25** home location. If an administrator uses `zwe init` to set up Zowe, ensure the `java` for that user is v17, v21 or v25 by including it in the `PATH` environment variable.
+    Java 17, 21, or 25 is required. Zowe checks the Java version at startup and enforces these versions. The Zowe YAML parameter `java.home` value must be a **Java 17**, **Java 21**, or **Java 25** home location. If an administrator uses `zwe init` to set up Zowe, ensure the `java` for that user is v17, v21, or v25 by including it in the `PATH` environment variable.
 *   **Node.js**  
-    Ensure that the Zowe YAML parameter `node.home` value is a **Node.js 18, 20, 22 or 24** home location. Node 16 and earlier versions are not supported.
+    Node.js 18, 20, 22, or 24 is required. The Zowe YAML parameter `node.home` value must be a **Node.js 18**, **Node.js 20**, **Node.js 22**, or **Node.js 24** home location. Node.js 16 and earlier versions are not supported.
 
 ## Preparing Your Current Zowe Instance
 
@@ -54,7 +54,7 @@ While upgrading within Zowe v3 is a minor-version upgrade, Zowe v3.6 includes se
 To upgrade from Zowe v3.5 or an earlier v3.x version, complete the following tasks before you install Zowe v3.6. You can complete all of them while your current Zowe instance is still running.
 
 1. **Verify runtime levels.**  
-Confirm that the Java and Node.js versions meet the [prerequisites](#prerequisites-for-zowe-v36). Update `java.home` and `node.home` in `zowe.yaml` if needed.
+Confirm that the Java version (17, 21, or 25) and the Node.js version (18, 20, 22, or 24) meet the [prerequisites](#prerequisites-for-zowe-v36). Update `java.home` and `node.home` in `zowe.yaml` if needed.
 
 1. **Decide how to handle strict URL validation.**  
 In Zowe v3.6, the API Gateway enables strict URL validation by default. The API Gateway rejects requests that contain any of the following encoded characters in the URL path:
@@ -144,7 +144,7 @@ Set `components.gateway.apiml.security.auth.provider` explicitly to `zosmf` or `
     ```
 
 1. **Verify runtime levels.**  
-Confirm that the Java and Node.js versions meet the [prerequisites](#prerequisites-for-zowe-v36). Update `java.home` and `node.home` in `zowe.yaml` if the versions have changed from those in your 2.18.x installation. 
+Confirm that the Java version (17, 21, or 25) and the Node.js version (18, 20, 22, or 24) meet the [prerequisites](#prerequisites-for-zowe-v36). Update `java.home` and `node.home` in `zowe.yaml` if the versions have changed from those in your 2.18.x installation. 
 
 1. **Verify z/OSMF JWT support.**  
 Confirm that z/OSMF JWT support is available, as described in the [prerequisites](#prerequisites-for-zowe-v36). If z/OSMF JWT support is not available, choose one of the following actions:
@@ -398,15 +398,13 @@ Stop your running Zowe instance before you replace the runtime files, data sets,
    If you install from the convenience build (PAX file).  
 
    1. Download the Zowe v3.6 PAX file and upload it to USS in binary mode.  
-   2. Expand the PAX file with `pax -ppx -rf <zowe-V.v.p>.pax`.  
+   2. Back up your existing runtime directory, and then expand the PAX file into the same runtime directory with `pax -ppx -rf <zowe-V.v.p>.pax`. The backup preserves the previous runtime so that you can restore it if you need to downgrade.  
    3. Run `zwe install` with the `zowe.yaml` file that you prepared in the previous section and the `--allow-overwrite` option.  
    **Example:**  
    `<runtime-directory>/bin/zwe install -c /path/to/zowe.yaml --allow-overwrite`.  
    Without `--allow-overwrite`, existing data sets are not updated, and the command issues message `ZWEL0301W`.
 
    For more information, see [Installing the z/OS build via Convenience Build (PAX file)](../user-guide/install-zowe-zos-convenience-build.md). 
-
-   <!-- TODO: decide whether to recommend expanding the PAX file into a new runtime directory (and updating zowe.runtimeDirectory) instead of over the existing one, so that the previous runtime stays available for a downgrade. The dev notes expand into the existing runtime directory. -->
 
    </details>
 
@@ -423,7 +421,7 @@ Stop your running Zowe instance before you replace the runtime files, data sets,
    <runtime-directory>/bin/zwe init apfauth -c /path/to/zowe.yaml
    ```
 
-   * `zwe init mvs --allow-overwrite` updates your custom data sets with the contents of the new build. For an upgrade, you must use `--allow-overwrite`. Without it, existing data sets are not updated, and the command issues message `ZWEL0301W`.
+   * `zwe init mvs` updates your custom data sets with the contents of the new Zowe build. When the custom data sets already exist under your data set prefix, such as in an in-place upgrade, you must specify `--allow-overwrite`. Without the `--allow-overwrite` option, the `zwe init mvs` command does not update the existing data sets and issues message `ZWEL0301W`. When you create the custom data sets under a new data set prefix, the `--allow-overwrite` option is not required.
    * `zwe init apfauth` APF authorizes the Zowe load libraries. Note that running `zwe init apfauth`, requires elevated authority. If you do not have the required authority, ask your system programmer to run these commands.
 
    You can skip `zwe init security` and `zwe init certificate`. Existing SAF permissions and keyrings or keystores carry over to the new version, unless an SMP/E HOLD statement states otherwise.  
@@ -481,15 +479,13 @@ Stop your running Zowe instance before you replace the runtime files, data sets,
    | Startup check | Default behavior | Override property |
    |---------------|------------------|-------------------|
    | Certificate | `exit` | `zowe.launchScript.startupChecks.certificate` |
-   | User superuser check | `exit` | `zowe.launchScript.startupChecks.user` |
+   | Superuser (UID 0) check | `exit`. Zowe does not start if it runs as the USS superuser (UID 0), because running as UID 0 is strongly discouraged. | `zowe.launchScript.startupChecks.user` |
    | Components | `warn` | <!-- TODO: confirm property --> |
-   | Java dependency check | Enforce Java 17 or 21 |  Set `java.home` to the appropriate library if the version has changed from the one in your previous installation. |
-   | Node dependency check | Enforce Node 18-24  |  Set `node.home` to the appropriate library if the version has changed from the one in your previous installation. |
-   | z/OSMF JWT (`zosmfjwt`) | `exit` | `zowe.launchScript.startupChecks.zosmfjwt` |
+   | Java dependency check | Zowe requires Java 17, 21, or 25. | `java.home` |
+   | Node dependency check | Zowe requires Node.js 18, 20, 22, or 24. | `node.home` |
+   | z/OSMF JWT (`zosmfjwt`) | <!-- confirm default --> | `zowe.launchScript.startupChecks.zosmfjwt` |
 
-   A failing check that defaults to `exit` prevents Zowe from starting.
-
-   <!-- TODO: confirm what the "User superuser check" verifies, and reword the check name if needed. -->
+   A failing check that defaults to `exit` prevents Zowe from starting. If the Java or Node.js version changed from your previous installation, set `java.home` or `node.home` in `zowe.yaml` to a supported installation.
 
 3. **Start your Zowe instance.**  
    Start Zowe using your usual method.  
@@ -537,13 +533,11 @@ Stop your running Zowe instance before you replace the runtime files, data sets,
    <timestamp> <ZWELNCH:nnn> ZWESVUSR ERROR ZWEL0030E failed to prepare Zowe instance
    ```
 
-   In this example, the cause is in the API ML component output, not in the lines above the `ERROR` line. Correct the property that the component reports, and then start Zowe again.
-
-   <!-- TODO: confirm where a reader finds the cause of an API ML component validation failure (log location or message), and add that location. -->
+  Correct the property that the component reports, and then start Zowe again.
 
     </details>
 
-5. **If the Caching Service fails to start, clear the Infinispan persistence data.**  
+1. **If the Caching Service fails to start, clear the Infinispan persistence data.**  
    If the Caching Service uses Infinispan storage, persistence data written by the earlier Infinispan version can prevent the service from starting after the upgrade. If this occurs, use the following procedure:
 
    a. Stop Zowe.  
@@ -575,8 +569,7 @@ After Zowe v3.6 starts, use the following checklist to confirm that the upgrade 
 - Confirm that `zowe.network.allowedDomains` includes every domain, IP address, or CIDR range from which services register.
 - Confirm that onboarded services register successfully. If a registration is rejected, confirm that the cause is a host that is not in `zowe.network.allowedDomains`, and add the host if appropriate.
 - If your services use URLs with encoded characters (`%2F`, `%5C`, `%25`, `%2E`, or semicolons), confirm that requests to them still succeed, or that `components.gateway.apiml.security.enableStrictUrlValidation` is set to `false`.
-- Confirm z/OSMF is reachable through the API Gateway by the `/ibmzosmf` route, not `/zosmf`. Note that the `/ibmzosmf` route was introduced in an earlier v3 version and is not specific to the v3.6 upgrade.
-<!-- TODO: confirm why the route changed, and add a half sentence of explanation for readers who still use /zosmf. -->
+- Confirm z/OSMF is reachable through the API Gateway by the `/ibmzosmf` route, not `/zosmf`. Note that the `/ibmzosmf` route was introduced with the release of v3 and is not specific to the v3.6 upgrade.
 - (HA installations only) Confirm that on startup, Zowe creates `.zowe-<haInstance>-merged.yaml` in the workspace `.env` directory, and that `ZWE_HA_INSTANCE_CONFIG` points to that file. For more information about HA upgrades, see [Upgrading Zowe in HA for zero downtime](./upgrade-zowe-no-downtime.md).
 
 ## System and Security Changes from Zowe v2 and v1
