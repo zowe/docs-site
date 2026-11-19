@@ -1,6 +1,6 @@
 # Upgrading from Zowe Vx to Zowe V3.6
 
-Review the procedure outlined in this article to upgrade to the latest version of Zowe server-side (currently to v3.6) from any earlier v3.x version, as well as from Zowe v2, or from Zowe v1.
+Review the procedure outlined in this article to upgrade to the latest version of Zowe server-side (currently to v3.6) from any earlier v3.x version, as well as from Zowe v2.
 
 :::info Required roles: system administrator, system programmer
 :::
@@ -49,7 +49,6 @@ While upgrading within Zowe v3 is a minor-version upgrade, Zowe v3.6 includes se
 * **Strict URL validation** is enabled by default. Requests with encoded characters in the URL path are rejected.
 * **Actuator endpoints** (`/application/info` and `/application/version`) now require authentication. Unauthenticated requests return HTTP 401.
 * **Service registration** is validated against `zowe.network.allowedDomains`. Services registering from other hosts can be rejected.
-* **z/OSMF JWT startup check** stops Zowe startup if the check fails (default: `exit`).
 :::
 
 To upgrade from Zowe v3.5 or an earlier v3.x version, perform the following procedure before you install Zowe v3.6. 
@@ -87,8 +86,8 @@ The property `components.gateway.apiml.service.allowEncodedSlashes` is removed. 
     Regardless of this setting, Gateway-internal endpoints (such as `/gateway`, `/application`, `/images`, and `/v3/api-docs`) always enforce strict validation.
     :::
 
-2. **Review the new and changed YAML properties.**
-To see all changes between releases, compare the `zowe-install-packaging` repository and search for `example-zowe.yaml` and `defaults.yaml`: [https://github.com/zowe/zowe-install-packaging/compare/v3.5.0...v3.6.0](https://github.com/zowe/zowe-install-packaging/compare/v3.5.0...v3.6.0). Then review the following properties in your `zowe.yaml` file and decide whether to adopt each of them:
+1. **Review the new and changed YAML properties.**  
+To see every configuration change between v3.5.0 and v3.6.0, review the [release comparison](https://github.com/zowe/zowe-install-packaging/compare/v3.5.0...v3.6.0) in the `zowe-install-packaging` repository. On the **Files changed** tab, review the changes to `example-zowe.yaml` and `files/defaults.yaml`. Then review the following properties in your `zowe.yaml` file and decide whether to adopt each of them:
 
     | Property | Upgrade decision |
     | :--- | :--- |
@@ -97,7 +96,7 @@ To see all changes between releases, compare the `zowe-install-packaging` reposi
     | `components.apiml.logging.level` (and the per-component variant `components.<component>.logging.level`) | Optional. Set the API ML log level to `quiet`, `info`, or `debug`. Legacy `debug` parameters still take precedence. See [Configuring API ML logging](../user-guide/api-mediation/configuration-logging.md). |
     | `storage.infinispan.useVirtualThreads` | Optional. Enables Infinispan virtual threads, which require Java 21 or later. The default is `false`. See the [Zowe YAML configuration file reference](../appendix/zowe-yaml-configuration.md). |
 
-3. **Update monitoring probes for actuator endpoint authentication.**
+1. **Update monitoring probes for actuator endpoint authentication.**
 After you upgrade, unauthenticated requests to the API Gateway `/application/info` and `/application/version` endpoints return HTTP 401. Monitoring probes and automation scripts that call these endpoints without credentials must be updated.
 
     | Authentication State | Example Command | Before Upgrade | After Upgrade |
@@ -111,7 +110,7 @@ After you upgrade, unauthenticated requests to the API Gateway `/application/inf
     Setting `components.gateway.apiml.health.protected: false` exposes health, information, and version metadata without authentication. Use an authenticated client whenever possible. If unauthenticated access is required, restrict access through another trusted control, such as network-level controls.
     :::
 
-4. **Review certificate and HA notes.**
+1. **Review certificate and HA notes.**
     * `zwe init certificate` now generates a random password when `zowe.setup.certificate.pkcs12.password` or `zowe.setup.certificate.pkcs12.caPassword` is left at the default value. This applies to keystore scenarios only; keyring scenarios are unaffected. Update any automation that relies on the literal default password before you re-run certificate initialization. See [zwe init certificate](../appendix/zwe_server_command_reference/zwe/init/zwe-init-certificate.md).
     * At startup in HA mode, Zowe writes a merged configuration file for each HA instance to the workspace `.env` directory. See [Upgrading Zowe in HA for zero downtime](./upgrade-zowe-no-downtime.md).
 
