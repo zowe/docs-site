@@ -44,19 +44,19 @@ All v2.x installations must first upgrade to v2.18.x before upgrading to the lat
 <br />
 
 :::warning Zowe v3.6 introduces breaking changes  
-While upgrading within Zowe v3 is a minor-version upgrade, Zowe v3.6 includes security patches that change existing behavior. It is necessary to review and address these changes before you restart Zowe, or your services, monitoring, and automation might fail. The changes include:
+While upgrading within Zowe v3 is a minor-version upgrade, Zowe v3.6 includes security patches that change existing behavior. It is necessary to review and address these changes before you start Zowe v3.6, or your services, monitoring, and automation might fail. The changes include:
 
 * **Strict URL validation** is enabled by default. Requests with encoded characters in the URL path are rejected.
 * **Actuator endpoints** (`/application/info` and `/application/version`) now require authentication. Unauthenticated requests return HTTP 401.
 * **Service registration** is validated against `zowe.network.allowedDomains`. Services registering from other hosts can be rejected.
 :::
 
-To upgrade from Zowe v3.5 or an earlier v3.x version, perform the following procedure before you install Zowe v3.6. 
+To upgrade from Zowe v3.5 or an earlier v3.x version, complete the following tasks before you install Zowe v3.6. You can complete all of them while your current Zowe instance is still running.
 
-1. **Verify runtime levels.**
+1. **Verify runtime levels.**  
 Confirm that the Java and Node.js versions meet the [prerequisites](#prerequisites-for-zowe-v36). Update `java.home` and `node.home` in `zowe.yaml` if needed.
 
-1. **Review strict URL validation.**
+1. **Decide how to handle strict URL validation.**  
 In Zowe v3.6, the API Gateway enables strict URL validation by default. The API Gateway rejects requests that contain any of the following encoded characters in the URL path:
 
      * encoded slashes (`%2F`)
@@ -66,10 +66,9 @@ In Zowe v3.6, the API Gateway enables strict URL validation by default. The API 
      * encoded periods (`%2E`)
      * semicolons (`;`)
 
-   If your onboarded services or clients depend on these characters, requests are rejected after the upgrade unless you update your configuration. For details about routing traffic to APIs that require encoded characters, see [Strict URL validation replaces allowEncodedSlashes](../whats-new/api-ml-v3.6-upgrade-and-security-enhancements.md#strict-url-validation-replaces-allowencodedslashes) in the article _API ML V3.6 upgrade and security enhancements_.
+   Determine whether any of your onboarded services or clients depend on these characters. If they do, requests are rejected after the upgrade unless you update your configuration. For details about routing traffic to APIs that require encoded characters, see [Strict URL validation replaces allowEncodedSlashes](../whats-new/api-ml-v3.6-upgrade-and-security-enhancements.md#strict-url-validation-replaces-allowencodedslashes) in the article _API ML V3.6 upgrade and security enhancements_.
 
-1. **Update the configuration property.**
-The property `components.gateway.apiml.service.allowEncodedSlashes` is removed. If your services require encoded characters, add the new property `components.gateway.apiml.security.enableStrictUrlValidation` to `zowe.yaml` and set the property to `false`:
+   The property `components.gateway.apiml.service.allowEncodedSlashes` is removed in Zowe v3.6. If your services require encoded characters, add the new property `components.gateway.apiml.security.enableStrictUrlValidation` to `zowe.yaml` and set the property to `false`:
 
     ```yaml
     components:
@@ -86,15 +85,18 @@ The property `components.gateway.apiml.service.allowEncodedSlashes` is removed. 
     Regardless of this setting, Gateway-internal endpoints (such as `/gateway`, `/application`, `/images`, and `/v3/api-docs`) always enforce strict validation.
     :::
 
-1. **Review the new and changed YAML properties.**  
-To see every configuration change between v3.5.0 and v3.6.0, review the [release comparison](https://github.com/zowe/zowe-install-packaging/compare/v3.5.0...v3.6.0) in the `zowe-install-packaging` repository. On the **Files changed** tab, review the changes to `example-zowe.yaml` and `files/defaults.yaml`. Then review the following properties in your `zowe.yaml` file and decide whether to adopt each of them:
+1. **Update `zowe.yaml` for the new and changed properties.**  
+Review the following properties in your `zowe.yaml` file and decide whether to adopt each of them. The `zowe.network.allowedDomains` and `zowe.launchScript.startupChecks.zosmfjwt` properties affect whether Zowe v3.6 starts and whether services register. Review these properties first. The other properties are optional.
 
     | Property | Upgrade decision |
     | :--- | :--- |
     | `zowe.network.allowedDomains` | Add any domain, IP address, or CIDR range outside your `zowe.externalDomains` and `haInstances` hostnames from which services register with the API Discovery Service. Otherwise, registrations from those hosts can be rejected or produce warnings. See [Configuring allowed domains and IP addresses for service registration](../user-guide/api-mediation/config-allowed-domains-for-service-reg.md) and the [Zowe YAML configuration file reference](../appendix/zowe-yaml-configuration.md). |
-    | `zowe.launchScript.startupChecks.zosmfjwt` | Applies when Zowe uses z/OSMF JWT authentication. The default `exit` stops startup if the z/OSMF JWT check fails. Set `warn` to continue startup with a warning, or `disabled` to skip the check. You can run the same check manually with `zwe validate zosmf jwt`. See [zwe validate zosmf jwt](../appendix/zwe_server_command_reference/zwe/validate/zwe-validate-zosmf-jwt.md). |
+    | `zowe.launchScript.startupChecks.zosmfjwt` | Applies when Zowe uses z/OSMF JWT authentication. Set `warn` to continue startup with a warning, or `disabled` to skip the check. You can run the same check manually with `zwe validate zosmf jwt`. See [zwe validate zosmf jwt](../appendix/zwe_server_command_reference/zwe/validate/zwe-validate-zosmf-jwt.md). |
     | `components.apiml.logging.level` (and the per-component variant `components.<component>.logging.level`) | Optional. Set the API ML log level to `quiet`, `info`, or `debug`. Legacy `debug` parameters still take precedence. See [Configuring API ML logging](../user-guide/api-mediation/configuration-logging.md). |
     | `storage.infinispan.useVirtualThreads` | Optional. Enables Infinispan virtual threads, which require Java 21 or later. The default is `false`. See the [Zowe YAML configuration file reference](../appendix/zowe-yaml-configuration.md). |
+
+    To see every configuration change between v3.5.0 and v3.6.0, review the [release comparison](https://github.com/zowe/zowe-install-packaging/compare/v3.5.0...v3.6.0) in the `zowe-install-packaging` repository. On the **Files changed** tab, review the changes to `example-zowe.yaml` and `files/defaults.yaml`.
+
 
 1. **Update monitoring probes for actuator endpoint authentication.**
 After you upgrade, unauthenticated requests to the API Gateway `/application/info` and `/application/version` endpoints return HTTP 401. Monitoring probes and automation scripts that call these endpoints without credentials must be updated.
@@ -109,10 +111,6 @@ After you upgrade, unauthenticated requests to the API Gateway `/application/inf
     :::warning
     Setting `components.gateway.apiml.health.protected: false` exposes health, information, and version metadata without authentication. Use an authenticated client whenever possible. If unauthenticated access is required, restrict access through another trusted control, such as network-level controls.
     :::
-
-1. **Review certificate and HA notes.**
-    * `zwe init certificate` now generates a random password when `zowe.setup.certificate.pkcs12.password` or `zowe.setup.certificate.pkcs12.caPassword` is left at the default value. This applies to keystore scenarios only; keyring scenarios are unaffected. Update any automation that relies on the literal default password before you re-run certificate initialization. See [zwe init certificate](../appendix/zwe_server_command_reference/zwe/init/zwe-init-certificate.md).
-    * At startup in HA mode, Zowe writes a merged configuration file for each HA instance to the workspace `.env` directory. See [Upgrading Zowe in HA for zero downtime](./upgrade-zowe-no-downtime.md).
 
 :::note Single-service deployment and Caching Service storage
  If you already run API ML in single-service deployment mode, or plan to enable it (recommended from Zowe v3.4.0), the Caching Service must use Infinispan storage. Set `components.caching-service.storage.mode` to `infinispan`. Other storage modes, such as VSAM, are not supported in single-service deployment mode. Infinispan also requires additional ports. For mre inforamtion, see the following articles:  
@@ -387,10 +385,8 @@ zowe:
 After you prepare your current Zowe instance, upgrade the Zowe runtime to v3.6. Complete the following steps in order.
 
 :::note
-Stop your running Zowe instance before you replace the runtime files, data sets, or PROCLIB members.
+Stop your running Zowe instance before you replace the runtime files, data sets, or PROCLIB members. For more information about stopping Zowe, see [Starting and Stopping Zowe](../user-guide/start-zowe-zos.md).
 :::
-
-<!-- TODO: confirm that stopping Zowe first is required for every installation method, and how to stop it (for example, stop the ZWESLSTC started task, or run zwe stop -c /path/to/zowe.yaml). The dev notes do not state this. -->
 
 1. **Install the Zowe v3.6 build.**  
    For information about the available installation methods, see [Installing Overview](../user-guide/installing.md). The installation places the `SZWESAMP` and `SZWEAUTH` data sets under the data set prefix that `zowe.setup.dataset.prefix` defines in your `zowe.yaml`. The next step creates or updates your custom data sets.
@@ -432,6 +428,8 @@ Stop your running Zowe instance before you replace the runtime files, data sets,
 
    You can skip `zwe init security` and `zwe init certificate`. Existing SAF permissions and keyrings or keystores carry over to the new version, unless an SMP/E HOLD statement states otherwise.  
 
+   If you do re-run `zwe init certificate` with a keystore, note that in Zowe v3.6 it generates a random password when `zowe.setup.certificate.pkcs12.password` or `zowe.setup.certificate.pkcs12.caPassword` is left at the default value. Keyring scenarios are unaffected. Update any automation that relies on the literal default password. See [zwe init certificate](../appendix/zwe_server_command_reference/zwe/init/zwe-init-certificate.md).  
+
    For the full list of steps that an upgrade requires, see [Installation and configuration tasks](./upgrading-zowe.md#installation-and-configuration-tasks).  
    For more information about the `zwe init` options, see [Configuring Zowe with zwe init](../user-guide/initialize-zos-system.md) and [zwe init mvs](../appendix/zwe_server_command_reference/zwe/init/zwe-init-mvs.md).
 
@@ -446,25 +444,25 @@ Stop your running Zowe instance before you replace the runtime files, data sets,
    The following example shows the output that `zwe init mvs --allow-overwrite` displays in your USS shell during an upgrade, when the custom data sets from your previous installation already exist. In the example, `<prefix>` is the value of `zowe.setup.dataset.prefix` in your `zowe.yaml`, for example `MY.ZOWE.V3`. The `ZWEL0300W` warnings are expected during an upgrade: they state that the existing data sets are overwritten with the contents of the new build. The final line confirms that initialization succeeded.
 
     **Example:**
-    ```
-    >> Initialize Zowe custom data sets
+  ```
+  >> Initialize Zowe custom data sets
 
-    Create data sets if they do not exist
-    Warning ZWEL0300W: <prefix>.CUST.PARMLIB already exists. This dataset will be overwritten.
-    Warning ZWEL0300W: <prefix>.CUST.JCLLIB already exists. This dataset will be overwritten.
-    Warning ZWEL0300W: <prefix>.SZWEAUTH already exists. This dataset will be overwritten.
-    Warning ZWEL0300W: <prefix>.CUST.ZWESAPL already exists. This dataset will be overwritten.
+  Create data sets if they do not exist
+  Warning ZWEL0300W: <prefix>.CUST.PARMLIB already exists. This dataset will be overwritten.
+  Warning ZWEL0300W: <prefix>.CUST.JCLLIB already exists. This dataset will be overwritten.
+  Warning ZWEL0300W: <prefix>.SZWEAUTH already exists. This dataset will be overwritten.
+  Warning ZWEL0300W: <prefix>.CUST.ZWESAPL already exists. This dataset will be overwritten.
 
-    Copy <prefix>.SZWESAMP(ZWESIP00) to <prefix>.CUST.PARMLIB(ZWESIP00)
-    Copy components/zss/LOADLIB/ZWESIS01 to <prefix>.SZWEAUTH(ZWESIS01)
-    Copy components/zss/LOADLIB/ZWESAUX to <prefix>.SZWEAUTH(ZWESAUX)
-    Copy components/zss/LOADLIB/ZWESISDL to <prefix>.SZWEAUTH(ZWESISDL)
-    Copy components/launcher/bin/zowe_launcher to <prefix>.SZWEAUTH(ZWELNCH)
+  Copy <prefix>.SZWESAMP(ZWESIP00) to <prefix>.CUST.PARMLIB(ZWESIP00)
+  Copy components/zss/LOADLIB/ZWESIS01 to <prefix>.SZWEAUTH(ZWESIS01)
+  Copy components/zss/LOADLIB/ZWESAUX to <prefix>.SZWEAUTH(ZWESAUX)
+  Copy components/zss/LOADLIB/ZWESISDL to <prefix>.SZWEAUTH(ZWESISDL)
+  Copy components/launcher/bin/zowe_launcher to <prefix>.SZWEAUTH(ZWELNCH)
 
-    >> Zowe custom data sets are initialized successfully.
-    ```
+  >> Zowe custom data sets are initialized successfully.
+  ```
 
-    Review the output of each `zwe init` substep to confirm that your data sets are properly initialized and that no `ZWEL0301W` message appears.
+  Review the output of each `zwe init` substep to confirm that your data sets are properly initialized and that no `ZWEL0301W` message appears.
 
 1. **Refresh the PROCLIB members.**  
    Copy the members `ZWESLSTC`, `ZWESISTC`, and `ZWESASTC` into your PROCLIB. You can do this with the `zwe init stc` command or by running the `ZWEISTC` job. If the members already exist, use the `--allow-overwrite` option.  
@@ -577,9 +575,9 @@ After Zowe v3.6 starts, use the following checklist to confirm that the upgrade 
 - Confirm that `zowe.network.allowedDomains` includes every domain, IP address, or CIDR range from which services register.
 - Confirm that onboarded services register successfully. If a registration is rejected, confirm that the cause is a host that is not in `zowe.network.allowedDomains`, and add the host if appropriate.
 - If your services use URLs with encoded characters (`%2F`, `%5C`, `%25`, `%2E`, or semicolons), confirm that requests to them still succeed, or that `components.gateway.apiml.security.enableStrictUrlValidation` is set to `false`.
-- Confirm z/OSMF is reachable through the API Gateway by the `/ibmzosmf` route, not `/zosmf`.
+- Confirm z/OSMF is reachable through the API Gateway by the `/ibmzosmf` route, not `/zosmf`. Note that the `/ibmzosmf` route was introduced in an earlier v3 version and is not specific to the v3.6 upgrade.
 <!-- TODO: confirm why the route changed, and add a half sentence of explanation for readers who still use /zosmf. -->
-- (HA installations only) Confirm that on startup, Zowe creates `.zowe-<haInstance>-merged.yaml` in the workspace `.env` directory, and that `ZWE_HA_INSTANCE_CONFIG` points to that file.
+- (HA installations only) Confirm that on startup, Zowe creates `.zowe-<haInstance>-merged.yaml` in the workspace `.env` directory, and that `ZWE_HA_INSTANCE_CONFIG` points to that file. For more information about HA upgrades, see [Upgrading Zowe in HA for zero downtime](./upgrade-zowe-no-downtime.md).
 
 ## System and Security Changes from Zowe v2 and v1
 
