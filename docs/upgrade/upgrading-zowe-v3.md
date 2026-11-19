@@ -1,6 +1,6 @@
 # Upgrading from Zowe Vx to Zowe V3.6
 
-Review the procedure outlined in this article to upgrade to the latest version of Zowe server-side (currently to v3.6) from any earlier v3.x version, as well as from Zowe v2.
+Review the procedure outlined in this article to upgrade to the latest version of Zowe server-side (currently to v3.6) from any earlier v3.x version, as well as from Zowe v2. If you are using Zowe v1, the article describes a clean installation of Zowe v3.6 instead of an upgrade.
 
 :::info Required roles: system administrator, system programmer
 :::
@@ -391,9 +391,9 @@ Stop your running Zowe instance before you replace the runtime files, data sets,
 1. **Install the Zowe v3.6 build.**  
    For information about the available installation methods, see [Installing Overview](../user-guide/installing.md). The installation places the `SZWESAMP` and `SZWEAUTH` data sets under the data set prefix that `zowe.setup.dataset.prefix` defines in your `zowe.yaml`. The next step creates or updates your custom data sets.
 
-  :::info
-  <details>
-  <summary>Click here for an example of how to install from the convenience build (PAX file). </summary>
+   :::info
+   <details>
+   <summary>Click here for an example of how to install from the convenience build (PAX file). </summary>
 
    If you install from the convenience build (PAX file).  
 
@@ -408,13 +408,12 @@ Stop your running Zowe instance before you replace the runtime files, data sets,
 
    </details>
 
-  :::
-   <!-- TODO: confirm that SZWESAMP and SZWEAUTH are the data sets that every installation method (SMP/E, convenience build, zwe install) places under the prefix. -->
+   :::
 
 2. **Initialize your Zowe instance with `zwe init`.**  
    In a USS shell, run the `zwe init` substeps that apply to your upgrade. Point these commands at your `zowe.yaml` file with the `-c` option.  
 
-  **Example:**  
+   **Example:**  
 
    ```
    <runtime-directory>/bin/zwe init mvs -c /path/to/zowe.yaml --allow-overwrite
@@ -441,26 +440,27 @@ Stop your running Zowe instance before you replace the runtime files, data sets,
 
    The following example shows the output that `zwe init mvs --allow-overwrite` displays in your USS shell during an upgrade, when the custom data sets from your previous installation already exist. In the example, `<prefix>` is the value of `zowe.setup.dataset.prefix` in your `zowe.yaml`, for example `MY.ZOWE.V3`. The `ZWEL0300W` warnings are expected during an upgrade: they state that the existing data sets are overwritten with the contents of the new build. The final line confirms that initialization succeeded.
 
-    **Example:**
-  ```
-  >> Initialize Zowe custom data sets
+   **Example:**
 
-  Create data sets if they do not exist
-  Warning ZWEL0300W: <prefix>.CUST.PARMLIB already exists. This dataset will be overwritten.
-  Warning ZWEL0300W: <prefix>.CUST.JCLLIB already exists. This dataset will be overwritten.
-  Warning ZWEL0300W: <prefix>.SZWEAUTH already exists. This dataset will be overwritten.
-  Warning ZWEL0300W: <prefix>.CUST.ZWESAPL already exists. This dataset will be overwritten.
+   ```
+   >> Initialize Zowe custom data sets
 
-  Copy <prefix>.SZWESAMP(ZWESIP00) to <prefix>.CUST.PARMLIB(ZWESIP00)
-  Copy components/zss/LOADLIB/ZWESIS01 to <prefix>.SZWEAUTH(ZWESIS01)
-  Copy components/zss/LOADLIB/ZWESAUX to <prefix>.SZWEAUTH(ZWESAUX)
-  Copy components/zss/LOADLIB/ZWESISDL to <prefix>.SZWEAUTH(ZWESISDL)
-  Copy components/launcher/bin/zowe_launcher to <prefix>.SZWEAUTH(ZWELNCH)
+   Create data sets if they do not exist
+   Warning ZWEL0300W: <prefix>.CUST.PARMLIB already exists. This dataset will be overwritten.
+   Warning ZWEL0300W: <prefix>.CUST.JCLLIB already exists. This dataset will be overwritten.
+   Warning ZWEL0300W: <prefix>.SZWEAUTH already exists. This dataset will be overwritten.
+   Warning ZWEL0300W: <prefix>.CUST.ZWESAPL already exists. This dataset will be overwritten.
 
-  >> Zowe custom data sets are initialized successfully.
-  ```
+   Copy <prefix>.SZWESAMP(ZWESIP00) to <prefix>.CUST.PARMLIB(ZWESIP00)
+   Copy components/zss/LOADLIB/ZWESIS01 to <prefix>.SZWEAUTH(ZWESIS01)
+   Copy components/zss/LOADLIB/ZWESAUX to <prefix>.SZWEAUTH(ZWESAUX)
+   Copy components/zss/LOADLIB/ZWESISDL to <prefix>.SZWEAUTH(ZWESISDL)
+   Copy components/launcher/bin/zowe_launcher to <prefix>.SZWEAUTH(ZWELNCH)
 
-  Review the output of each `zwe init` substep to confirm that your data sets are properly initialized and that no `ZWEL0301W` message appears.
+   >> Zowe custom data sets are initialized successfully.
+   ```
+
+   Review the output of each `zwe init` substep to confirm that your data sets are properly initialized and that no `ZWEL0301W` message appears.
 
 1. **Refresh the PROCLIB members.**  
    Copy the members `ZWESLSTC`, `ZWESISTC`, and `ZWESASTC` into your PROCLIB. You can do this with the `zwe init stc` command or by running the `ZWEISTC` job. If the members already exist, use the `--allow-overwrite` option.  
@@ -516,8 +516,8 @@ Stop your running Zowe instance before you replace the runtime files, data sets,
    Setting a check to `warn` or `disabled` hides a real misconfiguration. Use these values as a temporary measure, and resolve the underlying finding.
    :::
 
-    <details>
-    <summary> Click for an example of a failed start. </summary>
+   <details>
+   <summary> Click for an example of a failed start. </summary>
 
    The following example shows a failed start. The startup checks pass, and then the validation of the API ML component fails. This example shows a component validation error, separate from the startup checks in the previous step. Zowe does not start until you correct the reported problem and start Zowe again.
 
