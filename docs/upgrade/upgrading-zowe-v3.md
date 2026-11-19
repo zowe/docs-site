@@ -97,7 +97,6 @@ Review the following properties in your `zowe.yaml` file and decide whether to a
 
     To see every configuration change between v3.5.0 and v3.6.0, review the [release comparison](https://github.com/zowe/zowe-install-packaging/compare/v3.5.0...v3.6.0) in the `zowe-install-packaging` repository. On the **Files changed** tab, review the changes to `example-zowe.yaml` and `files/defaults.yaml`.
 
-
 1. **Update monitoring probes for actuator endpoint authentication.**
 After you upgrade, unauthenticated requests to the API Gateway `/application/info` and `/application/version` endpoints return HTTP 401. Monitoring probes and automation scripts that call these endpoints without credentials must be updated.
 
@@ -113,7 +112,7 @@ After you upgrade, unauthenticated requests to the API Gateway `/application/inf
     :::
 
 :::note Single-service deployment and Caching Service storage
- If you already run API ML in single-service deployment mode, or plan to enable it (recommended from Zowe v3.4.0), the Caching Service must use Infinispan storage. Set `components.caching-service.storage.mode` to `infinispan`. Other storage modes, such as VSAM, are not supported in single-service deployment mode. Infinispan also requires additional ports. For mre inforamtion, see the following articles:  
+ If you already run API ML in single-service deployment mode, or plan to enable it (recommended from Zowe v3.4.0), the Caching Service must use Infinispan storage. Set `components.caching-service.storage.mode` to `infinispan`. Other storage modes, such as VSAM, are not supported in single-service deployment mode. Infinispan also requires additional ports. For more information, see the following articles:  
  * [Enabling single-service deployment of API Mediation Layer](../user-guide/api-mediation/api-mediation-modulith.md)
  * [Caching Service Infinispan ports](../user-guide/address-network-requirements.md#caching-service-infinispan-ports).
 :::
@@ -473,7 +472,7 @@ Stop your running Zowe instance before you replace the runtime files, data sets,
    For more information, see [z/OS pre-flight checks](../user-guide/zos-preflight.md).
 
    :::tip
-   If failure occurs during startup validation, we reccommend you set `zowe.launchScript.logLevel` to `debug` (or `trace` for more detail) to write additional startup diagnostics to the Zowe log. 
+   If failure occurs during startup validation, we recommend that you set `zowe.launchScript.logLevel` to `debug` (or `trace` for more detail) to write additional startup diagnostics to the Zowe log. 
    :::
 
    | Startup check | Default behavior | Override property |
@@ -535,7 +534,7 @@ Stop your running Zowe instance before you replace the runtime files, data sets,
 
   Correct the property that the component reports, and then start Zowe again.
 
-    </details>
+  </details>
 
 1. **If the Caching Service fails to start, clear the Infinispan persistence data.**  
    If the Caching Service uses Infinispan storage, persistence data written by the earlier Infinispan version can prevent the service from starting after the upgrade. If this occurs, use the following procedure:
