@@ -532,9 +532,9 @@ Stop your running Zowe instance before you replace the runtime files, data sets,
    <timestamp> <ZWELNCH:nnn> ZWESVUSR ERROR ZWEL0030E failed to prepare Zowe instance
    ```
 
-  Correct the property that the component reports, and then start Zowe again.
+   Correct the property that the component reports, and then start Zowe again.
 
-  </details>
+   </details>
 
 1. **If the Caching Service fails to start, clear the Infinispan persistence data.**  
    If the Caching Service uses Infinispan storage, persistence data written by the earlier Infinispan version can prevent the service from starting after the upgrade. If this occurs, use the following procedure:
