@@ -121,7 +121,7 @@ Using Java dataservices with a Zowe Application Server installed on a Windows co
 To create multiple instances of Tomcat on non-Windows computers, the Zowe Application Server establishes symbolic links to the service logic. On Windows computers, symbolic links require administrative privilege, so the server establishes junctions instead. Junctions only work when the source and destination reside on the same volume.
 
 ## Using dataservices with RBAC
-If your administrator configures the Zowe Application Framework to use role-based access control (RBAC), then when you create a dataservice you must consider the length of its paths.
+If your administrator configures the Zowe Application Framework to use role-based access control (RBAC), then when you create a dataservice you must consider the length of its paths, because the path determines which SAF profile controls access.
 
 To control access to dataservices, administrators can enable RBAC, then use a z/OS security product such as RACF to map roles and authorities to a System Authorization Facility (SAF) profile. For information on RBAC, see [Controlling access to dataservices](../../user-guide/mvd-configuration.md#controlling-access-to-dataservices).
 
@@ -137,17 +137,19 @@ Users must have READ access to the following profile:
 
 `ZLUX.DEFAULT.SVC.ORG_ZOWE_FOO.BAZ.POST.USERS.FRED`
 
-Profiles cannot contain more than 246 characters. If the path section of an endpoint URL makes the profile name exceed limit, the path is trimmed to only include elements that do not exceed the limit. For example, imagine that each path section in this endpoint URL contains 64 characters:
+Profiles cannot contain more than 246 characters. If the path section of an endpoint URL makes the profile name exceed the limit, the profile is shortened to include only the leading path elements that fit within the limit. The remaining elements are not part of the profile, so one profile controls access to every endpoint whose path begins with the same leading elements. You can use this to protect a whole family of endpoints with a single profile.
+
+For example, imagine that each path section in this endpoint URL contains 64 characters:
 
 `/ZLUX/plugins/org.zowe.zossystem.subsystems/services/data/_current/aa..a/bb..b/cc..c/dd..d`
 
-So `aa..a` is 64 "a" characters, `bb..b` is 64 "b" characters, and so on. The URL could then map to the following example profile:
+So `aa..a` is 64 "a" characters, `bb..b` is 64 "b" characters, and so on. The URL maps to the following profile:
 
 `ZLUX.DEFAULT.SVC.ORG_ZOWE_ZOSSYSTEM_SUBSYSTEMS.DATA.GET.AA..A.BB..B`
 
 The profile ends at the `BB..B` section because adding `CC..C` would put it over 246 characters. So in this example, all dataservice endpoints with paths that start with `AA..A.BB..B` are controlled by this one profile.
 
-To avoid this issue, we recommend that you maintain relatively short endpoint URL paths.
+When you design your endpoints, keep in mind that elements after the cut-off cannot be controlled separately. Put the elements that identify the protected resource at the start of the path, and keep paths relatively short.
 
 ## Dataservice APIs
 
@@ -249,7 +251,7 @@ HttpService *httpService = makeHttpDataService(dataService, server);
 
 Then you must assign properties to the dataservice, such as
 
-* authType: What type of authentication and authorization checks should be done before calling this service. values such as `SERVICE_AUTH_NONE` when the service does not need securty or `SERVICE_AUTH_NATIVE_WITH_SESSION_TOKEN` when the service should be protected by ZSS's cookie are valid.
+* authType: What type of authentication and authorization checks should be done before calling this service. values such as `SERVICE_AUTH_NONE` when the service does not need security or `SERVICE_AUTH_NATIVE_WITH_SESSION_TOKEN` when the service should be protected by ZSS's cookie are valid.
 * serviceFunction: The function within this dataservice that will be called whenever a request is received.
 * runInSubtask: (TRUE/FALSE) Whether to run the service function in a subtask or not whenever a request is received.
 * doImpersonation: (TRUE/FALSE) When true, the service function will be ran as the authenticated user, rather than the server user. This is recommended whenever possible to keep permissions management in line with the users own permissions.
