@@ -409,6 +409,38 @@ Stop your running Zowe instance before you replace the runtime files, data sets,
 
    :::
 
+   :::info
+   <details>
+   <summary>Click here for an example of how to install with SMP/E. </summary>
+
+   If you install with SMP/E, the sample JCL jobs create the runtime directory for you. You do not run `pax` or `zwe install`. Instead, you edit the sample jobs and submit them in order.
+
+   1. Edit and submit the sample jobs that Zowe supplies in the `ZOWE.AZWE003.F1` data set, in the following order: 
+      * `ZWE2RCVE` (RECEIVE)
+      * `ZWE3ALOC` (allocate target libraries)
+      * `ZWE4ZFS` (optional, create the file system)
+      * `ZWE5MKD` (create the directories)
+      * `ZWE6DDEF` (DDDEFs)
+      * `ZWE7APLY` (APPLY)
+      * `ZWE8ACPT` (ACCEPT)  
+   2. In `ZWE4ZFS` and `ZWE5MKD`, replace the `-PathPrefix-` string with the high-level directory where you want Zowe installed. The value must be an absolute path that begins and ends with a slash (`/`), and it is case sensitive. In `ZWE4ZFS`, also replace `${fsdsn}` with the data set name of the zFS file system.  
+   **Example:**  
+   If you set `-PathPrefix-` to `/service/`, the jobs create the runtime directory `/service/usr/lpp/zowe`.
+   3. Submit `ZWE4ZFS` from a user ID with UID 0 or with access to the `BPX.SUPERUSER` profile. The job allocates and formats the zFS file system, creates the mount point `/service/usr/lpp/zowe`, and mounts the file system there. Each job must end with return code 0.
+   4. Set `zowe.runtimeDirectory` in your `zowe.yaml` file to the new directory, for example `/service/usr/lpp/zowe`.
+
+   If you do not run `ZWE4ZFS`, the `ZWE5MKD` job still creates the directory, but in the file system that already contains the path prefix.
+
+   :::note
+   The mount that `ZWE4ZFS` creates does not survive an IPL. To mount the file system automatically, add a `MOUNT` statement to the `BPXPRMxx` member of `PARMLIB`. The `ZWE4ZFS` job lists the statement to use.
+   :::
+
+   For more information, see [Installing the z/OS build via SMP/E](../user-guide/install-zowe-smpe.md).
+
+   </details>
+
+   :::
+
 2. **Initialize your Zowe instance with `zwe init`.**  
    In a USS shell, run the `zwe init` substeps that apply to your upgrade. Point these commands at your `zowe.yaml` file with the `-c` option.  
 
@@ -461,12 +493,12 @@ Stop your running Zowe instance before you replace the runtime files, data sets,
 
    Review the output of each `zwe init` substep to confirm that your data sets are properly initialized and that no `ZWEL0301W` message appears.
 
-1. **Refresh the PROCLIB members.**  
+3. **Refresh the PROCLIB members.**  
    Copy the members `ZWESLSTC`, `ZWESISTC`, and `ZWESASTC` into your PROCLIB. You can do this with the `zwe init stc` command or by running the `ZWEISTC` job. If the members already exist, use the `--allow-overwrite` option.  
    Without the `--allow-overwrite` option, the `zwe init stc` command does not write to your PROCLIB and issues message `ZWEL0301W` for each member that already exists.  
    For command details, see [zwe init stc](../appendix/zwe_server_command_reference/zwe/init/zwe-init-stc.md) in the reference section.
 
-2. **Review the automatic startup checks.**  
+4. **Review the automatic startup checks.**  
    Zowe v3.6 runs the following checks automatically each time it starts.  
    For more information, see [z/OS pre-flight checks](../user-guide/zos-preflight.md).
 
@@ -494,7 +526,7 @@ Stop your running Zowe instance before you replace the runtime files, data sets,
 
    If the Java or Node.js version changed from your previous installation, set `java.home` or `node.home` in `zowe.yaml` to a supported installation. At each startup, Zowe logs the effective action of every startup check and where the action comes from.
 
-3. **Start your Zowe instance.**  
+5. **Start your Zowe instance.**  
    Start Zowe using your usual method.  
    For example, you can start Zowe by starting the `ZWESLSTC` started task. Alternatively, run `<runtime-directory>/bin/zwe start -c /path/to/zowe.yaml` in a USS shell. Check the startup log for messages at the `ERROR` level. To view the log, open the job output in SDSF, or in the **Jobs** view of Zowe Explorer.
 
@@ -502,7 +534,7 @@ Stop your running Zowe instance before you replace the runtime files, data sets,
 
    After you validate the upgrade, as described in [Verifying the upgrade](#verifying-the-upgrade), you can stop Zowe the same way that you started it. For example, stop the `ZWESLSTC` started task, or run `<runtime-directory>/bin/zwe stop -c /path/to/zowe.yaml`.
 
-4. **Resolve any startup failures.**  
+6. **Resolve any startup failures.**  
    Review the startup log for `ERROR` messages, identify the check or component that failed, correct the cause (often a property in your `zowe.yaml`), and start Zowe again.
 
    :::tip
@@ -550,7 +582,7 @@ Stop your running Zowe instance before you replace the runtime files, data sets,
 
    </details>
 
-1. **If the Caching Service fails to start, clear the Infinispan persistence data.**  
+7. **If the Caching Service fails to start, clear the Infinispan persistence data.**  
    If the Caching Service uses Infinispan storage, persistence data written by the earlier Infinispan version can prevent the service from starting after the upgrade. If this occurs, use the following procedure:
 
    a. Stop Zowe.  
