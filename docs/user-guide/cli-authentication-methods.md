@@ -7,48 +7,10 @@ Configure the authentication method you want to use across multiple mainframe se
 If you configure multiple authentication methods for a specific service, set the *order of precedence* with the profile property `authOrder`.
 
 :::note
-+
 - To authenticate to a service, configure credentials to the associated service profile. If you have multiple credentials in your configuration, add an `authOrder` property to that profile to specify which type of authentication (and credentials) should be used for that service.
 
 :::
 
-## Order of precedence
-
-You can configure the order that Zowe CLI follows to search for an available authentication method, or you can leave the [default order of precedence](../extend/extend-cli/cli-authentication-mechanisms.md#default-order-of-precedence) used by the service you are connecting to.
-
-To configure a different order of precedence, add the `authOrder` property to the profile for the service to which you want to connect.:
-
-```json
-"properties": {
-    "host": ... ,
-    "port": ... ,
-    "rejectUnauthorized": ... ,
-//highlight-start
-    "authOrder": "basic, token, cert-pem"
-//highlight-end
-}
-```
-
-`authOrder` possible values:
-- `basic` to use [basic authentication](#using-basic-authentication)
-- `bearer` to use a token **not** being sent to API ML
-- `cert-pem` to use a [client certificate](#using-client-certificates)
-- `token` to use a [token](#using-a-token-for-single-sign-on-sso)
-- `none` to not require authentication
-
-The sequence of the values for the `authOrder` property represent the order of precedence. 
-
-### Checking availability of authentication
-
-The `authOrder` property defines the order used to find the **first available** authentication type. 
-
-:::info Important
-If an authentication method is found and fails, the  `authOrder` property does not prompt the system to use the next authentication type listed in the property values.
-:::
-
-In the preceding example, Zowe CLI is configured to look for the first *available* authentication method in the order outlined in the `authOrder` property.
-
-This means that if basic authentication is set up, Zowe CLI uses the user ID and password for authentication. If only a token is available, Zowe CLI still checks for basic authentication, does not find it, and checks the configuration for token information. If the token information is not found, Zowe CLI then checks for the third authentication type, a certificate.
 
 ## Using basic authentication
 
@@ -397,5 +359,144 @@ It is important to understand how MFA functions at your site in order to set it 
 :::note
 
 MFA codes are different from SSO tokens. SSO tokens are an alternative to passwords and last longer than a temporary MFA code, which is combined with a password.
+
+:::
+
+## Configuring prompts for credentials
+
+Use the `allowedLoginMethod` property in your configuration file to control which types of the preceding credentials (except MFA) a user is prompted for and whether Zowe CLI or Zowe Explorer uses API ML or contacts the service directly.
+
+For Zowe Explorer, the `allowedLoginMethod` property also controls which options display in the **Manage Profile** menu when you select a profile from a tree view. 
+
+A profile can use one of the following values:
+
+| Value | Description |
+| --- | --- |
+| `prompt` | default, same as unset |
+| `direct-basic` | Basic authentication for direct connection to a service |
+| `direct-cert-pem` | Certificate authentication for direct connection to a service |
+| `apiml-basic` | Basic authentication to connect through API ML |
+| `apiml-cert-pem` | Certificate authentication to connect through API ML |
+
+### Adding `allowedLoginMethod` to different profile types
+
+Use the `allowedLoginMethod` property either directly in the profile you are using, or in a nested profile that inherits other properties from a parent profile.
+
+#### Directly in profile
+
+In the following code block, the `allowedLoginMethod` property is defined directly in the profile `system1_basic`:
+
+```json
+"system1_basic" : {
+    "properties": {
+        "host": ... ,
+        "port": ... ,
+        "rejectUnauthorized": ... ,
+        "authOrder": "...",
+        "allowedLoginMethod": "direct-basic"
+    } 
+}
+```
+
+#### Nested profile
+
+In the following code block, the nested profile `system2.apiml-cert-pem` inherits all properties from the `system2` parent profile but sets the `allowedLoginMethod` property to `apiml-cert-pem`:
+
+```json
+"system2" : {
+    "properties": {
+        "host": ... ,
+        "port": ... ,
+        "rejectUnauthorized": ... ,
+        "authOrder": "...",
+    },  
+    "profiles": { 
+        "apiml-cert-pem":  { 
+            "properties": { 
+                "allowedLoginMethod": "apiml-cert-pem"
+            }
+       }
+  } 
+}
+```
+
+:::note
+
+An `allowedLoginMethod` property specified in a nested profile overrides the same property set in a parent profile, according to [how command precedence](./cli-using-command-precedence.md) works in Zowe.
+
+:::
+
+#### SSO services
+
+In the following code block, the nested profiles `sso.service1` and `sso.service2` inherit all properties from the `sso` parent profile, which sets the `allowedLoginMethod` property to `apiml-basic`:
+
+```
+"sso" : {
+    "properties": {
+        "host": ... ,
+        "port": ... ,
+        "allowedLoginMethod": "apiml-basic"
+    },  
+    "profiles": { 
+        "service1":  { 
+            "properties": { 
+                "basePath": "/example/service1"
+            }
+        },
+        
+        "service2":  { 
+            "properties": { 
+               "basePath": "/example/service2"
+            }
+        }
+    } 
+}
+```
+
+## Order of precedence
+
+You can configure the order that Zowe CLI follows to search for an available authentication method, or you can leave the [default order of precedence](../extend/extend-cli/cli-authentication-mechanisms.md#default-order-of-precedence) used by the service you are connecting to.
+
+To configure a different order of precedence, add the `authOrder` property to the profile for the service to which you want to connect.:
+
+```json
+"properties": {
+    "host": ... ,
+    "port": ... ,
+    "rejectUnauthorized": ... ,
+//highlight-start
+    "authOrder": "basic, token, cert-pem"
+//highlight-end
+}
+```
+
+`authOrder` possible values:
+- `basic` to use [basic authentication](#using-basic-authentication)
+- `bearer` to use a token **not** being sent to API ML
+- `cert-pem` to use a [client certificate](#using-client-certificates)
+- `token` to use a [token](#using-a-token-for-single-sign-on-sso)
+- `none` to not require authentication
+
+The sequence of the values for the `authOrder` property represent the order of precedence. 
+
+### Checking availability of authentication
+
+The `authOrder` property defines the order used to find the **first available** authentication type. 
+
+:::info Important
+If an authentication method is found and fails, the  `authOrder` property does not prompt the system to use the next authentication type listed in the property values.
+:::
+
+In the preceding example, Zowe CLI is configured to look for the first *available* authentication method in the order outlined in the `authOrder` property.
+
+This means that if basic authentication is set up, Zowe CLI uses the user ID and password for authentication. If only a token is available, Zowe CLI still checks for basic authentication, does not find it, and checks the configuration for token information. If the token information is not found, Zowe CLI then checks for the third authentication type, a certificate.
+
+:::info 
+
+Although both the `authOrder` and the `allowedLoginMethod` properties in your client configuration refer to authentication, they serve separate, distinct functions. 
+
+The `authOrder` property sets the order that Zowe CLI or Zowe Explorer follows to apply authentication mechanisms, while `allowedLoginMethod` defines the prompts a user is given to provide their credentials to access mainframe services.
+
+Additionally, `allowedLoginMethod` values with an `apiml-` prefix refer to credentials used to receive a token from APIML, which can then be used by `authOrder` with `token, bearer`.
 
 :::
