@@ -27,7 +27,7 @@ Before starting the upgrade, ensure the following base system requirements are m
 *   **z/OSMF**  
     Version V2R5 or V3R1 is required. JWT support for z/OSMF is highly recommended. For more information, see [Enabling JSON Web Token support](https://www.ibm.com/docs/en/zos/3.1.0?topic=configurations-enabling-json-web-token-support) in the IBM documentation. If you do not have JWT support in z/OSMF, make sure to set `components.gateway.apiml.security.auth.zosmf.jwtAutoconfiguration` to `ltpa`.
 *   **Java**  
-    Java 17, 21, or 25 is required. Zowe checks the Java version at startup and enforces these versions. The Zowe YAML parameter `java.home` value must be a **Java 17**, **Java 21**, or **Java 25** home location. If an administrator uses `zwe init` to set up Zowe, ensure the `java` for that user is v17, v21, or v25 by including it in the `PATH` environment variable.
+    Java 17, 21, or 25 is required. At startup, Zowe does not start if the Java version is lower than 17, and logs a warning if the Java version is higher than 21. The Zowe YAML parameter `java.home` value must be a **Java 17**, **Java 21**, or **Java 25** home location. If an administrator uses `zwe init` to set up Zowe, ensure the `java` for that user is v17, v21, or v25 by including it in the `PATH` environment variable.
 *   **Node.js**  
     Node.js 18, 20, 22, or 24 is required. The Zowe YAML parameter `node.home` value must be a **Node.js 18**, **Node.js 20**, **Node.js 22**, or **Node.js 24** home location. Node.js 16 and earlier versions are not supported.
 
@@ -86,14 +86,14 @@ In Zowe v3.6, the API Gateway enables strict URL validation by default. The API 
     :::
 
 1. **Update `zowe.yaml` for the new and changed properties.**  
-Review the following properties in your `zowe.yaml` file and decide whether to adopt each of them. The `zowe.network.allowedDomains` and `zowe.launchScript.startupChecks.zosmfjwt` properties affect whether Zowe v3.6 starts and whether services register. Review these properties first. The other properties are optional.
+Review the following properties in your `zowe.yaml` file and decide whether to adopt each of them. The `zowe.network.allowedDomains` and `zowe.launchScript.startupChecks.zosmfjwt` properties change the behavior of Zowe v3.6 for existing configurations. Review these properties first. The other properties are optional.
 
     | Property | Upgrade decision |
     | :--- | :--- |
     | `zowe.network.allowedDomains` | Add any domain, IP address, or CIDR range outside your `zowe.externalDomains` and `haInstances` hostnames from which services register with the API Discovery Service. Otherwise, registrations from those hosts can be rejected or produce warnings. See [Configuring allowed domains and IP addresses for service registration](../user-guide/api-mediation/config-allowed-domains-for-service-reg.md) and the [Zowe YAML configuration file reference](../appendix/zowe-yaml-configuration.md). |
-    | `zowe.launchScript.startupChecks.zosmfjwt` | Applies when Zowe uses z/OSMF JWT authentication. Set `warn` to continue startup with a warning, or `disabled` to skip the check. You can run the same check manually with `zwe validate zosmf jwt`. See [zwe validate zosmf jwt](../appendix/zwe_server_command_reference/zwe/validate/zwe-validate-zosmf-jwt.md). |
+    | `zowe.launchScript.startupChecks.zosmfjwt` | Applies when Zowe uses z/OSMF JWT authentication. The default is `warn`: if the check fails, Zowe logs a warning and continues to start. Set `exit` to stop startup if the check fails, or `disabled` to skip the check. You can run the same check manually with `zwe validate zosmf jwt`. See [zwe validate zosmf jwt](../appendix/zwe_server_command_reference/zwe/validate/zwe-validate-zosmf-jwt.md). |
     | `components.apiml.logging.level` (and the per-component variant `components.<component>.logging.level`) | Optional. Set the API ML log level to `quiet`, `info`, or `debug`. Legacy `debug` parameters still take precedence. See [Configuring API ML logging](../user-guide/api-mediation/configuration-logging.md). |
-    | `storage.infinispan.useVirtualThreads` | Optional. Enables Infinispan virtual threads, which require Java 21 or later. The default is `false`. See the [Zowe YAML configuration file reference](../appendix/zowe-yaml-configuration.md). |
+    | `storage.infinispan.useVirtualThreads` | Optional. Enables Infinispan virtual threads, which require Java 21 or later. The default is `false`. On z/OS, leave this property set to `false`, because virtual threads can stall Caching Service clustering in HA mode. See the [Zowe YAML configuration file reference](../appendix/zowe-yaml-configuration.md). |
 
     To see every configuration change between v3.5.0 and v3.6.0, review the [release comparison](https://github.com/zowe/zowe-install-packaging/compare/v3.5.0...v3.6.0) in the `zowe-install-packaging` repository. On the **Files changed** tab, review the changes to `example-zowe.yaml` and `files/defaults.yaml`.
 
@@ -161,10 +161,10 @@ Confirm that z/OSMF JWT support is available, as described in the [prerequisites
         zowe:
           launchScript:
             startupChecks:
-              zosmfjwt: warn                     # exit (default) | warn | disabled
+              zosmfjwt: warn                     # exit | warn (default) | disabled
       ``` 
 
-    - Downgrade the `zosmfjwt` startup check to `warn` or `disabled`.
+    - Leave the `zosmfjwt` startup check at its default value of `warn`, or set it to `disabled`. If you set the check to `exit`, Zowe does not start when the check fails.
 
     :::note
     If z/OSMF is not used for login, no JWT setup is needed.
@@ -463,9 +463,8 @@ Stop your running Zowe instance before you replace the runtime files, data sets,
 
 1. **Refresh the PROCLIB members.**  
    Copy the members `ZWESLSTC`, `ZWESISTC`, and `ZWESASTC` into your PROCLIB. You can do this with the `zwe init stc` command or by running the `ZWEISTC` job. If the members already exist, use the `--allow-overwrite` option.  
+   Without the `--allow-overwrite` option, the `zwe init stc` command does not write to your PROCLIB and issues message `ZWEL0301W` for each member that already exists.  
    For command details, see [zwe init stc](../appendix/zwe_server_command_reference/zwe/init/zwe-init-stc.md) in the reference section.
-
-   <!-- TODO: confirm that --allow-overwrite is the correct option for zwe init stc when the PROCLIB members already exist. Confirm whether zwe init stc applies only to installations that run Zowe as a started task. -->
 
 2. **Review the automatic startup checks.**  
    Zowe v3.6 runs the following checks automatically each time it starts.  
@@ -477,14 +476,23 @@ Stop your running Zowe instance before you replace the runtime files, data sets,
 
    | Startup check | Default behavior | Override property |
    |---------------|------------------|-------------------|
-   | Certificate | `exit` | `zowe.launchScript.startupChecks.certificate` |
+   | Certificate | `warn`. Checks that the certificates are valid for use by Zowe. | `zowe.launchScript.startupChecks.certificate` |
    | Superuser (UID 0) check | `exit`. Zowe does not start if it runs as the USS superuser (UID 0), because running as UID 0 is strongly discouraged. | `zowe.launchScript.startupChecks.user` |
-   | Components | `warn` | `zowe.launchScript.startupChecks.components` <!-- TODO: request validation that this property name and the default `warn` are correct for v3.6. The name comes from the zwe validate components reference page. --> |
-   | Java dependency check | Zowe requires Java 17, 21, or 25. | `java.home` |
-   | Node dependency check | Zowe requires Node.js 18, 20, 22, or 24. | `node.home` |
-   | z/OSMF JWT (`zosmfjwt`) | <!-- confirm default --> | `zowe.launchScript.startupChecks.zosmfjwt` |
+   | Components | `warn`. Checks that every component listed under `components` has a manifest file. | `zowe.launchScript.startupChecks.components` |
+   | Ports | `exit`. Checks that each enabled component can bind to its port and that no other program occupies the port. | `zowe.launchScript.startupChecks.ports` |
+   | z/OSMF | `exit`. Checks that z/OSMF is running and meets the Zowe requirements. | `zowe.launchScript.startupChecks.zosmf` |
+   | z/OSMF JWT | `warn`. Applies when Zowe uses z/OSMF JWT authentication. Checks that z/OSMF JWT support is usable. | `zowe.launchScript.startupChecks.zosmfjwt` |
+   | AT-TLS ports | `warn`. Checks the AT-TLS port configuration. | `zowe.launchScript.startupChecks.attls` |
+   | Java minimum version | `exit`. Zowe does not start if the Java version is lower than 17. | `zowe.launchScript.startupChecks.javaMin` |
+   | Java maximum version | `warn`. Zowe logs a warning if the Java version is higher than 21. <!-- TODO: the release notes state that Java 25 is supported, but the v3.6 release candidate defines 21 as the maximum Java version for this check. Confirm whether the maximum changes to 25 before release. --> | `zowe.launchScript.startupChecks.javaMax` |
+   | Node.js minimum version | `exit`. Zowe does not start if the Node.js version is lower than 18. | `zowe.launchScript.startupChecks.nodeMin` |
+   | Node.js maximum version | `warn`. Zowe logs a warning if the Node.js version is higher than 24. | `zowe.launchScript.startupChecks.nodeMax` |
 
-   A failing check that defaults to `exit` prevents Zowe from starting. If the Java or Node.js version changed from your previous installation, set `java.home` or `node.home` in `zowe.yaml` to a supported installation.
+   A failing check that is set to `exit` prevents Zowe from starting. A failing check that is set to `warn` logs a warning, and Zowe continues to start. A check that is set to `disabled` does not run.
+
+   To change the behavior of all startup checks at once, set `zowe.launchScript.startupChecks.default` to `exit`, `warn`, or `disabled`. This value overrides the defaults in the table for every check that you do not set individually. A value that you set for a specific check always takes precedence.
+
+   If the Java or Node.js version changed from your previous installation, set `java.home` or `node.home` in `zowe.yaml` to a supported installation. At each startup, Zowe logs the effective action of every startup check and where the action comes from.
 
 3. **Start your Zowe instance.**  
    Start Zowe using your usual method.  
@@ -498,18 +506,24 @@ Stop your running Zowe instance before you replace the runtime files, data sets,
    Review the startup log for `ERROR` messages, identify the check or component that failed, correct the cause (often a property in your `zowe.yaml`), and start Zowe again.
 
    :::tip
-   If your security requirements allow it, you can set the matching `zowe.launchScript.startupChecks.*` property to `warn` or `disabled`:
+   If your security requirements allow it, you can set the matching `zowe.launchScript.startupChecks.*` property to `warn` or `disabled`. Each property accepts the values `exit`, `warn`, or `disabled`. The following example lists the properties with their default values:
 
    **Example:**
    ```yaml
    zowe:
      launchScript:
        startupChecks:
-         zosmfjwt: exit       # exit (default) | warn | disabled
          user: exit           # superuser (UID 0) check for ZWESVUSR
-         certificate: exit    # keystore/truststore validation (zwe validate certificate)
-         components: warn     # YAML component existence check
-         # javaMin/javaMax and nodeMin/nodeMax govern the dependency checks
+         ports: exit          # port availability check
+         zosmf: exit          # z/OSMF availability check
+         zosmfjwt: warn       # z/OSMF JWT support check
+         certificate: warn    # certificate validation check
+         components: warn     # component manifest check
+         attls: warn          # AT-TLS port check
+         javaMin: exit        # minimum Java version check
+         javaMax: warn        # maximum Java version check
+         nodeMin: exit        # minimum Node.js version check
+         nodeMax: warn        # maximum Node.js version check
    ```
 
    Setting a check to `warn` or `disabled` hides a real misconfiguration. Use these values as a temporary measure, and resolve the underlying finding.
@@ -549,10 +563,8 @@ Stop your running Zowe instance before you replace the runtime files, data sets,
    :::
 
    :::note  
-   On Java 21 and later, virtual threads are automatically disabled on z/OS. To control this behavior explicitly, use the `components.caching-service.storage.infinispan.useVirtualThreads` property of the Caching Service.
+   Infinispan virtual threads are turned off by default. On z/OS, leave the `components.caching-service.storage.infinispan.useVirtualThreads` property set to `false`. If you set the property to `true` on z/OS, the Caching Service issues a warning at startup, and virtual threads can stall Caching Service clustering in HA mode.
    :::
-
-   <!-- TODO: the virtual threads note conflicts with the useVirtualThreads row in the Zowe v3.6 dropdown ("Enables Infinispan virtual threads, which require Java 21 or later"). Confirm the behavior on z/OS. -->
 
 ## Verifying the upgrade
 
