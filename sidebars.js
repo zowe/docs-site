@@ -153,6 +153,7 @@ module.exports = {
         {
           type: "category",
           label: "Installing",
+          link: { type: "doc", id: "user-guide/installing" },
           items: [
            {
               type: "category",
@@ -1030,6 +1031,7 @@ module.exports = {
 
     "appendix/zowe-cli-command-reference",
     "appendix/zowe-yaml-configuration",
+    "appendix/security-breaking-changes",
     {
       type: "category",
       label: "ZWE Server Command Reference",

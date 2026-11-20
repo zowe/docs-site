@@ -28,12 +28,18 @@ module.exports = {
     }
   },
   themeConfig: {
-    announcementBar: {
+    announcementBar2: {
+      id: 'announcementBar-2', // increment on change
+      content:
+          '⚠️ <b>Breaking changes in Zowe releases.</b> Read more <a href="https://docs.zowe.org/stable/appendix/security-breaking-changes" target="_blank">here</a>.',
+      textColor: '#000',
+    },
+    announcementBar1: {
       id: 'announcementBar-1', // increment on change
       content:
           '📌  <b>Support for Zowe Version 2 ends March 30, 2027</b>. Use <a href="https://docs.zowe.org/stable/upgrade/upgrading-zowe-v3/" target="_blank">this guide</a> to upgrade to Zowe Version 3, which transitions to maintenance on March 1, 2027.',
       textColor: '#000',
-      },
+    },
     docs: {
       sidebar: {
         hideable: true

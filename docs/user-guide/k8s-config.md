@@ -16,8 +16,8 @@ You can customize the configuration or make your own. If you do so, note the fol
 | [Secret](https://kubernetes.io/docs/concepts/configuration/secret/) | zowe-certificates-secret | Contains the base64 PEM and P12 data for keystore and truststore |
 | [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) | discovery-ingress | Used for external access to the Discovery service |
 | [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) | gateway-ingress | Used for external access to the Gateway service |
-| [Route](https://docs.openshift.com/enterprise/3.0/architecture/core_concepts/routes.html) | discovery | Used for external access to the Discovery service |
-| [Route](https://docs.openshift.com/enterprise/3.0/architecture/core_concepts/routes.html) | gateway | Used for external access to the Gateway service |
+| [Route](https://kubernetes.io/docs/concepts/services-networking/topology-aware-routing/) | discovery | Used for external access to the Discovery service |
+| [Route](https://kubernetes.io/docs/concepts/services-networking/topology-aware-routing/) | gateway | Used for external access to the Gateway service |
 | [Service](https://kubernetes.io/docs/concepts/services-networking/service/) | discovery-service | Used for internal or external access to the Discovery service |
 | [Service](https://kubernetes.io/docs/concepts/services-networking/service/) | gateway-service | Used for external access to the Gateway service |
 | [Service](https://kubernetes.io/docs/concepts/services-networking/service/) | catalog-service | Used for access to the Catalog service |
@@ -270,7 +270,7 @@ If you are using OpenShift and choose to use `LoadBalancer` services, you may al
 oc get svc -n zowe
 ```
 
-If you see an IP in the `EXTERNAL-IP` column, that means your OpenShift is properly configured and can provision external IP for you. If you see `<pending>` and it does not change after waiting for a while, that means you may not be able to use `LoadBalancer` services with your current configuration. Try `ClusterIP` services and define `Route`. A [Route](https://docs.openshift.com/enterprise/3.0/architecture/core_concepts/routes.html) is a way to expose a service by giving it an externally reachable hostname. 
+If you see an IP in the `EXTERNAL-IP` column, that means your OpenShift is properly configured and can provision external IP for you. If you see `<pending>` and it does not change after waiting for a while, that means you may not be able to use `LoadBalancer` services with your current configuration. Try `ClusterIP` services and define `Route`. A [Route](https://kubernetes.io/docs/concepts/services-networking/topology-aware-routing/) is a way to expose a service by giving it an externally reachable hostname. 
 
 To create a route, perform the following steps:
 
