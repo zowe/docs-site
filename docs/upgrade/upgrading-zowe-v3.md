@@ -378,25 +378,6 @@ Stop your running Zowe instance before you replace the runtime files, data sets,
 
    :::info
    <details>
-   <summary>Click here for an example of how to install from the convenience build (PAX file). </summary>
-
-   If you install from the convenience build (PAX file).  
-
-   1. Download the Zowe v3.6 PAX file and upload it to USS in binary mode.  
-   2. Back up your existing runtime directory, and then expand the PAX file into the same runtime directory with `pax -ppx -rf <zowe-V.v.p>.pax`. The backup preserves the previous runtime so that you can restore it if you need to downgrade.  
-   3. Run `zwe install` with the `zowe.yaml` file that you prepared in the previous section and the `--allow-overwrite` option.  
-   **Example:**  
-   `<runtime-directory>/bin/zwe install -c /path/to/zowe.yaml --allow-overwrite`.  
-   Without `--allow-overwrite`, existing data sets are not updated, and the command issues message `ZWEL0301W`.
-
-   For more information, see [Installing the z/OS build via Convenience Build (PAX file)](../user-guide/install-zowe-zos-convenience-build.md). 
-
-   </details>
-
-   :::
-
-   :::info
-   <details>
    <summary>Click here for an example of how to install with SMP/E. </summary>
 
    If you install with SMP/E, the sample JCL jobs create the runtime directory for you. You do not run `pax` or `zwe install`. Instead, you edit the sample jobs and submit them in order.
@@ -420,6 +401,25 @@ Stop your running Zowe instance before you replace the runtime files, data sets,
    **Note:** The mount that `ZWE4ZFS` creates does not survive an IPL. To mount the file system automatically, add a `MOUNT` statement to the `BPXPRMxx` member of `PARMLIB`. The `ZWE4ZFS` job lists the statement to use.
 
    For more information, see [Installing the z/OS build via SMP/E](../user-guide/install-zowe-smpe.md).
+
+   </details>
+
+   :::
+
+   :::info
+   <details>
+   <summary>Click here for an example of how to install from the convenience build (PAX file). </summary>
+
+   If you install from the convenience build (PAX file).  
+
+   1. Download the Zowe v3.6 PAX file and upload it to USS in binary mode.  
+   2. Back up your existing runtime directory, and then expand the PAX file into the same runtime directory with `pax -ppx -rf <zowe-V.v.p>.pax`. The backup preserves the previous runtime so that you can restore it if you need to downgrade.  
+   3. Run `zwe install` with the `zowe.yaml` file that you prepared in the previous section and the `--allow-overwrite` option.  
+   **Example:**  
+   `<runtime-directory>/bin/zwe install -c /path/to/zowe.yaml --allow-overwrite`.  
+   Without `--allow-overwrite`, existing data sets are not updated, and the command issues message `ZWEL0301W`.
+
+   For more information, see [Installing the z/OS build via Convenience Build (PAX file)](../user-guide/install-zowe-zos-convenience-build.md). 
 
    </details>
 
