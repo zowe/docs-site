@@ -431,9 +431,7 @@ Stop your running Zowe instance before you replace the runtime files, data sets,
 
    If you do not run `ZWE4ZFS`, the `ZWE5MKD` job still creates the directory, but in the file system that already contains the path prefix.
 
-   :::note
-   The mount that `ZWE4ZFS` creates does not survive an IPL. To mount the file system automatically, add a `MOUNT` statement to the `BPXPRMxx` member of `PARMLIB`. The `ZWE4ZFS` job lists the statement to use.
-   :::
+   **Note:** The mount that `ZWE4ZFS` creates does not survive an IPL. To mount the file system automatically, add a `MOUNT` statement to the `BPXPRMxx` member of `PARMLIB`. The `ZWE4ZFS` job lists the statement to use.
 
    For more information, see [Installing the z/OS build via SMP/E](../user-guide/install-zowe-smpe.md).
 
@@ -527,10 +525,7 @@ Stop your running Zowe instance before you replace the runtime files, data sets,
    If the Java or Node.js version changed from your previous installation, set `java.home` or `node.home` in `zowe.yaml` to a supported installation. At each startup, Zowe logs the effective action of every startup check and where the action comes from.
 
 5. **Start your Zowe instance.**  
-   Start Zowe using your usual method.  
-   For example, you can start Zowe by starting the `ZWESLSTC` started task. Alternatively, run `<runtime-directory>/bin/zwe start -c /path/to/zowe.yaml` in a USS shell. Check the startup log for messages at the `ERROR` level. To view the log, open the job output in SDSF, or in the **Jobs** view of Zowe Explorer.
-
-   <!-- TODO: confirm the job name and spool file that hold the startup log, and name them here. -->
+   Start Zowe using your usual method. For more information about starting Zowe, see [Starting and Stopping Zowe](../user-guide/start-zowe-zos.md).Check the startup log for messages at the `ERROR` level. To view the log, open the job output in SDSF, or in the **Jobs** view of Zowe Explorer.
 
    After you validate the upgrade, as described in [Verifying the upgrade](#verifying-the-upgrade), you can stop Zowe the same way that you started it. For example, stop the `ZWESLSTC` started task, or run `<runtime-directory>/bin/zwe stop -c /path/to/zowe.yaml`.
 
