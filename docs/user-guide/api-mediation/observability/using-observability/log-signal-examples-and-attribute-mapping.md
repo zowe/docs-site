@@ -1,3 +1,5 @@
+:::caution DRAFT FOR CUSTOMER REVIEW
+:::
 
 # Log signal examples and attribute mapping
 

@@ -1,3 +1,6 @@
+:::caution DRAFT FOR CUSTOMER REVIEW
+:::
+
 # Customizing and interpreting API ML OpenTelemetry log signals
 
 Use API ML OpenTelemetry (OTel) log signals to monitor and assess security and routing activity of your z/OS-based service infrastructure. By aggregating these signals in a monitoring backend, administrators can validate request routing, visualize usage trends and operational evolution, such as shifting latency patterns and fluctuations in traffic volume, and maintain a comprehensive audit trail of all Gateway transactions. 
