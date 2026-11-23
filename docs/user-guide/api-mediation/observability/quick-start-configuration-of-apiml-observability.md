@@ -1,7 +1,7 @@
+# Quick-start configuration of API ML observability
+
 :::caution DRAFT FOR CUSTOMER REVIEW
 :::
-
-# Quick-start configuration of API ML observability
 
 To enable observability in the Zowe API Mediation Layer (API ML), you must configure the OpenTelemetry (OTel) SDK to capture **telemetry signals** and enrich them with **resource attributes**. This process ensures that your mainframe performance and health data are accurately identified and correlated within your observability backend.
 

@@ -1,7 +1,7 @@
+# Sample output from API ML OpenTelemetry
+
 :::caution DRAFT FOR CUSTOMER REVIEW
 :::
-
-# Sample output from API ML OpenTelemetry
 
 Once the configuration is active, API ML exports packets that comply with the OpenTelemetry Protocol (OTLP) to your collector. The result is a context-aware telemetry stream where every signal (metric, trace, or log) is enriched with resource attributes. These attributes allow you to filter and group performance data by infrastructure, application identity, or specific process details.
 
