@@ -155,9 +155,9 @@ Rule entries for users appear in the following format:
 ```
 The Security Administrator with specific access to SAF resources can invalidate all tokens bound to a specific user by calling the following REST API endpoint through the Gateway:
 
-`DELETE /auth/access-token/revoke/tokens/users`  
+`DELETE /auth/access-token/revoke/tokens/user`  
 
-The full path of the `/auth/access-token/revoke/tokens/users` endpoint appears as `https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/access-token/revoke/tokens/users`.
+The full path of the `/auth/access-token/revoke/tokens/user` endpoint appears as `https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/access-token/revoke/tokens/user`.
 
 The request requires the body in the following format:
 

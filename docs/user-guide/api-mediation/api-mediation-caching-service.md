@@ -78,23 +78,23 @@ By default, the Caching Service starts along with the other Zowe components. To 
 
 To apply a method to the Caching Service, use the following API path:
 
-`/cachingservice/api/v1/cache/${path-params-as-needed}`
+`/cachingservice/api/v1/cache` followed by `/{key}` for the GET and DELETE by key
 
 Use the following methods with the Caching Service API:
 
-- **`POST /cache`**  
+- **`POST /cachingservice/api/v1/cache`**  
 Creates a new key in the Cache
 
-- **`GET /cache`**  
+- **`GET /cachingservice/api/v1/cache`**  
 Returns all key/value pairs for specific service
 
-- **`PUT /cache/{key}`**  
-Updates the existing value for the given key
+- **`PUT /cachingservice/api/v1/cache`**  
+Updates the existing value for the given key. The key and the new value are sent in the JSON request body, for example `{"key": "myKey", "value": "newValue"}`. The key is not part of the URL.
 
-- **`GET /cache/{key}`**  
+- **`GET /cachingservice/api/v1/cache/{key}`**  
 Returns the existing value for the given key
 
-- **`DELETE /cache/{key}`**  
+- **`DELETE /cachingservice/api/v1/cache/{key}`**  
 Deletes a key/value pair
 
 ## Configuration properties
