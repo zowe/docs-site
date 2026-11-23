@@ -75,7 +75,7 @@ In Zowe v3.6, the API Gateway rejects requests whose URL path contains `%2F`, `%
 In Zowe v3.6, the Discovery Service validates service registration against `zowe.network.allowedDomains`. Add any domain, IP address, or CIDR range outside your `zowe.externalDomains` and `haInstances` hostnames from which services register. Otherwise, registrations from those hosts can be rejected or produce warnings. For more information, see [Configuring allowed domains and IP addresses for service registration](../user-guide/api-mediation/config-allowed-domains-for-service-reg.md) and the [Zowe YAML configuration file reference](../appendix/zowe-yaml-configuration.md).
 
 1. **Update monitoring probes for actuator endpoint authentication.**
-Update any monitoring probe or automation script that calls the API Gateway `/application/info` or `/application/version` endpoint without credentials, because these requests now return HTTP 401. Authenticated requests work on both v3.5 and v3.6, so you can update your probes before you upgrade. Example of an authenticated request:
+Update any monitoring probe or automation script that calls the API Gateway `/application/info` or `/application/version` endpoint without credentials, because these requests now return HTTP 401. Authenticated requests work on both v3.5 and v3.6, so you can update your probes before you upgrade. The following curl command is an example of an authenticated request:
 
    `curl -k -u <user>:<pass> https://<gateway>:7554/application/info`
 
@@ -450,8 +450,8 @@ Stop your running Zowe instance before you replace the runtime files, data sets,
 
    If you do re-run `zwe init certificate` with a keystore, note that in Zowe v3.6 it generates a random password when `zowe.setup.certificate.pkcs12.password` or `zowe.setup.certificate.pkcs12.caPassword` is left at the default value. Keyring scenarios are unaffected. Update any automation that relies on the literal default password. See [zwe init certificate](../appendix/zwe_server_command_reference/zwe/init/zwe-init-certificate.md).  
 
-   For the full list of steps that an upgrade requires, see [Installation and configuration tasks](./upgrading-zowe.md#installation-and-configuration-tasks).  
-   For more information about the `zwe init` options, see [Configuring Zowe with zwe init](../user-guide/initialize-zos-system.md) and [zwe init mvs](../appendix/zwe_server_command_reference/zwe/init/zwe-init-mvs.md).
+   * For the full list of steps that an upgrade requires, see [Installation and configuration tasks](./upgrading-zowe.md#installation-and-configuration-tasks).  
+   * For more information about the `zwe init` options, see [Configuring Zowe with zwe init](../user-guide/initialize-zos-system.md) and [zwe init mvs](../appendix/zwe_server_command_reference/zwe/init/zwe-init-mvs.md).
 
    :::warning
    Back up any customized members in your custom data sets, such as `<prefix>.CUST.PARMLIB` and `<prefix>.CUST.JCLLIB`, before you run `zwe init mvs --allow-overwrite`. The command can overwrite existing members, as message `ZWEL0300W` states.
@@ -485,10 +485,13 @@ Stop your running Zowe instance before you replace the runtime files, data sets,
 
    Review the output of each `zwe init` substep to confirm that your data sets are properly initialized and that no `ZWEL0301W` message appears.
 
-3. **Refresh the PROCLIB members.**  
-   Copy the members `ZWESLSTC`, `ZWESISTC`, and `ZWESASTC` into your PROCLIB. You can do this with the `zwe init stc` command or by running the `ZWEISTC` job. If the members already exist, use the `--allow-overwrite` option.  
-   Without the `--allow-overwrite` option, the `zwe init stc` command does not write to your PROCLIB and issues message `ZWEL0301W` for each member that already exists.  
+3. **Refresh the PROCLIB members if required.**  
+   The members `ZWESLSTC`, `ZWESISTC`, and `ZWESASTC` in your PROCLIB are generated from your `zowe.yaml` settings and the Zowe JCL templates. Refresh these members if the new build changes the started task JCL, or if you changed a setting that the members contain, such as the data set prefix, `authLoadlib`, `authPluginLib`, the ZIS member suffix, or the cross-memory server name. Otherwise, your existing members continue to work.
+
+   To refresh the members, run `zwe init stc` or submit the `ZWEISTC` job. Because the members already exist, you must specify `--allow-overwrite`. Without appending this option, the command writes nothing to your PROCLIB and issues message `ZWEL0301W` for each existing member. The option replaces the members, so first back up any members that you customized.
+
    For command details, see [zwe init stc](../appendix/zwe_server_command_reference/zwe/init/zwe-init-stc.md) in the reference section.
+
 
 4. **Review the automatic startup checks.**  
    Zowe v3.6 runs the following checks automatically each time it starts.  
