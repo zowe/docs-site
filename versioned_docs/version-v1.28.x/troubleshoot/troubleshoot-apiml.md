@@ -161,7 +161,7 @@ SEC0002 error typically appears when users fail to log in to API Catalog. The fo
 The error is caused by failed z/OSMF authentication. To determine the reason authentication failed, open the ZWESVSTC joblog and look for a message that contains `ZosmfAuthenticationProvider`. The following is an example of the message that contains `ZosmfAuthenticationProvider`:
 
 ```
-2019-08-05 11:25:03.431 ERROR 5 --- .0.0-7552-exec-3. c.c.m.s.l.ZosmfAuthenticationProvider    : Can not access z/OSMF service. Uri 'https://ABC12.slv.broadcom.net:1443' returned: I/O error on GET request for "https://ABC12.slv.broadcom.net:1443/zosmf/info": ... 
+2019-08-05 11:25:03.431 ERROR 5 --- .0.0-7552-exec-3. c.c.m.s.l.ZosmfAuthenticationProvider    : Can not access z/OSMF service. Uri 'https://ABC12.lpar.example.com:1443' returned: I/O error on GET request for "https://ABC12.lpar.example.com:1443/zosmf/info": ... 
 ```
 
 Check the rest of the message, and identify the cause of the problem. The following list provides the possible reasons and solutions for the z/OSMF authentication issue:
@@ -175,7 +175,7 @@ Check the rest of the message, and identify the cause of the problem. The follow
 In the following message, failure to connect to API Catalog occurs when connection is refused:
 
 ```
-Connect to ABC12.slv.broadcom.net:1443 .ABC12.slv.broadcom.net/127.0.0.1. failed: EDC8128I Connection refused.; nested exception is org.apache.http.conn.HttpHostConnectException: 
+Connect to ABC12.lpar.example.com:1443 .ABC12.lpar.example.com/127.0.0.1. failed: EDC8128I Connection refused.; nested exception is org.apache.http.conn.HttpHostConnectException: 
 ```
 The reason for the refused connection message is either invalid z/OSMF configuration or z/OSMF being unavailable. The preceding message indicates that z/OSMF is not on the 127.0.0.1:1443 interface.
 
@@ -212,7 +212,7 @@ If changing the z/OSMF configuration does not fix the issue, reconfigure Zowe.
 In following message, failure to connect to API Catalog is caused by a missing z/OSMF host name in the subject alternative names:
 
 ```
-Certificate for <ABC12.slv.broadcom.net> doesn't match any of the subject alternative names: ..; nested exception is javax.net.ssl.SSLPeerUnverifiedException: Certificate for <ABC12.slv.broadcom.net> doesn't match any of the subject alternative names: ..
+Certificate for <ABC12.lpar.example.com> doesn't match any of the subject alternative names: ..; nested exception is javax.net.ssl.SSLPeerUnverifiedException: Certificate for <ABC12.lpar.example.com> doesn't match any of the subject alternative names: ..
 ```
 
 **Solutions:**
@@ -244,8 +244,8 @@ Fix the missing z/OSMF host name in subject alternative names using the followin
 In the following message, failure to connect to API Catalog is caused by an invalid z/OSMF host name in the subject alternative names:
 
 ```
-Certificate for <ABC12.slv.broadcom.net> doesn't match any of the subject alternative names: [abc12.ca.com, abc12, localhost, abc12-slck, abc12-slck.ca.com, abc12-slck1, abc12-slck1.ca.com, abc12-slck2, abc12-slck2.ca.com, usilabc12, usilabc12.ca.com]; 
-nested exception is javax.net.ssl.SSLPeerUnverifiedException: Certificate for <ABC12.slv.broadcom.net> doesn't match any of the subject alternative names: [abc12.ca.com, abc12, localhost, abc12-slck, abc12-slck.ca.com, abc12-slck1, abc12-slck1.ca.com, abc12-slck2, abc12-slck2.ca.com, usilabc12, usilabc12.ca.com]
+Certificate for <ABC12.lpar.example.com> doesn't match any of the subject alternative names: [abc12.lpar.example.com, abc12, localhost, abc12-slck, abc12-slck.lpar.example.com, abc12-slck1, abc12-slck1.lpar.example.com, abc12-slck2, abc12-slck2.lpar.example.com, usilabc12, usilabc12.lpar.example.com]; 
+nested exception is javax.net.ssl.SSLPeerUnverifiedException: Certificate for <ABC12.lpar.example.com> doesn't match any of the subject alternative names: [abc12.lpar.example.com, abc12, localhost, abc12-slck, abc12-slck.lpar.example.com, abc12-slck1, abc12-slck1.lpar.example.com, abc12-slck2, abc12-slck2.lpar.example.com, usilabc12, usilabc12.lpar.example.com]
 ```
 
 **Solutions:**
@@ -274,7 +274,7 @@ The API ML services are running but they are in DOWN state and not working prope
 See the following message for full exceptions.
 
 ```
-org.springframework.web.client.ResourceAccessException: I/O error on GET request for "https://USILCA32.lvn.broadcom.net:7553/eureka/apps/apicatalog": USILCA32.lvn.broadcom.net; nested exception is java.net.UnknownHostException: USILCA32.lvn.broadcom.net
+org.springframework.web.client.ResourceAccessException: I/O error on GET request for "https://SYS1.lpar.example.com:7553/eureka/apps/apicatalog": SYS1.lpar.example.com; nested exception is java.net.UnknownHostException: SYS1.lpar.example.com
 
 .at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:732) ~Ýspring-web-5.0.8.RELEASE.jar!/:5.0.8.RELEASE¨
 
@@ -299,7 +299,7 @@ main¨ o.a.http.impl.client.DefaultHttpClient   : Retrying connect to {s}->https
 
 The Zowe started task needs to run under the same user ID as z/OSMF (typically IZUSVR). This is stated in the [installation documentation](../user-guide/configure-zos-system#grant-users-permission-to-access-z-osmf).
 
-The hostname that is displayed in the details of the exception is a valid hostname. You can validate that the hostname is valid by using `ping` command on the same mainframe system. For example, `ping USILCA32.lvn.broadcom.net`. If it is valid, then the problem can be caused by insufficient privileges of your started task that is not allowed to do network access.
+The hostname that is displayed in the details of the exception is a valid hostname. You can validate that the hostname is valid by using `ping` command on the same mainframe system. For example, `ping SYS1.lpar.example.com`. If it is valid, then the problem can be caused by insufficient privileges of your started task that is not allowed to do network access.
 
 You can fix it by setting up the security environment as described in the [Zowe documentation](../user-guide/configure-zos-system#configure-security-environment-switching).
 
@@ -408,7 +408,7 @@ The Zowe desktop is able to be displayed in a browser but fails to logon.
  
 **Solution:**
 
-Check that the Zowe certificate has been configured as a client certificate, and not just as a server certificate. More detail can be found in [Configuring certificates](../user-guide/configure-certificates).
+Check that the Zowe certificate has been configured as a client certificate, and not just as a server certificate. For more information, see [Configuring certificates overview](../user-guide/configure-certificates).
 
 ### Java z/OS components of Zowe unable to read certificates from keyring
 
