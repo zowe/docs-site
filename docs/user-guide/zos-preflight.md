@@ -50,8 +50,8 @@ Named checks use `zowe.launchScript.startupChecks`:
 | Value | Intended behavior for the named check |
 |---|---|
 | `exit` | Run the check and stop startup on failure. |
-| `warn` | Report check failures and allow startup to continue. Some diagnostics still use error-level logging. |
-| `disabled` | Skip the named check in the startup flow. See dependency caveats below. |
+| `warn` | Report the failure of the version, port, or certificate condition and continue startup. Some diagnostics still use error-level logging. Failures that are not condition failures still stop startup. See [Failures that startup checks do not control](#failures-that-startup-checks-do-not-control). |
+| `disabled` | Skip the named check in the startup flow. Other checks and component scripts can still require the same resource. |
 
 The effective action is resolved in this order:
 
@@ -75,10 +75,20 @@ Note that all unspecified named checks use `exit`, including checks whose built-
 `warn`. To retain the built-in behavior of unspecified checks, omit `default`.
 The startup log prints the effective actions and their origins.
 
-These controls do not bypass core YAML/schema errors, log/workspace permission errors,
-component schema errors, or failures returned by component `commands.validate` scripts.
-Some helpers also have fatal prerequisites: for example, certificate validation requires
-Java, `zowe.certificate`, and `zowe.externalDomains`, even in `certificate: warn` mode.
+### Failures that startup checks do not control
+
+The `startupChecks` settings do not change the following failures. Each failure stops
+startup, even when the related check is set to `warn` or `disabled`:
+
+- Core YAML or schema errors
+- Log or workspace permission errors
+- Component schema errors
+- Nonzero return codes from component `commands.validate` scripts
+- A missing or unusable Java or Node.js runtime
+- A missing `zowe.certificate` or `zowe.externalDomains` value, or missing Java, when
+  certificate validation runs
+- The z/OSMF configuration error described in
+  [z/OSMF availability and JWT support](#zosmf-availability-and-jwt-support)
 
 ## Built-in Zowe startup checks
 
@@ -113,43 +123,51 @@ runtime exists and can execute. Node.js additionally runs a short script and exp
 rejects version `v18.12.1`.
 
 The `warn` action relaxes version-bound failures but does not make a missing or unusable runtime valid.
-Both minimum and maximum checks must be disabled to skip that runtime's global validation.
-If only one is disabled, the shared validator can still report the disabled bound as a
-nonfatal diagnostic. Other checks, including certificate checks and component scripts, can
-still require Java or Node.js even when these global checks are disabled.
+
+To skip the global validation of Java or Node.js, set both the minimum and maximum checks
+to `disabled`. If you disable only one of the two checks, the shared validator can still
+report the disabled bound as a nonfatal diagnostic.
+Certificate checks and component scripts can still require Java or Node.js when both checks
+are disabled.
 
 ### z/OSMF availability and JWT support
 
-The availability check runs when:
+#### z/OSMF availability check
+
+The `zosmf` check runs when all of the following are true:
 
 - `zOSMF.host` and `zOSMF.port` are set.
 - `discovery` or `apiml` is enabled.
 - `startupChecks.zosmf` is not `disabled`.
 
-The availability check uses the bundled `curl` to request `/zosmf/info`, with a ten-second timeout, and accepts
-HTTP 200 or 401. The check passes `-k`, so the probe does not validate the server certificate.
-The jobname is the configured prefix (default `ZWE1`) plus `AG`, or `AZ` when `zaas` is
-enabled and `apiml` is not. HTTPS is the default; startup uses HTTP when
-apiml/gateway is enabled and client AT-TLS is active. `ZOSMF_SCHEME`, then
-`ZWE_zOSMF_scheme`, can override the default scheme selection.
+The check uses the bundled `curl` to request `/zosmf/info` with a ten-second timeout.
+The check accepts HTTP 200 or 401 and passes `-k`, so the probe does not validate the
+server certificate.
 
-The JWT startup check runs as part of the availability check. Disabling `zosmf`
-therefore also prevents the startup JWT check, even if `zosmfjwt` is enabled. In addition:
+- **Jobname:** The configured prefix (default `ZWE1`) plus `AG`, or `AZ` when `zaas` is
+  enabled and `apiml` is not.
+- **Scheme:** HTTPS by default. Startup uses HTTP when apiml/gateway is enabled and client
+  AT-TLS is active. `ZOSMF_SCHEME`, then `ZWE_zOSMF_scheme`, can override the scheme.
 
-- `startupChecks.zosmfjwt` must not be `disabled`.
-- `components.gateway.apiml.security.auth.provider` must be `zosmf` (case-insensitive).
-  Other providers cause the JWT check to return successfully without probing.
-- If `components.gateway.apiml.security.auth.zosmf.jwtAutoconfiguration` is `ltpa`, a failed
-  JWT probe is reported as a warning and treated as success. Other values use the selected
-  JWT check action.
+**Fatal configuration error:** If a gateway uses z/OSMF authentication, `discovery` and
+`apiml` are both disabled, host/port are set, and `zosmf` is not `disabled`, the check
+reports a fatal validation error. Setting `zosmf: warn` does not downgrade this error.
 
-The JWT command invokes `certificate-analyser.jar --zosmf-jwt-check`, passing the z/OSMF
-host/port, verification mode, and truststore settings. Unlike the availability probe, the
-JWT command does not set the component jobname or pass a scheme override.
+#### z/OSMF JWT check
 
-When a gateway uses z/OSMF authentication with discovery and apiml both disabled, the
-availability check reports a fatal validation error if host/port are set and `zosmf` is
-not disabled. Setting `zosmf: warn` does not downgrade the fatal validation error.
+The `zosmfjwt` check runs only after the `zosmf` availability check runs. Setting `zosmf`
+to `disabled` therefore also skips the JWT check, even if `zosmfjwt` is enabled. The JWT
+check also requires that `startupChecks.zosmfjwt` is not `disabled`.
+
+| Condition | Result |
+|---|---|
+| `components.gateway.apiml.security.auth.provider` is not `zosmf` (case-insensitive) | The check passes without probing. |
+| `components.gateway.apiml.security.auth.zosmf.jwtAutoconfiguration` is `ltpa` and the probe fails | The check reports a warning and passes. |
+| `jwtAutoconfiguration` has any other value and the probe fails | The check applies the configured `zosmfjwt` action. |
+
+The check runs `certificate-analyser.jar --zosmf-jwt-check` with the z/OSMF host/port,
+verification mode, and truststore settings. Unlike the availability probe, the JWT check
+does not set the component jobname or pass a scheme override.
 
 ### Port availability and AT-TLS checks
 
@@ -208,7 +226,7 @@ packaged ZSS component's startup scripts.
 
 These commands run checks manually without starting Zowe. The startup switches determine
 how startup calls the validators. The startup switches do not skip manually requested
-validation.
+validation. See [Differences between startup and manual validation](#differences-between-startup-and-manual-validation).
 
 | Command | Purpose |
 |---|---|
@@ -223,6 +241,20 @@ validation.
 
 There is no aggregate `zwe validate` command that runs all checks, and no dedicated
 availability or AT-TLS validation subcommand.
+
+### Differences between startup and manual validation
+
+| Command | Applies `startupChecks` settings? | Version bounds | Reliable nonzero exit code on failure? |
+|---|---|---|---|
+| `zwe validate config` | No | Not applicable | Yes for core configuration errors. No for component schema errors with `--components`. |
+| `zwe validate components` | No | Not applicable | TBD: confirm before publishing |
+| `zwe validate dependencies` | No | Both enforced | TBD: confirm before publishing |
+| `zwe validate certificate` | No | Not applicable | TBD: confirm before publishing |
+| `zwe validate port bind` | No | Not applicable | No. Inspect the printed diagnostics. |
+| `zwe validate zosmf jwt` | No | Not applicable | No. Inspect the printed diagnostics. |
+
+Manual commands always run the check you request, even when startup would skip the check.
+In scripts, don't rely on a zero exit code alone for the commands marked "No."
 
 Use `-c` / `--config` for a YAML file or a colon-separated list using `FILE()` and/or
 `PARMLIB()` syntax:
