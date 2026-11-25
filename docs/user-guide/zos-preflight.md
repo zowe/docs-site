@@ -1,18 +1,18 @@
 # Pre-flight Checks and Validation Utilities
 
 Pre-flight checks validate configuration and the runtime environment during Zowe startup,
-before components are launched. They cover certificates, runtime dependencies, component
+before components are launched. These checks cover certificates, runtime dependencies, component
 manifests, ports, AT-TLS policies, user identity, and z/OSMF connectivity.
 
 This document describes the checks performed during startup and the utilities available
-for manual validation. Several checks also have standalone `zwe validate` commands, and
-lower-level tools are packaged in `<zowe.runtimeDirectory>/bin/utils`.
+for manual validation. Several checks also have standalone `zwe validate` commands.
+Lower-level tools are packaged in `<zowe.runtimeDirectory>/bin/utils`.
 
 ## How pre-flight checks work
 
 The startup preparation phase (`zwe internal start prepare`) loads the configuration,
 validates it, prepares directories and environment variables, and runs component validation
-and configuration scripts. It can stop startup when a required check fails.
+and configuration scripts. The startup preparation phase can stop startup when a required check fails.
 
 ### Check lifecycle
 
@@ -71,7 +71,7 @@ zowe:
       zosmfjwt: disabled
 ```
 
-Here, all unspecified named checks use `exit`, including those whose built-in action is
+Note that all unspecified named checks use `exit`, including checks whose built-in action is
 `warn`. To retain the built-in behavior of unspecified checks, omit `default`.
 The startup log prints the effective actions and their origins.
 
@@ -99,11 +99,11 @@ Checks run only when their applicability conditions are met.
 | Certificates | `certificate` | `warn` | Checks configured keystore/truststore, certificate properties, and external domains. | `zwe validate certificate` |
 | AT-TLS policies | `attls` | `warn` | Compares inbound policy detection with the configured server AT-TLS setting. | No dedicated `zwe validate` command; uses `attls-test` |
 
-Although the configuration schema describes the `zosmfjwt` default as `exit`, its effective
-built-in action is `warn`, as shown in the table above.
+Although the configuration schema describes the `zosmfjwt` default as `exit`, the effective
+built-in action of the `zosmfjwt` check is `warn`, as shown in the preceding table.
 
 Log directory writability (when configured) and workspace definition/writability are also
-checked and can stop startup. They have no `startupChecks` key. Running as `IZUSVR` produces
+checked and can stop startup. Neither check has a `startupChecks` key. Running as `IZUSVR` produces
 an additional warning independently of the UID 0 check.
 
 ### Java and Node.js checks
@@ -112,7 +112,7 @@ In addition to enforcing the version limits above, the checks verify that the co
 runtime exists and can execute. Node.js additionally runs a short script and explicitly
 rejects version `v18.12.1`.
 
-`warn` relaxes version-bound failures; it does not make a missing or unusable runtime valid.
+The `warn` action relaxes version-bound failures but does not make a missing or unusable runtime valid.
 Both minimum and maximum checks must be disabled to skip that runtime's global validation.
 If only one is disabled, the shared validator can still report the disabled bound as a
 nonfatal diagnostic. Other checks, including certificate checks and component scripts, can
@@ -126,12 +126,12 @@ The availability check runs when:
 - `discovery` or `apiml` is enabled.
 - `startupChecks.zosmf` is not `disabled`.
 
-It uses the bundled `curl` to request `/zosmf/info`, with a ten-second timeout, and accepts
-HTTP 200 or 401. It passes `-k`, so this probe does not validate the server certificate.
+The availability check uses the bundled `curl` to request `/zosmf/info`, with a ten-second timeout, and accepts
+HTTP 200 or 401. The check passes `-k`, so the probe does not validate the server certificate.
 The jobname is the configured prefix (default `ZWE1`) plus `AG`, or `AZ` when `zaas` is
 enabled and `apiml` is not. HTTPS is the default; startup uses HTTP when
 apiml/gateway is enabled and client AT-TLS is active. `ZOSMF_SCHEME`, then
-`ZWE_zOSMF_scheme`, can override that selection.
+`ZWE_zOSMF_scheme`, can override the default scheme selection.
 
 The JWT startup check runs as part of the availability check. Disabling `zosmf`
 therefore also prevents the startup JWT check, even if `zosmfjwt` is enabled. In addition:
@@ -149,21 +149,21 @@ JWT command does not set the component jobname or pass a scheme override.
 
 When a gateway uses z/OSMF authentication with discovery and apiml both disabled, the
 availability check reports a fatal validation error if host/port are set and `zosmf` is
-not disabled; this configuration error is not downgraded by `zosmf: warn`.
+not disabled. Setting `zosmf: warn` does not downgrade the fatal validation error.
 
 ### Port availability and AT-TLS checks
 
 The bind check uses the first component-specific `zowe.network.server.listenAddresses`
-entry, otherwise the first global entry, otherwise `0.0.0.0`. It sets `_BPX_JOBNAME` for
+entry, otherwise the first global entry, otherwise `0.0.0.0`. The bind check sets `_BPX_JOBNAME` for
 the component and invokes `bind-test`. Components without a port are skipped. With the
 APIML modulith enabled, the bind check handles gateway/discovery specially, using
 `components.apiml.port` for gateway when set and skipping other individual APIML services.
-It does not probe every possible auxiliary port or every listen address.
+The bind check does not probe every possible auxiliary port or every listen address.
 
 The AT-TLS check uses `attls-test --direction 1` (inbound) for enabled components with
-ports. Component server AT-TLS settings override the global setting. It reports both
-missing policies when AT-TLS is requested and detected policies when it is not requested.
-It handles APIML gateway/discovery ports and the caching service's Infinispan JGroups and
+ports. Component server AT-TLS settings override the global setting. The AT-TLS check reports both
+missing policies when AT-TLS is requested and detected policies when AT-TLS is not requested.
+The check handles APIML gateway/discovery ports and the caching service's Infinispan JGroups and
 key-exchange ports specially.
 
 ## Component startup checks
@@ -181,9 +181,10 @@ commands:
 ```
 
 Startup first validates the component configuration against `schemas.configs`, then runs
-its `commands.validate` script if present. Schema failure or a script's nonzero return code
-contributes to a fatal component-validation result. These failures are not governed by
-`startupChecks.components`; that setting only controls the directory/manifest check.
+the component's `commands.validate` script if present. A schema failure or a nonzero return code
+from the script contributes to a fatal component-validation result. The
+`startupChecks.components` setting does not govern schema or script failures. The setting
+controls only the directory/manifest check.
 
 When `zowe.configmgr.validation` is `COMPONENT-COMPAT` (the fallback), a missing
 `schemas.configs` declaration produces a diagnostic and skips that component's schema
@@ -200,13 +201,13 @@ a later startup phase; their failure handling is controlled separately by
 ### ZIS reachability
 
 The packaged `zis-test` utility checks whether a named ZIS cross-memory server is accessible.
-It is not part of the central pre-flight checks. Any automatic use depends on the separately
+The utility is not part of the central pre-flight checks. Any automatic use depends on the separately
 packaged ZSS component's startup scripts.
 
 ## `zwe validate` commands
 
 These commands run checks manually without starting Zowe. The startup switches determine
-how startup calls the validators; they are not a universal way to skip manually requested
+how startup calls the validators. The startup switches do not skip manually requested
 validation.
 
 | Command | Purpose |
@@ -265,7 +266,7 @@ zwe validate dependencies node -c /path/to/zowe.yaml
 
 The manual commands check the requested runtimes even if no enabled component needs them,
 and explicitly enforce both version bounds. Startup's `warn` or `disabled` version settings
-do not relax that final manual validation.
+do not relax the manual validation.
 
 ### Certificates
 
@@ -277,7 +278,7 @@ zwe validate certificate -c /path/to/zowe.yaml --level STRICT
 The command passes the configured stores, alias, passwords, and `zowe.externalDomains` to
 the analyser. It interprets diagnostics such as inaccessible stores, expiration, missing
 client/server extended key usage, hostname mismatches, and missing trust. `--level` accepts
-`STRICT`, `NONSTRICT`, or `DISABLED`; it defaults to `zowe.verifyCertificates`. Even with
+`STRICT`, `NONSTRICT`, or `DISABLED` and defaults to the value of `zowe.verifyCertificates`. Even with
 `DISABLED`, store access is still checked. The command does not request the analyser's
 optional local handshake or remote URL test.
 
@@ -289,8 +290,8 @@ zwe validate port bind -c /path/to/zowe.yaml -o gateway
 zwe validate zosmf jwt -c /path/to/zowe.yaml
 ```
 
-The JWT command requires configured z/OSMF host/port and enabled discovery or apiml. It
-applies the authentication-provider and LTPA behavior described above, but is callable
+The JWT command requires configured z/OSMF host/port and enabled discovery or apiml. The
+command applies the authentication-provider and LTPA behavior described earlier, and it runs
 independently of the startup `zosmf` switch.
 
 **Exit-code limitation:** the manual port-bind and JWT commands can print failed checks
@@ -301,10 +302,10 @@ Early fatal errors, such as failure to load the core configuration, can still ex
 
 ## Standalone utilities
 
-These tools are distributed in `<runtimeDirectory>/bin/utils`. Run them with an appropriate
-user and environment for the resource being checked; changing `_BPX_JOBNAME` does not
+These tools are distributed in `<runtimeDirectory>/bin/utils`. Run each utility with an appropriate
+user and environment for the resource being checked. Changing `_BPX_JOBNAME` does not
 change the process's user identity. Utility implementations come from other Zowe projects,
-so use the installed version's help for its exact interface and output.
+so use the installed version's help for the exact interface and output of each utility.
 
 | Utility | Use |
 |---|---|
@@ -321,7 +322,7 @@ _BPX_JOBNAME=ZWE1AG /path/to/zowe/bin/utils/bind-test --host 0.0.0.0 --port 7554
 ```
 
 The tool resolves a hostname or IPv4 address, attempts a TCP bind, and closes the socket on
-success. It returns **0 on success and 8 on failure**, including an occupied port or
+success. The tool returns **0 on success and 8 on failure**, including an occupied port or
 permission failure. IPv6 resolution is not supported.
 
 ### `attls-test`
@@ -332,7 +333,7 @@ _BPX_JOBNAME=ZWE1AG /path/to/zowe/bin/utils/attls-test \
 ```
 
 Direction `1` means inbound and `2` means outbound. The startup caller uses inbound
-queries and interprets return code zero as a detected AT-TLS policy, then compares it with
+queries and interprets return code zero as a detected AT-TLS policy, then compares the detected policy with
 the configured setting.
 
 ### `zis-test`
@@ -343,13 +344,13 @@ the configured setting.
 
 `--zis` identifies the cross-memory server name (`components.zss.crossMemoryServerName`),
 not the started-task jobname. The tool checks server status and accessibility to the caller.
-It returns **0 on success and 8 on failure**; its printed
+The tool returns **0 on success and 8 on failure**. The printed
 cross-memory status code is separate from the process exit code.
 
 ### `certificate-analyser.jar`
 
 The analyser supports file stores and SAF key rings, certificate inspection, optional local
-TLS handshakes (`-l`) and remote tests (`-r`). Its embedded JWT mode probes
+TLS handshakes (`-l`) and remote tests (`-r`). The analyser's embedded JWT mode probes
 `/jwt/ibm/api/zOSMFBuilder/jwk`. Use the installed JAR's help:
 
 ```sh
@@ -358,7 +359,7 @@ java -jar /path/to/zowe/bin/utils/certificate-analyser.jar --zosmf-jwt-check --h
 ```
 
 The startup certificate check supplies `-k`, `-kt`, `-kp`, and `-a` for the keystore,
-`-t`, `-tt`, and `-tp` for the truststore, and `-d` for external domains. Its JVM invocation
+`-t`, `-tt`, and `-tp` for the truststore, and `-d` for external domains. The startup certificate check's JVM invocation
 also supplies the IBM protocol handler and the packaged security override properties.
 
 For example, a standalone SAF truststore/remote test using the same JVM setup is:
@@ -371,8 +372,6 @@ java -Djava.protocol.handler.pkgs=com.ibm.crypto.provider \
   -r=https://zos.example.com:443/zosmf/info
 ```
 
-Use the installed analyser's `--help` output for the available standalone options.
-
 ### `configmgr`
 
 `configmgr` loads YAML from USS files or PARMLIB members, merges configuration layers,
@@ -383,5 +382,5 @@ JavaScript entry points behind the TypeScript-based `zwe` commands:
 /path/to/zowe/bin/utils/configmgr -script /path/to/script.js
 ```
 
-Normally, use the `zwe` command instead: its shell launcher supplies the required environment
+Normally, use the `zwe` command instead. The `zwe` shell launcher supplies the required environment
 and script path.
