@@ -6,8 +6,12 @@
 
 ## Sub-commands
 
+* [certificate](./zwe-validate-certificate.md)
+* [components](./zwe-validate-components.md)
 * [config](./zwe-validate-config.md)
+* [dependencies](./dependencies/zwe-validate-dependencies.md)
 * [port](./port/zwe-validate-port.md)
+* [zosmf](./zwe-validate-zosmf.md)
 
 ## Parameters
 

@@ -13,7 +13,7 @@ There are multiple options for customizing Zowe API Mediation Layer according to
 * [Customizing routing behavior](./api-mediation/configuration-routing.md)
     * [Configuring routing in a multi-tenant environment](./api-mediation/configuration-multi-tenancy-routing.md)
     * [Customizing Cross-Origin Resource Sharing (CORS)](./api-mediation/configuration-cors.md)
-    * [Using encoded slashes](./api-mediation/configuration-url-handling.md)
+    * [Using strict URL validation](./api-mediation/configuration-using-strict-url-validation.md)
     * [Customizing Gateway retry policy](./api-mediation/configuration-gateway-retry-policy.md)
     * [Configuring a unique cookie name for a specific API ML instance](./api-mediation/configuration-unique-cookie-name-for-multiple-zowe-instances.md)
     * [Retrieving a specific service within your environment](./api-mediation/configuration-access-specific-instance-of-service.md)
@@ -27,7 +27,7 @@ There are multiple options for customizing Zowe API Mediation Layer according to
 * [Configuring authorization of API ML](./api-mediation/configuration-authorization.md)
     * [Limiting access to information or services in the API Catalog](./api-mediation/configuration-limiting-access-to-info-or-services-in-api-catalog.md)
     * [Configuring SAF resource checking](./api-mediation/configuration-saf-resource-checking.md)
-    * [Configuring Health Check Protection](./api-mediation/configuration-health-endpoint-protection.md)
+    * [Configuring health check, information, and version endpoint protection](./api-mediation/configuration-health-endpoint-protection.md)
 * [Configuring an authentication provider for API Mediation Layer](./authentication-providers-for-apiml.md)
 * Configuring storage for the Caching service
     * [Using Infinispan as a storage solution through the Caching service](../extend/extend-apiml/api-mediation-infinispan.md)
@@ -36,5 +36,5 @@ There are multiple options for customizing Zowe API Mediation Layer according to
 * [Customizing the API Catalog UI](./api-mediation/configuration-customizing-the-api-catalog-ui.md)
 * [Customizing Zowe API Mediation Layer logging](./api-mediation/configuration-logging.md)
 * [Configuring initial for API Mediation Layer startup message for SYSLOG](./api-mediation/wto-message-on-startup.md)
-  
+* [Configuring allowed domains for service registration](../user-guide/api-mediation/config-allowed-domains-for-service-reg.md) 
 
