@@ -86,7 +86,7 @@ zwe start --config /path/to/my/zowe.yaml --ha-instance hainst2
 ```yaml
 haInstances:
   hainst2:
-    hostname: lpar2-domain.com
+    hostname: lpar2.example.com
     sysname: LPAR2
 ```
 
