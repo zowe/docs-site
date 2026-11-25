@@ -72,13 +72,7 @@ Confirm that z/OSMF JWT support is available, as described in the [prerequisites
                 auth:
                   zosmf:
                     jwtAutoconfiguration: ltpa   # jwt (default) | ltpa
-        zowe:
-          launchScript:
-            startupChecks:
-              zosmfjwt: warn                     # exit | warn (default) | disabled
       ``` 
-
-    - Leave the `zosmfjwt` startup check at its default value of `warn`, or set it to `disabled`. If you set the check to `exit`, Zowe does not start when the check fails.
 
     :::note
     If z/OSMF is not used for login, no JWT setup is needed.
@@ -468,7 +462,6 @@ Stop your running Zowe instance before you replace the runtime files, data sets,
          user: exit           # superuser (UID 0) check for ZWESVUSR
          ports: exit          # port availability check
          zosmf: exit          # z/OSMF availability check
-         zosmfjwt: warn       # z/OSMF JWT support check
          certificate: warn    # certificate validation check
          components: warn     # component manifest check
          attls: warn          # AT-TLS port check

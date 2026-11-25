@@ -91,9 +91,9 @@ If your `zowe.yaml` explicitly sets `components.caching-service.storage.mode` to
    * [Enabling single-service deployment of API Mediation Layer](https://docs.zowe.org/stable/user-guide/api-mediation/api-mediation-modulith/)
    * [Caching Service Infinispan ports](../user-guide/address-network-requirements.md#caching-service-infinispan-ports)
 
-**Optional properties introduced in Zowe v3.6**
+**Optional properties and new defaults in Zowe v3.6**
 
-The following properties are optional. Your existing configuration continues to work without them.
+The following properties are optional, and one default has changed. Your existing configuration continues to work without setting them.
 
 | Property | Description |
 | :--- | :--- |
@@ -144,13 +144,7 @@ Confirm that z/OSMF JWT support is available, as described in the [prerequisites
                 auth:
                   zosmf:
                     jwtAutoconfiguration: ltpa   # jwt (default) | ltpa
-        zowe:
-          launchScript:
-            startupChecks:
-              zosmfjwt: warn                     # exit | warn (default) | disabled
       ``` 
-
-    - Leave the `zosmfjwt` startup check at its default value of `warn`, or set it to `disabled`. If you set the check to `exit`, Zowe does not start when the check fails.
 
     :::note
     If z/OSMF is not used for login, no JWT setup is needed.
@@ -540,7 +534,6 @@ Stop your running Zowe instance before you replace the runtime files, data sets,
          user: exit           # superuser (UID 0) check for ZWESVUSR
          ports: exit          # port availability check
          zosmf: exit          # z/OSMF availability check
-         zosmfjwt: warn       # z/OSMF JWT support check
          certificate: warn    # certificate validation check
          components: warn     # component manifest check
          attls: warn          # AT-TLS port check
