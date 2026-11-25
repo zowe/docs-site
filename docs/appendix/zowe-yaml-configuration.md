@@ -292,15 +292,15 @@ Launcher is the program behind the `ZWESLSTC` started task.
 - **zowe.launchScript.startupChecks.zosmfjwt**  
  Specifies the behavior of the startup check that validates whether z/OSMF JWT support is usable when Zowe is configured to use z/OSMF JWT authentication. This check is available since Zowe v3.6.0. You can run the same check manually with the `zwe validate zosmf jwt` command.  
  **Possible values:**
-  * `exit`: This is the default value. If the check fails, Zowe startup stops.
-  * `warn`: If the check fails, Zowe logs a warning and continues to start.
+  * `exit`: If the check fails, Zowe startup stops.
+  * `warn`: This is the default value. If the check fails, Zowe logs a warning and continues to start.
   * `disabled`: Zowe does not run the check.
 
  ```yaml
  zowe:
    launchScript:
      startupChecks:
-       zosmfjwt: exit
+       zosmfjwt: warn
  ```
 
 #### System messages
