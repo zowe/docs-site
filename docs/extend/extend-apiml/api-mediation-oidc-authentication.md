@@ -363,10 +363,10 @@ API ML Gateway exposes a validate token operation which is suitable during the O
 Use the following curl command to make a REST request with the OIDC token to the validate token endpoint:
 
 ```shell
-curl --location 'https://"$HOSTNAME:$PORT"/gateway/api/v1/auth/oidc-token/validate --data '{"token": "$OIDC_TOKEN","serviceId": "$SERVICE_ID"}'
+curl --location --request POST "https://HOSTNAME:PORT/gateway/api/v1/auth/oidc-token/validate" --header 'Content-Type: application/json' --data "{\"token\": \"$OIDC_TOKEN\", \"serviceId\": \"$SERVICE_ID\"}"
 ```
 
-An HTTP `204` code is returned if the validation passes. Failure to validate returns an HTTP `40x` error.
+An HTTP `204` code is returned if the validation passes. The single-service deployment returns HTTP `204` with no body. The standalone ZAAS deployment currently returns HTTP `200` with the token claims in the response body. Treat any `2xx` status as a successful validation. Failure to validate returns an HTTP `40x` error.
 :::
 
 :::note Azure Entra ID OIDC notes:

@@ -2,7 +2,7 @@
     "openapi": "3.0.0",
     "info": {
         "description": "REST API for the API Gateway service, which is a component of the API\nMediation Layer. Use this API to perform tasks such as logging in with the\nmainframe credentials and checking authorization to mainframe resources.",
-        "version": "1.3.0",
+        "version": "1.4.0",
         "title": "API Gateway"
     },
     "tags": [
@@ -20,11 +20,11 @@
         }
     ],
     "paths": {
-        "/auth/login": {
+        "/api/v1/auth/login": {
             "post": {
                 "tags": ["Security"],
                 "summary": "Authenticate mainframe user credentials and return authentication token.",
-                "description": "Use the `/login` API to authenticate mainframe user credentials and return authentication token. It is also possible to authenticate using the x509 client certificate authentication, if enabled.\n\n**Request:**\n\nThe login request requires the user credentials in one of the following formats:\n  * Basic access authentication\n  * JSON body, which provides an object with the user credentials\n  * HTTP header containing the client certificate\n\n**Response:**\n\nThe response is an empty body and a token in a secure HttpOnly cookie named `apimlAuthenticationToken`.\n",
+                "description": "Use POST /gateway/api/v1/auth/login to authenticate mainframe user credentials and return authentication token. It is also possible to authenticate using the x509 client certificate authentication, if enabled.\n\n**Request:**\n\nThe login request requires the user credentials in one of the following formats:\n  * Basic access authentication\n  * JSON body, which provides an object with the user credentials\n  * HTTP header containing the client certificate\n\n**Response:**\n\nThe response is an empty body and a token in a secure HttpOnly cookie named `apimlAuthenticationToken`.\n",
                 "operationId": "loginUsingPOST",
                 "requestBody": {
                     "content": {
@@ -71,11 +71,11 @@
                 }
             }
         },
-        "/auth/query": {
+        "/api/v1/auth/query": {
             "get": {
                 "tags": ["Security"],
                 "summary": "Validate the authentication token.",
-                "description": "Use the `/query` API to validate the token and retrieve the information associated with the token.\n\n **HTTP Headers:**\n\nThe query request requires the token in one of the following formats:\n  * Cookie named `apimlAuthenticationToken`.\n  * Bearer authentication \n*Header example:* Authorization: Bearer *token*\n\n**Request payload:**\n\nThe request body is empty.\n\n**Response Payload:**\n\nThe response is a JSON object, which contains information associated with the token.\n",
+                "description": "Use GET /gateway/api/v1/auth/query to validate the token and retrieve the information associated with the token.\n\n **HTTP Headers:**\n\nThe query request requires the token in one of the following formats:\n  * Cookie named `apimlAuthenticationToken`.\n  * Bearer authentication \n*Header example:* Authorization: Bearer *token*\n\n**Request payload:**\n\nThe request body is empty.\n\n**Response Payload:**\n\nThe response is a JSON object, which contains information associated with the token.\n",
                 "operationId": "validateUsingGET",
                 "security": [
                     {
@@ -111,11 +111,11 @@
                 }
             }
         },
-        "/auth/ticket": {
+        "/api/v1/auth/ticket": {
             "post": {
                 "tags": ["Security"],
                 "summary": "Generate a passticket for the user associated with a token.",
-                "description": "Use the `/ticket` API to request a passticket for the user associated with a token.\n\nThis endpoint is protect by a client certificate.\n\n**HTTP Headers:**\n\nThe ticket request requires the token in one of the following formats:  \n  * Cookie named `apimlAuthenticationToken`.\n  * Bearer authentication\n  \n*Header example:* Authorization: Bearer *token*\n\n**Request payload:**\n\nThe request takes one parameter, the name of the application for which the passticket should be generated. This parameter must be supplied.\n\n**Response Payload:**\n\nThe response is a JSON object, which contains information associated with the ticket.\n",
+                "description": "Use POST /gateway/api/v1/auth/ticket to request a passticket for the user associated with a token.\n\nThis endpoint is protect by a client certificate.\n\n**HTTP Headers:**\n\nThe ticket request requires the token in one of the following formats:  \n  * Cookie named `apimlAuthenticationToken`.\n  * Bearer authentication\n  \n*Header example:* Authorization: Bearer *token*\n\n**Request payload:**\n\nThe request takes one parameter, the name of the application for which the passticket should be generated. This parameter must be supplied.\n\n**Response Payload:**\n\nThe response is a JSON object, which contains information associated with the ticket.\n",
                 "operationId": "GenerateTicketUsingPOST",
                 "requestBody": {
                     "content": {
@@ -168,11 +168,11 @@
             }
         },
 
-        "/auth/refresh": {
+        "/api/v1/auth/refresh": {
             "post": {
                 "tags": ["Security"],
                 "summary": "Refresh authentication token.",
-                "description": "**Note:** This endpoint is disabled by default.\n\nUse the `/refresh` API to request a new JWT authentication token for the user associated with provided token.\nThe old token is invalidated and new token is issued with refreshed expiration time.\n\nThis endpoint is protect by a client certificate.\n\n**HTTP Headers:**\n\nThe ticket request requires the token in one of the following formats:  \n  * Cookie named `apimlAuthenticationToken`.\n  * Bearer authentication\n  \n*Header example:* Authorization: Bearer *token*",
+                "description": "**Note:** This endpoint is disabled by default.\n\nUse POST /gateway/api/v1/auth/refresh to request a new JWT authentication token for the user associated with provided token.\nThe old token is invalidated and new token is issued with refreshed expiration time.\n\nThis endpoint is protect by a client certificate.\n\n**HTTP Headers:**\n\nThe ticket request requires the token in one of the following formats:  \n  * Cookie named `apimlAuthenticationToken`.\n  * Bearer authentication\n  \n*Header example:* Authorization: Bearer *token*",
                 "operationId": "RefreshTokenUsingPOST",
                 "security": [
                     {
@@ -214,11 +214,11 @@
         },
 
 
-        "/auth/logout": {
+        "/api/v1/auth/logout": {
             "post": {
                 "tags": ["Security"],
                 "summary": "Invalidate mainframe user session.",
-                "description": "Use the `/logout` API to invalidate mainframe user session.\n\n The cookie named `apimlAuthenticationToken` will be removed.\n",
+                "description": "Use POST /gateway/api/v1/auth/logout to invalidate mainframe user session.\n\n The cookie named `apimlAuthenticationToken` will be removed.\n",
                 "operationId": "logoutUsingPOST",
                 "security": [
                     {
@@ -238,12 +238,28 @@
                 }
             }
         },
+                "/auth/check": {
+            "post": {
+                "tags": ["Security"],
+                "summary": "Check if the user is authorized to access a SAF resource.",
+                "description": "Use `POST /gateway/auth/check` to check the authorization of the user associated with the token to a SAF resource through the external security manager (ESM).\n\n**Note:** Unlike the other Gateway authentication endpoints, this endpoint is not under `/gateway/api/v1/auth`. See [Configuring SAF resource checking](https://docs.zowe.org/stable/user-guide/api-mediation/configuration-saf-resource-checking).\n",
+                "operationId": "checkAuthorizationUsingPOST",
+                "security": [ { "CookieAuth": [] }, { "Bearer": [] } ],
+                "responses": {
+                    "200": { "description": "[verify] authorization result" },
+                    "401": { "description": "Unauthorized" },
+                    "403": { "description": "[verify]" },
+                    "500": { "description": "Internal error" }
+                }
+            }
+        },
         "/version": {
             "get": {
                 "tags": ["Diagnostic"],
                 "summary": "Return version information of API Mediation Layer and Zowe",
-                "description": "Use the `/version` API to get the version information of API Mediation Layer and Zowe.\nThe version information includes version, build number and commit hash.\nIn the response can be only API ML version information or API ML and Zowe version information, this depends on API ML installed as part of Zowe build or as standalone application.",
+                "description": "Use the `/version` API to get the version information of API Mediation Layer and Zowe.\nThe version information includes version, build number and commit hash.\nIn the response can be only API ML version information or API ML and Zowe version information, this depends on API ML installed as part of Zowe build or as standalone application. \nThis endpoint requires authentication by default. Access is governed by the components.gateway.apiml.health.protected property (default true). \nSet it to false to allow unauthenticated access. The endpoint is also available at /gateway/api/v1/version.",
                 "operationId": "VersionInfoUsingGET",
+                "security": [ { "LoginBasicAuth": [] }, { "CookieAuth": [] }, { "Bearer": [] } ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -254,15 +270,33 @@
                                 }
                             }
                         }
+                    },
+                    "401": { 
+                        "description": "Unauthorized. Returned when `apiml.health.protected` is `true` and no valid credentials are supplied." 
                     }
                 }
             }
         },
-        "/auth/keys/public/all": {
+        "/api/v1/auth/keys/public": {
+            "get": {
+                "tags": ["Security"],
+                "summary": "Returns the public key in PEM format.",
+                "description": "Returns the public key that verifies the JWT signature as a **PEM** string. To obtain keys as a JSON Web Key Set (JWK), use `/gateway/api/v1/auth/keys/public/all` or `/gateway/api/v1/auth/keys/public/current`.",
+                "operationId": "GetPublicKeyPemUsingGET",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": { "application/x-pem-file": { "schema": { "type": "string", "example": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0B…\n-----END PUBLIC KEY-----" } } }
+                    },
+                    "500": { "description": "Internal error" }
+                }
+            }
+        },
+        "/api/v1/auth/keys/public/all": {
             "get": {
                 "tags": ["Security"],
                 "summary": "Returns all public keys to verify JWT tokens validity",
-                "description": "This endpoint return all possible JWKs, which can verify sign outside the Gateway. It can contain public keys of Zowe and z/OSMF.",
+                "description": "Returns a JSON Web Key Set (JWK Set, JSON), not PEM. This endpoint return all possible JWKs, which can verify sign outside the Gateway. It can contain public keys of Zowe and z/OSMF.",
                 "operationId": "GetAllPublicKeysUsingGET",
                 "security": [
                     {
@@ -289,11 +323,11 @@
                 }
             }
         },
-        "/auth/keys/public/current": {
+        "/api/v1/auth/keys/public/current": {
             "get": {
                 "tags": ["Security"],
                 "summary": "Returns public keys to verify JWT tokens, which can be generated now",
-                "description": "This endpoint return all possible JWKs, which can verify sign outside the Gateway for this moment. It filters JWK by current settings of Zowe and z/OSMF.",
+                "description": "Returns a JSON Web Key Set (JWK Set, JSON), not PEM. This endpoint returns the JWKs that can verify sign outside the Gateway at this moment. It filters JWK by current settings of Zowe and z/OSMF.",
                 "operationId": "GetCurrentPublicKeysUsingGET",
                 "security": [
                     {
