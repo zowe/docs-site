@@ -328,7 +328,11 @@ Starting with Java 11, the safkeyring URLs are dependent on the type of RACF key
 |------|---------|
 | JCECCARACFKS | `safkeyringjcecca://ZWESVUSR/ZOWERING` |
 | JCERACFKS | `safkeyringjce://ZWESVUSR/ZOWERING` |
-| JCEHYBRIDRACFKS | `safkeyringjcehybrid://ZWESVUSR/ZOWERING` |
+| JCEHYBRIDRACFKS (deprecated) | `safkeyringjcehybrid://ZWESVUSR/ZOWERING` |
+
+:::caution Deprecated
+The `safkeyringjcehybrid://` protocol is deprecated and will be removed in a future release. Use `safkeyring://` instead.
+:::
 
 ## Failed to load JCERACFKS keyring when using Java 11
 
