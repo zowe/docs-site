@@ -245,7 +245,6 @@
                 "description": "Use `POST /gateway/auth/check` to check the authorization of the user associated with the token to a SAF resource through the external security manager (ESM).\n\n**Note:** Unlike the other Gateway authentication endpoints, this endpoint is not under `/gateway/api/v1/auth`. See [Configuring SAF resource checking](https://docs.zowe.org/stable/user-guide/api-mediation/configuration-saf-resource-checking).\n",
                 "operationId": "checkAuthorizationUsingPOST",
                 "security": [ { "CookieAuth": [] }, { "Bearer": [] } ],
-                "requestBody": { /* [verify] schema from AuthEndpointConfig.java:145 and its controller */ },
                 "responses": {
                     "200": { "description": "[verify] authorization result" },
                     "401": { "description": "Unauthorized" },
