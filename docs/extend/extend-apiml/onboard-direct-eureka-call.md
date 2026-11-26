@@ -21,6 +21,7 @@ This article outlines a process to make an API service available in the API Medi
     - [API Mediation Layer service onboarding metadata](#api-mediation-layer-service-onboarding-metadata)
       - [Catalog parameters](#catalog-parameters)
       - [Service parameters](#service-parameters)
+      - [Removed parameters](#removed-parameters)
       - [Routing parameters](#routing-parameters)
       - [Authentication parameters](#authentication-parameters)
       - [API Info parameters](#api-info-parameters)
@@ -120,7 +121,6 @@ a current limitation in Spring Cloud Netflix, routes are created only for instan
 ### API Mediation Layer service onboarding metadata
 
 At registration time, provide metadata in the following format. Metadata parameters contained in this code block are described in the following section.
-
 ```xml
 <instance>
   <metadata>
@@ -191,60 +191,51 @@ This parameter specifies a short description of the API service.
 This value is displayed in the API Catalog when a specific API service instance is selected.
 
 * **apiml.enableUrlEncodedCharacters**  
-When this parameter is set to `true`, the Gateway allows encoded characters to be part of URL requests redirected through the Gateway. The default setting of `true` is the recommended setting. Change this setting to `false` only if you do not want certain encoded characters in your application's requests.  
-**Important!**  When the expected encoded character is an encoded slash or backslash (`%2F`, `%5C`), make sure the Gateway is also configured to allow encoded slashes. For more info see [Installing the Zowe runtime on z/OS](../../user-guide/install-zos.md).
+When this parameter is set to `true`, the API Gateway allows encoded characters to be part of URL requests redirected through the API Gateway. The default setting of `true` is the recommended setting. Change this setting to `false` only if you do not want certain encoded characters in your application's requests.  
+**Important!**  When the expected encoded character is an encoded slash or backslash (`%2F`, `%5C`), make sure the API Gateway is also configured to allow encoded slashes. For more info see [Installing the Zowe runtime on z/OS](../../user-guide/install-zos.md).
 
 * **apiml.connectTimeout**  
-The value in milliseconds that specifies a period in which API ML should establish a single, non-managed connection with this service. If omitted, the default value specified in the API ML Gateway service configuration is used.
+The value in milliseconds that specifies a period in which API ML should establish a single, non-managed connection with this service. The period is separate from the response timeout. If omitted, the default value specified in the API ML Gateway service configuration is used.
 
-* **apiml.readTimeout**   
-The value in milliseconds that specifies maximum time of inactivity between two packets in response from this service to API ML. If omitted, the default value specified in the API ML Gateway service configuration is used.
-    
-* **apiml.connectionManagerTimeout**  
-HttpClient employs a special entity to manage access to HTTP connections called by HTTP connection manager. The purpose of an HTTP connection manager is to serve as a factory for new HTTP connections, to manage the life cycle of persistent connections, and to synchronize access to persistent connections. Internally, an HTTP connection manager works with managed connections, which serve as proxies for real connections. `ConnectionManagerTimeout` specifies a period in which managed connections with API ML should be established. The value is in milliseconds. If omitted, the default value specified in the API ML Gateway service configuration is used.
-
-* **apiml.okToRetryOnAllOperations**  
-Specifies whether all operations can be retried for this service. The default value is `false`. The `false` value allows retries for only GET requests if a response code of `503` is returned. Setting this value to `true` enables retry requests for all methods, which return a `503` response code. Enabling retry can impact server resources resulting from buffering of the request body.
+* **apiml.responseTimeout**   
+The value in milliseconds that specifies the maximum time to wait for the response from this service. If omitted, the default value specified in the API ML Gateway service configuration is used.
 
 * **apiml.service.corsEnabled**   
   When this parameter is set to `true`, CORS is enabled on the service level for all service routes. The same parameter can also be set on the service level by providing the parameter as `customMetadata` as shown in [Custom Metadata](./custom-metadata.md).
 
 * **customMetadata.apiml.corsAllowedOrigins**  
-  (Optional) Specify which origins are accepted by the Gateway during CORS handling for this service. If not set, this value falls back to the Gateway's global `corsDefaultAllowedOrigins` default (`https://${hostname}:${port}`). Inclusion of other allowed origins is additive to the Gateway defaults rather than replacing these defaults.
+  (Optional) Specify which origins are accepted by the Gateway during CORS handling for this service. If not set, this value falls back to the API Gateway's global `corsDefaultAllowedOrigins` default (`https://${hostname}:${port}`). Inclusion of other allowed origins is additive to the API Gateway defaults rather than replacing these defaults.
 
 * **customMetadata.apiml.corsAllowedHeaders**    
   (Optional) Specify a comma-separated list of HTTP headers that are allowed during a CORS request to this service.
 
 * **customMetadata.apiml.corsAllowCredentials**  
-  (Optional) Configure whether the browser should include credentials (such as cookies, authorization headers, or TLS client certificates) in CORS requests. The Gateway-level default and the per-service default are set to `true`.  
+  (Optional) Configure whether the browser should include credentials (such as cookies, authorization headers, or TLS client certificates) in CORS requests. The API Gateway-level default and the per-service default are set to `true`.  
 
 * **customMetadata.apiml.corsAllowedMethods**  
   (Optional) Specify a comma-separated list of HTTP methods (e.g., `GET`, `POST`, `PUT`, `DELETE`) that are allowed when accessing the service via CORS.
 
-* **apiml.response.compress**  
-When this parameter is set to `true`, API ML compresses content for all responses from these services using GZIP. API ML also adds the `Content-Encoding` header with the value `gzip` to responses.
+#### Removed parameters
 
-* **customMetadata.apiml.response.compressRoutes**  
-When the `customMetadata.apiml.response.compress` parameter is set to `true`, this parameter allows the services to further limit the compressed routes. The parameter accepts [ant style](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/util/AntPathMatcher.html) routes deliminated by `,` . The expectation is to provide the absolute paths. If relative paths are provided, the starting `/` is added. If the beginning of the pattern does not require specification, use `**/{pathYouAreInterestedIn}`
+When migrating from API ML v2, in v3 the following parameters have been removed and are no longer supported:  
+- `customMetadata.apiml.readTimeout`
+- `customMetadata.apiml.connectionManagerTimeout`
+- `customMetadata.apiml.okToRetryOnAllOperations`
+- `customMetadata.ribbon.*`
+- `customMetadata.apiml.headersToIgnore`
+- `customMetadata.apiml.response.compress`
+- `customMetadata.apiml.response.compressRoutes`
+- `customMetadata.apiml.response.headers`
 
-    **Examples:** 
-
-    * `/service/**`  
-    Compresses all paths starting with `/service/`
-
-    * `/service/api/v1/compress,/service/api/v1/custom-compress`  
-    Compresses the specific two routes
-
-    * `/\*\*/compress/\*\*`  
-    Compresses all paths that contain `compress` as a specific path
-
+:::note
+In API ML v3, `customMetadata.apiml.okToRetryOnAllOperations` is **no longer supported**. The API Gateway uses a fixed retry policy. It retries `GET` requests that end with status `503` up to 5 times. The v2 parameter `apiml.okToRetryOnAllOperations` is no longer read, so a service cannot change which operations are retried. For more information, see [Customizing Gateway Retry Policy](../../user-guide/api-mediation/configuration-gateway-retry-policy.md)
+:::
       
 #### Routing parameters
 Routing parameters are grouped under the prefix: `apiml.routes`
 
 The API routing group provides necessary routing information used by the API ML Gateway when routing incoming requests to the corresponding service.
-A single route can be used to make direct REST calls to multiple resources or API endpoints. The route definition provides rules used by the API ML Gateway to rewrite the URL
-in the Gateway address space.
+A single route can be used to make direct REST calls to multiple resources or API endpoints. The route definition provides rules used by the API ML Gateway to rewrite the URL in the API Gateway address space.
 
 Routing information consists of two parameters per route:
 
@@ -264,7 +255,7 @@ The following snippet is an example of the API routing information properties.
 where:
 
 * **apiml.routes.\{route-prefix\}.gatewayUrl**  
-The `gatewayUrl` parameter specifies the portion of the gateway URL which is replaced by the `serviceUrl` path.
+The `gatewayUrl` parameter specifies the portion of the API Gateway URL which is replaced by the `serviceUrl` path.
 
 * **apiml.routes.\{route-prefix\}.serviceUrl**  
 The `serviceUrl` parameter provides a portion of the service instance URL path which replaces the `gatewayUrl` part.  
@@ -300,7 +291,7 @@ This parameter specifies a service authentication scheme. The following schemes 
     This value specifies that the application recognizes the SAF IDT scheme and fills the `X-SAF-Token` header with the token produced by the Saf IDT provider implementation. For more information, see [Implement a New SAF IDT provider](./implement-new-saf-provider.md)
 
     * **x509**  
-    This value specifies that a service accepts client certificates forwarded in the HTTP header only. The Gateway service extracts information from a valid client certificate. For validation, the certificate needs to be trusted by API Mediation Layer. Extended Key Usage must either be empty or needs to contain a Client Authentication (1.3.6.1.5.5.7.3.2) entry. To use this scheme, it is also necessary to specify which headers to include. Specify these parameters in `headers`. This scheme does not relate to the certificate used in the TLS handshake between API ML and the southbound service, but rather the certificate that is forwarded in the header that authenticates the user.
+    This value specifies that a service accepts client certificates forwarded in the HTTP header only. The API Gateway service extracts information from a valid client certificate. For validation, the certificate needs to be trusted by API Mediation Layer. Extended Key Usage must either be empty or needs to contain a Client Authentication (1.3.6.1.5.5.7.3.2) entry. To use this scheme, it is also necessary to specify which headers to include. Specify these parameters in `headers`. This scheme does not relate to the certificate used in the TLS handshake between API ML and the southbound service, but rather the certificate that is forwarded in the header that authenticates the user.
 
 
 * **authentication.headers**
@@ -378,7 +369,7 @@ Ensure that you successfully onboarded a service with the API Mediation Layer.
  
   2. Check that you can access your API service endpoints through the Gateway.
 
-  3. (Optional) Check that you can access your API service endpoints directly outside of the Gateway.
+  3. (Optional) Check that you can access your API service endpoints directly outside of the API Gateway.
 
 ## External resources
 

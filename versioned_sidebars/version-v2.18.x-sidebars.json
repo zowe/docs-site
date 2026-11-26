@@ -10,7 +10,7 @@
         "id": "whats-new/release-notes/release-notes-overview"
       },
       "items": [
-        "whats-new/release-notes/v2_18_6",        
+        "whats-new/release-notes/v2_18_6",
         "whats-new/release-notes/v2_18_5",
         "whats-new/release-notes/v2_18_4",
         "whats-new/release-notes/v2_18_3",
@@ -157,67 +157,77 @@
             "user-guide/address-browser-requirements"
           ]
         },
-                {
-          "type": "category",
-          "label": "Installing Zowe via Zowe Server Install Wizard",
-          "link": {
-            "type": "doc",
-            "id": "user-guide/install-zowe-server-install-wizard"
-          },
-          "items": [
-            "user-guide/troubleshooting-zowe-server-install-wizard"
-          ]
-        },
         {
           "type": "category",
-          "label": "Installing Zowe via SMP/E",
+          "label": "Installing",
           "link": {
             "type": "doc",
-            "id": "user-guide/install-zowe-smpe-overview"
+            "id": "user-guide/installing"
           },
           "items": [
-            "user-guide/install-zowe-smpe"
-          ]
-        },
-        {
-          "type": "category",
-          "label": "Installing Zowe via z/OSMF from PSWI and SMP/E workflow",
-          "link": {
-            "type": "doc",
-            "id": "user-guide/zosmf-install"
-          },
-          "items": [
-            "user-guide/install-zowe-pswi-address-requirements",
-            "user-guide/systemrequirements-zosmf",
-            "user-guide/systemrequirements-zosmf-lite",
             {
               "type": "category",
-              "label": "Installing Zowe via z/OSMF from PSWI",
+              "label": "Installing Zowe via Zowe Server Install Wizard",
               "link": {
                 "type": "doc",
-                "id": "user-guide/install-zowe-pswi"
+                "id": "user-guide/install-zowe-server-install-wizard"
               },
               "items": [
-                "user-guide/install-zowe-pswi-acquire",
-                "user-guide/install-zowe-pswi-deployment"
+                "user-guide/troubleshooting-zowe-server-install-wizard"
               ]
             },
-            "user-guide/install-zowe-smpe-zosmf-workflow"
-          ]
-        },
-        "user-guide/install-zowe-zos-convenience-build",
-        {
-          "type": "category",
-          "label": "Installing Zowe via a containerization build (PAX file)",
-          "link": {
-            "type": "doc",
-            "id": "user-guide/k8s-introduction"
-          },
-          "items": [
-            "user-guide/k8s-prereqs",
-            "user-guide/k8s-downloading",
-            "user-guide/k8s-config",
-            "user-guide/k8s-using"
+            {
+              "type": "category",
+              "label": "Installing Zowe via SMP/E",
+              "link": {
+                "type": "doc",
+                "id": "user-guide/install-zowe-smpe-overview"
+              },
+              "items": [
+                "user-guide/install-zowe-smpe"
+              ]
+            },
+            {
+              "type": "category",
+              "label": "Installing Zowe via z/OSMF from PSWI and SMP/E workflow",
+              "link": {
+                "type": "doc",
+                "id": "user-guide/zosmf-install"
+              },
+              "items": [
+                "user-guide/install-zowe-pswi-address-requirements",
+                "user-guide/systemrequirements-zosmf",
+                "user-guide/systemrequirements-zosmf-lite",
+                {
+                  "type": "category",
+                  "label": "Installing Zowe via z/OSMF from PSWI",
+                  "link": {
+                    "type": "doc",
+                    "id": "user-guide/install-zowe-pswi"
+                  },
+                  "items": [
+                    "user-guide/install-zowe-pswi-acquire",
+                    "user-guide/install-zowe-pswi-deployment"
+                  ]
+                },
+                "user-guide/install-zowe-smpe-zosmf-workflow"
+              ]
+            },
+            "user-guide/install-zowe-zos-convenience-build",
+            {
+              "type": "category",
+              "label": "Installing Zowe via a containerization build (PAX file)",
+              "link": {
+                "type": "doc",
+                "id": "user-guide/k8s-introduction"
+              },
+              "items": [
+                "user-guide/k8s-prereqs",
+                "user-guide/k8s-downloading",
+                "user-guide/k8s-config",
+                "user-guide/k8s-using"
+              ]
+            }
           ]
         },
         {
@@ -430,7 +440,6 @@
               ]
             },
             "user-guide/install-cli-via-proxy",
-            "user-guide/cli-updatingcli",
             "user-guide/cli-uninstall",
             {
               "type": "category",
@@ -1277,6 +1286,29 @@
       "type": "link",
       "label": "Third Party Software Requirements",
       "href": "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.18.5.md"
+    }
+  ],
+  "upgrade": [
+    "upgrade/upgrading-zowe",
+    {
+      "type": "category",
+      "label": "Zowe server-side components",
+      "collapsed": false,
+      "items": [
+        "upgrade/upgrading-zowe-v3",
+        "upgrade/upgrade-zowe-v2",
+        "upgrade/upgrade-zowe-no-downtime",
+        "upgrade/downgrade-to-a-previous-zowe-version"
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Zowe client-side components",
+      "collapsed": false,
+      "items": [
+        "upgrade/cli-updatingcli",
+        "upgrade/ze-updatingze"
+      ]
     }
   ]
 }

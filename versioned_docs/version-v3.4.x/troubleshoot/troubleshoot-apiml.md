@@ -12,6 +12,7 @@ For testing purposes, it is not necessary to set up certificates when configurin
 
 :::caution Important:
 For production environments, certificates are required. Ensure that certificates for each of the following services are issued by the Certificate Authority (CA) and that all keyrings contain the public part of the certificate for the relevant CA:
+
 * z/OSMF
 * Zowe
 * The service that is onboarded to Zowe
@@ -22,9 +23,8 @@ For production environments, certificates are required. Ensure that certificates
 
 Use debug mode to activate the following functions:
 
-- Display additional debug messages for API ML
-- Enable changing log level for individual code components
-- Gather atypical debug information
+* Display additional debug messages for API ML
+* Enable changing log level for individual code components
 
 When on z/OS, API ML log messages are written to the STC job log.
 
@@ -43,13 +43,14 @@ its performance and create large log files that consume a large volume of disk s
    ```
     components.gateway.debug: true
    ```
+
    By default, debug mode is disabled, and the `components.*.debug` is set to `false`.
-   
+
 3. Restart Zowe&trade;.
 
    You enabled debug mode for the API ML core services (API Catalog, API Gateway and Discovery service).
 
-4. (Optional) Reproduce a bug that causes issues and review debug messages. If you are unable to resolve the issue, create an issue [here](https://github.com/zowe/api-layer/issues/).     
+4. (Optional) Reproduce a bug that causes issues and review debug messages. If you are unable to resolve the issue, create an issue [here](https://github.com/zowe/api-layer/issues/).
 
 ## Change the Log Level of Individual Code Components
 
@@ -64,15 +65,16 @@ This activates the application/loggers endpoints in each API ML internal service
     ```
     GET scheme://hostname:port/application/loggers
     ```
-    - **scheme**
+
+    * **scheme**
 
         Specifies the API ML service scheme (http or https)
 
-    - **hostname**
+    * **hostname**
 
         Specifies the API ML service hostname
 
-    - **port**
+    * **port**
 
         Specifies the TCP port where API ML service listens on. The port is defined by the configuration parameter `components.gateway.port` for the Gateway,
     `components.discovery.port` for the Discovery service (by default, set to gateway port + 1), and `components.catalog.port` for the Catalog
@@ -83,11 +85,12 @@ This activates the application/loggers endpoints in each API ML internal service
     :::
 
     **Note:**  For the Catalog you can list the available loggers by issuing a **GET** request for the given service URL in the following format:
+
     ```
     GET [gateway-scheme]://[gateway-hostname]:[gateway-port]/apicatalog/api/v1/application/loggers
     ```
 
-    **Tip:** One way to issue REST calls is to use the http command in the free HTTPie tool: https://httpie.org/.
+    **Tip:** One way to issue REST calls is to use the http command in the free HTTPie tool: `https://httpie.org/`.  
 
     **Example:**
 
@@ -112,7 +115,7 @@ This activates the application/loggers endpoints in each API ML internal service
     GET scheme://hostname:port/application/loggers/{name}
     ```
 
-    - **\{name\}**
+    * **\{name\}**
 
          Specifies the logger name
 
@@ -121,7 +124,9 @@ This activates the application/loggers endpoints in each API ML internal service
     ```
     POST scheme://hostname:port/application/loggers/{name}
     ```
+
     The **POST** request requires a new log level parameter value that is provided in the request body:
+
     ```
     {
 
@@ -130,7 +135,7 @@ This activates the application/loggers endpoints in each API ML internal service
     }
     ```
 
-    - **level**
+    * **level**
 
         Specifies the new log level: **OFF**, **ERROR**, **WARN**, **INFO**, **DEBUG**, **TRACE**
 
@@ -150,7 +155,7 @@ For more information, see [Adding active profiles](https://docs.spring.io/spring
 * **ZWE_configs_sslDebug**  
 This property can be used to enable the SSL debugging. This property can also assist with determining what exactly is happening at the SSL layer.
 
-This property uses the `-Djavax.net.debug` Java parameter when starting the Gateway component. By setting `ZWE_configs_sslDebug` to `ssl`, all SSL debugging is turned on. The `ZWE_configs_sslDebug` parameter also accepts other values that can enable a different level of tracing. 
+This property uses the `-Djavax.net.debug` Java parameter when starting the Gateway component. By setting `ZWE_configs_sslDebug` to `ssl`, all SSL debugging is turned on. The `ZWE_configs_sslDebug` parameter also accepts other values that can enable a different level of tracing.
 
 For more information, see the article **_Debugging Utilities_** in the IBM documentation.
 
@@ -158,13 +163,12 @@ For more information, see the article **_Debugging Utilities_** in the IBM docum
 This property can also be enabled for other API ML components.
 :::
 
-
 ## Services that are not running appear to be running
 
 Services that are not running appear to be running. The following message is displayed in the Discovery service:
 
    **EMERGENCY! EUREKA MAY BE INCORRECTLY CLAIMING INSTANCES ARE UP WHEN THEY'RE NOT. RENEWALS ARE LESSER THAN THRESHOLD AND HENCE THE INSTANCES ARE NOT BEING EXPIRED JUST TO BE SAFE.**
-    
+
 **Cause:**
 
 This message is expected behavior of the Discovery service. If a service is incorrectly terminated without properly unregistering from Eureka, the service initially enters _eviction status_ for a brief timeframe before the service is deregistered. Failure to properly terminate occurs when a service fails to respond to three consecutive heartbeat renewals. After the three heartbeat renewals are returned without a response, the Eureka Discovery service keeps the service in _eviction status_ for one additional minute. If the service does not respond within this minute, the Eureka service unregisters this unresponsive service. When more than 15 percent of currently registered services are in _eviction status_, _self preservation mode_ is enabled. In _self preservation mode_, no services in eviction status are deregistered. As a result, these services continue to appear to be running even though they are not running.
@@ -173,17 +177,17 @@ This message is expected behavior of the Discovery service. If a service is inco
 
 Use one of the following options to exit self preservation mode:
 
-- **Restart the services that appear to be running**  
-Relaunch the services that appear to be registered. After the message disappears, close each of the services one at a time. Allow for a 3-minute period between closing each service. The procedure for restarting services that are not part of Zowe is specific to the services and is documented in the service documentation. 
+* **Restart the services that appear to be running**  
+Relaunch the services that appear to be registered. After the message disappears, close each of the services one at a time. Allow for a three minute period between closing each service. The procedure for restarting services that are not part of Zowe is specific to the services and is documented in the service documentation.
 
-- **Restart the Discovery service**  
+* **Restart the Discovery service**  
 Manually restart the Discovery service. The new instance will not be in self preservation mode. In a few minutes, the running services re-register.
-   
-    **Note:** 
-    
+
+    **Note:**
+
     The Discovery service can be stopped with the following command:  
     ```F <instance-job-name>,APPL=STOP(<component_name>)```
-    
+
     The Discovery service can be started again with the following command:  
     ```F <instance-job-name>,APPL=START(<component_name>)```
 
@@ -194,19 +198,19 @@ Manually restart the Discovery service. The new instance will not be in self pre
     F ZWESLSTC,APPL=START(discovery-service)
     ```
 
-- **Adjust the threshold of services in eviction status**  
-Change the frequency of the Discovery service from entering self preservation mode by adjusting the threshold of services in eviction status. 
+* **Adjust the threshold of services in eviction status**  
+Change the frequency of the Discovery service from entering self preservation mode by adjusting the threshold of services in eviction status.
 
     **Note:** The default threshold is .85. This results in the Discovery service entering self preservation mode when 15 percent of currently registered services are in _eviction status_.
-       
+
     **Example:**
-   
+
     ```
     eureka.renewalPercentThreshold=0.3
     ```
-   
+
     This threshold limit causes the Discovery service to enter self preservation mode when less than 30 percent of services are not responding.
-   
+
 ## Debug and Fix Common Problems with SSL/TLS Setup
 
 Review tips described in the blog post [Troubleshooting SSL/TLS setup with Zowe Certificate Analyzer](https://medium.com/zowe/troubleshooting-ssl-tls-setup-with-zowe-certificate-analyser-31aeec9e1144) to find out how you can use the Zowe Certificate Analyzer to address the following common issues with SSL/TLS setup:
@@ -226,9 +230,9 @@ Search for jobs using SDSF failed for prefix {} and owner {}: exc.sdsf_invocatio
 
 You must be authorized to use SDSF with REXX on your z/OS system. For authorization, activate the SDSF RACF class and add the following 3 profiles to your system:
 
-- `GROUP.ISFSORIG`
-- `GROUP.ISFSPROG.SDSF`
-- `ISF.CONNECT.`
+* `GROUP.ISFSORIG`
+* `GROUP.ISFSPROG.SDSF`
+* `ISF.CONNECT.`
 
 Users must belong to a group that has READ access to these profiles.
 
@@ -236,3 +240,28 @@ This is quite a complex area and you should ask your systems programmer for advi
 
 class profile SDSF ISF.CONNECT.\*\* (G)
 
+## Corrupted data in the spool output of Zowe jobs with newer Java 21 releases
+
+The console spool output from Zowe Java processes in `SYSPRINT` of the Zowe jobs on z/OS shows garbled or unreadable characters when Zowe 3.4.x runs with Version 21.0.10.1 or newer of the IBM Semeru Runtime Certified Edition for z/OS.
+
+**Cause:**
+
+Applications that write UTF-8 encoded bytes with `System.out.write()` or `System.err.write()` are autoconverted to UTF-8 on z/OS with Java version 21.0.10.1 (APAR IJ57789).
+
+**Solution:**
+
+Upgrade to Zowe 3.6.0 or later when using Java 21 version 21.0.10.1 or newer.
+
+**Workaround:**
+
+If you cannot update Zowe, set the console encoding in the Zowe API Mediation Layer components:
+
+```yaml
+zowe:
+  environments:
+    LOGGING_CHARSET_CONSOLE: UTF-8
+```
+
+After you update `zowe.yaml`, restart Zowe.
+
+Note this workaround applies during initialization of the API ML components. A few lines before initialization may still show corrupted using this workaround.

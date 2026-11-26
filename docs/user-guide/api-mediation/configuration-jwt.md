@@ -13,25 +13,25 @@ As a system programmer, you can customize how JSON Web Token (JWT) authenticatio
 
 ## Using SAF as an authentication provider
 
-By default, the API Gateway uses z/OSMF as an authentication provider. It is possible to switch to SAF as the authentication
-provider instead of z/OSMF. The intended usage of SAF as an authentication provider is for systems without z/OSMF.
-If SAF is used and the z/OSMF is available on the system, the created tokens are not accepted by z/OSMF. Use
-the following procedure to switch to SAF. 
+Starting in Zowe v3.4.0, System Authorization Facility (SAF) is the default authentication provider (`apiml.security.auth.provider=saf`) for all new installations performed via Portable Software Instance (**PSWI**), which is the recommended method for installing Zowe API Mediation Layer (API ML). Under this framework, authentication requests natively utilize SAF directly rather than routing explicitly through z/OSMF for initial validation.
+
+While the SAF provider allows API ML to run on systems where z/OSMF is completely absent, many deployments still require communication with z/OSMF for core runtime services. When SAF authentication is active and z/OSMF is available on the system, the API Gateway automatically interacts with z/OSMF using a static service definition configured with the `httpBasicPassticket` authentication scheme. To ensure that generated tokens and requests are accepted by z/OSMF in this configuration, you must authorize the Zowe started task to generate PassTickets for the z/OSMF APPLID. For more information, see [Addressing z/OSMF PassTicket and authentication requirements](../api-mediation/configuring-passtickets-for-zosmf-authentication.md).
      
 1. Open the `zowe.yaml` configuration file.
-2. Find or add the following property, and set the value to `saf`:
+2. Find or add the following property, and ensure the value is set to `saf` to utilize SAF. Alternatively, you can change this value to `zosmf` if your environment explicitly mandates falling back to legacy z/OSMF direct authentication:
 ```
-components.gateway.apiml.security.auth.provider
+components.gateway.apiml.security.auth.provider: saf
 ```
-3. Restart Zowe.
+1. Restart Zowe.
 
 Authentication requests now utilize SAF as the authentication provider. API ML can run without z/OSMF present on the system. 
 
 ## Enabling a JWT refresh endpoint
 
-Enable the `/gateway/api/v1/auth/refresh` endpoint to exchange a valid JWT for a new token with a new expiration date. Call the endpoint with a valid JWT and trusted client certificate. When using the z/OSMF authentication provider, enable API Mediation Layer for PassTicket generation and configure the z/OSMF APPLID. 
+Enable the `/gateway/api/v1/auth/refresh` endpoint to exchange a valid JWT for a new token with a new expiration date. Call the endpoint with a valid JWT and trusted client certificate. When utilizing either the SAF or z/OSMF authentication providers, you must ensure that API Mediation Layer is enabled for PassTicket generation and the z/OSMF APPLID is authorized.
 
-For more information, see [Configure PassTickets](configuration-extender-passtickets.md).
+For more information, see [Addressing z/OSMF PassTicket and authentication requirements](../api-mediation/configuring-passtickets-for-zosmf-authentication.md).
+
 
 1. Open the file `zowe.yaml`.
 2. Configure the following properties:
@@ -66,8 +66,8 @@ Authorization is used to set the access rights of an entity.
 
 In the API ML, authorization is performed by any of the following z/OS security managers:
 * [ACF2](https://www.broadcom.com/products/mainframe/identity-access/acf2)
-* [IBM RACF](https://www.ibm.com/support/knowledgecenter/zosbasics/com.ibm.zos.zsecurity/zsecc_042.htm)
 * [Top Secret](https://www.broadcom.com/products/mainframe/security/top-secret). 
+* [IBM RACF](https://www.ibm.com/support/knowledgecenter/zosbasics/com.ibm.zos.zsecurity/zsecc_042.htm)
 
 An authentication token is used as proof of valid authentication. The authorization checks, however, are always performed by the z/OS security manager.
 

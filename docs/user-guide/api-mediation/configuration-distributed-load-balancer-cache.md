@@ -3,10 +3,12 @@
 :::info Role: system programmer
 :::
 
-You can choose to distribute the load balancer cache between instances of the API Gateway. To distribute the load balancer cache, it is necessary that the caching service is running. Gateway service instances are required to have the same DN (Distinguished name) on the server certificate. This may be relevant for the HA setups.
+The API Gateway uses the caching service to store sticky-session routing records only for services that set `customMetadata.apiml.lb.type` to `authentication`. In this case, the caching service must be running. With the default round-robin schema, no cache is used. This may be relevant for the HA setups.
 
-Use the following procedure to distribute the load balancer cache between instances of the API Gateway.
+:::note
+The v2 parameter `components.gateway.apiml.loadBalancer.distribute` does not exist in v3 and has no effect. There is no switch to enable or disable distribution. Remove it from zowe.yaml.
+:::
 
-1. Open the file `zowe.yaml`.
-2. Find or add the property with value `components.gateway.apiml.loadBalancer.distribute: true`.
-3. Restart Zowe.
+Use the `authentication` value of the `customMetadata.apiml.lb.type` parameter to specify which load balancing schema the service requires. This is a sticky session functionality based on the ID of the user. The user ID is understood from the Zowe SSO token on the client's request. Requests without the token are routed in a round-robin fashion. The user is first routed in a round robin fashion, and then the routed instance Id is cached. The instance information is used for subsequent requests to route the client to the cached target service instance. This session's default expiration time is a global value defined in the API Gateway. After the session expires, the process initiates again.
+
+For more information, see [Customizing metadata](../../extend/extend-apiml/custom-metadata.md).

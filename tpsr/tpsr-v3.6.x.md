@@ -219,47 +219,39 @@
 | @types/yargs-parser | 21.0.3 | MIT | [yargs-parser](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/yargs-parser) | 
 | @zowe/imperative | 8.30.1 | EPL-2.0 | [imperative](https://github.com/zowe/zowe-cli/tree/master/packages/imperative#readme) | 
 | @zowe/zos-uss-for-zowe-sdk | 8.30.1 | EPL-2.0 | [zos-uss-for-zowe-sdk](https://github.com/zowe/zowe-cli/tree/master/packages/zosuss#readme) | 
-| @zowe/zowex-for-zowe-sdk | 1.0.0 | EPL-2.0 | [zowex-for-zowe-sdk]() | 
+| @zowe/zowex-for-zowe-sdk | 1.0.0 | EPL-2.0 | [zowex-for-zowe-sdk](https://github.com/zowe/zowex/tree/main/packages/sdk#README) | 
 
 ### Zowe API Mediation Layer Dependency Attributions
 | Third-party Software | Version | License | Link   |
 | -------------------- | --------| ------- | ------ |
 | antlr/antlr | 2.7.7 | BSD License | [antlr](http://www.antlr.org/) | 
 | biz.aQute.bnd/biz.aQute.bnd.annotation | 7.1.0 | (Apache-2.0 OR EPL-2.0) | [biz.aQute.bnd.annotation](https://bnd.bndtools.org/) | 
-| ch.qos.logback/logback-classic | 1.5.32 | Eclipse Public License - v 2.0 | [logback-classic](http://logback.qos.ch/logback-classic) | 
-| ch.qos.logback/logback-core | 1.5.32 | Eclipse Public License - v 2.0 | [logback-core](http://logback.qos.ch/logback-core) | 
-| com.amazonaws/aws-java-sdk-autoscaling | 1.12.797 | Apache License, Version 2.0 | [aws-java-sdk-autoscaling](https://aws.amazon.com/sdkforjava) | 
+| ch.qos.logback/logback-classic | 1.6.5 | LGPL-2.1-only | [logback-classic](http://logback.qos.ch/logback-classic) | 
+| ch.qos.logback/logback-core | 1.6.5 | LGPL-2.1-only | [logback-core](http://logback.qos.ch/logback-core) | 
 | com.amazonaws/aws-java-sdk-bom | 1.12.787 | Apache License, Version 2.0 | [aws-java-sdk-bom](https://aws.amazon.com/sdkforjava) | 
 | com.amazonaws/aws-java-sdk-bom | 1.12.797 | Apache License, Version 2.0 | [aws-java-sdk-bom](https://aws.amazon.com/sdkforjava) | 
-| com.amazonaws/aws-java-sdk-core | 1.12.797 | Apache License, Version 2.0 | [aws-java-sdk-core](https://aws.amazon.com/sdkforjava) | 
-| com.amazonaws/aws-java-sdk-ec2 | 1.12.797 | Apache License, Version 2.0 | [aws-java-sdk-ec2](https://aws.amazon.com/sdkforjava) | 
-| com.amazonaws/aws-java-sdk-route53 | 1.12.797 | Apache License, Version 2.0 | [aws-java-sdk-route53](https://aws.amazon.com/sdkforjava) | 
-| com.amazonaws/aws-java-sdk-sts | 1.12.797 | Apache License, Version 2.0 | [aws-java-sdk-sts](https://aws.amazon.com/sdkforjava) | 
-| com.amazonaws/jmespath-java | 1.12.797 | Apache License, Version 2.0 | [jmespath-java](https://aws.amazon.com/sdkforjava) | 
 | com.azure/azure-sdk-bom | 1.2.35 | The MIT License (MIT) | [azure-sdk-bom](https://github.com/azure/azure-sdk-for-java) | 
-| com.bucket4j/bucket4j_jdk17-core | 8.18.0 | The Apache Software License, Version 2.0 | [bucket4j_jdk17-core](http://github.com/bucket4j/bucket4j/bucket4j_jdk17-core) | 
+| com.bucket4j/bucket4j_jdk17-core | 8.21.0 | The Apache Software License, Version 2.0 | [bucket4j_jdk17-core](http://github.com/bucket4j/bucket4j/bucket4j_jdk17-core) | 
 | com.fasterxml/classmate | 1.7.3 | Apache License, Version 2.0 | [classmate](https://github.com/FasterXML/java-classmate) | 
 | com.fasterxml.jackson/jackson-bom | 2.19.1 | Apache License, Version 2.0 | [jackson-bom](https://github.com/FasterXML/jackson-bom) | 
-| com.fasterxml.jackson/jackson-bom | 2.21.2 | Apache License, Version 2.0 | [jackson-bom](https://github.com/FasterXML/jackson-bom) | 
-| com.fasterxml.jackson/jackson-bom | 2.21.3 | Apache License, Version 2.0 | [jackson-bom](https://github.com/FasterXML/jackson-bom) | 
-| com.fasterxml.jackson.core/jackson-annotations | 2.21 | The Apache Software License, Version 2.0 | [jackson-annotations](https://github.com/FasterXML/jackson) | 
-| com.fasterxml.jackson.core/jackson-core | 2.21.3 | The Apache Software License, Version 2.0 | [jackson-core](https://github.com/FasterXML/jackson-core) | 
-| com.fasterxml.jackson.core/jackson-databind | 2.21.3 | The Apache Software License, Version 2.0 | [jackson-databind](https://github.com/FasterXML/jackson) | 
-| com.fasterxml.jackson.dataformat/jackson-dataformat-cbor | 2.21.3 | The Apache Software License, Version 2.0 | [jackson-dataformat-cbor](https://github.com/FasterXML/jackson-dataformats-binary) | 
-| com.fasterxml.jackson.dataformat/jackson-dataformat-xml | 2.21.3 | The Apache Software License, Version 2.0 | [jackson-dataformat-xml](https://github.com/FasterXML/jackson-dataformat-xml) | 
-| com.fasterxml.jackson.dataformat/jackson-dataformat-yaml | 2.21.3 | The Apache Software License, Version 2.0 | [jackson-dataformat-yaml](https://github.com/FasterXML/jackson-dataformats-text) | 
-| com.fasterxml.jackson.datatype/jackson-datatype-jdk8 | 2.21.3 | The Apache Software License, Version 2.0 | [jackson-datatype-jdk8](https://github.com/FasterXML/jackson-modules-java8/jackson-datatype-jdk8) | 
-| com.fasterxml.jackson.datatype/jackson-datatype-joda | 2.21.3 | The Apache Software License, Version 2.0 | [jackson-datatype-joda](https://github.com/FasterXML/jackson-datatype-joda) | 
-| com.fasterxml.jackson.datatype/jackson-datatype-jsr310 | 2.21.3 | The Apache Software License, Version 2.0 | [jackson-datatype-jsr310](https://github.com/FasterXML/jackson-modules-java8/jackson-datatype-jsr310) | 
-| com.fasterxml.jackson.jaxrs/jackson-jaxrs-base | 2.21.3 | The Apache Software License, Version 2.0 | [jackson-jaxrs-base](https://github.com/FasterXML/jackson-jaxrs-providers/jackson-jaxrs-base) | 
-| com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider | 2.21.3 | The Apache Software License, Version 2.0 | [jackson-jaxrs-json-provider](https://github.com/FasterXML/jackson-jaxrs-providers/jackson-jaxrs-json-provider) | 
-| com.fasterxml.jackson.jaxrs/jackson-jaxrs-xml-provider | 2.21.3 | The Apache Software License, Version 2.0 | [jackson-jaxrs-xml-provider](https://github.com/FasterXML/jackson-jaxrs-providers/jackson-jaxrs-xml-provider) | 
-| com.fasterxml.jackson.jaxrs/jackson-jaxrs-yaml-provider | 2.21.3 | The Apache Software License, Version 2.0 | [jackson-jaxrs-yaml-provider](https://github.com/FasterXML/jackson-jaxrs-providers/jackson-jaxrs-yaml-provider) | 
-| com.fasterxml.jackson.module/jackson-module-jaxb-annotations | 2.21.3 | The Apache Software License, Version 2.0 | [jackson-module-jaxb-annotations](https://github.com/FasterXML/jackson-modules-base) | 
-| com.fasterxml.jackson.module/jackson-module-parameter-names | 2.21.3 | The Apache Software License, Version 2.0 | [jackson-module-parameter-names](https://github.com/FasterXML/jackson-modules-java8/jackson-module-parameter-names) | 
-| com.fasterxml.woodstox/woodstox-core | 7.1.1 | The Apache License, Version 2.0 | [woodstox-core](https://github.com/FasterXML/woodstox) | 
-| com.github.andrewoma.dexx/dexx-collections | 0.2 | The MIT License | [dexx-collections](https://github.com/andrewoma/dexx/dexx-collections) | 
-| com.github.ben-manes.caffeine/caffeine | 3.2.4 | Apache License, Version 2.0 | [caffeine](https://github.com/ben-manes/caffeine) | 
+| com.fasterxml.jackson/jackson-bom | 2.21.7 | Apache License, Version 2.0 | [jackson-bom](https://github.com/FasterXML/jackson-bom) | 
+| com.fasterxml.jackson/jackson-bom | 2.22.4 | Apache License, Version 2.0 | [jackson-bom](https://github.com/FasterXML/jackson-bom) | 
+| com.fasterxml.jackson.core/jackson-annotations | 2.22 | The Apache Software License, Version 2.0 | [jackson-annotations](https://github.com/FasterXML/jackson) | 
+| com.fasterxml.jackson.core/jackson-core | 2.22.4 | The Apache Software License, Version 2.0 | [jackson-core](https://github.com/FasterXML/jackson-core) | 
+| com.fasterxml.jackson.core/jackson-databind | 2.22.4 | The Apache Software License, Version 2.0 | [jackson-databind](https://github.com/FasterXML/jackson) | 
+| com.fasterxml.jackson.dataformat/jackson-dataformat-xml | 2.22.4 | The Apache Software License, Version 2.0 | [jackson-dataformat-xml](https://github.com/FasterXML/jackson-dataformat-xml) | 
+| com.fasterxml.jackson.dataformat/jackson-dataformat-yaml | 2.22.4 | The Apache Software License, Version 2.0 | [jackson-dataformat-yaml](https://github.com/FasterXML/jackson-dataformats-text) | 
+| com.fasterxml.jackson.datatype/jackson-datatype-jdk8 | 2.22.4 | The Apache Software License, Version 2.0 | [jackson-datatype-jdk8](https://github.com/FasterXML/jackson-modules-java8/jackson-datatype-jdk8) | 
+| com.fasterxml.jackson.datatype/jackson-datatype-joda | 2.22.4 | The Apache Software License, Version 2.0 | [jackson-datatype-joda](https://github.com/FasterXML/jackson-datatype-joda) | 
+| com.fasterxml.jackson.datatype/jackson-datatype-jsr310 | 2.22.4 | The Apache Software License, Version 2.0 | [jackson-datatype-jsr310](https://github.com/FasterXML/jackson-modules-java8/jackson-datatype-jsr310) | 
+| com.fasterxml.jackson.jaxrs/jackson-jaxrs-base | 2.22.4 | The Apache Software License, Version 2.0 | [jackson-jaxrs-base](https://github.com/FasterXML/jackson-jaxrs-providers/jackson-jaxrs-base) | 
+| com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider | 2.22.4 | The Apache Software License, Version 2.0 | [jackson-jaxrs-json-provider](https://github.com/FasterXML/jackson-jaxrs-providers/jackson-jaxrs-json-provider) | 
+| com.fasterxml.jackson.jaxrs/jackson-jaxrs-xml-provider | 2.22.4 | The Apache Software License, Version 2.0 | [jackson-jaxrs-xml-provider](https://github.com/FasterXML/jackson-jaxrs-providers/jackson-jaxrs-xml-provider) | 
+| com.fasterxml.jackson.jaxrs/jackson-jaxrs-yaml-provider | 2.22.4 | The Apache Software License, Version 2.0 | [jackson-jaxrs-yaml-provider](https://github.com/FasterXML/jackson-jaxrs-providers/jackson-jaxrs-yaml-provider) | 
+| com.fasterxml.jackson.module/jackson-module-jaxb-annotations | 2.22.4 | The Apache Software License, Version 2.0 | [jackson-module-jaxb-annotations](https://github.com/FasterXML/jackson-modules-base) | 
+| com.fasterxml.jackson.module/jackson-module-parameter-names | 2.22.4 | The Apache Software License, Version 2.0 | [jackson-module-parameter-names](https://github.com/FasterXML/jackson-modules-java8/jackson-module-parameter-names) | 
+| com.fasterxml.woodstox/woodstox-core | 7.3.0 | The Apache License, Version 2.0 | [woodstox-core](https://github.com/FasterXML/woodstox) | 
+| com.github.ben-manes.caffeine/caffeine | 3.3.1 | Apache License, Version 2.0 | [caffeine](https://github.com/ben-manes/caffeine) | 
 | com.github.java-json-tools/btf | 1.3 | Lesser General Public License, version 3 or greater | [btf](https://github.com/java-json-tools/btf) | 
 | com.github.java-json-tools/jackson-coreutils | 2.0 | Lesser General Public License, version 3 or greater | [jackson-coreutils](https://github.com/java-json-tools/jackson-coreutils) | 
 | com.github.java-json-tools/jackson-coreutils-equivalence | 1.0 | Lesser General Public License, version 3 or greater | [jackson-coreutils-equivalence](https://github.com/java-json-tools/jackson-coreutils) | 
@@ -271,24 +263,22 @@
 | com.github.javaparser/javaparser-core | 3.26.4 | Apache License, Version 2.0 | [javaparser-core](https://github.com/javaparser/javaparser-core) | 
 | com.github.javaparser/javaparser-symbol-solver-core | 3.26.4 | Apache License, Version 2.0 | [javaparser-symbol-solver-core](https://github.com/javaparser/javaparser-symbol-solver-core) | 
 | com.github.stephenc.jcip/jcip-annotations | 1.0-1 | Apache License, Version 2.0 | [jcip-annotations](http://stephenc.github.com/jcip-annotations) | 
-| com.github.vlsi.compactmap/compactmap | 2.0 | Apache-2.0 | [compactmap](https://github.com/vlsi/compactmap/compactmap) | 
-| com.google.cloud.opentelemetry/detector-resources-support | 0.36.0 | The Apache License, Version 2.0 | [detector-resources-support](https://github.com/GoogleCloudPlatform/opentelemetry-operations-java) | 
 | com.google.code.findbugs/jsr305 | 3.0.2 | The Apache Software License, Version 2.0 | [jsr305](http://findbugs.sourceforge.net/) | 
 | com.google.code.gson/gson | 2.14.0 | Apache-2.0 | [gson](https://github.com/google/gson) | 
 | com.google.errorprone/error_prone_annotations | 2.26.1 | Apache 2.0 | [error_prone_annotations](https://errorprone.info/error_prone_annotations) | 
-| com.google.errorprone/error_prone_annotations | 2.49.0 | Apache 2.0 | [error_prone_annotations](https://errorprone.info/error_prone_annotations) | 
+| com.google.errorprone/error_prone_annotations | 2.51.0 | Apache 2.0 | [error_prone_annotations](https://errorprone.info/error_prone_annotations) | 
 | com.google.guava/failureaccess | 1.0.2 | The Apache Software License, Version 2.0 | [failureaccess](https://github.com/google/guava/failureaccess) | 
 | com.google.guava/failureaccess | 1.0.3 | Apache License, Version 2.0 | [failureaccess](https://github.com/google/guava/failureaccess) | 
 | com.google.guava/guava | 33.2.0-jre | Apache License, Version 2.0 | [guava](https://github.com/google/guava) | 
-| com.google.guava/guava | 33.6.0-jre | Apache License, Version 2.0 | [guava](https://github.com/google/guava) | 
+| com.google.guava/guava | 33.7.2-jre | Apache License, Version 2.0 | [guava](https://github.com/google/guava) | 
 | com.google.guava/listenablefuture | 9999.0-empty-to-avoid-conflict-with-guava | The Apache Software License, Version 2.0 | [listenablefuture](https://github.com/google/guava/listenablefuture) | 
 | com.google.j2objc/j2objc-annotations | 3.1 | Apache License, Version 2.0 | [j2objc-annotations](https://github.com/google/j2objc/) | 
 | com.google.protobuf/protobuf-bom | 3.25.8 | BSD-3-Clause | [protobuf-bom](https://developers.google.com/protocol-buffers/) | 
 | com.googlecode.libphonenumber/libphonenumber | 8.11.1 | The Apache Software License, Version 2.0 | [libphonenumber](https://github.com/google/libphonenumber/) | 
-| com.graphql-java/graphql-java | 24.3 | MIT | [graphql-java](https://github.com/graphql-java/graphql-java) | 
-| com.graphql-java/java-dataloader | 5.0.3 | The Apache Software License, Version 2.0 | [java-dataloader](https://github.com/graphql-java/java-dataloader) | 
+| com.graphql-java/graphql-java | 25.0 | MIT | [graphql-java](https://github.com/graphql-java/graphql-java) | 
+| com.graphql-java/java-dataloader | 6.0.0 | The Apache Software License, Version 2.0 | [java-dataloader](https://github.com/graphql-java/java-dataloader) | 
 | com.j2html/j2html | 1.6.0 | The Apache Software License, Version 2.0 | [j2html](http://j2html.com) | 
-| com.netflix.archaius/archaius-core | 0.7.6 | The Apache Software License, Version 2.0 | [archaius-core](https://github.com/Netflix/archaius) | 
+| com.netflix.archaius/archaius-core | 0.7.12 | The Apache Software License, Version 2.0 | [archaius-core](https://github.com/Netflix/archaius) | 
 | com.netflix.eureka/eureka-client | 2.0.6 | The Apache Software License, Version 2.0 | [eureka-client](https://github.com/Netflix/eureka) | 
 | com.netflix.eureka/eureka-client-jersey3 | 2.0.6 | The Apache Software License, Version 2.0 | [eureka-client-jersey3](https://github.com/Netflix/eureka) | 
 | com.netflix.eureka/eureka-core | 2.0.6 | The Apache Software License, Version 2.0 | [eureka-core](https://github.com/Netflix/eureka) | 
@@ -297,16 +287,16 @@
 | com.netflix.netflix-commons/netflix-infix | 0.3.0 | The Apache Software License, Version 2.0 | [netflix-infix](https://github.com/Netflix/netflix-commons) | 
 | com.netflix.servo/servo-core | 0.13.2 | The Apache Software License, Version 2.0 | [servo-core](https://github.com/Netflix/servo) | 
 | com.netflix.spectator/spectator-api | 1.7.3 | The Apache Software License, Version 2.0 | [spectator-api](https://github.com/Netflix/spectator) | 
-| com.nimbusds/content-type | 2.2 | The Apache Software License, Version 2.0 | [content-type](https://bitbucket.org/connect2id/nimbus-content-type) | 
+| com.nimbusds/content-type | 2.3 | The Apache Software License, Version 2.0 | [content-type](https://bitbucket.org/connect2id/nimbus-content-type) | 
 | com.nimbusds/lang-tag | 1.7 | The Apache Software License, Version 2.0 | [lang-tag](https://bitbucket.org/connect2id/nimbus-language-tags) | 
-| com.nimbusds/nimbus-jose-jwt | 10.9 | The Apache Software License, Version 2.0 | [nimbus-jose-jwt](https://bitbucket.org/connect2id/nimbus-jose-jwt) | 
-| com.nimbusds/oauth2-oidc-sdk | 9.43.6 | Apache License, version 2.0 | [oauth2-oidc-sdk](https://bitbucket.org/connect2id/oauth-2.0-sdk-with-openid-connect-extensions) | 
+| com.nimbusds/nimbus-jose-jwt | 10.10 | The Apache Software License, Version 2.0 | [nimbus-jose-jwt](https://bitbucket.org/connect2id/nimbus-jose-jwt) | 
+| com.nimbusds/oauth2-oidc-sdk | 11.38.2 | Apache License, version 2.0 | [oauth2-oidc-sdk](https://bitbucket.org/connect2id/oauth-2.0-sdk-with-openid-connect-extensions) | 
 | com.oracle.coherence.ce/coherence-bom | 25.03.1 | Universal Permissive License v 1.0 | [coherence-bom](https://coherence.community/) | 
 | com.puppycrawl.tools/checkstyle | 10.17.0 | LGPL-2.1-or-later | [checkstyle](https://checkstyle.org/) | 
-| com.squareup.okhttp3/okhttp | 5.3.2 | The Apache Software License, Version 2.0 | [okhttp](https://square.github.io/okhttp/) | 
-| com.squareup.okhttp3/okhttp-jvm | 5.3.2 | The Apache Software License, Version 2.0 | [okhttp-jvm](https://square.github.io/okhttp/) | 
-| com.squareup.okio/okio | 3.16.4 | The Apache Software License, Version 2.0 | [okio](https://github.com/square/okio/) | 
-| com.squareup.okio/okio-jvm | 3.16.4 | The Apache Software License, Version 2.0 | [okio-jvm](https://github.com/square/okio/) | 
+| com.squareup.okhttp3/okhttp | 5.5.0 | The Apache Software License, Version 2.0 | [okhttp](https://lysine.dev/okhttp/) | 
+| com.squareup.okhttp3/okhttp-jvm | 5.5.0 | The Apache Software License, Version 2.0 | [okhttp-jvm](https://lysine.dev/okhttp/) | 
+| com.squareup.okio/okio | 3.18.1 | The Apache Software License, Version 2.0 | [okio](https://github.com/lysine-dev/okio/) | 
+| com.squareup.okio/okio-jvm | 3.18.1 | The Apache Software License, Version 2.0 | [okio-jvm](https://github.com/lysine-dev/okio/) | 
 | com.stoyanr/evictor | 1.0.0 | The Apache Software License, Version 2.0 | [evictor](https://github.com/stoyanr/Evictor) | 
 | com.sun.activation/jakarta.activation | 1.2.2 | EDL 1.0 | [jakarta.activation](https://github.com/eclipse-ee4j/jaf/jakarta.activation) | 
 | com.sun.istack/istack-commons-runtime | 4.1.2 | Eclipse Distribution License - v 1.0 | [istack-commons-runtime](https://projects.eclipse.org/projects/ee4j/istack-commons/istack-commons-runtime) | 
@@ -315,32 +305,32 @@
 | com.tngtech.archunit/archunit | 1.4.2 | BSD | [archunit](https://github.com/TNG/ArchUnit) | 
 | commons-beanutils/commons-beanutils | 1.9.4 | Apache License, Version 2.0 | [commons-beanutils](https://commons.apache.org/proper/commons-beanutils/) | 
 | commons-codec/commons-codec | 1.15 | Apache License, Version 2.0 | [commons-codec](https://commons.apache.org/proper/commons-codec/) | 
-| commons-codec/commons-codec | 1.18.0 | Apache-2.0 | [commons-codec](https://commons.apache.org/proper/commons-codec/) | 
+| commons-codec/commons-codec | 1.21.0 | Apache-2.0 | [commons-codec](https://commons.apache.org/proper/commons-codec/) | 
 | commons-collections/commons-collections | 3.2.2 | Apache License, Version 2.0 | [commons-collections](http://commons.apache.org/collections/) | 
 | commons-configuration/commons-configuration | 1.10 | The Apache Software License, Version 2.0 | [commons-configuration](http://commons.apache.org/configuration/) | 
 | commons-fileupload/commons-fileupload | 1.6.0 | Apache-2.0 | [commons-fileupload](https://commons.apache.org/proper/commons-fileupload/) | 
 | commons-io/commons-io | 2.22.0 | Apache-2.0 | [commons-io](https://commons.apache.org/proper/commons-io/) | 
 | commons-jxpath/commons-jxpath | 1.4.0 | Apache-2.0 | [commons-jxpath](https://commons.apache.org/proper/commons-jxpath/) | 
 | commons-lang/commons-lang | 2.6 | The Apache Software License, Version 2.0 | [commons-lang](http://commons.apache.org/lang/) | 
-| commons-logging/commons-logging | 1.3.6 | Apache-2.0 | [commons-logging](https://commons.apache.org/proper/commons-logging/) | 
+| commons-logging/commons-logging | 1.4.0 | Apache-2.0 | [commons-logging](https://commons.apache.org/proper/commons-logging/) | 
 | info.picocli/picocli | 4.7.6 | The Apache Software License, version 2.0 | [picocli](https://picocli.info) | 
 | info.picocli/picocli | 4.7.7 | The Apache Software License, version 2.0 | [picocli](https://picocli.info) | 
 | info.picocli/picocli-codegen | 4.7.7 | The Apache Software License, version 2.0 | [picocli-codegen](https://picocli.info) | 
-| io.github.classgraph/classgraph | 4.8.184 | The MIT License (MIT) | [classgraph](https://github.com/classgraph/classgraph) | 
-| io.github.resilience4j/resilience4j-annotations | 2.2.0 | Apache-2.0 | [resilience4j-annotations](https://resilience4j.readme.io) | 
-| io.github.resilience4j/resilience4j-bulkhead | 2.2.0 | Apache-2.0 | [resilience4j-bulkhead](https://resilience4j.readme.io) | 
-| io.github.resilience4j/resilience4j-circuitbreaker | 2.2.0 | Apache-2.0 | [resilience4j-circuitbreaker](https://resilience4j.readme.io) | 
-| io.github.resilience4j/resilience4j-circularbuffer | 2.2.0 | Apache-2.0 | [resilience4j-circularbuffer](https://resilience4j.readme.io) | 
-| io.github.resilience4j/resilience4j-consumer | 2.2.0 | Apache-2.0 | [resilience4j-consumer](https://resilience4j.readme.io) | 
-| io.github.resilience4j/resilience4j-core | 2.2.0 | Apache-2.0 | [resilience4j-core](https://resilience4j.readme.io) | 
-| io.github.resilience4j/resilience4j-framework-common | 2.2.0 | Apache-2.0 | [resilience4j-framework-common](https://resilience4j.readme.io) | 
-| io.github.resilience4j/resilience4j-micrometer | 2.2.0 | Apache-2.0 | [resilience4j-micrometer](https://resilience4j.readme.io) | 
-| io.github.resilience4j/resilience4j-ratelimiter | 2.2.0 | Apache-2.0 | [resilience4j-ratelimiter](https://resilience4j.readme.io) | 
-| io.github.resilience4j/resilience4j-reactor | 2.2.0 | Apache-2.0 | [resilience4j-reactor](https://resilience4j.readme.io) | 
-| io.github.resilience4j/resilience4j-retry | 2.2.0 | Apache-2.0 | [resilience4j-retry](https://resilience4j.readme.io) | 
-| io.github.resilience4j/resilience4j-spring-boot3 | 2.2.0 | Apache-2.0 | [resilience4j-spring-boot3](https://resilience4j.readme.io) | 
-| io.github.resilience4j/resilience4j-spring6 | 2.2.0 | Apache-2.0 | [resilience4j-spring6](https://resilience4j.readme.io) | 
-| io.github.resilience4j/resilience4j-timelimiter | 2.2.0 | Apache-2.0 | [resilience4j-timelimiter](https://resilience4j.readme.io) | 
+| io.github.classgraph/classgraph | 4.8.192 | The MIT License (MIT) | [classgraph](https://github.com/classgraph/classgraph) | 
+| io.github.resilience4j/resilience4j-annotations | 2.3.0 | Apache-2.0 | [resilience4j-annotations](https://resilience4j.readme.io) | 
+| io.github.resilience4j/resilience4j-bulkhead | 2.3.0 | Apache-2.0 | [resilience4j-bulkhead](https://resilience4j.readme.io) | 
+| io.github.resilience4j/resilience4j-circuitbreaker | 2.3.0 | Apache-2.0 | [resilience4j-circuitbreaker](https://resilience4j.readme.io) | 
+| io.github.resilience4j/resilience4j-circularbuffer | 2.3.0 | Apache-2.0 | [resilience4j-circularbuffer](https://resilience4j.readme.io) | 
+| io.github.resilience4j/resilience4j-consumer | 2.3.0 | Apache-2.0 | [resilience4j-consumer](https://resilience4j.readme.io) | 
+| io.github.resilience4j/resilience4j-core | 2.3.0 | Apache-2.0 | [resilience4j-core](https://resilience4j.readme.io) | 
+| io.github.resilience4j/resilience4j-framework-common | 2.3.0 | Apache-2.0 | [resilience4j-framework-common](https://resilience4j.readme.io) | 
+| io.github.resilience4j/resilience4j-micrometer | 2.3.0 | Apache-2.0 | [resilience4j-micrometer](https://resilience4j.readme.io) | 
+| io.github.resilience4j/resilience4j-ratelimiter | 2.3.0 | Apache-2.0 | [resilience4j-ratelimiter](https://resilience4j.readme.io) | 
+| io.github.resilience4j/resilience4j-reactor | 2.3.0 | Apache-2.0 | [resilience4j-reactor](https://resilience4j.readme.io) | 
+| io.github.resilience4j/resilience4j-retry | 2.3.0 | Apache-2.0 | [resilience4j-retry](https://resilience4j.readme.io) | 
+| io.github.resilience4j/resilience4j-spring-boot3 | 2.3.0 | Apache-2.0 | [resilience4j-spring-boot3](https://resilience4j.readme.io) | 
+| io.github.resilience4j/resilience4j-spring6 | 2.3.0 | Apache-2.0 | [resilience4j-spring6](https://resilience4j.readme.io) | 
+| io.github.resilience4j/resilience4j-timelimiter | 2.3.0 | Apache-2.0 | [resilience4j-timelimiter](https://resilience4j.readme.io) | 
 | io.github.x-stream/mxparser | 1.2.2 | Indiana University Extreme! Lab Software License | [mxparser](http://x-stream.github.io/mxparser) | 
 | io.grpc/grpc-bom | 1.73.0 | Apache 2.0 | [grpc-bom](https://github.com/grpc/grpc-java) | 
 | io.jsonwebtoken/jjwt-api | 0.13.0 | Apache-2.0 | [jjwt-api](https://github.com/jwtk/jjwt/jjwt-api) | 
@@ -348,39 +338,39 @@
 | io.jsonwebtoken/jjwt-jackson | 0.13.0 | Apache-2.0 | [jjwt-jackson](https://github.com/jwtk/jjwt/jjwt-jackson) | 
 | io.kotest/kotest-bom | 5.9.1 | Apache-2.0 | [kotest-bom](https://github.com/kotest/kotest) | 
 | io.ktor/ktor-bom | 2.3.13 | The Apache Software License, Version 2.0 | [ktor-bom](https://github.com/ktorio/ktor) | 
-| io.lettuce/lettuce-core | 6.8.2.RELEASE | MIT | [lettuce-core](https://github.com/redis/lettuce) | 
+| io.lettuce/lettuce-core | 7.5.2.RELEASE | MIT | [lettuce-core](https://github.com/redis/lettuce) | 
 | io.micrometer/micrometer-bom | 1.15.0 | The Apache Software License, Version 2.0 | [micrometer-bom](https://github.com/micrometer-metrics/micrometer) | 
-| io.micrometer/micrometer-commons | 1.15.11 | The Apache Software License, Version 2.0 | [micrometer-commons](https://github.com/micrometer-metrics/micrometer) | 
-| io.micrometer/micrometer-core | 1.15.11 | The Apache Software License, Version 2.0 | [micrometer-core](https://github.com/micrometer-metrics/micrometer) | 
-| io.micrometer/micrometer-jakarta9 | 1.15.11 | The Apache Software License, Version 2.0 | [micrometer-jakarta9](https://github.com/micrometer-metrics/micrometer) | 
-| io.micrometer/micrometer-observation | 1.15.11 | The Apache Software License, Version 2.0 | [micrometer-observation](https://github.com/micrometer-metrics/micrometer) | 
+| io.micrometer/micrometer-commons | 1.17.1 | The Apache Software License, Version 2.0 | [micrometer-commons](https://github.com/micrometer-metrics/micrometer-commercial) | 
+| io.micrometer/micrometer-core | 1.17.1 | The Apache Software License, Version 2.0 | [micrometer-core](https://github.com/micrometer-metrics/micrometer-commercial) | 
+| io.micrometer/micrometer-jakarta9 | 1.17.1 | The Apache Software License, Version 2.0 | [micrometer-jakarta9](https://github.com/micrometer-metrics/micrometer-commercial) | 
+| io.micrometer/micrometer-observation | 1.17.1 | The Apache Software License, Version 2.0 | [micrometer-observation](https://github.com/micrometer-metrics/micrometer-commercial) | 
 | io.micronaut/micronaut-aop | 4.9.5 | The Apache Software License, Version 2.0 | [micronaut-aop](https://micronaut.io) | 
-| io.micronaut/micronaut-aop | 4.10.23 | The Apache Software License, Version 2.0 | [micronaut-aop](https://micronaut.io) | 
-| io.micronaut/micronaut-buffer-netty | 4.10.23 | The Apache Software License, Version 2.0 | [micronaut-buffer-netty](https://micronaut.io) | 
-| io.micronaut/micronaut-context | 4.10.23 | The Apache Software License, Version 2.0 | [micronaut-context](https://micronaut.io) | 
-| io.micronaut/micronaut-context-propagation | 4.10.23 | The Apache Software License, Version 2.0 | [micronaut-context-propagation](https://micronaut.io) | 
+| io.micronaut/micronaut-aop | 4.10.33 | The Apache Software License, Version 2.0 | [micronaut-aop](https://micronaut.io) | 
+| io.micronaut/micronaut-buffer-netty | 4.10.33 | The Apache Software License, Version 2.0 | [micronaut-buffer-netty](https://micronaut.io) | 
+| io.micronaut/micronaut-context | 4.10.33 | The Apache Software License, Version 2.0 | [micronaut-context](https://micronaut.io) | 
+| io.micronaut/micronaut-context-propagation | 4.10.33 | The Apache Software License, Version 2.0 | [micronaut-context-propagation](https://micronaut.io) | 
 | io.micronaut/micronaut-core | 4.9.5 | The Apache Software License, Version 2.0 | [micronaut-core](https://micronaut.io) | 
-| io.micronaut/micronaut-core | 4.10.23 | The Apache Software License, Version 2.0 | [micronaut-core](https://micronaut.io) | 
+| io.micronaut/micronaut-core | 4.10.33 | The Apache Software License, Version 2.0 | [micronaut-core](https://micronaut.io) | 
 | io.micronaut/micronaut-core-bom | 4.9.5 | The Apache Software License, Version 2.0 | [micronaut-core-bom](https://micronaut.io) | 
-| io.micronaut/micronaut-core-bom | 4.10.23 | The Apache Software License, Version 2.0 | [micronaut-core-bom](https://micronaut.io) | 
+| io.micronaut/micronaut-core-bom | 4.10.33 | The Apache Software License, Version 2.0 | [micronaut-core-bom](https://micronaut.io) | 
 | io.micronaut/micronaut-core-processor | 4.9.5 | The Apache Software License, Version 2.0 | [micronaut-core-processor](https://micronaut.io) | 
 | io.micronaut/micronaut-core-reactive | 4.9.5 | The Apache Software License, Version 2.0 | [micronaut-core-reactive](https://micronaut.io) | 
-| io.micronaut/micronaut-core-reactive | 4.10.23 | The Apache Software License, Version 2.0 | [micronaut-core-reactive](https://micronaut.io) | 
-| io.micronaut/micronaut-discovery-core | 4.10.23 | The Apache Software License, Version 2.0 | [micronaut-discovery-core](https://micronaut.io) | 
+| io.micronaut/micronaut-core-reactive | 4.10.33 | The Apache Software License, Version 2.0 | [micronaut-core-reactive](https://micronaut.io) | 
+| io.micronaut/micronaut-discovery-core | 4.10.33 | The Apache Software License, Version 2.0 | [micronaut-discovery-core](https://micronaut.io) | 
 | io.micronaut/micronaut-graal | 4.9.5 | The Apache Software License, Version 2.0 | [micronaut-graal](https://micronaut.io) | 
-| io.micronaut/micronaut-http | 4.10.23 | The Apache Software License, Version 2.0 | [micronaut-http](https://micronaut.io) | 
-| io.micronaut/micronaut-http-netty | 4.10.23 | The Apache Software License, Version 2.0 | [micronaut-http-netty](https://micronaut.io) | 
-| io.micronaut/micronaut-http-server | 4.10.23 | The Apache Software License, Version 2.0 | [micronaut-http-server](https://micronaut.io) | 
-| io.micronaut/micronaut-http-server-netty | 4.10.23 | The Apache Software License, Version 2.0 | [micronaut-http-server-netty](https://micronaut.io) | 
+| io.micronaut/micronaut-http | 4.10.33 | The Apache Software License, Version 2.0 | [micronaut-http](https://micronaut.io) | 
+| io.micronaut/micronaut-http-netty | 4.10.33 | The Apache Software License, Version 2.0 | [micronaut-http-netty](https://micronaut.io) | 
+| io.micronaut/micronaut-http-server | 4.10.33 | The Apache Software License, Version 2.0 | [micronaut-http-server](https://micronaut.io) | 
+| io.micronaut/micronaut-http-server-netty | 4.10.33 | The Apache Software License, Version 2.0 | [micronaut-http-server-netty](https://micronaut.io) | 
 | io.micronaut/micronaut-inject | 4.9.5 | The Apache Software License, Version 2.0 | [micronaut-inject](https://micronaut.io) | 
-| io.micronaut/micronaut-inject | 4.10.23 | The Apache Software License, Version 2.0 | [micronaut-inject](https://micronaut.io) | 
+| io.micronaut/micronaut-inject | 4.10.33 | The Apache Software License, Version 2.0 | [micronaut-inject](https://micronaut.io) | 
 | io.micronaut/micronaut-inject-java | 4.9.5 | The Apache Software License, Version 2.0 | [micronaut-inject-java](https://micronaut.io) | 
-| io.micronaut/micronaut-jackson-core | 4.10.23 | The Apache Software License, Version 2.0 | [micronaut-jackson-core](https://micronaut.io) | 
-| io.micronaut/micronaut-jackson-databind | 4.10.23 | The Apache Software License, Version 2.0 | [micronaut-jackson-databind](https://micronaut.io) | 
-| io.micronaut/micronaut-json-core | 4.10.23 | The Apache Software License, Version 2.0 | [micronaut-json-core](https://micronaut.io) | 
-| io.micronaut/micronaut-retry | 4.10.23 | The Apache Software License, Version 2.0 | [micronaut-retry](https://micronaut.io) | 
-| io.micronaut/micronaut-router | 4.10.23 | The Apache Software License, Version 2.0 | [micronaut-router](https://micronaut.io) | 
-| io.micronaut/micronaut-runtime | 4.10.23 | The Apache Software License, Version 2.0 | [micronaut-runtime](https://micronaut.io) | 
+| io.micronaut/micronaut-jackson-core | 4.10.33 | The Apache Software License, Version 2.0 | [micronaut-jackson-core](https://micronaut.io) | 
+| io.micronaut/micronaut-jackson-databind | 4.10.33 | The Apache Software License, Version 2.0 | [micronaut-jackson-databind](https://micronaut.io) | 
+| io.micronaut/micronaut-json-core | 4.10.33 | The Apache Software License, Version 2.0 | [micronaut-json-core](https://micronaut.io) | 
+| io.micronaut/micronaut-retry | 4.10.33 | The Apache Software License, Version 2.0 | [micronaut-retry](https://micronaut.io) | 
+| io.micronaut/micronaut-router | 4.10.33 | The Apache Software License, Version 2.0 | [micronaut-router](https://micronaut.io) | 
+| io.micronaut/micronaut-runtime | 4.10.33 | The Apache Software License, Version 2.0 | [micronaut-runtime](https://micronaut.io) | 
 | io.micronaut.acme/micronaut-acme-bom | 5.5.0 | The Apache Software License, Version 2.0 | [micronaut-acme-bom](https://micronaut.io) | 
 | io.micronaut.aot/micronaut-aot-bom | 2.8.0 | The Apache Software License, Version 2.0 | [micronaut-aot-bom](https://micronaut.io) | 
 | io.micronaut.aws/micronaut-aws-bom | 4.11.0 | The Apache Software License, Version 2.0 | [micronaut-aws-bom](https://micronaut.io) | 
@@ -456,96 +446,95 @@
 | io.micronaut.views/micronaut-views-bom | 5.8.0 | The Apache Software License, Version 2.0 | [micronaut-views-bom](https://micronaut.io) | 
 | io.micronaut.xml/micronaut-jackson-xml-bom | 4.7.0 | The Apache Software License, Version 2.0 | [micronaut-jackson-xml-bom](https://micronaut.io) | 
 | io.netty/netty-bom | 4.2.2.Final | Apache License, Version 2.0 | [netty-bom](https://netty.io/) | 
-| io.netty/netty-bom | 4.2.13.Final | Apache License, Version 2.0 | [netty-bom](https://netty.io/) | 
-| io.netty/netty-buffer | 4.2.13.Final | Apache License, Version 2.0 | [netty-buffer](https://netty.io/netty-buffer/) | 
-| io.netty/netty-codec-base | 4.2.13.Final | Apache License, Version 2.0 | [netty-codec-base](https://netty.io/netty-codec-base/) | 
-| io.netty/netty-codec-classes-quic | 4.2.13.Final | Apache License, Version 2.0 | [netty-codec-classes-quic](https://netty.io/netty-codec-classes-quic/) | 
-| io.netty/netty-codec-compression | 4.2.13.Final | Apache License, Version 2.0 | [netty-codec-compression](https://netty.io/netty-codec-compression/) | 
-| io.netty/netty-codec-dns | 4.2.13.Final | Apache License, Version 2.0 | [netty-codec-dns](https://netty.io/netty-codec-dns/) | 
-| io.netty/netty-codec-http | 4.2.13.Final | Apache License, Version 2.0 | [netty-codec-http](https://netty.io/netty-codec-http/) | 
-| io.netty/netty-codec-http2 | 4.2.13.Final | Apache License, Version 2.0 | [netty-codec-http2](https://netty.io/netty-codec-http2/) | 
-| io.netty/netty-codec-http3 | 4.2.13.Final | Apache License, Version 2.0 | [netty-codec-http3](https://netty.io/netty-codec-http3/) | 
-| io.netty/netty-codec-socks | 4.2.13.Final | Apache License, Version 2.0 | [netty-codec-socks](https://netty.io/netty-codec-socks/) | 
-| io.netty/netty-common | 4.2.13.Final | Apache License, Version 2.0 | [netty-common](https://netty.io/netty-common/) | 
-| io.netty/netty-handler | 4.2.13.Final | Apache License, Version 2.0 | [netty-handler](https://netty.io/netty-handler/) | 
-| io.netty/netty-handler-proxy | 4.2.13.Final | Apache License, Version 2.0 | [netty-handler-proxy](https://netty.io/netty-handler-proxy/) | 
-| io.netty/netty-resolver | 4.2.13.Final | Apache License, Version 2.0 | [netty-resolver](https://netty.io/netty-resolver/) | 
-| io.netty/netty-resolver-dns | 4.2.13.Final | Apache License, Version 2.0 | [netty-resolver-dns](https://netty.io/netty-resolver-dns/) | 
-| io.netty/netty-resolver-dns-classes-macos | 4.2.13.Final | Apache License, Version 2.0 | [netty-resolver-dns-classes-macos](https://netty.io/netty-resolver-dns-classes-macos/) | 
-| io.netty/netty-resolver-dns-native-macos | 4.2.13.Final | Apache License, Version 2.0 | [netty-resolver-dns-native-macos](https://netty.io/netty-resolver-dns-native-macos/) | 
-| io.netty/netty-transport | 4.2.13.Final | Apache License, Version 2.0 | [netty-transport](https://netty.io/netty-transport/) | 
-| io.netty/netty-transport-classes-epoll | 4.2.13.Final | Apache License, Version 2.0 | [netty-transport-classes-epoll](https://netty.io/netty-transport-classes-epoll/) | 
-| io.netty/netty-transport-native-epoll | 4.2.13.Final | Apache License, Version 2.0 | [netty-transport-native-epoll](https://netty.io/netty-transport-native-epoll/) | 
-| io.netty/netty-transport-native-unix-common | 4.2.13.Final | Apache License, Version 2.0 | [netty-transport-native-unix-common](https://netty.io/netty-transport-native-unix-common/) | 
-| io.opentelemetry/opentelemetry-api | 1.61.0 | The Apache License, Version 2.0 | [opentelemetry-api](https://github.com/open-telemetry/opentelemetry-java) | 
-| io.opentelemetry/opentelemetry-api | 1.62.0 | The Apache License, Version 2.0 | [opentelemetry-api](https://github.com/open-telemetry/opentelemetry-java) | 
-| io.opentelemetry/opentelemetry-api-incubator | 1.61.0-alpha | The Apache License, Version 2.0 | [opentelemetry-api-incubator](https://github.com/open-telemetry/opentelemetry-java) | 
+| io.netty/netty-bom | 4.2.19.Final | Apache License, Version 2.0 | [netty-bom](https://netty.io/) | 
+| io.netty/netty-buffer | 4.2.19.Final | Apache License, Version 2.0 | [netty-buffer](https://netty.io/netty-buffer/) | 
+| io.netty/netty-codec-base | 4.2.19.Final | Apache License, Version 2.0 | [netty-codec-base](https://netty.io/netty-codec-base/) | 
+| io.netty/netty-codec-classes-quic | 4.2.19.Final | Apache License, Version 2.0 | [netty-codec-classes-quic](https://netty.io/netty-codec-classes-quic/) | 
+| io.netty/netty-codec-compression | 4.2.19.Final | Apache License, Version 2.0 | [netty-codec-compression](https://netty.io/netty-codec-compression/) | 
+| io.netty/netty-codec-dns | 4.2.19.Final | Apache License, Version 2.0 | [netty-codec-dns](https://netty.io/netty-codec-dns/) | 
+| io.netty/netty-codec-http | 4.2.19.Final | Apache License, Version 2.0 | [netty-codec-http](https://netty.io/netty-codec-http/) | 
+| io.netty/netty-codec-http2 | 4.2.19.Final | Apache License, Version 2.0 | [netty-codec-http2](https://netty.io/netty-codec-http2/) | 
+| io.netty/netty-codec-http3 | 4.2.19.Final | Apache License, Version 2.0 | [netty-codec-http3](https://netty.io/netty-codec-http3/) | 
+| io.netty/netty-codec-socks | 4.2.19.Final | Apache License, Version 2.0 | [netty-codec-socks](https://netty.io/netty-codec-socks/) | 
+| io.netty/netty-common | 4.2.19.Final | Apache License, Version 2.0 | [netty-common](https://netty.io/netty-common/) | 
+| io.netty/netty-handler | 4.2.19.Final | Apache License, Version 2.0 | [netty-handler](https://netty.io/netty-handler/) | 
+| io.netty/netty-handler-proxy | 4.2.19.Final | Apache License, Version 2.0 | [netty-handler-proxy](https://netty.io/netty-handler-proxy/) | 
+| io.netty/netty-resolver | 4.2.19.Final | Apache License, Version 2.0 | [netty-resolver](https://netty.io/netty-resolver/) | 
+| io.netty/netty-resolver-dns | 4.2.19.Final | Apache License, Version 2.0 | [netty-resolver-dns](https://netty.io/netty-resolver-dns/) | 
+| io.netty/netty-resolver-dns-classes-macos | 4.2.19.Final | Apache License, Version 2.0 | [netty-resolver-dns-classes-macos](https://netty.io/netty-resolver-dns-classes-macos/) | 
+| io.netty/netty-resolver-dns-native-macos | 4.2.19.Final | Apache License, Version 2.0 | [netty-resolver-dns-native-macos](https://netty.io/netty-resolver-dns-native-macos/) | 
+| io.netty/netty-transport | 4.2.19.Final | Apache License, Version 2.0 | [netty-transport](https://netty.io/netty-transport/) | 
+| io.netty/netty-transport-classes-epoll | 4.2.19.Final | Apache License, Version 2.0 | [netty-transport-classes-epoll](https://netty.io/netty-transport-classes-epoll/) | 
+| io.netty/netty-transport-native-epoll | 4.2.19.Final | Apache License, Version 2.0 | [netty-transport-native-epoll](https://netty.io/netty-transport-native-epoll/) | 
+| io.netty/netty-transport-native-unix-common | 4.2.19.Final | Apache License, Version 2.0 | [netty-transport-native-unix-common](https://netty.io/netty-transport-native-unix-common/) | 
+| io.opentelemetry/opentelemetry-api | 1.66.0 | The Apache License, Version 2.0 | [opentelemetry-api](https://github.com/open-telemetry/opentelemetry-java) | 
+| io.opentelemetry/opentelemetry-api-incubator | 1.66.0-alpha | The Apache License, Version 2.0 | [opentelemetry-api-incubator](https://github.com/open-telemetry/opentelemetry-java) | 
 | io.opentelemetry/opentelemetry-bom | 1.51.0 | The Apache License, Version 2.0 | [opentelemetry-bom](https://github.com/open-telemetry/opentelemetry-java) | 
+| io.opentelemetry/opentelemetry-bom | 1.66.0 | The Apache License, Version 2.0 | [opentelemetry-bom](https://github.com/open-telemetry/opentelemetry-java) | 
 | io.opentelemetry/opentelemetry-bom-alpha | 1.51.0-alpha | The Apache License, Version 2.0 | [opentelemetry-bom-alpha](https://github.com/open-telemetry/opentelemetry-java) | 
-| io.opentelemetry/opentelemetry-common | 1.61.0 | The Apache License, Version 2.0 | [opentelemetry-common](https://github.com/open-telemetry/opentelemetry-java) | 
-| io.opentelemetry/opentelemetry-common | 1.62.0 | The Apache License, Version 2.0 | [opentelemetry-common](https://github.com/open-telemetry/opentelemetry-java) | 
-| io.opentelemetry/opentelemetry-context | 1.61.0 | The Apache License, Version 2.0 | [opentelemetry-context](https://github.com/open-telemetry/opentelemetry-java) | 
-| io.opentelemetry/opentelemetry-context | 1.62.0 | The Apache License, Version 2.0 | [opentelemetry-context](https://github.com/open-telemetry/opentelemetry-java) | 
-| io.opentelemetry/opentelemetry-exporter-common | 1.62.0 | The Apache License, Version 2.0 | [opentelemetry-exporter-common](https://github.com/open-telemetry/opentelemetry-java) | 
-| io.opentelemetry/opentelemetry-exporter-logging | 1.61.0 | The Apache License, Version 2.0 | [opentelemetry-exporter-logging](https://github.com/open-telemetry/opentelemetry-java) | 
-| io.opentelemetry/opentelemetry-exporter-otlp | 1.61.0 | The Apache License, Version 2.0 | [opentelemetry-exporter-otlp](https://github.com/open-telemetry/opentelemetry-java) | 
-| io.opentelemetry/opentelemetry-exporter-otlp-common | 1.61.0 | The Apache License, Version 2.0 | [opentelemetry-exporter-otlp-common](https://github.com/open-telemetry/opentelemetry-java) | 
-| io.opentelemetry/opentelemetry-exporter-sender-okhttp | 1.62.0 | The Apache License, Version 2.0 | [opentelemetry-exporter-sender-okhttp](https://github.com/open-telemetry/opentelemetry-java) | 
-| io.opentelemetry/opentelemetry-sdk | 1.62.0 | The Apache License, Version 2.0 | [opentelemetry-sdk](https://github.com/open-telemetry/opentelemetry-java) | 
-| io.opentelemetry/opentelemetry-sdk-common | 1.62.0 | The Apache License, Version 2.0 | [opentelemetry-sdk-common](https://github.com/open-telemetry/opentelemetry-java) | 
-| io.opentelemetry/opentelemetry-sdk-extension-autoconfigure | 1.61.0 | The Apache License, Version 2.0 | [opentelemetry-sdk-extension-autoconfigure](https://github.com/open-telemetry/opentelemetry-java) | 
-| io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi | 1.62.0 | The Apache License, Version 2.0 | [opentelemetry-sdk-extension-autoconfigure-spi](https://github.com/open-telemetry/opentelemetry-java) | 
-| io.opentelemetry/opentelemetry-sdk-extension-incubator | 1.61.0-alpha | The Apache License, Version 2.0 | [opentelemetry-sdk-extension-incubator](https://github.com/open-telemetry/opentelemetry-java) | 
-| io.opentelemetry/opentelemetry-sdk-logs | 1.62.0 | The Apache License, Version 2.0 | [opentelemetry-sdk-logs](https://github.com/open-telemetry/opentelemetry-java) | 
-| io.opentelemetry/opentelemetry-sdk-metrics | 1.62.0 | The Apache License, Version 2.0 | [opentelemetry-sdk-metrics](https://github.com/open-telemetry/opentelemetry-java) | 
-| io.opentelemetry/opentelemetry-sdk-trace | 1.62.0 | The Apache License, Version 2.0 | [opentelemetry-sdk-trace](https://github.com/open-telemetry/opentelemetry-java) | 
-| io.opentelemetry.contrib/opentelemetry-aws-resources | 1.55.0-alpha | The Apache License, Version 2.0 | [opentelemetry-aws-resources](https://github.com/open-telemetry/opentelemetry-java-contrib) | 
-| io.opentelemetry.contrib/opentelemetry-azure-resources | 1.55.0-alpha | The Apache License, Version 2.0 | [opentelemetry-azure-resources](https://github.com/open-telemetry/opentelemetry-java-contrib) | 
-| io.opentelemetry.contrib/opentelemetry-baggage-processor | 1.55.0-alpha | The Apache License, Version 2.0 | [opentelemetry-baggage-processor](https://github.com/open-telemetry/opentelemetry-java-contrib) | 
-| io.opentelemetry.contrib/opentelemetry-cloudfoundry-resources | 1.55.0-alpha | The Apache License, Version 2.0 | [opentelemetry-cloudfoundry-resources](https://github.com/open-telemetry/opentelemetry-java-contrib) | 
-| io.opentelemetry.contrib/opentelemetry-gcp-resources | 1.55.0-alpha | The Apache License, Version 2.0 | [opentelemetry-gcp-resources](https://github.com/open-telemetry/opentelemetry-java-contrib) | 
-| io.opentelemetry.contrib/opentelemetry-samplers | 1.55.0-alpha | The Apache License, Version 2.0 | [opentelemetry-samplers](https://github.com/open-telemetry/opentelemetry-java-contrib) | 
-| io.opentelemetry.instrumentation/opentelemetry-declarative-config-bridge | 2.27.0-alpha | The Apache License, Version 2.0 | [opentelemetry-declarative-config-bridge](https://github.com/open-telemetry/opentelemetry-java-instrumentation) | 
-| io.opentelemetry.instrumentation/opentelemetry-instrumentation-annotations | 2.27.0 | The Apache License, Version 2.0 | [opentelemetry-instrumentation-annotations](https://github.com/open-telemetry/opentelemetry-java-instrumentation) | 
-| io.opentelemetry.instrumentation/opentelemetry-instrumentation-annotations-support | 2.27.0-alpha | The Apache License, Version 2.0 | [opentelemetry-instrumentation-annotations-support](https://github.com/open-telemetry/opentelemetry-java-instrumentation) | 
-| io.opentelemetry.instrumentation/opentelemetry-instrumentation-api | 2.27.0 | The Apache License, Version 2.0 | [opentelemetry-instrumentation-api](https://github.com/open-telemetry/opentelemetry-java-instrumentation) | 
-| io.opentelemetry.instrumentation/opentelemetry-instrumentation-api-incubator | 2.27.0-alpha | The Apache License, Version 2.0 | [opentelemetry-instrumentation-api-incubator](https://github.com/open-telemetry/opentelemetry-java-instrumentation) | 
+| io.opentelemetry/opentelemetry-common | 1.66.0 | The Apache License, Version 2.0 | [opentelemetry-common](https://github.com/open-telemetry/opentelemetry-java) | 
+| io.opentelemetry/opentelemetry-context | 1.66.0 | The Apache License, Version 2.0 | [opentelemetry-context](https://github.com/open-telemetry/opentelemetry-java) | 
+| io.opentelemetry/opentelemetry-exporter-common | 1.66.0 | The Apache License, Version 2.0 | [opentelemetry-exporter-common](https://github.com/open-telemetry/opentelemetry-java) | 
+| io.opentelemetry/opentelemetry-exporter-logging | 1.66.0 | The Apache License, Version 2.0 | [opentelemetry-exporter-logging](https://github.com/open-telemetry/opentelemetry-java) | 
+| io.opentelemetry/opentelemetry-exporter-otlp | 1.66.0 | The Apache License, Version 2.0 | [opentelemetry-exporter-otlp](https://github.com/open-telemetry/opentelemetry-java) | 
+| io.opentelemetry/opentelemetry-exporter-otlp-common | 1.66.0 | The Apache License, Version 2.0 | [opentelemetry-exporter-otlp-common](https://github.com/open-telemetry/opentelemetry-java) | 
+| io.opentelemetry/opentelemetry-exporter-sender-okhttp | 1.66.0 | The Apache License, Version 2.0 | [opentelemetry-exporter-sender-okhttp](https://github.com/open-telemetry/opentelemetry-java) | 
+| io.opentelemetry/opentelemetry-sdk | 1.66.0 | The Apache License, Version 2.0 | [opentelemetry-sdk](https://github.com/open-telemetry/opentelemetry-java) | 
+| io.opentelemetry/opentelemetry-sdk-common | 1.66.0 | The Apache License, Version 2.0 | [opentelemetry-sdk-common](https://github.com/open-telemetry/opentelemetry-java) | 
+| io.opentelemetry/opentelemetry-sdk-extension-autoconfigure | 1.66.0 | The Apache License, Version 2.0 | [opentelemetry-sdk-extension-autoconfigure](https://github.com/open-telemetry/opentelemetry-java) | 
+| io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi | 1.66.0 | The Apache License, Version 2.0 | [opentelemetry-sdk-extension-autoconfigure-spi](https://github.com/open-telemetry/opentelemetry-java) | 
+| io.opentelemetry/opentelemetry-sdk-extension-declarative-config | 1.66.0-alpha | The Apache License, Version 2.0 | [opentelemetry-sdk-extension-declarative-config](https://github.com/open-telemetry/opentelemetry-java) | 
+| io.opentelemetry/opentelemetry-sdk-extension-incubator | 1.66.0-alpha | The Apache License, Version 2.0 | [opentelemetry-sdk-extension-incubator](https://github.com/open-telemetry/opentelemetry-java) | 
+| io.opentelemetry/opentelemetry-sdk-logs | 1.66.0 | The Apache License, Version 2.0 | [opentelemetry-sdk-logs](https://github.com/open-telemetry/opentelemetry-java) | 
+| io.opentelemetry/opentelemetry-sdk-metrics | 1.66.0 | The Apache License, Version 2.0 | [opentelemetry-sdk-metrics](https://github.com/open-telemetry/opentelemetry-java) | 
+| io.opentelemetry/opentelemetry-sdk-trace | 1.66.0 | The Apache License, Version 2.0 | [opentelemetry-sdk-trace](https://github.com/open-telemetry/opentelemetry-java) | 
+| io.opentelemetry.contrib/opentelemetry-aws-resources | 1.60.0-alpha | The Apache License, Version 2.0 | [opentelemetry-aws-resources](https://github.com/open-telemetry/opentelemetry-java-contrib) | 
+| io.opentelemetry.contrib/opentelemetry-azure-resources | 1.60.0-alpha | The Apache License, Version 2.0 | [opentelemetry-azure-resources](https://github.com/open-telemetry/opentelemetry-java-contrib) | 
+| io.opentelemetry.contrib/opentelemetry-baggage-processor | 1.60.0-alpha | The Apache License, Version 2.0 | [opentelemetry-baggage-processor](https://github.com/open-telemetry/opentelemetry-java-contrib) | 
+| io.opentelemetry.contrib/opentelemetry-cloudfoundry-resources | 1.60.0-alpha | The Apache License, Version 2.0 | [opentelemetry-cloudfoundry-resources](https://github.com/open-telemetry/opentelemetry-java-contrib) | 
+| io.opentelemetry.contrib/opentelemetry-gcp-resources | 1.60.0-alpha | The Apache License, Version 2.0 | [opentelemetry-gcp-resources](https://github.com/open-telemetry/opentelemetry-java-contrib) | 
+| io.opentelemetry.contrib/opentelemetry-samplers | 1.60.0-alpha | The Apache License, Version 2.0 | [opentelemetry-samplers](https://github.com/open-telemetry/opentelemetry-java-contrib) | 
+| io.opentelemetry.instrumentation/opentelemetry-declarative-config-bridge | 2.32.0-alpha | The Apache License, Version 2.0 | [opentelemetry-declarative-config-bridge](https://github.com/open-telemetry/opentelemetry-java-instrumentation) | 
+| io.opentelemetry.instrumentation/opentelemetry-instrumentation-annotations | 2.32.0 | The Apache License, Version 2.0 | [opentelemetry-instrumentation-annotations](https://github.com/open-telemetry/opentelemetry-java-instrumentation) | 
+| io.opentelemetry.instrumentation/opentelemetry-instrumentation-annotations-support | 2.32.0-alpha | The Apache License, Version 2.0 | [opentelemetry-instrumentation-annotations-support](https://github.com/open-telemetry/opentelemetry-java-instrumentation) | 
+| io.opentelemetry.instrumentation/opentelemetry-instrumentation-api | 2.32.0 | The Apache License, Version 2.0 | [opentelemetry-instrumentation-api](https://github.com/open-telemetry/opentelemetry-java-instrumentation) | 
+| io.opentelemetry.instrumentation/opentelemetry-instrumentation-api-incubator | 2.32.0-alpha | The Apache License, Version 2.0 | [opentelemetry-instrumentation-api-incubator](https://github.com/open-telemetry/opentelemetry-java-instrumentation) | 
 | io.opentelemetry.instrumentation/opentelemetry-instrumentation-bom | 2.16.0 | The Apache License, Version 2.0 | [opentelemetry-instrumentation-bom](https://github.com/open-telemetry/opentelemetry-java-instrumentation) | 
 | io.opentelemetry.instrumentation/opentelemetry-instrumentation-bom-alpha | 2.16.0-alpha | The Apache License, Version 2.0 | [opentelemetry-instrumentation-bom-alpha](https://github.com/open-telemetry/opentelemetry-java-instrumentation) | 
-| io.opentelemetry.instrumentation/opentelemetry-jdbc | 2.27.0-alpha | The Apache License, Version 2.0 | [opentelemetry-jdbc](https://github.com/open-telemetry/opentelemetry-java-instrumentation) | 
-| io.opentelemetry.instrumentation/opentelemetry-kafka-clients-2.6 | 2.27.0-alpha | The Apache License, Version 2.0 | [opentelemetry-kafka-clients-2.6](https://github.com/open-telemetry/opentelemetry-java-instrumentation) | 
-| io.opentelemetry.instrumentation/opentelemetry-kafka-clients-common-0.11 | 2.27.0-alpha | The Apache License, Version 2.0 | [opentelemetry-kafka-clients-common-0.11](https://github.com/open-telemetry/opentelemetry-java-instrumentation) | 
-| io.opentelemetry.instrumentation/opentelemetry-log4j-appender-2.17 | 2.27.0-alpha | The Apache License, Version 2.0 | [opentelemetry-log4j-appender-2.17](https://github.com/open-telemetry/opentelemetry-java-instrumentation) | 
-| io.opentelemetry.instrumentation/opentelemetry-log4j-context-data-2.17-autoconfigure | 2.27.0-alpha | The Apache License, Version 2.0 | [opentelemetry-log4j-context-data-2.17-autoconfigure](https://github.com/open-telemetry/opentelemetry-java-instrumentation) | 
-| io.opentelemetry.instrumentation/opentelemetry-logback-appender-1.0 | 2.27.0-alpha | The Apache License, Version 2.0 | [opentelemetry-logback-appender-1.0](https://github.com/open-telemetry/opentelemetry-java-instrumentation) | 
-| io.opentelemetry.instrumentation/opentelemetry-logback-mdc-1.0 | 2.27.0-alpha | The Apache License, Version 2.0 | [opentelemetry-logback-mdc-1.0](https://github.com/open-telemetry/opentelemetry-java-instrumentation) | 
-| io.opentelemetry.instrumentation/opentelemetry-micrometer-1.5 | 2.27.0-alpha | The Apache License, Version 2.0 | [opentelemetry-micrometer-1.5](https://github.com/open-telemetry/opentelemetry-java-instrumentation) | 
-| io.opentelemetry.instrumentation/opentelemetry-mongo-3.1 | 2.27.0-alpha | The Apache License, Version 2.0 | [opentelemetry-mongo-3.1](https://github.com/open-telemetry/opentelemetry-java-instrumentation) | 
-| io.opentelemetry.instrumentation/opentelemetry-reactor-3.1 | 2.27.0-alpha | The Apache License, Version 2.0 | [opentelemetry-reactor-3.1](https://github.com/open-telemetry/opentelemetry-java-instrumentation) | 
-| io.opentelemetry.instrumentation/opentelemetry-resources | 2.27.0-alpha | The Apache License, Version 2.0 | [opentelemetry-resources](https://github.com/open-telemetry/opentelemetry-java-instrumentation) | 
-| io.opentelemetry.instrumentation/opentelemetry-runtime-telemetry | 2.27.0-alpha | The Apache License, Version 2.0 | [opentelemetry-runtime-telemetry](https://github.com/open-telemetry/opentelemetry-java-instrumentation) | 
-| io.opentelemetry.instrumentation/opentelemetry-sdk-autoconfigure-support | 2.27.0-alpha | The Apache License, Version 2.0 | [opentelemetry-sdk-autoconfigure-support](https://github.com/open-telemetry/opentelemetry-java-instrumentation) | 
-| io.opentelemetry.instrumentation/opentelemetry-spring-boot-autoconfigure | 2.27.0 | The Apache License, Version 2.0 | [opentelemetry-spring-boot-autoconfigure](https://github.com/open-telemetry/opentelemetry-java-instrumentation) | 
-| io.opentelemetry.instrumentation/opentelemetry-spring-boot-starter | 2.27.0 | The Apache License, Version 2.0 | [opentelemetry-spring-boot-starter](https://github.com/open-telemetry/opentelemetry-java-instrumentation) | 
-| io.opentelemetry.instrumentation/opentelemetry-spring-kafka-2.7 | 2.27.0-alpha | The Apache License, Version 2.0 | [opentelemetry-spring-kafka-2.7](https://github.com/open-telemetry/opentelemetry-java-instrumentation) | 
-| io.opentelemetry.instrumentation/opentelemetry-spring-web-3.1 | 2.27.0-alpha | The Apache License, Version 2.0 | [opentelemetry-spring-web-3.1](https://github.com/open-telemetry/opentelemetry-java-instrumentation) | 
-| io.opentelemetry.instrumentation/opentelemetry-spring-webflux-5.3 | 2.27.0-alpha | The Apache License, Version 2.0 | [opentelemetry-spring-webflux-5.3](https://github.com/open-telemetry/opentelemetry-java-instrumentation) | 
-| io.opentelemetry.instrumentation/opentelemetry-spring-webmvc-5.3 | 2.27.0-alpha | The Apache License, Version 2.0 | [opentelemetry-spring-webmvc-5.3](https://github.com/open-telemetry/opentelemetry-java-instrumentation) | 
-| io.opentelemetry.instrumentation/opentelemetry-spring-webmvc-6.0 | 2.27.0-alpha | The Apache License, Version 2.0 | [opentelemetry-spring-webmvc-6.0](https://github.com/open-telemetry/opentelemetry-java-instrumentation) | 
-| io.opentelemetry.semconv/opentelemetry-semconv | 1.40.0 | The Apache License, Version 2.0 | [opentelemetry-semconv](https://github.com/open-telemetry/semantic-conventions-java) | 
-| io.opentelemetry.semconv/opentelemetry-semconv-incubating | 1.40.0-alpha | The Apache License, Version 2.0 | [opentelemetry-semconv-incubating](https://github.com/open-telemetry/semantic-conventions-java) | 
+| io.opentelemetry.instrumentation/opentelemetry-jdbc | 2.32.0-alpha | The Apache License, Version 2.0 | [opentelemetry-jdbc](https://github.com/open-telemetry/opentelemetry-java-instrumentation) | 
+| io.opentelemetry.instrumentation/opentelemetry-kafka-clients-2.6 | 2.32.0-alpha | The Apache License, Version 2.0 | [opentelemetry-kafka-clients-2.6](https://github.com/open-telemetry/opentelemetry-java-instrumentation) | 
+| io.opentelemetry.instrumentation/opentelemetry-kafka-clients-common-0.11 | 2.32.0-alpha | The Apache License, Version 2.0 | [opentelemetry-kafka-clients-common-0.11](https://github.com/open-telemetry/opentelemetry-java-instrumentation) | 
+| io.opentelemetry.instrumentation/opentelemetry-log4j-appender-2.17 | 2.32.0-alpha | The Apache License, Version 2.0 | [opentelemetry-log4j-appender-2.17](https://github.com/open-telemetry/opentelemetry-java-instrumentation) | 
+| io.opentelemetry.instrumentation/opentelemetry-log4j-context-data-2.17-autoconfigure | 2.32.0-alpha | The Apache License, Version 2.0 | [opentelemetry-log4j-context-data-2.17-autoconfigure](https://github.com/open-telemetry/opentelemetry-java-instrumentation) | 
+| io.opentelemetry.instrumentation/opentelemetry-logback-appender-1.0 | 2.32.0-alpha | The Apache License, Version 2.0 | [opentelemetry-logback-appender-1.0](https://github.com/open-telemetry/opentelemetry-java-instrumentation) | 
+| io.opentelemetry.instrumentation/opentelemetry-logback-mdc-1.0 | 2.32.0-alpha | The Apache License, Version 2.0 | [opentelemetry-logback-mdc-1.0](https://github.com/open-telemetry/opentelemetry-java-instrumentation) | 
+| io.opentelemetry.instrumentation/opentelemetry-micrometer-1.5 | 2.32.0-alpha | The Apache License, Version 2.0 | [opentelemetry-micrometer-1.5](https://github.com/open-telemetry/opentelemetry-java-instrumentation) | 
+| io.opentelemetry.instrumentation/opentelemetry-mongo-3.1 | 2.32.0-alpha | The Apache License, Version 2.0 | [opentelemetry-mongo-3.1](https://github.com/open-telemetry/opentelemetry-java-instrumentation) | 
+| io.opentelemetry.instrumentation/opentelemetry-reactor-3.1 | 2.32.0-alpha | The Apache License, Version 2.0 | [opentelemetry-reactor-3.1](https://github.com/open-telemetry/opentelemetry-java-instrumentation) | 
+| io.opentelemetry.instrumentation/opentelemetry-resources | 2.32.0-alpha | The Apache License, Version 2.0 | [opentelemetry-resources](https://github.com/open-telemetry/opentelemetry-java-instrumentation) | 
+| io.opentelemetry.instrumentation/opentelemetry-runtime-telemetry | 2.32.0-alpha | The Apache License, Version 2.0 | [opentelemetry-runtime-telemetry](https://github.com/open-telemetry/opentelemetry-java-instrumentation) | 
+| io.opentelemetry.instrumentation/opentelemetry-sdk-autoconfigure-support | 2.32.0-alpha | The Apache License, Version 2.0 | [opentelemetry-sdk-autoconfigure-support](https://github.com/open-telemetry/opentelemetry-java-instrumentation) | 
+| io.opentelemetry.instrumentation/opentelemetry-spring-boot-autoconfigure | 2.32.0 | The Apache License, Version 2.0 | [opentelemetry-spring-boot-autoconfigure](https://github.com/open-telemetry/opentelemetry-java-instrumentation) | 
+| io.opentelemetry.instrumentation/opentelemetry-spring-boot-starter | 2.32.0 | The Apache License, Version 2.0 | [opentelemetry-spring-boot-starter](https://github.com/open-telemetry/opentelemetry-java-instrumentation) | 
+| io.opentelemetry.instrumentation/opentelemetry-spring-kafka-2.7 | 2.32.0-alpha | The Apache License, Version 2.0 | [opentelemetry-spring-kafka-2.7](https://github.com/open-telemetry/opentelemetry-java-instrumentation) | 
+| io.opentelemetry.instrumentation/opentelemetry-spring-web-3.1 | 2.32.0-alpha | The Apache License, Version 2.0 | [opentelemetry-spring-web-3.1](https://github.com/open-telemetry/opentelemetry-java-instrumentation) | 
+| io.opentelemetry.instrumentation/opentelemetry-spring-webflux-5.3 | 2.32.0-alpha | The Apache License, Version 2.0 | [opentelemetry-spring-webflux-5.3](https://github.com/open-telemetry/opentelemetry-java-instrumentation) | 
+| io.opentelemetry.instrumentation/opentelemetry-spring-webmvc-5.3 | 2.32.0-alpha | The Apache License, Version 2.0 | [opentelemetry-spring-webmvc-5.3](https://github.com/open-telemetry/opentelemetry-java-instrumentation) | 
+| io.opentelemetry.instrumentation/opentelemetry-spring-webmvc-6.0 | 2.32.0-alpha | The Apache License, Version 2.0 | [opentelemetry-spring-webmvc-6.0](https://github.com/open-telemetry/opentelemetry-java-instrumentation) | 
+| io.opentelemetry.semconv/opentelemetry-semconv | 1.44.0 | The Apache License, Version 2.0 | [opentelemetry-semconv](https://github.com/open-telemetry/semantic-conventions-java) | 
+| io.opentelemetry.semconv/opentelemetry-semconv-incubating | 1.44.0-alpha | The Apache License, Version 2.0 | [opentelemetry-semconv-incubating](https://github.com/open-telemetry/semantic-conventions-java) | 
 | io.projectreactor/reactor-bom | 2024.0.7 | The Apache Software License, Version 2.0 | [reactor-bom](https://projectreactor.io) | 
-| io.projectreactor/reactor-core | 3.8.5 | Apache License, Version 2.0 | [reactor-core](https://github.com/reactor/reactor-core) | 
-| io.projectreactor.addons/reactor-extra | 3.5.4 | Apache License, Version 2.0 | [reactor-extra](https://github.com/reactor/reactor-addons) | 
-| io.projectreactor.netty/reactor-netty-core | 1.3.5 | The Apache Software License, Version 2.0 | [reactor-netty-core](https://github.com/reactor/reactor-netty) | 
-| io.projectreactor.netty/reactor-netty-http | 1.3.5 | The Apache Software License, Version 2.0 | [reactor-netty-http](https://github.com/reactor/reactor-netty) | 
+| io.projectreactor/reactor-core | 3.8.8 | Apache License, Version 2.0 | [reactor-core](https://github.com/reactor/reactor-core) | 
+| io.projectreactor.addons/reactor-extra | 3.6.1 | Apache License, Version 2.0 | [reactor-extra](https://github.com/reactor/reactor-addons) | 
+| io.projectreactor.netty/reactor-netty-core | 1.3.8 | The Apache Software License, Version 2.0 | [reactor-netty-core](https://github.com/reactor/reactor-netty) | 
+| io.projectreactor.netty/reactor-netty-http | 1.3.8 | The Apache Software License, Version 2.0 | [reactor-netty-http](https://github.com/reactor/reactor-netty) | 
 | io.reactivex.rxjava3/rxjava | 3.1.12 | The Apache Software License, Version 2.0 | [rxjava](https://github.com/ReactiveX/RxJava) | 
 | io.rest-assured/rest-assured-bom | 5.5.5 | Apache 2.0 | [rest-assured-bom](https://rest-assured.io/) | 
-| io.smallrye.common/smallrye-common-annotation | 2.14.0 | Apache License, Version 2.0 | [smallrye-common-annotation](http://smallrye.io) | 
-| io.smallrye.common/smallrye-common-constraint | 2.14.0 | Apache License, Version 2.0 | [smallrye-common-constraint](http://smallrye.io) | 
-| io.smallrye.common/smallrye-common-cpu | 2.14.0 | Apache License, Version 2.0 | [smallrye-common-cpu](http://smallrye.io) | 
+| io.smallrye.common/smallrye-common-annotation | 2.21.1 | Apache License, Version 2.0 | [smallrye-common-annotation](http://smallrye.io) | 
+| io.smallrye.common/smallrye-common-constraint | 2.21.1 | Apache License, Version 2.0 | [smallrye-common-constraint](http://smallrye.io) | 
+| io.smallrye.common/smallrye-common-cpu | 2.21.1 | Apache License, Version 2.0 | [smallrye-common-cpu](http://smallrye.io) | 
 | io.smallrye.common/smallrye-common-expression | 2.4.0 | Apache License, Version 2.0 | [smallrye-common-expression](http://smallrye.io) | 
-| io.smallrye.common/smallrye-common-function | 2.14.0 | Apache License, Version 2.0 | [smallrye-common-function](http://smallrye.io) | 
+| io.smallrye.common/smallrye-common-function | 2.21.1 | Apache License, Version 2.0 | [smallrye-common-function](http://smallrye.io) | 
 | io.smallrye.common/smallrye-common-net | 2.4.0 | Apache License, Version 2.0 | [smallrye-common-net](http://smallrye.io) | 
 | io.smallrye.common/smallrye-common-os | 2.4.0 | Apache License, Version 2.0 | [smallrye-common-os](http://smallrye.io) | 
 | io.smallrye.common/smallrye-common-ref | 2.4.0 | Apache License, Version 2.0 | [smallrye-common-ref](http://smallrye.io) | 
@@ -556,38 +545,38 @@
 | io.swagger/swagger-models | 1.6.16 | Apache License 2.0 | [swagger-models](https://github.com/swagger-api/swagger-core/modules/swagger-models) | 
 | io.swagger/swagger-parser | 1.0.76 | Apache License 2.0 | [swagger-parser](https://github.com/swagger-api/swagger-parser/modules/swagger-parser) | 
 | io.swagger/swagger-parser-safe-url-resolver | 1.0.76 | Apache License 2.0 | [swagger-parser-safe-url-resolver](https://github.com/swagger-api/swagger-parser/modules/swagger-parser-safe-url-resolver) | 
-| io.swagger.core.v3/swagger-annotations | 2.2.50 | Apache License 2.0 | [swagger-annotations](https://github.com/swagger-api/swagger-core/modules/swagger-annotations) | 
-| io.swagger.core.v3/swagger-annotations-jakarta | 2.2.47 | Apache License 2.0 | [swagger-annotations-jakarta](https://github.com/swagger-api/swagger-core/modules/swagger-annotations-jakarta) | 
-| io.swagger.core.v3/swagger-core | 2.2.50 | Apache License 2.0 | [swagger-core](https://github.com/swagger-api/swagger-core/modules/swagger-core) | 
-| io.swagger.core.v3/swagger-core-jakarta | 2.2.47 | Apache License 2.0 | [swagger-core-jakarta](https://github.com/swagger-api/swagger-core/modules/swagger-core-jakarta) | 
-| io.swagger.core.v3/swagger-integration | 2.2.50 | Apache License 2.0 | [swagger-integration](https://github.com/swagger-api/swagger-core/modules/swagger-integration) | 
-| io.swagger.core.v3/swagger-jaxrs2 | 2.2.50 | Apache License 2.0 | [swagger-jaxrs2](https://github.com/swagger-api/swagger-core/modules/swagger-jaxrs2) | 
-| io.swagger.core.v3/swagger-models | 2.2.50 | Apache License 2.0 | [swagger-models](https://github.com/swagger-api/swagger-core/modules/swagger-models) | 
-| io.swagger.core.v3/swagger-models-jakarta | 2.2.47 | Apache License 2.0 | [swagger-models-jakarta](https://github.com/swagger-api/swagger-core/modules/swagger-models-jakarta) | 
+| io.swagger.core.v3/swagger-annotations | 2.2.55 | Apache License 2.0 | [swagger-annotations](https://github.com/swagger-api/swagger-core/modules/swagger-annotations) | 
+| io.swagger.core.v3/swagger-annotations-jakarta | 2.2.55 | Apache License 2.0 | [swagger-annotations-jakarta](https://github.com/swagger-api/swagger-core/modules/swagger-annotations-jakarta) | 
+| io.swagger.core.v3/swagger-core | 2.2.55 | Apache License 2.0 | [swagger-core](https://github.com/swagger-api/swagger-core/modules/swagger-core) | 
+| io.swagger.core.v3/swagger-core-jakarta | 2.2.55 | Apache License 2.0 | [swagger-core-jakarta](https://github.com/swagger-api/swagger-core/modules/swagger-core-jakarta) | 
+| io.swagger.core.v3/swagger-integration | 2.2.55 | Apache License 2.0 | [swagger-integration](https://github.com/swagger-api/swagger-core/modules/swagger-integration) | 
+| io.swagger.core.v3/swagger-jaxrs2 | 2.2.55 | Apache License 2.0 | [swagger-jaxrs2](https://github.com/swagger-api/swagger-core/modules/swagger-jaxrs2) | 
+| io.swagger.core.v3/swagger-models | 2.2.55 | Apache License 2.0 | [swagger-models](https://github.com/swagger-api/swagger-core/modules/swagger-models) | 
+| io.swagger.core.v3/swagger-models-jakarta | 2.2.55 | Apache License 2.0 | [swagger-models-jakarta](https://github.com/swagger-api/swagger-core/modules/swagger-models-jakarta) | 
 | io.swagger.parser.v3/swagger-parser | 2.1.31 | Apache License 2.0 | [swagger-parser](https://github.com/swagger-api/swagger-parser/modules/swagger-parser) | 
-| io.swagger.parser.v3/swagger-parser-core | 2.1.42 | Apache License 2.0 | [swagger-parser-core](https://github.com/swagger-api/swagger-parser/modules/swagger-parser-core) | 
-| io.swagger.parser.v3/swagger-parser-safe-url-resolver | 2.1.42 | Apache License 2.0 | [swagger-parser-safe-url-resolver](https://github.com/swagger-api/swagger-parser/modules/swagger-parser-safe-url-resolver) | 
+| io.swagger.parser.v3/swagger-parser-core | 2.1.48 | Apache License 2.0 | [swagger-parser-core](https://github.com/swagger-api/swagger-parser/modules/swagger-parser-core) | 
+| io.swagger.parser.v3/swagger-parser-safe-url-resolver | 2.1.48 | Apache License 2.0 | [swagger-parser-safe-url-resolver](https://github.com/swagger-api/swagger-parser/modules/swagger-parser-safe-url-resolver) | 
 | io.swagger.parser.v3/swagger-parser-v2-converter | 2.1.31 | Apache License 2.0 | [swagger-parser-v2-converter](https://github.com/swagger-api/swagger-parser/modules/swagger-parser-v2-converter) | 
-| io.swagger.parser.v3/swagger-parser-v3 | 2.1.42 | Apache License 2.0 | [swagger-parser-v3](https://github.com/swagger-api/swagger-parser/modules/swagger-parser-v3) | 
+| io.swagger.parser.v3/swagger-parser-v3 | 2.1.48 | Apache License 2.0 | [swagger-parser-v3](https://github.com/swagger-api/swagger-parser/modules/swagger-parser-v3) | 
 | io.zipkin.brave/brave-bom | 6.3.0 | The Apache Software License, Version 2.0 | [brave-bom](https://github.com/openzipkin/brave) | 
 | io.zipkin.reporter2/zipkin-reporter-bom | 3.5.1 | The Apache Software License, Version 2.0 | [zipkin-reporter-bom](https://github.com/openzipkin/zipkin-reporter-java) | 
 | jakarta.activation/jakarta.activation-api | 2.1.4 | EDL 1.0 | [jakarta.activation-api](https://github.com/jakartaee/jaf-api) | 
 | jakarta.annotation/jakarta.annotation-api | 2.1.1 | EPL 2.0 | [jakarta.annotation-api](https://projects.eclipse.org/projects/ee4j.ca) | 
+| jakarta.annotation/jakarta.annotation-api | 3.0.0 | EPL 2.0 | [jakarta.annotation-api](https://projects.eclipse.org/projects/ee4j.ca) | 
 | jakarta.inject/jakarta.inject-api | 2.0.1 | The Apache Software License, Version 2.0 | [jakarta.inject-api](https://github.com/eclipse-ee4j/injection-api) | 
 | jakarta.mail/jakarta.mail-api | 2.1.5 | EDL 1.0 | [jakarta.mail-api](https://projects.eclipse.org/projects/ee4j/jakarta.mail-api) | 
 | jakarta.servlet/jakarta.servlet-api | 6.1.0 | EPL 2.0 | [jakarta.servlet-api](https://projects.eclipse.org/projects/ee4j.servlet) | 
 | jakarta.transaction/jakarta.transaction-api | 2.0.1 | EPL 2.0 | [jakarta.transaction-api](https://projects.eclipse.org/projects/ee4j.jta) | 
 | jakarta.validation/jakarta.validation-api | 3.1.1 | Apache License 2.0 | [jakarta.validation-api](https://beanvalidation.org) | 
-| jakarta.ws.rs/jakarta.ws.rs-api | 3.1.0 | GPL-2.0-with-classpath-exception | [jakarta.ws.rs-api](https://github.com/eclipse-ee4j/jaxrs-api) | 
+| jakarta.ws.rs/jakarta.ws.rs-api | 4.0.0 | GPL-2.0-with-classpath-exception | [jakarta.ws.rs-api](https://github.com/jakartaee/rest/jakarta.ws.rs-api) | 
 | jakarta.xml.bind/jakarta.xml.bind-api | 2.3.3 | Eclipse Distribution License - v 1.0 | [jakarta.xml.bind-api](https://github.com/eclipse-ee4j/jaxb-api/jakarta.xml.bind-api) | 
-| jakarta.xml.bind/jakarta.xml.bind-api | 4.0.4 | Eclipse Distribution License - v 1.0 | [jakarta.xml.bind-api](https://github.com/jakartaee/jaxb-api/jakarta.xml.bind-api) | 
+| jakarta.xml.bind/jakarta.xml.bind-api | 4.0.5 | Eclipse Distribution License - v 1.0 | [jakarta.xml.bind-api](https://github.com/jakartaee/jaxb-api/jakarta.xml.bind-api) | 
 | javax.annotation/javax.annotation-api | 1.3.2 | CDDL + GPLv2 with classpath exception | [javax.annotation-api](http://jcp.org/en/jsr/detail?id=250) | 
 | javax.cache/cache-api | 1.1.1 | Apache License, Version 2.0 | [cache-api](https://github.com/jsr107/jsr107spec) | 
-| javax.servlet/javax.servlet-api | 4.0.1 | CDDL + GPLv2 with classpath exception | [javax.servlet-api](https://javaee.github.io/servlet-spec/) | 
 | javax.validation/validation-api | 1.1.0.Final | The Apache Software License, Version 2.0 | [validation-api](http://beanvalidation.org) | 
 | javax.validation/validation-api | 2.0.1.Final | Apache License 2.0 | [validation-api](http://beanvalidation.org) | 
 | javax.xml.bind/jaxb-api | 2.2.12 | CDDL 1.1 | [jaxb-api](http://jaxb.java.net/) | 
-| joda-time/joda-time | 2.14.2 | Apache License, Version 2.0 | [joda-time](https://www.joda.org/joda-time/) | 
+| joda-time/joda-time | 2.15.0 | Apache License, Version 2.0 | [joda-time](https://www.joda.org/joda-time/) | 
 | net.minidev/accessors-smart | 2.6.0 | The Apache Software License, Version 2.0 | [accessors-smart](https://urielch.github.io/) | 
 | net.minidev/json-smart | 2.6.0 | The Apache Software License, Version 2.0 | [json-smart](https://urielch.github.io/) | 
 | net.sf.jopt-simple/jopt-simple | 5.0.4 | The MIT License | [jopt-simple](http://jopt-simple.github.io/jopt-simple) | 
@@ -596,10 +585,10 @@
 | org.antlr/antlr4-runtime | 4.13.1 | BSD-3-Clause | [antlr4-runtime](https://www.antlr.org/antlr4-runtime/) | 
 | org.antlr/stringtemplate | 3.2.1 | BSD licence | [stringtemplate](http://www.stringtemplate.org) | 
 | org.apache.commons/commons-collections4 | 4.5.0 | Apache-2.0 | [commons-collections4](https://commons.apache.org/proper/commons-collections/) | 
-| org.apache.commons/commons-configuration2 | 2.13.0 | Apache-2.0 | [commons-configuration2](https://commons.apache.org/proper/commons-configuration/) | 
+| org.apache.commons/commons-configuration2 | 2.15.1 | Apache-2.0 | [commons-configuration2](https://commons.apache.org/proper/commons-configuration/) | 
 | org.apache.commons/commons-csv | 1.10.0 | Apache-2.0 | [commons-csv](https://commons.apache.org/proper/commons-csv/) | 
 | org.apache.commons/commons-lang3 | 3.8.1 | Apache License, Version 2.0 | [commons-lang3](http://commons.apache.org/proper/commons-lang/) | 
-| org.apache.commons/commons-lang3 | 3.20.0 | Apache-2.0 | [commons-lang3](https://commons.apache.org/proper/commons-lang/) | 
+| org.apache.commons/commons-lang3 | 3.21.0 | Apache-2.0 | [commons-lang3](https://commons.apache.org/proper/commons-lang/) | 
 | org.apache.commons/commons-math | 2.2 | The Apache Software License, Version 2.0 | [commons-math](http://commons.apache.org/math/) | 
 | org.apache.commons/commons-text | 1.3 | Apache License, Version 2.0 | [commons-text](http://commons.apache.org/proper/commons-text/) | 
 | org.apache.commons/commons-text | 1.15.0 | Apache-2.0 | [commons-text](https://commons.apache.org/proper/commons-text) | 
@@ -610,221 +599,249 @@
 | org.apache.httpcomponents/httpcore | 4.4.14 | Apache License, Version 2.0 | [httpcore](http://hc.apache.org/httpcomponents-core-ga) | 
 | org.apache.httpcomponents/httpcore | 4.4.16 | Apache License, Version 2.0 | [httpcore](http://hc.apache.org/httpcomponents-core-ga) | 
 | org.apache.httpcomponents.client5/httpclient5 | 5.1.3 | Apache License, Version 2.0 | [httpclient5](https://hc.apache.org/httpcomponents-client-5.0.x/5.1.3/httpclient5/) | 
-| org.apache.httpcomponents.client5/httpclient5 | 5.6.1 | Apache License, Version 2.0 | [httpclient5](https://hc.apache.org/httpcomponents-client-5.5.x/5.6.1/httpclient5/) | 
+| org.apache.httpcomponents.client5/httpclient5 | 5.6.5 | Apache License, Version 2.0 | [httpclient5](https://hc.apache.org/httpcomponents-client-5.6.x/5.6.5/httpclient5/) | 
 | org.apache.httpcomponents.core5/httpcore5 | 5.1.3 | Apache License, Version 2.0 | [httpcore5](https://hc.apache.org/httpcomponents-core-5.1.x/5.1.3/httpcore5/) | 
-| org.apache.httpcomponents.core5/httpcore5 | 5.4 | Apache License, Version 2.0 | [httpcore5](https://hc.apache.org/httpcomponents-core-5.4.x/5.4/httpcore5/) | 
+| org.apache.httpcomponents.core5/httpcore5 | 5.4.4 | Apache License, Version 2.0 | [httpcore5](https://hc.apache.org/httpcomponents-core-5.4.x/5.4.4/httpcore5/) | 
 | org.apache.httpcomponents.core5/httpcore5-h2 | 5.1.3 | Apache License, Version 2.0 | [httpcore5-h2](https://hc.apache.org/httpcomponents-core-5.1.x/5.1.3/httpcore5-h2/) | 
-| org.apache.httpcomponents.core5/httpcore5-h2 | 5.4 | Apache License, Version 2.0 | [httpcore5-h2](https://hc.apache.org/httpcomponents-core-5.4.x/5.4/httpcore5-h2/) | 
-| org.apache.logging.log4j/log4j-api | 2.26.0 | Apache-2.0 | [log4j-api](https://logging.apache.org/log4j/2.x/) | 
+| org.apache.httpcomponents.core5/httpcore5-h2 | 5.4.4 | Apache License, Version 2.0 | [httpcore5-h2](https://hc.apache.org/httpcomponents-core-5.4.x/5.4.4/httpcore5-h2/) | 
+| org.apache.logging.log4j/log4j-api | 2.26.1 | Apache-2.0 | [log4j-api](https://logging.apache.org/log4j/2.x/) | 
 | org.apache.logging.log4j/log4j-bom | 2.24.3 | Apache-2.0 | [log4j-bom](https://logging.apache.org/log4j/2.x/) | 
-| org.apache.logging.log4j/log4j-to-slf4j | 2.26.0 | Apache-2.0 | [log4j-to-slf4j](https://logging.apache.org/log4j/2.x/) | 
+| org.apache.logging.log4j/log4j-to-slf4j | 2.26.1 | Apache-2.0 | [log4j-to-slf4j](https://logging.apache.org/log4j/2.x/) | 
 | org.apache.maven.doxia/doxia-core | 1.12.0 | Apache License, Version 2.0 | [doxia-core](https://maven.apache.org/doxia/doxia/doxia-core/) | 
 | org.apache.maven.doxia/doxia-logging-api | 1.12.0 | Apache License, Version 2.0 | [doxia-logging-api](https://maven.apache.org/doxia/doxia/doxia-logging-api/) | 
 | org.apache.maven.doxia/doxia-module-xdoc | 1.12.0 | Apache License, Version 2.0 | [doxia-module-xdoc](https://maven.apache.org/doxia/doxia/doxia-modules/doxia-module-xdoc/) | 
 | org.apache.maven.doxia/doxia-sink-api | 1.12.0 | Apache License, Version 2.0 | [doxia-sink-api](https://maven.apache.org/doxia/doxia/doxia-sink-api/) | 
-| org.apache.tomcat.embed/tomcat-embed-core | 10.1.54 | Apache License, Version 2.0 | [tomcat-embed-core](https://tomcat.apache.org/) | 
-| org.apache.tomcat.embed/tomcat-embed-el | 10.1.54 | Apache License, Version 2.0 | [tomcat-embed-el](https://tomcat.apache.org/) | 
-| org.apache.tomcat.embed/tomcat-embed-websocket | 10.1.54 | Apache License, Version 2.0 | [tomcat-embed-websocket](https://tomcat.apache.org/) | 
+| org.apache.tomcat.embed/tomcat-embed-core | 11.0.27 | Apache License, Version 2.0 | [tomcat-embed-core](https://tomcat.apache.org/) | 
+| org.apache.tomcat.embed/tomcat-embed-el | 11.0.27 | Apache License, Version 2.0 | [tomcat-embed-el](https://tomcat.apache.org/) | 
+| org.apache.tomcat.embed/tomcat-embed-websocket | 11.0.27 | Apache License, Version 2.0 | [tomcat-embed-websocket](https://tomcat.apache.org/) | 
 | org.apache.velocity/velocity-engine-core | 2.4.1 | Apache-2.0 | [velocity-engine-core](http://velocity.apache.org/engine/devel/velocity-engine-core/) | 
 | org.apache.xbean/xbean-reflect | 3.7 | The Apache Software License, Version 2.0 | [xbean-reflect](http://geronimo.apache.org/maven/xbean/3.7/xbean-reflect) | 
 | org.aspectj/aspectjweaver | 1.9.25.1 | Eclipse Public License - v 2.0 | [aspectjweaver](https://www.eclipse.org/aspectj/) | 
 | org.attoparser/attoparser | 2.0.7.RELEASE | The Apache Software License, Version 2.0 | [attoparser](https://www.attoparser.org) | 
-| org.bitbucket.b_c/jose4j | 0.9.6 | The Apache Software License, Version 2.0 | [jose4j](https://bitbucket.org/b_c/jose4j/) | 
-| org.bouncycastle/bcpkix-jdk18on | 1.84 | Bouncy Castle Licence | [bcpkix-jdk18on](https://www.bouncycastle.org/download/bouncy-castle-java/) | 
-| org.bouncycastle/bcprov-jdk18on | 1.84 | Bouncy Castle Licence | [bcprov-jdk18on](https://www.bouncycastle.org/download/bouncy-castle-java/) | 
-| org.bouncycastle/bcutil-jdk18on | 1.84 | Bouncy Castle Licence | [bcutil-jdk18on](https://www.bouncycastle.org/download/bouncy-castle-java/) | 
+| org.bitbucket.b_c/jose4j | 0.9.7 | The Apache Software License, Version 2.0 | [jose4j](https://bitbucket.org/b_c/jose4j/) | 
+| org.bouncycastle/bcpkix-jdk18on | 1.86 | Bouncy Castle Licence | [bcpkix-jdk18on](https://www.bouncycastle.org/download/bouncy-castle-java/) | 
+| org.bouncycastle/bcprov-jdk18on | 1.86 | Bouncy Castle Licence | [bcprov-jdk18on](https://www.bouncycastle.org/download/bouncy-castle-java/) | 
+| org.bouncycastle/bcutil-jdk18on | 1.86 | Bouncy Castle Licence | [bcutil-jdk18on](https://www.bouncycastle.org/download/bouncy-castle-java/) | 
 | org.checkerframework/checker-qual | 3.43.0 | The MIT License | [checker-qual](https://checkerframework.org/) | 
 | org.codehaus.janino/commons-compiler | 3.1.12 | BSD-3-Clause | [commons-compiler](http://janino-compiler.github.io/commons-compiler/) | 
 | org.codehaus.janino/janino | 3.1.12 | BSD-3-Clause | [janino](http://janino-compiler.github.io/janino/) | 
-| org.codehaus.jettison/jettison | 1.5.5 | Apache-2.0 | [jettison](https://github.com/jettison-json/jettison) | 
+| org.codehaus.jettison/jettison | 1.5.7 | Apache-2.0 | [jettison](https://github.com/jettison-json/jettison) | 
 | org.codehaus.plexus/plexus-classworlds | 2.6.0 | Apache License, Version 2.0 | [plexus-classworlds](http://codehaus-plexus.github.io/plexus-classworlds/) | 
 | org.codehaus.plexus/plexus-component-annotations | 2.1.0 | Apache License, Version 2.0 | [plexus-component-annotations](http://codehaus-plexus.github.io/plexus-containers/plexus-component-annotations/) | 
 | org.codehaus.plexus/plexus-container-default | 2.1.0 | Apache License, Version 2.0 | [plexus-container-default](http://codehaus-plexus.github.io/plexus-containers/plexus-container-default/) | 
 | org.codehaus.plexus/plexus-utils | 3.3.0 | Apache License, Version 2.0 | [plexus-utils](http://codehaus-plexus.github.io/plexus-utils/) | 
-| org.codehaus.woodstox/stax2-api | 4.2.2 | The BSD 2-Clause License | [stax2-api](http://github.com/FasterXML/stax2-api) | 
+| org.codehaus.woodstox/stax2-api | 4.3.1 | The BSD 2-Clause License | [stax2-api](http://github.com/FasterXML/stax2-api) | 
+| org.eclipse.angus/angus-activation | 2.0.3 | EDL 1.0 | [angus-activation](https://github.com/eclipse-ee4j/angus-activation/angus-activation) | 
 | org.eclipse.jetty/jetty-bom | 12.0.21 | Apache Software License - Version 2.0 | [jetty-bom](https://jetty.org/jetty-core/jetty-bom) | 
 | org.ehcache/ehcache | 3.12.0 | The Apache Software License, Version 2.0 | [ehcache](http://ehcache.org) | 
-| org.freemarker/freemarker | 2.3.34 | Apache License, Version 2.0 | [freemarker](https://freemarker.apache.org/) | 
+| org.freemarker/freemarker | 2.3.35 | Apache License, Version 2.0 | [freemarker](https://freemarker.apache.org/) | 
 | org.glassfish.hk2/hk2-api | 3.1.1 | EPL 2.0 | [hk2-api](https://github.com/eclipse-ee4j/glassfish-hk2/hk2-api) | 
 | org.glassfish.hk2/hk2-locator | 3.0.6 | EPL 2.0 | [hk2-locator](https://github.com/eclipse-ee4j/glassfish-hk2/hk2-locator) | 
 | org.glassfish.hk2/hk2-utils | 3.1.1 | EPL 2.0 | [hk2-utils](https://github.com/eclipse-ee4j/glassfish-hk2/hk2-utils) | 
 | org.glassfish.hk2/osgi-resource-locator | 1.0.3 | EPL 2.0 | [osgi-resource-locator](https://projects.eclipse.org/projects/ee4j/osgi-resource-locator) | 
 | org.glassfish.hk2/spring-bridge | 3.1.1 | EPL 2.0 | [spring-bridge](https://github.com/eclipse-ee4j/glassfish-hk2/spring-bridge) | 
 | org.glassfish.hk2.external/aopalliance-repackaged | 3.1.1 | EPL 2.0 | [aopalliance-repackaged](https://github.com/eclipse-ee4j/glassfish-hk2/external/aopalliance-repackaged) | 
-| org.glassfish.jaxb/jaxb-core | 4.0.6 | Eclipse Distribution License - v 1.0 | [jaxb-core](https://eclipse-ee4j.github.io/jaxb-ri/) | 
-| org.glassfish.jaxb/jaxb-runtime | 4.0.6 | Eclipse Distribution License - v 1.0 | [jaxb-runtime](https://eclipse-ee4j.github.io/jaxb-ri/) | 
-| org.glassfish.jaxb/txw2 | 4.0.6 | Eclipse Distribution License - v 1.0 | [txw2](https://eclipse-ee4j.github.io/jaxb-ri/) | 
-| org.glassfish.jersey.connectors/jersey-apache-connector | 3.1.11 | W3C license | [jersey-apache-connector](https://projects.eclipse.org/projects/ee4j.jersey/project/jersey-apache-connector) | 
-| org.glassfish.jersey.containers/jersey-container-servlet | 3.1.11 | W3C license | [jersey-container-servlet](https://projects.eclipse.org/projects/ee4j.jersey/project/jersey-container-servlet) | 
-| org.glassfish.jersey.containers/jersey-container-servlet-core | 3.1.11 | W3C license | [jersey-container-servlet-core](https://projects.eclipse.org/projects/ee4j.jersey/project/jersey-container-servlet-core) | 
-| org.glassfish.jersey.core/jersey-client | 3.1.11 | W3C license | [jersey-client](https://projects.eclipse.org/projects/ee4j.jersey/jersey-client) | 
-| org.glassfish.jersey.core/jersey-common | 3.1.11 | Apache License, 2.0 | [jersey-common](https://projects.eclipse.org/projects/ee4j.jersey/jersey-common) | 
-| org.glassfish.jersey.core/jersey-server | 3.1.11 | Apache License, 2.0 | [jersey-server](https://projects.eclipse.org/projects/ee4j.jersey/jersey-server) | 
-| org.glassfish.jersey.inject/jersey-hk2 | 3.1.11 | W3C license | [jersey-hk2](https://projects.eclipse.org/projects/ee4j.jersey/project/jersey-hk2) | 
-| org.glassfish.jersey.media/jersey-media-multipart | 3.1.11 | W3C license | [jersey-media-multipart](https://projects.eclipse.org/projects/ee4j.jersey/project/jersey-media-multipart) | 
+| org.glassfish.jaxb/jaxb-core | 4.0.9 | Eclipse Distribution License - v 1.0 | [jaxb-core](https://eclipse-ee4j.github.io/jaxb-ri/) | 
+| org.glassfish.jaxb/jaxb-runtime | 4.0.9 | Eclipse Distribution License - v 1.0 | [jaxb-runtime](https://eclipse-ee4j.github.io/jaxb-ri/) | 
+| org.glassfish.jaxb/txw2 | 4.0.9 | Eclipse Distribution License - v 1.0 | [txw2](https://eclipse-ee4j.github.io/jaxb-ri/) | 
+| org.glassfish.jersey.connectors/jersey-apache-connector | 3.1.12 | W3C license | [jersey-apache-connector](https://projects.eclipse.org/projects/ee4j.jersey/project/jersey-apache-connector) | 
+| org.glassfish.jersey.containers/jersey-container-servlet | 3.1.12 | W3C license | [jersey-container-servlet](https://projects.eclipse.org/projects/ee4j.jersey/project/jersey-container-servlet) | 
+| org.glassfish.jersey.containers/jersey-container-servlet-core | 3.1.12 | W3C license | [jersey-container-servlet-core](https://projects.eclipse.org/projects/ee4j.jersey/project/jersey-container-servlet-core) | 
+| org.glassfish.jersey.core/jersey-client | 3.1.12 | W3C license | [jersey-client](https://projects.eclipse.org/projects/ee4j.jersey/jersey-client) | 
+| org.glassfish.jersey.core/jersey-common | 3.1.12 | Apache License, 2.0 | [jersey-common](https://projects.eclipse.org/projects/ee4j.jersey/jersey-common) | 
+| org.glassfish.jersey.core/jersey-server | 3.1.12 | Apache License, 2.0 | [jersey-server](https://projects.eclipse.org/projects/ee4j.jersey/jersey-server) | 
+| org.glassfish.jersey.inject/jersey-hk2 | 3.1.12 | W3C license | [jersey-hk2](https://projects.eclipse.org/projects/ee4j.jersey/project/jersey-hk2) | 
+| org.glassfish.jersey.media/jersey-media-multipart | 3.1.12 | W3C license | [jersey-media-multipart](https://projects.eclipse.org/projects/ee4j.jersey/project/jersey-media-multipart) | 
 | org.graalvm.buildtools/junit-platform-native | 0.11.2 | Universal Permissive License Version 1.0 | [junit-platform-native](https://github.com/graalvm/native-build-tools) | 
 | org.hdrhistogram/HdrHistogram | 2.2.2 | Public Domain, per Creative Commons CC0 | [HdrHistogram](http://hdrhistogram.github.io/HdrHistogram/) | 
-| org.hibernate.validator/hibernate-validator | 8.0.3.Final | Apache License 2.0 | [hibernate-validator](https://hibernate.org/validator) | 
-| org.infinispan/infinispan-api | 16.1.4 | Apache License 2.0 | [infinispan-api](https://infinispan.org/infinispan-api) | 
-| org.infinispan/infinispan-clustered-lock | 16.1.4 | Apache License 2.0 | [infinispan-clustered-lock](https://infinispan.org/infinispan-clustered-lock) | 
-| org.infinispan/infinispan-commons | 16.1.4 | Apache License 2.0 | [infinispan-commons](https://infinispan.org/infinispan-commons-parent/infinispan-commons) | 
-| org.infinispan/infinispan-component-annotations | 16.1.4 | Apache License 2.0 | [infinispan-component-annotations](https://infinispan.org/infinispan-component-annotations) | 
-| org.infinispan/infinispan-core | 16.1.4 | Apache License 2.0 | [infinispan-core](https://infinispan.org/infinispan-core) | 
-| org.infinispan/infinispan-counter-api | 16.1.4 | Apache License 2.0 | [infinispan-counter-api](https://infinispan.org/infinispan-counter-api) | 
-| org.infinispan/infinispan-jboss-marshalling | 16.1.4 | Apache License 2.0 | [infinispan-jboss-marshalling](https://infinispan.org/infinispan-jboss-marshalling) | 
-| org.infinispan/infinispan-spring-boot3-starter-embedded | 16.1.4 | Apache License 2.0 | [infinispan-spring-boot3-starter-embedded](https://infinispan.org/infinispan-spring-parent/infinispan-spring-boot3-starter-parent/infinispan-spring-boot3-starter-embedded) | 
-| org.infinispan/infinispan-spring-common | 16.1.4 | Apache License 2.0 | [infinispan-spring-common](https://infinispan.org/infinispan-spring-parent/infinispan-spring-common) | 
-| org.infinispan/infinispan-spring-embedded | 16.1.4 | Apache License 2.0 | [infinispan-spring-embedded](https://infinispan.org/infinispan-spring-parent/infinispan-spring-embedded) | 
-| org.infinispan/infinispan-spring6-embedded | 16.1.4 | Apache License 2.0 | [infinispan-spring6-embedded](https://infinispan.org/infinispan-spring-parent/infinispan-spring6-parent/infinispan-spring6-embedded) | 
-| org.infinispan.protostream/protostream | 6.0.7 | Apache License 2.0 | [protostream](https://github.com/infinispan/protostream) | 
-| org.infinispan.protostream/protostream-types | 6.0.7 | Apache License 2.0 | [protostream-types](https://infinispan.org/protostream-types) | 
-| org.jacoco/org.jacoco.agent | 0.8.11 | Eclipse Public License 2.0 | [org.jacoco.agent](http://org.jacoco.agent) | 
-| org.jacoco/org.jacoco.agent | 0.8.13 | EPL-2.0 | [org.jacoco.agent](http://org.jacoco.agent) | 
-| org.jacoco/org.jacoco.ant | 0.8.11 | Eclipse Public License 2.0 | [org.jacoco.ant](http://org.jacoco.ant) | 
-| org.jacoco/org.jacoco.ant | 0.8.13 | EPL-2.0 | [org.jacoco.ant](http://org.jacoco.ant) | 
-| org.jacoco/org.jacoco.core | 0.8.11 | Eclipse Public License 2.0 | [org.jacoco.core](http://org.jacoco.core) | 
-| org.jacoco/org.jacoco.core | 0.8.13 | EPL-2.0 | [org.jacoco.core](http://org.jacoco.core) | 
-| org.jacoco/org.jacoco.report | 0.8.11 | Eclipse Public License 2.0 | [org.jacoco.report](http://org.jacoco.report) | 
-| org.jacoco/org.jacoco.report | 0.8.13 | EPL-2.0 | [org.jacoco.report](http://org.jacoco.report) | 
+| org.hibernate.validator/hibernate-validator | 9.1.5.Final | Apache License 2.0 | [hibernate-validator](https://hibernate.org/validator) | 
+| org.infinispan/infinispan-api | 16.3.1 | Apache License 2.0 | [infinispan-api](https://infinispan.org/infinispan-api) | 
+| org.infinispan/infinispan-clustered-lock | 16.3.1 | Apache License 2.0 | [infinispan-clustered-lock](https://infinispan.org/infinispan-clustered-lock) | 
+| org.infinispan/infinispan-commons | 16.3.1 | Apache License 2.0 | [infinispan-commons](https://infinispan.org/infinispan-commons-parent/infinispan-commons) | 
+| org.infinispan/infinispan-component-annotations | 16.3.1 | Apache License 2.0 | [infinispan-component-annotations](https://infinispan.org/infinispan-component-annotations) | 
+| org.infinispan/infinispan-core | 16.3.1 | Apache License 2.0 | [infinispan-core](https://infinispan.org/infinispan-core) | 
+| org.infinispan/infinispan-counter-api | 16.3.1 | Apache License 2.0 | [infinispan-counter-api](https://infinispan.org/infinispan-counter-api) | 
+| org.infinispan/infinispan-jboss-marshalling | 16.3.1 | Apache License 2.0 | [infinispan-jboss-marshalling](https://infinispan.org/infinispan-jboss-marshalling) | 
+| org.infinispan/infinispan-spring-boot3-starter-embedded | 16.3.1 | Apache License 2.0 | [infinispan-spring-boot3-starter-embedded](https://infinispan.org/infinispan-spring-parent/infinispan-spring-boot3-starter-parent/infinispan-spring-boot3-starter-embedded) | 
+| org.infinispan/infinispan-spring-common | 16.3.1 | Apache License 2.0 | [infinispan-spring-common](https://infinispan.org/infinispan-spring-parent/infinispan-spring-common) | 
+| org.infinispan/infinispan-spring-embedded | 16.3.1 | Apache License 2.0 | [infinispan-spring-embedded](https://infinispan.org/infinispan-spring-parent/infinispan-spring-embedded) | 
+| org.infinispan/infinispan-spring6-embedded | 16.3.1 | Apache License 2.0 | [infinispan-spring6-embedded](https://infinispan.org/infinispan-spring-parent/infinispan-spring6-parent/infinispan-spring6-embedded) | 
+| org.infinispan.protostream/protostream | 6.0.12 | Apache License 2.0 | [protostream](https://github.com/infinispan/protostream) | 
+| org.infinispan.protostream/protostream-types | 6.0.12 | Apache License 2.0 | [protostream-types](https://infinispan.org/protostream-types) | 
+| org.jacoco/org.jacoco.agent | 0.8.15 | EPL-2.0 | [org.jacoco.agent](http://org.jacoco.agent) | 
+| org.jacoco/org.jacoco.ant | 0.8.15 | EPL-2.0 | [org.jacoco.ant](http://org.jacoco.ant) | 
+| org.jacoco/org.jacoco.core | 0.8.15 | EPL-2.0 | [org.jacoco.core](http://org.jacoco.core) | 
+| org.jacoco/org.jacoco.report | 0.8.15 | EPL-2.0 | [org.jacoco.report](http://org.jacoco.report) | 
 | org.javassist/javassist | 3.28.0-GA | Apache License 2.0 | [javassist](http://www.javassist.org/) | 
 | org.javassist/javassist | 3.30.2-GA | Apache License 2.0 | [javassist](https://www.javassist.org/) | 
 | org.jboss.logging/jboss-logging | 3.6.3.Final | Apache License 2.0 | [jboss-logging](https://www.jboss.org) | 
-| org.jboss.marshalling/jboss-marshalling | 2.2.3.Final | Apache License 2.0 | [jboss-marshalling](http://www.jboss.org) | 
-| org.jboss.marshalling/jboss-marshalling-river | 2.2.3.Final | Apache License 2.0 | [jboss-marshalling-river](http://www.jboss.org) | 
-| org.jboss.threads/jboss-threads | 3.9.2 | Apache License 2.0 | [jboss-threads](https://github.com/jbossas/jboss-threads) | 
+| org.jboss.marshalling/jboss-marshalling | 2.3.0 | Apache License 2.0 | [jboss-marshalling](http://www.jboss.org) | 
+| org.jboss.marshalling/jboss-marshalling-river | 2.3.0 | Apache License 2.0 | [jboss-marshalling-river](http://www.jboss.org) | 
+| org.jboss.threads/jboss-threads | 3.11.0 | Apache License 2.0 | [jboss-threads](https://github.com/jbossas/jboss-threads) | 
 | org.jdbi/jdbi3-bom | 3.49.5 | Apache License 2.0 | [jdbi3-bom](https://jdbi.org/jdbi3-bom/) | 
 | org.jetbrains/annotations | 13.0 | The Apache Software License, Version 2.0 | [annotations](http://www.jetbrains.org) | 
 | org.jetbrains.kotlin/kotlin-bom | 1.9.25 | The Apache Software License, Version 2.0 | [kotlin-bom](https://kotlinlang.org/) | 
-| org.jetbrains.kotlin/kotlin-stdlib | 2.2.21 | Apache-2.0 | [kotlin-stdlib](https://kotlinlang.org/) | 
+| org.jetbrains.kotlin/kotlin-stdlib | 2.4.21 | Apache-2.0 | [kotlin-stdlib](https://kotlinlang.org/) | 
+| org.jetbrains.kotlin/kotlin-stdlib-jdk7 | 2.3.21 | Apache-2.0 | [kotlin-stdlib-jdk7](https://kotlinlang.org/) | 
+| org.jetbrains.kotlin/kotlin-stdlib-jdk8 | 2.3.21 | Apache-2.0 | [kotlin-stdlib-jdk8](https://kotlinlang.org/) | 
 | org.jetbrains.kotlinx/kotlinx-coroutines-bom | 1.8.1 | The Apache Software License, Version 2.0 | [kotlinx-coroutines-bom](https://github.com/Kotlin/kotlinx.coroutines) | 
-| org.jgroups/jgroups | 5.5.2.Final | Apache License 2.0 | [jgroups](http://www.jgroups.org) | 
+| org.jgroups/jgroups | 5.5.7.Final | Apache License 2.0 | [jgroups](http://www.jgroups.org) | 
 | org.jmolecules/jmolecules-bom | 2023.3.4 | Apache License, Version 2.0 | [jmolecules-bom](https://github.com/xmolecules/jmolecules-bom) | 
-| org.jmolecules/jmolecules-events | 1.10.0 | Apache License, Version 2.0 | [jmolecules-events](https://github.com/xmolecules/jmolecules/jmolecules-events) | 
-| org.jspecify/jspecify | 1.0.0 | The Apache License, Version 2.0 | [jspecify](http://jspecify.org/) | 
+| org.jmolecules/jmolecules-events | 2.0.1 | Apache License, Version 2.0 | [jmolecules-events](https://github.com/xmolecules/jmolecules/jmolecules-events) | 
+| org.jmolecules/jstereotype | 2.0.1 | Apache License, Version 2.0 | [jstereotype](https://github.com/xmolecules/jmolecules/jstereotype) | 
+| org.jspecify/jspecify | 1.0.1 | The Apache License, Version 2.0 | [jspecify](https://jspecify.dev/) | 
 | org.junit/junit-bom | 5.12.2 | Eclipse Public License v2.0 | [junit-bom](https://junit.org/junit5/) | 
-| org.junit/junit-bom | 5.14.4 | Eclipse Public License v2.0 | [junit-bom](https://junit.org/) | 
-| org.junit.jupiter/junit-jupiter | 5.14.4 | Eclipse Public License v2.0 | [junit-jupiter](https://junit.org/) | 
-| org.junit.jupiter/junit-jupiter-api | 5.14.4 | Eclipse Public License v2.0 | [junit-jupiter-api](https://junit.org/) | 
-| org.junit.jupiter/junit-jupiter-engine | 5.14.4 | Eclipse Public License v2.0 | [junit-jupiter-engine](https://junit.org/) | 
-| org.junit.jupiter/junit-jupiter-params | 5.14.4 | Eclipse Public License v2.0 | [junit-jupiter-params](https://junit.org/) | 
-| org.junit.platform/junit-platform-commons | 1.14.4 | Eclipse Public License v2.0 | [junit-platform-commons](https://junit.org/) | 
-| org.junit.platform/junit-platform-console | 1.14.4 | Eclipse Public License v2.0 | [junit-platform-console](https://junit.org/) | 
-| org.junit.platform/junit-platform-engine | 1.14.4 | Eclipse Public License v2.0 | [junit-platform-engine](https://junit.org/) | 
-| org.junit.platform/junit-platform-launcher | 1.14.4 | Eclipse Public License v2.0 | [junit-platform-launcher](https://junit.org/) | 
-| org.junit.platform/junit-platform-reporting | 1.14.4 | Eclipse Public License v2.0 | [junit-platform-reporting](https://junit.org/) | 
+| org.junit/junit-bom | 6.0.3 | Eclipse Public License v2.0 | [junit-bom](https://junit.org/) | 
+| org.junit.jupiter/junit-jupiter | 6.0.3 | Eclipse Public License v2.0 | [junit-jupiter](https://junit.org/) | 
+| org.junit.jupiter/junit-jupiter-api | 6.0.3 | Eclipse Public License v2.0 | [junit-jupiter-api](https://junit.org/) | 
+| org.junit.jupiter/junit-jupiter-engine | 6.0.3 | Eclipse Public License v2.0 | [junit-jupiter-engine](https://junit.org/) | 
+| org.junit.jupiter/junit-jupiter-params | 6.0.3 | Eclipse Public License v2.0 | [junit-jupiter-params](https://junit.org/) | 
+| org.junit.platform/junit-platform-commons | 6.0.3 | Eclipse Public License v2.0 | [junit-platform-commons](https://junit.org/) | 
+| org.junit.platform/junit-platform-console | 6.0.3 | Eclipse Public License v2.0 | [junit-platform-console](https://junit.org/) | 
+| org.junit.platform/junit-platform-engine | 6.0.3 | Eclipse Public License v2.0 | [junit-platform-engine](https://junit.org/) | 
+| org.junit.platform/junit-platform-launcher | 6.0.3 | Eclipse Public License v2.0 | [junit-platform-launcher](https://junit.org/) | 
+| org.junit.platform/junit-platform-reporting | 6.0.3 | Eclipse Public License v2.0 | [junit-platform-reporting](https://junit.org/) | 
 | org.jvnet.mimepull/mimepull | 1.9.15 | Eclipse Distribution License - v 1.0 | [mimepull](https://github.com/eclipse-ee4j/metro-mimepull) | 
-| org.latencyutils/LatencyUtils | 2.0.3 | Public Domain, per Creative Commons CC0 | [LatencyUtils](http://latencyutils.github.io/LatencyUtils/) | 
 | org.mozilla/rhino | 1.9.1 | Mozilla Public License, Version 2.0 | [rhino](https://mozilla.github.io/rhino/) | 
 | org.openapitools.openapidiff/openapi-diff-core | 2.1.7 | The Apache Software License, Version 2.0 | [openapi-diff-core](https://github.com/OpenAPITools/openapi-diff/openapi-diff-core) | 
 | org.opentest4j/opentest4j | 1.3.0 | The Apache License, Version 2.0 | [opentest4j](https://github.com/ota4j-team/opentest4j) | 
-| org.opentest4j.reporting/open-test-reporting-tooling-spi | 0.2.3 | The Apache License, Version 2.0 | [open-test-reporting-tooling-spi](https://github.com/ota4j-team/open-test-reporting) | 
+| org.opentest4j.reporting/open-test-reporting-tooling-spi | 0.2.4 | The Apache License, Version 2.0 | [open-test-reporting-tooling-spi](https://github.com/ota4j-team/open-test-reporting) | 
 | org.osgi/org.osgi.annotation.bundle | 2.0.0 | Apache-2.0 | [org.osgi.annotation.bundle](https://docs.osgi.org/) | 
 | org.osgi/org.osgi.annotation.versioning | 1.1.2 | Apache-2.0 | [org.osgi.annotation.versioning](https://docs.osgi.org/) | 
 | org.osgi/org.osgi.resource | 1.0.0 | Apache License, Version 2.0 | [org.osgi.resource](http://www.osgi.org/) | 
 | org.osgi/org.osgi.service.serviceloader | 1.0.0 | Apache License, Version 2.0 | [org.osgi.service.serviceloader](http://www.osgi.org/) | 
-| org.ow2.asm/asm | 9.6 | BSD-3-Clause | [asm](http://asm.ow2.io/) | 
 | org.ow2.asm/asm | 9.8 | BSD-3-Clause | [asm](http://asm.ow2.io/) | 
+| org.ow2.asm/asm | 9.10.1 | BSD-3-Clause | [asm](http://asm.ow2.io/) | 
+| org.ow2.asm/asm | 9.11.1 | BSD-3-Clause | [asm](http://asm.ow2.io/) | 
 | org.ow2.asm/asm-analysis | 9.8 | BSD-3-Clause | [asm-analysis](http://asm.ow2.io/) | 
-| org.ow2.asm/asm-commons | 9.6 | BSD-3-Clause | [asm-commons](http://asm.ow2.io/) | 
 | org.ow2.asm/asm-commons | 9.8 | BSD-3-Clause | [asm-commons](http://asm.ow2.io/) | 
-| org.ow2.asm/asm-tree | 9.6 | BSD-3-Clause | [asm-tree](http://asm.ow2.io/) | 
+| org.ow2.asm/asm-commons | 9.10.1 | BSD-3-Clause | [asm-commons](http://asm.ow2.io/) | 
 | org.ow2.asm/asm-tree | 9.8 | BSD-3-Clause | [asm-tree](http://asm.ow2.io/) | 
+| org.ow2.asm/asm-tree | 9.10.1 | BSD-3-Clause | [asm-tree](http://asm.ow2.io/) | 
 | org.ow2.asm/asm-util | 9.8 | BSD-3-Clause | [asm-util](http://asm.ow2.io/) | 
-| org.projectlombok/lombok | 1.18.46 | The MIT License | [lombok](https://projectlombok.org) | 
+| org.projectlombok/lombok | 1.18.48 | The MIT License | [lombok](https://projectlombok.org) | 
 | org.reactivestreams/reactive-streams | 1.0.4 | MIT-0 | [reactive-streams](http://www.reactive-streams.org/) | 
 | org.reflections/reflections | 0.10.2 | WTFPL | [reflections](http://github.com/ronmamo/reflections) | 
-| org.slf4j/jcl-over-slf4j | 2.0.17 | Apache-2.0 | [jcl-over-slf4j](http://www.slf4j.org) | 
-| org.slf4j/jul-to-slf4j | 2.0.17 | MIT | [jul-to-slf4j](http://www.slf4j.org) | 
+| org.slf4j/jcl-over-slf4j | 2.0.18 | Apache-2.0 | [jcl-over-slf4j](http://www.slf4j.org) | 
+| org.slf4j/jul-to-slf4j | 2.0.18 | MIT | [jul-to-slf4j](http://www.slf4j.org) | 
 | org.slf4j/slf4j-api | 2.0.17 | MIT | [slf4j-api](http://www.slf4j.org) | 
-| org.slf4j/slf4j-ext | 2.0.17 | MIT | [slf4j-ext](http://www.slf4j.org) | 
+| org.slf4j/slf4j-api | 2.0.18 | MIT | [slf4j-api](http://www.slf4j.org) | 
+| org.slf4j/slf4j-api | 2.0.19 | MIT | [slf4j-api](http://www.slf4j.org) | 
+| org.slf4j/slf4j-ext | 2.0.18 | MIT | [slf4j-ext](http://www.slf4j.org) | 
 | org.snakeyaml/snakeyaml-engine | 2.10 | Apache License, Version 2.0 | [snakeyaml-engine](https://bitbucket.org/snakeyaml/snakeyaml-engine) | 
 | org.spockframework/spock-bom | 2.3-groovy-4.0 | The Apache Software License, Version 2.0 | [spock-bom](https://spockframework.org) | 
-| org.springdoc/springdoc-openapi-starter-common | 2.8.17 | The Apache License, Version 2.0 | [springdoc-openapi-starter-common](https://springdoc.org/springdoc-openapi-starter-common/) | 
-| org.springdoc/springdoc-openapi-starter-webflux-api | 2.8.17 | The Apache License, Version 2.0 | [springdoc-openapi-starter-webflux-api](https://springdoc.org/springdoc-openapi-starter-webflux-api/) | 
-| org.springdoc/springdoc-openapi-starter-webflux-ui | 2.8.17 | The Apache License, Version 2.0 | [springdoc-openapi-starter-webflux-ui](https://springdoc.org/springdoc-openapi-starter-webflux-ui/) | 
-| org.springdoc/springdoc-openapi-starter-webmvc-api | 2.8.17 | The Apache License, Version 2.0 | [springdoc-openapi-starter-webmvc-api](https://springdoc.org/springdoc-openapi-starter-webmvc-api/) | 
-| org.springdoc/springdoc-openapi-starter-webmvc-ui | 2.8.17 | The Apache License, Version 2.0 | [springdoc-openapi-starter-webmvc-ui](https://springdoc.org/springdoc-openapi-starter-webmvc-ui/) | 
-| org.springframework/spring-aop | 6.2.18 | Apache License, Version 2.0 | [spring-aop](https://github.com/spring-projects/spring-framework) | 
-| org.springframework/spring-beans | 6.2.18 | Apache License, Version 2.0 | [spring-beans](https://github.com/spring-projects/spring-framework) | 
-| org.springframework/spring-context | 6.2.18 | Apache License, Version 2.0 | [spring-context](https://github.com/spring-projects/spring-framework) | 
-| org.springframework/spring-context-support | 6.2.18 | Apache License, Version 2.0 | [spring-context-support](https://github.com/spring-projects/spring-framework) | 
-| org.springframework/spring-core | 6.2.18 | Apache License, Version 2.0 | [spring-core](https://github.com/spring-projects/spring-framework) | 
-| org.springframework/spring-expression | 6.2.18 | Apache License, Version 2.0 | [spring-expression](https://github.com/spring-projects/spring-framework) | 
+| org.springdoc/springdoc-openapi-starter-common | 3.1.1 | The Apache License, Version 2.0 | [springdoc-openapi-starter-common](https://springdoc.org/springdoc-openapi-starter-common/) | 
+| org.springdoc/springdoc-openapi-starter-webflux-api | 3.1.1 | The Apache License, Version 2.0 | [springdoc-openapi-starter-webflux-api](https://springdoc.org/springdoc-openapi-starter-webflux-api/) | 
+| org.springdoc/springdoc-openapi-starter-webflux-ui | 3.1.1 | The Apache License, Version 2.0 | [springdoc-openapi-starter-webflux-ui](https://springdoc.org/springdoc-openapi-starter-webflux-ui/) | 
+| org.springdoc/springdoc-openapi-starter-webmvc-api | 3.1.1 | The Apache License, Version 2.0 | [springdoc-openapi-starter-webmvc-api](https://springdoc.org/springdoc-openapi-starter-webmvc-api/) | 
+| org.springdoc/springdoc-openapi-starter-webmvc-ui | 3.1.1 | The Apache License, Version 2.0 | [springdoc-openapi-starter-webmvc-ui](https://springdoc.org/springdoc-openapi-starter-webmvc-ui/) | 
+| org.springframework/spring-aop | 7.0.10 | Apache License, Version 2.0 | [spring-aop](https://github.com/spring-projects/spring-framework) | 
+| org.springframework/spring-beans | 7.0.10 | Apache License, Version 2.0 | [spring-beans](https://github.com/spring-projects/spring-framework) | 
+| org.springframework/spring-context | 7.0.10 | Apache License, Version 2.0 | [spring-context](https://github.com/spring-projects/spring-framework) | 
+| org.springframework/spring-context-support | 7.0.10 | Apache License, Version 2.0 | [spring-context-support](https://github.com/spring-projects/spring-framework) | 
+| org.springframework/spring-core | 7.0.10 | Apache License, Version 2.0 | [spring-core](https://github.com/spring-projects/spring-framework) | 
+| org.springframework/spring-expression | 7.0.10 | Apache License, Version 2.0 | [spring-expression](https://github.com/spring-projects/spring-framework) | 
 | org.springframework/spring-framework-bom | 6.2.8 | Apache License, Version 2.0 | [spring-framework-bom](https://github.com/spring-projects/spring-framework) | 
-| org.springframework/spring-framework-bom | 6.2.18 | Apache License, Version 2.0 | [spring-framework-bom](https://github.com/spring-projects/spring-framework) | 
-| org.springframework/spring-jcl | 6.2.18 | Apache License, Version 2.0 | [spring-jcl](https://github.com/spring-projects/spring-framework) | 
-| org.springframework/spring-messaging | 6.2.18 | Apache License, Version 2.0 | [spring-messaging](https://github.com/spring-projects/spring-framework) | 
-| org.springframework/spring-web | 6.2.18 | Apache License, Version 2.0 | [spring-web](https://github.com/spring-projects/spring-framework) | 
-| org.springframework/spring-webflux | 6.2.18 | Apache License, Version 2.0 | [spring-webflux](https://github.com/spring-projects/spring-framework) | 
-| org.springframework/spring-webmvc | 6.2.18 | Apache License, Version 2.0 | [spring-webmvc](https://github.com/spring-projects/spring-framework) | 
-| org.springframework/spring-websocket | 6.2.18 | Apache License, Version 2.0 | [spring-websocket](https://github.com/spring-projects/spring-framework) | 
-| org.springframework.boot/spring-boot | 3.5.14 | Apache License, Version 2.0 | [spring-boot](https://spring.io/projects/spring-boot) | 
-| org.springframework.boot/spring-boot-actuator | 3.5.14 | Apache License, Version 2.0 | [spring-boot-actuator](https://spring.io/projects/spring-boot) | 
-| org.springframework.boot/spring-boot-actuator-autoconfigure | 3.5.14 | Apache License, Version 2.0 | [spring-boot-actuator-autoconfigure](https://spring.io/projects/spring-boot) | 
-| org.springframework.boot/spring-boot-autoconfigure | 3.5.14 | Apache License, Version 2.0 | [spring-boot-autoconfigure](https://spring.io/projects/spring-boot) | 
-| org.springframework.boot/spring-boot-configuration-processor | 3.5.14 | Apache License, Version 2.0 | [spring-boot-configuration-processor](https://spring.io/projects/spring-boot) | 
-| org.springframework.boot/spring-boot-dependencies | 3.5.14 | Apache License, Version 2.0 | [spring-boot-dependencies](https://spring.io/projects/spring-boot) | 
-| org.springframework.boot/spring-boot-properties-migrator | 3.5.14 | Apache License, Version 2.0 | [spring-boot-properties-migrator](https://spring.io/projects/spring-boot) | 
-| org.springframework.boot/spring-boot-starter | 3.5.14 | Apache License, Version 2.0 | [spring-boot-starter](https://spring.io/projects/spring-boot) | 
-| org.springframework.boot/spring-boot-starter-actuator | 3.5.14 | Apache License, Version 2.0 | [spring-boot-starter-actuator](https://spring.io/projects/spring-boot) | 
-| org.springframework.boot/spring-boot-starter-aop | 3.5.14 | Apache License, Version 2.0 | [spring-boot-starter-aop](https://spring.io/projects/spring-boot) | 
-| org.springframework.boot/spring-boot-starter-cache | 3.5.14 | Apache License, Version 2.0 | [spring-boot-starter-cache](https://spring.io/projects/spring-boot) | 
-| org.springframework.boot/spring-boot-starter-freemarker | 3.5.14 | Apache License, Version 2.0 | [spring-boot-starter-freemarker](https://spring.io/projects/spring-boot) | 
-| org.springframework.boot/spring-boot-starter-graphql | 3.5.14 | Apache License, Version 2.0 | [spring-boot-starter-graphql](https://spring.io/projects/spring-boot) | 
-| org.springframework.boot/spring-boot-starter-json | 3.5.14 | Apache License, Version 2.0 | [spring-boot-starter-json](https://spring.io/projects/spring-boot) | 
-| org.springframework.boot/spring-boot-starter-logging | 3.5.14 | Apache License, Version 2.0 | [spring-boot-starter-logging](https://spring.io/projects/spring-boot) | 
-| org.springframework.boot/spring-boot-starter-oauth2-client | 3.5.14 | Apache License, Version 2.0 | [spring-boot-starter-oauth2-client](https://spring.io/projects/spring-boot) | 
-| org.springframework.boot/spring-boot-starter-reactor-netty | 3.5.14 | Apache License, Version 2.0 | [spring-boot-starter-reactor-netty](https://spring.io/projects/spring-boot) | 
-| org.springframework.boot/spring-boot-starter-security | 3.5.14 | Apache License, Version 2.0 | [spring-boot-starter-security](https://spring.io/projects/spring-boot) | 
-| org.springframework.boot/spring-boot-starter-thymeleaf | 3.5.14 | Apache License, Version 2.0 | [spring-boot-starter-thymeleaf](https://spring.io/projects/spring-boot) | 
-| org.springframework.boot/spring-boot-starter-tomcat | 3.5.14 | Apache License, Version 2.0 | [spring-boot-starter-tomcat](https://spring.io/projects/spring-boot) | 
-| org.springframework.boot/spring-boot-starter-validation | 3.5.14 | Apache License, Version 2.0 | [spring-boot-starter-validation](https://spring.io/projects/spring-boot) | 
-| org.springframework.boot/spring-boot-starter-web | 3.5.14 | Apache License, Version 2.0 | [spring-boot-starter-web](https://spring.io/projects/spring-boot) | 
-| org.springframework.boot/spring-boot-starter-webflux | 3.5.14 | Apache License, Version 2.0 | [spring-boot-starter-webflux](https://spring.io/projects/spring-boot) | 
-| org.springframework.boot/spring-boot-starter-websocket | 3.5.14 | Apache License, Version 2.0 | [spring-boot-starter-websocket](https://spring.io/projects/spring-boot) | 
-| org.springframework.cloud/spring-cloud-circuitbreaker-resilience4j | 3.3.2 | Apache License, Version 2.0 | [spring-cloud-circuitbreaker-resilience4j](https://github.com/spring-cloud/spring-cloud-circuitbreaker/spring-cloud-circuitbreaker-resilience4j) | 
-| org.springframework.cloud/spring-cloud-commons | 4.3.2 | Apache License, Version 2.0 | [spring-cloud-commons](https://projects.spring.io/spring-cloud/spring-cloud-commons/) | 
-| org.springframework.cloud/spring-cloud-context | 4.3.2 | Apache License, Version 2.0 | [spring-cloud-context](https://projects.spring.io/spring-cloud/spring-cloud-context/) | 
-| org.springframework.cloud/spring-cloud-gateway-server | 4.3.4 | Apache License, Version 2.0 | [spring-cloud-gateway-server](https://github.com/spring-cloud/spring-cloud-gateway/spring-cloud-gateway-server) | 
-| org.springframework.cloud/spring-cloud-gateway-server-webflux | 4.3.4 | Apache License, Version 2.0 | [spring-cloud-gateway-server-webflux](https://projects.spring.io/spring-cloud) | 
-| org.springframework.cloud/spring-cloud-loadbalancer | 4.3.2 | Apache License, Version 2.0 | [spring-cloud-loadbalancer](https://projects.spring.io/spring-cloud/spring-cloud-loadbalancer/) | 
-| org.springframework.cloud/spring-cloud-netflix-eureka-client | 4.3.2 | Apache License, Version 2.0 | [spring-cloud-netflix-eureka-client](https://github.com/spring-cloud/spring-cloud-netflix/spring-cloud-netflix-eureka-client) | 
-| org.springframework.cloud/spring-cloud-netflix-eureka-server | 4.3.2 | Apache License, Version 2.0 | [spring-cloud-netflix-eureka-server](https://projects.spring.io/spring-cloud/) | 
-| org.springframework.cloud/spring-cloud-starter | 4.3.2 | Apache License, Version 2.0 | [spring-cloud-starter](https://projects.spring.io/spring-cloud) | 
-| org.springframework.cloud/spring-cloud-starter-circuitbreaker-reactor-resilience4j | 3.3.2 | Apache License, Version 2.0 | [spring-cloud-starter-circuitbreaker-reactor-resilience4j](https://github.com/spring-cloud/spring-cloud-circuitbreaker/spring-cloud-starter-circuitbreaker/spring-cloud-starter-circuitbreaker-reactor-resilience4j) | 
-| org.springframework.cloud/spring-cloud-starter-gateway-server-webflux | 4.3.4 | Apache License, Version 2.0 | [spring-cloud-starter-gateway-server-webflux](https://projects.spring.io/spring-cloud) | 
-| org.springframework.cloud/spring-cloud-starter-loadbalancer | 4.3.2 | Apache License, Version 2.0 | [spring-cloud-starter-loadbalancer](https://projects.spring.io/spring-cloud) | 
-| org.springframework.cloud/spring-cloud-starter-netflix-eureka-client | 4.3.2 | Apache License, Version 2.0 | [spring-cloud-starter-netflix-eureka-client](https://projects.spring.io/spring-cloud) | 
-| org.springframework.cloud/spring-cloud-starter-netflix-eureka-server | 4.3.2 | Apache License, Version 2.0 | [spring-cloud-starter-netflix-eureka-server](https://projects.spring.io/spring-cloud) | 
-| org.springframework.graphql/spring-graphql | 1.4.5 | Apache License, Version 2.0 | [spring-graphql](https://github.com/spring-projects/spring-graphql) | 
-| org.springframework.modulith/spring-modulith-api | 1.4.11 | Apache License, Version 2.0 | [spring-modulith-api](https://spring.io/projects/spring-modulith/spring-modulith-api) | 
-| org.springframework.modulith/spring-modulith-apt | 1.4.11 | Apache License, Version 2.0 | [spring-modulith-apt](https://spring.io/projects/spring-modulith/spring-modulith-apt) | 
-| org.springframework.modulith/spring-modulith-bom | 1.4.11 | Apache License, Version 2.0 | [spring-modulith-bom](https://spring.io/projects/spring-modulith/spring-modulith-bom) | 
-| org.springframework.modulith/spring-modulith-core | 1.4.11 | Apache License, Version 2.0 | [spring-modulith-core](https://spring.io/projects/spring-modulith/spring-modulith-core) | 
-| org.springframework.modulith/spring-modulith-moments | 1.4.11 | Apache License, Version 2.0 | [spring-modulith-moments](https://spring.io/projects/spring-modulith/spring-modulith-moments) | 
-| org.springframework.modulith/spring-modulith-starter-core | 1.4.11 | Apache License, Version 2.0 | [spring-modulith-starter-core](https://spring.io/projects/spring-modulith/spring-modulith-starters/spring-modulith-starter-core) | 
-| org.springframework.retry/spring-retry | 2.0.12 | Apache 2.0 | [spring-retry](https://github.com/spring-projects/spring-retry) | 
-| org.springframework.security/spring-security-config | 6.5.10 | Apache License, Version 2.0 | [spring-security-config](https://spring.io/projects/spring-security) | 
-| org.springframework.security/spring-security-core | 6.5.10 | Apache License, Version 2.0 | [spring-security-core](https://spring.io/projects/spring-security) | 
-| org.springframework.security/spring-security-crypto | 6.5.10 | Apache License, Version 2.0 | [spring-security-crypto](https://spring.io/projects/spring-security) | 
-| org.springframework.security/spring-security-oauth2-client | 6.5.10 | Apache License, Version 2.0 | [spring-security-oauth2-client](https://spring.io/projects/spring-security) | 
-| org.springframework.security/spring-security-oauth2-core | 6.5.10 | Apache License, Version 2.0 | [spring-security-oauth2-core](https://spring.io/projects/spring-security) | 
-| org.springframework.security/spring-security-oauth2-jose | 6.5.10 | Apache License, Version 2.0 | [spring-security-oauth2-jose](https://spring.io/projects/spring-security) | 
-| org.springframework.security/spring-security-web | 6.5.10 | Apache License, Version 2.0 | [spring-security-web](https://spring.io/projects/spring-security) | 
+| org.springframework/spring-framework-bom | 7.0.10 | Apache License, Version 2.0 | [spring-framework-bom](https://github.com/spring-projects/spring-framework) | 
+| org.springframework/spring-messaging | 7.0.9 | Apache License, Version 2.0 | [spring-messaging](https://github.com/spring-projects/spring-framework) | 
+| org.springframework/spring-web | 7.0.10 | Apache License, Version 2.0 | [spring-web](https://github.com/spring-projects/spring-framework) | 
+| org.springframework/spring-webflux | 7.0.10 | Apache License, Version 2.0 | [spring-webflux](https://github.com/spring-projects/spring-framework) | 
+| org.springframework/spring-webmvc | 7.0.10 | Apache License, Version 2.0 | [spring-webmvc](https://github.com/spring-projects/spring-framework) | 
+| org.springframework/spring-websocket | 7.0.9 | Apache License, Version 2.0 | [spring-websocket](https://github.com/spring-projects/spring-framework) | 
+| org.springframework.boot/spring-boot | 4.1.1 | Apache License, Version 2.0 | [spring-boot](https://spring.io/projects/spring-boot) | 
+| org.springframework.boot/spring-boot-actuator | 4.1.1 | Apache License, Version 2.0 | [spring-boot-actuator](https://spring.io/projects/spring-boot) | 
+| org.springframework.boot/spring-boot-actuator-autoconfigure | 4.1.1 | Apache License, Version 2.0 | [spring-boot-actuator-autoconfigure](https://spring.io/projects/spring-boot) | 
+| org.springframework.boot/spring-boot-autoconfigure | 4.1.1 | Apache License, Version 2.0 | [spring-boot-autoconfigure](https://spring.io/projects/spring-boot) | 
+| org.springframework.boot/spring-boot-cache | 4.1.1 | Apache License, Version 2.0 | [spring-boot-cache](https://spring.io/projects/spring-boot) | 
+| org.springframework.boot/spring-boot-configuration-processor | 4.1.1 | Apache License, Version 2.0 | [spring-boot-configuration-processor](https://spring.io/projects/spring-boot) | 
+| org.springframework.boot/spring-boot-dependencies | 4.1.1 | Apache License, Version 2.0 | [spring-boot-dependencies](https://spring.io/projects/spring-boot) | 
+| org.springframework.boot/spring-boot-freemarker | 4.1.1 | Apache License, Version 2.0 | [spring-boot-freemarker](https://spring.io/projects/spring-boot) | 
+| org.springframework.boot/spring-boot-graphql | 4.1.1 | Apache License, Version 2.0 | [spring-boot-graphql](https://spring.io/projects/spring-boot) | 
+| org.springframework.boot/spring-boot-health | 4.1.1 | Apache License, Version 2.0 | [spring-boot-health](https://spring.io/projects/spring-boot) | 
+| org.springframework.boot/spring-boot-http-client | 4.1.1 | Apache License, Version 2.0 | [spring-boot-http-client](https://spring.io/projects/spring-boot) | 
+| org.springframework.boot/spring-boot-http-codec | 4.1.1 | Apache License, Version 2.0 | [spring-boot-http-codec](https://spring.io/projects/spring-boot) | 
+| org.springframework.boot/spring-boot-http-converter | 4.1.1 | Apache License, Version 2.0 | [spring-boot-http-converter](https://spring.io/projects/spring-boot) | 
+| org.springframework.boot/spring-boot-jackson | 4.1.1 | Apache License, Version 2.0 | [spring-boot-jackson](https://spring.io/projects/spring-boot) | 
+| org.springframework.boot/spring-boot-jackson2 | 4.1.1 | Apache License, Version 2.0 | [spring-boot-jackson2](https://spring.io/projects/spring-boot) | 
+| org.springframework.boot/spring-boot-micrometer-metrics | 4.1.1 | Apache License, Version 2.0 | [spring-boot-micrometer-metrics](https://spring.io/projects/spring-boot) | 
+| org.springframework.boot/spring-boot-micrometer-observation | 4.1.1 | Apache License, Version 2.0 | [spring-boot-micrometer-observation](https://spring.io/projects/spring-boot) | 
+| org.springframework.boot/spring-boot-reactor | 4.1.1 | Apache License, Version 2.0 | [spring-boot-reactor](https://spring.io/projects/spring-boot) | 
+| org.springframework.boot/spring-boot-reactor-netty | 4.1.1 | Apache License, Version 2.0 | [spring-boot-reactor-netty](https://spring.io/projects/spring-boot) | 
+| org.springframework.boot/spring-boot-restclient | 4.1.1 | Apache License, Version 2.0 | [spring-boot-restclient](https://spring.io/projects/spring-boot) | 
+| org.springframework.boot/spring-boot-security | 4.1.1 | Apache License, Version 2.0 | [spring-boot-security](https://spring.io/projects/spring-boot) | 
+| org.springframework.boot/spring-boot-security-oauth2-client | 4.1.1 | Apache License, Version 2.0 | [spring-boot-security-oauth2-client](https://spring.io/projects/spring-boot) | 
+| org.springframework.boot/spring-boot-servlet | 4.1.1 | Apache License, Version 2.0 | [spring-boot-servlet](https://spring.io/projects/spring-boot) | 
+| org.springframework.boot/spring-boot-starter | 4.1.1 | Apache License, Version 2.0 | [spring-boot-starter](https://spring.io/projects/spring-boot) | 
+| org.springframework.boot/spring-boot-starter-actuator | 4.1.1 | Apache License, Version 2.0 | [spring-boot-starter-actuator](https://spring.io/projects/spring-boot) | 
+| org.springframework.boot/spring-boot-starter-aspectj | 4.1.1 | Apache License, Version 2.0 | [spring-boot-starter-aspectj](https://spring.io/projects/spring-boot) | 
+| org.springframework.boot/spring-boot-starter-cache | 4.1.1 | Apache License, Version 2.0 | [spring-boot-starter-cache](https://spring.io/projects/spring-boot) | 
+| org.springframework.boot/spring-boot-starter-freemarker | 4.1.1 | Apache License, Version 2.0 | [spring-boot-starter-freemarker](https://spring.io/projects/spring-boot) | 
+| org.springframework.boot/spring-boot-starter-graphql | 4.1.1 | Apache License, Version 2.0 | [spring-boot-starter-graphql](https://spring.io/projects/spring-boot) | 
+| org.springframework.boot/spring-boot-starter-jackson | 4.1.1 | Apache License, Version 2.0 | [spring-boot-starter-jackson](https://spring.io/projects/spring-boot) | 
+| org.springframework.boot/spring-boot-starter-logging | 4.1.1 | Apache License, Version 2.0 | [spring-boot-starter-logging](https://spring.io/projects/spring-boot) | 
+| org.springframework.boot/spring-boot-starter-micrometer-metrics | 4.1.1 | Apache License, Version 2.0 | [spring-boot-starter-micrometer-metrics](https://spring.io/projects/spring-boot) | 
+| org.springframework.boot/spring-boot-starter-reactor-netty | 4.1.1 | Apache License, Version 2.0 | [spring-boot-starter-reactor-netty](https://spring.io/projects/spring-boot) | 
+| org.springframework.boot/spring-boot-starter-security | 4.1.1 | Apache License, Version 2.0 | [spring-boot-starter-security](https://spring.io/projects/spring-boot) | 
+| org.springframework.boot/spring-boot-starter-security-oauth2-client | 4.1.1 | Apache License, Version 2.0 | [spring-boot-starter-security-oauth2-client](https://spring.io/projects/spring-boot) | 
+| org.springframework.boot/spring-boot-starter-thymeleaf | 4.1.1 | Apache License, Version 2.0 | [spring-boot-starter-thymeleaf](https://spring.io/projects/spring-boot) | 
+| org.springframework.boot/spring-boot-starter-tomcat | 4.1.1 | Apache License, Version 2.0 | [spring-boot-starter-tomcat](https://spring.io/projects/spring-boot) | 
+| org.springframework.boot/spring-boot-starter-tomcat-runtime | 4.1.1 | Apache License, Version 2.0 | [spring-boot-starter-tomcat-runtime](https://spring.io/projects/spring-boot) | 
+| org.springframework.boot/spring-boot-starter-validation | 4.1.1 | Apache License, Version 2.0 | [spring-boot-starter-validation](https://spring.io/projects/spring-boot) | 
+| org.springframework.boot/spring-boot-starter-web | 4.1.1 | Apache License, Version 2.0 | [spring-boot-starter-web](https://spring.io/projects/spring-boot) | 
+| org.springframework.boot/spring-boot-starter-webflux | 4.1.1 | Apache License, Version 2.0 | [spring-boot-starter-webflux](https://spring.io/projects/spring-boot) | 
+| org.springframework.boot/spring-boot-starter-webmvc | 4.1.1 | Apache License, Version 2.0 | [spring-boot-starter-webmvc](https://spring.io/projects/spring-boot) | 
+| org.springframework.boot/spring-boot-starter-websocket | 4.1.1 | Apache License, Version 2.0 | [spring-boot-starter-websocket](https://spring.io/projects/spring-boot) | 
+| org.springframework.boot/spring-boot-thymeleaf | 4.1.1 | Apache License, Version 2.0 | [spring-boot-thymeleaf](https://spring.io/projects/spring-boot) | 
+| org.springframework.boot/spring-boot-tomcat | 4.1.1 | Apache License, Version 2.0 | [spring-boot-tomcat](https://spring.io/projects/spring-boot) | 
+| org.springframework.boot/spring-boot-validation | 4.1.1 | Apache License, Version 2.0 | [spring-boot-validation](https://spring.io/projects/spring-boot) | 
+| org.springframework.boot/spring-boot-web-server | 4.1.1 | Apache License, Version 2.0 | [spring-boot-web-server](https://spring.io/projects/spring-boot) | 
+| org.springframework.boot/spring-boot-webflux | 4.1.1 | Apache License, Version 2.0 | [spring-boot-webflux](https://spring.io/projects/spring-boot) | 
+| org.springframework.boot/spring-boot-webmvc | 4.1.1 | Apache License, Version 2.0 | [spring-boot-webmvc](https://spring.io/projects/spring-boot) | 
+| org.springframework.boot/spring-boot-websocket | 4.1.1 | Apache License, Version 2.0 | [spring-boot-websocket](https://spring.io/projects/spring-boot) | 
+| org.springframework.cloud/spring-cloud-circuitbreaker-resilience4j | 5.0.3 | Apache License, Version 2.0 | [spring-cloud-circuitbreaker-resilience4j](https://github.com/spring-cloud/spring-cloud-circuitbreaker/spring-cloud-circuitbreaker-resilience4j) | 
+| org.springframework.cloud/spring-cloud-commons | 5.0.3 | Apache License, Version 2.0 | [spring-cloud-commons](https://projects.spring.io/spring-cloud/spring-cloud-commons/) | 
+| org.springframework.cloud/spring-cloud-context | 5.0.3 | Apache License, Version 2.0 | [spring-cloud-context](https://projects.spring.io/spring-cloud/spring-cloud-context/) | 
+| org.springframework.cloud/spring-cloud-dependencies | 2025.1.3 | Apache License, Version 2.0 | [spring-cloud-dependencies](https://spring.io/projects/spring-cloud) | 
+| org.springframework.cloud/spring-cloud-gateway-server-webflux | 5.0.3 | Apache License, Version 2.0 | [spring-cloud-gateway-server-webflux](https://projects.spring.io/spring-cloud) | 
+| org.springframework.cloud/spring-cloud-loadbalancer | 5.0.3 | Apache License, Version 2.0 | [spring-cloud-loadbalancer](https://projects.spring.io/spring-cloud/spring-cloud-loadbalancer/) | 
+| org.springframework.cloud/spring-cloud-netflix-eureka-client | 5.0.2 | Apache License, Version 2.0 | [spring-cloud-netflix-eureka-client](https://github.com/spring-cloud/spring-cloud-netflix/spring-cloud-netflix-eureka-client) | 
+| org.springframework.cloud/spring-cloud-netflix-eureka-server | 5.0.2 | Apache License, Version 2.0 | [spring-cloud-netflix-eureka-server](https://projects.spring.io/spring-cloud/) | 
+| org.springframework.cloud/spring-cloud-starter | 5.0.3 | Apache License, Version 2.0 | [spring-cloud-starter](https://projects.spring.io/spring-cloud) | 
+| org.springframework.cloud/spring-cloud-starter-circuitbreaker-reactor-resilience4j | 5.0.3 | Apache License, Version 2.0 | [spring-cloud-starter-circuitbreaker-reactor-resilience4j](https://github.com/spring-cloud/spring-cloud-circuitbreaker/spring-cloud-starter-circuitbreaker/spring-cloud-starter-circuitbreaker-reactor-resilience4j) | 
+| org.springframework.cloud/spring-cloud-starter-gateway-server-webflux | 5.0.3 | Apache License, Version 2.0 | [spring-cloud-starter-gateway-server-webflux](https://projects.spring.io/spring-cloud) | 
+| org.springframework.cloud/spring-cloud-starter-loadbalancer | 5.0.3 | Apache License, Version 2.0 | [spring-cloud-starter-loadbalancer](https://projects.spring.io/spring-cloud) | 
+| org.springframework.cloud/spring-cloud-starter-netflix-eureka-client | 5.0.2 | Apache License, Version 2.0 | [spring-cloud-starter-netflix-eureka-client](https://projects.spring.io/spring-cloud) | 
+| org.springframework.cloud/spring-cloud-starter-netflix-eureka-server | 5.0.2 | Apache License, Version 2.0 | [spring-cloud-starter-netflix-eureka-server](https://projects.spring.io/spring-cloud) | 
+| org.springframework.graphql/spring-graphql | 2.0.5 | Apache License, Version 2.0 | [spring-graphql](https://github.com/spring-projects/spring-graphql) | 
+| org.springframework.modulith/spring-modulith-api | 2.1.1 | Apache License, Version 2.0 | [spring-modulith-api](https://spring.io/projects/spring-modulith/spring-modulith-api) | 
+| org.springframework.modulith/spring-modulith-apt | 2.1.1 | Apache License, Version 2.0 | [spring-modulith-apt](https://spring.io/projects/spring-modulith/spring-modulith-apt) | 
+| org.springframework.modulith/spring-modulith-bom | 2.1.1 | Apache License, Version 2.0 | [spring-modulith-bom](https://spring.io/projects/spring-modulith/spring-modulith-bom) | 
+| org.springframework.modulith/spring-modulith-core | 2.1.1 | Apache License, Version 2.0 | [spring-modulith-core](https://spring.io/projects/spring-modulith/spring-modulith-core) | 
+| org.springframework.modulith/spring-modulith-moments | 2.1.1 | Apache License, Version 2.0 | [spring-modulith-moments](https://spring.io/projects/spring-modulith/spring-modulith-moments) | 
+| org.springframework.modulith/spring-modulith-starter-core | 2.1.1 | Apache License, Version 2.0 | [spring-modulith-starter-core](https://spring.io/projects/spring-modulith/spring-modulith-starters/spring-modulith-starter-core) | 
+| org.springframework.retry/spring-retry | 2.0.13 | Apache 2.0 | [spring-retry](https://github.com/spring-projects/spring-retry) | 
+| org.springframework.security/spring-security-config | 7.1.1 | Apache License, Version 2.0 | [spring-security-config](https://spring.io/projects/spring-security) | 
+| org.springframework.security/spring-security-core | 7.1.1 | Apache License, Version 2.0 | [spring-security-core](https://spring.io/projects/spring-security) | 
+| org.springframework.security/spring-security-crypto | 7.1.1 | Apache License, Version 2.0 | [spring-security-crypto](https://spring.io/projects/spring-security) | 
+| org.springframework.security/spring-security-oauth2-client | 7.1.1 | Apache License, Version 2.0 | [spring-security-oauth2-client](https://spring.io/projects/spring-security) | 
+| org.springframework.security/spring-security-oauth2-core | 7.1.1 | Apache License, Version 2.0 | [spring-security-oauth2-core](https://spring.io/projects/spring-security) | 
+| org.springframework.security/spring-security-oauth2-jose | 7.1.1 | Apache License, Version 2.0 | [spring-security-oauth2-jose](https://spring.io/projects/spring-security) | 
+| org.springframework.security/spring-security-web | 7.1.1 | Apache License, Version 2.0 | [spring-security-web](https://spring.io/projects/spring-security) | 
 | org.testcontainers/testcontainers-bom | 1.20.6 | MIT | [testcontainers-bom](https://java.testcontainers.org) | 
 | org.thymeleaf/thymeleaf | 3.1.5.RELEASE | The Apache Software License, Version 2.0 | [thymeleaf](http://www.thymeleaf.org/thymeleaf-lib/thymeleaf) | 
 | org.thymeleaf/thymeleaf-spring6 | 3.1.5.RELEASE | The Apache Software License, Version 2.0 | [thymeleaf-spring6](http://www.thymeleaf.org/thymeleaf-lib/thymeleaf-spring6) | 
 | org.unbescape/unbescape | 1.1.6.RELEASE | The Apache Software License, Version 2.0 | [unbescape](http://www.unbescape.org) | 
-| org.webjars/swagger-ui | 5.32.2 | Apache-2.0 | [swagger-ui](https://www.webjars.org) | 
-| org.webjars/webjars-locator-lite | 1.1.3 | MIT | [webjars-locator-lite](https://webjars.org) | 
+| org.webjars/swagger-ui | 5.32.14 | Apache-2.0 | [swagger-ui](https://www.webjars.org) | 
+| org.webjars/webjars-locator-lite | 1.1.4 | MIT | [webjars-locator-lite](https://webjars.org) | 
 | org.wildfly.common/wildfly-common | 2.0.1 | Apache License 2.0 | [wildfly-common](http://www.jboss.org) | 
 | org.xmlresolver/xmlresolver | 5.2.2 | Apache License version 2.0 | [xmlresolver](https://github.com/xmlresolver/xmlresolver) | 
-| org.yaml/snakeyaml | 2.4 | Apache License, Version 2.0 | [snakeyaml](https://bitbucket.org/snakeyaml/snakeyaml) | 
-| org.yaml/snakeyaml | 2.5 | Apache License, Version 2.0 | [snakeyaml](https://bitbucket.org/snakeyaml/snakeyaml) | 
 | org.yaml/snakeyaml | 2.6 | Apache License, Version 2.0 | [snakeyaml](https://bitbucket.org/snakeyaml/snakeyaml) | 
 | org.zowe.apiml.sdk/zos-utils | 2.1.0 | none | [zos-utils]() | 
 | redis.clients.authentication/redis-authx-core | 0.1.1-beta2 | MIT | [redis-authx-core](https://github.com/redis/redis-authx-core) | 
 | software.amazon.awssdk/bom | 2.31.66 | Apache License, Version 2.0 | [bom](https://aws.amazon.com/sdkforjava) | 
+| tools.jackson/jackson-bom | 3.2.4 | Apache License, Version 2.0 | [jackson-bom](https://github.com/FasterXML/jackson-bom) | 
+| tools.jackson.core/jackson-core | 3.2.4 | The Apache Software License, Version 2.0 | [jackson-core](https://github.com/FasterXML/jackson-core) | 
+| tools.jackson.core/jackson-databind | 3.2.4 | The Apache Software License, Version 2.0 | [jackson-databind](https://github.com/FasterXML/jackson) | 
 | xmlpull/xmlpull | 1.1.3.1 | Public Domain | [xmlpull](http://www.xmlpull.org) | 
 | abbrev | 1.1.1 | ISC | [abbrev](https://github.com/isaacs/abbrev-js#readme) | 
 | acorn | 8.16.0 | MIT | [acorn](https://github.com/acornjs/acorn) | 
@@ -839,6 +856,7 @@
 | ansi-styles | 4.3.0 | MIT | [ansi-styles](https://github.com/chalk/ansi-styles#readme) | 
 | ansi-styles | 5.2.0 | MIT | [ansi-styles](https://github.com/chalk/ansi-styles#readme) | 
 | anymatch | 3.1.3 | ISC | [anymatch](https://github.com/micromatch/anymatch) | 
+| anynum | 1.0.1 | MIT | [anynum](https://github.com/NaturalIntelligence/anynum#readme) | 
 | apg-lite | 1.0.5 | BSD-2-Clause | [apg-lite](https://github.com/ldthomas/apg-lite#readme) | 
 | argparse | 1.0.10 | MIT | [argparse](https://github.com/nodeca/argparse#readme) | 
 | argparse | 2.0.1 | Python-2.0 | [argparse](https://github.com/nodeca/argparse#readme) | 
@@ -849,16 +867,16 @@
 | asynckit | 0.4.0 | MIT | [asynckit](https://github.com/alexindigo/asynckit#readme) | 
 | autolinker | 3.16.2 | MIT | [autolinker](https://github.com/gregjacobs/Autolinker.js) | 
 | available-typed-arrays | 1.0.7 | MIT | [available-typed-arrays](https://github.com/inspect-js/available-typed-arrays#readme) | 
-| axios | 1.16.1 | MIT | [axios](https://axios-http.com) | 
+| axios | 1.20.0 | MIT | [axios](https://axios-http.com) | 
 | babel-plugin-istanbul | 6.1.1 | BSD-3-Clause | [babel-plugin-istanbul](https://github.com/istanbuljs/babel-plugin-istanbul#readme) | 
 | babel-plugin-macros | 3.1.0 | MIT | [babel-plugin-macros](https://github.com/kentcdodds/babel-plugin-macros#readme) | 
 | babel-preset-current-node-syntax | 1.1.0 | MIT | [babel-preset-current-node-syntax](https://github.com/nicolo-ribaudo/babel-preset-current-node-syntax#readme) | 
 | balanced-match | 1.0.2 | MIT | [balanced-match](https://github.com/juliangruber/balanced-match) | 
 | base64-js | 1.5.1 | MIT | [base64-js](https://github.com/beatgammit/base64-js) | 
-| baseline-browser-mapping | 2.9.19 | Apache-2.0 | [baseline-browser-mapping](https://github.com/web-platform-dx/baseline-browser-mapping#readme) | 
-| brace-expansion | 1.1.14 | MIT | [brace-expansion](https://github.com/juliangruber/brace-expansion) | 
+| baseline-browser-mapping | 2.11.30 | Apache-2.0 | [baseline-browser-mapping](https://github.com/web-platform-dx/baseline-browser-mapping#readme) | 
+| brace-expansion | 1.1.21 | MIT | [brace-expansion](https://github.com/juliangruber/brace-expansion) | 
 | braces | 3.0.3 | MIT | [braces](https://github.com/micromatch/braces) | 
-| browserslist | 4.28.1 | MIT | [browserslist](https://github.com/browserslist/browserslist#readme) | 
+| browserslist | 4.29.4 | MIT | [browserslist](https://github.com/browserslist/browserslist#readme) | 
 | bser | 2.1.1 | Apache-2.0 | [bser](https://facebook.github.io/watchman/docs/bser.html) | 
 | buffer | 6.0.3 | MIT | [buffer](https://github.com/feross/buffer) | 
 | call-bind | 1.0.8 | MIT | [call-bind](https://github.com/ljharb/call-bind#readme) | 
@@ -867,13 +885,13 @@
 | callsites | 3.1.0 | MIT | [callsites](https://github.com/sindresorhus/callsites#readme) | 
 | camelcase | 5.3.1 | MIT | [camelcase](https://github.com/sindresorhus/camelcase#readme) | 
 | camelcase | 8.0.0 | MIT | [camelcase](https://github.com/sindresorhus/camelcase#readme) | 
-| caniuse-lite | 1.0.30001792 | CC-BY-4.0 | [caniuse-lite](https://github.com/browserslist/caniuse-lite#readme) | 
+| caniuse-lite | 1.0.30001819 | CC-BY-4.0 | [caniuse-lite](https://github.com/browserslist/caniuse-lite#readme) | 
 | chalk | 1.1.3 | MIT | [chalk](https://github.com/chalk/chalk#readme) | 
 | chalk | 4.1.2 | MIT | [chalk](https://github.com/chalk/chalk#readme) | 
 | character-entities | 2.0.2 | MIT | [character-entities](https://github.com/wooorm/character-entities#readme) | 
 | character-entities-legacy | 3.0.0 | MIT | [character-entities-legacy](https://github.com/wooorm/character-entities-legacy#readme) | 
 | character-reference-invalid | 2.0.1 | MIT | [character-reference-invalid](https://github.com/wooorm/character-reference-invalid#readme) | 
-| chokidar | 4.0.3 | MIT | [chokidar](https://github.com/paulmillr/chokidar) | 
+| chokidar | 5.0.0 | MIT | [chokidar](https://github.com/paulmillr/chokidar) | 
 | ci-info | 3.9.0 | MIT | [ci-info](https://github.com/watson/ci-info) | 
 | classnames | 2.5.1 | MIT | [classnames](https://github.com/JedWatson/classnames#readme) | 
 | cli-table3 | 0.6.5 | MIT | [cli-table3](https://github.com/cli-table/cli-table3) | 
@@ -928,25 +946,29 @@
 | diff2html | 3.4.56 | MIT | [diff2html](https://diff2html.xyz) | 
 | dom-helpers | 5.2.1 | MIT | [dom-helpers](https://github.com/react-bootstrap/dom-helpers#readme) | 
 | dom-serializer | 1.4.1 | MIT | [dom-serializer](https://github.com/cheeriojs/dom-renderer#readme) | 
+| dom-serializer | 3.1.1 | MIT | [dom-serializer](https://github.com/cheeriojs/dom-serializer#readme) | 
 | domelementtype | 2.3.0 | BSD-2-Clause | [domelementtype](https://github.com/fb55/domelementtype#readme) | 
+| domelementtype | 3.0.0 | BSD-2-Clause | [domelementtype](https://github.com/fb55/domelementtype#readme) | 
 | domhandler | 4.3.1 | BSD-2-Clause | [domhandler](https://github.com/fb55/domhandler#readme) | 
-| dompurify | 3.4.0 | (MPL-2.0 OR Apache-2.0) | [dompurify](https://github.com/cure53/DOMPurify) | 
+| domhandler | 6.0.1 | BSD-2-Clause | [domhandler](https://github.com/fb55/domhandler#readme) | 
+| dompurify | 3.4.17 | (MPL-2.0 OR Apache-2.0) | [dompurify](https://github.com/cure53/DOMPurify) | 
 | domutils | 2.8.0 | BSD-2-Clause | [domutils](https://github.com/fb55/domutils#readme) | 
+| domutils | 4.0.2 | BSD-2-Clause | [domutils](https://github.com/fb55/domutils#readme) | 
 | drange | 1.1.1 | MIT | [drange](https://github.com/fent/node-drange#readme) | 
 | dunder-proto | 1.0.1 | MIT | [dunder-proto](https://github.com/es-shims/dunder-proto#readme) | 
 | duplexer | 0.1.2 | MIT | [duplexer](https://github.com/Raynos/duplexer) | 
-| electron-to-chromium | 1.5.302 | ISC | [electron-to-chromium](https://github.com/kilian/electron-to-chromium#readme) | 
+| electron-to-chromium | 1.5.463 | ISC | [electron-to-chromium](https://github.com/Kilian/electron-to-chromium#readme) | 
 | emoji-regex | 8.0.0 | MIT | [emoji-regex](https://mths.be/emoji-regex) | 
 | emotion-theming | 11.0.0 | MIT | [emotion-theming](https://emotion.sh) | 
 | enabled | 2.0.0 | MIT | [enabled](https://github.com/3rd-Eden/enabled#readme) | 
 | entities | 2.2.0 | BSD-2-Clause | [entities](https://github.com/fb55/entities#readme) | 
 | entities | 4.5.0 | BSD-2-Clause | [entities](https://github.com/fb55/entities#readme) | 
+| entities | 8.1.0 | BSD-2-Clause | [entities](https://github.com/fb55/entities#readme) | 
 | error-ex | 1.3.2 | MIT | [error-ex](https://github.com/qix-/node-error-ex#readme) | 
 | es-define-property | 1.0.1 | MIT | [es-define-property](https://github.com/ljharb/es-define-property#readme) | 
 | es-errors | 1.3.0 | MIT | [es-errors](https://github.com/ljharb/es-errors#readme) | 
 | es-object-atoms | 1.1.1 | MIT | [es-object-atoms](https://github.com/ljharb/es-object-atoms#readme) | 
 | es-set-tostringtag | 2.1.0 | MIT | [es-set-tostringtag](https://github.com/es-shims/es-set-tostringtag#readme) | 
-| escalade | 3.1.1 | MIT | [escalade](https://github.com/lukeed/escalade#readme) | 
 | escalade | 3.2.0 | MIT | [escalade](https://github.com/lukeed/escalade#readme) | 
 | escape-string-regexp | 1.0.5 | MIT | [escape-string-regexp](https://github.com/sindresorhus/escape-string-regexp) | 
 | escape-string-regexp | 2.0.0 | MIT | [escape-string-regexp](https://github.com/sindresorhus/escape-string-regexp#readme) | 
@@ -963,7 +985,7 @@
 | fast-json-patch | 3.1.1 | MIT | [fast-json-patch](https://github.com/Starcounter-Jack/JSON-Patch) | 
 | fast-json-stable-stringify | 2.1.0 | MIT | [fast-json-stable-stringify](https://github.com/epoberezkin/fast-json-stable-stringify) | 
 | fast-xml-builder | 1.2.0 | MIT | [fast-xml-builder](https://github.com/NaturalIntelligence/fast-xml-builder#readme) | 
-| fast-xml-parser | 5.8.0 | MIT | [fast-xml-parser](https://github.com/NaturalIntelligence/fast-xml-parser#readme) | 
+| fast-xml-parser | 5.11.2 | MIT | [fast-xml-parser](https://github.com/NaturalIntelligence/fast-xml-parser#readme) | 
 | fastest-levenshtein | 1.0.16 | MIT | [fastest-levenshtein](https://github.com/ka-weihe/fastest-levenshtein#README) | 
 | fastq | 1.13.0 | ISC | [fastq](https://github.com/mcollina/fastq#readme) | 
 | fault | 1.0.4 | MIT | [fault](https://github.com/wooorm/fault#readme) | 
@@ -975,10 +997,10 @@
 | find-up | 5.0.0 | MIT | [find-up](https://github.com/sindresorhus/find-up#readme) | 
 | flatted | 3.4.2 | ISC | [flatted](https://github.com/WebReflection/flatted#readme) | 
 | fn.name | 1.1.0 | MIT | [fn.name](https://github.com/3rd-Eden/fn.name) | 
-| follow-redirects | 1.16.0 | MIT | [follow-redirects](https://github.com/follow-redirects/follow-redirects) | 
+| follow-redirects | 1.16.1 | MIT | [follow-redirects](https://github.com/follow-redirects/follow-redirects) | 
 | for-each | 0.3.5 | MIT | [for-each](https://github.com/Raynos/for-each) | 
 | foreach | 2.0.6 | MIT | [foreach](https://github.com/manuelstofer/foreach#readme) | 
-| form-data | 3.0.4 | MIT | [form-data](https://github.com/form-data/form-data#readme) | 
+| form-data | 3.0.5 | MIT | [form-data](https://github.com/form-data/form-data#readme) | 
 | format | 0.2.2 | MIT | [format](http://samhuri.net/proj/format) | 
 | framer-motion | 12.23.12 | MIT | [framer-motion](https://github.com/motiondivision/motion#readme) | 
 | from | 0.1.7 | MIT | [from](https://github.com/dominictarr/from#readme) | 
@@ -1002,7 +1024,7 @@
 | gopd | 1.2.0 | MIT | [gopd](https://github.com/ljharb/gopd#readme) | 
 | graceful-fs | 4.2.11 | ISC | [graceful-fs](https://github.com/isaacs/node-graceful-fs#readme) | 
 | graphiql | 4.1.2 | MIT | [graphiql](https://github.com/graphql/graphiql/tree/master/packages/graphiql#readme) | 
-| graphql | 16.14.0 | MIT | [graphql](https://github.com/graphql/graphql-js) | 
+| graphql | 16.14.2 | MIT | [graphql](https://github.com/graphql/graphql-js) | 
 | graphql-language-service | 5.5.0 | MIT | [graphql-language-service](https://github.com/graphql/graphiql/tree/main/packages/graphql-language-service#readme) | 
 | graphql-ws | 5.16.2 | MIT | [graphql-ws](https://the-guild.dev/graphql/ws) | 
 | har-schema | 2.0.0 | ISC | [har-schema](https://github.com/ahmadnassri/har-schema) | 
@@ -1013,7 +1035,7 @@
 | has-property-descriptors | 1.0.2 | MIT | [has-property-descriptors](https://github.com/inspect-js/has-property-descriptors#readme) | 
 | has-symbols | 1.1.0 | MIT | [has-symbols](https://github.com/ljharb/has-symbols#readme) | 
 | has-tostringtag | 1.0.2 | MIT | [has-tostringtag](https://github.com/inspect-js/has-tostringtag#readme) | 
-| hasown | 2.0.2 | MIT | [hasown](https://github.com/inspect-js/hasOwn#readme) | 
+| hasown | 2.0.4 | MIT | [hasown](https://github.com/inspect-js/hasOwn#readme) | 
 | hast-util-parse-selector | 4.0.0 | MIT | [hast-util-parse-selector](https://github.com/syntax-tree/hast-util-parse-selector#readme) | 
 | hastscript | 9.0.1 | MIT | [hastscript](https://github.com/syntax-tree/hastscript#readme) | 
 | highlight.js | 10.7.3 | BSD-3-Clause | [highlight.js](https://highlightjs.org/) | 
@@ -1024,7 +1046,8 @@
 | hosted-git-info | 7.0.2 | ISC | [hosted-git-info](https://github.com/npm/hosted-git-info) | 
 | html-entities | 2.6.0 | MIT | [html-entities](https://github.com/mdevils/html-entities#readme) | 
 | htmlparser2 | 6.1.0 | MIT | [htmlparser2](https://github.com/fb55/htmlparser2#readme) | 
-| htmr | 1.0.2 | MIT | [htmr](https://github.com/pveyes/htmr#readme) | 
+| htmlparser2 | 12.0.0 | MIT | [htmlparser2](https://github.com/fb55/htmlparser2#readme) | 
+| htmr | 1.1.1 | MIT | [htmr](https://github.com/pveyes/htmr#readme) | 
 | http-proxy-agent | 7.0.2 | MIT | [http-proxy-agent](https://github.com/TooTallNate/proxy-agents#readme) | 
 | https-proxy-agent | 5.0.1 | MIT | [https-proxy-agent](https://github.com/TooTallNate/node-https-proxy-agent#readme) | 
 | https-proxy-agent | 7.0.6 | MIT | [https-proxy-agent](https://github.com/TooTallNate/proxy-agents#readme) | 
@@ -1033,9 +1056,8 @@
 | hyphenate-style-name | 1.1.0 | BSD-3-Clause | [hyphenate-style-name](https://github.com/rexxars/hyphenate-style-name#readme) | 
 | ieee754 | 1.2.1 | BSD-3-Clause | [ieee754](https://github.com/feross/ieee754#readme) | 
 | ignore | 5.3.2 | MIT | [ignore](https://github.com/kaelzhang/node-ignore#readme) | 
-| immutable | 3.8.3 | MIT | [immutable](https://immutable-js.com/) | 
-| immutable | 4.3.8 | MIT | [immutable](https://immutable-js.com) | 
-| immutable | 5.1.5 | MIT | [immutable](https://immutable-js.com) | 
+| immutable | 4.3.9 | MIT | [immutable](https://immutable-js.com) | 
+| immutable | 5.1.9 | MIT | [immutable](https://immutable-js.com) | 
 | import-fresh | 3.3.1 | MIT | [import-fresh](https://github.com/sindresorhus/import-fresh#readme) | 
 | imurmurhash | 0.1.4 | MIT | [imurmurhash](https://github.com/jensyt/imurmurhash-js) | 
 | inflight | 1.0.6 | ISC | [inflight](https://github.com/isaacs/inflight) | 
@@ -1058,14 +1080,16 @@
 | is-number | 7.0.0 | MIT | [is-number](https://github.com/jonschlinkert/is-number) | 
 | is-obj | 1.0.1 | MIT | [is-obj](https://github.com/sindresorhus/is-obj#readme) | 
 | is-plain-object | 2.0.4 | MIT | [is-plain-object](https://github.com/jonschlinkert/is-plain-object) | 
+| is-plain-object | 5.0.0 | MIT | [is-plain-object](https://github.com/jonschlinkert/is-plain-object) | 
 | is-primitive | 3.0.1 | MIT | [is-primitive](https://github.com/jonschlinkert/is-primitive) | 
 | is-regex | 1.2.1 | MIT | [is-regex](https://github.com/inspect-js/is-regex) | 
 | is-regexp | 1.0.0 | MIT | [is-regexp](https://github.com/sindresorhus/is-regexp) | 
 | is-stream | 2.0.1 | MIT | [is-stream](https://github.com/sindresorhus/is-stream#readme) | 
 | is-typed-array | 1.1.15 | MIT | [is-typed-array](https://github.com/inspect-js/is-typed-array#readme) | 
+| is-unsafe | 2.0.0 | MIT | [is-unsafe](https://github.com/NaturalIntelligence/is-unsafe#readme) | 
 | isarray | 2.0.5 | MIT | [isarray](https://github.com/juliangruber/isarray) | 
 | isexe | 2.0.0 | ISC | [isexe](https://github.com/isaacs/isexe#readme) | 
-| isexe | 3.1.5 | BlueOak-1.0.0 | [isexe](https://github.com/isaacs/isexe#readme) | 
+| isexe | 3.1.1 | ISC | [isexe](https://github.com/isaacs/isexe#readme) | 
 | isobject | 3.0.1 | MIT | [isobject](https://github.com/jonschlinkert/isobject) | 
 | istanbul-lib-coverage | 3.2.2 | BSD-3-Clause | [istanbul-lib-coverage](https://istanbul.js.org/) | 
 | istanbul-lib-instrument | 5.2.1 | BSD-3-Clause | [istanbul-lib-instrument](https://istanbul.js.org/) | 
@@ -1081,7 +1105,7 @@
 | jest-worker | 29.7.0 | MIT | [jest-worker](https://github.com/jestjs/jest#readme) | 
 | js-file-download | 0.4.12 | MIT | [js-file-download](https://github.com/kennethjiang/js-file-download) | 
 | js-tokens | 4.0.0 | MIT | [js-tokens](https://github.com/lydell/js-tokens#readme) | 
-| js-yaml | 4.1.1 | MIT | [js-yaml](https://github.com/nodeca/js-yaml#readme) | 
+| js-yaml | 4.3.2 | MIT | [js-yaml](https://github.com/nodeca/js-yaml#readme) | 
 | jsesc | 3.1.0 | MIT | [jsesc](https://mths.be/jsesc) | 
 | json-parse-even-better-errors | 2.3.1 | MIT | [json-parse-even-better-errors](https://github.com/npm/json-parse-even-better-errors#readme) | 
 | json-pointer | 0.6.2 | MIT | [json-pointer](https://github.com/manuelstofer/json-pointer) | 
@@ -1099,8 +1123,9 @@
 | jss-plugin-rule-value-function | 10.10.0 | MIT | [jss-plugin-rule-value-function](https://cssinjs.org/) | 
 | jss-plugin-vendor-prefixer | 10.10.0 | MIT | [jss-plugin-vendor-prefixer](https://cssinjs.org/jss-plugin-vendor-prefixer) | 
 | kuler | 2.0.0 | MIT | [kuler](https://github.com/3rd-Eden/kuler) | 
+| launder | 1.7.1 | MIT | [launder](https://github.com/apostrophecms/apostrophe/tree/main/packages/launder#readme) | 
 | lines-and-columns | 1.2.4 | MIT | [lines-and-columns](https://github.com/eventualbuddha/lines-and-columns#readme) | 
-| linkify-it | 5.0.0 | MIT | [linkify-it](https://github.com/markdown-it/linkify-it#readme) | 
+| linkify-it | 5.0.2 | MIT | [linkify-it](https://github.com/markdown-it/linkify-it#readme) | 
 | locate-path | 5.0.0 | MIT | [locate-path](https://github.com/sindresorhus/locate-path#readme) | 
 | locate-path | 6.0.0 | MIT | [locate-path](https://github.com/sindresorhus/locate-path#readme) | 
 | lodash | 4.18.1 | MIT | [lodash](https://lodash.com/) | 
@@ -1115,7 +1140,8 @@
 | lru-cache | 10.4.3 | ISC | [lru-cache](https://github.com/isaacs/node-lru-cache#readme) | 
 | makeerror | 1.0.12 | BSD-3-Clause | [makeerror](https://github.com/daaku/nodejs-makeerror#readme) | 
 | map-stream | 0.1.0 | none | [map-stream](http://github.com/dominictarr/map-stream) | 
-| markdown-it | 14.1.1 | MIT | [markdown-it](https://github.com/markdown-it/markdown-it#readme) | 
+| markdown-it | 14.3.2 | MIT | [markdown-it](https://github.com/markdown-it/markdown-it#readme) | 
+| markdown-it | 14.3.3 | MIT | [markdown-it](https://github.com/markdown-it/markdown-it#readme) | 
 | math-intrinsics | 1.1.0 | MIT | [math-intrinsics](https://github.com/es-shims/math-intrinsics#readme) | 
 | mdurl | 2.0.0 | MIT | [mdurl](https://github.com/markdown-it/mdurl#readme) | 
 | merge-stream | 2.0.0 | MIT | [merge-stream](https://github.com/grncdr/merge-stream#readme) | 
@@ -1135,14 +1161,15 @@
 | ms | 2.1.3 | MIT | [ms](https://github.com/vercel/ms#readme) | 
 | mustache | 4.2.0 | MIT | [mustache](https://github.com/janl/mustache.js) | 
 | mute-stream | 1.0.0 | ISC | [mute-stream](https://github.com/npm/mute-stream#readme) | 
+| nanoid | 3.3.18 | MIT | [nanoid](https://github.com/ai/nanoid#readme) | 
 | natural-compare | 1.4.0 | MIT | [natural-compare](https://github.com/litejs/natural-compare-lite#readme) | 
-| neotraverse | 0.6.18 | MIT | [neotraverse](https://github.com/PuruVJ/neotraverse) | 
+| neotraverse | 1.0.1 | MIT | [neotraverse](https://neotraverse.puruvj.dev) | 
 | node-abort-controller | 3.1.1 | MIT | [node-abort-controller](https://github.com/southpolesteve/node-abort-controller#readme) | 
 | node-addon-api | 7.1.1 | MIT | [node-addon-api](https://github.com/nodejs/node-addon-api) | 
-| node-addon-api | 8.7.0 | MIT | [node-addon-api](https://github.com/nodejs/node-addon-api) | 
+| node-addon-api | 8.9.2 | MIT | [node-addon-api](https://github.com/nodejs/node-addon-api) | 
 | node-gyp-build | 4.8.4 | MIT | [node-gyp-build](https://github.com/prebuild/node-gyp-build) | 
 | node-int64 | 0.4.0 | MIT | [node-int64](https://github.com/broofa/node-int64) | 
-| node-releases | 2.0.27 | MIT | [node-releases](https://github.com/chicoxyzzy/node-releases#readme) | 
+| node-releases | 2.0.59 | MIT | [node-releases](https://github.com/chicoxyzzy/node-releases#readme) | 
 | nopt | 1.0.10 | MIT | [nopt](https://github.com/npm/nopt#readme) | 
 | normalize-path | 3.0.0 | MIT | [normalize-path](https://github.com/jonschlinkert/normalize-path) | 
 | npm-package-arg | 11.0.3 | ISC | [npm-package-arg](https://github.com/npm/npm-package-arg) | 
@@ -1164,8 +1191,9 @@
 | parent-module | 1.0.1 | MIT | [parent-module](https://github.com/sindresorhus/parent-module#readme) | 
 | parse-entities | 4.0.2 | MIT | [parse-entities](https://github.com/wooorm/parse-entities#readme) | 
 | parse-json | 5.2.0 | MIT | [parse-json](https://github.com/sindresorhus/parse-json#readme) | 
+| parse-srcset | 1.0.2 | MIT | [parse-srcset](https://github.com/albell/parse-srcset#readme) | 
 | path-exists | 4.0.0 | MIT | [path-exists](https://github.com/sindresorhus/path-exists#readme) | 
-| path-expression-matcher | 1.5.0 | MIT | [path-expression-matcher](https://github.com/NaturalIntelligence/path-expression-matcher#readme) | 
+| path-expression-matcher | 1.6.2 | MIT | [path-expression-matcher](https://github.com/NaturalIntelligence/path-expression-matcher#readme) | 
 | path-is-absolute | 1.0.1 | MIT | [path-is-absolute](https://github.com/sindresorhus/path-is-absolute#readme) | 
 | path-key | 3.1.1 | MIT | [path-key](https://github.com/sindresorhus/path-key#readme) | 
 | path-parse | 1.0.7 | MIT | [path-parse](https://github.com/jbgutierrez/path-parse#readme) | 
@@ -1178,6 +1206,7 @@
 | pirates | 4.0.7 | MIT | [pirates](https://github.com/danez/pirates#readme) | 
 | popper.js | 1.16.1-lts | MIT | [popper.js](https://popper.js.org) | 
 | possible-typed-array-names | 1.1.0 | MIT | [possible-typed-array-names](https://github.com/ljharb/possible-typed-array-names#readme) | 
+| postcss | 8.5.23 | MIT | [postcss](https://postcss.org/) | 
 | pretty-format | 29.7.0 | MIT | [pretty-format](https://github.com/jestjs/jest#readme) | 
 | prettyjson | 1.2.5 | MIT | [prettyjson](http://rafeca.com/prettyjson) | 
 | prismjs | 1.30.0 | MIT | [prismjs](https://github.com/PrismJS/prism#readme) | 
@@ -1189,7 +1218,7 @@
 | punycode | 1.4.1 | MIT | [punycode](https://mths.be/punycode) | 
 | punycode | 2.3.1 | MIT | [punycode](https://mths.be/punycode) | 
 | punycode.js | 2.3.1 | MIT | [punycode.js](https://mths.be/punycode) | 
-| qs | 6.15.1 | BSD-3-Clause | [qs](https://github.com/ljharb/qs) | 
+| qs | 6.16.1 | BSD-3-Clause | [qs](https://github.com/ljharb/qs) | 
 | querystringify | 2.2.0 | MIT | [querystringify](https://github.com/unshiftio/querystringify) | 
 | queue-microtask | 1.2.3 | MIT | [queue-microtask](https://github.com/feross/queue-microtask) | 
 | ramda | 0.30.1 | MIT | [ramda](https://ramdajs.com/) | 
@@ -1198,11 +1227,11 @@
 | randombytes | 2.1.0 | MIT | [randombytes](https://github.com/crypto-browserify/randombytes) | 
 | react | 18.3.1 | MIT | [react](https://reactjs.org/) | 
 | react-compiler-runtime | 19.1.0-rc.1 | MIT | [react-compiler-runtime](https://github.com/facebook/react#readme) | 
-| react-copy-to-clipboard | 5.1.0 | MIT | [react-copy-to-clipboard](https://github.com/nkbt/react-copy-to-clipboard) | 
+| react-copy-to-clipboard | 5.1.1 | MIT | [react-copy-to-clipboard](https://github.com/nkbt/react-copy-to-clipboard) | 
 | react-debounce-input | 3.3.0 | MIT | [react-debounce-input](https://github.com/nkbt/react-debounce-input) | 
 | react-dom | 18.3.1 | MIT | [react-dom](https://reactjs.org/) | 
 | react-error-boundary | 5.0.0 | MIT | [react-error-boundary](https://github.com/bvaughn/react-error-boundary#readme) | 
-| react-hook-form | 7.75.0 | MIT | [react-hook-form](https://react-hook-form.com) | 
+| react-hook-form | 7.90.0 | MIT | [react-hook-form](https://react-hook-form.com) | 
 | react-immutable-proptypes | 2.2.0 | MIT | [react-immutable-proptypes](https://github.com/HurricaneJames/react-immutable-proptypes) | 
 | react-immutable-pure-component | 2.2.2 | MIT | [react-immutable-pure-component](https://github.com/Monar/react-immutable-pure-component#readme) | 
 | react-inspector | 6.0.2 | MIT | [react-inspector](https://github.com/xyc/react-inspector) | 
@@ -1210,21 +1239,20 @@
 | react-is | 17.0.2 | MIT | [react-is](https://reactjs.org/) | 
 | react-is | 18.3.1 | MIT | [react-is](https://reactjs.org/) | 
 | react-is | 19.2.5 | MIT | [react-is](https://react.dev/) | 
-| react-redux | 9.2.0 | MIT | [react-redux](https://github.com/reduxjs/react-redux) | 
+| react-redux | 9.3.0 | MIT | [react-redux](https://github.com/reduxjs/react-redux) | 
 | react-remove-scroll | 2.7.1 | MIT | [react-remove-scroll](https://github.com/theKashey/react-remove-scroll#readme) | 
 | react-remove-scroll-bar | 2.3.8 | MIT | [react-remove-scroll-bar](https://github.com/theKashey/react-remove-scroll-bar#readme) | 
-| react-router | 7.15.0 | MIT | [react-router](https://github.com/remix-run/react-router#readme) | 
+| react-router | 7.18.4 | MIT | [react-router](https://github.com/remix-run/react-router#readme) | 
 | react-style-singleton | 2.2.3 | MIT | [react-style-singleton](https://github.com/theKashey/react-style-singleton#readme) | 
 | react-syntax-highlighter | 16.1.0 | MIT | [react-syntax-highlighter](https://github.com/react-syntax-highlighter/react-syntax-highlighter#readme) | 
 | react-toastify | 10.0.6 | MIT | [react-toastify](https://github.com/fkhadra/react-toastify#readme) | 
 | react-transition-group | 4.4.5 | BSD-3-Clause | [react-transition-group](https://github.com/reactjs/react-transition-group#readme) | 
 | read | 3.0.1 | ISC | [read](https://github.com/npm/read#readme) | 
 | readable-stream | 3.6.2 | MIT | [readable-stream](https://github.com/nodejs/readable-stream#readme) | 
-| readdirp | 4.1.2 | MIT | [readdirp](https://github.com/paulmillr/readdirp) | 
+| readdirp | 5.1.1 | MIT | [readdirp](https://github.com/paulmillr/readdirp) | 
 | recast | 0.23.11 | MIT | [recast](http://github.com/benjamn/recast) | 
 | redux | 5.0.1 | MIT | [redux](http://redux.js.org) | 
 | redux-catch | 1.3.1 | MIT | [redux-catch](https://github.com/PlatziDev/redux-catch) | 
-| redux-immutable | 4.0.0 | BSD-3-Clause | [redux-immutable](https://github.com/gajus/redux-immutable#readme) | 
 | redux-logger | 3.0.6 | MIT | [redux-logger](https://github.com/theaqua/redux-logger#readme) | 
 | redux-observable | 3.0.0-rc.3 | MIT | [redux-observable](https://github.com/redux-observable/redux-observable#README.md) | 
 | redux-persist | 6.0.0 | MIT | [redux-persist](https://github.com/rt2zz/redux-persist#readme) | 
@@ -1244,14 +1272,13 @@
 | rfdc | 1.4.1 | MIT | [rfdc](https://github.com/davidmarkclements/rfdc#readme) | 
 | run-parallel | 1.2.0 | MIT | [run-parallel](https://github.com/feross/run-parallel) | 
 | rxjs | 7.8.2 | Apache-2.0 | [rxjs](https://rxjs.dev) | 
-| safe-buffer | 5.1.2 | MIT | [safe-buffer](https://github.com/feross/safe-buffer) | 
 | safe-buffer | 5.2.1 | MIT | [safe-buffer](https://github.com/feross/safe-buffer) | 
 | safe-regex-test | 1.1.0 | MIT | [safe-regex-test](https://github.com/ljharb/safe-regex-test#readme) | 
 | safe-stable-stringify | 2.5.0 | MIT | [safe-stable-stringify](https://github.com/BridgeAR/safe-stable-stringify#readme) | 
-| sass | 1.99.0 | MIT | [sass](https://github.com/sass/dart-sass) | 
+| sanitize-html | 2.17.7 | MIT | [sanitize-html](https://github.com/apostrophecms/apostrophe/tree/main/packages/sanitize-html#readme) | 
+| sass | 1.106.1 | MIT | [sass](https://github.com/sass/dart-sass) | 
 | scheduler | 0.23.2 | MIT | [scheduler](https://reactjs.org/) | 
-| semver | 7.7.4 | ISC | [semver](https://github.com/npm/node-semver#readme) | 
-| semver | 7.8.0 | ISC | [semver](https://github.com/npm/node-semver#readme) | 
+| semver | 7.8.5 | ISC | [semver](https://github.com/npm/node-semver#readme) | 
 | serialize-error | 8.1.0 | MIT | [serialize-error](https://github.com/sindresorhus/serialize-error#readme) | 
 | set-cookie-parser | 2.7.1 | MIT | [set-cookie-parser](https://github.com/nfriedly/set-cookie-parser) | 
 | set-function-length | 1.2.2 | MIT | [set-function-length](https://github.com/ljharb/set-function-length#readme) | 
@@ -1260,8 +1287,8 @@
 | shebang-command | 2.0.0 | MIT | [shebang-command](https://github.com/kevva/shebang-command#readme) | 
 | shebang-regex | 3.0.0 | MIT | [shebang-regex](https://github.com/sindresorhus/shebang-regex#readme) | 
 | short-unique-id | 5.3.2 | Apache-2.0 | [short-unique-id](https://shortunique.id) | 
-| side-channel | 1.1.0 | MIT | [side-channel](https://github.com/ljharb/side-channel#readme) | 
-| side-channel-list | 1.0.0 | MIT | [side-channel-list](https://github.com/ljharb/side-channel-list#readme) | 
+| side-channel | 1.1.1 | MIT | [side-channel](https://github.com/ljharb/side-channel#readme) | 
+| side-channel-list | 1.0.1 | MIT | [side-channel-list](https://github.com/ljharb/side-channel-list#readme) | 
 | side-channel-map | 1.0.1 | MIT | [side-channel-map](https://github.com/ljharb/side-channel-map#readme) | 
 | side-channel-weakmap | 1.0.2 | MIT | [side-channel-weakmap](https://github.com/ljharb/side-channel-weakmap#readme) | 
 | signal-exit | 3.0.7 | ISC | [signal-exit](https://github.com/tapjs/signal-exit) | 
@@ -1270,6 +1297,7 @@
 | source-map | 0.5.7 | BSD-3-Clause | [source-map](https://github.com/mozilla/source-map) | 
 | source-map | 0.6.1 | BSD-3-Clause | [source-map](https://github.com/mozilla/source-map) | 
 | source-map-js | 1.2.1 | BSD-3-Clause | [source-map-js](https://github.com/7rulnik/source-map-js) | 
+| source-map-js | 1.2.2 | BSD-3-Clause | [source-map-js](https://github.com/7rulnik/source-map-js) | 
 | space-separated-tokens | 2.0.2 | MIT | [space-separated-tokens](https://github.com/wooorm/space-separated-tokens#readme) | 
 | split | 0.3.3 | MIT | [split](http://github.com/dominictarr/split) | 
 | sprintf-js | 1.0.3 | BSD-3-Clause | [sprintf-js](https://github.com/alexei/sprintf.js#readme) | 
@@ -1279,19 +1307,19 @@
 | stream-combiner | 0.0.4 | MIT | [stream-combiner](https://github.com/dominictarr/stream-combiner) | 
 | streamroller | 3.1.5 | MIT | [streamroller](https://github.com/log4js-node/streamroller#readme) | 
 | string-width | 4.2.3 | MIT | [string-width](https://github.com/sindresorhus/string-width#readme) | 
-| string_decoder | 1.1.1 | MIT | [string_decoder](https://github.com/nodejs/string_decoder) | 
+| string_decoder | 1.3.0 | MIT | [string_decoder](https://github.com/nodejs/string_decoder) | 
 | stringify-object | 3.3.0 | BSD-2-Clause | [stringify-object](https://github.com/yeoman/stringify-object#readme) | 
 | strip-ansi | 3.0.1 | MIT | [strip-ansi](https://github.com/chalk/strip-ansi) | 
 | strip-ansi | 6.0.1 | MIT | [strip-ansi](https://github.com/chalk/strip-ansi#readme) | 
 | strip-json-comments | 3.1.1 | MIT | [strip-json-comments](https://github.com/sindresorhus/strip-json-comments#readme) | 
-| strnum | 2.3.0 | MIT | [strnum](https://github.com/NaturalIntelligence/strnum#readme) | 
+| strnum | 2.4.2 | MIT | [strnum](https://github.com/NaturalIntelligence/strnum#readme) | 
 | stylis | 4.2.0 | MIT | [stylis](https://github.com/thysultan/stylis.js) | 
 | supports-color | 2.0.0 | MIT | [supports-color](https://github.com/chalk/supports-color) | 
 | supports-color | 7.2.0 | MIT | [supports-color](https://github.com/chalk/supports-color#readme) | 
 | supports-color | 8.1.1 | MIT | [supports-color](https://github.com/chalk/supports-color#readme) | 
 | supports-preserve-symlinks-flag | 1.0.0 | MIT | [supports-preserve-symlinks-flag](https://github.com/inspect-js/node-supports-preserve-symlinks-flag#readme) | 
-| swagger-client | 3.37.4 | Apache-2.0 | [swagger-client](https://github.com/swagger-api/swagger-js#readme) | 
-| swagger-ui-react | 5.32.6 | Apache-2.0 | [swagger-ui-react](https://github.com/swagger-api/swagger-ui) | 
+| swagger-client | 3.38.4 | Apache-2.0 | [swagger-client](https://github.com/swagger-api/swagger-client#readme) | 
+| swagger-ui-react | 5.34.0 | Apache-2.0 | [swagger-ui-react](https://github.com/swagger-api/swagger-ui) | 
 | tabbable | 6.2.0 | MIT | [tabbable](https://github.com/focus-trap/tabbable#readme) | 
 | test-exclude | 6.0.0 | ISC | [test-exclude](https://istanbul.js.org/) | 
 | text-hex | 1.0.0 | MIT | [text-hex](https://github.com/3rd-Eden/text-hex) | 
@@ -1318,7 +1346,7 @@
 | universalify | 0.1.2 | MIT | [universalify](https://github.com/RyanZim/universalify#readme) | 
 | universalify | 2.0.0 | MIT | [universalify](https://github.com/RyanZim/universalify#readme) | 
 | unraw | 3.0.0 | MIT | [unraw](https://github.com/iansan5653/unraw#readme) | 
-| update-browserslist-db | 1.2.3 | MIT | [update-browserslist-db](https://github.com/browserslist/update-db#readme) | 
+| update-browserslist-db | 1.3.4 | MIT | [update-browserslist-db](https://github.com/browserslist/update-db#readme) | 
 | uri-js | 4.4.1 | BSD-2-Clause | [uri-js](https://github.com/garycourt/uri-js) | 
 | url | 0.11.4 | MIT | [url](https://github.com/defunctzombie/node-url#readme) | 
 | url-parse | 1.5.10 | MIT | [url-parse](https://github.com/unshiftio/url-parse#readme) | 
@@ -1342,36 +1370,37 @@
 | xml | 1.0.1 | MIT | [xml](http://github.com/dylang/node-xml) | 
 | xml-but-prettier | 1.0.1 | MIT | [xml-but-prettier](https://github.com/shockey/xml-but-prettier#readme) | 
 | xml-naming | 0.1.0 | MIT | [xml-naming](https://github.com/NaturalIntelligence/xml-naming#readme) | 
+| xml-naming | 0.3.0 | MIT | [xml-naming](https://github.com/NaturalIntelligence/xml-naming#readme) | 
 | y18n | 5.0.8 | ISC | [y18n](https://github.com/yargs/y18n) | 
 | yallist | 3.1.1 | ISC | [yallist](https://github.com/isaacs/yallist#readme) | 
-| yaml | 1.10.3 | ISC | [yaml](https://eemeli.org/yaml/v1/) | 
+| yaml | 2.9.1 | ISC | [yaml](https://eemeli.org/yaml/) | 
 | yargs | 17.7.2 | MIT | [yargs](https://yargs.js.org/) | 
 | yargs-parser | 21.1.1 | ISC | [yargs-parser](https://github.com/yargs/yargs-parser#readme) | 
 | yocto-queue | 0.1.0 | MIT | [yocto-queue](https://github.com/sindresorhus/yocto-queue#readme) | 
 | zenscroll | 4.0.2 | Unlicense | [zenscroll](https://zengabor.github.io/zenscroll/) | 
 | zustand | 5.0.8 | MIT | [zustand](https://github.com/pmndrs/zustand) | 
-| @babel/code-frame | 7.29.0 | MIT | [code-frame](https://babel.dev/docs/en/next/babel-code-frame) | 
-| @babel/compat-data | 7.29.3 | MIT | [compat-data](https://github.com/babel/babel.git) | 
-| @babel/core | 7.29.0 | MIT | [core](https://babel.dev/docs/en/next/babel-core) | 
-| @babel/generator | 7.29.0 | MIT | [generator](https://babel.dev/docs/en/next/babel-generator) | 
-| @babel/helper-compilation-targets | 7.28.6 | MIT | [helper-compilation-targets](https://github.com/babel/babel.git) | 
-| @babel/helper-globals | 7.28.0 | MIT | [helper-globals](https://github.com/babel/babel.git) | 
-| @babel/helper-module-imports | 7.28.6 | MIT | [helper-module-imports](https://babel.dev/docs/en/next/babel-helper-module-imports) | 
-| @babel/helper-module-transforms | 7.28.6 | MIT | [helper-module-transforms](https://babel.dev/docs/en/next/babel-helper-module-transforms) | 
-| @babel/helper-plugin-utils | 7.28.6 | MIT | [helper-plugin-utils](https://babel.dev/docs/en/next/babel-helper-plugin-utils) | 
-| @babel/helper-string-parser | 7.27.1 | MIT | [helper-string-parser](https://babel.dev/docs/en/next/babel-helper-string-parser) | 
-| @babel/helper-validator-identifier | 7.28.5 | MIT | [helper-validator-identifier](https://github.com/babel/babel.git) | 
-| @babel/helper-validator-option | 7.27.1 | MIT | [helper-validator-option](https://github.com/babel/babel.git) | 
-| @babel/helpers | 7.28.6 | MIT | [helpers](https://babel.dev/docs/en/next/babel-helpers) | 
-| @babel/parser | 7.29.0 | MIT | [parser](https://babel.dev/docs/en/next/babel-parser) | 
+| @babel/code-frame | 7.29.7 | MIT | [code-frame](https://babel.dev/docs/en/next/babel-code-frame) | 
+| @babel/compat-data | 7.29.7 | MIT | [compat-data](https://github.com/babel/babel.git) | 
+| @babel/core | 7.29.7 | MIT | [core](https://babel.dev/docs/en/next/babel-core) | 
+| @babel/generator | 7.29.8 | MIT | [generator](https://babel.dev/docs/en/next/babel-generator) | 
+| @babel/helper-compilation-targets | 7.29.7 | MIT | [helper-compilation-targets](https://github.com/babel/babel.git) | 
+| @babel/helper-globals | 7.29.7 | MIT | [helper-globals](https://github.com/babel/babel.git) | 
+| @babel/helper-module-imports | 7.29.7 | MIT | [helper-module-imports](https://babel.dev/docs/en/next/babel-helper-module-imports) | 
+| @babel/helper-module-transforms | 7.29.7 | MIT | [helper-module-transforms](https://babel.dev/docs/en/next/babel-helper-module-transforms) | 
+| @babel/helper-plugin-utils | 7.29.7 | MIT | [helper-plugin-utils](https://babel.dev/docs/en/next/babel-helper-plugin-utils) | 
+| @babel/helper-string-parser | 7.29.7 | MIT | [helper-string-parser](https://babel.dev/docs/en/next/babel-helper-string-parser) | 
+| @babel/helper-validator-identifier | 7.29.7 | MIT | [helper-validator-identifier](https://github.com/babel/babel.git) | 
+| @babel/helper-validator-option | 7.29.7 | MIT | [helper-validator-option](https://github.com/babel/babel.git) | 
+| @babel/helpers | 7.29.7 | MIT | [helpers](https://babel.dev/docs/en/next/babel-helpers) | 
+| @babel/parser | 7.29.9 | MIT | [parser](https://babel.dev/docs/en/next/babel-parser) | 
 | @babel/plugin-syntax-async-generators | 7.8.4 | MIT | [plugin-syntax-async-generators](https://github.com/babel/babel.git) | 
 | @babel/plugin-syntax-bigint | 7.8.3 | MIT | [plugin-syntax-bigint](https://github.com/babel/babel.git) | 
 | @babel/plugin-syntax-class-properties | 7.12.13 | MIT | [plugin-syntax-class-properties](https://babel.dev/docs/en/next/babel-plugin-syntax-class-properties) | 
 | @babel/plugin-syntax-class-static-block | 7.14.5 | MIT | [plugin-syntax-class-static-block](https://babel.dev/docs/en/next/babel-plugin-syntax-class-static-block) | 
-| @babel/plugin-syntax-import-attributes | 7.28.6 | MIT | [plugin-syntax-import-attributes](https://github.com/babel/babel.git) | 
+| @babel/plugin-syntax-import-attributes | 7.29.7 | MIT | [plugin-syntax-import-attributes](https://github.com/babel/babel.git) | 
 | @babel/plugin-syntax-import-meta | 7.10.4 | MIT | [plugin-syntax-import-meta](https://github.com/babel/babel#readme) | 
 | @babel/plugin-syntax-json-strings | 7.8.3 | MIT | [plugin-syntax-json-strings](https://github.com/babel/babel.git) | 
-| @babel/plugin-syntax-jsx | 7.27.1 | MIT | [plugin-syntax-jsx](https://babel.dev/docs/en/next/babel-plugin-syntax-jsx) | 
+| @babel/plugin-syntax-jsx | 7.29.7 | MIT | [plugin-syntax-jsx](https://babel.dev/docs/en/next/babel-plugin-syntax-jsx) | 
 | @babel/plugin-syntax-logical-assignment-operators | 7.10.4 | MIT | [plugin-syntax-logical-assignment-operators](https://github.com/babel/babel#readme) | 
 | @babel/plugin-syntax-nullish-coalescing-operator | 7.8.3 | MIT | [plugin-syntax-nullish-coalescing-operator](https://github.com/babel/babel.git) | 
 | @babel/plugin-syntax-numeric-separator | 7.10.4 | MIT | [plugin-syntax-numeric-separator](https://github.com/babel/babel#readme) | 
@@ -1383,9 +1412,9 @@
 | @babel/plugin-syntax-typescript | 7.25.9 | MIT | [plugin-syntax-typescript](https://babel.dev/docs/en/next/babel-plugin-syntax-typescript) | 
 | @babel/runtime | 7.29.2 | MIT | [runtime](https://babel.dev/docs/en/next/babel-runtime) | 
 | @babel/runtime-corejs3 | 7.28.0 | MIT | [runtime-corejs3](https://github.com/babel/babel.git) | 
-| @babel/template | 7.28.6 | MIT | [template](https://babel.dev/docs/en/next/babel-template) | 
-| @babel/traverse | 7.29.0 | MIT | [traverse](https://babel.dev/docs/en/next/babel-traverse) | 
-| @babel/types | 7.29.0 | MIT | [types](https://babel.dev/docs/en/next/babel-types) | 
+| @babel/template | 7.29.7 | MIT | [template](https://babel.dev/docs/en/next/babel-template) | 
+| @babel/traverse | 7.29.10 | MIT | [traverse](https://babel.dev/docs/en/next/babel-traverse) | 
+| @babel/types | 7.29.8 | MIT | [types](https://babel.dev/docs/en/next/babel-types) | 
 | @colors/colors | 1.5.0 | MIT | [colors](https://github.com/DABH/colors.js) | 
 | @colors/colors | 1.6.0 | MIT | [colors](https://github.com/DABH/colors.js) | 
 | @dabh/diagnostics | 2.0.3 | MIT | [diagnostics](https://github.com/3rd-Eden/diagnostics) | 
@@ -1406,7 +1435,7 @@
 | @emotion/weak-memoize | 0.4.0 | MIT | [weak-memoize](https://github.com/emotion-js/emotion/tree/main#readme) | 
 | @eslint/config-helpers | 0.6.0 | Apache-2.0 | [config-helpers](https://github.com/eslint/rewrite/tree/main/packages/config-helpers#readme) | 
 | @eslint/core | 1.2.1 | Apache-2.0 | [core](https://github.com/eslint/rewrite/tree/main/packages/core#readme) | 
-| @eslint/eslintrc | 3.3.5 | MIT | [eslintrc](https://github.com/eslint/eslintrc#readme) | 
+| @eslint/eslintrc | 3.3.6 | MIT | [eslintrc](https://github.com/eslint/eslintrc#readme) | 
 | @eslint/migrate-config | 2.1.0 | Apache-2.0 | [migrate-config](https://github.com/eslint/rewrite/tree/main/packages/migrate-config#readme) | 
 | @floating-ui/core | 1.7.3 | MIT | [core](https://floating-ui.com) | 
 | @floating-ui/dom | 1.7.4 | MIT | [dom](https://floating-ui.com) | 
@@ -1450,7 +1479,7 @@
 | @mui/types | 9.0.0 | MIT | [types](https://github.com/mui/material-ui/tree/master/packages/mui-types) | 
 | @mui/utils | 9.0.0 | MIT | [utils](https://github.com/mui/material-ui/tree/master/packages/mui-utils) | 
 | @n1ru4l/push-pull-async-iterable-iterator | 3.2.0 | MIT | [push-pull-async-iterable-iterator](https://github.com/n1ru4l/push-pull-async-iterable-iterator#readme) | 
-| @nodable/entities | 2.1.0 | MIT | [entities](https://github.com/nodable/val-parsers#readme) | 
+| @nodable/entities | 3.1.0 | MIT | [entities](https://github.com/nodable/val-parsers#readme) | 
 | @nodelib/fs.scandir | 2.1.5 | MIT | [fs.scandir](https://github.com/nodelib/nodelib.git) | 
 | @nodelib/fs.stat | 2.0.5 | MIT | [fs.stat](https://github.com/nodelib/nodelib.git) | 
 | @nodelib/fs.walk | 1.2.8 | MIT | [fs.walk](https://github.com/nodelib/nodelib.git) | 
@@ -1499,47 +1528,50 @@
 | @sinclair/typebox | 0.27.8 | MIT | [typebox](https://github.com/sinclairzx81/sinclair-typebox#readme) | 
 | @sinonjs/commons | 3.0.1 | BSD-3-Clause | [commons](https://github.com/sinonjs/commons#readme) | 
 | @sinonjs/fake-timers | 10.3.0 | BSD-3-Clause | [fake-timers](https://github.com/sinonjs/fake-timers) | 
-| @swagger-api/apidom-ast | 1.11.0 | Apache-2.0 | [apidom-ast](https://github.com/swagger-api/apidom#readme) | 
-| @swagger-api/apidom-core | 1.11.0 | Apache-2.0 | [apidom-core](https://github.com/swagger-api/apidom#readme) | 
-| @swagger-api/apidom-error | 1.11.0 | Apache-2.0 | [apidom-error](https://github.com/swagger-api/apidom#readme) | 
-| @swagger-api/apidom-json-pointer | 1.11.0 | Apache-2.0 | [apidom-json-pointer](https://github.com/swagger-api/apidom#readme) | 
-| @swagger-api/apidom-ns-api-design-systems | 1.11.0 | Apache-2.0 | [apidom-ns-api-design-systems](https://github.com/swagger-api/apidom#readme) | 
-| @swagger-api/apidom-ns-arazzo-1 | 1.11.0 | Apache-2.0 | [apidom-ns-arazzo-1](https://github.com/swagger-api/apidom#readme) | 
-| @swagger-api/apidom-ns-asyncapi-2 | 1.11.0 | Apache-2.0 | [apidom-ns-asyncapi-2](https://github.com/swagger-api/apidom#readme) | 
-| @swagger-api/apidom-ns-asyncapi-3 | 1.11.0 | Apache-2.0 | [apidom-ns-asyncapi-3](https://github.com/swagger-api/apidom#readme) | 
-| @swagger-api/apidom-ns-json-schema-2019-09 | 1.11.0 | Apache-2.0 | [apidom-ns-json-schema-2019-09](https://github.com/swagger-api/apidom#readme) | 
-| @swagger-api/apidom-ns-json-schema-2020-12 | 1.11.0 | Apache-2.0 | [apidom-ns-json-schema-2020-12](https://github.com/swagger-api/apidom#readme) | 
-| @swagger-api/apidom-ns-json-schema-draft-4 | 1.11.0 | Apache-2.0 | [apidom-ns-json-schema-draft-4](https://github.com/swagger-api/apidom#readme) | 
-| @swagger-api/apidom-ns-json-schema-draft-6 | 1.11.0 | Apache-2.0 | [apidom-ns-json-schema-draft-6](https://github.com/swagger-api/apidom#readme) | 
-| @swagger-api/apidom-ns-json-schema-draft-7 | 1.11.0 | Apache-2.0 | [apidom-ns-json-schema-draft-7](https://github.com/swagger-api/apidom#readme) | 
-| @swagger-api/apidom-ns-openapi-2 | 1.11.0 | Apache-2.0 | [apidom-ns-openapi-2](https://github.com/swagger-api/apidom#readme) | 
-| @swagger-api/apidom-ns-openapi-3-0 | 1.11.0 | Apache-2.0 | [apidom-ns-openapi-3-0](https://github.com/swagger-api/apidom#readme) | 
-| @swagger-api/apidom-ns-openapi-3-1 | 1.11.0 | Apache-2.0 | [apidom-ns-openapi-3-1](https://github.com/swagger-api/apidom#readme) | 
-| @swagger-api/apidom-ns-openapi-3-2 | 1.11.0 | Apache-2.0 | [apidom-ns-openapi-3-2](https://github.com/swagger-api/apidom#readme) | 
-| @swagger-api/apidom-parser-adapter-api-design-systems-json | 1.11.0 | Apache-2.0 | [apidom-parser-adapter-api-design-systems-json](https://github.com/swagger-api/apidom#readme) | 
-| @swagger-api/apidom-parser-adapter-api-design-systems-yaml | 1.11.0 | Apache-2.0 | [apidom-parser-adapter-api-design-systems-yaml](https://github.com/swagger-api/apidom#readme) | 
-| @swagger-api/apidom-parser-adapter-arazzo-json-1 | 1.11.0 | Apache-2.0 | [apidom-parser-adapter-arazzo-json-1](https://github.com/swagger-api/apidom#readme) | 
-| @swagger-api/apidom-parser-adapter-arazzo-yaml-1 | 1.11.0 | Apache-2.0 | [apidom-parser-adapter-arazzo-yaml-1](https://github.com/swagger-api/apidom#readme) | 
-| @swagger-api/apidom-parser-adapter-asyncapi-json-2 | 1.11.0 | Apache-2.0 | [apidom-parser-adapter-asyncapi-json-2](https://github.com/swagger-api/apidom#readme) | 
-| @swagger-api/apidom-parser-adapter-asyncapi-json-3 | 1.11.0 | Apache-2.0 | [apidom-parser-adapter-asyncapi-json-3](https://github.com/swagger-api/apidom#readme) | 
-| @swagger-api/apidom-parser-adapter-asyncapi-yaml-2 | 1.11.0 | Apache-2.0 | [apidom-parser-adapter-asyncapi-yaml-2](https://github.com/swagger-api/apidom#readme) | 
-| @swagger-api/apidom-parser-adapter-asyncapi-yaml-3 | 1.11.0 | Apache-2.0 | [apidom-parser-adapter-asyncapi-yaml-3](https://github.com/swagger-api/apidom#readme) | 
-| @swagger-api/apidom-parser-adapter-json | 1.11.0 | Apache-2.0 | [apidom-parser-adapter-json](https://github.com/swagger-api/apidom#readme) | 
-| @swagger-api/apidom-parser-adapter-openapi-json-2 | 1.11.0 | Apache-2.0 | [apidom-parser-adapter-openapi-json-2](https://github.com/swagger-api/apidom#readme) | 
-| @swagger-api/apidom-parser-adapter-openapi-json-3-0 | 1.11.0 | Apache-2.0 | [apidom-parser-adapter-openapi-json-3-0](https://github.com/swagger-api/apidom#readme) | 
-| @swagger-api/apidom-parser-adapter-openapi-json-3-1 | 1.11.0 | Apache-2.0 | [apidom-parser-adapter-openapi-json-3-1](https://github.com/swagger-api/apidom#readme) | 
-| @swagger-api/apidom-parser-adapter-openapi-json-3-2 | 1.11.0 | Apache-2.0 | [apidom-parser-adapter-openapi-json-3-2](https://github.com/swagger-api/apidom#readme) | 
-| @swagger-api/apidom-parser-adapter-openapi-yaml-2 | 1.11.0 | Apache-2.0 | [apidom-parser-adapter-openapi-yaml-2](https://github.com/swagger-api/apidom#readme) | 
-| @swagger-api/apidom-parser-adapter-openapi-yaml-3-0 | 1.11.0 | Apache-2.0 | [apidom-parser-adapter-openapi-yaml-3-0](https://github.com/swagger-api/apidom#readme) | 
-| @swagger-api/apidom-parser-adapter-openapi-yaml-3-1 | 1.11.0 | Apache-2.0 | [apidom-parser-adapter-openapi-yaml-3-1](https://github.com/swagger-api/apidom#readme) | 
-| @swagger-api/apidom-parser-adapter-openapi-yaml-3-2 | 1.11.0 | Apache-2.0 | [apidom-parser-adapter-openapi-yaml-3-2](https://github.com/swagger-api/apidom#readme) | 
-| @swagger-api/apidom-parser-adapter-yaml-1-2 | 1.11.0 | Apache-2.0 | [apidom-parser-adapter-yaml-1-2](https://github.com/swagger-api/apidom#readme) | 
-| @swagger-api/apidom-reference | 1.11.0 | Apache-2.0 | [apidom-reference](https://github.com/swagger-api/apidom#readme) | 
+| @swagger-api/apidom-ast | 1.13.3 | Apache-2.0 | [apidom-ast](https://github.com/swagger-api/apidom#readme) | 
+| @swagger-api/apidom-core | 1.13.3 | Apache-2.0 | [apidom-core](https://github.com/swagger-api/apidom#readme) | 
+| @swagger-api/apidom-error | 1.13.3 | Apache-2.0 | [apidom-error](https://github.com/swagger-api/apidom#readme) | 
+| @swagger-api/apidom-json-pointer | 1.13.3 | Apache-2.0 | [apidom-json-pointer](https://github.com/swagger-api/apidom#readme) | 
+| @swagger-api/apidom-ns-a2a-1 | 1.13.3 | Apache-2.0 | [apidom-ns-a2a-1](https://github.com/swagger-api/apidom#readme) | 
+| @swagger-api/apidom-ns-api-design-systems | 1.13.3 | Apache-2.0 | [apidom-ns-api-design-systems](https://github.com/swagger-api/apidom#readme) | 
+| @swagger-api/apidom-ns-arazzo-1 | 1.13.3 | Apache-2.0 | [apidom-ns-arazzo-1](https://github.com/swagger-api/apidom#readme) | 
+| @swagger-api/apidom-ns-asyncapi-2 | 1.13.3 | Apache-2.0 | [apidom-ns-asyncapi-2](https://github.com/swagger-api/apidom#readme) | 
+| @swagger-api/apidom-ns-asyncapi-3 | 1.13.3 | Apache-2.0 | [apidom-ns-asyncapi-3](https://github.com/swagger-api/apidom#readme) | 
+| @swagger-api/apidom-ns-json-schema-2019-09 | 1.13.3 | Apache-2.0 | [apidom-ns-json-schema-2019-09](https://github.com/swagger-api/apidom#readme) | 
+| @swagger-api/apidom-ns-json-schema-2020-12 | 1.13.3 | Apache-2.0 | [apidom-ns-json-schema-2020-12](https://github.com/swagger-api/apidom#readme) | 
+| @swagger-api/apidom-ns-json-schema-draft-4 | 1.13.3 | Apache-2.0 | [apidom-ns-json-schema-draft-4](https://github.com/swagger-api/apidom#readme) | 
+| @swagger-api/apidom-ns-json-schema-draft-6 | 1.13.3 | Apache-2.0 | [apidom-ns-json-schema-draft-6](https://github.com/swagger-api/apidom#readme) | 
+| @swagger-api/apidom-ns-json-schema-draft-7 | 1.13.3 | Apache-2.0 | [apidom-ns-json-schema-draft-7](https://github.com/swagger-api/apidom#readme) | 
+| @swagger-api/apidom-ns-openapi-2 | 1.13.3 | Apache-2.0 | [apidom-ns-openapi-2](https://github.com/swagger-api/apidom#readme) | 
+| @swagger-api/apidom-ns-openapi-3-0 | 1.13.3 | Apache-2.0 | [apidom-ns-openapi-3-0](https://github.com/swagger-api/apidom#readme) | 
+| @swagger-api/apidom-ns-openapi-3-1 | 1.13.3 | Apache-2.0 | [apidom-ns-openapi-3-1](https://github.com/swagger-api/apidom#readme) | 
+| @swagger-api/apidom-ns-openapi-3-2 | 1.13.3 | Apache-2.0 | [apidom-ns-openapi-3-2](https://github.com/swagger-api/apidom#readme) | 
+| @swagger-api/apidom-parser-adapter-a2a-json-1 | 1.13.3 | Apache-2.0 | [apidom-parser-adapter-a2a-json-1](https://github.com/swagger-api/apidom#readme) | 
+| @swagger-api/apidom-parser-adapter-a2a-yaml-1 | 1.13.3 | Apache-2.0 | [apidom-parser-adapter-a2a-yaml-1](https://github.com/swagger-api/apidom#readme) | 
+| @swagger-api/apidom-parser-adapter-api-design-systems-json | 1.13.3 | Apache-2.0 | [apidom-parser-adapter-api-design-systems-json](https://github.com/swagger-api/apidom#readme) | 
+| @swagger-api/apidom-parser-adapter-api-design-systems-yaml | 1.13.3 | Apache-2.0 | [apidom-parser-adapter-api-design-systems-yaml](https://github.com/swagger-api/apidom#readme) | 
+| @swagger-api/apidom-parser-adapter-arazzo-json-1 | 1.13.3 | Apache-2.0 | [apidom-parser-adapter-arazzo-json-1](https://github.com/swagger-api/apidom#readme) | 
+| @swagger-api/apidom-parser-adapter-arazzo-yaml-1 | 1.13.3 | Apache-2.0 | [apidom-parser-adapter-arazzo-yaml-1](https://github.com/swagger-api/apidom#readme) | 
+| @swagger-api/apidom-parser-adapter-asyncapi-json-2 | 1.13.3 | Apache-2.0 | [apidom-parser-adapter-asyncapi-json-2](https://github.com/swagger-api/apidom#readme) | 
+| @swagger-api/apidom-parser-adapter-asyncapi-json-3 | 1.13.3 | Apache-2.0 | [apidom-parser-adapter-asyncapi-json-3](https://github.com/swagger-api/apidom#readme) | 
+| @swagger-api/apidom-parser-adapter-asyncapi-yaml-2 | 1.13.3 | Apache-2.0 | [apidom-parser-adapter-asyncapi-yaml-2](https://github.com/swagger-api/apidom#readme) | 
+| @swagger-api/apidom-parser-adapter-asyncapi-yaml-3 | 1.13.3 | Apache-2.0 | [apidom-parser-adapter-asyncapi-yaml-3](https://github.com/swagger-api/apidom#readme) | 
+| @swagger-api/apidom-parser-adapter-json | 1.13.3 | Apache-2.0 | [apidom-parser-adapter-json](https://github.com/swagger-api/apidom#readme) | 
+| @swagger-api/apidom-parser-adapter-openapi-json-2 | 1.13.3 | Apache-2.0 | [apidom-parser-adapter-openapi-json-2](https://github.com/swagger-api/apidom#readme) | 
+| @swagger-api/apidom-parser-adapter-openapi-json-3-0 | 1.13.3 | Apache-2.0 | [apidom-parser-adapter-openapi-json-3-0](https://github.com/swagger-api/apidom#readme) | 
+| @swagger-api/apidom-parser-adapter-openapi-json-3-1 | 1.13.3 | Apache-2.0 | [apidom-parser-adapter-openapi-json-3-1](https://github.com/swagger-api/apidom#readme) | 
+| @swagger-api/apidom-parser-adapter-openapi-json-3-2 | 1.13.3 | Apache-2.0 | [apidom-parser-adapter-openapi-json-3-2](https://github.com/swagger-api/apidom#readme) | 
+| @swagger-api/apidom-parser-adapter-openapi-yaml-2 | 1.13.3 | Apache-2.0 | [apidom-parser-adapter-openapi-yaml-2](https://github.com/swagger-api/apidom#readme) | 
+| @swagger-api/apidom-parser-adapter-openapi-yaml-3-0 | 1.13.3 | Apache-2.0 | [apidom-parser-adapter-openapi-yaml-3-0](https://github.com/swagger-api/apidom#readme) | 
+| @swagger-api/apidom-parser-adapter-openapi-yaml-3-1 | 1.13.3 | Apache-2.0 | [apidom-parser-adapter-openapi-yaml-3-1](https://github.com/swagger-api/apidom#readme) | 
+| @swagger-api/apidom-parser-adapter-openapi-yaml-3-2 | 1.13.3 | Apache-2.0 | [apidom-parser-adapter-openapi-yaml-3-2](https://github.com/swagger-api/apidom#readme) | 
+| @swagger-api/apidom-parser-adapter-yaml-1-2 | 1.13.3 | Apache-2.0 | [apidom-parser-adapter-yaml-1-2](https://github.com/swagger-api/apidom#readme) | 
+| @swagger-api/apidom-reference | 1.13.3 | Apache-2.0 | [apidom-reference](https://github.com/swagger-api/apidom#readme) | 
 | @swaggerexpert/cookie | 2.0.2 | Apache-2.0 | [cookie](https://github.com/swaggerexpert/cookie#readme) | 
 | @swaggerexpert/json-pointer | 2.10.2 | Apache-2.0 | [json-pointer](https://github.com/swaggerexpert/json-pointer#readme) | 
 | @swc/helpers | 0.5.17 | Apache-2.0 | [helpers](https://swc.rs) | 
-| @tanstack/react-virtual | 3.13.12 | MIT | [react-virtual](https://tanstack.com/virtual) | 
-| @tanstack/virtual-core | 3.13.12 | MIT | [virtual-core](https://tanstack.com/virtual) | 
+| @tanstack/react-virtual | 3.14.10 | MIT | [react-virtual](https://tanstack.com/virtual) | 
+| @tanstack/virtual-core | 3.17.8 | MIT | [virtual-core](https://tanstack.com/virtual) | 
 | @tree-sitter-grammars/tree-sitter-yaml | 0.7.1 | MIT | [tree-sitter-yaml](https://github.com/tree-sitter-grammars/tree-sitter-yaml#readme) | 
 | @types/cheerio | 0.22.35 | MIT | [cheerio](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/cheerio) | 
 | @types/codemirror | 0.0.90 | MIT | [codemirror](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/codemirror) | 
@@ -1559,7 +1591,7 @@
 | @types/prop-types | 15.7.15 | MIT | [prop-types](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/prop-types) | 
 | @types/ramda | 0.30.2 | MIT | [ramda](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/ramda) | 
 | @types/react | 16.14.63 | MIT | [react](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/react) | 
-| @types/react | 18.3.28 | MIT | [react](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/react) | 
+| @types/react | 18.3.31 | MIT | [react](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/react) | 
 | @types/react-transition-group | 4.4.12 | MIT | [react-transition-group](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/react-transition-group) | 
 | @types/scheduler | 0.16.8 | MIT | [scheduler](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/scheduler) | 
 | @types/semver | 7.7.1 | MIT | [semver](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/semver) | 
@@ -1574,7 +1606,7 @@
 | @types/yargs | 17.0.33 | MIT | [yargs](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/yargs) | 
 | @types/yargs-parser | 20.2.1 | MIT | [yargs-parser](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/yargs-parser) | 
 | @types/yargs-parser | 21.0.3 | MIT | [yargs-parser](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/yargs-parser) | 
-| @zowe/imperative | 8.32.0 | EPL-2.0 | [imperative](https://github.com/zowe/zowe-cli/tree/master/packages/imperative#readme) | 
+| @zowe/imperative | 8.40.0 | EPL-2.0 | [imperative](https://github.com/zowe/zowe-cli/tree/master/packages/imperative#readme) | 
 
 ### Zowe Application Framework Dependency Attributions
 | Third-party Software | Version | License | Link   |
@@ -1582,11 +1614,11 @@
 | angular-l10n | 17.0.1 | MIT | [angular-l10n](https://github.com/robisim74/angular-l10n) | 
 | ansi-regex | 5.0.1 | MIT | [ansi-regex](https://github.com/chalk/ansi-regex#readme) | 
 | ansi-styles | 4.3.0 | MIT | [ansi-styles](https://github.com/chalk/ansi-styles#readme) | 
-| baseline-browser-mapping | 2.8.29 | Apache-2.0 | [baseline-browser-mapping](https://github.com/web-platform-dx/baseline-browser-mapping#readme) | 
+| baseline-browser-mapping | 2.11.27 | Apache-2.0 | [baseline-browser-mapping](https://github.com/web-platform-dx/baseline-browser-mapping#readme) | 
 | bootstrap | 5.3.2 | MIT | [bootstrap](https://getbootstrap.com/) | 
 | braces | 3.0.3 | MIT | [braces](https://github.com/micromatch/braces) | 
-| browserslist | 4.28.0 | MIT | [browserslist](https://github.com/browserslist/browserslist#readme) | 
-| caniuse-lite | 1.0.30001755 | CC-BY-4.0 | [caniuse-lite](https://github.com/browserslist/caniuse-lite#readme) | 
+| browserslist | 4.29.3 | MIT | [browserslist](https://github.com/browserslist/browserslist#readme) | 
+| caniuse-lite | 1.0.30001814 | CC-BY-4.0 | [caniuse-lite](https://github.com/browserslist/caniuse-lite#readme) | 
 | chokidar | 4.0.3 | MIT | [chokidar](https://github.com/paulmillr/chokidar) | 
 | cliui | 8.0.1 | ISC | [cliui](https://github.com/yargs/cliui#readme) | 
 | color-convert | 2.0.1 | MIT | [color-convert](https://github.com/Qix-/color-convert#readme) | 
@@ -1595,20 +1627,17 @@
 | convert-source-map | 2.0.0 | MIT | [convert-source-map](https://github.com/thlorenz/convert-source-map) | 
 | core-js | 3.38.1 | MIT | [core-js](https://github.com/zloirock/core-js#readme) | 
 | debug | 4.4.3 | MIT | [debug](https://github.com/debug-js/debug#readme) | 
-| electron-to-chromium | 1.5.255 | ISC | [electron-to-chromium](https://github.com/kilian/electron-to-chromium#readme) | 
+| electron-to-chromium | 1.5.444 | ISC | [electron-to-chromium](https://github.com/Kilian/electron-to-chromium#readme) | 
 | emoji-regex | 8.0.0 | MIT | [emoji-regex](https://mths.be/emoji-regex) | 
 | entities | 6.0.1 | BSD-2-Clause | [entities](https://github.com/fb55/entities#readme) | 
 | escalade | 3.2.0 | MIT | [escalade](https://github.com/lukeed/escalade#readme) | 
-| eventemitter3 | 4.0.7 | MIT | [eventemitter3](https://github.com/primus/eventemitter3#readme) | 
 | fast-glob | 3.3.2 | MIT | [fast-glob](https://github.com/mrmlnc/fast-glob#readme) | 
 | fastq | 1.19.1 | ISC | [fastq](https://github.com/mcollina/fastq#readme) | 
 | fill-range | 7.1.1 | MIT | [fill-range](https://github.com/jonschlinkert/fill-range) | 
-| follow-redirects | 1.15.11 | MIT | [follow-redirects](https://github.com/follow-redirects/follow-redirects) | 
 | font-awesome | 4.7.0 | (OFL-1.1 AND MIT) | [font-awesome](http://fontawesome.io/) | 
 | gensync | 1.0.0-beta.2 | MIT | [gensync](https://github.com/loganfsmyth/gensync) | 
 | get-caller-file | 2.0.5 | ISC | [get-caller-file](https://github.com/stefanpenner/get-caller-file#readme) | 
 | glob-parent | 5.1.2 | ISC | [glob-parent](https://github.com/gulpjs/glob-parent#readme) | 
-| http-proxy | 1.18.1 | MIT | [http-proxy](https://github.com/http-party/node-http-proxy#readme) | 
 | is-extglob | 2.1.1 | MIT | [is-extglob](https://github.com/jonschlinkert/is-extglob) | 
 | is-fullwidth-code-point | 3.0.0 | MIT | [is-fullwidth-code-point](https://github.com/sindresorhus/is-fullwidth-code-point#readme) | 
 | is-glob | 4.0.3 | MIT | [is-glob](https://github.com/micromatch/is-glob) | 
@@ -1623,7 +1652,7 @@
 | moment | 2.29.4 | MIT | [moment](https://momentjs.com) | 
 | ms | 2.1.3 | MIT | [ms](https://github.com/vercel/ms#readme) | 
 | ngx-file-drop | 16.0.0 | MIT | [ngx-file-drop](https://github.com/georgipeltekov/ngx-file-drop#readme) | 
-| node-releases | 2.0.27 | MIT | [node-releases](https://github.com/chicoxyzzy/node-releases#readme) | 
+| node-releases | 2.0.57 | MIT | [node-releases](https://github.com/chicoxyzzy/node-releases#readme) | 
 | parse5 | 7.3.0 | MIT | [parse5](https://parse5.js.org) | 
 | picocolors | 1.1.1 | ISC | [picocolors](https://github.com/alexeyraspopov/picocolors#readme) | 
 | picomatch | 2.3.2 | MIT | [picomatch](https://github.com/micromatch/picomatch) | 
@@ -1633,7 +1662,6 @@
 | reflect-metadata | 0.2.2 | Apache-2.0 | [reflect-metadata](http://rbuckton.github.io/reflect-metadata) | 
 | require-directory | 2.1.1 | MIT | [require-directory](https://github.com/troygoode/node-require-directory/) | 
 | requirejs | 2.3.7 | MIT | [requirejs](http://github.com/jrburke/r.js) | 
-| requires-port | 1.0.0 | MIT | [requires-port](https://github.com/unshiftio/requires-port) | 
 | reusify | 1.1.0 | MIT | [reusify](https://github.com/mcollina/reusify#readme) | 
 | run-parallel | 1.2.0 | MIT | [run-parallel](https://github.com/feross/run-parallel) | 
 | rxjs | 6.6.7 | Apache-2.0 | [rxjs](https://github.com/ReactiveX/RxJS) | 
@@ -1647,7 +1675,7 @@
 | tslib | 2.6.3 | 0BSD | [tslib](https://www.typescriptlang.org/) | 
 | typeface-roboto | 1.1.13 | MIT | [typeface-roboto](https://github.com/KyleAMathews/typefaces.git) | 
 | typescript | 5.4.5 | Apache-2.0 | [typescript](https://www.typescriptlang.org/) | 
-| update-browserslist-db | 1.1.4 | MIT | [update-browserslist-db](https://github.com/browserslist/update-db#readme) | 
+| update-browserslist-db | 1.3.3 | MIT | [update-browserslist-db](https://github.com/browserslist/update-db#readme) | 
 | wrap-ansi | 7.0.0 | MIT | [wrap-ansi](https://github.com/chalk/wrap-ansi#readme) | 
 | y18n | 5.0.8 | ISC | [y18n](https://github.com/yargs/y18n) | 
 | yallist | 3.1.1 | ISC | [yallist](https://github.com/isaacs/yallist#readme) | 
@@ -1667,23 +1695,23 @@
 | @angular/platform-browser | 18.2.14 | MIT | [platform-browser](https://github.com/angular/angular#readme) | 
 | @angular/platform-browser-dynamic | 18.2.14 | MIT | [platform-browser-dynamic](https://github.com/angular/angular#readme) | 
 | @angular/router | 18.2.14 | MIT | [router](https://github.com/angular/angular/tree/main/packages/router) | 
-| @babel/code-frame | 7.27.1 | MIT | [code-frame](https://babel.dev/docs/en/next/babel-code-frame) | 
+| @babel/code-frame | 7.29.7 | MIT | [code-frame](https://babel.dev/docs/en/next/babel-code-frame) | 
 | @babel/compat-data | 7.28.5 | MIT | [compat-data](https://github.com/babel/babel.git) | 
 | @babel/core | 7.25.2 | MIT | [core](https://babel.dev/docs/en/next/babel-core) | 
 | @babel/generator | 7.25.0 | MIT | [generator](https://babel.dev/docs/en/next/babel-generator) | 
-| @babel/generator | 7.28.5 | MIT | [generator](https://babel.dev/docs/en/next/babel-generator) | 
+| @babel/generator | 7.29.8 | MIT | [generator](https://babel.dev/docs/en/next/babel-generator) | 
 | @babel/helper-compilation-targets | 7.27.2 | MIT | [helper-compilation-targets](https://github.com/babel/babel.git) | 
-| @babel/helper-globals | 7.28.0 | MIT | [helper-globals](https://github.com/babel/babel.git) | 
-| @babel/helper-module-imports | 7.27.1 | MIT | [helper-module-imports](https://babel.dev/docs/en/next/babel-helper-module-imports) | 
-| @babel/helper-module-transforms | 7.28.3 | MIT | [helper-module-transforms](https://babel.dev/docs/en/next/babel-helper-module-transforms) | 
-| @babel/helper-string-parser | 7.27.1 | MIT | [helper-string-parser](https://babel.dev/docs/en/next/babel-helper-string-parser) | 
-| @babel/helper-validator-identifier | 7.28.5 | MIT | [helper-validator-identifier](https://github.com/babel/babel.git) | 
+| @babel/helper-globals | 7.29.7 | MIT | [helper-globals](https://github.com/babel/babel.git) | 
+| @babel/helper-module-imports | 7.29.7 | MIT | [helper-module-imports](https://babel.dev/docs/en/next/babel-helper-module-imports) | 
+| @babel/helper-module-transforms | 7.29.7 | MIT | [helper-module-transforms](https://babel.dev/docs/en/next/babel-helper-module-transforms) | 
+| @babel/helper-string-parser | 7.29.7 | MIT | [helper-string-parser](https://babel.dev/docs/en/next/babel-helper-string-parser) | 
+| @babel/helper-validator-identifier | 7.29.7 | MIT | [helper-validator-identifier](https://github.com/babel/babel.git) | 
 | @babel/helper-validator-option | 7.27.1 | MIT | [helper-validator-option](https://github.com/babel/babel.git) | 
 | @babel/helpers | 7.28.4 | MIT | [helpers](https://babel.dev/docs/en/next/babel-helpers) | 
-| @babel/parser | 7.28.5 | MIT | [parser](https://babel.dev/docs/en/next/babel-parser) | 
-| @babel/template | 7.27.2 | MIT | [template](https://babel.dev/docs/en/next/babel-template) | 
-| @babel/traverse | 7.28.5 | MIT | [traverse](https://babel.dev/docs/en/next/babel-traverse) | 
-| @babel/types | 7.28.5 | MIT | [types](https://babel.dev/docs/en/next/babel-types) | 
+| @babel/parser | 7.29.9 | MIT | [parser](https://babel.dev/docs/en/next/babel-parser) | 
+| @babel/template | 7.29.7 | MIT | [template](https://babel.dev/docs/en/next/babel-template) | 
+| @babel/traverse | 7.29.8 | MIT | [traverse](https://babel.dev/docs/en/next/babel-traverse) | 
+| @babel/types | 7.29.8 | MIT | [types](https://babel.dev/docs/en/next/babel-types) | 
 | @jridgewell/gen-mapping | 0.3.13 | MIT | [gen-mapping](https://github.com/jridgewell/sourcemaps/tree/main/packages/gen-mapping) | 
 | @jridgewell/resolve-uri | 3.1.2 | MIT | [resolve-uri](https://github.com/jridgewell/resolve-uri#readme) | 
 | @jridgewell/sourcemap-codec | 1.5.5 | MIT | [sourcemap-codec](https://github.com/jridgewell/sourcemaps/tree/main/packages/sourcemap-codec) | 
@@ -1696,9 +1724,6 @@
 | @types/babel__generator | 7.27.0 | MIT | [babel__generator](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/babel__generator) | 
 | @types/babel__template | 7.4.4 | MIT | [babel__template](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/babel__template) | 
 | @types/babel__traverse | 7.28.0 | MIT | [babel__traverse](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/babel__traverse) | ### Zowe Application Framework Dependency Attributions
-| Third-party Software | Version | License | Link   |
-| -------------------- | --------| ------- | ------ |
-| yaml | 2.4.5 | ISC | [yaml](https://eemeli.org/yaml/) | ### Zowe Application Framework Dependency Attributions
 | Third-party Software | Version | License | Link   |
 | -------------------- | --------| ------- | ------ |
 | carbon-components | 8.23.1 | Apache-2 | [carbon-components](http://carbondesignsystem.com/) | 
@@ -1729,25 +1754,22 @@
 | primeng | 5.2.7 | MIT | [primeng](https://github.com/primefaces/primeng#readme) | ### Zowe Application Framework Dependency Attributions
 | Third-party Software | Version | License | Link   |
 | -------------------- | --------| ------- | ------ |
-| accept-language-parser | 1.5.0 | MIT | [accept-language-parser](https://github.com/opentable/accept-language-parser) | 
 | accepts | 1.3.8 | MIT | [accepts](https://github.com/jshttp/accepts#readme) | 
 | ajv | 8.18.0 | MIT | [ajv](https://ajv.js.org) | 
 | ajv-draft-04 | 1.0.0 | MIT | [ajv-draft-04](https://github.com/ajv-validator/ajv-draft-04#readme) | 
-| argparse | 1.0.10 | MIT | [argparse](https://github.com/nodeca/argparse#readme) | 
 | argparse | 2.0.1 | Python-2.0 | [argparse](https://github.com/nodeca/argparse#readme) | 
 | array-flatten | 1.1.1 | MIT | [array-flatten](https://github.com/blakeembrey/array-flatten) | 
 | asn1 | 0.2.6 | MIT | [asn1](https://github.com/joyent/node-asn1#readme) | 
 | assert-plus | 1.0.0 | MIT | [assert-plus](https://github.com/mcavage/node-assert-plus#readme) | 
 | async | 3.2.6 | MIT | [async](https://caolan.github.io/async/) | 
-| async-limiter | 1.0.1 | MIT | [async-limiter](https://github.com/strml/async-limiter#readme) | 
 | asynckit | 0.4.0 | MIT | [asynckit](https://github.com/alexindigo/asynckit#readme) | 
 | aws-sign2 | 0.7.0 | Apache-2.0 | [aws-sign2](https://github.com/mikeal/aws-sign#readme) | 
 | aws4 | 1.13.0 | MIT | [aws4](https://github.com/mhart/aws4#readme) | 
 | bcrypt-pbkdf | 1.0.2 | BSD-3-Clause | [bcrypt-pbkdf](https://github.com/joyent/node-bcrypt-pbkdf#readme) | 
 | bluebird | 3.7.2 | MIT | [bluebird](https://github.com/petkaantonov/bluebird) | 
 | body-parser | 1.20.3 | MIT | [body-parser](https://github.com/expressjs/body-parser#readme) | 
+| body-parser | 1.20.9 | MIT | [body-parser](https://github.com/expressjs/body-parser#readme) | 
 | buffer-crc32 | 0.2.13 | MIT | [buffer-crc32](https://github.com/brianloveswords/buffer-crc32) | 
-| bufferutil | 4.0.1 | MIT | [bufferutil](https://github.com/websockets/bufferutil) | 
 | bytes | 3.1.2 | MIT | [bytes](https://github.com/visionmedia/bytes.js#readme) | 
 | call-bind-apply-helpers | 1.0.2 | MIT | [call-bind-apply-helpers](https://github.com/ljharb/call-bind-apply-helpers#readme) | 
 | call-bound | 1.0.4 | MIT | [call-bound](https://github.com/ljharb/call-bound#readme) | 
@@ -1777,7 +1799,6 @@
 | es-object-atoms | 1.1.1 | MIT | [es-object-atoms](https://github.com/ljharb/es-object-atoms#readme) | 
 | es-set-tostringtag | 2.1.0 | MIT | [es-set-tostringtag](https://github.com/es-shims/es-set-tostringtag#readme) | 
 | escape-html | 1.0.3 | MIT | [escape-html](https://github.com/component/escape-html) | 
-| esprima | 4.0.1 | BSD-2-Clause | [esprima](http://esprima.org) | 
 | etag | 1.8.1 | MIT | [etag](https://github.com/jshttp/etag#readme) | 
 | express | 4.21.2 | MIT | [express](http://expressjs.com/) | 
 | express-session | 1.18.2 | MIT | [express-session](https://github.com/expressjs/session#readme) | 
@@ -1785,10 +1806,10 @@
 | extend | 3.0.2 | MIT | [extend](https://github.com/justmoon/node-extend#readme) | 
 | extsprintf | 1.3.0 | MIT | [extsprintf](https://github.com/davepacheco/node-extsprintf) | 
 | fast-deep-equal | 3.1.3 | MIT | [fast-deep-equal](https://github.com/epoberezkin/fast-deep-equal#readme) | 
-| fast-uri | 3.1.0 | BSD-3-Clause | [fast-uri](https://github.com/fastify/fast-uri) | 
+| fast-uri | 3.1.8 | BSD-3-Clause | [fast-uri](https://github.com/fastify/fast-uri) | 
 | finalhandler | 1.3.1 | MIT | [finalhandler](https://github.com/pillarjs/finalhandler#readme) | 
 | forever-agent | 0.6.1 | Apache-2.0 | [forever-agent](https://github.com/mikeal/forever-agent) | 
-| form-data | 4.0.4 | MIT | [form-data](https://github.com/form-data/form-data#readme) | 
+| form-data | 4.0.6 | MIT | [form-data](https://github.com/form-data/form-data#readme) | 
 | forwarded | 0.2.0 | MIT | [forwarded](https://github.com/jshttp/forwarded#readme) | 
 | fresh | 0.5.2 | MIT | [fresh](https://github.com/jshttp/fresh#readme) | 
 | function-bind | 1.1.2 | MIT | [function-bind](https://github.com/Raynos/function-bind) | 
@@ -1799,8 +1820,9 @@
 | graceful-fs | 4.2.11 | ISC | [graceful-fs](https://github.com/isaacs/node-graceful-fs#readme) | 
 | has-symbols | 1.1.0 | MIT | [has-symbols](https://github.com/ljharb/has-symbols#readme) | 
 | has-tostringtag | 1.0.2 | MIT | [has-tostringtag](https://github.com/inspect-js/has-tostringtag#readme) | 
-| hasown | 2.0.2 | MIT | [hasown](https://github.com/inspect-js/hasOwn#readme) | 
+| hasown | 2.0.4 | MIT | [hasown](https://github.com/inspect-js/hasOwn#readme) | 
 | http-errors | 2.0.0 | MIT | [http-errors](https://github.com/jshttp/http-errors#readme) | 
+| http-errors | 2.0.1 | MIT | [http-errors](https://github.com/jshttp/http-errors#readme) | 
 | http-signature | 1.4.0 | MIT | [http-signature](https://github.com/TritonDataCenter/node-http-signature/) | 
 | iconv-lite | 0.4.24 | MIT | [iconv-lite](https://github.com/ashtuchkin/iconv-lite) | 
 | inherits | 2.0.4 | ISC | [inherits](https://github.com/isaacs/inherits#readme) | 
@@ -1808,15 +1830,15 @@
 | ipaddr.js | 2.1.0 | MIT | [ipaddr.js](https://github.com/whitequark/ipaddr.js#readme) | 
 | is-typedarray | 1.0.0 | MIT | [is-typedarray](https://github.com/hughsk/is-typedarray) | 
 | isstream | 0.1.2 | MIT | [isstream](https://github.com/rvagg/isstream) | 
-| js-yaml | 3.14.1 | MIT | [js-yaml](https://github.com/nodeca/js-yaml) | 
-| js-yaml | 4.1.1 | MIT | [js-yaml](https://github.com/nodeca/js-yaml#readme) | 
+| js-yaml | 4.3.2 | MIT | [js-yaml](https://github.com/nodeca/js-yaml#readme) | 
+| js-yaml | 5.4.3 | MIT | [js-yaml](https://github.com/nodeca/js-yaml#readme) | 
 | jsbn | 0.1.1 | MIT | [jsbn](https://github.com/andyperlitch/jsbn#readme) | 
 | json-schema | 0.4.0 | (AFL-2.1 OR BSD-3-Clause) | [json-schema](https://github.com/kriszyp/json-schema#readme) | 
 | json-schema-traverse | 1.0.0 | MIT | [json-schema-traverse](https://github.com/epoberezkin/json-schema-traverse#readme) | 
 | json-stringify-safe | 5.0.1 | ISC | [json-stringify-safe](https://github.com/isaacs/json-stringify-safe) | 
 | jsprim | 2.0.2 | MIT | [jsprim](https://github.com/joyent/node-jsprim#readme) | 
 | keyring_js | 1.1.0 | EPL-2.0 | [keyring_js](https://github.com/zowe/keyring-utilities) | 
-| lodash | 4.17.21 | MIT | [lodash](https://lodash.com/) | 
+| lodash | 4.18.1 | MIT | [lodash](https://lodash.com/) | 
 | math-intrinsics | 1.1.0 | MIT | [math-intrinsics](https://github.com/es-shims/math-intrinsics#readme) | 
 | media-typer | 0.3.0 | MIT | [media-typer](https://github.com/jshttp/media-typer) | 
 | merge-descriptors | 1.0.3 | MIT | [merge-descriptors](https://github.com/sindresorhus/merge-descriptors#readme) | 
@@ -1828,9 +1850,7 @@
 | ms | 2.1.3 | MIT | [ms](https://github.com/vercel/ms#readme) | 
 | negotiator | 0.6.3 | MIT | [negotiator](https://github.com/jshttp/negotiator#readme) | 
 | node-forge | 1.4.0 | (BSD-3-Clause OR GPL-2.0) | [node-forge](https://github.com/digitalbazaar/forge) | 
-| node-gyp-build | 3.7.0 | MIT | [node-gyp-build](https://github.com/mafintosh/node-gyp-build) | 
 | node-gyp-build | 4.8.4 | MIT | [node-gyp-build](https://github.com/prebuild/node-gyp-build) | 
-| normalize-url | 7.0.3 | MIT | [normalize-url](https://github.com/sindresorhus/normalize-url#readme) | 
 | object-inspect | 1.13.4 | MIT | [object-inspect](https://github.com/inspect-js/object-inspect) | 
 | on-finished | 2.4.1 | MIT | [on-finished](https://github.com/jshttp/on-finished#readme) | 
 | on-headers | 1.1.0 | MIT | [on-headers](https://github.com/jshttp/on-headers#readme) | 
@@ -1839,11 +1859,12 @@
 | path-to-regexp | 0.1.13 | MIT | [path-to-regexp](https://github.com/pillarjs/path-to-regexp#readme) | 
 | pend | 1.2.0 | MIT | [pend](https://github.com/andrewrk/node-pend.git) | 
 | performance-now | 2.1.0 | MIT | [performance-now](https://github.com/braveg1rl/performance-now) | 
-| proxy-addr | 2.0.7 | MIT | [proxy-addr](https://github.com/jshttp/proxy-addr#readme) | 
-| qs | 6.14.2 | BSD-3-Clause | [qs](https://github.com/ljharb/qs) | 
+| proxy-addr | 2.0.8 | MIT | [proxy-addr](https://github.com/jshttp/proxy-addr#readme) | 
+| qs | 6.16.0 | BSD-3-Clause | [qs](https://github.com/ljharb/qs) | 
 | random-bytes | 1.0.0 | MIT | [random-bytes](https://github.com/crypto-utils/random-bytes) | 
 | range-parser | 1.2.1 | MIT | [range-parser](https://github.com/jshttp/range-parser#readme) | 
 | raw-body | 2.5.2 | MIT | [raw-body](https://github.com/stream-utils/raw-body#readme) | 
+| raw-body | 2.5.3 | MIT | [raw-body](https://github.com/stream-utils/raw-body#readme) | 
 | require-from-string | 2.0.2 | MIT | [require-from-string](https://github.com/floatdrop/require-from-string#readme) | 
 | safe-buffer | 5.2.1 | MIT | [safe-buffer](https://github.com/feross/safe-buffer) | 
 | safer-buffer | 2.1.2 | MIT | [safer-buffer](https://github.com/ChALkeR/safer-buffer#readme) | 
@@ -1851,13 +1872,13 @@
 | send | 0.19.0 | MIT | [send](https://github.com/pillarjs/send#readme) | 
 | serve-static | 1.16.2 | MIT | [serve-static](https://github.com/expressjs/serve-static#readme) | 
 | setprototypeof | 1.2.0 | ISC | [setprototypeof](https://github.com/wesleytodd/setprototypeof) | 
-| side-channel | 1.1.0 | MIT | [side-channel](https://github.com/ljharb/side-channel#readme) | 
-| side-channel-list | 1.0.0 | MIT | [side-channel-list](https://github.com/ljharb/side-channel-list#readme) | 
+| side-channel | 1.1.1 | MIT | [side-channel](https://github.com/ljharb/side-channel#readme) | 
+| side-channel-list | 1.0.1 | MIT | [side-channel-list](https://github.com/ljharb/side-channel-list#readme) | 
 | side-channel-map | 1.0.1 | MIT | [side-channel-map](https://github.com/ljharb/side-channel-map#readme) | 
 | side-channel-weakmap | 1.0.2 | MIT | [side-channel-weakmap](https://github.com/ljharb/side-channel-weakmap#readme) | 
-| sprintf-js | 1.0.3 | BSD-3-Clause | [sprintf-js](https://github.com/alexei/sprintf.js#readme) | 
 | sshpk | 1.18.0 | MIT | [sshpk](https://github.com/arekinath/node-sshpk#readme) | 
 | statuses | 2.0.1 | MIT | [statuses](https://github.com/jshttp/statuses#readme) | 
+| statuses | 2.0.2 | MIT | [statuses](https://github.com/jshttp/statuses#readme) | 
 | tldts | 6.1.86 | MIT | [tldts](https://github.com/remusao/tldts#readme) | 
 | tldts-core | 6.1.86 | MIT | [tldts-core](https://github.com/remusao/tldts#readme) | 
 | toidentifier | 1.0.1 | MIT | [toidentifier](https://github.com/component/toidentifier#readme) | 
@@ -1866,22 +1887,20 @@
 | tweetnacl | 0.14.5 | Unlicense | [tweetnacl](https://tweetnacl.js.org) | 
 | type-is | 1.6.18 | MIT | [type-is](https://github.com/jshttp/type-is#readme) | 
 | uid-safe | 2.1.5 | MIT | [uid-safe](https://github.com/crypto-utils/uid-safe#readme) | 
-| undici | 6.24.1 | MIT | [undici](https://undici.nodejs.org) | 
+| undici | 6.29.1 | MIT | [undici](https://undici.nodejs.org) | 
 | unpipe | 1.0.0 | MIT | [unpipe](https://github.com/stream-utils/unpipe) | 
-| utf-8-validate | 5.0.2 | MIT | [utf-8-validate](https://github.com/websockets/utf-8-validate) | 
 | utils-merge | 1.0.1 | MIT | [utils-merge](https://github.com/jaredhanson/utils-merge#readme) | 
 | uuid | 8.3.2 | MIT | [uuid](https://github.com/uuidjs/uuid#readme) | 
 | vary | 1.1.2 | MIT | [vary](https://github.com/jshttp/vary#readme) | 
 | verror | 1.10.0 | MIT | [verror](https://github.com/davepacheco/node-verror) | 
-| ws | 6.2.3 | MIT | [ws](https://github.com/websockets/ws) | 
-| ws | 7.5.10 | MIT | [ws](https://github.com/websockets/ws) | 
-| yaml | 2.4.5 | ISC | [yaml](https://eemeli.org/yaml/) | 
+| ws | 7.5.13 | MIT | [ws](https://github.com/websockets/ws) | 
+| yaml | 2.9.1 | ISC | [yaml](https://eemeli.org/yaml/) | 
 | yauzl | 3.1.3 | MIT | [yauzl](https://github.com/thejoshwolfe/yauzl) | 
-| @apidevtools/json-schema-ref-parser | 14.0.1 | MIT | [json-schema-ref-parser](https://apidevtools.com/json-schema-ref-parser/) | 
+| @apidevtools/json-schema-ref-parser | 15.5.2 | MIT | [json-schema-ref-parser](https://apidevtools.com/json-schema-ref-parser/) | 
 | @apidevtools/openapi-schemas | 2.1.0 | MIT | [openapi-schemas](https://apitools.dev/openapi-schemas) | 
 | @apidevtools/swagger-methods | 3.0.2 | MIT | [swagger-methods](https://github.com/APIDevTools/swagger-methods) | 
-| @apidevtools/swagger-parser | 12.1.0 | MIT | [swagger-parser](https://apidevtools.com/swagger-parser/) | 
-| @cypress/request | 3.0.9 | Apache-2.0 | [request](https://github.com/cypress-io/request#readme) | 
+| @apidevtools/swagger-parser | 13.0.0 | MIT | [swagger-parser](https://apidevtools.com/swagger-parser/) | 
+| @cypress/request | 3.0.10 | Apache-2.0 | [request](https://github.com/cypress-io/request#readme) | 
 | @rocketsoftware/eureka-js-client | 4.5.9 | MIT | [eureka-js-client](https://github.com/rocketsoftware/eureka-js-client) | 
 | @rocketsoftware/express-ws | 5.0.1 | BSD-2-Clause | [express-ws](https://github.com/rocketsoftware/express-ws) | 
 | @types/json-schema | 7.0.15 | MIT | [json-schema](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/json-schema) | ### Zowe Application Framework Dependency Attributions
@@ -2611,14 +2630,11 @@
 | css-vendor | 2.0.8 | MIT | [css-vendor](https://github.com/cssinjs/css-vendor#readme) | 
 | csstype | 2.6.21 | MIT | [csstype](https://github.com/frenic/csstype#readme) | 
 | csstype | 3.1.3 | MIT | [csstype](https://github.com/frenic/csstype#readme) | 
-| decode-uri-component | 0.4.1 | MIT | [decode-uri-component](https://github.com/SamVerschueren/decode-uri-component#readme) | 
-| deep-diff | 0.3.8 | MIT | [deep-diff](https://github.com/flitbit/diff#readme) | 
 | dom-helpers | 5.2.1 | MIT | [dom-helpers](https://github.com/react-bootstrap/dom-helpers#readme) | 
-| filter-obj | 5.1.0 | MIT | [filter-obj](https://github.com/sindresorhus/filter-obj#readme) | 
 | history | 4.10.1 | MIT | [history](https://github.com/ReactTraining/history#readme) | 
 | hoist-non-react-statics | 3.3.2 | BSD-3-Clause | [hoist-non-react-statics](https://github.com/mridgway/hoist-non-react-statics#readme) | 
 | hyphenate-style-name | 1.1.0 | BSD-3-Clause | [hyphenate-style-name](https://github.com/rexxars/hyphenate-style-name#readme) | 
-| immutable | 4.3.7 | MIT | [immutable](https://immutable-js.com) | 
+| immutable | 4.3.9 | MIT | [immutable](https://immutable-js.com) | 
 | invariant | 2.2.4 | MIT | [invariant](https://github.com/zertosh/invariant#readme) | 
 | is-in-browser | 1.1.3 | MIT | [is-in-browser](https://github.com/tuxsudo/is-in-browser#readme) | 
 | isarray | 0.0.1 | MIT | [isarray](https://github.com/juliangruber/isarray) | 
@@ -2638,7 +2654,6 @@
 | popper.js | 1.16.1-lts | MIT | [popper.js](https://popper.js.org) | 
 | prop-types | 15.7.2 | MIT | [prop-types](https://facebook.github.io/react/) | 
 | prop-types | 15.8.1 | MIT | [prop-types](https://facebook.github.io/react/) | 
-| query-string | 9.1.0 | MIT | [query-string](https://github.com/sindresorhus/query-string#readme) | 
 | react | 16.14.0 | MIT | [react](https://reactjs.org/) | 
 | react | 17.0.2 | MIT | [react](https://reactjs.org/) | 
 | react-contextmenu | 2.10.0 | MIT | [react-contextmenu](https://github.com/vkbansal/react-contextmenu) | 
@@ -2653,12 +2668,10 @@
 | react-transition-group | 4.4.5 | BSD-3-Clause | [react-transition-group](https://github.com/reactjs/react-transition-group#readme) | 
 | redux | 4.0.4 | MIT | [redux](http://redux.js.org) | 
 | redux-immutable | 4.0.0 | BSD-3-Clause | [redux-immutable](https://github.com/gajus/redux-immutable#readme) | 
-| redux-logger | 3.0.6 | MIT | [redux-logger](https://github.com/theaqua/redux-logger#readme) | 
 | redux-thunk | 2.3.0 | MIT | [redux-thunk](https://github.com/reduxjs/redux-thunk) | 
 | resolve-pathname | 3.0.0 | MIT | [resolve-pathname](https://github.com/mjackson/resolve-pathname#readme) | 
 | scheduler | 0.19.1 | MIT | [scheduler](https://reactjs.org/) | 
 | scheduler | 0.20.2 | MIT | [scheduler](https://reactjs.org/) | 
-| split-on-first | 3.0.0 | MIT | [split-on-first](https://github.com/sindresorhus/split-on-first#readme) | 
 | symbol-observable | 1.2.0 | MIT | [symbol-observable](https://github.com/blesh/symbol-observable#readme) | 
 | tiny-invariant | 1.3.3 | MIT | [tiny-invariant](https://github.com/alexreardon/tiny-invariant#readme) | 
 | tiny-warning | 1.0.3 | MIT | [tiny-warning](https://github.com/alexreardon/tiny-warning.git) | 
@@ -2695,14 +2708,11 @@
 | css-vendor | 2.0.8 | MIT | [css-vendor](https://github.com/cssinjs/css-vendor#readme) | 
 | csstype | 2.6.21 | MIT | [csstype](https://github.com/frenic/csstype#readme) | 
 | csstype | 3.1.3 | MIT | [csstype](https://github.com/frenic/csstype#readme) | 
-| decode-uri-component | 0.4.1 | MIT | [decode-uri-component](https://github.com/SamVerschueren/decode-uri-component#readme) | 
-| deep-diff | 0.3.8 | MIT | [deep-diff](https://github.com/flitbit/diff#readme) | 
 | dom-helpers | 5.2.1 | MIT | [dom-helpers](https://github.com/react-bootstrap/dom-helpers#readme) | 
-| filter-obj | 5.1.0 | MIT | [filter-obj](https://github.com/sindresorhus/filter-obj#readme) | 
 | history | 4.10.1 | MIT | [history](https://github.com/ReactTraining/history#readme) | 
 | hoist-non-react-statics | 3.3.2 | BSD-3-Clause | [hoist-non-react-statics](https://github.com/mridgway/hoist-non-react-statics#readme) | 
 | hyphenate-style-name | 1.1.0 | BSD-3-Clause | [hyphenate-style-name](https://github.com/rexxars/hyphenate-style-name#readme) | 
-| immutable | 4.3.7 | MIT | [immutable](https://immutable-js.com) | 
+| immutable | 4.3.9 | MIT | [immutable](https://immutable-js.com) | 
 | invariant | 2.2.4 | MIT | [invariant](https://github.com/zertosh/invariant#readme) | 
 | is-in-browser | 1.1.3 | MIT | [is-in-browser](https://github.com/tuxsudo/is-in-browser#readme) | 
 | isarray | 0.0.1 | MIT | [isarray](https://github.com/juliangruber/isarray) | 
@@ -2722,7 +2732,6 @@
 | popper.js | 1.16.1-lts | MIT | [popper.js](https://popper.js.org) | 
 | prop-types | 15.7.2 | MIT | [prop-types](https://facebook.github.io/react/) | 
 | prop-types | 15.8.1 | MIT | [prop-types](https://facebook.github.io/react/) | 
-| query-string | 9.1.0 | MIT | [query-string](https://github.com/sindresorhus/query-string#readme) | 
 | react | 16.14.0 | MIT | [react](https://reactjs.org/) | 
 | react | 17.0.2 | MIT | [react](https://reactjs.org/) | 
 | react-contextmenu | 2.10.0 | MIT | [react-contextmenu](https://github.com/vkbansal/react-contextmenu) | 
@@ -2737,12 +2746,10 @@
 | react-transition-group | 4.4.5 | BSD-3-Clause | [react-transition-group](https://github.com/reactjs/react-transition-group#readme) | 
 | redux | 4.0.4 | MIT | [redux](http://redux.js.org) | 
 | redux-immutable | 4.0.0 | BSD-3-Clause | [redux-immutable](https://github.com/gajus/redux-immutable#readme) | 
-| redux-logger | 3.0.6 | MIT | [redux-logger](https://github.com/theaqua/redux-logger#readme) | 
 | redux-thunk | 2.3.0 | MIT | [redux-thunk](https://github.com/reduxjs/redux-thunk) | 
 | resolve-pathname | 3.0.0 | MIT | [resolve-pathname](https://github.com/mjackson/resolve-pathname#readme) | 
 | scheduler | 0.19.1 | MIT | [scheduler](https://reactjs.org/) | 
 | scheduler | 0.20.2 | MIT | [scheduler](https://reactjs.org/) | 
-| split-on-first | 3.0.0 | MIT | [split-on-first](https://github.com/sindresorhus/split-on-first#readme) | 
 | symbol-observable | 1.2.0 | MIT | [symbol-observable](https://github.com/blesh/symbol-observable#readme) | 
 | tiny-invariant | 1.3.3 | MIT | [tiny-invariant](https://github.com/alexreardon/tiny-invariant#readme) | 
 | tiny-warning | 1.0.3 | MIT | [tiny-warning](https://github.com/alexreardon/tiny-warning.git) | 
@@ -2762,25 +2769,24 @@
 ### Zowe Desktop JES UI Plugin Dependency Attributions
 | Third-party Software | Version | License | Link   |
 | -------------------- | --------| ------- | ------ |
-| camelize | 1.0.1 | MIT | [camelize](https://github.com/ljharb/camelize) | 
 | classnames | 2.5.1 | MIT | [classnames](https://github.com/JedWatson/classnames#readme) | 
 | clsx | 1.2.1 | MIT | [clsx](https://github.com/lukeed/clsx#readme) | 
-| css-color-keywords | 1.0.0 | ISC | [css-color-keywords](https://github.com/sonicdoe/css-color-keywords#readme) | 
-| css-to-react-native | 3.2.0 | MIT | [css-to-react-native](https://github.com/styled-components/css-to-react-native#readme) | 
+| core-util-is | 1.0.3 | MIT | [core-util-is](https://github.com/isaacs/core-util-is#readme) | 
 | css-vendor | 2.0.8 | MIT | [css-vendor](https://github.com/cssinjs/css-vendor#readme) | 
 | csstype | 2.6.21 | MIT | [csstype](https://github.com/frenic/csstype#readme) | 
 | csstype | 3.1.3 | MIT | [csstype](https://github.com/frenic/csstype#readme) | 
-| decode-uri-component | 0.4.1 | MIT | [decode-uri-component](https://github.com/SamVerschueren/decode-uri-component#readme) | 
-| deep-diff | 0.3.8 | MIT | [deep-diff](https://github.com/flitbit/diff#readme) | 
 | dom-helpers | 5.2.1 | MIT | [dom-helpers](https://github.com/react-bootstrap/dom-helpers#readme) | 
-| filter-obj | 5.1.0 | MIT | [filter-obj](https://github.com/sindresorhus/filter-obj#readme) | 
+| file-saver | 2.0.5 | MIT | [file-saver](https://github.com/eligrey/FileSaver.js#readme) | 
 | history | 4.10.1 | MIT | [history](https://github.com/ReactTraining/history#readme) | 
 | hoist-non-react-statics | 3.3.2 | BSD-3-Clause | [hoist-non-react-statics](https://github.com/mridgway/hoist-non-react-statics#readme) | 
 | hyphenate-style-name | 1.1.0 | BSD-3-Clause | [hyphenate-style-name](https://github.com/rexxars/hyphenate-style-name#readme) | 
-| immutable | 3.8.2 | MIT | [immutable](https://facebook.github.com/immutable-js) | 
+| immediate | 3.0.6 | MIT | [immediate](https://github.com/calvinmetcalf/immediate#readme) | 
+| immutable | 4.3.9 | MIT | [immutable](https://immutable-js.com) | 
+| inherits | 2.0.4 | ISC | [inherits](https://github.com/isaacs/inherits#readme) | 
 | invariant | 2.2.4 | MIT | [invariant](https://github.com/zertosh/invariant#readme) | 
 | is-in-browser | 1.1.3 | MIT | [is-in-browser](https://github.com/tuxsudo/is-in-browser#readme) | 
 | isarray | 0.0.1 | MIT | [isarray](https://github.com/juliangruber/isarray) | 
+| isarray | 1.0.0 | MIT | [isarray](https://github.com/juliangruber/isarray) | 
 | js-tokens | 4.0.0 | MIT | [js-tokens](https://github.com/lydell/js-tokens#readme) | 
 | jss | 10.10.0 | MIT | [jss](https://cssinjs.org/) | 
 | jss-plugin-camel-case | 10.10.0 | MIT | [jss-plugin-camel-case](https://cssinjs.org/jss-camel-case) | 
@@ -2790,19 +2796,18 @@
 | jss-plugin-props-sort | 10.10.0 | MIT | [jss-plugin-props-sort](https://cssinjs.org/jss-plugin-props-sort) | 
 | jss-plugin-rule-value-function | 10.10.0 | MIT | [jss-plugin-rule-value-function](https://cssinjs.org/) | 
 | jss-plugin-vendor-prefixer | 10.10.0 | MIT | [jss-plugin-vendor-prefixer](https://cssinjs.org/jss-plugin-vendor-prefixer) | 
+| jszip | 3.10.1 | (MIT OR GPL-3.0-or-later) | [jszip](https://github.com/Stuk/jszip#readme) | 
+| lie | 3.3.0 | MIT | [lie](https://github.com/calvinmetcalf/lie#readme) | 
 | loose-envify | 1.4.0 | MIT | [loose-envify](https://github.com/zertosh/loose-envify) | 
 | mini-create-react-context | 0.4.1 | MIT | [mini-create-react-context](https://github.com/StringEpsilon/mini-create-react-context#readme) | 
-| nanoid | 3.3.11 | MIT | [nanoid](https://github.com/ai/nanoid#readme) | 
 | object-assign | 4.1.1 | MIT | [object-assign](https://github.com/sindresorhus/object-assign#readme) | 
 | orion-editor-component | 0.0.16 | EPL-2.0 | [orion-editor-component]() | 
+| pako | 1.0.11 | (MIT AND Zlib) | [pako](https://github.com/nodeca/pako) | 
 | path-to-regexp | 1.9.0 | MIT | [path-to-regexp](https://github.com/pillarjs/path-to-regexp#readme) | 
-| picocolors | 1.1.1 | ISC | [picocolors](https://github.com/alexeyraspopov/picocolors#readme) | 
 | popper.js | 1.16.1-lts | MIT | [popper.js](https://popper.js.org) | 
-| postcss | 8.4.49 | MIT | [postcss](https://postcss.org/) | 
-| postcss-value-parser | 4.2.0 | MIT | [postcss-value-parser](https://github.com/TrySound/postcss-value-parser) | 
+| process-nextick-args | 2.0.1 | MIT | [process-nextick-args](https://github.com/calvinmetcalf/process-nextick-args) | 
 | prop-types | 15.7.2 | MIT | [prop-types](https://facebook.github.io/react/) | 
 | prop-types | 15.8.1 | MIT | [prop-types](https://facebook.github.io/react/) | 
-| query-string | 9.1.0 | MIT | [query-string](https://github.com/sindresorhus/query-string#readme) | 
 | react | 16.14.0 | MIT | [react](https://reactjs.org/) | 
 | react | 17.0.2 | MIT | [react](https://reactjs.org/) | 
 | react-contextmenu | 2.14.0 | MIT | [react-contextmenu](https://github.com/vkbansal/react-contextmenu) | 
@@ -2814,31 +2819,24 @@
 | react-redux | 5.1.2 | MIT | [react-redux](https://github.com/reduxjs/react-redux) | 
 | react-router | 5.2.0 | MIT | [react-router](https://github.com/ReactTraining/react-router#readme) | 
 | react-router-dom | 5.2.0 | MIT | [react-router-dom](https://github.com/ReactTraining/react-router#readme) | 
-| react-tooltip | 4.2.21 | MIT | [react-tooltip](https://github.com/wwayne/react-tooltip#readme) | 
 | react-transition-group | 4.4.5 | BSD-3-Clause | [react-transition-group](https://github.com/reactjs/react-transition-group#readme) | 
+| readable-stream | 2.3.8 | MIT | [readable-stream](https://github.com/nodejs/readable-stream#readme) | 
 | redux | 4.1.0 | MIT | [redux](http://redux.js.org) | 
 | redux-immutable | 4.0.0 | BSD-3-Clause | [redux-immutable](https://github.com/gajus/redux-immutable#readme) | 
-| redux-logger | 3.0.6 | MIT | [redux-logger](https://github.com/theaqua/redux-logger#readme) | 
 | redux-thunk | 2.3.0 | MIT | [redux-thunk](https://github.com/reduxjs/redux-thunk) | 
 | regenerator-runtime | 0.14.1 | MIT | [regenerator-runtime](https://github.com/facebook/regenerator/tree/main#readme) | 
 | resolve-pathname | 3.0.0 | MIT | [resolve-pathname](https://github.com/mjackson/resolve-pathname#readme) | 
+| safe-buffer | 5.1.2 | MIT | [safe-buffer](https://github.com/feross/safe-buffer) | 
 | scheduler | 0.19.1 | MIT | [scheduler](https://reactjs.org/) | 
 | scheduler | 0.20.2 | MIT | [scheduler](https://reactjs.org/) | 
-| shallowequal | 1.1.0 | MIT | [shallowequal](https://github.com/dashed/shallowequal#readme) | 
-| source-map-js | 1.2.1 | BSD-3-Clause | [source-map-js](https://github.com/7rulnik/source-map-js) | 
-| split-on-first | 3.0.0 | MIT | [split-on-first](https://github.com/sindresorhus/split-on-first#readme) | 
-| styled-components | 6.1.17 | MIT | [styled-components](https://styled-components.com) | 
-| stylis | 4.3.2 | MIT | [stylis](https://github.com/thysultan/stylis.js) | 
+| setimmediate | 1.0.5 | MIT | [setimmediate](https://github.com/yuzujs/setImmediate#readme) | 
+| string_decoder | 1.1.1 | MIT | [string_decoder](https://github.com/nodejs/string_decoder) | 
 | tiny-invariant | 1.3.3 | MIT | [tiny-invariant](https://github.com/alexreardon/tiny-invariant#readme) | 
 | tiny-warning | 1.0.3 | MIT | [tiny-warning](https://github.com/alexreardon/tiny-warning.git) | 
-| tslib | 2.6.2 | 0BSD | [tslib](https://www.typescriptlang.org/) | 
-| uuid | 7.0.3 | MIT | [uuid](https://github.com/uuidjs/uuid#readme) | 
+| util-deprecate | 1.0.2 | MIT | [util-deprecate](https://github.com/TooTallNate/util-deprecate) | 
 | value-equal | 1.0.1 | MIT | [value-equal](https://github.com/mjackson/value-equal#readme) | 
 | @babel/runtime | 7.27.0 | MIT | [runtime](https://babel.dev/docs/en/next/babel-runtime) | 
 | @emotion/hash | 0.8.0 | MIT | [hash](https://github.com/emotion-js/emotion/tree/main#readme) | 
-| @emotion/is-prop-valid | 1.2.2 | MIT | [is-prop-valid](https://github.com/emotion-js/emotion/tree/main#readme) | 
-| @emotion/memoize | 0.8.1 | MIT | [memoize](https://github.com/emotion-js/emotion/tree/main#readme) | 
-| @emotion/unitless | 0.8.1 | MIT | [unitless](https://github.com/emotion-js/emotion/tree/main#readme) | 
 | @material-ui/core | 4.12.4 | MIT | [core](https://mui.com/) | 
 | @material-ui/icons | 4.11.3 | MIT | [icons](https://github.com/mui-org/material-ui/tree/master/packages/material-ui-icons) | 
 | @material-ui/styles | 4.11.5 | MIT | [styles](https://github.com/mui-org/material-ui/tree/master/packages/material-ui-styles) | 
@@ -2848,44 +2846,21 @@
 | @types/prop-types | 15.7.12 | MIT | [prop-types](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/prop-types) | 
 | @types/react | 16.9.56 | MIT | [react](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/react) | 
 | @types/react-transition-group | 4.4.11 | MIT | [react-transition-group](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/react-transition-group) | 
-| @types/stylis | 4.2.5 | MIT | [stylis](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/stylis) | 
 
 ### Zowe Desktop z/OS Unix Files UI Plugin Dependency Attributions
 | Third-party Software | Version | License | Link   |
 | -------------------- | --------| ------- | ------ |
-| babel-runtime | 6.26.0 | MIT | [babel-runtime](https://github.com/babel/babel.git) | 
-| character-entities | 1.2.4 | MIT | [character-entities](https://github.com/wooorm/character-entities#readme) | 
-| character-entities-legacy | 1.1.4 | MIT | [character-entities-legacy](https://github.com/wooorm/character-entities-legacy#readme) | 
-| character-reference-invalid | 1.1.4 | MIT | [character-reference-invalid](https://github.com/wooorm/character-reference-invalid#readme) | 
 | classnames | 2.5.1 | MIT | [classnames](https://github.com/JedWatson/classnames#readme) | 
 | clsx | 1.2.1 | MIT | [clsx](https://github.com/lukeed/clsx#readme) | 
-| comma-separated-tokens | 1.0.8 | MIT | [comma-separated-tokens](https://github.com/wooorm/comma-separated-tokens#readme) | 
-| core-js | 2.6.12 | MIT | [core-js](https://github.com/zloirock/core-js#readme) | 
 | css-vendor | 2.0.8 | MIT | [css-vendor](https://github.com/cssinjs/css-vendor#readme) | 
 | csstype | 2.6.21 | MIT | [csstype](https://github.com/frenic/csstype#readme) | 
 | csstype | 3.1.3 | MIT | [csstype](https://github.com/frenic/csstype#readme) | 
-| decode-uri-component | 0.4.1 | MIT | [decode-uri-component](https://github.com/SamVerschueren/decode-uri-component#readme) | 
-| deep-diff | 0.3.8 | MIT | [deep-diff](https://github.com/flitbit/diff#readme) | 
 | dom-helpers | 5.2.1 | MIT | [dom-helpers](https://github.com/react-bootstrap/dom-helpers#readme) | 
-| fault | 1.0.4 | MIT | [fault](https://github.com/wooorm/fault#readme) | 
-| fault | 2.0.1 | MIT | [fault](https://github.com/wooorm/fault#readme) | 
-| filter-obj | 5.1.0 | MIT | [filter-obj](https://github.com/sindresorhus/filter-obj#readme) | 
-| format | 0.2.2 | MIT | [format](http://samhuri.net/proj/format) | 
-| hast-util-parse-selector | 2.2.5 | MIT | [hast-util-parse-selector](https://github.com/syntax-tree/hast-util-parse-selector#readme) | 
-| hastscript | 6.0.0 | MIT | [hastscript](https://github.com/syntax-tree/hastscript#readme) | 
-| highlight.js | 10.7.3 | BSD-3-Clause | [highlight.js](https://highlightjs.org/) | 
-| highlight.js | 11.3.1 | BSD-3-Clause | [highlight.js](https://highlightjs.org/) | 
-| highlightjs-vue | 1.0.0 | CC0-1.0 | [highlightjs-vue](https://github.com/highlightjs/highlightjs-vue#readme) | 
 | history | 4.10.1 | MIT | [history](https://github.com/ReactTraining/history#readme) | 
 | hoist-non-react-statics | 3.3.2 | BSD-3-Clause | [hoist-non-react-statics](https://github.com/mridgway/hoist-non-react-statics#readme) | 
 | hyphenate-style-name | 1.1.0 | BSD-3-Clause | [hyphenate-style-name](https://github.com/rexxars/hyphenate-style-name#readme) | 
-| immutable | 4.3.7 | MIT | [immutable](https://immutable-js.com) | 
-| interweave | 8.0.1 | MIT | [interweave](https://github.com/milesj/interweave#readme) | 
+| immutable | 4.3.9 | MIT | [immutable](https://immutable-js.com) | 
 | invariant | 2.2.4 | MIT | [invariant](https://github.com/zertosh/invariant#readme) | 
-| is-alphabetical | 1.0.4 | MIT | [is-alphabetical](https://github.com/wooorm/is-alphabetical#readme) | 
-| is-alphanumerical | 1.0.4 | MIT | [is-alphanumerical](https://github.com/wooorm/is-alphanumerical#readme) | 
-| is-decimal | 1.0.4 | MIT | [is-decimal](https://github.com/wooorm/is-decimal#readme) | 
-| is-hexadecimal | 1.0.4 | MIT | [is-hexadecimal](https://github.com/wooorm/is-hexadecimal#readme) | 
 | is-in-browser | 1.1.3 | MIT | [is-in-browser](https://github.com/tuxsudo/is-in-browser#readme) | 
 | isarray | 0.0.1 | MIT | [isarray](https://github.com/juliangruber/isarray) | 
 | js-tokens | 4.0.0 | MIT | [js-tokens](https://github.com/lydell/js-tokens#readme) | 
@@ -2898,18 +2873,12 @@
 | jss-plugin-rule-value-function | 10.10.0 | MIT | [jss-plugin-rule-value-function](https://cssinjs.org/) | 
 | jss-plugin-vendor-prefixer | 10.10.0 | MIT | [jss-plugin-vendor-prefixer](https://cssinjs.org/jss-plugin-vendor-prefixer) | 
 | loose-envify | 1.4.0 | MIT | [loose-envify](https://github.com/zertosh/loose-envify) | 
-| lowlight | 1.20.0 | MIT | [lowlight](https://github.com/wooorm/lowlight#readme) | 
-| lowlight | 2.4.0 | MIT | [lowlight](https://github.com/wooorm/lowlight#readme) | 
 | object-assign | 4.1.1 | MIT | [object-assign](https://github.com/sindresorhus/object-assign#readme) | 
 | orion-editor-component | 0.0.16 | EPL-2.0 | [orion-editor-component]() | 
-| parse-entities | 2.0.0 | MIT | [parse-entities](https://github.com/wooorm/parse-entities#readme) | 
 | path-to-regexp | 1.9.0 | MIT | [path-to-regexp](https://github.com/pillarjs/path-to-regexp#readme) | 
 | popper.js | 1.16.1-lts | MIT | [popper.js](https://popper.js.org) | 
-| prismjs | 1.30.0 | MIT | [prismjs](https://github.com/PrismJS/prism#readme) | 
 | prop-types | 15.7.2 | MIT | [prop-types](https://facebook.github.io/react/) | 
 | prop-types | 15.8.1 | MIT | [prop-types](https://facebook.github.io/react/) | 
-| property-information | 5.6.0 | MIT | [property-information](https://github.com/wooorm/property-information#readme) | 
-| query-string | 9.1.0 | MIT | [query-string](https://github.com/sindresorhus/query-string#readme) | 
 | react | 16.14.0 | MIT | [react](https://reactjs.org/) | 
 | react | 17.0.2 | MIT | [react](https://reactjs.org/) | 
 | react-contextmenu | 2.10.0 | MIT | [react-contextmenu](https://github.com/vkbansal/react-contextmenu) | 
@@ -2921,24 +2890,17 @@
 | react-redux | 5.1.1 | MIT | [react-redux](https://github.com/reduxjs/react-redux) | 
 | react-router | 5.3.4 | MIT | [react-router](https://reactrouter.com/) | 
 | react-router-dom | 5.3.4 | MIT | [react-router-dom](https://reactrouter.com/) | 
-| react-syntax-highlighter | 15.6.1 | MIT | [react-syntax-highlighter](https://github.com/react-syntax-highlighter/react-syntax-highlighter#readme) | 
 | react-transition-group | 4.4.5 | BSD-3-Clause | [react-transition-group](https://github.com/reactjs/react-transition-group#readme) | 
 | redux | 4.0.4 | MIT | [redux](http://redux.js.org) | 
 | redux-immutable | 4.0.0 | BSD-3-Clause | [redux-immutable](https://github.com/gajus/redux-immutable#readme) | 
-| redux-logger | 3.0.6 | MIT | [redux-logger](https://github.com/theaqua/redux-logger#readme) | 
 | redux-thunk | 2.3.0 | MIT | [redux-thunk](https://github.com/reduxjs/redux-thunk) | 
-| refractor | 3.6.0 | MIT | [refractor](https://github.com/wooorm/refractor#readme) | 
-| regenerator-runtime | 0.11.1 | MIT | [regenerator-runtime](https://github.com/facebook/regenerator/tree/main#readme) | 
 | resolve-pathname | 3.0.0 | MIT | [resolve-pathname](https://github.com/mjackson/resolve-pathname#readme) | 
 | scheduler | 0.19.1 | MIT | [scheduler](https://reactjs.org/) | 
 | scheduler | 0.20.2 | MIT | [scheduler](https://reactjs.org/) | 
-| space-separated-tokens | 1.1.5 | MIT | [space-separated-tokens](https://github.com/wooorm/space-separated-tokens#readme) | 
-| split-on-first | 3.0.0 | MIT | [split-on-first](https://github.com/sindresorhus/split-on-first#readme) | 
 | symbol-observable | 1.2.0 | MIT | [symbol-observable](https://github.com/blesh/symbol-observable#readme) | 
 | tiny-invariant | 1.3.3 | MIT | [tiny-invariant](https://github.com/alexreardon/tiny-invariant#readme) | 
 | tiny-warning | 1.0.3 | MIT | [tiny-warning](https://github.com/alexreardon/tiny-warning.git) | 
 | value-equal | 1.0.1 | MIT | [value-equal](https://github.com/mjackson/value-equal#readme) | 
-| xtend | 4.0.2 | MIT | [xtend](https://github.com/Raynos/xtend) | 
 | @babel/runtime | 7.27.1 | MIT | [runtime](https://babel.dev/docs/en/next/babel-runtime) | 
 | @emotion/hash | 0.8.0 | MIT | [hash](https://github.com/emotion-js/emotion/tree/main#readme) | 
 | @material-ui/core | 4.12.4 | MIT | [core](https://mui.com/) | 
@@ -2947,11 +2909,9 @@
 | @material-ui/system | 4.12.2 | MIT | [system](https://github.com/mui-org/material-ui/tree/master/packages/material-ui-system) | 
 | @material-ui/types | 5.1.0 | MIT | [types](https://github.com/mui-org/material-ui/tree/master/packages/material-ui-types) | 
 | @material-ui/utils | 4.11.3 | MIT | [utils](https://github.com/mui-org/material-ui/tree/master/packages/material-ui-utils) | 
-| @types/hast | 2.3.10 | MIT | [hast](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/hast) | 
 | @types/prop-types | 15.7.14 | MIT | [prop-types](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/prop-types) | 
 | @types/react | 16.9.56 | MIT | [react](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/react) | 
 | @types/react-transition-group | 4.4.12 | MIT | [react-transition-group](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/react-transition-group) | 
-| @types/unist | 2.0.11 | MIT | [unist](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/unist) | 
 
 ### Zowe Desktop TN3270 Emulator Plug-in Dependency Attributions
 | Third-party Software | Version | License | Link   |
@@ -4471,6 +4431,7 @@
 | parse5 | 7.3.0 | MIT | [parse5](https://parse5.js.org) | 
 | primeng | 17.18.10 | MIT | [primeng](https://github.com/primefaces/primeng#readme) | 
 | reconnecting-websocket | 3.2.2 | MIT | [reconnecting-websocket](https://github.com/pladaria/reconnecting-websocket#readme) | 
+| rxjs | 7.8.0 | Apache-2.0 | [rxjs](https://rxjs.dev) | 
 | rxjs | 7.8.1 | Apache-2.0 | [rxjs](https://rxjs.dev) | 
 | rxjs | 7.8.2 | Apache-2.0 | [rxjs](https://rxjs.dev) | 
 | safevalues | 0.3.4 | Apache-2.0 | [safevalues](https://github.com/google/safevalues#readme) | 
@@ -4488,16 +4449,24 @@
 | zone.js | 0.14.3 | MIT | [zone.js](https://github.com/angular/angular#readme) | 
 | zone.js | 0.14.10 | MIT | [zone.js](https://github.com/angular/angular#readme) | 
 | @angular/animations | 18.0.7 | MIT | [animations](https://github.com/angular/angular#readme) | 
+| @angular/animations | 18.2.14 | MIT | [animations](https://github.com/angular/angular#readme) | 
 | @angular/cdk | 18.0.6 | MIT | [cdk](https://github.com/angular/components#readme) | 
 | @angular/cdk | 18.2.14 | MIT | [cdk](https://github.com/angular/components#readme) | 
 | @angular/common | 18.0.7 | MIT | [common](https://github.com/angular/angular#readme) | 
+| @angular/common | 18.2.14 | MIT | [common](https://github.com/angular/angular#readme) | 
 | @angular/compiler | 18.0.7 | MIT | [compiler](https://github.com/angular/angular#readme) | 
+| @angular/compiler | 18.2.14 | MIT | [compiler](https://github.com/angular/angular#readme) | 
 | @angular/core | 18.0.7 | MIT | [core](https://github.com/angular/angular#readme) | 
+| @angular/core | 18.2.14 | MIT | [core](https://github.com/angular/angular#readme) | 
 | @angular/forms | 18.0.7 | MIT | [forms](https://github.com/angular/angular#readme) | 
+| @angular/forms | 18.2.14 | MIT | [forms](https://github.com/angular/angular#readme) | 
 | @angular/material | 18.0.6 | MIT | [material](https://github.com/angular/components#readme) | 
 | @angular/platform-browser | 18.0.7 | MIT | [platform-browser](https://github.com/angular/angular#readme) | 
+| @angular/platform-browser | 18.2.14 | MIT | [platform-browser](https://github.com/angular/angular#readme) | 
 | @angular/platform-browser-dynamic | 18.0.7 | MIT | [platform-browser-dynamic](https://github.com/angular/angular#readme) | 
+| @angular/platform-browser-dynamic | 18.2.14 | MIT | [platform-browser-dynamic](https://github.com/angular/angular#readme) | 
 | @angular/router | 18.0.7 | MIT | [router](https://github.com/angular/angular/tree/main/packages/router) | 
+| @angular/router | 18.2.14 | MIT | [router](https://github.com/angular/angular/tree/main/packages/router) | 
 | @material/animation | 15.0.0-canary.7f224ddd4.0 | MIT | [animation](https://github.com/material-components/material-components-web#readme) | 
 | @material/auto-init | 15.0.0-canary.7f224ddd4.0 | MIT | [auto-init](https://github.com/material-components/material-components-web#readme) | 
 | @material/banner | 15.0.0-canary.7f224ddd4.0 | MIT | [banner](https://github.com/material-components/material-components-web#readme) | 
@@ -4945,7 +4914,6 @@
 | Third-party Software | Version | License | Link   |
 | -------------------- | --------| ------- | ------ |
 | clsx | 1.2.1 | MIT | [clsx](https://github.com/lukeed/clsx#readme) | 
-| cross-fetch | 4.0.0 | MIT | [cross-fetch](https://github.com/lquixada/cross-fetch) | 
 | css-vendor | 2.0.8 | MIT | [css-vendor](https://github.com/cssinjs/css-vendor#readme) | 
 | csstype | 2.6.21 | MIT | [csstype](https://github.com/frenic/csstype#readme) | 
 | csstype | 3.1.3 | MIT | [csstype](https://github.com/frenic/csstype#readme) | 
@@ -4957,7 +4925,6 @@
 | hyphenate-style-name | 1.1.0 | BSD-3-Clause | [hyphenate-style-name](https://github.com/rexxars/hyphenate-style-name#readme) | 
 | i18next | 23.14.0 | MIT | [i18next](https://www.i18next.com) | 
 | i18next-browser-languagedetector | 8.0.0 | MIT | [i18next-browser-languagedetector](https://github.com/i18next/i18next-browser-languageDetector) | 
-| i18next-http-backend | 2.6.1 | MIT | [i18next-http-backend](https://github.com/i18next/i18next-http-backend) | 
 | invariant | 2.2.4 | MIT | [invariant](https://github.com/zertosh/invariant#readme) | 
 | is-in-browser | 1.1.3 | MIT | [is-in-browser](https://github.com/tuxsudo/is-in-browser#readme) | 
 | isarray | 0.0.1 | MIT | [isarray](https://github.com/juliangruber/isarray) | 
@@ -4972,7 +4939,6 @@
 | jss-plugin-vendor-prefixer | 10.10.0 | MIT | [jss-plugin-vendor-prefixer](https://cssinjs.org/jss-plugin-vendor-prefixer) | 
 | long | 5.2.3 | Apache-2.0 | [long](https://github.com/dcodeIO/long.js#readme) | 
 | loose-envify | 1.4.0 | MIT | [loose-envify](https://github.com/zertosh/loose-envify) | 
-| node-fetch | 2.7.0 | MIT | [node-fetch](https://github.com/bitinn/node-fetch) | 
 | object-assign | 4.1.1 | MIT | [object-assign](https://github.com/sindresorhus/object-assign#readme) | 
 | path-to-regexp | 1.9.0 | MIT | [path-to-regexp](https://github.com/pillarjs/path-to-regexp#readme) | 
 | popper.js | 1.16.1-lts | MIT | [popper.js](https://popper.js.org) | 
@@ -4989,12 +4955,9 @@
 | scheduler | 0.19.1 | MIT | [scheduler](https://reactjs.org/) | 
 | tiny-invariant | 1.3.3 | MIT | [tiny-invariant](https://github.com/alexreardon/tiny-invariant#readme) | 
 | tiny-warning | 1.0.3 | MIT | [tiny-warning](https://github.com/alexreardon/tiny-warning.git) | 
-| tr46 | 0.0.3 | MIT | [tr46](https://github.com/Sebmaster/tr46.js#readme) | 
 | value-equal | 1.0.1 | MIT | [value-equal](https://github.com/mjackson/value-equal#readme) | 
 | void-elements | 3.1.0 | MIT | [void-elements](https://github.com/jadejs/void-elements) | 
 | warning | 4.0.3 | MIT | [warning](https://github.com/BerkeleyTrue/warning) | 
-| webidl-conversions | 3.0.1 | BSD-2-Clause | [webidl-conversions](https://github.com/jsdom/webidl-conversions#readme) | 
-| whatwg-url | 5.0.0 | MIT | [whatwg-url](https://github.com/jsdom/whatwg-url#readme) | 
 | @babel/runtime | 7.27.0 | MIT | [runtime](https://babel.dev/docs/en/next/babel-runtime) | 
 | @emotion/hash | 0.8.0 | MIT | [hash](https://github.com/emotion-js/emotion/tree/main#readme) | 
 | @material-ui/core | 4.12.4 | MIT | [core](https://mui.com/) | 
@@ -5008,3 +4971,4 @@
 | @types/react | 16.14.20 | MIT | [react](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/react) | 
 | @types/react-transition-group | 4.4.12 | MIT | [react-transition-group](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/react-transition-group) | 
 | @types/scheduler | 0.26.0 | MIT | [scheduler](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/scheduler) | 
+
