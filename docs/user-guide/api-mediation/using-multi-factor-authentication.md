@@ -4,7 +4,7 @@ Zowe offers the option to use multi-factor authentication (MFA) systems, which r
 
 The Zowe API Mediation Layer, Zowe App Framework, and all apps present in the SMP/E or convenience builds support out-of-band MFA. Users are required to enter an MFA assigned token or passcode into the password field of the Desktop login screen or authentication to the API Catalog.
 
-Alternatively, a user can access one of the authentication endpoints such as `/gateway/auth/login` within the API Mediation Layer or via App-servers `/auth` REST API endpoint.
+Alternatively, a user can access one of the authentication endpoints such as `/gateway/api/v1/auth/login` within the API Mediation Layer or via App-servers `/auth` REST API endpoint.
 
 When using MFA with Zowe CLI or the API ML Catalog, users are required to log in with their mainframe user name and MFA token.
 

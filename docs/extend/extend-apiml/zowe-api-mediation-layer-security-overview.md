@@ -152,10 +152,10 @@ The API ML authentication token in the form of JWT is signed with an asymmetric 
 - **Private Key Location:**  
 Stored under the alias localhost within the PKCS12 keystore located at: `${KEYSTORE_DIRECTORY}/localhost/localhost.keystore.p12`. The public key necessary to validate the JWT signature is read from the keystore.
 
-- Public Key Verification: Third-party applications can programmatically validate the JWT signature by pulling the public key in standard [JWK format](https://datatracker.ietf.org/doc/html/rfc7517) from the following Gateway endpoint:
-    ```
-    /gateway/api/v1/auth/keys/public
-    ```
+- Public Key Verification: Third-party applications can programmatically validate the JWT signature by retrieving the public key from one of the following Gateway endpoints:
+    - `/gateway/api/v1/auth/keys/public` returns the public key in PEM format.
+    - `/gateway/api/v1/auth/keys/public/all` and `/gateway/api/v1/auth/keys/public/current` return a JSON Web Key Set in [JWK format](https://datatracker.ietf.org/doc/html/rfc7517).
+    
 ## z/OSMF JSON Web Tokens Support
 
 Your z/OSMF instance can be enabled to support JWTs as described in [Enabling JSON Web Token support](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zos.v2r4.izua300/izuconfig_EnableJSONWebTokens.htm).
@@ -163,5 +163,5 @@ In this case, Zowe API ML adopts and passes through the z/OSMF-generated JWT ins
 
 Under this setup:
 
-- Core authentication endpoints like `/gateway/api/v1/login` and `/gateway/api/v1/check` remain fully functional and function in the same way as without z/OSMF JWT.
-- The Gateway endpoint `/gateway/api/v1/auth/keys/public` dynamically serves the z/OSMF JSON Web Key (JWK) to allow clients to verify token signatures natively.
+- Core authentication endpoints like `/gateway/api/v1/auth/login` and `/gateway/auth/check` remain fully functional and function in the same way as without z/OSMF JWT.
+- The Gateway endpoints `/gateway/api/v1/auth/keys/public/all` and `/gateway/api/v1/auth/keys/public/current` dynamically serve the z/OSMF JSON Web Key (JWK) to allow clients to verify token signatures natively.
