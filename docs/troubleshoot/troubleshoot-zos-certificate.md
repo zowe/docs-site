@@ -11,11 +11,12 @@ As an API Mediation Layer user, you may encounter problems when configuring cert
   - [API Components unable to handshake](#api-components-unable-to-handshake)
   - [Java z/OS components of Zowe unable to read certificates from keyring](#java-zos-components-of-zowe-unable-to-read-certificates-from-keyring)
   - [Java z/OS components of Zowe cannot load the certificate private key pair from the keyring](#java-zos-components-of-zowe-cannot-load-the-certificate-private-key-pair-from-the-keyring)
-  - [Exception thrown when reading SAF keyring \{ZWED0148E\}](#exception-thrown-when-reading-saf-keyring-zwed0148e)
+  - [Exception thrown when reading SAF keyring ZWED0148E](#exception-thrown-when-reading-saf-keyring-zwed0148e)
   - [ZWEAM400E Error initializing SSL Context when using Java 11](#zweam400e-error-initializing-ssl-context-when-using-java-11)
   - [Failed to load JCERACFKS keyring when using Java 11](#failed-to-load-jceracfks-keyring-when-using-java-11)
   - [Failed to read the private key when using ICSF under ACF2](#failed-to-read-the-private-key-when-using-icsf-under-acf2)
   - [Failed to load JCECCARACFKS keyring when using ICSF under ACF2](#failed-to-load-jceccaracfks-keyring-when-using-icsf-under-acf2)
+  - [PKIX path validation failed: signature check failed Unable to find valid certification path.](#pkix-path-validation-failed-signature-check-failed-unable-to-find-valid-certification-path)
 
 ## PKCS12 server keystore generation fails in Java 8 SR7FP15, SR7 FP16, and SR7 FP20
 
@@ -320,19 +321,25 @@ API ML components configured with SAF keyring are not able to start due to an un
 2023-06-27 13:07:04.528 <ZWEAGW1:main:394418> ZWESVUSR ERROR (o.z.a.s.HttpsFactory) ZWEAM400E Error initializing SSL Context: 'unknown protocol: safkeyring' 
 ```
 
+<!-- Validate teh following solution 
+
 **Solution:**
 
-Starting with Java 11, the safkeyring URLs are dependent on the type of RACF keystore as presented in the following table.
+Specify keyrings in the format `safkeyring://userId/keyRing`, for example `safkeyring://ZWESVUSR/ZOWERING`, and set the keystore type to match the type of your RACF keystore. Zowe selects the matching protocol based on the keystore type, so you do not need to specify it in the URL.
 
-| URL | Keystore |
+| Keystore type | Use when |
 |------|---------|
-| JCECCARACFKS | `safkeyringjcecca://ZWESVUSR/ZOWERING` |
-| JCERACFKS | `safkeyringjce://ZWESVUSR/ZOWERING` |
-| JCEHYBRIDRACFKS (deprecated) | `safkeyringjcehybrid://ZWESVUSR/ZOWERING` |
+| `JCERACFKS` | The keyring contains software-managed keys |
+| `JCECCARACFKS` | The keyring contains keys protected by a CCA coprocessor |
+| `JCEHYBRIDRACFKS` | The keyring contains ICSF hybrid keys |
 
-:::caution Deprecated
-The `safkeyringjcehybrid://` protocol is deprecated and will be removed in a future release. Use `safkeyring://` instead.
+For example, set `zowe.certificate.keystore.type` to `JCEHYBRIDRACFKS` for ICSF hybrid keyrings.
+
+:::caution Deprecated protocols
+Older configurations may contain `safkeyringjce://`, `safkeyringjcecca://` or `safkeyringjcehybrid://`. These still work but are deprecated. Replace them with `safkeyring://`.
 :::
+
+-->
 
 ## Failed to load JCERACFKS keyring when using Java 11
 
