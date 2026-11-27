@@ -45,6 +45,6 @@ You can, however, continue to use your credentials in the Authorization dialog w
 
 ### PassTicket Authentication
 
-Southbound services that use RACF PassTicket as their authentication scheme must either configure the ESM to bypass MFA validation for the application's APPLID or switch to an authentication scheme based on JSON Web Tokens (JWT). For more information, see [Accepting JWT](../../extend/extend-apiml/api-medation-sso-integration-extenders.md#accepting-jwt) in the article _Single Sign On Integration for Extenders_.
+Southbound services that use RACF PassTicket as their authentication scheme must either configure the external security manager (ESM) to bypass MFA validation for the application's APPLID or switch to an authentication scheme based on JSON Web Tokens (JWT). For more information, see [Accepting JWT](../../extend/extend-apiml/api-medation-sso-integration-extenders.md#accepting-jwt) in the article _Single Sign On Integration for Extenders_.
 
 If the service requires a PassTicket, the user must authenticate using a username, password and MFA token when the configured MFA validity period expires. This applies mainly to long-lived authentication mechanisms such as X.509 authentication and Personal Access Tokens (PAT) as they typically last longer than the usual MFA validity periods.
