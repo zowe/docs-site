@@ -346,14 +346,18 @@ java --add-modules ibm.crypto.zsecurity,ibm.crypto.hdwrcca \
 |---|---|---|
 | `-a` | `--keyalias` | Alias under which the key is stored in the keystore. |
 | `-h` | `--help` | Display help. |
-| `-k` | `--keystore` | Path to a PKCS12 file or SAF key ring (`safkeyring://USER/RingName`). |
+| `-k` | `--keystore` | Path to a PKCS12 file or SAF key ring (`safkeyring://USER/RingName`). Set the keystore type with `-kt`. |
 | `-kp` | `--keypasswd` | Keystore password. For SAF key rings use the literal `password`. |
 | `-kt` | `--keystoretype` | One of: `PKCS12`, `JCERACFKS`, `JCECCARACFKS`, `JCEHYBRIDRACFKS`. |
-| `-t` | `--truststore` | Path to the truststore file or SAF key ring. |
+| `-t` | `--truststore` | Path to the truststore file or SAF key ring (`safkeyring://USER/RingName`). Set the truststore type with `-tt`. |
 | `-tp` | `--trustpasswd` | Truststore password. |
 | `-tt` | `--truststoretype` | One of: `PKCS12`, `JCERACFKS`, `JCECCARACFKS`, `JCEHYBRIDRACFKS`. |
 | `-l` | `--local` | Perform a local TLS handshake using the keystore and truststore. |
 | `-r` | `--remoteurl` | Use the truststore to verify TLS connectivity to a remote URL. |
+
+:::note
+Specify SAF key rings as `safkeyring://USER/RingName` and select the key ring type with `-kt` or `-tt`. The `safkeyringjce://`, `safkeyringjcecca://` and `safkeyringjcehybrid://` protocols are deprecated. Replace them with `safkeyring://`.
+:::
 
 #### Examples
 
