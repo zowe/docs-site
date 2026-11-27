@@ -42,3 +42,9 @@ We recommend you first try to access self-service facilities and resolve the iss
 When using the API Catalog, you have the option to use the "Try it out" functionality to test a protected endpoint. In this case, you are given the option to provide and store MFA credentials in the Authorization dialog. As the MFA token has a short lifetime, we do not recommend storing your MFA token when using this feature.
 
 You can, however, continue to use your credentials in the Authorization dialog when you set a fixed password, rather than using an MFA token. Alternatively, you can store your credentials in the Authorization dialog if your account is configured to bypass MFA mode. In this case, authentication is performed through the mainframe credentials of the user.
+
+### PassTicket Authentication
+
+Southbound services that use RACF PassTicket as their authentication scheme must either configure the ESM to bypass MFA validation for the application's APPLID or switch to an authentication scheme [based on JWTs](../../extend/extend-apiml/api-medation-sso-integration-extenders.md).
+
+If the service requires a PassTicket, the user must authenticate using their username, password and MFA token when the configured MFA validity period expires. This applies mainly to long-lived authentication mechanisms such as X.509 authentication and Personal Access Tokens (PAT) as they typically last longer than the usual MFA validity periods.
