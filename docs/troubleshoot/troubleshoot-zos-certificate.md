@@ -12,7 +12,6 @@ As an API Mediation Layer user, you may encounter problems when configuring cert
   - [Java z/OS components of Zowe unable to read certificates from keyring](#java-zos-components-of-zowe-unable-to-read-certificates-from-keyring)
   - [Java z/OS components of Zowe cannot load the certificate private key pair from the keyring](#java-zos-components-of-zowe-cannot-load-the-certificate-private-key-pair-from-the-keyring)
   - [Exception thrown when reading SAF keyring ZWED0148E](#exception-thrown-when-reading-saf-keyring-zwed0148e)
-  - [ZWEAM400E Error initializing SSL Context when using Java 11](#zweam400e-error-initializing-ssl-context-when-using-java-11)
   - [Failed to load JCERACFKS keyring when using Java 11](#failed-to-load-jceracfks-keyring-when-using-java-11)
   - [Failed to read the private key when using ICSF under ACF2](#failed-to-read-the-private-key-when-using-icsf-under-acf2)
   - [Failed to load JCECCARACFKS keyring when using ICSF under ACF2](#failed-to-load-jceccaracfks-keyring-when-using-icsf-under-acf2)
@@ -301,45 +300,6 @@ If you are using Zowe's local CA certificate and you still receive **ZWED0148E**
 ```
 
 In this case, ensure that the label names exactly match the names in TSO when confirming your keyring. Any difference in spaces, capitalization, or other places throw the error.
-
-## ZWEAM400E Error initializing SSL Context when using Java 11
-
-**Symptom:**
-
-API ML components configured with SAF keyring are not able to start due to an unrecoverable exception. The message indicates that `safkeyring` is an unknown protocol. 
-
-**Examples:**
-```
-2023-06-27 13:07:04.493 <ZWEAGW1:main:394418> ZWESVUSR ERROR (o.z.a.s.HttpsFactory) error java.net.MalformedURLException: unknown protocol: safkeyring                                           
-.at java.base/java.net.URL.<init>(URL.java:652)                                                        
-.at java.base/java.net.URL.<init>(URL.java:541)                                                        
-.at java.base/java.net.URL.<init>(URL.java:488)                                                        
-.at org.zowe.apiml.security.SecurityUtils.keyRingUrl(SecurityUtils.java:246)
-...                                                           
-```
-```
-2023-06-27 13:07:04.528 <ZWEAGW1:main:394418> ZWESVUSR ERROR (o.z.a.s.HttpsFactory) ZWEAM400E Error initializing SSL Context: 'unknown protocol: safkeyring' 
-```
-
-<!-- Validate teh following solution 
-
-**Solution:**
-
-Specify keyrings in the format `safkeyring://userId/keyRing`, for example `safkeyring://ZWESVUSR/ZOWERING`, and set the keystore type to match the type of your RACF keystore. Zowe selects the matching protocol based on the keystore type, so you do not need to specify it in the URL.
-
-| Keystore type | Use when |
-|------|---------|
-| `JCERACFKS` | The keyring contains software-managed keys |
-| `JCECCARACFKS` | The keyring contains keys protected by a CCA coprocessor |
-| `JCEHYBRIDRACFKS` | The keyring contains ICSF hybrid keys |
-
-For example, set `zowe.certificate.keystore.type` to `JCEHYBRIDRACFKS` for ICSF hybrid keyrings.
-
-:::caution Deprecated protocols
-Older configurations may contain `safkeyringjce://`, `safkeyringjcecca://` or `safkeyringjcehybrid://`. These still work but are deprecated. Replace them with `safkeyring://`.
-:::
-
--->
 
 ## Failed to load JCERACFKS keyring when using Java 11
 

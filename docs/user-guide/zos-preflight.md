@@ -346,7 +346,7 @@ java --add-modules ibm.crypto.zsecurity,ibm.crypto.hdwrcca \
 |---|---|---|
 | `-a` | `--keyalias` | Alias under which the key is stored in the keystore. |
 | `-h` | `--help` | Display help. |
-| `-k` | `--keystore` | Path to a PKCS12 file or SAF key ring (`safkeyring[jce\|cca\|hybrid]://USER/RingName`). |
+| `-k` | `--keystore` | Path to a PKCS12 file or SAF key ring (`safkeyring://USER/RingName`). |
 | `-kp` | `--keypasswd` | Keystore password. For SAF key rings use the literal `password`. |
 | `-kt` | `--keystoretype` | One of: `PKCS12`, `JCERACFKS`, `JCECCARACFKS`, `JCEHYBRIDRACFKS`. |
 | `-t` | `--truststore` | Path to the truststore file or SAF key ring. |
@@ -362,7 +362,7 @@ Verify a SAF key ring truststore and test connectivity to z/OSMF:
 java --add-modules ibm.crypto.zsecurity,ibm.crypto.hdwrcca \
      -jar certificate-analyser.jar \
      -tt=JCERACFKS \
-     -t="safkeyringjce://ZWESVUSR/ZOWERING" \
+     -t="safkeyring://ZWESVUSR/ZOWERING" \
      -tp=password \
      -r=https://zos.example.com:443/zosmf/info
 ```
