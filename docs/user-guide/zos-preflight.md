@@ -332,7 +332,7 @@ A Java utility that validates keystores and truststores and optionally tests TLS
 to a remote server. Supports both PKCS12 files and z/OS SAF key rings. Used by
 `zwe validate certificate` to confirm Zowe's TLS configuration before startup.
 
-#### Usage
+#### Usage 
 
 ```sh
 java --add-modules ibm.crypto.zsecurity,ibm.crypto.hdwrcca \
