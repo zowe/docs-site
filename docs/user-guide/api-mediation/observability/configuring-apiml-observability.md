@@ -1,5 +1,8 @@
 # Configuring API ML observability 
 
+:::caution DRAFT FOR CUSTOMER REVIEW
+:::
+
 Enable system observability of Zowe API Mediation Layer (API ML) through integration with [OpenTelemetry (OTel)](https://opentelemetry.io/). 
 
 :::info Required role: System administrator
